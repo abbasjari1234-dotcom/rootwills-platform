@@ -124,8 +124,10 @@ function LoginForm() {
         throw new Error('Please enter your account password.');
       }
 
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const isRealSupabaseConfigured = supabaseUrl && !supabaseUrl.includes('placeholder');
+      const rawSupabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
+      const isRealSupabaseConfigured = rawSupabaseUrl.length > 0 && 
+                                       !rawSupabaseUrl.includes('placeholder') &&
+                                       (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
 
       let targetRole: 'admin' | 'customer' = 'customer';
       let targetOrgId = 'org-sancarlo';
@@ -144,7 +146,7 @@ function LoginForm() {
             const isStaff = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
             targetRole = isStaff ? 'admin' : 'customer';
           } else if (error) {
-            console.warn('Supabase auth returned error:', error.message);
+            console.warn('Supabase auth error:', error.message);
             // Check if user is testing with a preconfigured demo persona
             const isDemoPersona = Object.values(DEMO_PERSONAS).some(
               (p) => p.email.toLowerCase() === cleanEmail
