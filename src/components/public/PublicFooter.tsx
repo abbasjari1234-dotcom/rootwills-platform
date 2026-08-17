@@ -4,7 +4,7 @@ import { Truck, ShieldCheck, Award, MapPin, Phone, Mail, Clock } from 'lucide-re
 
 export function PublicFooter() {
   return (
-    <footer className="bg-obsidian-950 border-t border-cream/10 pt-16 pb-12 text-cream/70">
+    <footer className="bg-obsidian-950 border-t border-cream/10 pt-16 pb-12 text-cream/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Accreditations & Guarantees Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 border-b border-cream/10">
@@ -14,7 +14,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">6-Day Delivery SLA</div>
-              <div className="text-xs text-cream/50">Early morning drops by 07:00 AM</div>
+              <div className="text-xs text-cream/70">Early morning drops by 07:00 AM</div>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -23,7 +23,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">SALSA & BRCGS Certified</div>
-              <div className="text-xs text-cream/50">Full cold-chain traceability</div>
+              <div className="text-xs text-cream/70">Full cold-chain traceability</div>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -32,7 +32,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">Personalised Trade Pricing</div>
-              <div className="text-xs text-cream/50">Contract rates & volume discounts</div>
+              <div className="text-xs text-cream/70">Contract rates & volume discounts</div>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -41,7 +41,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">11:00 PM Order Cut-Off</div>
-              <div className="text-xs text-cream/50">Late chef ordering via web portal</div>
+              <div className="text-xs text-cream/70">Late chef ordering via web portal</div>
             </div>
           </div>
         </div>
@@ -56,10 +56,10 @@ export function PublicFooter() {
               </div>
               <span className="font-display text-2xl font-bold text-cream tracking-tight">ROOTWILLS</span>
             </div>
-            <p className="text-sm text-cream/60 leading-relaxed max-w-sm">
+            <p className="text-sm text-cream/75 leading-relaxed max-w-sm">
               Rootwills Ltd is a technology-driven B2B foodservice wholesaler delivering premium fresh produce, artisan dairy, meats, and dry goods to hospitality professionals across the UK.
             </p>
-            <div className="space-y-2 pt-2 text-xs text-cream/70">
+            <div className="space-y-2 pt-2 text-xs text-cream/80">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-champagne shrink-0" />
                 <span>Central Fulfilment Hub: Digbeth Wholesale Depot, Birmingham, B5 5JR</span>
@@ -77,7 +77,7 @@ export function PublicFooter() {
 
           {/* Product Categories */}
           <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4">Product Range</h4>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Product Range</h2>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Fresh Vegetables & Salads</Link></li>
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Seasonal & Exotic Fruits</Link></li>
@@ -90,7 +90,7 @@ export function PublicFooter() {
 
           {/* Sectors (SEO) */}
           <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4">Who We Supply</h4>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Who We Supply</h2>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/sectors/restaurants" className="hover:text-champagne transition-colors">Fine Dining & Restaurants</Link></li>
               <li><Link href="/sectors/hotels" className="hover:text-champagne transition-colors">Boutique Hotels & Resorts</Link></li>
@@ -103,7 +103,7 @@ export function PublicFooter() {
 
           {/* Local Supply & Portals */}
           <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4">Regional Supply</h4>
+            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Regional Supply</h2>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/locations/birmingham" className="hover:text-champagne transition-colors">Birmingham Wholesale Supply</Link></li>
               <li><Link href="/locations/coventry" className="hover:text-champagne transition-colors">Coventry & Warwickshire</Link></li>
@@ -115,7 +115,7 @@ export function PublicFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/login?role=admin" className="text-xs text-cream/40 hover:text-champagne">
+                <Link href="/login?role=admin" className="text-xs text-cream/70 hover:text-champagne">
                   Staff CRM & Admin Portal &rarr;
                 </Link>
               </li>
@@ -124,7 +124,7 @@ export function PublicFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 mt-4 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-center text-xs text-cream/40 gap-4">
+        <div className="pt-8 mt-4 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-center text-xs text-cream/70 gap-4">
           <div>
             &copy; {new Date().getFullYear()} Rootwills Ltd. Company No. 14928102. VAT Reg: GB 412 8901 34. All rights reserved.
           </div>
