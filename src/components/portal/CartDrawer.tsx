@@ -18,6 +18,7 @@ import {
   ShoppingBag
 } from 'lucide-react';
 import Link from 'next/link';
+import { submitPortalOrder } from '@/actions/orders';
 
 export function CartDrawer() {
   const { 
@@ -61,11 +62,31 @@ export function CartDrawer() {
   const availableCredit = Math.max(0, currentOrg.creditLimit - currentOrg.creditUsed);
   const exceedsCredit = grandTotal > availableCredit && currentOrg.creditLimit > 0;
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (items.length === 0 || exceedsCredit) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      // 1. Submit to Supabase database (or fallback)
+      const dbResult = await submitPortalOrder({
+        organizationId: currentOrg.id,
+        locationId: currentLocation?.id,
+        items: items.map((item) => ({
+          productId: item.productId,
+          sku: item.sku,
+          name: item.name,
+          qty: item.qty,
+          unitPrice: item.customerPrice,
+        })),
+        subtotal: Number(subtotal.toFixed(2)),
+        vatTotal: Number(vatTotal.toFixed(2)),
+        total: Number(grandTotal.toFixed(2)),
+        deliveryDate: selectedDeliveryDate,
+        deliverySlot: selectedSlot,
+        notes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards door.',
+      });
+
+      // 2. Update local state store
       const newOrder = placeOrder({
         organizationId: currentOrg.id,
         organizationName: currentOrg.name,
@@ -91,10 +112,17 @@ export function CartDrawer() {
         })),
       });
 
+      if (dbResult?.orderNumber) {
+        newOrder.orderNumber = dbResult.orderNumber;
+      }
+
       setIsSubmitting(false);
       setOrderSuccess(newOrder);
       clearCart();
-    }, 600);
+    } catch (err) {
+      console.error('Checkout error:', err);
+      setIsSubmitting(false);
+    }
   };
 
   return (
