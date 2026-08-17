@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDemoStore } from '@/lib/store/demo-store';
@@ -15,10 +15,13 @@ import {
   Sparkles,
   Eye,
   EyeOff,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Building2,
+  Briefcase
 } from 'lucide-react';
 
 type DemoPersonaKey = 'chef' | 'hotel' | 'admin';
+type LoginScope = 'customer' | 'staff';
 
 const DEMO_PERSONAS: Record<DemoPersonaKey, {
   label: string;
@@ -66,10 +69,12 @@ const DEMO_PERSONAS: Record<DemoPersonaKey, {
   },
 };
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const setPersona = useDemoStore((state) => state.setPersona);
   
+  const [loginScope, setLoginScope] = useState<LoginScope>('customer');
   const [showDemoSelector, setShowDemoSelector] = useState(false);
   const [selectedTab, setSelectedTab] = useState<DemoPersonaKey>('chef');
   const [email, setEmail] = useState('');
@@ -78,21 +83,43 @@ export default function LoginPage() {
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    const roleParam = searchParams?.get('role');
+    const staffParam = searchParams?.get('staff');
+    if (roleParam === 'admin' || staffParam === 'true') {
+      setLoginScope('staff');
+      setEmail('marcus.vance@rootwills.co.uk');
+    }
+  }, [searchParams]);
+
   const handleSelectTab = (key: DemoPersonaKey) => {
     setSelectedTab(key);
     setEmail(DEMO_PERSONAS[key].email);
     setPassword('demo-access-2026');
+    if (key === 'admin') {
+      setLoginScope('staff');
+    } else {
+      setLoginScope('customer');
+    }
   };
 
   const handleLogin = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setIsLoading(true);
 
-    const persona = DEMO_PERSONAS[selectedTab];
-    setPersona(persona.orgId, persona.role);
+    const isStaff = loginScope === 'staff' || 
+                    email.toLowerCase().includes('rootwills') || 
+                    email.toLowerCase().includes('admin') ||
+                    email.toLowerCase().includes('marcus') ||
+                    selectedTab === 'admin';
+
+    const targetRole = isStaff ? 'admin' : 'customer';
+    const targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
+
+    setPersona(targetOrgId, targetRole);
 
     setTimeout(() => {
-      if (persona.role === 'admin') {
+      if (targetRole === 'admin') {
         router.push('/admin/crm');
       } else {
         router.push('/dashboard');
@@ -112,30 +139,66 @@ export default function LoginPage() {
             R
           </div>
           <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream">
-            Sign In to Rootwills
+            {loginScope === 'staff' ? 'Staff CRM & Operations' : 'Sign In to Rootwills'}
           </h1>
           <p className="text-xs text-cream/60">
-            Commercial Customer & Trade Procurement Portal
+            {loginScope === 'staff' 
+              ? 'Authorized Rootwills Sales & Logistics Management' 
+              : 'Commercial Foodservice & Wholesale Ordering Portal'}
           </p>
         </div>
 
         {/* Main Card */}
         <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 shadow-2xl space-y-6 relative">
           
-          {/* Collapsible Demo Persona Tab Bar (Only if toggled) */}
+          {/* Scope Selector: Customer vs Staff */}
+          <div className="grid grid-cols-2 gap-1 p-1 bg-zinc-950 rounded-xl border border-zinc-800 text-xs">
+            <button
+              type="button"
+              onClick={() => {
+                setLoginScope('customer');
+                if (email.includes('rootwills.co.uk')) setEmail('');
+              }}
+              className={`py-2 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                loginScope === 'customer'
+                  ? 'bg-zinc-800 text-champagne font-bold shadow-sm border border-champagne/30'
+                  : 'text-cream/60 hover:text-cream'
+              }`}
+            >
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Customer Portal</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setLoginScope('staff');
+                if (!email) setEmail('marcus.vance@rootwills.co.uk');
+              }}
+              className={`py-2 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                loginScope === 'staff'
+                  ? 'bg-zinc-800 text-champagne font-bold shadow-sm border border-champagne/30'
+                  : 'text-cream/60 hover:text-cream'
+              }`}
+            >
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>Staff CRM & Admin</span>
+            </button>
+          </div>
+
+          {/* Collapsible Demo Persona Box (Only if toggled via bottom link) */}
           {showDemoSelector && (
             <div className="space-y-2 p-3 bg-zinc-950/90 rounded-2xl border border-champagne/30 animate-fade-in">
               <div className="flex items-center justify-between text-[11px] font-mono">
                 <span className="text-champagne font-bold flex items-center gap-1">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Interactive Demo Mode</span>
+                  <span>1-Click Test Persona</span>
                 </span>
                 <button 
                   type="button" 
                   onClick={() => setShowDemoSelector(false)}
                   className="text-cream/40 hover:text-cream text-[10px]"
                 >
-                  Hide Demo Box
+                  Hide
                 </button>
               </div>
 
@@ -148,7 +211,7 @@ export default function LoginPage() {
                       key={key}
                       type="button"
                       onClick={() => handleSelectTab(key)}
-                      className={`py-2 px-1.5 rounded-lg text-xs font-medium transition-all text-center flex flex-col items-center gap-0.5 ${
+                      className={`py-2 px-1 rounded-lg text-xs font-medium transition-all text-center flex flex-col items-center gap-0.5 ${
                         active
                           ? 'bg-zinc-800 text-champagne font-bold shadow-sm border border-champagne/30'
                           : 'text-cream/60 hover:text-cream hover:bg-zinc-900/60'
@@ -160,7 +223,6 @@ export default function LoginPage() {
                 })}
               </div>
 
-              {/* Persona Details Badge */}
               <div className="p-2.5 bg-zinc-900/80 rounded-xl border border-zinc-800/80 flex items-center justify-between text-xs">
                 <div>
                   <div className="font-bold text-cream text-xs">{DEMO_PERSONAS[selectedTab].name}</div>
@@ -183,14 +245,14 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-4 text-xs">
             <div>
               <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">
-                Commercial Account Email
+                {loginScope === 'staff' ? 'Staff Internal Email' : 'Commercial Account Email'}
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-cream/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="email"
                   required
-                  placeholder="chef@establishment.co.uk"
+                  placeholder={loginScope === 'staff' ? 'marcus.vance@rootwills.co.uk' : 'chef@establishment.co.uk'}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
@@ -205,7 +267,7 @@ export default function LoginPage() {
                 </label>
                 <a 
                   href="#forgot" 
-                  onClick={(e) => { e.preventDefault(); alert('Password reset link sent to your registered commercial email address.'); }} 
+                  onClick={(e) => { e.preventDefault(); alert('Password reset link sent to your registered email address.'); }} 
                   className="text-[10px] text-champagne hover:underline"
                 >
                   Forgot password?
@@ -241,7 +303,7 @@ export default function LoginPage() {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="w-3.5 h-3.5 rounded border-zinc-700 bg-zinc-900 text-champagne accent-champagne cursor-pointer"
                 />
-                <span className="text-[11px]">Remember this kitchen terminal</span>
+                <span className="text-[11px]">Remember this terminal</span>
               </label>
             </div>
 
@@ -255,27 +317,31 @@ export default function LoginPage() {
                 <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
-                  <span>Sign In to Account</span>
+                  <span>
+                    {loginScope === 'staff' ? 'Access Staff CRM & Cockpit' : 'Sign In to Customer Portal'}
+                  </span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
           </form>
 
-          {/* New Account Onboarding Prompt */}
-          <div className="pt-4 border-t border-zinc-800 text-center space-y-1 text-xs">
-            <p className="text-cream/60">
-              Need to set up a new trade account with credit terms?
-            </p>
-            <Link
-              href="/onboarding"
-              className="inline-block font-bold text-champagne hover:underline"
-            >
-              Open a Business Account in 2 Minutes &rarr;
-            </Link>
-          </div>
+          {/* New Account Onboarding Prompt (Only on Customer view) */}
+          {loginScope === 'customer' && (
+            <div className="pt-4 border-t border-zinc-800 text-center space-y-1 text-xs">
+              <p className="text-cream/60">
+                Need to set up a new trade account with credit terms?
+              </p>
+              <Link
+                href="/onboarding"
+                className="inline-block font-bold text-champagne hover:underline"
+              >
+                Open a Business Account in 2 Minutes &rarr;
+              </Link>
+            </div>
+          )}
 
-          {/* Subtle Demo Mode Toggle for presentations */}
+          {/* Subtle Demo Toggle */}
           <div className="pt-2 text-center">
             <button
               type="button"
@@ -286,11 +352,23 @@ export default function LoginPage() {
               className="text-[10px] font-mono text-cream/30 hover:text-champagne flex items-center justify-center gap-1 mx-auto transition-colors"
             >
               <SlidersHorizontal className="w-3 h-3" />
-              <span>{showDemoSelector ? 'Close Demo Mode' : 'Developer / Demo Preview Mode'}</span>
+              <span>{showDemoSelector ? 'Close Demo Mode' : 'Quick Demo Switcher'}</span>
             </button>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-[85vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-champagne border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
   );
 }
