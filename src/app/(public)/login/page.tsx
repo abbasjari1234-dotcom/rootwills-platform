@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDemoStore } from '@/lib/store/demo-store';
+import { createClient } from '@/lib/supabase/client';
 import { 
   Lock, 
   Mail, 
@@ -112,24 +113,60 @@ function LoginForm() {
     setIsLoading(true);
 
     try {
-      // Input Validation
-      if (!email.trim()) {
+      const cleanEmail = email.trim().toLowerCase();
+      const cleanPassword = password.trim();
+
+      // 1. Validate inputs
+      if (!cleanEmail) {
         throw new Error('Please enter your registered email address.');
       }
-      if (!password.trim()) {
+      if (!cleanPassword) {
         throw new Error('Please enter your account password.');
       }
 
-      const isStaff = loginScope === 'staff' || 
-                      email.toLowerCase().includes('rootwills') || 
-                      email.toLowerCase().includes('admin') ||
-                      email.toLowerCase().includes('marcus') ||
-                      selectedTab === 'admin';
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const isRealSupabaseConfigured = supabaseUrl && !supabaseUrl.includes('placeholder');
 
-      const targetRole = isStaff ? 'admin' : 'customer';
-      const targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
+      let targetRole: 'admin' | 'customer' = 'customer';
+      let targetOrgId = 'org-sancarlo';
 
-      // Update local and persistent authentication state
+      if (isRealSupabaseConfigured) {
+        // Real Supabase Authentication
+        const supabase = createClient();
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: cleanEmail,
+          password: cleanPassword,
+        });
+
+        if (error) {
+          throw new Error('Invalid email or password. Please verify your credentials.');
+        }
+
+        if (data?.user) {
+          const isStaff = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
+          targetRole = isStaff ? 'admin' : 'customer';
+          targetOrgId = 'org-sancarlo';
+        }
+      } else {
+        // Strict demo mode check: reject any incorrect password
+        const VALID_DEMO_PASSWORDS = ['demo-access-2026', 'rootwills2026', 'admin123', 'password123'];
+
+        const isValidDemoPassword = VALID_DEMO_PASSWORDS.includes(cleanPassword);
+        if (!isValidDemoPassword) {
+          throw new Error('Invalid password. For demo accounts, use password: demo-access-2026');
+        }
+
+        const isStaff = loginScope === 'staff' || 
+                        cleanEmail.includes('rootwills') || 
+                        cleanEmail.includes('admin') || 
+                        cleanEmail.includes('marcus') ||
+                        selectedTab === 'admin';
+
+        targetRole = isStaff ? 'admin' : 'customer';
+        targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
+      }
+
+      // Update authentication state
       setPersona(targetOrgId, targetRole);
 
       // Set cookie for server route protection middleware
@@ -144,17 +181,12 @@ function LoginForm() {
           ? '/admin/crm'
           : '/dashboard';
 
-      // Simulated network handshake delay
-      await new Promise((resolve) => setTimeout(resolve, 350));
-
-      // Asynchronous route navigation
       await router.push(destination);
     } catch (err: any) {
-      console.error('Authentication error occurred:', err);
-      setErrorMessage(err?.message || 'Authentication failed. Please verify your credentials and try again.');
+      console.error('Authentication rejected:', err);
+      setErrorMessage(err?.message || 'Invalid login credentials. Please check your email and password.');
       setIsLoading(false);
     } finally {
-      // Safety unlock mechanism: ensure loading never remains indefinitely locked
       const safetyTimer = setTimeout(() => {
         setIsLoading(false);
       }, 3500);
@@ -222,18 +254,18 @@ function LoginForm() {
             </button>
           </div>
 
-          {/* Error Message Alert (with automatic state reset) */}
+          {/* Error Message Alert */}
           {errorMessage && (
             <div className="p-3.5 bg-red-950/60 border border-red-500/40 rounded-xl text-xs text-red-200 flex items-start gap-2.5 animate-fade-in">
               <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
               <div className="flex-1">
-                <span className="font-semibold text-red-300">Sign-in Error: </span>
+                <span className="font-semibold text-red-300">Access Denied: </span>
                 <span>{errorMessage}</span>
               </div>
             </div>
           )}
 
-          {/* Collapsible Demo Persona Box (Only if toggled via bottom link) */}
+          {/* Collapsible Demo Persona Box */}
           {showDemoSelector && (
             <div className="space-y-2 p-3 bg-zinc-950/90 rounded-2xl border border-champagne/30 animate-fade-in">
               <div className="flex items-center justify-between text-[11px] font-mono">
@@ -380,7 +412,7 @@ function LoginForm() {
             </button>
           </form>
 
-          {/* New Account Onboarding Prompt (Only on Customer view) */}
+          {/* New Account Onboarding Prompt */}
           {loginScope === 'customer' && (
             <div className="pt-4 border-t border-zinc-800 text-center space-y-1 text-xs">
               <p className="text-cream/60">
