@@ -115,7 +115,7 @@ export function PublicFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/admin/crm" className="text-xs text-cream/40 hover:text-champagne">
+                <Link href="/login?role=admin" className="text-xs text-cream/40 hover:text-champagne">
                   Staff CRM & Admin Portal &rarr;
                 </Link>
               </li>
