@@ -147,6 +147,7 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&auto=format&fit=crop&q=80"
                 alt="Fresh Fruit & Vegetables"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -180,6 +181,7 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80"
                 alt="Dairy & Eggs"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -213,6 +215,7 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&auto=format&fit=crop&q=80"
                 alt="Meat & Poultry"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -246,6 +249,7 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80"
                 alt="Pastry & Specialty Goods"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
