@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useDemoStore } from '@/lib/store/demo-store';
 import { 
   Lock, 
@@ -15,7 +15,7 @@ import {
   Sparkles,
   Eye,
   EyeOff,
-  Check
+  SlidersHorizontal
 } from 'lucide-react';
 
 type DemoPersonaKey = 'chef' | 'hotel' | 'admin';
@@ -38,7 +38,7 @@ const DEMO_PERSONAS: Record<DemoPersonaKey, {
     orgId: 'org-sancarlo',
     role: 'customer',
     icon: UtensilsCrossed,
-    badge: 'Fine Dining &bull; San Carlo Ristorante',
+    badge: 'Fine Dining • San Carlo Ristorante',
     credit: '£15,000 Credit',
     priceNote: 'Custom £7.80 Tomato Rate',
   },
@@ -49,7 +49,7 @@ const DEMO_PERSONAS: Record<DemoPersonaKey, {
     orgId: 'org-grandhotel',
     role: 'customer',
     icon: Hotel,
-    badge: 'Hotel Banqueting &bull; Digbeth Hub',
+    badge: 'Hotel Banqueting • Digbeth Hub',
     credit: '£30,000 Credit',
     priceNote: 'Locked £28.50 Eggs Contract',
   },
@@ -70,9 +70,10 @@ export default function LoginPage() {
   const router = useRouter();
   const setPersona = useDemoStore((state) => state.setPersona);
   
+  const [showDemoSelector, setShowDemoSelector] = useState(false);
   const [selectedTab, setSelectedTab] = useState<DemoPersonaKey>('chef');
-  const [email, setEmail] = useState(DEMO_PERSONAS.chef.email);
-  const [password, setPassword] = useState('demo-access-2026');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -114,75 +115,75 @@ export default function LoginPage() {
             Sign In to Rootwills
           </h1>
           <p className="text-xs text-cream/60">
-            Access your B2B wholesale ordering portal or staff CRM
+            Commercial Customer & Trade Procurement Portal
           </p>
         </div>
 
-        {/* Consolidated Unified Card */}
+        {/* Main Card */}
         <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 shadow-2xl space-y-6 relative">
           
-          {/* Segmented Persona Tab Bar */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-[11px] font-mono">
-              <span className="text-champagne font-bold flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Select Demo Account</span>
-              </span>
-              <span className="text-cream/40">1-Click Auto-Fill</span>
-            </div>
-
-            <div className="grid grid-cols-3 gap-1.5 p-1 bg-zinc-950/80 rounded-xl border border-zinc-800">
-              {(Object.keys(DEMO_PERSONAS) as DemoPersonaKey[]).map((key) => {
-                const p = DEMO_PERSONAS[key];
-                const active = selectedTab === key;
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => handleSelectTab(key)}
-                    className={`py-2 px-1.5 rounded-lg text-xs font-medium transition-all text-center flex flex-col items-center gap-0.5 ${
-                      active
-                        ? 'bg-zinc-800 text-champagne font-bold shadow-sm border border-champagne/30'
-                        : 'text-cream/60 hover:text-cream hover:bg-zinc-900/60'
-                    }`}
-                  >
-                    <span className="truncate w-full">{p.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Persona Details Badge */}
-            <div className="p-3 bg-zinc-950/60 rounded-xl border border-zinc-800/80 flex items-center justify-between text-xs animate-fade-in">
-              <div>
-                <div className="font-bold text-cream text-xs">{DEMO_PERSONAS[selectedTab].name}</div>
-                <div className="text-[10px] text-cream/50">
-                  {DEMO_PERSONAS[selectedTab].credit} &bull; {DEMO_PERSONAS[selectedTab].priceNote}
-                </div>
+          {/* Collapsible Demo Persona Tab Bar (Only if toggled) */}
+          {showDemoSelector && (
+            <div className="space-y-2 p-3 bg-zinc-950/90 rounded-2xl border border-champagne/30 animate-fade-in">
+              <div className="flex items-center justify-between text-[11px] font-mono">
+                <span className="text-champagne font-bold flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Interactive Demo Mode</span>
+                </span>
+                <button 
+                  type="button" 
+                  onClick={() => setShowDemoSelector(false)}
+                  className="text-cream/40 hover:text-cream text-[10px]"
+                >
+                  Hide Demo Box
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => handleLogin()}
-                className="px-2.5 py-1 rounded-lg bg-champagne text-obsidian-950 font-bold text-[11px] hover:brightness-110 shadow-gold-glow"
-              >
-                Instant Enter &rarr;
-              </button>
-            </div>
-          </div>
 
-          {/* Subtle OR Divider */}
-          <div className="relative flex items-center justify-center">
-            <div className="border-t border-zinc-800 w-full" />
-            <span className="bg-zinc-900 px-3 text-[10px] font-mono uppercase text-cream/40 absolute">
-              OR WITH EMAIL & PASSWORD
-            </span>
-          </div>
+              <div className="grid grid-cols-3 gap-1.5 p-1 bg-zinc-900 rounded-xl border border-zinc-800">
+                {(Object.keys(DEMO_PERSONAS) as DemoPersonaKey[]).map((key) => {
+                  const p = DEMO_PERSONAS[key];
+                  const active = selectedTab === key;
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => handleSelectTab(key)}
+                      className={`py-2 px-1.5 rounded-lg text-xs font-medium transition-all text-center flex flex-col items-center gap-0.5 ${
+                        active
+                          ? 'bg-zinc-800 text-champagne font-bold shadow-sm border border-champagne/30'
+                          : 'text-cream/60 hover:text-cream hover:bg-zinc-900/60'
+                      }`}
+                    >
+                      <span className="truncate w-full">{p.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Persona Details Badge */}
+              <div className="p-2.5 bg-zinc-900/80 rounded-xl border border-zinc-800/80 flex items-center justify-between text-xs">
+                <div>
+                  <div className="font-bold text-cream text-xs">{DEMO_PERSONAS[selectedTab].name}</div>
+                  <div className="text-[10px] text-cream/50">
+                    {DEMO_PERSONAS[selectedTab].credit} &bull; {DEMO_PERSONAS[selectedTab].priceNote}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleLogin()}
+                  className="px-2.5 py-1 rounded-lg bg-champagne text-obsidian-950 font-bold text-[11px] hover:brightness-110 shadow-gold-glow"
+                >
+                  Instant Enter &rarr;
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Standard Credentials Form */}
           <form onSubmit={handleLogin} className="space-y-4 text-xs">
             <div>
               <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">
-                Registered Work Email
+                Commercial Account Email
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-cream/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -202,7 +203,11 @@ export default function LoginPage() {
                 <label className="text-[11px] font-mono uppercase text-cream/70">
                   Password
                 </label>
-                <a href="#forgot" onClick={(e) => { e.preventDefault(); alert('Password reset link sent to registered email.'); }} className="text-[10px] text-champagne hover:underline">
+                <a 
+                  href="#forgot" 
+                  onClick={(e) => { e.preventDefault(); alert('Password reset link sent to your registered commercial email address.'); }} 
+                  className="text-[10px] text-champagne hover:underline"
+                >
                   Forgot password?
                 </a>
               </div>
@@ -227,7 +232,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Remember Me checkbox */}
+            {/* Remember Me */}
             <div className="flex items-center justify-between pt-1">
               <label className="flex items-center gap-2 text-cream/70 cursor-pointer">
                 <input
@@ -268,6 +273,21 @@ export default function LoginPage() {
             >
               Open a Business Account in 2 Minutes &rarr;
             </Link>
+          </div>
+
+          {/* Subtle Demo Mode Toggle for presentations */}
+          <div className="pt-2 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setShowDemoSelector(!showDemoSelector);
+                if (!showDemoSelector) handleSelectTab('chef');
+              }}
+              className="text-[10px] font-mono text-cream/30 hover:text-champagne flex items-center justify-center gap-1 mx-auto transition-colors"
+            >
+              <SlidersHorizontal className="w-3 h-3" />
+              <span>{showDemoSelector ? 'Close Demo Mode' : 'Developer / Demo Preview Mode'}</span>
+            </button>
           </div>
         </div>
       </div>
