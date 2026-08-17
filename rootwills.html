@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rootwills Ltd — Wholesale Food &amp; Beverage Supply</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --noir:#0B0B09;
+    --noir-2:#131311;
+    --noir-3:#1B1B17;
+    --gold:#C9A227;
+    --gold-soft:#E4C767;
+    --wine:#6E2A26;
+    --bone:#F3EFE6;
+    --bone-dim:#A9A69B;
+    --line:rgba(243,239,230,0.13);
+    --maxw:1240px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    background:var(--noir);
+    color:var(--bone);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    cursor:auto;
+  }
+  @media (min-width:961px){
+    body.cursor-ready, body.cursor-ready a, body.cursor-ready button{ cursor:none; }
+  }
+
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:400; letter-spacing:-0.01em; }
+  em{ font-style:italic; color:var(--gold-soft); }
+  a{ color:inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .eyebrow{
+    font-family:'Inter', sans-serif; font-size:0.7rem; font-weight:500;
+    letter-spacing:0.24em; text-transform:uppercase; color:var(--gold);
+  }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 40px; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:1px solid var(--gold); outline-offset:4px;
+  }
+
+  /* grain */
+  .grain{ position:fixed; inset:0; pointer-events:none; z-index:150; opacity:0.05; mix-blend-mode:overlay; }
+
+  /* custom cursor */
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; z-index:300;
+    transform:translate(-50%,-50%); will-change:transform;
+  }
+  .cursor-dot{ width:5px; height:5px; background:var(--gold); }
+  .cursor-ring{
+    width:34px; height:34px; border:1px solid var(--gold);
+    transition:width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+  }
+  .cursor-ring.big{ width:64px; height:64px; border-color:var(--gold-soft); }
+  @media (max-width:960px){ .cursor-dot,.cursor-ring{ display:none; } }
+
+  /* spotlight */
+  .spotlight{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    background:radial-gradient(420px circle at var(--sx,50%) var(--sy,30%), rgba(201,162,39,0.06), transparent 70%);
+  }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity 0.9s ease, transform 0.9s cubic-bezier(.19,1,.22,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .blur-reveal{ opacity:0; filter:blur(10px); letter-spacing:0.15em; transition:opacity 1s ease, filter 1s ease, letter-spacing 1s ease; }
+  .blur-reveal.in{ opacity:1; filter:blur(0); letter-spacing:normal; }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:80;
+    padding:26px 0; transition:background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{ background:rgba(11,11,9,0.86); backdrop-filter:blur(10px); padding:18px 0; border-color:var(--line); }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{ display:flex; align-items:center; gap:12px; font-family:'Cormorant Garamond', serif; font-size:1.35rem; letter-spacing:0.02em; }
+  .logo .seal{ width:34px; height:34px; }
+  .logo .seal svg{ animation:rotateSlow 50s linear infinite; }
+  @keyframes rotateSlow{ to{ transform:rotate(360deg); } }
+  nav.links{ display:flex; gap:40px; align-items:center; }
+  nav.links a{
+    font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; color:var(--bone-dim);
+    transition:color 0.2s ease;
+  }
+  nav.links a:hover{ color:var(--bone); }
+  .nav-cta{
+    font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--gold); text-decoration:none; padding-bottom:3px; border-bottom:1px solid var(--gold);
+  }
+  .menu-btn{ display:none; background:none; border:none; cursor:pointer; }
+  .menu-btn span{ display:block; width:20px; height:1px; background:var(--bone); margin:5px 0; }
+  @media (max-width:860px){ nav.links{ display:none; } .menu-btn{ display:block; } }
+
+  /* ---------- HERO ---------- */
+  .hero{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; padding:140px 24px 80px; }
+  .hero .seal-big{ width:78px; height:78px; margin-bottom:34px; opacity:0; animation:sealIn 1s cubic-bezier(.19,1,.22,1) 0.2s forwards; }
+  .hero .seal-big svg{ animation:rotateSlow 60s linear infinite; }
+  @keyframes sealIn{ from{ opacity:0; transform:scale(0.6) rotate(-20deg); } to{ opacity:1; transform:scale(1) rotate(0deg); } }
+  .hero .eyebrow{ opacity:0; animation:softIn 0.9s ease 0.4s forwards; }
+  .hero h1{
+    margin-top:22px; font-weight:300; font-size:clamp(2.6rem, 7vw, 5.6rem); line-height:1.04;
+    max-width:16ch; transition-delay:0.15s;
+  }
+  .hero p.lede{
+    margin-top:28px; max-width:46ch; color:var(--bone-dim); font-size:1.05rem; font-weight:300;
+    opacity:0; animation:softIn 0.9s ease 1.1s forwards;
+  }
+  @keyframes softIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .hero-ctas{ margin-top:40px; opacity:0; animation:softIn 0.9s ease 1.3s forwards; }
+  .btn-ghost{
+    font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; color:var(--bone);
+    padding-bottom:6px; border-bottom:1px solid var(--gold); position:relative;
+  }
+  .btn-ghost::after{
+    content:'→'; margin-left:10px; display:inline-block; transition:transform 0.25s ease;
+  }
+  .btn-ghost:hover::after{ transform:translateX(5px); }
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    width:1px; height:52px; background:var(--line); overflow:hidden;
+  }
+  .scroll-cue::after{
+    content:''; position:absolute; top:-52px; left:0; width:100%; height:52px; background:var(--gold);
+    animation:cueDrop 2.2s ease-in-out infinite;
+  }
+  @keyframes cueDrop{ 0%{ top:-52px; } 60%{ top:52px; } 100%{ top:52px; } }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; padding:22px 0; }
+  .marquee-track{ display:flex; width:max-content; animation:mscroll 46s linear infinite; }
+  .marquee-track span{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.5rem; color:var(--bone-dim);
+    white-space:nowrap; padding:0 34px; display:flex; align-items:center; gap:34px;
+  }
+  .marquee-track span::after{ content:'◆'; color:var(--gold); font-size:0.5rem; font-style:normal; }
+  @keyframes mscroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------- STATS ---------- */
+  .stats-row{ padding:80px 0; border-bottom:1px solid var(--line); }
+  .stats-inner{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:40px; }
+  .stat{ flex:1; min-width:160px; }
+  .stat .num{ font-family:'Cormorant Garamond', serif; font-weight:300; font-size:clamp(2.4rem,4vw,3.4rem); color:var(--gold-soft); }
+  .stat .cap{ margin-top:8px; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-dim); }
+
+  /* ---------- PROVENANCE LEDGER (category panels) ---------- */
+  .ledger-section{ padding:120px 0 40px; }
+  .ledger-head{ text-align:center; max-width:560px; margin:0 auto 90px; }
+  .ledger-head h2{ margin-top:16px; font-weight:300; font-size:clamp(2rem,3.6vw,2.8rem); }
+  .ledger-head p{ margin-top:16px; color:var(--bone-dim); font-weight:300; }
+
+  .panel{
+    display:grid; grid-template-columns:0.5fr 1fr 1.2fr; gap:40px; align-items:center;
+    padding:64px 0; border-top:1px solid var(--line);
+  }
+  .panel:last-child{ border-bottom:1px solid var(--line); }
+  .panel .idx{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--gold); }
+  .panel .icon-wrap{ display:flex; justify-content:center; }
+  .panel .icon-wrap svg{ width:64px; height:64px; }
+  .panel .icon-wrap svg path, .panel .icon-wrap svg circle, .panel .icon-wrap svg rect, .panel .icon-wrap svg line{
+    stroke-dasharray:220; stroke-dashoffset:220; transition:stroke-dashoffset 1.6s cubic-bezier(.19,1,.22,1);
+  }
+  .panel.in .icon-wrap svg path, .panel.in .icon-wrap svg circle, .panel.in .icon-wrap svg rect, .panel.in .icon-wrap svg line{
+    stroke-dashoffset:0;
+  }
+  .panel h3{ font-weight:400; font-size:clamp(1.6rem,2.6vw,2.1rem); }
+  .panel h3 em{ display:block; }
+  .panel-copy p{ color:var(--bone-dim); font-size:0.95rem; font-weight:300; max-width:42ch; }
+
+  @media (max-width:860px){
+    .panel{ grid-template-columns:1fr; text-align:center; gap:18px; }
+    .panel .icon-wrap{ order:1; }
+    .panel .idx{ order:0; }
+  }
+
+  /* ---------- HOW IT WORKS (vertical timeline) ---------- */
+  .timeline-section{ padding:120px 0; background:var(--noir-2); }
+  .timeline{ max-width:680px; margin:0 auto; position:relative; padding-left:36px; }
+  .timeline-line{
+    position:absolute; left:0; top:6px; bottom:6px; width:1px; background:var(--line);
+  }
+  .timeline-line-fill{
+    position:absolute; left:0; top:0; width:1px; height:0%; background:var(--gold);
+    transition:height 1.8s cubic-bezier(.19,1,.22,1);
+  }
+  .timeline.in .timeline-line-fill{ height:100%; }
+  .tl-item{ position:relative; padding-bottom:56px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:''; position:absolute; left:-40px; top:4px; width:9px; height:9px; border-radius:50%;
+    background:var(--noir-2); border:1px solid var(--gold);
+  }
+  .tl-item .roman{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold); font-size:1rem; }
+  .tl-item h3{ margin-top:8px; font-weight:400; font-size:1.5rem; }
+  .tl-item p{ margin-top:8px; color:var(--bone-dim); font-weight:300; font-size:0.92rem; max-width:44ch; }
+
+  /* ---------- COVERAGE ---------- */
+  .coverage-section{ padding:120px 0; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .coverage-map{ display:flex; justify-content:center; }
+  .coverage-map svg .ring{ stroke-dasharray:600; stroke-dashoffset:600; transition:stroke-dashoffset 1.8s cubic-bezier(.19,1,.22,1); }
+  .coverage-map.in svg .ring{ stroke-dashoffset:0; }
+  .coverage-map svg .hub{ animation:hubPulse 2.4s ease-in-out infinite; transform-origin:center; }
+  @keyframes hubPulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.3; transform:scale(2); } }
+  .coverage-copy p.eyebrow{ margin-bottom:14px; }
+  .coverage-copy h2{ font-weight:300; font-size:clamp(1.9rem,3.2vw,2.6rem); }
+  .coverage-copy p.body{ margin-top:18px; color:var(--bone-dim); font-weight:300; max-width:42ch; }
+  .coverage-list{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
+  .coverage-list li{ list-style:none; font-size:0.92rem; color:var(--bone-dim); padding-left:20px; position:relative; }
+  .coverage-list li::before{ content:''; position:absolute; left:0; top:9px; width:10px; height:1px; background:var(--gold); }
+  @media (max-width:860px){ .coverage-section{ grid-template-columns:1fr; } }
+
+  /* ---------- WHY / STATEMENT ---------- */
+  .statement-section{ padding:140px 0; text-align:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .statement-section blockquote{
+    font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:300;
+    font-size:clamp(1.6rem,3.6vw,2.6rem); max-width:20ch; margin:0 auto; line-height:1.35;
+  }
+  .why-list{ display:flex; justify-content:center; gap:60px; flex-wrap:wrap; margin-top:64px; }
+  .why-item{ max-width:220px; text-align:left; }
+  .why-item .idx{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--gold); }
+  .why-item h4{ margin-top:10px; font-family:'Cormorant Garamond', serif; font-weight:400; font-size:1.2rem; }
+  .why-item p{ margin-top:8px; font-size:0.85rem; color:var(--bone-dim); font-weight:300; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-section{ padding:140px 0; }
+  .contact-inner{ max-width:640px; margin:0 auto; text-align:center; }
+  .contact-inner h2{ font-weight:300; font-size:clamp(2rem,3.6vw,2.8rem); margin-top:16px; }
+  .contact-inner > p{ margin-top:16px; color:var(--bone-dim); font-weight:300; max-width:46ch; margin-left:auto; margin-right:auto; }
+  form{ margin-top:56px; text-align:left; display:flex; flex-direction:column; gap:30px; }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+  label{ display:block; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-dim); margin-bottom:10px; }
+  input, textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line); color:var(--bone);
+    padding:8px 2px 12px; font-family:'Inter', sans-serif; font-size:1rem; font-weight:300;
+    transition:border-color 0.3s ease;
+  }
+  input::placeholder, textarea::placeholder{ color:#5A574C; }
+  input:focus, textarea:focus{ border-color:var(--gold); outline:none; }
+  textarea{ resize:vertical; min-height:80px; }
+  .submit-wrap{ position:relative; text-align:center; margin-top:10px; }
+  .submit-btn{
+    background:transparent; border:1px solid var(--gold); color:var(--bone);
+    font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase;
+    padding:16px 40px; cursor:pointer; transition:background 0.25s ease, color 0.25s ease;
+  }
+  .submit-btn:hover{ background:var(--gold); color:var(--noir); }
+  .sent-line{
+    margin-top:18px; font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold-soft);
+    opacity:0; transition:opacity 0.5s ease; font-size:1rem;
+  }
+  .sent-line.go{ opacity:1; }
+
+  .addr-line{ margin-top:56px; font-size:0.78rem; color:var(--bone-dim); letter-spacing:0.04em; line-height:1.8; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:34px 0; border-top:1px solid var(--line); }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.7rem; letter-spacing:0.06em; color:var(--bone-dim); text-transform:uppercase; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/></filter></svg>
+<div class="grain" style="filter:url(#noise); background:#000;"></div>
+<div class="spotlight" id="spotlight"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <div class="logo">
+      <span class="seal">
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="#C9A227" stroke-width="0.7"/>
+          <circle cx="20" cy="20" r="14" fill="none" stroke="#C9A227" stroke-width="0.5"/>
+          <text font-family="Cormorant Garamond, serif" font-size="14" fill="#F3EFE6" x="20" y="25" text-anchor="middle">R</text>
+        </svg>
+      </span>
+      Rootwills
+    </div>
+    <nav class="links">
+      <a href="#ledger">Supply</a>
+      <a href="#how">Process</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#contact" class="nav-cta">Enquire</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="seal-big">
+    <svg viewBox="0 0 120 120" width="78" height="78">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="#C9A227" stroke-width="0.6"/>
+      <circle cx="60" cy="60" r="44" fill="none" stroke="#C9A227" stroke-width="0.4"/>
+      <path id="circlePath" d="M 60,16 A 44,44 0 1 1 59.9,16" fill="none"/>
+      <text font-size="6.4" fill="#A9A69B" letter-spacing="2">
+        <textPath href="#circlePath">ROOTWILLS LTD · MANCHESTER · EST. 2026 · </textPath>
+      </text>
+      <text font-family="Cormorant Garamond, serif" font-size="30" fill="#F3EFE6" x="60" y="70" text-anchor="middle">R</text>
+    </svg>
+  </div>
+  <p class="eyebrow">Wholesale food &amp; beverage — Manchester</p>
+  <h1 class="blur-reveal in">Provisions, <em>procured properly.</em></h1>
+  <p class="lede">Rootwills sources and distributes grocery, drink and everyday lines for retailers, caterers and hospitality businesses across the North West — handled with the same care as the goods themselves.</p>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-ghost">Request trade pricing</a>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Grocery &amp; Ambient</span><span>Beverages</span><span>Confectionery</span><span>Catering Supplies</span><span>Trade Accounts</span>
+    <span>Grocery &amp; Ambient</span><span>Beverages</span><span>Confectionery</span><span>Catering Supplies</span><span>Trade Accounts</span>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="wrap stats-inner">
+    <div class="stat reveal"><div class="num mono" data-count="4">0</div><div class="cap">Core ranges</div></div>
+    <div class="stat reveal"><div class="num">M24</div><div class="cap">Manchester hub</div></div>
+    <div class="stat reveal"><div class="num">Flex</div><div class="cap">Order volumes</div></div>
+    <div class="stat reveal"><div class="num mono" data-count="1">0</div><div class="cap">Account contact</div></div>
+  </div>
+</div>
+
+<section class="ledger-section" id="ledger">
+  <div class="wrap">
+    <div class="ledger-head reveal">
+      <p class="eyebrow">The Range</p>
+      <h2>A mixed portfolio,<br>held to one standard.</h2>
+      <p>Four ranges. Sourced, checked and redistributed with the same attention, whatever the category.</p>
+    </div>
+
+    <div class="panel reveal">
+      <div class="idx">01 / 04</div>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#C9A227" stroke-width="1.2">
+          <rect x="14" y="24" width="36" height="26" rx="1"/>
+          <ellipse cx="32" cy="24" rx="18" ry="6"/>
+          <path d="M14 24 v26"/><path d="M50 24 v26"/>
+          <path d="M32 30 v14"/>
+        </svg>
+      </div>
+      <div class="panel-copy">
+        <h3><em>Grocery</em> &amp; Ambient</h3>
+        <p>Tinned goods, dry stock and packaged essentials for shelf and store cupboard — the everyday lines your customers reach for first.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="idx">02 / 04</div>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#C9A227" stroke-width="1.2">
+          <path d="M27 10 h10 v8 l4 6 v28 a2 2 0 0 1 -2 2 h-14 a2 2 0 0 1 -2 -2 v-28 l4 -6 z"/>
+          <path d="M25 28 h14"/>
+        </svg>
+      </div>
+      <div class="panel-copy">
+        <h3><em>Beverages</em></h3>
+        <p>Soft drinks, mixers, bottled water and juices — stocked for retail fridges, bars and catering service alike.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="idx">03 / 04</div>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#C9A227" stroke-width="1.2">
+          <path d="M16 26 a16 16 0 0 1 32 0 v18 a4 4 0 0 1 -4 4 h-24 a4 4 0 0 1 -4 -4 z"/>
+          <path d="M16 26 h32"/>
+        </svg>
+      </div>
+      <div class="panel-copy">
+        <h3><em>Confectionery</em> &amp; Impulse</h3>
+        <p>Snacks, sweets and counter lines that move fast at the till — the small margin builders that add up.</p>
+      </div>
+    </div>
+
+    <div class="panel reveal">
+      <div class="idx">04 / 04</div>
+      <div class="icon-wrap">
+        <svg viewBox="0 0 64 64" fill="none" stroke="#C9A227" stroke-width="1.2">
+          <rect x="12" y="20" width="40" height="28" rx="1"/>
+          <path d="M12 30 h40"/><path d="M22 20 v28"/><path d="M42 20 v28"/>
+        </svg>
+      </div>
+      <div class="panel-copy">
+        <h3><em>Catering</em> Supplies</h3>
+        <p>Bulk packs and case sizes sized for kitchens and hospitality venues, ordered as often as you need them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section" id="how">
+  <div class="wrap">
+    <div class="ledger-head reveal">
+      <p class="eyebrow">The Process</p>
+      <h2>Four steps, <em>no runaround.</em></h2>
+    </div>
+    <div class="timeline reveal" id="timelineBlock">
+      <div class="timeline-line"></div>
+      <div class="timeline-line-fill"></div>
+      <div class="tl-item"><div class="roman">I.</div><h3>Get in touch</h3><p>Tell us what you're looking to stock and roughly what volumes you need.</p></div>
+      <div class="tl-item"><div class="roman">II.</div><h3>Set up a trade account</h3><p>A short onboarding process — account and order terms agreed up front.</p></div>
+      <div class="tl-item"><div class="roman">III.</div><h3>Place your order</h3><p>Order through your named account contact, however suits you best.</p></div>
+      <div class="tl-item"><div class="roman">IV.</div><h3>We deliver</h3><p>Scheduled drops to your site, within your agreed delivery window.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage-section wrap" id="coverage">
+  <div class="coverage-map reveal" id="coverageMap">
+    <svg viewBox="0 0 240 240" width="320" height="320">
+      <circle class="ring" cx="120" cy="120" r="100" fill="none" stroke="#2A2A24" stroke-width="0.7"/>
+      <circle class="ring" cx="120" cy="120" r="70" fill="none" stroke="#2A2A24" stroke-width="0.7" style="transition-delay:0.15s"/>
+      <circle class="ring" cx="120" cy="120" r="40" fill="none" stroke="#2A2A24" stroke-width="0.7" style="transition-delay:0.3s"/>
+      <line x1="10" y1="120" x2="230" y2="120" stroke="#1B1B17" stroke-width="0.6"/>
+      <line x1="120" y1="10" x2="120" y2="230" stroke="#1B1B17" stroke-width="0.6"/>
+      <circle class="hub" cx="120" cy="120" r="4" fill="#C9A227"/>
+      <circle cx="120" cy="120" r="4" fill="#C9A227"/>
+      <text x="130" y="116" font-family="Inter, sans-serif" font-size="9" fill="#F3EFE6" font-weight="500">M24</text>
+      <text x="130" y="128" font-family="Inter, sans-serif" font-size="7.5" fill="#A9A69B">Middleton, Manchester</text>
+    </svg>
+  </div>
+  <div class="coverage-copy reveal">
+    <p class="eyebrow">Coverage</p>
+    <h2>Rooted in Manchester,<br>reaching the North West.</h2>
+    <p class="body">Our hub sits in Middleton (M24), giving us fast, direct access across Greater Manchester — with routes extending further out for standing accounts.</p>
+    <ul class="coverage-list">
+      <li>Greater Manchester — scheduled, short-notice delivery</li>
+      <li>Wider North West — regular routes for standing accounts</li>
+      <li>Rest of UK — available on request for larger volume orders</li>
+    </ul>
+  </div>
+</section>
+
+<section class="statement-section">
+  <div class="wrap">
+    <blockquote class="reveal">"No hidden minimums. No rotating call queue. Just stock, delivered as agreed."</blockquote>
+    <div class="why-list reveal">
+      <div class="why-item"><div class="idx">01</div><h4>Transparent pricing</h4><p>You know your cost per order before you commit.</p></div>
+      <div class="why-item"><div class="idx">02</div><h4>Named contact</h4><p>Every account has a single, dedicated handler.</p></div>
+      <div class="why-item"><div class="idx">03</div><h4>Flexible volumes</h4><p>Order sizes set per account, and free to grow.</p></div>
+      <div class="why-item"><div class="idx">04</div><h4>Registered UK company</h4><p>Rootwills Ltd, Co. No. 17398744, Manchester.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap contact-inner">
+    <p class="eyebrow reveal">Enquire</p>
+    <h2 class="reveal">Request trade pricing</h2>
+    <p class="reveal">Tell us about your business and what you're looking to order — we'll come back with pricing and next steps for opening a trade account.</p>
+    <form id="tradeForm" class="reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div><label for="name">Name</label><input id="name" type="text" placeholder="Jordan Ahmed" required></div>
+        <div><label for="business">Business</label><input id="business" type="text" placeholder="Corner Store Ltd"></div>
+      </div>
+      <div class="form-row">
+        <div><label for="email">Email</label><input id="email" type="email" placeholder="you@business.co.uk" required></div>
+        <div><label for="phone">Phone</label><input id="phone" type="tel" placeholder="07xxx xxxxxx"></div>
+      </div>
+      <div><label for="msg">What are you looking to order?</label><textarea id="msg" placeholder="e.g. weekly grocery and soft drinks delivery"></textarea></div>
+      <div class="submit-wrap">
+        <button class="submit-btn" type="submit">Send enquiry</button>
+        <div class="sent-line" id="sentLine">Enquiry received — we'll be in touch shortly.</div>
+      </div>
+    </form>
+    <div class="addr-line mono">
+      Rootwills Ltd · 7d Yates Street · Middleton, Manchester · M24 4GA · Co. No. 17398744
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rootwills Ltd</span>
+    <span>Wholesale Food &amp; Beverage Distribution</span>
+    <span>Manchester, United Kingdom</span>
+  </div>
+</footer>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = window.innerWidth > 960 && !('ontouchstart' in window);
+
+  // header solid on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', ()=>{ header.classList.toggle('solid', window.scrollY > 40); }, { passive:true });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal, .blur-reveal').forEach(el=>io.observe(el));
+
+  // panels draw-in
+  document.querySelectorAll('.panel').forEach(p=>io.observe(p));
+  const panelIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); panelIo.unobserve(e.target); } });
+  }, { threshold:0.3 });
+  document.querySelectorAll('.panel').forEach(p=>panelIo.observe(p));
+
+  // timeline fill
+  const tl = document.getElementById('timelineBlock');
+  const tlIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); tlIo.unobserve(e.target); } });
+  }, { threshold:0.3 });
+  if(tl) tlIo.observe(tl);
+
+  // coverage map draw
+  const covMap = document.getElementById('coverageMap');
+  const covIo = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); covIo.unobserve(e.target); } });
+  }, { threshold:0.4 });
+  if(covMap) covIo.observe(covMap);
+
+  // count-up
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const countIo = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const target = parseInt(el.getAttribute('data-count'),10);
+          let cur = 0; const step = Math.max(1, Math.round(target/16));
+          const tick=()=>{ cur+=step; if(cur>=target){ el.textContent=target; } else { el.textContent=cur; requestAnimationFrame(tick); } };
+          tick(); countIo.unobserve(el);
+        }
+      });
+    }, { threshold:0.6 });
+    countIo.observe(el);
+  });
+
+  // custom cursor + spotlight
+  if(isDesktop && !prefersReduced){
+    document.body.classList.add('cursor-ready');
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', (e)=>{
+      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
+      ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%,-50%)`;
+      spotlight.style.setProperty('--sx', e.clientX + 'px');
+      spotlight.style.setProperty('--sy', e.clientY + 'px');
+    });
+    document.querySelectorAll('a, button, input, textarea').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>ring.classList.add('big'));
+      el.addEventListener('mouseleave', ()=>ring.classList.remove('big'));
+    });
+
+    // magnetic submit button
+    const submitBtn = document.querySelector('.submit-btn');
+    if(submitBtn){
+      submitBtn.addEventListener('mousemove', (e)=>{
+        const r = submitBtn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        submitBtn.style.transform = `translate(${x*0.25}px, ${y*0.3}px)`;
+      });
+      submitBtn.addEventListener('mouseleave', ()=>{ submitBtn.style.transform = 'translate(0,0)'; });
+    }
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const line = document.getElementById('sentLine');
+    line.classList.remove('go'); void line.offsetWidth; line.classList.add('go');
+  }
+</script>
+
+</body>
+</html>

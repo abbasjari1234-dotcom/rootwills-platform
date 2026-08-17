@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  rootwills-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rootwills_b2b_app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/depots/nearest?postcode=B25BN"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

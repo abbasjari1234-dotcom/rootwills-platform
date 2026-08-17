@@ -1,0 +1,281 @@
+// Rootwills B2B Food-Service Platform — Enterprise Database Schema
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  CUSTOMER_CHEF
+  CUSTOMER_PURCHASER
+  CUSTOMER_FINANCE
+  ADMIN_SALES
+  ADMIN_WAREHOUSE
+  ADMIN_DIRECTOR
+  DRIVER
+}
+
+enum Sector {
+  FINE_DINING
+  BOUTIQUE_HOTEL
+  LUXURY_CATERING
+  PRIVATE_CLUB
+  ARTISAN_CAFE
+  CARE_HOME
+  PUB_BAR
+  SCHOOL_EDUCATION
+  OTHER
+}
+
+enum CreditTier {
+  STANDARD // £2,500 limit, 30 Days Net
+  PREMIUM  // £10,000 limit, 30 Days EOM
+  CONCIERGE // £25,000+ limit, Custom Terms
+}
+
+enum TemperatureZone {
+  CHILLED // +2°C to +4°C
+  FROZEN  // -18°C to -22°C
+  AMBIENT // Dry goods room temp
+}
+
+enum OrderStatus {
+  RECEIVED
+  PICKING
+  DISPATCHED
+  DELIVERED
+  CANCELLED
+}
+
+enum InvoiceStatus {
+  DRAFT
+  OPEN
+  PAID
+  OVERDUE
+  VOID
+}
+
+enum LeadStage {
+  NEW_LEAD
+  CONTACTED
+  PRICE_LIST_SENT
+  QUOTE_SENT
+  ACCOUNT_OPENED
+  LOST
+}
+
+model Organization {
+  id                  String       @id @default(cuid())
+  name                String
+  slug                String       @unique
+  sector              Sector       @default(FINE_DINING)
+  companyRegNumber    String?
+  vatNumber           String?
+  creditTier          CreditTier   @default(STANDARD)
+  creditLimit         Decimal      @default(2500.00) @db.Decimal(10, 2)
+  creditUsed          Decimal      @default(0.00) @db.Decimal(10, 2)
+  paymentTerms        String       @default("30 Days Net")
+  gocardlessMandateId String?
+  stripeCustomerId    String?
+  postcode            String
+  city                String
+  addressLine1        String
+  nearestDepot        String       @default("Birmingham Central Hub")
+  deliveryWindow      String       @default("06:00 - 08:30 AM")
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+
+  users               User[]
+  orders              Order[]
+  standingOrders      StandingOrder[]
+  invoices            Invoice[]
+  customPrices        CustomPrice[]
+
+  @@map("organizations")
+}
+
+model User {
+  id             String       @id @default(cuid())
+  organizationId String
+  email          String       @unique
+  passwordHash   String
+  name           String
+  phone          String?
+  role           Role         @default(CUSTOMER_CHEF)
+  isPrimary      Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  ordersPlaced   Order[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id              String          @id @default(cuid())
+  categoryId      String
+  sku             String          @unique
+  name            String
+  description     String
+  packSize        String
+  unit            String          @default("unit")
+  moq             Int             @default(1)
+  basePrice       Decimal         @db.Decimal(10, 2)
+  costPrice       Decimal         @default(0.00) @db.Decimal(10, 2)
+  temperatureZone TemperatureZone @default(CHILLED)
+  allergens       String[]        @default([])
+  origin          String          @default("UK Certified Farm")
+  imageUrl        String
+  inStock         Boolean         @default(true)
+  stockQuantity   Int             @default(500)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  category        Category        @relation(fields: [categoryId], references: [id])
+  orderItems      OrderItem[]
+  standingItems   StandingOrderItem[]
+  customPrices    CustomPrice[]
+
+  @@map("products")
+}
+
+model CustomPrice {
+  id             String       @id @default(cuid())
+  organizationId String
+  productId      String
+  contractPrice  Decimal      @db.Decimal(10, 2)
+  discountPct    Decimal      @default(0.00) @db.Decimal(5, 2)
+  validUntil     DateTime?
+
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  product        Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, productId])
+  @@map("custom_prices")
+}
+
+model Order {
+  id                String       @id @default(cuid())
+  orderNumber       String       @unique
+  organizationId    String
+  userId            String
+  status            OrderStatus  @default(RECEIVED)
+  deliveryDate      DateTime
+  cutOffLockedAt    DateTime?
+  subtotal          Decimal      @db.Decimal(10, 2)
+  vatAmount         Decimal      @db.Decimal(10, 2)
+  totalAmount       Decimal      @db.Decimal(10, 2)
+  deliveryNotes     String?
+  driverNotes       String?
+  temperatureProof  String?
+  signatureUrl      String?
+  signerName        String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  user              User         @relation(fields: [userId], references: [id])
+  items             OrderItem[]
+  invoice           Invoice?
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  productId   String
+  quantity    Int
+  unitPrice   Decimal  @db.Decimal(10, 2)
+  totalPrice  Decimal  @db.Decimal(10, 2)
+
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model StandingOrder {
+  id             String              @id @default(cuid())
+  organizationId String
+  name           String
+  daysOfWeek     Int[]               // 0 = Sunday, 1 = Monday, etc.
+  isActive       Boolean             @default(true)
+  nextRunDate    DateTime?
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  organization   Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  items          StandingOrderItem[]
+
+  @@map("standing_orders")
+}
+
+model StandingOrderItem {
+  id              String        @id @default(cuid())
+  standingOrderId String
+  productId       String
+  quantity        Int
+
+  standingOrder   StandingOrder @relation(fields: [standingOrderId], references: [id], onDelete: Cascade)
+  product         Product       @relation(fields: [productId], references: [id])
+
+  @@map("standing_order_items")
+}
+
+model Invoice {
+  id              String        @id @default(cuid())
+  invoiceNumber   String        @unique
+  organizationId  String
+  orderId         String?       @unique
+  issueDate       DateTime      @default(now())
+  dueDate         DateTime
+  subtotal        Decimal       @db.Decimal(10, 2)
+  vatAmount       Decimal       @db.Decimal(10, 2)
+  totalAmount     Decimal       @db.Decimal(10, 2)
+  status          InvoiceStatus @default(OPEN)
+  xeroInvoiceId   String?
+  paidAt          DateTime?
+  paymentMethod   String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  organization    Organization  @relation(fields: [organizationId], references: [id])
+  order           Order?        @relation(fields: [orderId], references: [id])
+
+  @@map("invoices")
+}
+
+model Lead {
+  id                    String    @id @default(cuid())
+  companyName           String
+  contactName           String
+  email                 String
+  phone                 String
+  sector                Sector    @default(FINE_DINING)
+  city                  String    @default("Birmingham")
+  postcode              String
+  estimatedWeeklySpend  Decimal   @db.Decimal(10, 2)
+  stage                 LeadStage @default(NEW_LEAD)
+  source                String    @default("website_inbound")
+  assignedSalesRep      String    @default("Marcus Vance")
+  notes                 String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("leads")
+}
