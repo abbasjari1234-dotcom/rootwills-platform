@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
@@ -18,7 +17,8 @@ import {
   EyeOff,
   SlidersHorizontal,
   Building2,
-  Briefcase
+  Briefcase,
+  AlertCircle
 } from 'lucide-react';
 
 type DemoPersonaKey = 'chef' | 'hotel' | 'admin';
@@ -83,6 +83,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const roleParam = searchParams?.get('role');
@@ -97,6 +98,7 @@ function LoginForm() {
     setSelectedTab(key);
     setEmail(DEMO_PERSONAS[key].email);
     setPassword('demo-access-2026');
+    setErrorMessage(null);
     if (key === 'admin') {
       setLoginScope('staff');
     } else {
@@ -104,37 +106,60 @@ function LoginForm() {
     }
   };
 
-  const handleLogin = (e?: React.FormEvent) => {
+  const handleLogin = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+    setErrorMessage(null);
     setIsLoading(true);
 
-    const isStaff = loginScope === 'staff' || 
-                    email.toLowerCase().includes('rootwills') || 
-                    email.toLowerCase().includes('admin') ||
-                    email.toLowerCase().includes('marcus') ||
-                    selectedTab === 'admin';
-
-    const targetRole = isStaff ? 'admin' : 'customer';
-    const targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
-
-    setPersona(targetOrgId, targetRole);
-
-    // Set cookie for server route protection middleware
-    if (typeof document !== 'undefined') {
-      document.cookie = `rootwills_role=${targetRole}; path=/; max-age=86400; SameSite=Lax`;
-    }
-
-    const redirectParam = searchParams?.get('redirect');
-
-    setTimeout(() => {
-      if (redirectParam && redirectParam.startsWith('/')) {
-        router.push(redirectParam);
-      } else if (targetRole === 'admin') {
-        router.push('/admin/crm');
-      } else {
-        router.push('/dashboard');
+    try {
+      // Input Validation
+      if (!email.trim()) {
+        throw new Error('Please enter your registered email address.');
       }
-    }, 400);
+      if (!password.trim()) {
+        throw new Error('Please enter your account password.');
+      }
+
+      const isStaff = loginScope === 'staff' || 
+                      email.toLowerCase().includes('rootwills') || 
+                      email.toLowerCase().includes('admin') ||
+                      email.toLowerCase().includes('marcus') ||
+                      selectedTab === 'admin';
+
+      const targetRole = isStaff ? 'admin' : 'customer';
+      const targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
+
+      // Update local and persistent authentication state
+      setPersona(targetOrgId, targetRole);
+
+      // Set cookie for server route protection middleware
+      if (typeof document !== 'undefined') {
+        document.cookie = `rootwills_role=${targetRole}; path=/; max-age=86400; SameSite=Lax`;
+      }
+
+      const redirectParam = searchParams?.get('redirect');
+      const destination = (redirectParam && redirectParam.startsWith('/'))
+        ? redirectParam
+        : targetRole === 'admin'
+          ? '/admin/crm'
+          : '/dashboard';
+
+      // Simulated network handshake delay
+      await new Promise((resolve) => setTimeout(resolve, 350));
+
+      // Asynchronous route navigation
+      await router.push(destination);
+    } catch (err: any) {
+      console.error('Authentication error occurred:', err);
+      setErrorMessage(err?.message || 'Authentication failed. Please verify your credentials and try again.');
+      setIsLoading(false);
+    } finally {
+      // Safety unlock mechanism: ensure loading never remains indefinitely locked
+      const safetyTimer = setTimeout(() => {
+        setIsLoading(false);
+      }, 3500);
+      return () => clearTimeout(safetyTimer);
+    }
   };
 
   return (
@@ -167,6 +192,7 @@ function LoginForm() {
               type="button"
               onClick={() => {
                 setLoginScope('customer');
+                setErrorMessage(null);
                 if (email.includes('rootwills.co.uk')) setEmail('');
               }}
               className={`py-2 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
@@ -182,6 +208,7 @@ function LoginForm() {
               type="button"
               onClick={() => {
                 setLoginScope('staff');
+                setErrorMessage(null);
                 if (!email) setEmail('marcus.vance@rootwills.co.uk');
               }}
               className={`py-2 px-3 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
@@ -194,6 +221,17 @@ function LoginForm() {
               <span>Staff CRM & Admin</span>
             </button>
           </div>
+
+          {/* Error Message Alert (with automatic state reset) */}
+          {errorMessage && (
+            <div className="p-3.5 bg-red-950/60 border border-red-500/40 rounded-xl text-xs text-red-200 flex items-start gap-2.5 animate-fade-in">
+              <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <span className="font-semibold text-red-300">Sign-in Error: </span>
+                <span>{errorMessage}</span>
+              </div>
+            </div>
+          )}
 
           {/* Collapsible Demo Persona Box (Only if toggled via bottom link) */}
           {showDemoSelector && (
@@ -264,7 +302,10 @@ function LoginForm() {
                   required
                   placeholder={loginScope === 'staff' ? 'marcus.vance@rootwills.co.uk' : 'chef@establishment.co.uk'}
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (errorMessage) setErrorMessage(null);
+                  }}
                   className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
                 />
               </div>
@@ -290,7 +331,10 @@ function LoginForm() {
                   required
                   placeholder="••••••••"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (errorMessage) setErrorMessage(null);
+                  }}
                   className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl pl-10 pr-10 py-2.5 text-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-all"
                 />
                 <button
