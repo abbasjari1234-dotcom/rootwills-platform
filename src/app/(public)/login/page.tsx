@@ -144,14 +144,18 @@ function LoginForm() {
             const isStaff = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
             targetRole = isStaff ? 'admin' : 'customer';
           } else if (error) {
-            // Check if it's a demo persona fallback before failing
+            console.warn('Supabase auth returned error:', error.message);
+            // Check if user is testing with a preconfigured demo persona
             const isDemoPersona = Object.values(DEMO_PERSONAS).some(
               (p) => p.email.toLowerCase() === cleanEmail
             );
             if (isDemoPersona && cleanPassword === 'demo-access-2026') {
               authenticated = true;
             } else {
-              throw new Error(error.message || 'Invalid email or password. Please verify your credentials.');
+              if (error.message.toLowerCase().includes('email not confirmed')) {
+                throw new Error('Email not confirmed in Supabase. Please verify the user in Supabase Authentication -> Users table or disable email confirmation in settings.');
+              }
+              throw new Error(error.message || 'Invalid email or password.');
             }
           }
         } catch (supabaseErr: any) {
@@ -161,7 +165,7 @@ function LoginForm() {
           if (isDemoPersona && cleanPassword === 'demo-access-2026') {
             authenticated = true;
           } else {
-            throw new Error(supabaseErr?.message || 'Invalid email or password. Please check your credentials.');
+            throw new Error(supabaseErr?.message || 'Invalid email or password.');
           }
         }
       } else {
@@ -281,7 +285,7 @@ function LoginForm() {
             <div className="p-3.5 bg-red-950/60 border border-red-500/40 rounded-xl text-xs text-red-200 flex items-start gap-2.5 animate-fade-in">
               <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
               <div className="flex-1">
-                <span className="font-semibold text-red-300">Access Denied: </span>
+                <span className="font-semibold text-red-300">Authentication Alert: </span>
                 <span>{errorMessage}</span>
               </div>
             </div>
