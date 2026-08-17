@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
@@ -118,8 +119,17 @@ function LoginForm() {
 
     setPersona(targetOrgId, targetRole);
 
+    // Set cookie for server route protection middleware
+    if (typeof document !== 'undefined') {
+      document.cookie = `rootwills_role=${targetRole}; path=/; max-age=86400; SameSite=Lax`;
+    }
+
+    const redirectParam = searchParams?.get('redirect');
+
     setTimeout(() => {
-      if (targetRole === 'admin') {
+      if (redirectParam && redirectParam.startsWith('/')) {
+        router.push(redirectParam);
+      } else if (targetRole === 'admin') {
         router.push('/admin/crm');
       } else {
         router.push('/dashboard');
