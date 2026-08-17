@@ -218,8 +218,10 @@ export function PublicHeader() {
               Login
             </Link>
             <button
+              type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-cream hover:text-champagne focus:outline-none"
+              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -279,4 +281,3 @@ export function PublicHeader() {
     </header>
   );
 }
-
