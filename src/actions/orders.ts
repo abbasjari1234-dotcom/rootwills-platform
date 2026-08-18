@@ -120,8 +120,8 @@ export async function submitPortalOrder(
       };
     });
 
-    const calculatedVat = calculatedSubtotal * 0.20;
-    const calculatedGrandTotal = calculatedSubtotal + calculatedVat;
+    const calculatedVat = typeof payload.vatTotal === 'number' ? Number(payload.vatTotal.toFixed(2)) : Number((calculatedSubtotal * 0.05).toFixed(2));
+    const calculatedGrandTotal = typeof payload.total === 'number' ? Number(payload.total.toFixed(2)) : Number((calculatedSubtotal + calculatedVat).toFixed(2));
 
     // 5. Ensure valid organization exists or match by name
     let orgUuid: string | null = targetOrgId;
