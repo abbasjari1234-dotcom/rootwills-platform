@@ -21,7 +21,6 @@ import {
   Truck
 } from 'lucide-react';
 import { useDemoStore } from '@/lib/store/demo-store';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function AdminSidebar() {
   const pathname = usePathname();
@@ -132,10 +131,6 @@ export function AdminSidebar() {
 
       {/* Footer Switchers & Logout */}
       <div className="pt-4 border-t border-cream/10 space-y-2 text-xs">
-        <div className="flex items-center justify-between px-1 py-1">
-          <span className="text-[11px] text-cream/50">Interface Theme</span>
-          <ThemeToggle />
-        </div>
         <button
           onClick={() => {
             if (typeof document !== 'undefined') {

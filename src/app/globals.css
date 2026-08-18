@@ -16,94 +16,6 @@ body {
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ============================================================================
-   LIGHT THEME DESIGN SYSTEM (Crisp Alabaster & Fresh Emerald / Gold)
-   ============================================================================ */
-
-body.light-theme {
-  background-color: #FAFAF7 !important;
-  color: #18181B !important;
-}
-
-body.light-theme .glass-panel {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
-}
-
-body.light-theme .glass-panel-gold {
-  background: rgba(255, 253, 247, 0.96) !important;
-  border-color: rgba(201, 162, 39, 0.35) !important;
-  box-shadow: 0 4px 20px -2px rgba(201, 162, 39, 0.1) !important;
-}
-
-body.light-theme header {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-body.light-theme .text-cream {
-  color: #18181B !important;
-}
-
-body.light-theme .text-cream\/90,
-body.light-theme .text-cream\/80,
-body.light-theme .text-cream\/75,
-body.light-theme .text-cream\/70 {
-  color: #3F3F46 !important;
-}
-
-body.light-theme .text-cream\/60,
-body.light-theme .text-cream\/50 {
-  color: #71717A !important;
-}
-
-body.light-theme .text-cream\/40,
-body.light-theme .text-cream\/30 {
-  color: #A1A1AA !important;
-}
-
-body.light-theme .bg-obsidian-950 {
-  background-color: #FAFAF7 !important;
-}
-
-body.light-theme .bg-obsidian-900 {
-  background-color: #F4F4F5 !important;
-}
-
-body.light-theme .bg-obsidian-850,
-body.light-theme .bg-obsidian-800 {
-  background-color: #E4E4E7 !important;
-}
-
-body.light-theme .border-cream\/15,
-body.light-theme .border-cream\/10,
-body.light-theme .border-cream\/5 {
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-body.light-theme .onboarding-input {
-  background-color: #FFFFFF !important;
-  border-color: #D4D4D8 !important;
-  color: #18181B !important;
-}
-
-body.light-theme .onboarding-input::placeholder {
-  color: #A1A1AA !important;
-}
-
-body.light-theme .onboarding-btn-ghost {
-  background: #FFFFFF !important;
-  color: #3F3F46 !important;
-  border-color: #D4D4D8 !important;
-}
-
-body.light-theme .onboarding-btn-ghost:hover {
-  background: #F4F4F5 !important;
-  color: #18181B !important;
 }
 
 /* Custom scrollbars */
@@ -120,6 +32,20 @@ body.light-theme .onboarding-btn-ghost:hover {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #C9A227;
+}
+
+/* Glassmorphic panels */
+.glass-panel {
+  background: rgba(14, 14, 12, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 239, 230, 0.08);
+}
+
+.glass-panel-gold {
+  background: rgba(20, 19, 14, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 162, 39, 0.25);
 }
 
 .gold-gradient-text {

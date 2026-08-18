@@ -15,7 +15,6 @@ import {
   Sparkles,
   UserCheck
 } from 'lucide-react';
-import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function PublicHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -195,7 +194,6 @@ export function PublicHeader() {
 
           {/* Desktop Right CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <ThemeToggle />
             <Link
               href="/login"
               className="px-4 py-2 text-sm font-medium text-cream/90 hover:text-champagne border border-cream/20 rounded-lg hover:border-champagne/50 transition-all"
@@ -213,7 +211,6 @@ export function PublicHeader() {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
-            <ThemeToggle />
             <Link
               href="/login"
               className="px-3 py-1.5 text-xs font-medium text-champagne border border-champagne/30 rounded-lg"
