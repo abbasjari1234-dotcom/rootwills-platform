@@ -70,9 +70,12 @@ export default function SalesCRMPage() {
   const fetchLiveLeads = async () => {
     setIsSyncing(true);
     try {
-      const dbLeads = await getLiveLeadsServerAction();
-      if (dbLeads && dbLeads.length > 0) {
-        setLiveDbLeads(dbLeads);
+      const res = await fetch('/api/admin/leads');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.leads)) {
+          setLiveDbLeads(data.leads);
+        }
       }
     } catch (err) {
       console.warn('Failed to fetch live leads:', err);

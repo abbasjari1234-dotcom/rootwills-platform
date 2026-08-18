@@ -27,11 +27,14 @@ export default function OrdersHistoryPage() {
   const [reorderOrder, setReorderOrder] = useState<any>(null);
 
   useEffect(() => {
-    getLiveOrdersServerAction().then((dbOrds) => {
-      if (dbOrds && dbOrds.length > 0) {
-        setLiveDbOrders(dbOrds);
-      }
-    });
+    fetch('/api/admin/orders')
+      .then((res) => (res.ok ? res.json() : { orders: [] }))
+      .then((data) => {
+        if (data && Array.isArray(data.orders)) {
+          setLiveDbOrders(data.orders);
+        }
+      })
+      .catch((err) => console.warn('Orders fetch error:', err));
   }, []);
 
   const currentOrg = (organizations && organizations.find((o) => o.id === currentOrgId)) || (organizations && organizations[0]) || { id: 'org-default', name: 'Commercial Venue' };

@@ -20,7 +20,7 @@ import {
   DollarSign,
   Package
 } from 'lucide-react';
-import { getLiveOrdersServerAction, updateOrderStatusServerAction } from '@/actions/orders';
+import { updateOrderStatusServerAction } from '@/actions/orders';
 
 const STATUS_FLOW: OrderStatus[] = [
   'received',
@@ -39,16 +39,19 @@ export default function AdminOrdersFulfillmentPage() {
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [search, setSearch] = useState('');
 
-  // Fetch live orders from Supabase on mount and every 8 seconds
+  // Fetch live orders via dedicated API on mount and every 8 seconds
   const fetchLiveOrders = async () => {
     setIsRefreshing(true);
     try {
-      const dbOrders = await getLiveOrdersServerAction();
-      if (Array.isArray(dbOrders) && dbOrders.length > 0) {
-        setLiveDbOrders(dbOrders);
+      const res = await fetch('/api/admin/orders');
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.orders)) {
+          setLiveDbOrders(data.orders);
+        }
       }
     } catch (err) {
-      console.warn('Failed to fetch live orders from Supabase:', err);
+      console.warn('Failed to fetch live orders:', err);
     } finally {
       setIsRefreshing(false);
     }
@@ -65,7 +68,7 @@ export default function AdminOrdersFulfillmentPage() {
   liveDbOrders.forEach((o) => {
     if (o && o.id) allOrdersMap.set(o.id, o);
   });
-  storeOrders.forEach((o) => {
+  (storeOrders || []).forEach((o) => {
     if (o && o.id && !allOrdersMap.has(o.id)) {
       allOrdersMap.set(o.id, o);
     }
@@ -99,7 +102,11 @@ export default function AdminOrdersFulfillmentPage() {
       );
 
       // 3. Update in Supabase
-      await updateOrderStatusServerAction(order.id, nextStatus);
+      try {
+        await updateOrderStatusServerAction(order.id, nextStatus);
+      } catch (err) {
+        console.warn('Status update notice:', err);
+      }
     }
   };
 
@@ -179,7 +186,7 @@ export default function AdminOrdersFulfillmentPage() {
             <button
               key={st}
               onClick={() => setFilterStatus(st)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium capitalize transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-medium capitalize transition-all cursor-pointer ${
                 filterStatus === st
                   ? 'bg-emerald-500 text-obsidian-950 font-bold shadow-emerald-glow'
                   : 'bg-obsidian-900 text-cream/70 hover:text-cream border border-cream/10'
