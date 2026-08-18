@@ -128,7 +128,7 @@ export async function loginServerAction(formData: {
       const destination =
         scope === 'staff'
           ? '/admin/crm'
-          : targetRole === 'driver'
+          : userRole === 'driver'
             ? '/driver'
             : '/dashboard';
 

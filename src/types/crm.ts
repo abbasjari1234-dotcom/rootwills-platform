@@ -26,4 +26,5 @@ export interface Lead {
   createdAt: string;
   lastContactedAt?: string;
   requestedProducts?: string[];
+  updatedAt?: string;
 }
