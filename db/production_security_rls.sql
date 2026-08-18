@@ -13,9 +13,15 @@ begin
   else
     begin
       alter type user_role add value if not exists 'driver';
+    exception
+      when duplicate_object then null;
+      when others then null;
+    end;
+    begin
       alter type user_role add value if not exists 'sales';
     exception
       when duplicate_object then null;
+      when others then null;
     end;
   end if;
 end$$;
@@ -35,7 +41,7 @@ alter table if exists standing_orders enable row level security;
 alter table if exists crm_leads enable row level security;
 
 -- ============================================================================
--- 3. HELPER SECURITY FUNCTIONS (With secure search_path)
+-- 3. HELPER SECURITY FUNCTIONS (With secure search_path & text-safe casting)
 -- ============================================================================
 
 create or replace function public.is_admin()
@@ -47,7 +53,7 @@ stable
 as $$
   select exists (
     select 1 from profiles
-    where id = auth.uid() and role in ('admin', 'sales')
+    where id = auth.uid() and role::text in ('admin', 'sales')
   );
 $$;
 
@@ -60,7 +66,7 @@ stable
 as $$
   select exists (
     select 1 from profiles
-    where id = auth.uid() and role = 'driver'
+    where id = auth.uid() and role::text = 'driver'
   );
 $$;
 
@@ -121,7 +127,7 @@ create policy "org admins can update their organization"
   on organizations for update
   using (
     id = public.user_organization_id() and exists (
-      select 1 from profiles where id = auth.uid() and role = 'admin'
+      select 1 from profiles where id = auth.uid() and role::text = 'admin'
     )
   );
 
@@ -164,7 +170,7 @@ create policy "users can view their organization's orders"
   using (
     organization_id = public.user_organization_id()
     or public.is_admin()
-    or (public.is_driver() and status in ('dispatched', 'out_for_delivery', 'delivered'))
+    or (public.is_driver() and status::text in ('dispatched', 'out_for_delivery', 'delivered'))
   );
 
 -- Customer can create orders for their own organization
@@ -244,6 +250,10 @@ values ('invoices', 'invoices', false),
        ('signatures', 'signatures', false),
        ('catalogs', 'catalogs', true)
 on conflict (id) do nothing;
+
+drop policy if exists "Invoices are accessible by org members and admin" on storage.objects;
+drop policy if exists "Drivers can upload POD signatures" on storage.objects;
+drop policy if exists "POD signatures are viewable by customer and admin" on storage.objects;
 
 -- Invoices Bucket: Private (Only org members with valid ID or Admin can download)
 create policy "Invoices are accessible by org members and admin"
