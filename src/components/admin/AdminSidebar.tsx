@@ -26,8 +26,8 @@ export function AdminSidebar() {
   const pathname = usePathname();
   const { leads, orders, organizations } = useDemoStore();
 
-  const newLeadsCount = leads.filter((l) => l.status === 'new_lead').length;
-  const activeOrdersCount = orders.filter((o) => o.status === 'received' || o.status === 'picking').length;
+  const newLeadsCount = (leads || []).filter((l) => l && l.status === 'new_lead').length;
+  const activeOrdersCount = (orders || []).filter((o) => o && (o.status === 'received' || o.status === 'picking')).length;
 
   const links = [
     {

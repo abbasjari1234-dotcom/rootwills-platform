@@ -29,6 +29,7 @@ interface DemoState {
 
   // Actions
   setPersona: (orgId: string, role?: 'customer' | 'admin' | 'sales') => void;
+  switchRole: (role: 'customer' | 'admin' | 'sales') => void;
   setLocation: (locationId: string) => void;
   toggleFavorite: (productId: string) => void;
   
@@ -78,9 +79,17 @@ export const useDemoStore = create<DemoState>()(
         'org-grandhotel': ['prod-008', 'prod-009', 'prod-012', 'prod-002'],
       },
 
+      switchRole: (role: 'customer' | 'admin' | 'sales') => {
+        if (role === 'admin' || role === 'sales') {
+          get().setPersona('org-rootwills-hq', role);
+        } else {
+          get().setPersona('org-sancarlo', 'customer');
+        }
+      },
+
       setPersona: (orgId, role = 'customer') => {
-        const org = get().organizations.find((o) => o.id === orgId) || get().organizations[0];
-        const primaryLoc = org.locations.find((l) => l.isPrimary) || org.locations[0];
+        const org = (get().organizations && get().organizations.find((o) => o.id === orgId)) || (get().organizations && get().organizations[0]) || INITIAL_ORGANIZATIONS[0];
+        const primaryLoc = (org.locations && org.locations.find((l) => l.isPrimary)) || (org.locations && org.locations[0]);
 
         let profile: UserProfile;
         if (role === 'admin' || role === 'sales') {
