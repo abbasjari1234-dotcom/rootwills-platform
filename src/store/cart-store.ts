@@ -15,7 +15,8 @@ interface CartState {
   items: CartItem[];
   isOpen: boolean;
   isStandingOrder: boolean;
-  recurrence: 'weekly' | 'fortnightly' | 'monthly' | null;
+  recurrence: 'daily' | 'mon_wed_fri' | 'weekly' | 'fortnightly' | 'monthly' | null;
+  recurrenceDays: string[];
   deliverySlot: string | null;
   notes: string;
 
@@ -33,6 +34,7 @@ interface CartState {
   close: () => void;
   setStandingOrder: (isStanding: boolean) => void;
   setRecurrence: (recurrence: CartState['recurrence']) => void;
+  setRecurrenceDays: (days: string[]) => void;
   setDeliverySlot: (slot: string | null) => void;
   setNotes: (notes: string) => void;
 }
@@ -42,6 +44,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   isOpen: false,
   isStandingOrder: false,
   recurrence: null,
+  recurrenceDays: ['Mon', 'Wed', 'Fri'],
   deliverySlot: null,
   notes: '',
 
@@ -100,6 +103,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       items: [],
       isStandingOrder: false,
       recurrence: null,
+      recurrenceDays: ['Mon', 'Wed', 'Fri'],
       deliverySlot: null,
       notes: '',
     }),
@@ -114,6 +118,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   setStandingOrder: (isStandingOrder) =>
     set({ isStandingOrder, recurrence: isStandingOrder ? 'weekly' : null }),
   setRecurrence: (recurrence) => set({ recurrence }),
+  setRecurrenceDays: (recurrenceDays) => set({ recurrenceDays }),
   setDeliverySlot: (deliverySlot) => set({ deliverySlot }),
   setNotes: (notes) => set({ notes }),
 }));

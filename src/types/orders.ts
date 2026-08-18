@@ -30,10 +30,19 @@ export interface Order {
   vatTotal: number;
   total: number;
   isStandingOrder: boolean;
-  recurrence?: 'weekly' | 'fortnightly' | 'monthly' | null;
+  recurrence?: 'daily' | 'mon_wed_fri' | 'weekly' | 'fortnightly' | 'monthly' | null;
+  recurrenceDays?: string[];
   deliveryDate: string;
   deliverySlot: string; // e.g. "Early Morning 05:00 - 08:00"
   deliveryNotes?: string;
+  pod?: {
+    recipientName: string;
+    signatureDataUrl?: string;
+    vanProbeChilledTemp: string;
+    vanProbeFrozenTemp?: string;
+    deliveredAt: string;
+    driverName: string;
+  };
   createdAt: string;
   updatedAt: string;
   trackingHistory: {

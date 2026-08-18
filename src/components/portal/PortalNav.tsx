@@ -168,14 +168,20 @@ export function PortalNav() {
                   </button>
 
                   <div className="border-t border-cream/10 mt-1 pt-1">
-                    <Link
-                      href="/admin/crm"
-                      onClick={() => setPersonaDropdownOpen(false)}
+                    <button
+                      onClick={() => {
+                        setPersona('org-rootwills-hq', 'admin');
+                        if (typeof document !== 'undefined') {
+                          document.cookie = 'rootwills_role=admin; path=/; max-age=86400; SameSite=Lax';
+                        }
+                        setPersonaDropdownOpen(false);
+                        window.location.href = '/admin/crm';
+                      }}
                       className="w-full text-left p-2 rounded hover:bg-emerald-950/40 text-xs text-emerald-400 font-bold flex items-center justify-between"
                     >
                       <span>Marcus Vance (Sales & Admin CRM)</span>
                       <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               )}

@@ -192,6 +192,8 @@ export default function PublicProductsPage() {
                     src={p.imageUrl}
                     alt={p.name}
                     fill
+                    quality={75}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-95"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-black/30" />
@@ -315,6 +317,8 @@ export default function PublicProductsPage() {
                   src={quickViewProduct.imageUrl}
                   alt={quickViewProduct.name}
                   fill
+                  quality={75}
+                  sizes="96px"
                   className="object-cover"
                 />
               </div>

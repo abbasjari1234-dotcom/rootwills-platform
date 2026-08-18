@@ -27,6 +27,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { Sector } from '@/types/onboarding';
+import { convertLeadServerAction } from '@/actions/crm';
 
 interface ColumnConfig {
   status: LeadStatus;
@@ -84,10 +85,25 @@ export default function SalesCRMPage() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const handleConvert = (e: React.FormEvent) => {
+  const handleConvert = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedLeadForConvert) return;
 
+    // 1. Submit to Supabase Server Action
+    await convertLeadServerAction({
+      leadId: selectedLeadForConvert.id,
+      companyName: selectedLeadForConvert.companyName,
+      contactName: selectedLeadForConvert.contactName,
+      email: selectedLeadForConvert.email,
+      phone: selectedLeadForConvert.phone,
+      sector: selectedLeadForConvert.sector,
+      city: selectedLeadForConvert.city,
+      postcode: selectedLeadForConvert.postcode,
+      creditLimit: Number(creditLimitInput),
+      discountPercent: Number(discountPercentInput),
+    });
+
+    // 2. Update local state store
     convertLeadToCustomer(
       selectedLeadForConvert.id,
       Number(creditLimitInput),

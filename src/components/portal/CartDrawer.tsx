@@ -1,53 +1,84 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCartStore } from '@/store/cart-store';
 import { useDemoStore } from '@/lib/store/demo-store';
-import { 
-  X, 
-  Trash2, 
-  Plus, 
-  Minus, 
-  Calendar, 
-  Clock, 
-  Repeat, 
-  ShieldAlert, 
-  CheckCircle2, 
+import {
+  X,
+  Trash2,
+  Plus,
+  Minus,
+  Calendar,
+  Clock,
+  Repeat,
+  ShieldAlert,
+  CheckCircle2,
   ArrowRight,
   Sparkles,
-  ShoppingBag
+  ShoppingBag,
+  Zap,
+  CreditCard
 } from 'lucide-react';
 import Link from 'next/link';
+import { submitPortalOrder } from '@/actions/orders';
+
+const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export function CartDrawer() {
-  const { 
-    isOpen, 
-    closeCart, 
-    items, 
-    updateQty, 
-    removeItem, 
+  const {
+    isOpen,
+    closeCart,
+    items,
+    updateQty,
+    removeItem,
     clearCart,
     isStandingOrder,
     setStandingOrder,
     recurrence,
     setRecurrence,
+    recurrenceDays,
+    setRecurrenceDays,
     deliverySlot,
     setDeliverySlot,
     notes,
     setNotes
   } = useCartStore();
 
-  const { 
-    currentOrgId, 
-    organizations, 
-    currentLocationId, 
-    placeOrder 
+  const {
+    currentOrgId,
+    organizations,
+    currentLocationId,
+    placeOrder
   } = useDemoStore();
 
   const [selectedSlot, setSelectedSlot] = useState('Early Morning 05:30 - 07:30');
-  const [selectedDeliveryDate, setSelectedDeliveryDate] = useState('Tomorrow Morning (Tuesday)');
+  const [selectedDeliveryDate, setSelectedDeliveryDate] = useState('Tomorrow Morning');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
+
+  // 11:00 PM Cutoff Live Countdown
+  const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number }>({ hours: 0, minutes: 0 });
+
+  useEffect(() => {
+    const calculateCutoff = () => {
+      const now = new Date();
+      const cutoff = new Date();
+      cutoff.setHours(23, 0, 0, 0); // 11:00 PM
+
+      if (now > cutoff) {
+        cutoff.setDate(cutoff.getDate() + 1);
+      }
+
+      const diffMs = cutoff.getTime() - now.getTime();
+      const hours = Math.floor(diffMs / (1000 * 60 * 60));
+      const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      setTimeLeft({ hours, minutes });
+    };
+
+    calculateCutoff();
+    const interval = setInterval(calculateCutoff, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -59,13 +90,46 @@ export function CartDrawer() {
   const grandTotal = subtotal + vatTotal;
 
   const availableCredit = Math.max(0, currentOrg.creditLimit - currentOrg.creditUsed);
+  const creditUsagePercent = currentOrg.creditLimit > 0
+    ? Math.min(100, Math.round(((currentOrg.creditUsed + grandTotal) / currentOrg.creditLimit) * 100))
+    : 0;
   const exceedsCredit = grandTotal > availableCredit && currentOrg.creditLimit > 0;
 
-  const handleCheckout = () => {
+  const toggleRecurrenceDay = (day: string) => {
+    if (recurrenceDays.includes(day)) {
+      if (recurrenceDays.length > 1) {
+        setRecurrenceDays(recurrenceDays.filter((d) => d !== day));
+      }
+    } else {
+      setRecurrenceDays([...recurrenceDays, day]);
+    }
+  };
+
+  const handleCheckout = async () => {
     if (items.length === 0 || exceedsCredit) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      // 1. Submit to Supabase database (or fallback)
+      const dbResult = await submitPortalOrder({
+        organizationId: currentOrg.id,
+        locationId: currentLocation?.id,
+        items: items.map((item) => ({
+          productId: item.productId,
+          sku: item.sku,
+          name: item.name,
+          qty: item.qty,
+          unitPrice: item.customerPrice,
+        })),
+        subtotal: Number(subtotal.toFixed(2)),
+        vatTotal: Number(vatTotal.toFixed(2)),
+        total: Number(grandTotal.toFixed(2)),
+        deliveryDate: selectedDeliveryDate,
+        deliverySlot: selectedSlot,
+        notes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards door.',
+      });
+
+      // 2. Update local state store
       const newOrder = placeOrder({
         organizationId: currentOrg.id,
         organizationName: currentOrg.name,
@@ -91,10 +155,17 @@ export function CartDrawer() {
         })),
       });
 
+      if (dbResult?.orderNumber) {
+        newOrder.orderNumber = dbResult.orderNumber;
+      }
+
       setIsSubmitting(false);
       setOrderSuccess(newOrder);
       clearCart();
-    }, 600);
+    } catch (err) {
+      console.error('Checkout error:', err);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,17 +186,31 @@ export function CartDrawer() {
               <span className="text-xs text-cream/50">({items.length} lines)</span>
             </div>
             <button
+              type="button"
               onClick={closeCart}
+              aria-label="Close order basket"
               className="p-1.5 rounded-lg text-cream/60 hover:text-cream hover:bg-obsidian-800"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Delivery Site Indicator */}
-          <div className="px-5 py-2.5 bg-obsidian-950/80 border-b border-cream/5 text-xs text-cream/70 flex justify-between items-center">
-            <span>Delivering to: <strong className="text-cream">{currentLocation?.name}</strong></span>
-            <span className="text-champagne font-mono text-[11px]">{currentLocation?.postcode}</span>
+          {/* Delivery Site Indicator & Live 11:00 PM Cutoff Banner */}
+          <div className="bg-obsidian-950 border-b border-cream/10 text-xs">
+            <div className="px-5 py-2 flex justify-between items-center text-cream/70 border-b border-cream/5">
+              <span>Delivering to: <strong className="text-cream">{currentLocation?.name}</strong></span>
+              <span className="text-champagne font-mono text-[11px]">{currentLocation?.postcode}</span>
+            </div>
+            {/* Cutoff countdown */}
+            <div className="px-5 py-1.5 bg-emerald-500/10 flex items-center justify-between text-[11px] font-mono">
+              <span className="text-emerald-400 font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+                <span>11:00 PM Cutoff:</span>
+              </span>
+              <span className="text-emerald-300">
+                Order within <strong>{timeLeft.hours}h {timeLeft.minutes}m</strong> for 06:00 AM delivery
+              </span>
+            </div>
           </div>
 
           {/* Order Success State */}
@@ -147,6 +232,12 @@ export function CartDrawer() {
                   <span>Slot:</span>
                   <span className="text-champagne">{orderSuccess.deliverySlot}</span>
                 </div>
+                {orderSuccess.isStandingOrder && (
+                  <div className="flex justify-between text-cream/70">
+                    <span>Recurrence:</span>
+                    <span className="text-champagne uppercase font-bold">{orderSuccess.recurrence || 'Weekly'}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-cream/70">
                   <span>Total (inc. VAT):</span>
                   <span className="text-emerald-400 font-bold">£{orderSuccess.total.toFixed(2)}</span>
@@ -162,6 +253,7 @@ export function CartDrawer() {
                   <span>Track Live Delivery Progress &rarr;</span>
                 </Link>
                 <button
+                  type="button"
                   onClick={() => {
                     setOrderSuccess(null);
                     closeCart();
@@ -204,14 +296,18 @@ export function CartDrawer() {
                       <div className="flex items-center gap-2">
                         <div className="flex items-center border border-cream/20 rounded-lg bg-obsidian-900">
                           <button
+                            type="button"
                             onClick={() => updateQty(item.productId, item.qty - 1)}
+                            aria-label={`Decrease quantity of ${item.name}`}
                             className="p-1 text-cream/70 hover:text-cream"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
                           <span className="px-2 text-xs font-mono font-bold text-cream">{item.qty}</span>
                           <button
+                            type="button"
                             onClick={() => updateQty(item.productId, item.qty + 1)}
+                            aria-label={`Increase quantity of ${item.name}`}
                             className="p-1 text-cream/70 hover:text-cream"
                           >
                             <Plus className="w-3 h-3" />
@@ -225,7 +321,9 @@ export function CartDrawer() {
                         </div>
 
                         <button
+                          type="button"
                           onClick={() => removeItem(item.productId)}
+                          aria-label={`Remove ${item.name} from basket`}
                           className="p-1 text-cream/30 hover:text-rose-400"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -255,8 +353,8 @@ export function CartDrawer() {
                       </select>
                     </div>
 
-                    {/* Standing Order Toggle */}
-                    <div className="p-3.5 bg-obsidian-950/80 rounded-xl border border-cream/15 space-y-2">
+                    {/* Standing Order Toggle & Cadence Scheduler */}
+                    <div className="p-3.5 bg-obsidian-950/80 rounded-xl border border-cream/15 space-y-3">
                       <label className="flex items-center justify-between cursor-pointer">
                         <span className="text-xs font-bold text-cream flex items-center gap-1.5">
                           <Repeat className="w-3.5 h-3.5 text-champagne" />
@@ -271,21 +369,54 @@ export function CartDrawer() {
                       </label>
 
                       {isStandingOrder && (
-                        <div className="pt-2 flex gap-2">
-                          {(['weekly', 'fortnightly', 'monthly'] as const).map((r) => (
-                            <button
-                              key={r}
-                              type="button"
-                              onClick={() => setRecurrence(r)}
-                              className={`flex-1 py-1 text-[11px] font-mono rounded capitalize border ${
-                                recurrence === r
-                                  ? 'bg-champagne text-obsidian-950 font-bold border-champagne'
-                                  : 'bg-obsidian-900 text-cream/60 border-cream/10'
-                              }`}
-                            >
-                              {r}
-                            </button>
-                          ))}
+                        <div className="space-y-2.5 pt-1 border-t border-cream/10">
+                          <div className="grid grid-cols-4 gap-1.5">
+                            {[
+                              { key: 'daily', label: 'Daily' },
+                              { key: 'mon_wed_fri', label: 'M/W/F' },
+                              { key: 'weekly', label: 'Weekly' },
+                              { key: 'fortnightly', label: 'Fortnightly' },
+                            ].map((r) => (
+                              <button
+                                key={r.key}
+                                type="button"
+                                onClick={() => setRecurrence(r.key as any)}
+                                className={`py-1 text-[10px] font-mono rounded capitalize border transition-colors ${
+                                  recurrence === r.key
+                                    ? 'bg-champagne text-obsidian-950 font-bold border-champagne'
+                                    : 'bg-obsidian-900 text-cream/60 border-cream/10 hover:border-cream/30'
+                                }`}
+                              >
+                                {r.label}
+                              </button>
+                            ))}
+                          </div>
+
+                          {/* Day selector checkboxes */}
+                          <div>
+                            <span className="text-[10px] uppercase font-mono text-cream/50 block mb-1">
+                              Repeat on Days:
+                            </span>
+                            <div className="flex gap-1.5">
+                              {DAYS_OF_WEEK.map((day) => {
+                                const isSelected = recurrenceDays.includes(day);
+                                return (
+                                  <button
+                                    key={day}
+                                    type="button"
+                                    onClick={() => toggleRecurrenceDay(day)}
+                                    className={`flex-1 py-1 rounded text-[10px] font-mono font-bold border transition-colors ${
+                                      isSelected
+                                        ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                                        : 'bg-obsidian-900 text-cream/40 border-cream/10 hover:text-cream'
+                                    }`}
+                                  >
+                                    {day}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -310,6 +441,35 @@ export function CartDrawer() {
               {/* Footer Summary & Checkout Button */}
               {items.length > 0 && (
                 <div className="p-5 border-t border-cream/10 bg-obsidian-950 space-y-4">
+                  {/* Trade Credit Facility Progress Bar */}
+                  <div className="p-3 bg-obsidian-900/90 rounded-xl border border-cream/10 space-y-2">
+                    <div className="flex justify-between items-center text-[11px]">
+                      <span className="text-cream/70 flex items-center gap-1">
+                        <CreditCard className="w-3.5 h-3.5 text-champagne" />
+                        <span>30-Day Trade Credit Facility</span>
+                      </span>
+                      <span className="font-mono text-champagne font-bold">
+                        £{availableCredit.toFixed(2)} available
+                      </span>
+                    </div>
+                    <div className="w-full h-1.5 bg-obsidian-950 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full transition-all duration-300 ${
+                          exceedsCredit
+                            ? 'bg-rose-500'
+                            : creditUsagePercent > 75
+                            ? 'bg-amber-500'
+                            : 'bg-emerald-500'
+                        }`}
+                        style={{ width: `${creditUsagePercent}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between text-[10px] text-cream/50 font-mono">
+                      <span>Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
+                      <span>Used (inc. order): £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
+                    </div>
+                  </div>
+
                   <div className="space-y-1.5 text-xs">
                     <div className="flex justify-between text-cream/70">
                       <span>Goods Subtotal:</span>
@@ -348,7 +508,7 @@ export function CartDrawer() {
                       <span>Placing Order at Birmingham Hub...</span>
                     ) : (
                       <>
-                        <span>Confirm & Place Order ({isStandingOrder ? 'Standing' : 'Morning Drop'})</span>
+                        <span>Confirm & Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
                         <ArrowRight className="w-4 h-4" />
                       </>
                     )}

@@ -39,7 +39,7 @@ export function PublicHeader() {
               <span>Sales Desk: 0121 790 8800</span>
             </span>
             <Link 
-              href="/admin/crm" 
+              href="/login?role=admin" 
               className="text-cream/50 hover:text-champagne flex items-center gap-1 transition-colors"
             >
               <UserCheck className="w-3 h-3" />
@@ -218,8 +218,10 @@ export function PublicHeader() {
               Login
             </Link>
             <button
+              type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-cream hover:text-champagne focus:outline-none"
+              aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -267,7 +269,7 @@ export function PublicHeader() {
               Customer Ordering Portal Login
             </Link>
             <Link
-              href="/admin/crm"
+              href="/login?role=admin"
               onClick={() => setMobileOpen(false)}
               className="w-full text-center py-2 text-xs text-cream/50 hover:text-champagne"
             >

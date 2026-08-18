@@ -10,6 +10,8 @@ import {
 import { createServiceRoleClient } from '@/lib/supabase/server';
 import { geocodePostcode, findNearestDepot } from '@/lib/depot-routing';
 
+import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
+
 const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 
 type SubmitResult =
@@ -19,7 +21,13 @@ type SubmitResult =
 export async function submitOnboardingApplication(
   rawValues: OnboardingApplicationValues
 ): Promise<SubmitResult> {
-  // Server-side validation
+  // 1. Rate Limiting Check (Anti-Bot / Abuse)
+  const rateLimit = checkRateLimit(`onboarding_${rawValues.contactEmail || 'anon'}`, RATE_LIMIT_PRESETS.AUTH);
+  if (!rateLimit.success) {
+    return { ok: false, error: 'Too many onboarding attempts. Please wait a few moments before trying again.' };
+  }
+
+  // 2. Server-side validation
   const parsed = onboardingApplicationSchema.safeParse(rawValues);
   if (!parsed.success) {
     return { ok: false, error: 'Some details were invalid. Please review the form and try again.' };

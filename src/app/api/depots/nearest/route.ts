@@ -1,14 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServiceRoleClient } from '@/lib/supabase/server';
 import { geocodePostcode, findNearestDepot } from '@/lib/depot-routing';
+import { checkRateLimit } from '@/lib/security/rate-limit';
 
 // GET /api/depots/nearest?postcode=M24+4GA
 // Lightweight preview endpoint for the onboarding UI — the authoritative
 // assignment happens server-side in the onboarding Server Action.
 export async function GET(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for') || 'anon';
+  const rateLimit = checkRateLimit(`depot_${ip}`, { maxRequests: 60, windowSeconds: 60 });
+  if (!rateLimit.success) {
+    return NextResponse.json({ error: 'Too many requests. Please slow down.' }, { status: 429 });
+  }
+
   const postcode = req.nextUrl.searchParams.get('postcode');
-  if (!postcode) {
-    return NextResponse.json({ error: 'postcode is required.' }, { status: 400 });
+  if (!postcode || postcode.length > 20) {
+    return NextResponse.json({ error: 'Valid postcode is required.' }, { status: 400 });
   }
 
   try {

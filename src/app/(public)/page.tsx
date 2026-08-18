@@ -26,7 +26,21 @@ import {
   PhoneCall,
   Check
 } from 'lucide-react';
-import { PriceEstimator } from '@/components/public/PriceEstimator';
+import dynamic from 'next/dynamic';
+
+const PriceEstimator = dynamic(
+  () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="glass-panel-gold rounded-2xl p-10 min-h-[420px] flex items-center justify-center animate-pulse">
+        <div className="text-champagne font-mono text-xs uppercase tracking-wider">
+          Loading Pricing Calculator...
+        </div>
+      </div>
+    ),
+  }
+);
 
 export const metadata = {
   title: 'Rootwills Ltd | B2B Foodservice & Fresh Produce Wholesale UK',
@@ -147,6 +161,8 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&auto=format&fit=crop&q=80"
                 alt="Fresh Fruit & Vegetables"
                 fill
+                quality={75}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -180,6 +196,8 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80"
                 alt="Dairy & Eggs"
                 fill
+                quality={75}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -213,6 +231,8 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&auto=format&fit=crop&q=80"
                 alt="Meat & Poultry"
                 fill
+                quality={75}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
@@ -246,6 +266,8 @@ export default function PublicHomePage() {
                 src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80"
                 alt="Pastry & Specialty Goods"
                 fill
+                quality={75}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />

@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import { 
   CheckCircle2, 
@@ -17,7 +19,20 @@ import {
   Sparkles,
   Phone
 } from 'lucide-react';
-import { PriceEstimator } from '@/components/public/PriceEstimator';
+
+const PriceEstimator = dynamic(
+  () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="glass-panel-gold rounded-2xl p-10 min-h-[420px] flex items-center justify-center animate-pulse">
+        <div className="text-champagne font-mono text-xs uppercase tracking-wider">
+          Loading Pricing Calculator...
+        </div>
+      </div>
+    ),
+  }
+);
 
 interface SectorData {
   title: string;
@@ -266,10 +281,13 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
             </div>
 
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-cream/15 aspect-[4/3] bg-obsidian-900">
-              <img
+              <Image
                 src={sector.heroImage}
                 alt={sector.title}
-                className="w-full h-full object-cover"
+                fill
+                quality={75}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-cream/10">

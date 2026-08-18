@@ -13,14 +13,17 @@ import {
   X, 
   Plus, 
   MessageSquare,
-  UtensilsCrossed
+  UtensilsCrossed,
+  ShieldCheck
 } from 'lucide-react';
+import { queryAIAssistant } from '@/actions/ai';
 
 interface AIMessage {
   sender: 'ai' | 'user';
   text: string;
   suggestedItems?: { productId: string; name: string; qty: number; packSize: string; customerPrice: number }[];
   actionLabel?: string;
+  isError?: boolean;
 }
 
 export function AIOrderAssistant() {
@@ -41,7 +44,7 @@ export function AIOrderAssistant() {
     },
   ]);
 
-  const handleSend = (textToSend?: string) => {
+  const handleSend = async (textToSend?: string) => {
     const query = textToSend || input;
     if (!query.trim()) return;
 
@@ -51,74 +54,44 @@ export function AIOrderAssistant() {
     if (!textToSend) setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      let aiResponse: AIMessage;
-      const lower = query.toLowerCase();
+    try {
+      const result = await queryAIAssistant({
+        prompt: query,
+        organizationId: currentOrgId,
+      });
 
-      if (lower.includes('weekend') || lower.includes('steak') || lower.includes('friday') || lower.includes('service')) {
-        const steak = products.find((p) => p.sku === 'FS-BEEF-10') || products[0];
-        const mush = products.find((p) => p.sku === 'FP-MUSH-04') || products[1];
-        const pot = products.find((p) => p.sku === 'FP-POT-06') || products[2];
-
-        aiResponse = {
-          sender: 'ai',
-          text: `I've prepared your high-volume steak service batch for ${currentOrg.name} at your locked contract rates:`,
-          suggestedItems: [
-            { productId: steak.id, name: steak.name, qty: 4, packSize: steak.packSize, customerPrice: steak.customerPrice },
-            { productId: mush.id, name: mush.name, qty: 3, packSize: mush.packSize, customerPrice: mush.customerPrice },
-            { productId: pot.id, name: pot.name, qty: 4, packSize: pot.packSize, customerPrice: pot.customerPrice },
-          ],
-          actionLabel: 'Add Steak Service Batch to Basket',
-        };
-      } else if (lower.includes('garnish') || lower.includes('dessert') || lower.includes('pastry') || lower.includes('chocolate')) {
-        const choc = products.find((p) => p.sku === 'FS-CHOC-12') || products[0];
-        const cream = products.find((p) => p.sku === 'FS-CRM-08') || products[1];
-        const lemons = products.find((p) => p.sku === 'FP-LEM-05') || products[2];
-
-        aiResponse = {
-          sender: 'ai',
-          text: `Here is a curated pastry & garnish prep selection matching your menu standards:`,
-          suggestedItems: [
-            { productId: choc.id, name: choc.name, qty: 2, packSize: choc.packSize, customerPrice: choc.customerPrice },
-            { productId: cream.id, name: cream.name, qty: 6, packSize: cream.packSize, customerPrice: cream.customerPrice },
-            { productId: lemons.id, name: lemons.name, qty: 2, packSize: lemons.packSize, customerPrice: lemons.customerPrice },
-          ],
-          actionLabel: 'Add Pastry Prep Selection to Basket',
-        };
-      } else if (lower.includes('salad') || lower.includes('herbs') || lower.includes('micro') || lower.includes('produce')) {
-        const tom = products.find((p) => p.sku === 'FP-TOM-01') || products[0];
-        const avo = products.find((p) => p.sku === 'FP-AVO-02') || products[1];
-        const herbs = products.find((p) => p.sku === 'FP-HERB-07') || products[2];
-
-        aiResponse = {
-          sender: 'ai',
-          text: `Here is your fresh morning salad & microgreens replenishment:`,
-          suggestedItems: [
-            { productId: tom.id, name: tom.name, qty: 6, packSize: tom.packSize, customerPrice: tom.customerPrice },
-            { productId: avo.id, name: avo.name, qty: 3, packSize: avo.packSize, customerPrice: avo.customerPrice },
-            { productId: herbs.id, name: herbs.name, qty: 2, packSize: herbs.packSize, customerPrice: herbs.customerPrice },
-          ],
-          actionLabel: 'Add Salad & Microgreens to Basket',
-        };
+      if (!result.ok) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: 'ai',
+            text: result.message || 'Unable to process AI prep request.',
+            isError: true,
+          },
+        ]);
       } else {
-        const favs = products.slice(0, 3);
-        aiResponse = {
-          sender: 'ai',
-          text: `I found these matching products from your regular catalogue for ${currentOrg.name}:`,
-          suggestedItems: favs.map((f) => ({
-            productId: f.id,
-            name: f.name,
-            qty: f.moq || 1,
-            packSize: f.packSize,
-            customerPrice: f.customerPrice,
-          })),
-          actionLabel: 'Add Products to Basket',
-        };
+        setMessages((prev) => [
+          ...prev,
+          {
+            sender: 'ai',
+            text: result.message,
+            suggestedItems: result.suggestions,
+            actionLabel: result.actionLabel,
+          },
+        ]);
       }
-
-      setMessages((prev) => [...prev, aiResponse]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          sender: 'ai',
+          text: 'Temporary network issue contacting kitchen AI engine. Please retry shortly.',
+          isError: true,
+        },
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 700);
+    }
   };
 
   const handleAddItems = (items: NonNullable<AIMessage['suggestedItems']>) => {

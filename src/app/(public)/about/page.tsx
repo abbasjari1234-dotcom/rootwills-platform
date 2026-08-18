@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Building2, ShieldCheck, HeartHandshake, MapPin, ArrowRight, Award } from 'lucide-react';
 
 export const metadata = {
@@ -44,11 +45,14 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-cream/15 bg-obsidian-900">
-          <img
+        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-cream/15 bg-obsidian-900">
+          <Image
             src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1000&auto=format&fit=crop&q=80"
             alt="Wholesale market fresh produce"
-            className="w-full h-full object-cover"
+            fill
+            quality={75}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
           />
         </div>
       </div>

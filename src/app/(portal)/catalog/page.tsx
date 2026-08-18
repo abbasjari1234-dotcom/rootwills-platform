@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useDemoStore } from '@/lib/store/demo-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
@@ -136,10 +137,13 @@ export default function CustomerCatalogPage() {
             <div>
               {/* Product Image & Badges */}
               <div className="aspect-[4/3] bg-obsidian-900 relative overflow-hidden">
-                <img
+                <Image
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  fill
+                  quality={75}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-2 left-2 flex flex-col gap-1">
                   <span className="px-2 py-0.5 rounded bg-obsidian-950/85 backdrop-blur-md text-[10px] font-mono text-champagne border border-champagne/20">

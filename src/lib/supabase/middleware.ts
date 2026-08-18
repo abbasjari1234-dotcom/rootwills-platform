@@ -8,7 +8,7 @@ export async function updateSession(request: NextRequest) {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('placeholder')) {
-    return response;
+    return { response, user: null };
   }
 
   try {
@@ -29,10 +29,9 @@ export async function updateSession(request: NextRequest) {
       }
     );
 
-    await supabase.auth.getUser();
-  } catch (e) {
-    // Graceful fallback for local development
+    const { data: { user } } = await supabase.auth.getUser();
+    return { response, user };
+  } catch {
+    return { response, user: null };
   }
-
-  return response;
 }

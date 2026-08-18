@@ -38,7 +38,7 @@ interface DemoState {
 
   // Order Actions
   placeOrder: (orderData: Partial<Order>) => Order;
-  updateOrderStatus: (orderId: string, newStatus: OrderStatus, note?: string) => void;
+  updateOrderStatus: (orderId: string, newStatus: OrderStatus, note?: string, pod?: Order['pod']) => void;
 
   // CRM Actions
   addLead: (lead: Omit<Lead, 'id' | 'createdAt' | 'status'>) => Lead;
@@ -48,6 +48,9 @@ interface DemoState {
   // Admin Pricing Actions
   updateCustomerPrice: (orgId: string, productId: string, price: number | null) => void;
   updateCustomerCredit: (orgId: string, creditLimit: number, paymentTerms: string) => void;
+
+  // Invoice Actions
+  payInvoice: (invoiceId: string) => void;
 }
 
 export const useDemoStore = create<DemoState>()(
@@ -245,7 +248,7 @@ export const useDemoStore = create<DemoState>()(
         return newOrder;
       },
 
-      updateOrderStatus: (orderId, newStatus, note) => {
+      updateOrderStatus: (orderId, newStatus, note, pod) => {
         const { orders } = get();
         const timestamp = new Date().toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' });
 
@@ -255,6 +258,7 @@ export const useDemoStore = create<DemoState>()(
               ...ord,
               status: newStatus,
               updatedAt: new Date().toISOString(),
+              ...(pod ? { pod } : {}),
               trackingHistory: [
                 ...ord.trackingHistory,
                 { status: newStatus, timestamp, note: note || `Status updated to ${newStatus}` },
@@ -353,6 +357,20 @@ export const useDemoStore = create<DemoState>()(
         });
 
         set({ organizations: updatedOrgs });
+      },
+
+      payInvoice: (invoiceId) => {
+        const updatedInvoices = get().invoices.map((inv) => {
+          if (inv.id === invoiceId) {
+            return {
+              ...inv,
+              status: 'paid' as const,
+            };
+          }
+          return inv;
+        });
+
+        set({ invoices: updatedInvoices });
       },
     }),
     {

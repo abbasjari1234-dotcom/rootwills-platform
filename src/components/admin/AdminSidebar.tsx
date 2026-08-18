@@ -129,22 +129,32 @@ export function AdminSidebar() {
         </nav>
       </div>
 
-      {/* Footer Switchers */}
+      {/* Footer Switchers & Logout */}
       <div className="pt-4 border-t border-cream/10 space-y-2 text-xs">
-        <Link
-          href="/dashboard"
+        <button
+          onClick={() => {
+            if (typeof document !== 'undefined') {
+              document.cookie = 'rootwills_role=customer; path=/; max-age=86400; SameSite=Lax';
+            }
+            window.location.href = '/dashboard';
+          }}
           className="w-full py-2 px-3 rounded-lg bg-obsidian-900 hover:bg-obsidian-850 border border-champagne/30 text-champagne text-xs font-semibold flex items-center justify-between"
         >
           <span>Switch to Customer Portal</span>
           <Sparkles className="w-3.5 h-3.5" />
-        </Link>
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-cream/50 hover:text-cream px-3 py-1 text-xs"
+        </button>
+        <button
+          onClick={() => {
+            if (typeof document !== 'undefined') {
+              document.cookie = 'rootwills_role=; path=/; max-age=0; SameSite=Lax';
+            }
+            window.location.href = '/login?role=admin';
+          }}
+          className="w-full py-2 px-3 rounded-lg bg-red-950/40 hover:bg-red-900/50 border border-red-500/20 text-red-300 text-xs font-medium flex items-center justify-between"
         >
+          <span>Sign Out of Staff Desk</span>
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Public Website</span>
-        </Link>
+        </button>
       </div>
     </aside>
   );

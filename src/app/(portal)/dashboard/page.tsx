@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useDemoStore } from '@/lib/store/demo-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
@@ -195,11 +196,16 @@ export default function CustomerDashboardPage() {
           {favoriteProducts.slice(0, 4).map((product) => (
             <div key={product.id} className="glass-panel p-4 rounded-2xl flex flex-col justify-between space-y-3 group hover:border-champagne/40 transition-all">
               <div className="flex gap-3 items-center">
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="w-14 h-14 rounded-xl object-cover bg-obsidian-900 shrink-0"
-                />
+                <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-obsidian-900 shrink-0">
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    fill
+                    quality={75}
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
                 <div className="min-w-0">
                   <div className="text-[10px] font-mono text-champagne truncate">{product.sku}</div>
                   <div className="text-xs font-bold text-cream truncate group-hover:text-champagne transition-colors">
