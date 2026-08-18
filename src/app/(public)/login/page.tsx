@@ -129,7 +129,7 @@ function LoginForm() {
         !rawSupabaseUrl.includes('placeholder') &&
         (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
 
-      let targetRole: 'admin' | 'customer' = 'customer';
+      let targetRole: 'admin' | 'customer' | 'driver' = loginScope === 'staff' ? 'admin' : 'customer';
       let targetOrgId = 'org-sancarlo';
       let authenticated = false;
 
@@ -143,21 +143,42 @@ function LoginForm() {
 
           if (!error && data?.user) {
             authenticated = true;
-            const isStaff = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
-            targetRole = isStaff ? 'admin' : 'customer';
+
+            // Fetch user profile from Supabase profiles table
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('id, role, organization_id, full_name')
+              .eq('id', data.user.id)
+              .maybeSingle();
+
+            if (profile?.role === 'admin' || profile?.role === 'sales' || loginScope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills')) {
+              targetRole = 'admin';
+            } else if (profile?.role === 'driver') {
+              targetRole = 'driver';
+            } else {
+              targetRole = 'customer';
+            }
+
+            if (profile?.organization_id) {
+              targetOrgId = profile.organization_id;
+            }
           } else if (error) {
-            console.warn('Supabase auth error:', error.message);
+            console.warn('Supabase auth notice:', error.message);
             // Check if user is testing with a preconfigured demo persona
             const isDemoPersona = Object.values(DEMO_PERSONAS).some(
               (p) => p.email.toLowerCase() === cleanEmail
             );
             if (isDemoPersona && cleanPassword === 'demo-access-2026') {
               authenticated = true;
+              targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
             } else {
               if (error.message.toLowerCase().includes('email not confirmed')) {
-                throw new Error('Email not confirmed in Supabase. Please verify the user in Supabase Authentication -> Users table or disable email confirmation in settings.');
+                throw new Error('Email not confirmed in Supabase. In your Supabase Dashboard -> Authentication -> Users, click the user and click "Confirm Email" (or disable email confirmation in Auth settings).');
               }
-              throw new Error(error.message || 'Invalid email or password.');
+              if (error.message.toLowerCase().includes('invalid login credentials')) {
+                throw new Error('Invalid email or password. Please verify the email and password in your Supabase Auth Users table.');
+              }
+              throw new Error(error.message || 'Invalid login credentials.');
             }
           }
         } catch (supabaseErr: any) {
@@ -166,6 +187,7 @@ function LoginForm() {
           );
           if (isDemoPersona && cleanPassword === 'demo-access-2026') {
             authenticated = true;
+            targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
           } else {
             throw new Error(supabaseErr?.message || 'Invalid email or password.');
           }
@@ -179,23 +201,17 @@ function LoginForm() {
           throw new Error('Invalid password. For demo testing, use password: demo-access-2026');
         }
         authenticated = true;
+        targetRole = loginScope === 'staff' || selectedTab === 'admin' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills') ? 'admin' : 'customer';
       }
 
       if (!authenticated) {
         throw new Error('Authentication failed. Please verify your email and password.');
       }
 
-      const isStaff = loginScope === 'staff' ||
-        cleanEmail.includes('rootwills') ||
-        cleanEmail.includes('admin') ||
-        cleanEmail.includes('marcus') ||
-        selectedTab === 'admin';
+      if (selectedTab === 'hotel') targetOrgId = 'org-grandhotel';
 
-      targetRole = isStaff ? 'admin' : 'customer';
-      targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
-
-      // Update state
-      setPersona(targetOrgId, targetRole);
+      // Update state store
+      setPersona(targetOrgId, targetRole as 'admin' | 'customer');
 
       // Set cookie for server route protection middleware
       if (typeof document !== 'undefined') {
@@ -207,8 +223,11 @@ function LoginForm() {
         ? redirectParam
         : targetRole === 'admin'
           ? '/admin/crm'
-          : '/dashboard';
+          : targetRole === 'driver'
+            ? '/driver'
+            : '/dashboard';
 
+      router.refresh();
       await router.push(destination);
     } catch (err: any) {
       console.error('Authentication rejected:', err);
