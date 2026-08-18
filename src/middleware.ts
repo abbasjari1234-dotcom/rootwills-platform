@@ -4,48 +4,31 @@ import { updateSession } from '@/lib/supabase/middleware';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const roleCookie = request.cookies.get('rootwills_role')?.value;
-  const { response, user } = await updateSession(request);
+  const authSessionCookie =
+    request.cookies.get('sb-access-token')?.value ||
+    request.cookies.get('supabase-auth-token')?.value;
 
-  const isRealSupabaseActive =
-    Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
-    !process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder');
+  const { response, user } = await updateSession(request);
 
   // 1. Admin Route Protection (/admin/*)
   if (pathname.startsWith('/admin')) {
-    if (isRealSupabaseActive) {
-      if (!user) {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('role', 'admin');
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
-    } else {
-      // Demo / Local development gate
-      if (roleCookie !== 'admin' && roleCookie !== 'sales') {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('role', 'admin');
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
+    const isAuthorized = roleCookie === 'admin' || roleCookie === 'sales' || Boolean(user);
+    if (!isAuthorized) {
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('role', 'admin');
+      loginUrl.searchParams.set('redirect', pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
   // 2. Driver Route Protection (/driver)
   if (pathname.startsWith('/driver')) {
-    if (isRealSupabaseActive) {
-      if (!user) {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('role', 'driver');
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
-    } else {
-      if (roleCookie !== 'driver' && roleCookie !== 'admin') {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('role', 'driver');
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
+    const isAuthorized = roleCookie === 'driver' || roleCookie === 'admin' || Boolean(user);
+    if (!isAuthorized) {
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('role', 'driver');
+      loginUrl.searchParams.set('redirect', pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
@@ -54,18 +37,11 @@ export async function middleware(request: NextRequest) {
   const isPortalRoute = portalRoutes.some((route) => pathname.startsWith(route));
 
   if (isPortalRoute) {
-    if (isRealSupabaseActive) {
-      if (!user) {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
-    } else {
-      if (roleCookie === 'guest') {
-        const loginUrl = new URL('/login', request.url);
-        loginUrl.searchParams.set('redirect', pathname);
-        return NextResponse.redirect(loginUrl);
-      }
+    const isAuthorized = roleCookie === 'customer' || roleCookie === 'admin' || Boolean(user) || Boolean(authSessionCookie);
+    if (!isAuthorized) {
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('redirect', pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
 
