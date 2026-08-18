@@ -189,30 +189,41 @@ export default function SalesCRMPage() {
     }
   };
 
-  // Filtered Leads
+  // Filtered Leads (with defensive checks against null/undefined DB values)
   const filteredLeads = leads.filter((lead) => {
+    if (!lead) return false;
+    const company = (lead.companyName || '').toLowerCase();
+    const contact = (lead.contactName || '').toLowerCase();
+    const email = (lead.email || '').toLowerCase();
+    const phone = (lead.phone || '').toLowerCase();
+    const city = (lead.city || '').toLowerCase();
+    const postcode = (lead.postcode || '').toLowerCase();
+    const q = (searchQuery || '').toLowerCase();
+
     const matchesSearch = 
-      lead.companyName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      lead.contactName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      lead.phone.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      lead.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      lead.postcode.toLowerCase().includes(searchQuery.toLowerCase());
+      !q ||
+      company.includes(q) ||
+      contact.includes(q) ||
+      email.includes(q) ||
+      phone.includes(q) ||
+      city.includes(q) ||
+      postcode.includes(q);
 
     const matchesSector = selectedSectorFilter === 'all' || lead.sector === selectedSectorFilter;
 
+    const spend = typeof lead.estimatedWeeklySpend === 'number' ? lead.estimatedWeeklySpend : 0;
     let matchesSpend = true;
-    if (selectedSpendFilter === '<2k') matchesSpend = lead.estimatedWeeklySpend < 2000;
-    else if (selectedSpendFilter === '2k-5k') matchesSpend = lead.estimatedWeeklySpend >= 2000 && lead.estimatedWeeklySpend <= 5000;
-    else if (selectedSpendFilter === '5k+') matchesSpend = lead.estimatedWeeklySpend > 5000;
+    if (selectedSpendFilter === '<2k') matchesSpend = spend < 2000;
+    else if (selectedSpendFilter === '2k-5k') matchesSpend = spend >= 2000 && spend <= 5000;
+    else if (selectedSpendFilter === '5k+') matchesSpend = spend > 5000;
 
     return matchesSearch && matchesSector && matchesSpend;
   });
 
-  // Calculate Overall Pipeline Metrics
-  const totalPipelineValue = leads.reduce((sum, l) => sum + l.estimatedWeeklySpend, 0);
-  const totalWonValue = leads.filter((l) => l.status === 'account_opened').reduce((sum, l) => sum + l.estimatedWeeklySpend, 0);
-  const totalWonCount = leads.filter((l) => l.status === 'account_opened').length;
+  // Calculate Overall Pipeline Metrics safely
+  const totalPipelineValue = leads.reduce((sum, l) => sum + (typeof l?.estimatedWeeklySpend === 'number' ? l.estimatedWeeklySpend : 0), 0);
+  const totalWonValue = leads.filter((l) => l?.status === 'account_opened').reduce((sum, l) => sum + (typeof l?.estimatedWeeklySpend === 'number' ? l.estimatedWeeklySpend : 0), 0);
+  const totalWonCount = leads.filter((l) => l?.status === 'account_opened').length;
 
   return (
     <div className="p-6 sm:p-8 space-y-8 min-h-screen bg-obsidian-950">
@@ -397,8 +408,10 @@ export default function SalesCRMPage() {
                   </div>
                 ) : (
                   colLeads.map((lead) => {
-                    const isHot = lead.estimatedWeeklySpend >= 4000;
+                    const spend = typeof lead.estimatedWeeklySpend === 'number' ? lead.estimatedWeeklySpend : 0;
+                    const isHot = spend >= 4000;
                     const isFollowUpDue = col.status === 'contacted' || col.status === 'price_list_sent';
+                    const isLiveSupabase = lead.id && lead.id.length > 20 && lead.id.includes('-');
 
                     return (
                       <div
@@ -410,19 +423,27 @@ export default function SalesCRMPage() {
                         {/* Title & Spend */}
                         <div className="space-y-1">
                           <div className="flex justify-between items-start gap-2">
-                            <h3 className="font-bold text-cream text-sm leading-snug group-hover:text-champagne transition-colors">
-                              {lead.companyName}
-                            </h3>
+                            <div>
+                              <h3 className="font-bold text-cream text-sm leading-snug group-hover:text-champagne transition-colors">
+                                {lead.companyName || 'Inbound Commercial Prospect'}
+                              </h3>
+                              {isLiveSupabase && (
+                                <span className="inline-flex items-center gap-1 text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20 mt-0.5">
+                                  <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                                  <span>LIVE CLOUD INBOUND</span>
+                                </span>
+                              )}
+                            </div>
                             <span className="font-mono text-xs font-bold text-champagne shrink-0 bg-champagne/10 px-2 py-0.5 rounded border border-champagne/20">
-                              £{lead.estimatedWeeklySpend.toLocaleString()}/wk
+                              £{spend.toLocaleString()}/wk
                             </span>
                           </div>
 
                           <div className="flex items-center gap-1.5 text-xs text-cream/70">
                             <Building2 className="w-3.5 h-3.5 text-champagne shrink-0" />
-                            <span className="capitalize">{lead.sector.replace('_', ' ')}</span>
+                            <span className="capitalize">{(lead.sector || 'fine_dining').replace(/_/g, ' ')}</span>
                             <span className="text-cream/30">&bull;</span>
-                            <span>{lead.city}</span>
+                            <span>{lead.city || 'Birmingham'}</span>
                           </div>
                         </div>
 
@@ -445,8 +466,8 @@ export default function SalesCRMPage() {
                         {/* Contact info with 1-click actions & copy */}
                         <div className="pt-2 border-t border-cream/5 space-y-1.5 text-xs text-cream/60">
                           <div className="flex items-center justify-between">
-                            <span className="font-medium text-cream/90">{lead.contactName}</span>
-                            <span className="text-[10px] font-mono text-cream/40 uppercase">{lead.source.replace('_', ' ')}</span>
+                            <span className="font-medium text-cream/90">{lead.contactName || 'Trade Buyer'}</span>
+                            <span className="text-[10px] font-mono text-cream/40 uppercase">{(lead.source || 'inbound_web').replace(/_/g, ' ')}</span>
                           </div>
 
                           {/* Email link with copy button */}
