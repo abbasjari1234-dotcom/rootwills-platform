@@ -13,7 +13,11 @@ import {
   CheckCircle2, 
   Phone, 
   Mail,
-  Sparkles
+  Sparkles,
+  Landmark,
+  CreditCard,
+  Lock,
+  ExternalLink
 } from 'lucide-react';
 
 export default function CustomerAccountSettingsPage() {
@@ -21,6 +25,7 @@ export default function CustomerAccountSettingsPage() {
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
 
   const [savedSuccess, setSavedSuccess] = useState(false);
+  const [mandateActive, setMandateActive] = useState(true);
   const [notifications, setNotifications] = useState({
     smsArrival: true,
     emailInvoice: true,
@@ -47,12 +52,12 @@ export default function CustomerAccountSettingsPage() {
             {currentOrg.name} &bull; Account Management
           </h1>
           <p className="text-xs text-cream/60">
-            Manage your kitchen locations, user permissions, and delivery preferences.
+            Manage your kitchen locations, user permissions, and automated payment facilities.
           </p>
         </div>
 
         {savedSuccess && (
-          <span className="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono flex items-center gap-1">
+          <span className="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono flex items-center gap-1 animate-fade-in">
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Settings Saved!</span>
           </span>
@@ -168,8 +173,41 @@ export default function CustomerAccountSettingsPage() {
           </div>
         </div>
 
-        {/* Right Column: Account Specs & Notifications */}
+        {/* Right Column: Banking, Trade Terms & Notifications */}
         <div className="space-y-6">
+          {/* Automated BACS Direct Debit Card */}
+          <div className="glass-panel p-6 rounded-2xl space-y-4 text-xs border-emerald-500/30 bg-emerald-500/5">
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-2">
+                <Landmark className="w-4 h-4 text-emerald-400" />
+                <h3 className="font-display text-base font-bold text-cream">BACS Direct Debit</h3>
+              </div>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold border border-emerald-500/30">
+                ACTIVE MANDATE
+              </span>
+            </div>
+
+            <div className="p-3 bg-zinc-950/80 rounded-xl border border-zinc-800 space-y-2 font-mono text-[11px]">
+              <div className="flex justify-between text-cream/60">
+                <span>Direct Debit Scheme:</span>
+                <span className="text-cream">UK BACS</span>
+              </div>
+              <div className="flex justify-between text-cream/60">
+                <span>Account Ending:</span>
+                <span className="text-champagne font-bold">•••• 4192</span>
+              </div>
+              <div className="flex justify-between text-cream/60">
+                <span>Settlement Terms:</span>
+                <span className="text-emerald-400 font-bold">{currentOrg.paymentTerms}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-[10px] text-cream/50">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Protected by the UK Direct Debit Guarantee</span>
+            </div>
+          </div>
+
           {/* Trade Terms Overview */}
           <div className="glass-panel p-6 rounded-2xl space-y-4 text-xs">
             <h3 className="font-display text-lg font-bold text-cream flex items-center gap-2">

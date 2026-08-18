@@ -20,18 +20,26 @@ import {
   Layers,
   Check,
   Landmark,
-  Zap
+  Zap,
+  Lock,
+  ArrowRight,
+  ExternalLink,
+  Receipt
 } from 'lucide-react';
-import { settleInvoiceViaCard } from '@/lib/payments/stripe';
+import { createStripePaymentIntent, settleInvoiceViaCard } from '@/lib/payments/stripe';
 import { createDirectDebitMandateFlow } from '@/lib/payments/gocardless';
+
+type PaymentMethodTab = 'card' | 'direct_debit' | 'bank_transfer';
 
 export default function InvoicesStatementsPage() {
   const { currentOrgId, organizations, invoices, payInvoice } = useDemoStore();
   const [selectedInvoiceForModal, setSelectedInvoiceForModal] = useState<any>(null);
   const [statementModalOpen, setStatementModalOpen] = useState(false);
   const [payModalInvoice, setPayModalInvoice] = useState<any>(null);
+  const [paymentTab, setPaymentTab] = useState<PaymentMethodTab>('card');
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
-  const [mandateActive, setMandateActive] = useState(true);
+  const [mandateSuccess, setMandateSuccess] = useState(false);
+  const [mandateLoading, setMandateLoading] = useState(false);
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
   const orgInvoices = invoices.filter((inv) => inv.organizationId === currentOrg.id);
@@ -78,13 +86,38 @@ export default function InvoicesStatementsPage() {
     document.body.removeChild(link);
   };
 
-  const handleSettlePayment = async (inv: any) => {
+  const handleSettleCardPayment = async (inv: any) => {
     setIsProcessingPayment(true);
     await settleInvoiceViaCard(inv.id, inv.totalAmount, currentOrg.name);
     payInvoice(inv.id);
     setIsProcessingPayment(false);
     setPayModalInvoice(null);
-    alert(`Invoice ${inv.invoiceNumber} (£${inv.totalAmount.toFixed(2)}) settled successfully via BACS / Card!`);
+    alert(`Payment of £${inv.totalAmount.toFixed(2)} for Invoice #${inv.invoiceNumber} processed successfully via Stripe!`);
+  };
+
+  const handleSetupDirectDebit = async () => {
+    setMandateLoading(true);
+    try {
+      const res = await fetch('/api/payments/gocardless/create-mandate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          organizationId: currentOrg.id,
+          companyName: currentOrg.name,
+          contactEmail: `accounts@${currentOrg.name.toLowerCase().replace(/[^a-z0-9]/g, '')}.co.uk`,
+        }),
+      });
+      const data = await res.json();
+      setMandateLoading(false);
+      setMandateSuccess(true);
+      setTimeout(() => {
+        setMandateSuccess(false);
+        setPayModalInvoice(null);
+        alert('GoCardless BACS Direct Debit mandate registered! Invoices will be automatically collected on day 30.');
+      }, 1500);
+    } catch {
+      setMandateLoading(false);
+    }
   };
 
   return (
@@ -111,13 +144,25 @@ export default function InvoicesStatementsPage() {
 
         {/* Actions Group */}
         <div className="flex flex-wrap items-center gap-2.5">
+          {/* Direct Debit Setup CTA */}
+          <button
+            onClick={() => {
+              setPayModalInvoice(orgInvoices[0] || null);
+              setPaymentTab('direct_debit');
+            }}
+            className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-emerald-500/30 hover:border-emerald-500 text-xs text-emerald-300 font-semibold flex items-center gap-2 transition-colors"
+          >
+            <Landmark className="w-4 h-4 text-emerald-400" />
+            <span>Setup BACS Direct Debit</span>
+          </button>
+
           {/* Accounting Sync Dropdown */}
           <div className="relative group">
             <button
               className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-semibold flex items-center gap-2 transition-colors"
             >
               <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
-              <span>Export to ERP / Accounting &darr;</span>
+              <span>Export to ERP &darr;</span>
             </button>
             <div className="absolute right-0 top-full mt-1 w-48 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl p-1.5 hidden group-hover:block z-20 space-y-1 text-xs">
               <button
@@ -258,10 +303,13 @@ export default function InvoicesStatementsPage() {
                   <td className="p-4 pr-5 text-right space-x-2">
                     {inv.status !== 'paid' && (
                       <button
-                        onClick={() => setPayModalInvoice(inv)}
+                        onClick={() => {
+                          setPayModalInvoice(inv);
+                          setPaymentTab('card');
+                        }}
                         className="px-2.5 py-1 rounded-lg bg-emerald-500 hover:brightness-110 text-obsidian-950 text-[11px] font-bold shadow-emerald-glow"
                       >
-                        Pay Now
+                        Settle Invoice
                       </button>
                     )}
                     <button
@@ -278,15 +326,15 @@ export default function InvoicesStatementsPage() {
         </div>
       </div>
 
-      {/* Settle Invoice Payment Modal */}
+      {/* Settle Invoice Payment Modal (Stripe & GoCardless) */}
       {payModalInvoice && (
-        <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-zinc-900 border border-emerald-500/40 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-zinc-900 border border-emerald-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
             <div className="flex justify-between items-start border-b border-zinc-800 pb-3">
               <div>
-                <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold">Instant Invoice Settlement</span>
+                <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold">B2B Trade Settlement</span>
                 <h3 className="font-display text-2xl font-bold text-cream">Settle {payModalInvoice.invoiceNumber}</h3>
-                <div className="text-xs text-cream/60">Amount Due: <strong className="text-champagne font-mono">£{payModalInvoice.totalAmount.toFixed(2)}</strong></div>
+                <div className="text-xs text-cream/60">Amount: <strong className="text-champagne font-mono">£{payModalInvoice.totalAmount.toFixed(2)}</strong></div>
               </div>
               <button
                 onClick={() => setPayModalInvoice(null)}
@@ -296,50 +344,158 @@ export default function InvoicesStatementsPage() {
               </button>
             </div>
 
-            <div className="space-y-3 text-xs">
-              <div className="p-4 bg-zinc-950 rounded-2xl border border-zinc-800 space-y-2">
-                <div className="flex justify-between text-cream/70">
-                  <span>Merchant:</span>
-                  <span className="text-cream font-bold">Rootwills Ltd</span>
-                </div>
-                <div className="flex justify-between text-cream/70">
-                  <span>Selected Method:</span>
-                  <span className="text-emerald-400 font-mono">BACS Direct Debit / Debit Card</span>
-                </div>
-                <div className="flex justify-between text-cream/70">
-                  <span>Payment Reference:</span>
-                  <span className="text-champagne font-mono">RW-{payModalInvoice.invoiceNumber}</span>
-                </div>
-              </div>
-
-              <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-300 text-[11px] flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>Protected by 256-Bit Bank-Grade Direct Debit Guarantee</span>
-              </div>
+            {/* Payment Method Tabs */}
+            <div className="grid grid-cols-3 gap-1 p-1 bg-zinc-950 rounded-xl border border-zinc-800 text-[11px]">
+              <button
+                type="button"
+                onClick={() => setPaymentTab('card')}
+                className={`py-2 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                  paymentTab === 'card'
+                    ? 'bg-zinc-800 text-champagne font-bold border border-champagne/30 shadow-sm'
+                    : 'text-cream/60 hover:text-cream'
+                }`}
+              >
+                <CreditCard className="w-3.5 h-3.5" />
+                <span>Card / Apple Pay</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setPaymentTab('direct_debit')}
+                className={`py-2 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                  paymentTab === 'direct_debit'
+                    ? 'bg-zinc-800 text-emerald-400 font-bold border border-emerald-500/30 shadow-sm'
+                    : 'text-cream/60 hover:text-cream'
+                }`}
+              >
+                <Landmark className="w-3.5 h-3.5" />
+                <span>Direct Debit</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setPaymentTab('bank_transfer')}
+                className={`py-2 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                  paymentTab === 'bank_transfer'
+                    ? 'bg-zinc-800 text-cream font-bold border border-zinc-700 shadow-sm'
+                    : 'text-cream/60 hover:text-cream'
+                }`}
+              >
+                <Building2 className="w-3.5 h-3.5" />
+                <span>Bank Transfer</span>
+              </button>
             </div>
 
-            <div className="pt-2 flex gap-3">
-              <button
-                onClick={() => handleSettlePayment(payModalInvoice)}
-                disabled={isProcessingPayment}
-                className="flex-1 py-3 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center justify-center gap-2 disabled:opacity-50"
-              >
-                {isProcessingPayment ? (
-                  <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
+            {/* Tab 1: Instant Card / Apple Pay (Stripe) */}
+            {paymentTab === 'card' && (
+              <div className="space-y-4 text-xs animate-fade-in">
+                <div className="p-4 bg-zinc-950 rounded-2xl border border-zinc-800 space-y-3">
+                  <div className="flex justify-between text-cream/70">
+                    <span>Payment Processor:</span>
+                    <span className="text-cream font-bold">Stripe 256-Bit SSL Encrypted</span>
+                  </div>
+                  <div className="flex justify-between text-cream/70">
+                    <span>Supported Methods:</span>
+                    <span className="text-champagne font-mono">Visa &bull; Mastercard &bull; Apple Pay</span>
+                  </div>
+                  <div className="flex justify-between text-cream/70">
+                    <span>Total Charge:</span>
+                    <span className="text-emerald-400 font-bold font-mono text-sm">£{payModalInvoice.totalAmount.toFixed(2)}</span>
+                  </div>
+                </div>
+
+                <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-300 text-[11px] flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 shrink-0" />
+                  <span>Instant VAT tax receipt will be issued to your accounts email.</span>
+                </div>
+
+                <button
+                  onClick={() => handleSettleCardPayment(payModalInvoice)}
+                  disabled={isProcessingPayment}
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {isProcessingPayment ? (
+                    <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <Zap className="w-4 h-4" />
+                      <span>Pay £{payModalInvoice.totalAmount.toFixed(2)} via Card / Apple Pay</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+
+            {/* Tab 2: Automated BACS Direct Debit (GoCardless) */}
+            {paymentTab === 'direct_debit' && (
+              <div className="space-y-4 text-xs animate-fade-in">
+                <div className="p-4 bg-zinc-950 rounded-2xl border border-zinc-800 space-y-3">
+                  <div className="flex items-center gap-2 text-emerald-400 font-bold">
+                    <Landmark className="w-4 h-4" />
+                    <span>UK BACS Direct Debit Scheme (GoCardless)</span>
+                  </div>
+                  <p className="text-cream/60 leading-relaxed text-[11px]">
+                    Automate your 30-day invoice payments. Invoices are automatically collected on their due date with zero manual intervention.
+                  </p>
+                  <div className="text-[10px] text-cream/40 font-mono">
+                    Protected by the official UK Direct Debit Guarantee scheme.
+                  </div>
+                </div>
+
+                {mandateSuccess ? (
+                  <div className="p-3.5 bg-emerald-500/20 border border-emerald-500/40 rounded-xl text-emerald-300 flex items-center gap-2 text-xs">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Direct Debit Mandate Activated for {currentOrg.name}!</span>
+                  </div>
                 ) : (
-                  <>
-                    <Zap className="w-4 h-4" />
-                    <span>Authorize £{payModalInvoice.totalAmount.toFixed(2)} Payment</span>
-                  </>
+                  <button
+                    onClick={handleSetupDirectDebit}
+                    disabled={mandateLoading}
+                    className="w-full py-3.5 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {mandateLoading ? (
+                      <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Landmark className="w-4 h-4" />
+                        <span>Authorize GoCardless 30-Day BACS Mandate</span>
+                      </>
+                    )}
+                  </button>
                 )}
-              </button>
-              <button
-                onClick={() => setPayModalInvoice(null)}
-                className="px-5 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-cream/70 hover:text-cream text-xs"
-              >
-                Cancel
-              </button>
-            </div>
+              </div>
+            )}
+
+            {/* Tab 3: BACS Faster Payments */}
+            {paymentTab === 'bank_transfer' && (
+              <div className="space-y-4 text-xs animate-fade-in">
+                <div className="p-4 bg-zinc-950 rounded-2xl border border-zinc-800 space-y-2.5 font-mono">
+                  <div className="text-[11px] text-champagne uppercase font-bold">Rootwills Commercial Bank Account</div>
+                  <div className="flex justify-between border-b border-zinc-800 pb-1.5">
+                    <span className="text-cream/50">Beneficiary:</span>
+                    <strong className="text-cream">Rootwills Foodservice Ltd</strong>
+                  </div>
+                  <div className="flex justify-between border-b border-zinc-800 pb-1.5">
+                    <span className="text-cream/50">Bank:</span>
+                    <strong className="text-cream">Barclays Corporate UK</strong>
+                  </div>
+                  <div className="flex justify-between border-b border-zinc-800 pb-1.5">
+                    <span className="text-cream/50">Sort Code:</span>
+                    <strong className="text-champagne font-bold">40-11-18</strong>
+                  </div>
+                  <div className="flex justify-between border-b border-zinc-800 pb-1.5">
+                    <span className="text-cream/50">Account No:</span>
+                    <strong className="text-champagne font-bold">81923049</strong>
+                  </div>
+                  <div className="flex justify-between pt-1">
+                    <span className="text-cream/50">Your Reference:</span>
+                    <strong className="text-emerald-400 font-bold">RW-{payModalInvoice.invoiceNumber}</strong>
+                  </div>
+                </div>
+
+                <div className="text-[11px] text-cream/50 leading-relaxed">
+                  Please quote reference <strong className="text-cream font-mono">RW-{payModalInvoice.invoiceNumber}</strong> in your banking app for automated same-day ledger reconciliation.
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
