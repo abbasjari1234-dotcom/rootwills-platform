@@ -3,7 +3,10 @@ import { createBrowserClient } from '@supabase/ssr';
 // Used in Client Components. Respects RLS — safe to expose to the browser.
 export function createClient() {
   let rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-  let rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+  let rawKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    '';
 
   // Clean quotes, whitespaces, and newlines
   let url = rawUrl.trim().replace(/^["']|["']$/g, '');
