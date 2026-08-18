@@ -85,6 +85,21 @@ export default function RootLayout({
       lang="en"
       className={`dark ${inter.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                localStorage.removeItem('rootwills_theme');
+                document.documentElement.classList.remove('light', 'light-theme');
+                if (document.body) {
+                  document.body.classList.remove('light-theme');
+                }
+              } catch(e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="bg-obsidian-950 text-cream font-sans antialiased min-h-screen">
         {children}
         <CartDrawer />
