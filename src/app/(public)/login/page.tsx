@@ -157,7 +157,7 @@ function LoginForm() {
       const redirectParam = searchParams?.get('redirect');
       const destination = (redirectParam && redirectParam.startsWith('/'))
         ? redirectParam
-        : res.destination || (targetRole === 'admin' ? '/admin/crm' : '/dashboard');
+        : res.destination || (loginScope === 'staff' ? '/admin/crm' : '/dashboard');
 
       window.location.href = destination;
     } catch (err: any) {

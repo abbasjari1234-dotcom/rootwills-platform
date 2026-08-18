@@ -67,7 +67,7 @@ export async function loginServerAction(formData: {
         return { ok: false, error: error?.message || 'Invalid login credentials.' };
       }
 
-      // Query profiles table for role
+      // Query profiles table for role & organization
       try {
         const { data: profile } = await supabase
           .from('profiles')
@@ -75,13 +75,7 @@ export async function loginServerAction(formData: {
           .eq('id', data.user.id)
           .maybeSingle();
 
-        if (
-          profile?.role === 'admin' ||
-          profile?.role === 'sales' ||
-          scope === 'staff' ||
-          cleanEmail.includes('admin') ||
-          cleanEmail.includes('rootwills')
-        ) {
+        if (scope === 'staff') {
           targetRole = 'admin';
         } else if (profile?.role === 'driver') {
           targetRole = 'driver';
@@ -93,9 +87,7 @@ export async function loginServerAction(formData: {
           targetOrgId = profile.organization_id;
         }
       } catch {
-        if (scope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills')) {
-          targetRole = 'admin';
-        }
+        targetRole = scope === 'staff' ? 'admin' : 'customer';
       }
 
       // Set auth cookies
@@ -114,7 +106,12 @@ export async function loginServerAction(formData: {
         });
       }
 
-      const destination = targetRole === 'admin' ? '/admin/crm' : targetRole === 'driver' ? '/driver' : '/dashboard';
+      const destination =
+        scope === 'staff'
+          ? '/admin/crm'
+          : targetRole === 'driver'
+            ? '/driver'
+            : '/dashboard';
 
       return {
         ok: true,
@@ -133,7 +130,7 @@ export async function loginServerAction(formData: {
     return { ok: false, error: 'Invalid password. For demo testing, use password: demo-access-2026' };
   }
 
-  targetRole = scope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills') ? 'admin' : 'customer';
+  targetRole = scope === 'staff' ? 'admin' : 'customer';
 
   const cookieStore = cookies();
   cookieStore.set('rootwills_role', targetRole, {
@@ -142,7 +139,7 @@ export async function loginServerAction(formData: {
     sameSite: 'lax',
   });
 
-  const destination = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
+  const destination = scope === 'staff' ? '/admin/crm' : '/dashboard';
 
   return {
     ok: true,
