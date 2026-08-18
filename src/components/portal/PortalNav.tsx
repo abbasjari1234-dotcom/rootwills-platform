@@ -23,6 +23,7 @@ import {
   Menu,
   X
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function PortalNav() {
   const pathname = usePathname();
@@ -230,8 +231,10 @@ export function PortalNav() {
             })}
           </nav>
 
-          {/* Right Action: Quick Cart Trigger */}
+          {/* Right Action: Theme Toggle & Quick Cart Trigger */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
+
             <Link
               href="/"
               className="text-xs text-cream/50 hover:text-cream hidden sm:inline"
