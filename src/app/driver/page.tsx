@@ -18,22 +18,32 @@ import {
   ShieldCheck,
   ChevronDown,
   ChevronUp,
-  X
+  X,
+  Camera,
+  UploadCloud,
+  Image as ImageIcon,
+  Check
 } from 'lucide-react';
 import { submitDriverPOD } from '@/actions/orders';
+
+type PodMode = 'signature' | 'photo';
 
 export default function DriverMobileRunSheetPage() {
   const { orders, updateOrderStatus } = useDemoStore();
   const [activeOrder, setActiveOrder] = useState<Order | null>(null);
+  const [podMode, setPodMode] = useState<PodMode>('signature');
   const [chilledTemp, setChilledTemp] = useState('2.4');
   const [frozenTemp, setFrozenTemp] = useState('-19.2');
   const [recipientName, setRecipientName] = useState('');
   const [hasSigned, setHasSigned] = useState(false);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [deliveredSuccess, setDeliveredSuccess] = useState(false);
   const [expandedPodId, setExpandedPodId] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Canvas drawing state
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
   const activeDeliveries = orders.filter((o) => o.status !== 'delivered');
@@ -45,7 +55,7 @@ export default function DriverMobileRunSheetPage() {
 
   // Initialize canvas
   useEffect(() => {
-    if (activeOrder && canvasRef.current) {
+    if (activeOrder && podMode === 'signature' && canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext('2d');
       if (ctx) {
@@ -55,7 +65,7 @@ export default function DriverMobileRunSheetPage() {
         ctx.lineJoin = 'round';
       }
     }
-  }, [activeOrder]);
+  }, [activeOrder, podMode]);
 
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     setIsDrawing(true);
@@ -101,29 +111,52 @@ export default function DriverMobileRunSheetPage() {
     setHasSigned(false);
   };
 
+  const handlePhotoCapture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPhotoPreview(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleCompleteDelivery = async (orderId: string) => {
-    if (!recipientName.trim()) {
+    if (podMode === 'signature' && !recipientName.trim()) {
       alert('Please enter the receiver / head chef name.');
       return;
     }
 
-    const signatureDataUrl = canvasRef.current ? canvasRef.current.toDataURL('image/png') : undefined;
+    if (podMode === 'photo' && !photoPreview) {
+      alert('Please snap a photo of the safe-drop delivery before confirming.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const signatureDataUrl = podMode === 'signature' && canvasRef.current
+      ? canvasRef.current.toDataURL('image/png')
+      : undefined;
+
     const deliveredAt = new Date().toLocaleString('en-GB', { dateStyle: 'short', timeStyle: 'short' });
+    const finalRecipient = podMode === 'photo' ? 'Keyholder Drop (Photo Verified)' : recipientName.trim();
 
     const podData = {
-      recipientName: recipientName.trim(),
-      signatureDataUrl,
+      recipientName: finalRecipient,
+      signatureDataUrl: signatureDataUrl || photoPreview || undefined,
       vanProbeChilledTemp: chilledTemp,
       vanProbeFrozenTemp: frozenTemp,
       deliveredAt,
       driverName: 'Dave King (Birmingham Hub Van #04)',
+      dropType: podMode === 'photo' ? 'Keyholder Safe Drop' : 'Direct Handover',
     };
 
     // 1. Submit to Supabase Server Action
     await submitDriverPOD({
       orderId,
-      recipientName: recipientName.trim(),
-      signatureDataUrl,
+      recipientName: finalRecipient,
+      signatureDataUrl: signatureDataUrl || photoPreview || undefined,
       vanProbeChilledTemp: chilledTemp,
       vanProbeFrozenTemp: frozenTemp,
       driverName: 'Dave King (Van #04)',
@@ -133,16 +166,19 @@ export default function DriverMobileRunSheetPage() {
     updateOrderStatus(
       orderId,
       'delivered',
-      `Signed by ${recipientName.trim()} & delivered by Dave King. Chilled: ${chilledTemp}°C.`,
+      `${podMode === 'photo' ? 'Keyholder drop photo captured' : `Signed by ${recipientName.trim()}`} & delivered by Dave King. Chilled: ${chilledTemp}°C.`,
       podData
     );
 
+    setIsSubmitting(false);
     setDeliveredSuccess(true);
     setTimeout(() => {
       setDeliveredSuccess(false);
       setActiveOrder(null);
       setRecipientName('');
       setHasSigned(false);
+      setPhotoPreview(null);
+      setPodMode('signature');
     }, 1200);
   };
 
@@ -340,12 +376,14 @@ export default function DriverMobileRunSheetPage() {
                       </div>
                       {ord.pod?.signatureDataUrl && (
                         <div className="pt-2 border-t border-cream/5">
-                          <span className="text-[10px] uppercase text-cream/50 block mb-1">Captured Receiver Signature:</span>
+                          <span className="text-[10px] uppercase text-cream/50 block mb-1">
+                            Captured POD Visual:
+                          </span>
                           <div className="bg-obsidian-900 border border-cream/10 rounded-lg p-2 flex justify-center">
                             <img
                               src={ord.pod.signatureDataUrl}
-                              alt="Customer Signature"
-                              className="h-14 object-contain"
+                              alt="Captured Proof of Delivery"
+                              className="max-h-32 object-contain rounded"
                             />
                           </div>
                         </div>
@@ -359,7 +397,7 @@ export default function DriverMobileRunSheetPage() {
         </div>
       )}
 
-      {/* Proof of Delivery Interactive Signature Modal */}
+      {/* Proof of Delivery Interactive Modal */}
       {activeOrder && (
         <div className="fixed inset-0 z-50 bg-obsidian-950/85 backdrop-blur-md flex items-center justify-center p-4">
           <div className="glass-panel-gold rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl animate-fade-in">
@@ -384,80 +422,164 @@ export default function DriverMobileRunSheetPage() {
               </div>
             </div>
 
-            <div className="space-y-3 text-xs">
-              <div>
-                <label className="block text-[10px] font-mono uppercase text-cream/60 mb-1">
-                  Recipient / Receiving Chef Name *
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Chef Marco Rossi"
-                  value={recipientName}
-                  onChange={(e) => setRecipientName(e.target.value)}
-                  className="w-full bg-obsidian-950 border border-cream/20 rounded-xl px-3 py-2 text-cream focus:outline-none focus:border-champagne"
-                />
-              </div>
+            {/* POD Mode Selector: Signature vs Safe Drop Photo */}
+            <div className="grid grid-cols-2 gap-1 p-1 bg-obsidian-950 rounded-xl border border-cream/10 text-xs">
+              <button
+                type="button"
+                onClick={() => setPodMode('signature')}
+                className={`py-2 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                  podMode === 'signature'
+                    ? 'bg-zinc-800 text-champagne font-bold border border-champagne/30 shadow-sm'
+                    : 'text-cream/60 hover:text-cream'
+                }`}
+              >
+                <PenTool className="w-3.5 h-3.5" />
+                <span>Chef Signature</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setPodMode('photo')}
+                className={`py-2 rounded-lg font-medium flex items-center justify-center gap-1.5 transition-all ${
+                  podMode === 'photo'
+                    ? 'bg-zinc-800 text-emerald-400 font-bold border border-emerald-500/30 shadow-sm'
+                    : 'text-cream/60 hover:text-cream'
+                }`}
+              >
+                <Camera className="w-3.5 h-3.5" />
+                <span>Safe Drop Photo</span>
+              </button>
+            </div>
 
-              {/* Digital Signature Canvas */}
-              <div>
-                <div className="flex justify-between items-center mb-1">
-                  <label className="text-[10px] font-mono uppercase text-cream/60">
-                    Sign on Glass *
+            {/* Mode 1: Sign on Glass */}
+            {podMode === 'signature' && (
+              <div className="space-y-3 text-xs animate-fade-in">
+                <div>
+                  <label className="block text-[10px] font-mono uppercase text-cream/60 mb-1">
+                    Recipient / Receiving Chef Name *
                   </label>
-                  {hasSigned && (
-                    <button
-                      type="button"
-                      onClick={clearSignature}
-                      className="text-[10px] font-mono text-rose-400 hover:underline flex items-center gap-1"
-                    >
-                      <RotateCcw className="w-2.5 h-2.5" />
-                      <span>Clear</span>
-                    </button>
-                  )}
-                </div>
-                <div className="border border-cream/20 rounded-xl overflow-hidden bg-obsidian-950 relative">
-                  <canvas
-                    ref={canvasRef}
-                    width={320}
-                    height={110}
-                    onMouseDown={startDrawing}
-                    onMouseMove={draw}
-                    onMouseUp={stopDrawing}
-                    onMouseLeave={stopDrawing}
-                    onTouchStart={startDrawing}
-                    onTouchMove={draw}
-                    onTouchEnd={stopDrawing}
-                    className="w-full h-[110px] cursor-crosshair touch-none"
+                  <input
+                    type="text"
+                    placeholder="e.g. Chef Marco Rossi"
+                    value={recipientName}
+                    onChange={(e) => setRecipientName(e.target.value)}
+                    className="w-full bg-obsidian-950 border border-cream/20 rounded-xl px-3 py-2 text-cream focus:outline-none focus:border-champagne"
                   />
-                  {!hasSigned && (
-                    <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-cream/25 italic text-xs">
-                      Sign with finger or stylus here
-                    </div>
-                  )}
+                </div>
+
+                {/* Digital Signature Canvas */}
+                <div>
+                  <div className="flex justify-between items-center mb-1">
+                    <label className="text-[10px] font-mono uppercase text-cream/60">
+                      Sign on Glass *
+                    </label>
+                    {hasSigned && (
+                      <button
+                        type="button"
+                        onClick={clearSignature}
+                        className="text-[10px] font-mono text-rose-400 hover:underline flex items-center gap-1"
+                      >
+                        <RotateCcw className="w-2.5 h-2.5" />
+                        <span>Clear</span>
+                      </button>
+                    )}
+                  </div>
+                  <div className="border border-cream/20 rounded-xl overflow-hidden bg-obsidian-950 relative">
+                    <canvas
+                      ref={canvasRef}
+                      width={320}
+                      height={110}
+                      onMouseDown={startDrawing}
+                      onMouseMove={draw}
+                      onMouseUp={stopDrawing}
+                      onMouseLeave={stopDrawing}
+                      onTouchStart={startDrawing}
+                      onTouchMove={draw}
+                      onTouchEnd={stopDrawing}
+                      className="w-full h-[110px] cursor-crosshair touch-none"
+                    />
+                    {!hasSigned && (
+                      <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-cream/25 italic text-xs">
+                        Sign with finger or stylus here
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
+            )}
 
-              <div className="p-2.5 bg-obsidian-950 rounded-xl text-[10px] font-mono text-emerald-400 flex justify-between border border-emerald-500/20">
-                <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Van Probe Temperature:</span>
-                </span>
-                <span className="font-bold">{chilledTemp}°C (Chilled)</span>
+            {/* Mode 2: Keyholder Safe Drop Photo */}
+            {podMode === 'photo' && (
+              <div className="space-y-3 text-xs animate-fade-in">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  onChange={handlePhotoCapture}
+                  className="hidden"
+                />
+
+                {photoPreview ? (
+                  <div className="relative rounded-2xl overflow-hidden border border-emerald-500/40 bg-obsidian-950">
+                    <img
+                      src={photoPreview}
+                      alt="Safe drop preview"
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="absolute bottom-2 left-2 right-2 p-1.5 bg-obsidian-950/80 backdrop-blur rounded-lg text-[10px] font-mono text-emerald-300 flex justify-between">
+                      <span>✓ Photo Verified</span>
+                      <button
+                        type="button"
+                        onClick={() => setPhotoPreview(null)}
+                        className="text-rose-400 hover:underline"
+                      >
+                        Retake
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full py-8 rounded-2xl border-2 border-dashed border-cream/20 hover:border-champagne bg-obsidian-950 flex flex-col items-center justify-center gap-2 text-cream/60 hover:text-cream transition-all cursor-pointer"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-champagne/10 text-champagne flex items-center justify-center">
+                      <Camera className="w-5 h-5" />
+                    </div>
+                    <span className="font-bold text-xs">Snap Keyholder Drop Photo</span>
+                    <span className="text-[10px] text-cream/40">Kitchen inwards entrance / Cold room drop</span>
+                  </button>
+                )}
               </div>
+            )}
+
+            {/* Temperature Probe Pill */}
+            <div className="p-2.5 bg-obsidian-950 rounded-xl text-[10px] font-mono text-emerald-400 flex justify-between border border-emerald-500/20">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Van Probe Temp:</span>
+              </span>
+              <span className="font-bold">{chilledTemp}°C (BRCGS Certified)</span>
             </div>
 
             <div className="pt-2 flex gap-2">
               <button
                 onClick={() => handleCompleteDelivery(activeOrder.id)}
-                disabled={!recipientName.trim()}
+                disabled={isSubmitting || (podMode === 'signature' && !recipientName.trim()) || (podMode === 'photo' && !photoPreview)}
                 className={`flex-1 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-all ${
-                  recipientName.trim()
+                  (podMode === 'signature' ? recipientName.trim() : photoPreview) && !isSubmitting
                     ? 'bg-emerald-500 text-obsidian-950 shadow-emerald-glow hover:brightness-110'
                     : 'bg-obsidian-800 text-cream/30 border border-cream/10 cursor-not-allowed'
                 }`}
               >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Confirm Delivery</span>
+                {isSubmitting ? (
+                  <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Confirm Delivery</span>
+                  </>
+                )}
               </button>
               <button
                 onClick={() => setActiveOrder(null)}

@@ -548,15 +548,14 @@ export default function InvoicesStatementsPage() {
             </div>
 
             <div className="pt-2 flex justify-between gap-3">
-              <button
-                onClick={() => {
-                  window.print();
-                }}
-                className="flex-1 py-2.5 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5"
+              <Link
+                href={`/invoices/${selectedInvoiceForModal.id}/print`}
+                target="_blank"
+                className="flex-1 py-2.5 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5 hover:brightness-110"
               >
-                <Download className="w-3.5 h-3.5" />
-                <span>Print / Download PDF</span>
-              </button>
+                <Printer className="w-3.5 h-3.5" />
+                <span>Open Official A4 Tax Invoice</span>
+              </Link>
               <button
                 onClick={() => setSelectedInvoiceForModal(null)}
                 className="px-5 py-2.5 rounded-xl border border-cream/20 text-xs text-cream/60 hover:text-cream"
