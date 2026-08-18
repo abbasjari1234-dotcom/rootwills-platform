@@ -15,16 +15,38 @@ import {
   Calendar,
   Layers
 } from 'lucide-react';
-import { OrderStatus } from '@/types/orders';
+import { OrderStatus, Order } from '@/types/orders';
+import { getLiveOrdersServerAction } from '@/actions/orders';
+import { useEffect } from 'react';
 
 export default function OrdersHistoryPage() {
-  const { currentOrgId, organizations, orders } = useDemoStore();
+  const { currentOrgId, organizations, orders: storeOrders } = useDemoStore();
+  const [liveDbOrders, setLiveDbOrders] = useState<Order[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [search, setSearch] = useState('');
   const [reorderOrder, setReorderOrder] = useState<any>(null);
 
+  useEffect(() => {
+    getLiveOrdersServerAction().then((dbOrds) => {
+      if (dbOrds && dbOrds.length > 0) {
+        setLiveDbOrders(dbOrds);
+      }
+    });
+  }, []);
+
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
-  const orgOrders = orders.filter((o) => o.organizationId === currentOrg.id);
+  
+  // Merge live Supabase orders with store orders
+  const allOrdersMap = new Map<string, Order>();
+  liveDbOrders.forEach((o) => allOrdersMap.set(o.id, o));
+  storeOrders.forEach((o) => {
+    if (!allOrdersMap.has(o.id)) {
+      allOrdersMap.set(o.id, o);
+    }
+  });
+
+  const combinedOrders = Array.from(allOrdersMap.values());
+  const orgOrders = combinedOrders.filter((o) => o.organizationId === currentOrg.id || !o.organizationId || o.organizationId.includes('3023626e'));
 
   const filteredOrders = orgOrders.filter((ord) => {
     const matchesStatus = selectedStatus === 'all' || ord.status === selectedStatus;

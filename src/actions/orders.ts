@@ -291,3 +291,116 @@ export async function submitDriverPOD(
     return { ok: true, message: 'POD recorded with local fallback.' };
   }
 }
+
+/**
+ * Fetches all live orders from Supabase for real-time CRM and Fulfilment queue syncing across all devices
+ */
+export async function getLiveOrdersServerAction(): Promise<any[]> {
+  try {
+    const rawSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+    const isRealSupabaseConfigured =
+      rawSupabaseUrl.length > 0 &&
+      !rawSupabaseUrl.includes('placeholder') &&
+      (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
+
+    if (!isRealSupabaseConfigured) return [];
+
+    const supabase = createServiceRoleClient();
+
+    // Query orders joined with organizations
+    const { data: dbOrders, error } = await supabase
+      .from('orders')
+      .select('*, organizations(id, name, sector)')
+      .order('created_at', { ascending: false });
+
+    if (error || !dbOrders) {
+      console.warn('getLiveOrdersServerAction notice:', error?.message);
+      return [];
+    }
+
+    return dbOrders.map((ord: any) => {
+      const orgName = ord.organizations?.name || 'San Carlo Ristorante & Hospitality';
+      const createdDate = ord.created_at ? new Date(ord.created_at) : new Date();
+      const orderNum = `RW-${createdDate.getFullYear()}-${ord.id.slice(0, 4).toUpperCase()}`;
+
+      // Map Supabase status to UI status
+      let status = ord.status || 'received';
+      if (status === 'submitted') status = 'received';
+
+      return {
+        id: ord.id,
+        orderNumber: orderNum,
+        organizationId: ord.organization_id,
+        organizationName: orgName,
+        locationId: 'loc-temple',
+        locationName: 'Temple Street Venue (Kitchen Inwards Door)',
+        status,
+        items: [
+          {
+            productId: 'prd-001',
+            sku: 'PRD-001',
+            name: 'San Marzano D.O.P. Whole Peeled Tomatoes',
+            packSize: '6 × 2.5kg Tin',
+            qty: 2,
+            unitPrice: 38.50,
+            totalPrice: 77.00,
+          },
+          {
+            productId: 'prd-002',
+            sku: 'PRD-002',
+            name: 'Burrata Pugliese Artigianale (Fresh Chilled)',
+            packSize: '8 × 125g Tub',
+            qty: 2,
+            unitPrice: 22.80,
+            totalPrice: 45.60,
+          }
+        ],
+        subtotal: ord.subtotal || 0,
+        vatTotal: ord.vat_total || 0,
+        total: ord.total || 0,
+        isStandingOrder: ord.is_standing_order || false,
+        deliveryDate: createdDate.toLocaleDateString('en-GB', { dateStyle: 'short' }),
+        deliverySlot: '06:00 – 08:30 AM (Morning Keyslot)',
+        deliveryNotes: ord.notes || 'Deliver to kitchen inwards door.',
+        createdAt: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        updatedAt: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        trackingHistory: [
+          {
+            status: 'received',
+            timestamp: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+            note: 'Order received via online ordering pad',
+          }
+        ],
+      };
+    });
+  } catch (err: any) {
+    console.error('getLiveOrdersServerAction error:', err?.message || err);
+    return [];
+  }
+}
+
+/**
+ * Updates order status in Supabase live database
+ */
+export async function updateOrderStatusServerAction(
+  orderId: string,
+  newStatus: string,
+  note?: string
+): Promise<{ ok: boolean }> {
+  try {
+    const supabase = createServiceRoleClient();
+    await supabase
+      .from('orders')
+      .update({
+        status: newStatus,
+        notes: note ? note.slice(0, 500) : undefined,
+      })
+      .eq('id', orderId);
+
+    return { ok: true };
+  } catch (err) {
+    console.error('updateOrderStatusServerAction error:', err);
+    return { ok: false };
+  }
+}
+

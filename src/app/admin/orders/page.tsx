@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDemoStore } from '@/lib/store/demo-store';
 import { Order, OrderStatus } from '@/types/orders';
 import { OrderStatusBadge } from '@/components/portal/OrderStatusBadge';
@@ -11,10 +11,14 @@ import {
   Truck, 
   Clock, 
   CheckCircle2, 
-  ArrowRight,
-  MapPin,
-  FileText
+  ArrowRight, 
+  MapPin, 
+  FileText,
+  RefreshCw,
+  Zap,
+  Sparkles
 } from 'lucide-react';
+import { getLiveOrdersServerAction, updateOrderStatusServerAction } from '@/actions/orders';
 
 const STATUS_FLOW: OrderStatus[] = [
   'received',
@@ -26,12 +30,46 @@ const STATUS_FLOW: OrderStatus[] = [
 ];
 
 export default function AdminOrdersFulfillmentPage() {
-  const { orders, updateOrderStatus } = useDemoStore();
+  const { orders: storeOrders, updateOrderStatus } = useDemoStore();
+  const [liveDbOrders, setLiveDbOrders] = useState<Order[]>([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedOrderForPicking, setSelectedOrderForPicking] = useState<Order | null>(null);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [search, setSearch] = useState('');
 
-  const filteredOrders = orders.filter((ord) => {
+  // Fetch live orders from Supabase on mount and every 8 seconds
+  const fetchLiveOrders = async () => {
+    setIsRefreshing(true);
+    try {
+      const dbOrders = await getLiveOrdersServerAction();
+      if (dbOrders && dbOrders.length > 0) {
+        setLiveDbOrders(dbOrders);
+      }
+    } catch (err) {
+      console.warn('Failed to fetch live orders from Supabase:', err);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLiveOrders();
+    const interval = setInterval(fetchLiveOrders, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Merge live Supabase orders with store orders (deduplicating)
+  const allOrdersMap = new Map<string, Order>();
+  liveDbOrders.forEach((o) => allOrdersMap.set(o.id, o));
+  storeOrders.forEach((o) => {
+    if (!allOrdersMap.has(o.id)) {
+      allOrdersMap.set(o.id, o);
+    }
+  });
+
+  const combinedOrders = Array.from(allOrdersMap.values());
+
+  const filteredOrders = combinedOrders.filter((ord) => {
     const matchesStatus = filterStatus === 'all' || ord.status === filterStatus;
     const matchesSearch =
       ord.orderNumber.toLowerCase().includes(search.toLowerCase()) ||
@@ -40,11 +78,21 @@ export default function AdminOrdersFulfillmentPage() {
     return matchesStatus && matchesSearch;
   });
 
-  const handleAdvanceStatus = (order: Order) => {
+  const handleAdvanceStatus = async (order: Order) => {
     const currentIndex = STATUS_FLOW.indexOf(order.status);
     if (currentIndex >= 0 && currentIndex < STATUS_FLOW.length - 1) {
       const nextStatus = STATUS_FLOW[currentIndex + 1];
+      
+      // 1. Update in local store
       updateOrderStatus(order.id, nextStatus, `Advanced by Operations Admin`);
+
+      // 2. Update in state
+      setLiveDbOrders((prev) =>
+        prev.map((o) => (o.id === order.id ? { ...o, status: nextStatus } : o))
+      );
+
+      // 3. Update in Supabase
+      await updateOrderStatusServerAction(order.id, nextStatus);
     }
   };
 
@@ -53,17 +101,28 @@ export default function AdminOrdersFulfillmentPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-cream/10">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 uppercase font-bold">
-            <ClipboardList className="w-3.5 h-3.5" />
-            <span>Birmingham Hub Fulfilment Queue</span>
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono text-emerald-400 uppercase font-bold">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Birmingham Hub Fulfilment Queue &bull; Live Cross-Device Sync</span>
           </div>
           <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
             Warehouse Order Picking & Driver Dispatch
           </h1>
           <p className="text-xs text-cream/60">
-            Process incoming orders, generate picking sheets for depot selectors, and update real-time driver delivery status.
+            Real-time orders placed across all devices automatically sync here via live Supabase database.
           </p>
         </div>
+
+        {/* Refresh button */}
+        <button
+          type="button"
+          onClick={fetchLiveOrders}
+          disabled={isRefreshing}
+          className="px-3.5 py-2 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center gap-1.5 hover:bg-obsidian-850 shadow-sm transition-all"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+          <span>{isRefreshing ? 'Syncing...' : 'Sync Live Orders'}</span>
+        </button>
       </div>
 
       {/* Filter and Search Bar */}
@@ -79,7 +138,7 @@ export default function AdminOrdersFulfillmentPage() {
                   : 'bg-obsidian-900 text-cream/70 hover:text-cream border border-cream/10'
               }`}
             >
-              {st === 'all' ? 'All Live Orders' : st.replace('_', ' ')}
+              {st === 'all' ? `All Orders (${combinedOrders.length})` : st.replace('_', ' ')}
             </button>
           ))}
         </div>
@@ -98,71 +157,86 @@ export default function AdminOrdersFulfillmentPage() {
 
       {/* Orders Fulfillment Stream */}
       <div className="space-y-3">
-        {filteredOrders.map((order) => {
-          const currentIndex = STATUS_FLOW.indexOf(order.status);
-          const nextStatus = currentIndex < STATUS_FLOW.length - 1 ? STATUS_FLOW[currentIndex + 1] : null;
+        {filteredOrders.length === 0 ? (
+          <div className="glass-panel p-8 rounded-2xl text-center text-xs text-cream/50 space-y-2">
+            <ClipboardList className="w-8 h-8 text-cream/30 mx-auto" />
+            <p className="font-bold text-cream">No orders match this filter.</p>
+            <p>Orders placed on any mobile device or laptop will appear here in real-time.</p>
+          </div>
+        ) : (
+          filteredOrders.map((order) => {
+            const currentIndex = STATUS_FLOW.indexOf(order.status);
+            const nextStatus = currentIndex < STATUS_FLOW.length - 1 ? STATUS_FLOW[currentIndex + 1] : null;
+            const isLiveSupabase = order.id.includes('-') && order.id.length > 20;
 
-          return (
-            <div
-              key={order.id}
-              className="glass-panel p-5 rounded-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:border-emerald-500/30 transition-all"
-            >
-              <div className="space-y-1 flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono font-bold text-cream text-base">{order.orderNumber}</span>
-                  <span className="font-bold text-cream text-sm">&bull; {order.organizationName}</span>
-                  <OrderStatusBadge status={order.status} />
-                  {order.isStandingOrder && (
-                    <span className="px-2 py-0.5 rounded bg-champagne/10 text-champagne font-mono text-[10px]">
-                      Standing ({order.recurrence})
-                    </span>
+            return (
+              <div
+                key={order.id}
+                className="glass-panel p-5 rounded-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:border-emerald-500/30 transition-all border border-cream/10 shadow-lg"
+              >
+                <div className="space-y-1 flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="font-mono font-bold text-champagne text-base">{order.orderNumber}</span>
+                    <span className="font-bold text-cream text-sm">&bull; {order.organizationName}</span>
+                    <OrderStatusBadge status={order.status} />
+                    {isLiveSupabase && (
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>LIVE CLOUD DB</span>
+                      </span>
+                    )}
+                    {order.isStandingOrder && (
+                      <span className="px-2 py-0.5 rounded bg-champagne/10 text-champagne font-mono text-[10px]">
+                        Standing ({order.recurrence})
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="text-xs text-cream/60">
+                    <span>Site: <strong>{order.locationName}</strong></span>
+                    <span className="mx-2 text-cream/30">&bull;</span>
+                    <span>Target: <strong className="text-champagne">{order.deliveryDate} ({order.deliverySlot})</strong></span>
+                  </div>
+
+                  <div className="text-xs text-cream/40 flex flex-wrap gap-2 pt-1 font-mono">
+                    {order.items.map((i, idx) => (
+                      <span key={idx} className="bg-obsidian-950 px-2 py-0.5 rounded border border-cream/5">
+                        {i.qty}x {i.sku} ({i.name})
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-cream/10">
+                  <div className="text-right mr-2">
+                    <div className="text-[10px] uppercase font-mono text-cream/40">Order Value</div>
+                    <div className="font-mono font-bold text-champagne text-sm">£{order.total.toFixed(2)}</div>
+                  </div>
+
+                  {/* Print Picking List Button */}
+                  <button
+                    onClick={() => setSelectedOrderForPicking(order)}
+                    className="px-3.5 py-2 rounded-lg bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-medium flex items-center gap-1.5 transition-colors"
+                  >
+                    <Printer className="w-3.5 h-3.5 text-champagne" />
+                    <span>Print Picking Sheet</span>
+                  </button>
+
+                  {/* Advance Stage Button */}
+                  {nextStatus && (
+                    <button
+                      onClick={() => handleAdvanceStatus(order)}
+                      className="px-4 py-2 rounded-lg bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-1.5 transition-all"
+                    >
+                      <span>Advance to {nextStatus.replace('_', ' ')}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   )}
                 </div>
-
-                <div className="text-xs text-cream/60">
-                  <span>Site: <strong>{order.locationName}</strong></span>
-                  <span className="mx-2 text-cream/30">&bull;</span>
-                  <span>Target: <strong className="text-champagne">{order.deliveryDate} ({order.deliverySlot})</strong></span>
-                </div>
-
-                <div className="text-xs text-cream/40 flex flex-wrap gap-2 pt-1 font-mono">
-                  {order.items.map((i, idx) => (
-                    <span key={idx} className="bg-obsidian-950 px-2 py-0.5 rounded border border-cream/5">
-                      {i.qty}x {i.sku} ({i.name})
-                    </span>
-                  ))}
-                </div>
               </div>
-
-              <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-cream/10">
-                <div className="text-right mr-2">
-                  <div className="text-[10px] uppercase font-mono text-cream/40">Order Value</div>
-                  <div className="font-mono font-bold text-champagne text-sm">£{order.total.toFixed(2)}</div>
-                </div>
-
-                {/* Print Picking List Button */}
-                <button
-                  onClick={() => setSelectedOrderForPicking(order)}
-                  className="px-3.5 py-2 rounded-lg bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-medium flex items-center gap-1.5 transition-colors"
-                >
-                  <Printer className="w-3.5 h-3.5 text-champagne" />
-                  <span>Print Picking Sheet</span>
-                </button>
-
-                {/* Advance Stage Button */}
-                {nextStatus && (
-                  <button
-                    onClick={() => handleAdvanceStatus(order)}
-                    className="px-4 py-2 rounded-lg bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-1.5"
-                  >
-                    <span>Advance to {nextStatus.replace('_', ' ')}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
       {/* Warehouse Picking List Print Modal */}

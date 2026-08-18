@@ -27,7 +27,8 @@ import {
   MapPin
 } from 'lucide-react';
 import { Sector } from '@/types/onboarding';
-import { convertLeadServerAction } from '@/actions/crm';
+import { convertLeadServerAction, getLiveLeadsServerAction } from '@/actions/crm';
+import { RefreshCw } from 'lucide-react';
 
 interface ColumnConfig {
   status: LeadStatus;
@@ -46,7 +47,9 @@ const COLUMNS: ColumnConfig[] = [
 ];
 
 export default function SalesCRMPage() {
-  const { leads, updateLeadStatus, convertLeadToCustomer, addLead } = useDemoStore();
+  const { leads: storeLeads, updateLeadStatus, convertLeadToCustomer, addLead } = useDemoStore();
+  const [liveDbLeads, setLiveDbLeads] = useState<Lead[]>([]);
+  const [isSyncing, setIsSyncing] = useState(false);
   
   // Modals & Conversion State
   const [selectedLeadForConvert, setSelectedLeadForConvert] = useState<Lead | null>(null);
@@ -63,6 +66,37 @@ export default function SalesCRMPage() {
   const [selectedSectorFilter, setSelectedSectorFilter] = useState<string>('all');
   const [selectedSpendFilter, setSelectedSpendFilter] = useState<string>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const fetchLiveLeads = async () => {
+    setIsSyncing(true);
+    try {
+      const dbLeads = await getLiveLeadsServerAction();
+      if (dbLeads && dbLeads.length > 0) {
+        setLiveDbLeads(dbLeads);
+      }
+    } catch (err) {
+      console.warn('Failed to fetch live leads:', err);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLiveLeads();
+    const interval = setInterval(fetchLiveLeads, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Merge live Supabase leads with store leads (deduplicating)
+  const allLeadsMap = new Map<string, Lead>();
+  liveDbLeads.forEach((l) => allLeadsMap.set(l.id, l));
+  storeLeads.forEach((l) => {
+    if (!allLeadsMap.has(l.id)) {
+      allLeadsMap.set(l.id, l);
+    }
+  });
+
+  const leads = Array.from(allLeadsMap.values());
 
   // New Lead Form
   const [newLeadForm, setNewLeadForm] = useState({
@@ -198,6 +232,15 @@ export default function SalesCRMPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={fetchLiveLeads}
+            disabled={isSyncing}
+            className="px-3.5 py-2.5 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-xs hover:bg-obsidian-850 flex items-center gap-1.5 transition-all shadow-sm"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+            <span>{isSyncing ? 'Syncing...' : 'Sync Live Leads'}</span>
+          </button>
           <button
             onClick={() => setNewLeadModalOpen(true)}
             className="px-4 py-2.5 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-2"
