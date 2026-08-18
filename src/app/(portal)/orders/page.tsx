@@ -34,26 +34,36 @@ export default function OrdersHistoryPage() {
     });
   }, []);
 
-  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
+  const currentOrg = (organizations && organizations.find((o) => o.id === currentOrgId)) || (organizations && organizations[0]) || { id: 'org-default', name: 'Commercial Venue' };
   
   // Merge live Supabase orders with store orders
   const allOrdersMap = new Map<string, Order>();
-  liveDbOrders.forEach((o) => allOrdersMap.set(o.id, o));
-  storeOrders.forEach((o) => {
-    if (!allOrdersMap.has(o.id)) {
+  liveDbOrders.forEach((o) => {
+    if (o && o.id) allOrdersMap.set(o.id, o);
+  });
+  (storeOrders || []).forEach((o) => {
+    if (o && o.id && !allOrdersMap.has(o.id)) {
       allOrdersMap.set(o.id, o);
     }
   });
 
   const combinedOrders = Array.from(allOrdersMap.values());
-  const orgOrders = combinedOrders.filter((o) => o.organizationId === currentOrg.id || !o.organizationId || o.organizationId.includes('3023626e'));
+  const orgOrders = combinedOrders.filter((o) => !o.organizationId || o.organizationId === currentOrg?.id || o.organizationId.includes('3023626e'));
 
   const filteredOrders = orgOrders.filter((ord) => {
+    if (!ord) return false;
     const matchesStatus = selectedStatus === 'all' || ord.status === selectedStatus;
+    const orderNum = (ord.orderNumber || '').toLowerCase();
+    const locName = (ord.locationName || '').toLowerCase();
+    const itemsList = Array.isArray(ord.items) ? ord.items : [];
+    const q = (search || '').toLowerCase();
+
     const matchesSearch =
-      ord.orderNumber.toLowerCase().includes(search.toLowerCase()) ||
-      ord.locationName.toLowerCase().includes(search.toLowerCase()) ||
-      ord.items.some((i) => i.name.toLowerCase().includes(search.toLowerCase()));
+      !q ||
+      orderNum.includes(q) ||
+      locName.includes(q) ||
+      itemsList.some((i) => (i?.name || '').toLowerCase().includes(q));
+
     return matchesStatus && matchesSearch;
   });
 
