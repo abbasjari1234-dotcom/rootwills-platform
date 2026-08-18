@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useDemoStore } from '@/lib/store/demo-store';
-import { createClient } from '@/lib/supabase/client';
+import { loginServerAction } from '@/actions/auth';
 import {
   Lock,
   Mail,
@@ -115,7 +115,6 @@ function LoginForm() {
       const cleanEmail = email.trim().toLowerCase();
       const cleanPassword = password.trim();
 
-      // 1. Validate inputs
       if (!cleanEmail) {
         throw new Error('Please enter your registered email address.');
       }
@@ -123,134 +122,44 @@ function LoginForm() {
         throw new Error('Please enter your account password.');
       }
 
-      const rawSupabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
-      const isRealSupabaseConfigured = rawSupabaseUrl.length > 0 &&
-        !rawSupabaseUrl.includes('placeholder') &&
-        (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
-
-      let targetRole: 'admin' | 'customer' | 'driver' = loginScope === 'staff' ? 'admin' : 'customer';
-      let targetOrgId = 'org-sancarlo';
-      let authenticated = false;
-
-      if (isRealSupabaseConfigured) {
-        try {
-          const supabase = createClient();
-          const { data, error } = await supabase.auth.signInWithPassword({
-            email: cleanEmail,
-            password: cleanPassword,
-          });
-
-          if (!error && data?.user) {
-            authenticated = true;
-
-            // Safe bounded profile lookup
-            try {
-              const profilePromise = supabase
-                .from('profiles')
-                .select('id, role, organization_id')
-                .eq('id', data.user.id)
-                .maybeSingle();
-
-              const timeoutPromise = new Promise<{ data: any }>((resolve) =>
-                setTimeout(() => resolve({ data: null }), 1500)
-              );
-
-              const raceResult = await Promise.race([profilePromise, timeoutPromise]);
-              const profile = (raceResult as any)?.data;
-
-              if (
-                profile?.role === 'admin' ||
-                profile?.role === 'sales' ||
-                loginScope === 'staff' ||
-                cleanEmail.includes('admin') ||
-                cleanEmail.includes('rootwills')
-              ) {
-                targetRole = 'admin';
-              } else if (profile?.role === 'driver') {
-                targetRole = 'driver';
-              } else {
-                targetRole = 'customer';
-              }
-
-              if (profile?.organization_id) {
-                targetOrgId = profile.organization_id;
-              }
-            } catch {
-              if (loginScope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills')) {
-                targetRole = 'admin';
-              }
-            }
-          } else if (error) {
-            console.warn('Supabase auth notice:', error.message);
-            // Check if user is testing with a preconfigured demo persona
-            const isDemoPersona = Object.values(DEMO_PERSONAS).some(
-              (p) => p.email.toLowerCase() === cleanEmail
-            );
-            if (isDemoPersona && cleanPassword === 'demo-access-2026') {
-              authenticated = true;
-              targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
-            } else {
-              if (error.message.toLowerCase().includes('email not confirmed')) {
-                throw new Error('Email not confirmed in Supabase. In your Supabase Dashboard -> Authentication -> Users, click your user and click "Confirm Email" (or turn off email confirmation in Authentication -> Providers -> Email settings).');
-              }
-              if (error.message.toLowerCase().includes('invalid login credentials')) {
-                throw new Error('Invalid email or password. Please verify the email and password in your Supabase Auth Users table.');
-              }
-              throw new Error(error.message || 'Invalid login credentials.');
-            }
-          }
-        } catch (supabaseErr: any) {
-          const isDemoPersona = Object.values(DEMO_PERSONAS).some(
-            (p) => p.email.toLowerCase() === cleanEmail
-          );
-          if (isDemoPersona && cleanPassword === 'demo-access-2026') {
-            authenticated = true;
-            targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
-          } else {
-            throw new Error(supabaseErr?.message || 'Invalid email or password.');
-          }
+      // 1. Check if user is testing with a preconfigured demo persona
+      const isDemoPersona = Object.values(DEMO_PERSONAS).some(
+        (p) => p.email.toLowerCase() === cleanEmail
+      );
+      if (isDemoPersona && cleanPassword === 'demo-access-2026') {
+        const targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
+        const targetOrgId = selectedTab === 'hotel' ? 'org-grandhotel' : 'org-sancarlo';
+        setPersona(targetOrgId, targetRole);
+        if (typeof document !== 'undefined') {
+          document.cookie = `rootwills_role=${targetRole}; path=/; max-age=86400; SameSite=Lax`;
         }
-      } else {
-        // Demo Mode Password Verification
-        const VALID_DEMO_PASSWORDS = ['demo-access-2026', 'rootwills2026', 'admin123', 'password123'];
-        const isValidDemoPassword = VALID_DEMO_PASSWORDS.includes(cleanPassword);
-
-        if (!isValidDemoPassword) {
-          throw new Error('Invalid password. For demo testing, use password: demo-access-2026');
-        }
-        authenticated = true;
-        targetRole = loginScope === 'staff' || selectedTab === 'admin' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills') ? 'admin' : 'customer';
+        const dest = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
+        window.location.href = dest;
+        return;
       }
 
-      if (!authenticated) {
-        throw new Error('Authentication failed. Please verify your email and password.');
+      // 2. Authenticate securely on server
+      const res = await loginServerAction({
+        email: cleanEmail,
+        password: cleanPassword,
+        scope: loginScope,
+      });
+
+      if (!res.ok) {
+        throw new Error(res.error || 'Invalid login credentials.');
       }
 
-      if (selectedTab === 'hotel') targetOrgId = 'org-grandhotel';
-
-      // Update state store
-      setPersona(targetOrgId, targetRole as 'admin' | 'customer');
-
-      // Set cookie for server route protection middleware
-      if (typeof document !== 'undefined') {
-        document.cookie = `rootwills_role=${targetRole}; path=/; max-age=86400; SameSite=Lax`;
-      }
+      // 3. Update client store persona
+      const targetRole = res.role || (loginScope === 'staff' ? 'admin' : 'customer');
+      const targetOrg = res.organizationId || 'org-sancarlo';
+      setPersona(targetOrg, targetRole === 'admin' ? 'admin' : 'customer');
 
       const redirectParam = searchParams?.get('redirect');
       const destination = (redirectParam && redirectParam.startsWith('/'))
         ? redirectParam
-        : targetRole === 'admin'
-          ? '/admin/crm'
-          : targetRole === 'driver'
-            ? '/driver'
-            : '/dashboard';
+        : res.destination || (targetRole === 'admin' ? '/admin/crm' : '/dashboard');
 
-      // Immediate navigation
-      if (typeof window !== 'undefined') {
-        window.location.href = destination;
-      } else {
-        router.push(destination);
-      }
+      window.location.href = destination;
     } catch (err: any) {
       console.error('Authentication rejected:', err);
       setErrorMessage(err?.message || 'Invalid login credentials. Please check your email and password.');
