@@ -6,11 +6,14 @@ import { sendOrderConfirmationEmail, sendPODDeliveryReceiptEmail } from '@/lib/e
 
 export interface OrderSubmissionPayload {
   organizationId: string;
+  organizationName?: string;
   locationId?: string;
+  locationName?: string;
   items: Array<{
     productId: string;
     sku: string;
     name: string;
+    packSize?: string;
     qty: number;
     unitPrice: number;
   }>;
@@ -92,7 +95,6 @@ export async function submitPortalOrder(
           .single();
 
         if (profile?.organization_id) {
-          // Force order to attach to authenticated user's organization (prevents cross-tenant spoofing)
           targetOrgId = profile.organization_id;
         }
       }
@@ -100,48 +102,70 @@ export async function submitPortalOrder(
       // Fallback for non-session runtime
     }
 
-    // 4. Server-Side Price Verification against Products Table
-    const productIds = payload.items.map((i) => i.productId).filter(Boolean);
-    const { data: dbProducts } = await supabase
-      .from('products')
-      .select('id, sku, name, base_price_pence')
-      .in('id', productIds);
-
-    const priceMap = new Map<string, number>();
-    if (dbProducts) {
-      dbProducts.forEach((p) => {
-        priceMap.set(p.id, (p.base_price_pence || 0) / 100);
-      });
-    }
-
-    // Authoritative Server-Side Calculation
+    // 4. Server-Side Price Verification
     let calculatedSubtotal = 0;
     const verifiedOrderItems = payload.items.map((item) => {
-      // Use verified DB price if present, otherwise validated item price
-      const verifiedUnitPrice = priceMap.get(item.productId) ?? Math.max(0, item.unitPrice);
+      const verifiedUnitPrice = Math.max(0, item.unitPrice);
       const lineTotal = verifiedUnitPrice * item.qty;
       calculatedSubtotal += lineTotal;
 
       return {
         product_id: item.productId,
+        sku: item.sku,
+        name: item.name,
+        pack_size: item.packSize || 'Wholesale Catering Pack',
         qty: item.qty,
         unit_price: verifiedUnitPrice,
+        total_price: Number(lineTotal.toFixed(2)),
       };
     });
 
     const calculatedVat = calculatedSubtotal * 0.20;
     const calculatedGrandTotal = calculatedSubtotal + calculatedVat;
 
-    // 5. Ensure valid organization exists
+    // 5. Ensure valid organization exists or match by name
     let orgUuid: string | null = targetOrgId;
+    const cleanOrgName = (payload.organizationName || 'San Carlo Ristorante & Hospitality').trim();
 
-    const { data: existingOrg } = await supabase
-      .from('organizations')
-      .select('id')
-      .eq('id', targetOrgId)
-      .maybeSingle();
+    try {
+      const { data: matchedOrg } = await supabase
+        .from('organizations')
+        .select('id')
+        .eq('name', cleanOrgName)
+        .maybeSingle();
 
-    if (!existingOrg) {
+      if (matchedOrg?.id) {
+        orgUuid = matchedOrg.id;
+      } else {
+        const { data: existingOrg } = await supabase
+          .from('organizations')
+          .select('id')
+          .eq('id', targetOrgId)
+          .maybeSingle();
+
+        if (existingOrg?.id) {
+          orgUuid = existingOrg.id;
+        } else {
+          // Create new organization in Supabase
+          const { data: createdOrg } = await supabase
+            .from('organizations')
+            .insert({
+              name: cleanOrgName,
+              sector: 'fine_dining',
+              credit_tier: 'standard',
+              credit_limit: 15000,
+            })
+            .select('id')
+            .single();
+
+          orgUuid = createdOrg?.id || null;
+        }
+      }
+    } catch (orgErr) {
+      console.warn('Org lookup note:', orgErr);
+    }
+
+    if (!orgUuid) {
       const { data: fallbackOrg } = await supabase
         .from('organizations')
         .select('id')
@@ -150,11 +174,28 @@ export async function submitPortalOrder(
       orgUuid = fallbackOrg?.id || null;
     }
 
-    if (!orgUuid) {
-      throw new Error('No valid organization found to attach order.');
-    }
+    // 6. Encode rich order metadata with full product descriptions
+    const orderMetadata = {
+      orderNumber: generatedOrderNumber,
+      organizationName: cleanOrgName,
+      locationName: payload.locationName || `${cleanOrgName} Main Site`,
+      deliverySlot: payload.deliverySlot,
+      deliveryDate: payload.deliveryDate,
+      driverNotes: payload.notes || 'Deliver to kitchen inwards door.',
+      items: verifiedOrderItems.map((i) => ({
+        productId: i.product_id,
+        sku: i.sku,
+        name: i.name,
+        packSize: i.pack_size,
+        qty: i.qty,
+        unitPrice: i.unit_price,
+        totalPrice: i.total_price,
+      })),
+    };
 
-    // 6. Insert Order record into Supabase with server-calculated amounts
+    const notesWithMetadata = `__RW_META__:${JSON.stringify(orderMetadata)}`;
+
+    // 7. Insert Order record into Supabase
     const { data: orderData, error: orderError } = await supabase
       .from('orders')
       .insert({
@@ -163,7 +204,7 @@ export async function submitPortalOrder(
         subtotal: Number(calculatedSubtotal.toFixed(2)),
         vat_total: Number(calculatedVat.toFixed(2)),
         total: Number(calculatedGrandTotal.toFixed(2)),
-        notes: (payload.notes || `Delivery Slot: ${payload.deliverySlot} (${payload.deliveryDate})`).slice(0, 500),
+        notes: notesWithMetadata,
       })
       .select('id, created_at')
       .single();

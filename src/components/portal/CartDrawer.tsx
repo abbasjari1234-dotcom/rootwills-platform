@@ -113,11 +113,14 @@ export function CartDrawer() {
       // 1. Submit to Supabase database (or fallback)
       const dbResult = await submitPortalOrder({
         organizationId: currentOrg.id,
+        organizationName: currentOrg.name,
         locationId: currentLocation?.id,
+        locationName: currentLocation ? currentLocation.name : `${currentOrg.name} Primary Venue`,
         items: items.map((item) => ({
           productId: item.productId,
           sku: item.sku,
           name: item.name,
+          packSize: item.packSize,
           qty: item.qty,
           unitPrice: item.customerPrice,
         })),
