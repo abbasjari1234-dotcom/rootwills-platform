@@ -67,27 +67,46 @@ export async function loginServerAction(formData: {
         return { ok: false, error: error?.message || 'Invalid login credentials.' };
       }
 
-      // Query profiles table for role & organization
+      // Query profiles table for strict role verification
+      let profile: { id?: string; role?: string; organization_id?: string } | null = null;
       try {
-        const { data: profile } = await supabase
+        const { data: userProfile } = await supabase
           .from('profiles')
           .select('id, role, organization_id')
           .eq('id', data.user.id)
           .maybeSingle();
 
-        if (scope === 'staff') {
-          targetRole = 'admin';
-        } else if (profile?.role === 'driver') {
-          targetRole = 'driver';
-        } else {
-          targetRole = 'customer';
-        }
-
-        if (profile?.organization_id) {
-          targetOrgId = profile.organization_id;
-        }
+        profile = userProfile;
       } catch {
-        targetRole = scope === 'staff' ? 'admin' : 'customer';
+        // Continue if profile lookup fails
+      }
+
+      const userRole = (profile?.role || '').toLowerCase();
+      const isStaffDomain = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
+      const hasStaffPermission = userRole === 'admin' || userRole === 'sales' || isStaffDomain;
+
+      // 1. STRICT STAFF CHECK: If logging in under Staff CRM tab, verify permissions
+      if (scope === 'staff') {
+        if (!hasStaffPermission && profile !== null && userRole.length > 0) {
+          return {
+            ok: false,
+            error: `Access Denied: Account (${cleanEmail}) is registered as a Customer (${userRole}) and does not have Staff Administrator permissions.`,
+          };
+        }
+        targetRole = 'admin';
+      } else {
+        // 2. CUSTOMER PORTAL LOGIN
+        if (userRole === 'driver') {
+          return {
+            ok: false,
+            error: 'Driver accounts must sign in via the Driver Logistics App (/driver).',
+          };
+        }
+        targetRole = hasStaffPermission ? 'admin' : 'customer';
+      }
+
+      if (profile?.organization_id) {
+        targetOrgId = profile.organization_id;
       }
 
       // Set auth cookies
@@ -128,6 +147,15 @@ export async function loginServerAction(formData: {
   const VALID_DEMO_PASSWORDS = ['demo-access-2026', 'rootwills2026', 'admin123', 'password123'];
   if (!VALID_DEMO_PASSWORDS.includes(cleanPassword)) {
     return { ok: false, error: 'Invalid password. For demo testing, use password: demo-access-2026' };
+  }
+
+  const isStaffDemoEmail = cleanEmail.includes('rootwills') || cleanEmail.includes('marcus') || cleanEmail.includes('admin');
+
+  if (scope === 'staff' && !isStaffDemoEmail) {
+    return {
+      ok: false,
+      error: 'Access Denied: Customer demo accounts cannot access Staff CRM. Use Marcus Vance (Admin) demo instead.',
+    };
   }
 
   targetRole = scope === 'staff' ? 'admin' : 'customer';

@@ -4,16 +4,13 @@ import { updateSession } from '@/lib/supabase/middleware';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const roleCookie = request.cookies.get('rootwills_role')?.value;
-  const authSessionCookie =
-    request.cookies.get('sb-access-token')?.value ||
-    request.cookies.get('supabase-auth-token')?.value;
 
-  const { response, user } = await updateSession(request);
+  const { response } = await updateSession(request);
 
-  // 1. Admin Route Protection (/admin/*)
+  // 1. Admin Route Protection (/admin/*) — Requires Staff/Admin Role
   if (pathname.startsWith('/admin')) {
-    const isAuthorized = roleCookie === 'admin' || roleCookie === 'sales' || Boolean(user);
-    if (!isAuthorized) {
+    const isAuthorizedAdmin = roleCookie === 'admin' || roleCookie === 'sales';
+    if (!isAuthorizedAdmin) {
       const loginUrl = new URL('/login', request.url);
       loginUrl.searchParams.set('role', 'admin');
       loginUrl.searchParams.set('redirect', pathname);
@@ -21,10 +18,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 2. Driver Route Protection (/driver)
+  // 2. Driver Route Protection (/driver) — Requires Driver or Admin Role
   if (pathname.startsWith('/driver')) {
-    const isAuthorized = roleCookie === 'driver' || roleCookie === 'admin' || Boolean(user);
-    if (!isAuthorized) {
+    const isAuthorizedDriver = roleCookie === 'driver' || roleCookie === 'admin';
+    if (!isAuthorizedDriver) {
       const loginUrl = new URL('/login', request.url);
       loginUrl.searchParams.set('role', 'driver');
       loginUrl.searchParams.set('redirect', pathname);
@@ -32,13 +29,13 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // 3. Customer Portal Route Protection
+  // 3. Customer Portal Route Protection (/dashboard, /quick-order, etc.)
   const portalRoutes = ['/dashboard', '/quick-order', '/orders', '/invoices', '/standing-orders', '/account'];
   const isPortalRoute = portalRoutes.some((route) => pathname.startsWith(route));
 
   if (isPortalRoute) {
-    const isAuthorized = roleCookie === 'customer' || roleCookie === 'admin' || Boolean(user) || Boolean(authSessionCookie);
-    if (!isAuthorized) {
+    const isAuthorizedCustomer = roleCookie === 'customer' || roleCookie === 'admin' || roleCookie === 'sales';
+    if (!isAuthorizedCustomer) {
       const loginUrl = new URL('/login', request.url);
       loginUrl.searchParams.set('redirect', pathname);
       return NextResponse.redirect(loginUrl);
