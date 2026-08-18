@@ -31,6 +31,12 @@ export function AdminSidebar() {
 
   const links = [
     {
+      href: '/admin/orders',
+      label: 'Live Incoming Orders',
+      icon: ClipboardList,
+      badge: 'Live Sync',
+    },
+    {
       href: '/admin/crm',
       label: 'Sales CRM & Leads',
       icon: Users,
@@ -38,14 +44,13 @@ export function AdminSidebar() {
     },
     {
       href: '/admin/customers',
-      label: 'Customers & Price Matrix',
+      label: 'Customers & Accounts',
       icon: DollarSign,
     },
     {
-      href: '/admin/orders',
-      label: 'Fulfillment & Picking',
-      icon: ClipboardList,
-      badge: activeOrdersCount > 0 ? `${activeOrdersCount} Live` : undefined,
+      href: '/driver',
+      label: 'Driver Mobile POD App',
+      icon: Truck,
     },
     {
       href: '/admin/standing-orders',
@@ -54,23 +59,18 @@ export function AdminSidebar() {
     },
     {
       href: '/admin/notifications',
-      label: 'Kitchen Comms & WhatsApp',
+      label: 'Kitchen WhatsApp & Comms',
       icon: Bell,
     },
     {
       href: '/admin/products',
-      label: 'Product Catalog Editor',
+      label: 'Catalog & Product Editor',
       icon: Package,
     },
     {
       href: '/admin/analytics',
-      label: 'Sales & Inactive Alerts',
+      label: 'Revenue & Sales Metrics',
       icon: BarChart3,
-    },
-    {
-      href: '/driver',
-      label: 'Driver Mobile POD App',
-      icon: Truck,
     },
   ];
 
