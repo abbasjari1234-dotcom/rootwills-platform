@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { stepTradeAccountSchema, type StepTradeAccountValues } from '@/types/onboarding';
@@ -9,7 +9,7 @@ import { FormField } from '@/components/onboarding/FormField';
 import { submitOnboardingApplication } from '@/actions/onboarding';
 import { onboardingApplicationSchema } from '@/types/onboarding';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, Sparkles, CheckCircle2, Lock, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Sparkles, CheckCircle2, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 
 const CREDIT_TIERS = [
   { 
@@ -41,6 +41,7 @@ const CREDIT_TIERS = [
 export function StepTradeAccount() {
   const store = useOnboardingStore();
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -53,6 +54,7 @@ export function StepTradeAccount() {
       contactName: store.account.contactName ?? '',
       contactEmail: store.account.contactEmail ?? '',
       contactPhone: store.account.contactPhone ?? '',
+      password: store.account.password ?? '',
       creditTierRequested: store.account.creditTierRequested ?? 'standard',
       agreedToTerms: store.account.agreedToTerms as true,
     },
@@ -99,7 +101,7 @@ export function StepTradeAccount() {
         </p>
       </div>
 
-      {/* Primary Contact Fields with high contrast */}
+      {/* Primary Contact Fields */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-2">
         <FormField label="Primary Contact Name *" error={errors.contactName?.message}>
           <input
@@ -118,13 +120,31 @@ export function StepTradeAccount() {
           />
         </FormField>
 
-        <FormField label="Mobile / Kitchen Direct Line *" error={errors.contactPhone?.message} className="sm:col-span-2">
+        <FormField label="Mobile / Kitchen Direct Line *" error={errors.contactPhone?.message}>
           <input
             type="tel"
             {...register('contactPhone')}
             placeholder="07700 900123"
             className="onboarding-input"
           />
+        </FormField>
+
+        <FormField label="Create Account Password *" error={errors.password?.message}>
+          <div className="relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              {...register('password')}
+              placeholder="Minimum 8 characters"
+              className="onboarding-input pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/40 hover:text-cream p-1"
+            >
+              {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          </div>
         </FormField>
       </div>
 

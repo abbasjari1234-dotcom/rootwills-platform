@@ -30,9 +30,7 @@ export const stepIndustrySchema = z.object({
 export type StepIndustryValues = z.infer<typeof stepIndustrySchema>;
 
 // ============================================================================
-// STEP 2 — Business details (branches based on sector, hence the loose
-// numeric bounds rather than sector-specific schemas; extend per-sector
-// with z.discriminatedUnion('sector', [...]) if the branches diverge further)
+// STEP 2 — Business details
 // ============================================================================
 
 export const stepBusinessDetailsSchema = z.object({
@@ -62,7 +60,7 @@ export const stepLogisticsSchema = z.object({
 export type StepLogisticsValues = z.infer<typeof stepLogisticsSchema>;
 
 // ============================================================================
-// STEP 4 — Trade account & credit application
+// STEP 4 — Trade account & credentials
 // ============================================================================
 
 export const creditTierSchema = z.enum(['standard', 'premium', 'concierge']);
@@ -72,6 +70,10 @@ export const stepTradeAccountSchema = z.object({
   contactName: z.string().min(2, 'Enter a contact name.'),
   contactEmail: z.string().email('Enter a valid email address.'),
   contactPhone: z.string().min(7, 'Enter a valid phone number.'),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters long.')
+    .default(''),
   creditTierRequested: creditTierSchema.default('standard'),
   agreedToTerms: z.literal(true, {
     invalid_type_error: 'You must accept the trade account terms to continue.',
@@ -90,8 +92,5 @@ export const onboardingApplicationSchema = stepIndustrySchema
 
 export type OnboardingApplicationValues = z.infer<typeof onboardingApplicationSchema>;
 
-// Threshold above which an application is routed to concierge review instead
-// of instant provisioning. Tune freely — this is a business decision, not a
-// technical one.
 export const CONCIERGE_REVIEW_SPEND_THRESHOLD = 5000;
 export const CONCIERGE_REVIEW_TIERS: CreditTier[] = ['concierge'];

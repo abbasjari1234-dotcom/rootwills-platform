@@ -7,9 +7,8 @@ import {
   CONCIERGE_REVIEW_SPEND_THRESHOLD,
   CONCIERGE_REVIEW_TIERS,
 } from '@/types/onboarding';
-import { createServiceRoleClient } from '@/lib/supabase/server';
+import { createServiceRoleClient, createClient } from '@/lib/supabase/server';
 import { geocodePostcode, findNearestDepot } from '@/lib/depot-routing';
-
 import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
@@ -42,13 +41,18 @@ export async function submitOnboardingApplication(
   const status = needsConciergeReview ? 'concierge_review' : 'auto_approved';
 
   try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    if (!supabaseUrl || supabaseUrl.includes('placeholder')) {
+    const rawSupabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
+    const isRealSupabase =
+      rawSupabaseUrl.length > 0 &&
+      !rawSupabaseUrl.includes('placeholder') &&
+      (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
+
+    if (!isRealSupabase) {
       // Demo / development fallback
       return { ok: true, status, applicationId: `app-${Date.now()}` };
     }
 
-    const supabase = createServiceRoleClient();
+    const supabase = createClient();
 
     let nearestDepotId: string | null = null;
     try {
@@ -61,9 +65,43 @@ export async function submitOnboardingApplication(
       const nearest = findNearestDepot(origin, depots ?? []);
       nearestDepotId = nearest?.depot.id ?? null;
     } catch (err) {
-      console.error('Depot routing failed:', err);
+      console.error('Depot routing notice:', err);
     }
 
+    // 1. Create or register customer in Supabase Auth if password provided
+    let authUserId: string | null = null;
+    if (values.password && values.password.length >= 8) {
+      try {
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+          email: values.contactEmail.trim().toLowerCase(),
+          password: values.password.trim(),
+          options: {
+            data: {
+              full_name: values.contactName.trim(),
+              role: 'customer',
+              organization_name: values.organizationName.trim(),
+            },
+          },
+        });
+
+        if (signUpData?.user) {
+          authUserId = signUpData.user.id;
+
+          // Upsert profile record
+          await supabase.from('profiles').upsert({
+            id: authUserId,
+            full_name: values.contactName.trim(),
+            role: 'customer',
+          });
+        } else if (signUpError) {
+          console.warn('Sign-up notice:', signUpError.message);
+        }
+      } catch (authErr) {
+        console.warn('Auth creation notice:', authErr);
+      }
+    }
+
+    // 2. Insert Onboarding Application record for CRM
     const { data: application, error: applicationError } = await supabase
       .from('onboarding_applications')
       .insert({
