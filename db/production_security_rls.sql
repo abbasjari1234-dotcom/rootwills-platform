@@ -138,12 +138,13 @@ create policy "admin manage all organizations"
 
 -- Profiles
 drop policy if exists "users can view profiles in their own organization" on profiles;
+drop policy if exists "users can view their own profile" on profiles;
 drop policy if exists "users can update their own profile" on profiles;
 drop policy if exists "admin manage all profiles" on profiles;
 
-create policy "users can view profiles in their own organization"
+create policy "users can view their own profile"
   on profiles for select
-  using (organization_id = public.user_organization_id() or public.is_admin());
+  using (id = auth.uid() or public.is_admin());
 
 create policy "users can update their own profile"
   on profiles for update

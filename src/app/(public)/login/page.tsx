@@ -91,7 +91,6 @@ function LoginForm() {
     const staffParam = searchParams?.get('staff');
     if (roleParam === 'admin' || staffParam === 'true') {
       setLoginScope('staff');
-      setEmail('marcus.vance@rootwills.co.uk');
     }
   }, [searchParams]);
 
@@ -144,23 +143,42 @@ function LoginForm() {
           if (!error && data?.user) {
             authenticated = true;
 
-            // Fetch user profile from Supabase profiles table
-            const { data: profile } = await supabase
-              .from('profiles')
-              .select('id, role, organization_id, full_name')
-              .eq('id', data.user.id)
-              .maybeSingle();
+            // Safe bounded profile lookup
+            try {
+              const profilePromise = supabase
+                .from('profiles')
+                .select('id, role, organization_id')
+                .eq('id', data.user.id)
+                .maybeSingle();
 
-            if (profile?.role === 'admin' || profile?.role === 'sales' || loginScope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills')) {
-              targetRole = 'admin';
-            } else if (profile?.role === 'driver') {
-              targetRole = 'driver';
-            } else {
-              targetRole = 'customer';
-            }
+              const timeoutPromise = new Promise<{ data: any }>((resolve) =>
+                setTimeout(() => resolve({ data: null }), 1500)
+              );
 
-            if (profile?.organization_id) {
-              targetOrgId = profile.organization_id;
+              const raceResult = await Promise.race([profilePromise, timeoutPromise]);
+              const profile = (raceResult as any)?.data;
+
+              if (
+                profile?.role === 'admin' ||
+                profile?.role === 'sales' ||
+                loginScope === 'staff' ||
+                cleanEmail.includes('admin') ||
+                cleanEmail.includes('rootwills')
+              ) {
+                targetRole = 'admin';
+              } else if (profile?.role === 'driver') {
+                targetRole = 'driver';
+              } else {
+                targetRole = 'customer';
+              }
+
+              if (profile?.organization_id) {
+                targetOrgId = profile.organization_id;
+              }
+            } catch {
+              if (loginScope === 'staff' || cleanEmail.includes('admin') || cleanEmail.includes('rootwills')) {
+                targetRole = 'admin';
+              }
             }
           } else if (error) {
             console.warn('Supabase auth notice:', error.message);
@@ -173,7 +191,7 @@ function LoginForm() {
               targetRole = selectedTab === 'admin' || loginScope === 'staff' ? 'admin' : 'customer';
             } else {
               if (error.message.toLowerCase().includes('email not confirmed')) {
-                throw new Error('Email not confirmed in Supabase. In your Supabase Dashboard -> Authentication -> Users, click the user and click "Confirm Email" (or disable email confirmation in Auth settings).');
+                throw new Error('Email not confirmed in Supabase. In your Supabase Dashboard -> Authentication -> Users, click your user and click "Confirm Email" (or turn off email confirmation in Authentication -> Providers -> Email settings).');
               }
               if (error.message.toLowerCase().includes('invalid login credentials')) {
                 throw new Error('Invalid email or password. Please verify the email and password in your Supabase Auth Users table.');
@@ -227,17 +245,16 @@ function LoginForm() {
             ? '/driver'
             : '/dashboard';
 
-      router.refresh();
-      await router.push(destination);
+      // Immediate navigation
+      if (typeof window !== 'undefined') {
+        window.location.href = destination;
+      } else {
+        router.push(destination);
+      }
     } catch (err: any) {
       console.error('Authentication rejected:', err);
       setErrorMessage(err?.message || 'Invalid login credentials. Please check your email and password.');
       setIsLoading(false);
-    } finally {
-      const safetyTimer = setTimeout(() => {
-        setIsLoading(false);
-      }, 3500);
-      return () => clearTimeout(safetyTimer);
     }
   };
 
@@ -376,7 +393,7 @@ function LoginForm() {
                 <input
                   type="email"
                   required
-                  placeholder={loginScope === 'staff' ? 'marcus.vance@rootwills.co.uk' : 'chef@establishment.co.uk'}
+                  placeholder={loginScope === 'staff' ? 'admin@rootwills.co.uk' : 'chef@establishment.co.uk'}
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -441,7 +458,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold shadow-gold-glow hover:brightness-110 text-xs sm:text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold shadow-gold-glow hover:brightness-110 text-xs sm:text-sm transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? (
                 <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
