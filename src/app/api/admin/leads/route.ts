@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createServiceRoleClient } from '@/lib/supabase/server';
+import { createClient, createServiceRoleClient } from '@/lib/supabase/server';
 import { LeadStatus } from '@/types/crm';
 import { Sector } from '@/types/onboarding';
 
@@ -18,6 +18,34 @@ export async function GET() {
       return NextResponse.json({ ok: true, leads: [] });
     }
 
+    // 1. Enforce Authentication & Role Authorization
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ ok: false, error: 'Unauthorized: Login required' }, { status: 401 });
+    }
+
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+    const isAuthorized = userRole === 'admin' || userRole === 'sales' || isStaffDomain;
+
+    if (!isAuthorized) {
+      return NextResponse.json(
+        { ok: false, error: 'Forbidden: Administrator or Commercial Sales permission required' },
+        { status: 403 }
+      );
+    }
+
+    // 2. Fetch leads using service role
     const supabase = createServiceRoleClient();
     const { data: applications, error } = await supabase
       .from('onboarding_applications')
@@ -62,6 +90,7 @@ export async function GET() {
     return NextResponse.json({ ok: true, leads });
   } catch (err: any) {
     console.error('API /api/admin/leads error:', err);
-    return NextResponse.json({ ok: true, leads: [] });
+    return NextResponse.json({ ok: false, error: 'Internal server error' }, { status: 500 });
   }
 }
+

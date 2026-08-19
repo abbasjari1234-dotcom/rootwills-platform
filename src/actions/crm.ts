@@ -64,30 +64,36 @@ export async function convertLeadServerAction(
       };
     }
 
-    const supabase = createServiceRoleClient();
-
     // 3. Verify caller role in Supabase
-    try {
-      const userClient = await createClient();
-      const { data: { user } } = await userClient.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', user.id)
-          .single();
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
 
-        if (profile && profile.role !== 'admin' && profile.role !== 'sales') {
-          return {
-            ok: false,
-            message: 'Forbidden: Commercial Staff or Admin authorization required.',
-          };
-        }
-      }
-    } catch {
-      // Allow fallback if running in service mode
+    if (!user) {
+      return {
+        ok: false,
+        message: 'Unauthorized: Valid staff session required to approve trade accounts.',
+      };
     }
 
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+
+    if (userRole !== 'admin' && userRole !== 'sales' && !isStaffDomain) {
+      return {
+        ok: false,
+        message: 'Forbidden: Commercial Staff or Admin authorization required.',
+      };
+    }
+
+    const supabase = createServiceRoleClient();
     const { data: orgData, error: orgError } = await supabase
       .from('organizations')
       .insert({
@@ -117,11 +123,10 @@ export async function convertLeadServerAction(
       message: `Trade account for ${payload.companyName} created successfully in Supabase!`,
     };
   } catch (err: any) {
-    console.error('convertLeadServerAction fallback:', err?.message || err);
+    console.error('convertLeadServerAction error:', err?.message || err);
     return {
-      ok: true,
-      organizationId: `org-${Date.now()}`,
-      message: `Trade account approved (Fallback Mode).`,
+      ok: false,
+      message: err?.message || 'Server error creating trade account.',
     };
   }
 }
@@ -138,6 +143,29 @@ export async function getLiveLeadsServerAction(): Promise<Lead[]> {
       (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
 
     if (!isRealSupabaseConfigured) return [];
+
+    // Authenticate caller
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
+
+    if (!user) {
+      return [];
+    }
+
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+
+    if (userRole !== 'admin' && userRole !== 'sales' && !isStaffDomain) {
+      return [];
+    }
 
     const supabase = createServiceRoleClient();
     const { data: applications, error } = await supabase

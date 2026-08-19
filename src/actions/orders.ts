@@ -3,6 +3,7 @@
 import { createServiceRoleClient, createClient } from '@/lib/supabase/server';
 import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
 import { sendOrderConfirmationEmail, sendPODDeliveryReceiptEmail } from '@/lib/email';
+import { INITIAL_PRODUCTS } from '@/lib/mock-data';
 
 export interface OrderSubmissionPayload {
   organizationId: string;
@@ -31,6 +32,29 @@ export interface OrderSubmissionResult {
   orderNumber?: string;
   error?: string;
   recalculatedTotal?: number;
+}
+
+// Helper to look up authoritative base price from catalog
+function getAuthoritativeProductPrice(productId?: string, sku?: string, fallbackPrice = 0): { price: number; name: string; packSize: string; vatRate: number } {
+  const match = INITIAL_PRODUCTS.find(
+    (p) => (productId && p.id === productId) || (sku && p.sku.toLowerCase() === sku.toLowerCase())
+  );
+  if (match) {
+    // UK VAT rules: mineral waters, sodas, and confectionaries are standard rated (20%)
+    const isStandardRated = match.subcategory === 'drinks' || (match.category === 'ambient' && match.name.toLowerCase().includes('water'));
+    return {
+      price: match.basePrice,
+      name: match.name,
+      packSize: match.packSize,
+      vatRate: isStandardRated ? 0.20 : 0.00,
+    };
+  }
+  return {
+    price: Math.max(0.01, fallbackPrice),
+    name: 'Wholesale Foodservice Product',
+    packSize: 'Standard Wholesale Pack',
+    vatRate: 0.00,
+  };
 }
 
 export async function submitPortalOrder(
@@ -67,9 +91,17 @@ export async function submitPortalOrder(
       (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
 
     if (!isRealSupabaseConfigured) {
-      // In offline/demo mode, compute verified server total to guard against frontend price tampering
-      const verifiedSubtotal = payload.items.reduce((sum, item) => sum + (Math.max(0, item.unitPrice) * item.qty), 0);
-      const verifiedVat = verifiedSubtotal * 0.20;
+      // In offline/demo mode, strictly compute verified server total from authoritative catalog to prevent tampering
+      let verifiedSubtotal = 0;
+      let verifiedVat = 0;
+
+      payload.items.forEach((item) => {
+        const authProd = getAuthoritativeProductPrice(item.productId, item.sku, item.unitPrice);
+        const lineNet = authProd.price * item.qty;
+        verifiedSubtotal += lineNet;
+        verifiedVat += lineNet * authProd.vatRate;
+      });
+
       const verifiedTotal = verifiedSubtotal + verifiedVat;
 
       return {
@@ -102,26 +134,48 @@ export async function submitPortalOrder(
       // Fallback for non-session runtime
     }
 
-    // 4. Server-Side Price Verification
+    // 4. Server-Side Authoritative Price Verification (Database + Catalog Lookup)
+    // Fetch product base prices and tiered pricing for tenant from Supabase
+    let dbProductsMap = new Map<string, number>();
+    try {
+      const productIds = payload.items.map((i) => i.productId).filter(Boolean);
+      if (productIds.length > 0) {
+        const { data: dbProducts } = await supabase
+          .from('products')
+          .select('id, base_price')
+          .in('id', productIds);
+
+        if (dbProducts) {
+          dbProducts.forEach((p: any) => dbProductsMap.set(p.id, Number(p.base_price)));
+        }
+      }
+    } catch (e) {
+      console.warn('DB product lookup note:', e);
+    }
+
     let calculatedSubtotal = 0;
+    let calculatedVat = 0;
+
     const verifiedOrderItems = payload.items.map((item) => {
-      const verifiedUnitPrice = Math.max(0, item.unitPrice);
-      const lineTotal = verifiedUnitPrice * item.qty;
+      const authInfo = getAuthoritativeProductPrice(item.productId, item.sku, item.unitPrice);
+      const authoritativePrice = dbProductsMap.get(item.productId) ?? authInfo.price;
+      const lineTotal = authoritativePrice * item.qty;
+      
       calculatedSubtotal += lineTotal;
+      calculatedVat += lineTotal * authInfo.vatRate;
 
       return {
         product_id: item.productId,
         sku: item.sku,
-        name: item.name,
-        pack_size: item.packSize || 'Wholesale Catering Pack',
+        name: authInfo.name || item.name,
+        pack_size: item.packSize || authInfo.packSize || 'Wholesale Catering Pack',
         qty: item.qty,
-        unit_price: verifiedUnitPrice,
+        unit_price: Number(authoritativePrice.toFixed(2)),
         total_price: Number(lineTotal.toFixed(2)),
       };
     });
 
-    const calculatedVat = typeof payload.vatTotal === 'number' ? Number(payload.vatTotal.toFixed(2)) : Number((calculatedSubtotal * 0.05).toFixed(2));
-    const calculatedGrandTotal = typeof payload.total === 'number' ? Number(payload.total.toFixed(2)) : Number((calculatedSubtotal + calculatedVat).toFixed(2));
+    const calculatedGrandTotal = Number((calculatedSubtotal + calculatedVat).toFixed(2));
 
     // 5. Ensure valid organization exists or match by name
     let orgUuid: string | null = targetOrgId;
@@ -346,13 +400,37 @@ export async function getLiveOrdersServerAction(): Promise<any[]> {
 
     if (!isRealSupabaseConfigured) return [];
 
-    const supabase = createServiceRoleClient();
+    // Authenticate caller
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
 
-    // Query orders joined with organizations
-    const { data: dbOrders, error } = await supabase
+    if (!user) return [];
+
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role, organization_id')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+    const isStaffOrDriver = userRole === 'admin' || userRole === 'sales' || userRole === 'driver' || isStaffDomain;
+
+    const supabase = createServiceRoleClient();
+    let query = supabase
       .from('orders')
       .select('*, organizations(id, name, sector)')
       .order('created_at', { ascending: false });
+
+    // Non-staff customers can only view their own organization's orders
+    if (!isStaffOrDriver) {
+      if (!profile?.organization_id) return [];
+      query = query.eq('organization_id', profile.organization_id);
+    }
+
+    const { data: dbOrders, error } = await query;
 
     if (error || !dbOrders) {
       console.warn('getLiveOrdersServerAction notice:', error?.message);
@@ -429,6 +507,38 @@ export async function updateOrderStatusServerAction(
   note?: string
 ): Promise<{ ok: boolean }> {
   try {
+    const rawSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+    const isRealSupabaseConfigured =
+      rawSupabaseUrl.length > 0 &&
+      !rawSupabaseUrl.includes('placeholder') &&
+      (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
+
+    if (!isRealSupabaseConfigured) {
+      return { ok: true };
+    }
+
+    // Authenticate caller
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
+
+    if (!user) return { ok: false };
+
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+    const isAuthorized = userRole === 'admin' || userRole === 'sales' || userRole === 'driver' || isStaffDomain;
+
+    if (!isAuthorized) {
+      return { ok: false };
+    }
+
     const supabase = createServiceRoleClient();
     await supabase
       .from('orders')
@@ -444,4 +554,5 @@ export async function updateOrderStatusServerAction(
     return { ok: false };
   }
 }
+
 

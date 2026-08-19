@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createServiceRoleClient } from '@/lib/supabase/server';
+import { createClient, createServiceRoleClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -14,6 +14,33 @@ export async function GET() {
 
     if (!isRealSupabaseConfigured) {
       return NextResponse.json({ ok: true, orders: [] });
+    }
+
+    // 1. Enforce Authentication & Role Authorization
+    const userClient = createClient();
+    const {
+      data: { user },
+    } = await userClient.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ ok: false, error: 'Unauthorized: Login required' }, { status: 401 });
+    }
+
+    const { data: profile } = await userClient
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    const userRole = (profile?.role || user.app_metadata?.role || user.user_metadata?.role || '').toLowerCase();
+    const isStaffDomain = user.email?.includes('rootwills.co.uk') || user.email?.includes('admin');
+    const isAuthorized = userRole === 'admin' || userRole === 'sales' || userRole === 'driver' || isStaffDomain;
+
+    if (!isAuthorized) {
+      return NextResponse.json(
+        { ok: false, error: 'Forbidden: Staff or Driver authorization required' },
+        { status: 403 }
+      );
     }
 
     const supabase = createServiceRoleClient();
