@@ -5,20 +5,71 @@ import { z } from 'zod';
 // ============================================================================
 
 export const SECTORS = [
-  { value: 'fine_dining', label: 'Fine Dining', description: 'Michelin, tasting menus, chef-led kitchens' },
-  { value: 'boutique_hotel', label: 'Boutique Hotels', description: 'Independent and luxury hospitality groups' },
-  { value: 'luxury_catering', label: 'Luxury Catering', description: 'Private events, weddings, corporate hospitality' },
-  { value: 'private_club', label: 'Private Members\' Clubs', description: 'Members\' dining and event spaces' },
-  { value: 'artisan_cafe', label: 'Artisan Cafés', description: 'Specialty coffee, bakery, all-day dining' },
-  { value: 'other', label: 'Something Else', description: 'Tell us a little more about your business' },
+  { 
+    value: 'fine_dining', 
+    label: 'Fine Dining & Restaurants', 
+    description: 'Michelin, tasting menus, high-volume bistros & chef-led dining',
+    tag: 'Chef-Led Kitchens',
+  },
+  { 
+    value: 'boutique_hotel', 
+    label: 'Boutique Hotels & Resorts', 
+    description: 'Independent hotels, breakfast operations, room service & banqueting',
+    tag: 'Multi-Outlet Dining',
+  },
+  { 
+    value: 'gastropub', 
+    label: 'Gastropubs & Bars', 
+    description: 'High-volume pubs, craft taprooms, cocktail bars & burger kitchens',
+    tag: 'Sunday Roast & Bar Ops',
+  },
+  { 
+    value: 'artisan_cafe', 
+    label: 'Artisan Cafés & Bakeries', 
+    description: 'Specialty coffee houses, sourdough bakeries & all-day brunch venues',
+    tag: 'Brunch & Pastry Prep',
+  },
+  { 
+    value: 'luxury_catering', 
+    label: 'Event & Wedding Catering', 
+    description: 'Private dining, marquee weddings, corporate banquets & pop-ups',
+    tag: 'High-Capacity Surge',
+  },
+  { 
+    value: 'contract_catering', 
+    label: 'Business & Universities', 
+    description: 'Corporate staff dining, higher education catering & business hubs',
+    tag: 'Institutional Volume',
+  },
+  { 
+    value: 'care_home', 
+    label: 'Care Homes & Healthcare', 
+    description: 'Nutritious elder care, residential dining & dietary-controlled menus',
+    tag: 'IDDSI & Allergen Safe',
+  },
+  { 
+    value: 'private_club', 
+    label: 'Private Members\' Clubs', 
+    description: 'Exclusive dining clubs, golf resorts & members\' hospitality suites',
+    tag: 'VIP Contract Rates',
+  },
+  { 
+    value: 'other', 
+    label: 'Specialized Foodservice', 
+    description: 'Dark kitchens, food hall operators, street food & custom concepts',
+    tag: 'Custom Fleet Drops',
+  },
 ] as const;
 
 export const sectorSchema = z.enum([
   'fine_dining',
   'boutique_hotel',
-  'luxury_catering',
-  'private_club',
+  'gastropub',
   'artisan_cafe',
+  'luxury_catering',
+  'contract_catering',
+  'care_home',
+  'private_club',
   'other',
 ]);
 

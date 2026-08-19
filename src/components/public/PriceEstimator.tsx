@@ -78,12 +78,15 @@ export function PriceEstimator() {
                   onChange={(e) => setSector(e.target.value as Sector)}
                   className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne"
                 >
-                  <option value="fine_dining">Fine Dining & Chef-Led Restaurant</option>
-                  <option value="boutique_hotel">Boutique Hotel & Banqueting</option>
-                  <option value="care_homes">Care Home / Healthcare Facility</option>
-                  <option value="luxury_catering">Luxury Event Catering</option>
-                  <option value="pubs_bars">Gastropub / High Volume Bar</option>
-                  <option value="artisan_cafe">Artisan Bakery & Specialty Café</option>
+                  <option value="fine_dining">Fine Dining & Restaurants</option>
+                  <option value="boutique_hotel">Boutique Hotels & Resorts</option>
+                  <option value="gastropub">Gastropubs & Bars</option>
+                  <option value="artisan_cafe">Artisan Cafés & Bakeries</option>
+                  <option value="luxury_catering">Event & Wedding Catering</option>
+                  <option value="contract_catering">Business & Higher Education</option>
+                  <option value="care_home">Care Homes & Healthcare</option>
+                  <option value="private_club">Private Members' Clubs</option>
+                  <option value="other">Specialized Foodservice Concept</option>
                 </select>
               </div>
 
