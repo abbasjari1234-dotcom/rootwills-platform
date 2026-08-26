@@ -6,12 +6,12 @@ const config: Config = {
     extend: {
       colors: {
         obsidian: {
-          950: '#070706',
-          900: '#0E0E0C',
-          850: '#141411',
-          800: '#1A1A16',
-          700: '#262621',
-          600: '#383832',
+          950: '#050B08',
+          900: '#0A140F',
+          850: '#0F1E17',
+          800: '#15291F',
+          700: '#1E382B',
+          600: '#2A4D3B',
         },
         cream: {
           DEFAULT: '#F5EFE6',
@@ -22,13 +22,20 @@ const config: Config = {
         champagne: {
           DEFAULT: '#C9A227',
           soft: '#E4C767',
-          dim: '#9B7C1B',
-          glow: 'rgba(201, 162, 39, 0.15)',
+          light: '#FFF4D0',
+          dim: '#8C6E12',
+          glow: 'rgba(201, 162, 39, 0.18)',
         },
         emerald: {
-          fresh: '#10B981',
-          dark: '#064E3B',
-          glow: 'rgba(16, 185, 129, 0.15)',
+          950: '#022C22',
+          900: '#064E3B',
+          800: '#065F46',
+          700: '#047857',
+          600: '#059669',
+          500: '#10B981',
+          400: '#34D399',
+          300: '#6EE7B7',
+          glow: 'rgba(16, 185, 129, 0.2)',
         },
         stone: {
           900: '#1C1917',
@@ -48,13 +55,15 @@ const config: Config = {
         mono: ['var(--font-mono)', 'IBM Plex Mono', 'monospace'],
       },
       boxShadow: {
-        'gold-glow': '0 0 25px -5px rgba(201, 162, 39, 0.25)',
-        'emerald-glow': '0 0 25px -5px rgba(16, 185, 129, 0.25)',
-        'subtle': '0 4px 20px -2px rgba(0, 0, 0, 0.5)',
+        'gold-glow': '0 0 30px -5px rgba(228, 199, 103, 0.3)',
+        'emerald-glow': '0 0 30px -5px rgba(16, 185, 129, 0.3)',
+        'royal-depth': '0 20px 50px -10px rgba(2, 44, 34, 0.8), 0 0 30px rgba(228, 199, 103, 0.15)',
+        '3d-float': '0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(16, 185, 129, 0.15)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'float-slow': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -64,6 +73,10 @@ const config: Config = {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(16px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
     },

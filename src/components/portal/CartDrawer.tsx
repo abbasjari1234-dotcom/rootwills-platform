@@ -176,36 +176,40 @@ export function CartDrawer() {
       {/* Backdrop */}
       <div
         onClick={closeCart}
-        className="absolute inset-0 bg-obsidian-950/80 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-obsidian-950/80 backdrop-blur-md transition-opacity"
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-obsidian-900 border-l border-cream/15 text-cream flex flex-col shadow-2xl">
+        <div className="w-screen max-w-md bg-obsidian-950 border-l border-emerald-900/60 text-cream flex flex-col shadow-[0_0_60px_rgba(0,0,0,0.9)] backdrop-blur-2xl">
           {/* Header */}
-          <div className="p-5 border-b border-cream/10 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-champagne" />
-              <h2 className="font-display text-lg font-bold text-cream">Your Order Basket</h2>
-              <span className="text-xs text-cream/50">({items.length} lines)</span>
+          <div className="p-5 border-b border-emerald-950 flex items-center justify-between bg-obsidian-900/90">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne">
+                <ShoppingBag className="w-4 h-4" />
+              </div>
+              <div>
+                <h2 className="font-display text-lg font-bold text-cream">Your Order Basket</h2>
+                <span className="text-[11px] text-emerald-400 font-mono">({items.length} lines &bull; Locked Rates)</span>
+              </div>
             </div>
             <button
               type="button"
               onClick={closeCart}
               aria-label="Close order basket"
-              className="p-1.5 rounded-lg text-cream/60 hover:text-cream hover:bg-obsidian-800"
+              className="p-2 rounded-xl text-cream/60 hover:text-cream hover:bg-emerald-950/60 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
           {/* Delivery Site Indicator & Live 11:00 PM Cutoff Banner */}
-          <div className="bg-obsidian-950 border-b border-cream/10 text-xs">
-            <div className="px-5 py-2 flex justify-between items-center text-cream/70 border-b border-cream/5">
+          <div className="bg-obsidian-900/50 border-b border-emerald-950 text-xs">
+            <div className="px-5 py-2.5 flex justify-between items-center text-cream/70 border-b border-emerald-950/60">
               <span>Delivering to: <strong className="text-cream">{currentLocation?.name}</strong></span>
-              <span className="text-champagne font-mono text-[11px]">{currentLocation?.postcode}</span>
+              <span className="text-champagne font-mono text-[11px] font-bold">{currentLocation?.postcode}</span>
             </div>
             {/* Cutoff countdown */}
-            <div className="px-5 py-1.5 bg-emerald-500/10 flex items-center justify-between text-[11px] font-mono">
+            <div className="px-5 py-2 bg-emerald-950/60 flex items-center justify-between text-[11px] font-mono border-b border-emerald-900/40">
               <span className="text-emerald-400 font-bold flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
                 <span>11:00 PM Cutoff:</span>
@@ -219,21 +223,21 @@ export function CartDrawer() {
           {/* Order Success State */}
           {orderSuccess ? (
             <div className="flex-1 p-6 flex flex-col items-center justify-center text-center space-y-4 animate-fade-in">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-emerald-glow">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="font-display text-2xl font-bold text-cream">Order Confirmed!</h3>
               <p className="text-xs text-cream/70 max-w-xs">
-                Order <strong className="text-champagne font-mono font-bold">{orderSuccess.orderNumber}</strong> has been received by our Birmingham depot.
+                Order <strong className="text-champagne font-mono font-bold">{orderSuccess.orderNumber}</strong> has been received by our Digbeth Wholesale Hub.
               </p>
-              <div className="p-4 rounded-xl bg-obsidian-950 border border-cream/10 text-xs text-left w-full space-y-1.5 font-mono">
+              <div className="p-4 rounded-2xl bg-obsidian-900/90 border border-emerald-900/60 text-xs text-left w-full space-y-2 font-mono shadow-lg">
                 <div className="flex justify-between text-cream/70">
                   <span>Delivery Date:</span>
-                  <span className="text-cream">{orderSuccess.deliveryDate}</span>
+                  <span className="text-cream font-bold">{orderSuccess.deliveryDate}</span>
                 </div>
                 <div className="flex justify-between text-cream/70">
                   <span>Slot:</span>
-                  <span className="text-champagne">{orderSuccess.deliverySlot}</span>
+                  <span className="text-champagne font-bold">{orderSuccess.deliverySlot}</span>
                 </div>
                 {orderSuccess.isStandingOrder && (
                   <div className="flex justify-between text-cream/70">
@@ -241,17 +245,17 @@ export function CartDrawer() {
                     <span className="text-champagne uppercase font-bold">{orderSuccess.recurrence || 'Weekly'}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-cream/70">
+                <div className="flex justify-between text-cream/70 pt-1 border-t border-emerald-950">
                   <span>Total (inc. VAT):</span>
-                  <span className="text-emerald-400 font-bold">£{orderSuccess.total.toFixed(2)}</span>
+                  <span className="text-emerald-400 font-bold text-sm">£{orderSuccess.total.toFixed(2)}</span>
                 </div>
               </div>
 
-              <div className="pt-4 flex flex-col gap-2 w-full">
+              <div className="pt-4 flex flex-col gap-2.5 w-full">
                 <Link
                   href={`/orders/${orderSuccess.id}`}
                   onClick={closeCart}
-                  className="w-full py-3 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5"
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5 hover:brightness-110"
                 >
                   <span>Track Live Delivery Progress &rarr;</span>
                 </Link>
@@ -261,7 +265,7 @@ export function CartDrawer() {
                     setOrderSuccess(null);
                     closeCart();
                   }}
-                  className="py-2 text-xs text-cream/60 hover:text-cream"
+                  className="py-2.5 text-xs text-cream/60 hover:text-cream font-mono"
                 >
                   Close Drawer
                 </button>
@@ -270,7 +274,7 @@ export function CartDrawer() {
           ) : (
             <>
               {/* Items List */}
-              <div className="flex-1 overflow-y-auto p-5 space-y-4">
+              <div className="flex-1 overflow-y-auto p-5 space-y-3">
                 {items.length === 0 ? (
                   <div className="text-center py-16 space-y-3">
                     <ShoppingBag className="w-12 h-12 text-cream/20 mx-auto" />
@@ -278,7 +282,7 @@ export function CartDrawer() {
                     <Link
                       href="/catalog"
                       onClick={closeCart}
-                      className="inline-block text-xs text-champagne font-semibold hover:underline"
+                      className="inline-block text-xs text-champagne font-semibold hover:underline font-mono"
                     >
                       Browse Wholesale Catalog &rarr;
                     </Link>
@@ -287,37 +291,37 @@ export function CartDrawer() {
                   items.map((item) => (
                     <div
                       key={item.productId}
-                      className="p-3.5 rounded-xl bg-obsidian-950 border border-cream/10 flex gap-3 items-center justify-between"
+                      className="p-3.5 rounded-2xl bg-obsidian-900/80 border border-emerald-950/80 flex gap-3 items-center justify-between hover:border-emerald-800/60 transition-all shadow-sm"
                     >
                       <div className="flex-1 min-w-0">
-                        <div className="text-xs font-mono text-champagne/80 truncate">{item.sku}</div>
+                        <div className="text-[10px] font-mono text-champagne/80 truncate font-bold">{item.sku}</div>
                         <div className="text-xs font-bold text-cream truncate">{item.name}</div>
                         <div className="text-[11px] text-cream/50">{item.packSize} &bull; £{item.customerPrice.toFixed(2)} / {item.unit}</div>
                       </div>
 
                       {/* Quantity Stepper */}
                       <div className="flex items-center gap-2">
-                        <div className="flex items-center border border-cream/20 rounded-lg bg-obsidian-900">
+                        <div className="flex items-center border border-emerald-900/60 rounded-xl bg-obsidian-950 p-0.5">
                           <button
                             type="button"
                             onClick={() => updateQty(item.productId, item.qty - 1)}
                             aria-label={`Decrease quantity of ${item.name}`}
-                            className="p-1 text-cream/70 hover:text-cream"
+                            className="p-1 rounded-lg hover:bg-emerald-950 text-cream/70 hover:text-cream transition-colors"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
-                          <span className="px-2 text-xs font-mono font-bold text-cream">{item.qty}</span>
+                          <span className="px-2 text-xs font-mono font-bold text-champagne">{item.qty}</span>
                           <button
                             type="button"
                             onClick={() => updateQty(item.productId, item.qty + 1)}
                             aria-label={`Increase quantity of ${item.name}`}
-                            className="p-1 text-cream/70 hover:text-cream"
+                            className="p-1 rounded-lg hover:bg-emerald-950 text-cream/70 hover:text-cream transition-colors"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
 
-                        <div className="text-right min-w-[50px]">
+                        <div className="text-right min-w-[55px]">
                           <span className="text-xs font-bold font-mono text-cream">
                             £{(item.customerPrice * item.qty).toFixed(2)}
                           </span>
@@ -327,7 +331,7 @@ export function CartDrawer() {
                           type="button"
                           onClick={() => removeItem(item.productId)}
                           aria-label={`Remove ${item.name} from basket`}
-                          className="p-1 text-cream/30 hover:text-rose-400"
+                          className="p-1.5 rounded-lg text-cream/30 hover:text-rose-400 hover:bg-rose-950/30 transition-colors"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
                         </button>
@@ -338,17 +342,17 @@ export function CartDrawer() {
 
                 {/* Delivery Slot & Standing Order Configuration */}
                 {items.length > 0 && (
-                  <div className="pt-4 border-t border-cream/10 space-y-4">
+                  <div className="pt-4 border-t border-emerald-950 space-y-4">
                     {/* Delivery Slot Picker */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 flex items-center gap-1">
+                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 flex items-center gap-1 font-bold">
                         <Clock className="w-3.5 h-3.5 text-champagne" />
                         <span>Select Delivery Window</span>
                       </label>
                       <select
                         value={selectedSlot}
                         onChange={(e) => setSelectedSlot(e.target.value)}
-                        className="w-full bg-obsidian-950 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+                        className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
                       >
                         <option>Early Morning 05:30 - 07:30 (Keyholder / Walk-in)</option>
                         <option>Standard Morning 07:30 - 09:30</option>
@@ -357,7 +361,7 @@ export function CartDrawer() {
                     </div>
 
                     {/* Standing Order Toggle & Cadence Scheduler */}
-                    <div className="p-3.5 bg-obsidian-950/80 rounded-xl border border-cream/15 space-y-3">
+                    <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-3">
                       <label className="flex items-center justify-between cursor-pointer">
                         <span className="text-xs font-bold text-cream flex items-center gap-1.5">
                           <Repeat className="w-3.5 h-3.5 text-champagne" />
@@ -372,7 +376,7 @@ export function CartDrawer() {
                       </label>
 
                       {isStandingOrder && (
-                        <div className="space-y-2.5 pt-1 border-t border-cream/10">
+                        <div className="space-y-2.5 pt-2 border-t border-emerald-950">
                           <div className="grid grid-cols-4 gap-1.5">
                             {[
                               { key: 'daily', label: 'Daily' },
@@ -384,10 +388,10 @@ export function CartDrawer() {
                                 key={r.key}
                                 type="button"
                                 onClick={() => setRecurrence(r.key as any)}
-                                className={`py-1 text-[10px] font-mono rounded capitalize border transition-colors ${
+                                className={`py-1 text-[10px] font-mono rounded-lg capitalize border transition-colors ${
                                   recurrence === r.key
                                     ? 'bg-champagne text-obsidian-950 font-bold border-champagne'
-                                    : 'bg-obsidian-900 text-cream/60 border-cream/10 hover:border-cream/30'
+                                    : 'bg-obsidian-950 text-cream/60 border-emerald-950 hover:border-emerald-800'
                                 }`}
                               >
                                 {r.label}
@@ -408,10 +412,10 @@ export function CartDrawer() {
                                     key={day}
                                     type="button"
                                     onClick={() => toggleRecurrenceDay(day)}
-                                    className={`flex-1 py-1 rounded text-[10px] font-mono font-bold border transition-colors ${
+                                    className={`flex-1 py-1 rounded-lg text-[10px] font-mono font-bold border transition-colors ${
                                       isSelected
                                         ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                                        : 'bg-obsidian-900 text-cream/40 border-cream/10 hover:text-cream'
+                                        : 'bg-obsidian-950 text-cream/40 border-emerald-950 hover:text-cream'
                                     }`}
                                   >
                                     {day}
@@ -426,7 +430,7 @@ export function CartDrawer() {
 
                     {/* Driver Notes */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">
+                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1 font-bold">
                         Driver Instructions / Notes
                       </label>
                       <input
@@ -434,7 +438,7 @@ export function CartDrawer() {
                         placeholder="e.g. Leave crate in kitchen coldroom 1"
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        className="w-full bg-obsidian-950 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+                        className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
                       />
                     </div>
                   </div>
@@ -443,11 +447,11 @@ export function CartDrawer() {
 
               {/* Footer Summary & Checkout Button */}
               {items.length > 0 && (
-                <div className="p-5 border-t border-cream/10 bg-obsidian-950 space-y-4">
+                <div className="p-5 border-t border-emerald-950 bg-obsidian-900/90 space-y-4">
                   {/* Trade Credit Facility Progress Bar */}
-                  <div className="p-3 bg-obsidian-900/90 rounded-xl border border-cream/10 space-y-2">
+                  <div className="p-3.5 bg-obsidian-950 rounded-2xl border border-emerald-900/60 space-y-2">
                     <div className="flex justify-between items-center text-[11px]">
-                      <span className="text-cream/70 flex items-center gap-1">
+                      <span className="text-cream/70 flex items-center gap-1.5">
                         <CreditCard className="w-3.5 h-3.5 text-champagne" />
                         <span>30-Day Trade Credit Facility</span>
                       </span>
@@ -455,21 +459,21 @@ export function CartDrawer() {
                         £{availableCredit.toFixed(2)} available
                       </span>
                     </div>
-                    <div className="w-full h-1.5 bg-obsidian-950 rounded-full overflow-hidden">
+                    <div className="w-full h-1.5 bg-obsidian-900 rounded-full overflow-hidden">
                       <div
                         className={`h-full transition-all duration-300 ${
                           exceedsCredit
                             ? 'bg-rose-500'
                             : creditUsagePercent > 75
                             ? 'bg-amber-500'
-                            : 'bg-emerald-500'
+                            : 'bg-emerald-400'
                         }`}
                         style={{ width: `${creditUsagePercent}%` }}
                       />
                     </div>
                     <div className="flex justify-between text-[10px] text-cream/50 font-mono">
                       <span>Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
-                      <span>Used (inc. order): £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
+                      <span>Used: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
                     </div>
                   </div>
 
@@ -482,9 +486,9 @@ export function CartDrawer() {
                       <span>Estimated VAT:</span>
                       <span className="font-mono text-cream">£{vatTotal.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between text-sm font-bold text-cream pt-2 border-t border-cream/10">
+                    <div className="flex justify-between text-sm font-bold text-cream pt-2 border-t border-emerald-950">
                       <span>Order Total:</span>
-                      <span className="font-mono text-champagne text-base">£{grandTotal.toFixed(2)}</span>
+                      <span className="font-mono text-champagne text-base font-bold">£{grandTotal.toFixed(2)}</span>
                     </div>
                   </div>
 
@@ -503,7 +507,7 @@ export function CartDrawer() {
                     disabled={isSubmitting || exceedsCredit}
                     className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-gold-glow transition-all ${
                       exceedsCredit
-                        ? 'bg-obsidian-800 text-cream/40 cursor-not-allowed border border-cream/10'
+                        ? 'bg-obsidian-800 text-cream/40 cursor-not-allowed border border-emerald-950'
                         : 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 hover:brightness-110'
                     }`}
                   >
