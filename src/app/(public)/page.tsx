@@ -24,9 +24,14 @@ import {
   ShieldAlert,
   Zap,
   PhoneCall,
-  Check
+  Check,
+  Leaf
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { ThreeDHeroVisual } from '@/components/public/ThreeDHeroVisual';
+import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
+import { Interactive3DFarmToKitchen } from '@/components/public/Interactive3DFarmToKitchen';
+import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
 
 const PriceEstimator = dynamic(
   () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
@@ -50,8 +55,9 @@ export const metadata = {
 export default function PublicHomePage() {
   return (
     <div className="space-y-24 sm:space-y-32 pb-24 overflow-hidden">
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-12 sm:pt-20 lg:pt-28">
+      
+      {/* 1. 3D HERO SECTION */}
+      <section className="relative pt-10 sm:pt-16 lg:pt-20">
         {/* Background ambient lighting */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
         <div className="absolute top-10 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none -z-10" />
@@ -108,8 +114,13 @@ export default function PublicHomePage() {
             </div>
           </div>
 
+          {/* 3D INTERACTIVE HERO SHOWCASE (Pink Lady Style Depth & Floating Badges) */}
+          <div className="mt-8 sm:mt-12">
+            <ThreeDHeroVisual />
+          </div>
+
           {/* Trust Guarantees Row */}
-          <div className="mt-16 pt-8 border-t border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
+          <div className="mt-12 pt-8 border-t border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
             <div className="p-4 bg-zinc-900/60 rounded-xl border border-zinc-800 hover:border-champagne/40 transition-all">
               <div className="text-champagne font-mono text-xs font-bold uppercase">11:00 PM Cut-off</div>
               <div className="text-xs text-cream/70 mt-1">Order late after evening dinner service</div>
@@ -130,170 +141,13 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 2. WHOLESALE CATEGORIES GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-          <div>
-            <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold mb-2">
-              Master Wholesale Range
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream">
-              What We Supply
-            </h2>
-          </div>
-          <Link
-            href="/products"
-            className="text-xs font-mono text-champagne hover:underline flex items-center gap-1"
-          >
-            <span>View Full 1,200+ SKU Product Catalogue</span>
-            <ChevronRight className="w-4 h-4" />
-          </Link>
-        </div>
+      {/* 2. 3D INTERACTIVE PRODUCT CATALOG SHOWCASE */}
+      <ThreeDProductShowcase />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Category 1 */}
-          <Link
-            href="/products?cat=fresh_produce"
-            className="group relative rounded-2xl overflow-hidden glass-panel border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col h-80 shadow-lg"
-          >
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600&auto=format&fit=crop&q=80"
-                alt="Fresh Fruit & Vegetables"
-                fill
-                quality={75}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
-            </div>
-            <div className="relative z-10 p-6 flex flex-col justify-between h-full">
-              <span className="px-2.5 py-1 rounded-full bg-zinc-900/90 text-emerald-400 text-[10px] font-mono border border-zinc-700 self-start">
-                350+ Produce SKUs
-              </span>
-              <div>
-                <h3 className="font-display text-2xl font-bold text-cream group-hover:text-champagne transition-colors">
-                  Fresh Produce & Microgreens
-                </h3>
-                <p className="text-xs text-cream/70 mt-1 leading-relaxed">
-                  Daily farm-picked salads, heritage tomatoes, prepared vegetables, seasonal berries, and exotic fruits.
-                </p>
-                <div className="mt-4 flex items-center gap-1 text-xs font-mono text-champagne font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Explore Category</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          </Link>
+      {/* 3. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
+      <Interactive3DFarmToKitchen />
 
-          {/* Category 2 */}
-          <Link
-            href="/products?cat=dairy_eggs"
-            className="group relative rounded-2xl overflow-hidden glass-panel border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col h-80 shadow-lg"
-          >
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80"
-                alt="Dairy & Eggs"
-                fill
-                quality={75}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
-            </div>
-            <div className="relative z-10 p-6 flex flex-col justify-between h-full">
-              <span className="px-2.5 py-1 rounded-full bg-zinc-900/90 text-champagne text-[10px] font-mono border border-zinc-700 self-start">
-                120+ Dairy Lines
-              </span>
-              <div>
-                <h3 className="font-display text-2xl font-bold text-cream group-hover:text-champagne transition-colors">
-                  Dairy, Cheeses & Eggs
-                </h3>
-                <p className="text-xs text-cream/70 mt-1 leading-relaxed">
-                  British Lion free range eggs, Cotswold salted butter, artisan European cheeses, double creams, and organic milks.
-                </p>
-                <div className="mt-4 flex items-center gap-1 text-xs font-mono text-champagne font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Explore Category</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          {/* Category 3 */}
-          <Link
-            href="/products?cat=meat_poultry"
-            className="group relative rounded-2xl overflow-hidden glass-panel border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col h-80 shadow-lg"
-          >
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&auto=format&fit=crop&q=80"
-                alt="Meat & Poultry"
-                fill
-                quality={75}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
-            </div>
-            <div className="relative z-10 p-6 flex flex-col justify-between h-full">
-              <span className="px-2.5 py-1 rounded-full bg-zinc-900/90 text-rose-400 text-[10px] font-mono border border-zinc-700 self-start">
-                85+ Butchery Cuts
-              </span>
-              <div>
-                <h3 className="font-display text-2xl font-bold text-cream group-hover:text-champagne transition-colors">
-                  Meat, Poultry & Game
-                </h3>
-                <p className="text-xs text-cream/70 mt-1 leading-relaxed">
-                  28-day dry-aged British steaks, corn-fed poultry, Shropshire lamb, and bespoke primal cuts.
-                </p>
-                <div className="mt-4 flex items-center gap-1 text-xs font-mono text-champagne font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Explore Category</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          {/* Category 4 */}
-          <Link
-            href="/products?cat=specialty"
-            className="group relative rounded-2xl overflow-hidden glass-panel border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col h-80 shadow-lg"
-          >
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80"
-                alt="Pastry & Specialty Goods"
-                fill
-                quality={75}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-30 group-hover:opacity-40"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/80 to-transparent" />
-            </div>
-            <div className="relative z-10 p-6 flex flex-col justify-between h-full">
-              <span className="px-2.5 py-1 rounded-full bg-zinc-900/90 text-purple-400 text-[10px] font-mono border border-zinc-700 self-start">
-                400+ Specialty Lines
-              </span>
-              <div>
-                <h3 className="font-display text-2xl font-bold text-cream group-hover:text-champagne transition-colors">
-                  Pastry, Truffles & Oils
-                </h3>
-                <p className="text-xs text-cream/70 mt-1 leading-relaxed">
-                  Valrhona chocolate, Italian white truffle oils, Modena vinegars, baking flours, and gourmet storecupboard dry goods.
-                </p>
-                <div className="mt-4 flex items-center gap-1 text-xs font-mono text-champagne font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Explore Category</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* 3. ADVANTAGE METRICS & WHY CHOOSE US */}
+      {/* 4. ADVANTAGE METRICS & WHY CHOOSE US (with 3D Tilt Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -308,54 +162,66 @@ export default function PublicHomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
-              <Clock className="w-6 h-6" />
+          <ThreeDTiltCard maxTilt={10} depth={20}>
+            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 12h Farm-to-Kitchen</span>
+                  <h3 className="font-display text-xl font-bold text-cream mt-0.5">
+                    Late 11:00 PM Ordering Cut-off
+                  </h3>
+                </div>
+                <p className="text-xs text-cream/70 leading-relaxed">
+                  Never rush evening order pads again. Tally your inventory after dinner service ends, place orders on your mobile, and receive them before morning prep.
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 12h Farm-to-Kitchen</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">
-                Late 11:00 PM Ordering Cut-off
-              </h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              Never rush evening order pads again. Tally your inventory after dinner service ends, place orders on your mobile, and receive them before morning prep.
-            </p>
-          </div>
+          </ThreeDTiltCard>
 
-          <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
-              <Repeat className="w-6 h-6" />
+          <ThreeDTiltCard maxTilt={10} depth={20}>
+            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                  <Repeat className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: &lt; 45s Reorder Speed</span>
+                  <h3 className="font-display text-xl font-bold text-cream mt-0.5">
+                    Instant 1-Click Repeat Orders
+                  </h3>
+                </div>
+                <p className="text-xs text-cream/70 leading-relaxed">
+                  Kitchen managers don't have 30 minutes to browse 10,000 items every day. Repeat your last order, adjust crate quantities, or let our AI kitchen assistant prepare your service prep.
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: &lt; 45s Reorder Speed</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">
-                Instant 1-Click Repeat Orders
-              </h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              Kitchen managers don't have 30 minutes to browse 10,000 items every day. Repeat your last order, adjust crate quantities, or let our AI kitchen assistant prepare your service prep.
-            </p>
-          </div>
+          </ThreeDTiltCard>
 
-          <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
-              <ShieldCheck className="w-6 h-6" />
+          <ThreeDTiltCard maxTilt={10} depth={20}>
+            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 100% Quality Credit</span>
+                  <h3 className="font-display text-xl font-bold text-cream mt-0.5">
+                    Zero-Substitution Assurance
+                  </h3>
+                </div>
+                <p className="text-xs text-cream/70 leading-relaxed">
+                  No surprise unwanted substitutions. If an item does not meet strict grade-A specifications, our operations desk contacts you directly with verified alternatives.
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 100% Quality Credit</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">
-                Zero-Substitution Assurance
-              </h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              No surprise unwanted substitutions. If an item does not meet strict grade-A specifications, our operations desk contacts you directly with verified alternatives.
-            </p>
-          </div>
+          </ThreeDTiltCard>
         </div>
       </section>
 
-      {/* 4. SECTOR SOLUTIONS */}
+      {/* 5. SECTOR SOLUTIONS (with 3D Tilt Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -370,134 +236,146 @@ export default function PublicHomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Link
-            href="/sectors/restaurants"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <UtensilsCrossed className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/restaurants"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <UtensilsCrossed className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Fine Dining & Restaurants
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  Precision microgreens, heirloom produce, dry-aged meats, and late-night order cut-offs.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Fine Dining & Restaurants
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                Precision microgreens, heirloom produce, dry-aged meats, and late-night order cut-offs.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Restaurant Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Restaurant Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
 
-          <Link
-            href="/sectors/hotels"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <Hotel className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/hotels"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <Hotel className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Hotels & Banqueting
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  High-volume breakfast dairy, bulk egg outers, multi-outlet consolidating, and consolidated EDI invoicing.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Hotels & Banqueting
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                High-volume breakfast dairy, bulk egg outers, multi-outlet consolidating, and consolidated EDI invoicing.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Hotel Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Hotel Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
 
-          <Link
-            href="/sectors/care-homes"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <HeartHandshake className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/care-homes"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <HeartHandshake className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Care Homes & Healthcare
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  Texture-modified IDDSI ingredients, strict allergen segregation, scheduled standing orders, and dietetic specs.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Care Homes & Healthcare
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                Texture-modified IDDSI ingredients, strict allergen segregation, scheduled standing orders, and dietetic specs.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Care Home Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Care Home Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
 
-          <Link
-            href="/sectors/caterers"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <PartyPopper className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/caterers"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <PartyPopper className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Caterers & Wedding Venues
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  Bespoke event drop-offs, pop-up kitchen logistics, pre-portioned butchery, and weekend delivery flexibility.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Caterers & Wedding Venues
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                Bespoke event drop-offs, pop-up kitchen logistics, pre-portioned butchery, and weekend delivery flexibility.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Catering Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Catering Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
 
-          <Link
-            href="/sectors/pubs-bars"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <Beer className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/pubs-bars"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <Beer className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Pubs, Bars & Gastropubs
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  Hand-cut chip potatoes, fresh bar citrus, burger buns, dry goods, and Sunday roast prep.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Pubs, Bars & Gastropubs
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                Hand-cut chip potatoes, fresh bar citrus, burger buns, dry goods, and Sunday roast prep.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Pub & Bar Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Pub & Bar Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
 
-          <Link
-            href="/sectors/schools"
-            className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
-                <GraduationCap className="w-5 h-5" />
+          <ThreeDTiltCard maxTilt={8} depth={15}>
+            <Link
+              href="/sectors/schools"
+              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                  <GraduationCap className="w-5 h-5" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
+                  Schools & Education
+                </h3>
+                <p className="text-xs text-cream/70 mt-1">
+                  Red Tractor British provenance, seasonal fruit schemes, budget-controlled portion specs, and nut-free guarantees.
+                </p>
               </div>
-              <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
-                Schools & Education
-              </h3>
-              <p className="text-xs text-cream/70 mt-1">
-                Red Tractor British provenance, seasonal fruit schemes, budget-controlled portion specs, and nut-free guarantees.
-              </p>
-            </div>
-            <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
-              <span>View Education Solutions &rarr;</span>
-            </div>
-          </Link>
+              <div className="flex items-center gap-1 text-xs text-champagne font-mono font-bold">
+                <span>View Education Solutions &rarr;</span>
+              </div>
+            </Link>
+          </ThreeDTiltCard>
         </div>
       </section>
 
-      {/* 5. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 6. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
 
-      {/* 6. CALL TO ACTION STRIP */}
+      {/* 7. CALL TO ACTION STRIP */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
