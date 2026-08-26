@@ -31,8 +31,8 @@ import {
   Flame
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { PinkLadyCinematicScrollytelling } from '@/components/public/PinkLadyCinematicScrollytelling';
-import { Hyper3DHeroShowcase } from '@/components/public/Hyper3DHeroShowcase';
+import { Hero3DDigitalEcosystem } from '@/components/3d/Hero3DDigitalEcosystem';
+import { ThreeDServiceEcosystem } from '@/components/3d/ThreeDServiceEcosystem';
 import { Interactive3DCrateBuilder } from '@/components/3d/Interactive3DCrateBuilder';
 import { ThreeDDepotExplorer } from '@/components/3d/ThreeDDepotExplorer';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
@@ -54,34 +54,19 @@ const PriceEstimator = dynamic(
 );
 
 export const metadata = {
-  title: 'Rootwills Ltd | B2B Foodservice & Fresh Produce Wholesale UK',
-  description: 'Premium wholesale food and fresh produce supplier for restaurants, hotels, caterers, and care homes across Birmingham and the UK. Guaranteed morning delivery, personalized trade pricing, and modern ordering portal.',
+  title: 'Rootwills Ltd | Connected B2B Foodservice & Cold-Chain Technology UK',
+  description: 'Technology-driven wholesale food and fresh produce supply for restaurants, boutique hotels, luxury caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and 3D digital ordering.',
 };
 
 export default function PublicHomePage() {
   return (
-    <div className="space-y-20 sm:space-y-28 pb-24 overflow-hidden">
+    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden">
       
-      {/* 1. PINK LADY CINEMATIC SCROLLYTELLING HERO & STORY (Images 1-5 Inspired) */}
-      <PinkLadyCinematicScrollytelling />
+      {/* 1. FULL-SCREEN 3D WEBGL DIGITAL ECOSYSTEM HERO */}
+      <Hero3DDigitalEcosystem />
 
-      {/* 2. REAL-TIME 3D HARVEST INSPECTOR (360° Rotate, Exploded Anatomy, Sub-Zero Vapor) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-6 space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-champagne" />
-            <span>Interactive 3D Produce Studio</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
-            Inspect Orchard Specs in Real-Time 3D
-          </h2>
-          <p className="text-xs sm:text-sm text-cream/70 font-sans">
-            Rotate 3D harvested produce, inspect cell firmness, Brix sugar levels, and cold-chain thermal barriers.
-          </p>
-        </div>
-
-        <Hyper3DHeroShowcase />
-      </section>
+      {/* 2. 3D SERVICE ECOSYSTEM ("WHAT WE DO" AS AN INTERACTIVE 3D WORLD) */}
+      <ThreeDServiceEcosystem />
 
       {/* 3. INTERACTIVE 3D CRATE PACKER STUDIO */}
       <Interactive3DCrateBuilder />
@@ -95,7 +80,7 @@ export default function PublicHomePage() {
       {/* 6. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
       <Interactive3DFarmToKitchen />
 
-      {/* 7. THE ROOTWILLS DIFFERENCE (3D Tilt Cards) */}
+      {/* 7. THE ROOTWILLS DIFFERENCE (3D Tilt Metric Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -104,7 +89,7 @@ export default function PublicHomePage() {
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
             Built by Food People for Commercial Kitchens
           </h2>
-          <p className="text-sm sm:text-base text-cream/70 leading-relaxed">
+          <p className="text-sm sm:text-base text-cream/70 leading-relaxed font-sans">
             We solved the five biggest frustrations chefs experience with legacy broadline suppliers.
           </p>
         </div>
@@ -178,7 +163,7 @@ export default function PublicHomePage() {
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
             Which Businesses We Serve
           </h2>
-          <p className="text-sm sm:text-base text-cream/70 leading-relaxed">
+          <p className="text-sm sm:text-base text-cream/70 leading-relaxed font-sans">
             Every hospitality operation has unique delivery windows, pack specs, and invoicing requirements.
           </p>
         </div>
@@ -196,7 +181,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Fine Dining & Restaurants
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   Precision microgreens, heirloom produce, dry-aged meats, and late-night order cut-offs.
                 </p>
               </div>
@@ -218,7 +203,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Hotels & Banqueting
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   High-volume breakfast dairy, bulk egg outers, multi-outlet consolidating, and consolidated EDI invoicing.
                 </p>
               </div>
@@ -240,7 +225,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Care Homes & Healthcare
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   Texture-modified IDDSI ingredients, strict allergen segregation, scheduled standing orders, and dietetic specs.
                 </p>
               </div>
@@ -262,7 +247,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Caterers & Wedding Venues
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   Bespoke event drop-offs, pop-up kitchen logistics, pre-portioned butchery, and weekend delivery flexibility.
                 </p>
               </div>
@@ -284,7 +269,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Pubs, Bars & Gastropubs
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   Hand-cut chip potatoes, fresh bar citrus, burger buns, dry goods, and Sunday roast prep.
                 </p>
               </div>
@@ -306,7 +291,7 @@ export default function PublicHomePage() {
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
                   Schools & Education
                 </h3>
-                <p className="text-xs text-cream/70 mt-1">
+                <p className="text-xs text-cream/70 mt-1 font-sans">
                   Red Tractor British provenance, seasonal fruit schemes, budget-controlled portion specs, and nut-free guarantees.
                 </p>
               </div>
@@ -333,7 +318,7 @@ export default function PublicHomePage() {
             <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
               Open a Trade Account in 2 Minutes
             </h2>
-            <p className="text-xs sm:text-sm text-cream/70 leading-relaxed">
+            <p className="text-xs sm:text-sm text-cream/70 leading-relaxed font-sans">
               Get approved for 30-day trade credit, receive locked contract rates for your core menu lines, and place your first morning order today.
             </p>
           </div>
