@@ -27,9 +27,11 @@ import {
   Check,
   Leaf,
   Rotate3d,
-  Box
+  Box,
+  Flame
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { PinkLadyCinematicScrollytelling } from '@/components/public/PinkLadyCinematicScrollytelling';
 import { Hyper3DHeroShowcase } from '@/components/public/Hyper3DHeroShowcase';
 import { Interactive3DCrateBuilder } from '@/components/3d/Interactive3DCrateBuilder';
 import { ThreeDDepotExplorer } from '@/components/3d/ThreeDDepotExplorer';
@@ -58,104 +60,42 @@ export const metadata = {
 
 export default function PublicHomePage() {
   return (
-    <div className="space-y-24 sm:space-y-32 pb-24 overflow-hidden">
+    <div className="space-y-20 sm:space-y-28 pb-24 overflow-hidden">
       
-      {/* 1. HERO SECTION WITH 3D WEBGL PRODUCE SHOWCASE */}
-      <section className="relative pt-10 sm:pt-16 lg:pt-20">
-        {/* Background ambient royal emerald lighting */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[650px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none -z-10" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      {/* 1. PINK LADY CINEMATIC SCROLLYTELLING HERO & STORY (Images 1-5 Inspired) */}
+      <PinkLadyCinematicScrollytelling />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          {/* Live Operational Status Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-500/40 text-cream text-xs font-mono mb-6 animate-fade-in shadow-2xl backdrop-blur-md">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-            </span>
-            <span className="text-emerald-400 font-bold">⚡ Live Deliveries: 99.8% On-Time Today</span>
-            <span className="text-cream/30 hidden sm:inline">&bull;</span>
-            <span className="text-champagne hidden sm:inline">Digbeth Central Hub Active</span>
+      {/* 2. REAL-TIME 3D HARVEST INSPECTOR (360° Rotate, Exploded Anatomy, Sub-Zero Vapor) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-6 space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-champagne" />
+            <span>Interactive 3D Produce Studio</span>
           </div>
-
-          {/* Main Hero Title */}
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-cream max-w-5xl mx-auto leading-[1.08] animate-slide-up">
-            Fresh Food. Reliable Supply.{' '}
-            <span className="gold-gradient-text block sm:inline">Better Business.</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-cream/80 max-w-3xl mx-auto font-sans leading-relaxed">
-            Professional food and farm-fresh produce supply for <strong>restaurants, hotels, caterers, care homes, and commercial kitchens</strong> across Birmingham and the UK. Next-day morning delivery, contract-locked pricing, and smart online ordering.
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
+            Inspect Orchard Specs in Real-Time 3D
+          </h2>
+          <p className="text-xs sm:text-sm text-cream/70 font-sans">
+            Rotate 3D harvested produce, inspect cell firmness, Brix sugar levels, and cold-chain thermal barriers.
           </p>
-
-          {/* Action CTAs Grouping */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-2xl mx-auto">
-            <Link
-              href="/onboarding"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim hover:brightness-110 shadow-gold-glow transition-all flex items-center justify-center gap-2 text-base group"
-            >
-              <span>Open a Business Account</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <div className="flex w-full sm:w-auto items-center gap-2">
-              <Link
-                href="#pricing-calculator"
-                className="flex-1 sm:flex-initial px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/90 border border-emerald-900/80 hover:border-champagne/60 hover:bg-emerald-950/40 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
-                <span>Request a Price List</span>
-              </Link>
-
-              <Link
-                href="/login"
-                className="px-5 py-4 rounded-xl font-medium text-cream/80 hover:text-champagne bg-obsidian-950/80 border border-emerald-900/80 hover:border-emerald-700 flex items-center justify-center gap-1.5 text-sm transition-all"
-                title="Customer Portal Login"
-              >
-                <span>Portal Login</span>
-                <ChevronRight className="w-4 h-4 text-champagne" />
-              </Link>
-            </div>
-          </div>
-
-          {/* 3D INTERACTIVE HERO SHOWCASE */}
-          <Hyper3DHeroShowcase />
-
-          {/* Trust Guarantees Row */}
-          <div className="mt-12 pt-8 border-t border-emerald-950 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
-            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
-              <div className="text-champagne font-mono text-xs font-bold uppercase">11:00 PM Cut-off</div>
-              <div className="text-xs text-cream/70 mt-1">Order late after evening dinner service</div>
-            </div>
-            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
-              <div className="text-champagne font-mono text-xs font-bold uppercase">06:00 - 08:30 AM SLA</div>
-              <div className="text-xs text-cream/70 mt-1">Guaranteed early kitchen drop-off</div>
-            </div>
-            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
-              <div className="text-champagne font-mono text-xs font-bold uppercase">SALSA & BRCGS</div>
-              <div className="text-xs text-cream/70 mt-1">Full farm-to-fork batch traceability</div>
-            </div>
-            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
-              <div className="text-champagne font-mono text-xs font-bold uppercase">Trade Credit</div>
-              <div className="text-xs text-cream/70 mt-1">Up to £30,000 facility (30 Days)</div>
-            </div>
-          </div>
         </div>
+
+        <Hyper3DHeroShowcase />
       </section>
 
-      {/* 2. INTERACTIVE 3D CRATE PACKER STUDIO */}
+      {/* 3. INTERACTIVE 3D CRATE PACKER STUDIO */}
       <Interactive3DCrateBuilder />
 
-      {/* 3. 3D INTERACTIVE PRODUCT CATALOG SHOWCASE */}
+      {/* 4. 3D WHOLESALE PRODUCE RANGE SPOTLIGHT */}
       <ThreeDProductShowcase />
 
-      {/* 4. 3D COLD-CHAIN DEPOT DIGITAL TWIN */}
+      {/* 5. 3D COLD-CHAIN DEPOT DIGITAL TWIN */}
       <ThreeDDepotExplorer />
 
-      {/* 5. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
+      {/* 6. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
       <Interactive3DFarmToKitchen />
 
-      {/* 6. ADVANTAGE METRICS & WHY CHOOSE US */}
+      {/* 7. THE ROOTWILLS DIFFERENCE (3D Tilt Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -229,7 +169,7 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 7. SECTOR SOLUTIONS */}
+      {/* 8. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -378,12 +318,12 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 8. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 9. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
 
-      {/* 9. CALL TO ACTION STRIP */}
+      {/* 10. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
