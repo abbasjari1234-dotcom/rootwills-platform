@@ -25,9 +25,11 @@ import {
   Zap,
   PhoneCall,
   Check,
-  Leaf
+  Leaf,
+  Rotate3d
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { WebGLProduceExperience } from '@/components/public/WebGLProduceExperience';
 import { ThreeDHeroVisual } from '@/components/public/ThreeDHeroVisual';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
 import { Interactive3DFarmToKitchen } from '@/components/public/Interactive3DFarmToKitchen';
@@ -59,12 +61,12 @@ export default function PublicHomePage() {
       {/* 1. 3D HERO SECTION */}
       <section className="relative pt-10 sm:pt-16 lg:pt-20">
         {/* Background ambient lighting */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-        <div className="absolute top-10 left-10 w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none -z-10" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+        <div className="absolute top-10 right-10 w-96 h-96 bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Live Operational Status Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/80 text-cream text-xs font-mono mb-6 animate-fade-in shadow-2xl backdrop-blur-md">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-500/40 text-cream text-xs font-mono mb-6 animate-fade-in shadow-2xl backdrop-blur-md">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -98,14 +100,14 @@ export default function PublicHomePage() {
             <div className="flex w-full sm:w-auto items-center gap-2">
               <Link
                 href="#pricing-calculator"
-                className="flex-1 sm:flex-initial px-6 py-4 rounded-xl font-semibold text-cream bg-zinc-900/90 border border-zinc-700 hover:border-champagne/60 hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="flex-1 sm:flex-initial px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/90 border border-emerald-900/60 hover:border-champagne/60 hover:bg-emerald-950/40 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <span>Request a Price List</span>
               </Link>
 
               <Link
                 href="/login"
-                className="px-5 py-4 rounded-xl font-medium text-cream/80 hover:text-champagne bg-zinc-950/60 border border-zinc-800 hover:border-zinc-700 flex items-center justify-center gap-1.5 text-sm transition-all"
+                className="px-5 py-4 rounded-xl font-medium text-cream/80 hover:text-champagne bg-obsidian-950/60 border border-emerald-900/60 hover:border-emerald-700 flex items-center justify-center gap-1.5 text-sm transition-all"
                 title="Customer Portal Login"
               >
                 <span>Portal Login</span>
@@ -114,26 +116,24 @@ export default function PublicHomePage() {
             </div>
           </div>
 
-          {/* 3D INTERACTIVE HERO SHOWCASE (Pink Lady Style Depth & Floating Badges) */}
-          <div className="mt-8 sm:mt-12">
-            <ThreeDHeroVisual />
-          </div>
+          {/* REAL INTERACTIVE 3D WEBGL PRODUCE VIEWER */}
+          <WebGLProduceExperience />
 
           {/* Trust Guarantees Row */}
-          <div className="mt-12 pt-8 border-t border-zinc-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
-            <div className="p-4 bg-zinc-900/60 rounded-xl border border-zinc-800 hover:border-champagne/40 transition-all">
+          <div className="mt-12 pt-8 border-t border-emerald-950 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
+            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
               <div className="text-champagne font-mono text-xs font-bold uppercase">11:00 PM Cut-off</div>
               <div className="text-xs text-cream/70 mt-1">Order late after evening dinner service</div>
             </div>
-            <div className="p-4 bg-zinc-900/60 rounded-xl border border-zinc-800 hover:border-champagne/40 transition-all">
+            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
               <div className="text-champagne font-mono text-xs font-bold uppercase">06:00 - 08:30 AM SLA</div>
               <div className="text-xs text-cream/70 mt-1">Guaranteed early kitchen drop-off</div>
             </div>
-            <div className="p-4 bg-zinc-900/60 rounded-xl border border-zinc-800 hover:border-champagne/40 transition-all">
+            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
               <div className="text-champagne font-mono text-xs font-bold uppercase">SALSA & BRCGS</div>
               <div className="text-xs text-cream/70 mt-1">Full farm-to-fork batch traceability</div>
             </div>
-            <div className="p-4 bg-zinc-900/60 rounded-xl border border-zinc-800 hover:border-champagne/40 transition-all">
+            <div className="p-4 bg-obsidian-900/60 rounded-2xl border border-emerald-950 hover:border-champagne/40 transition-all">
               <div className="text-champagne font-mono text-xs font-bold uppercase">Trade Credit</div>
               <div className="text-xs text-cream/70 mt-1">Up to £30,000 facility (30 Days)</div>
             </div>
@@ -163,13 +163,13 @@ export default function PublicHomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ThreeDTiltCard maxTilt={10} depth={20}>
-            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+            <div className="glass-panel p-8 rounded-3xl border border-emerald-950 hover:border-emerald-700/40 transition-all space-y-4 h-full flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                <div className="w-12 h-12 rounded-2xl bg-champagne/10 text-champagne flex items-center justify-center font-bold">
                   <Clock className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 12h Farm-to-Kitchen</span>
+                  <span className="text-[10px] font-mono uppercase text-champagne font-bold block">Micro-Metric: 12h Farm-to-Kitchen</span>
                   <h3 className="font-display text-xl font-bold text-cream mt-0.5">
                     Late 11:00 PM Ordering Cut-off
                   </h3>
@@ -182,13 +182,13 @@ export default function PublicHomePage() {
           </ThreeDTiltCard>
 
           <ThreeDTiltCard maxTilt={10} depth={20}>
-            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+            <div className="glass-panel p-8 rounded-3xl border border-emerald-950 hover:border-emerald-700/40 transition-all space-y-4 h-full flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
                   <Repeat className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: &lt; 45s Reorder Speed</span>
+                  <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold block">Micro-Metric: &lt; 45s Reorder Speed</span>
                   <h3 className="font-display text-xl font-bold text-cream mt-0.5">
                     Instant 1-Click Repeat Orders
                   </h3>
@@ -201,13 +201,13 @@ export default function PublicHomePage() {
           </ThreeDTiltCard>
 
           <ThreeDTiltCard maxTilt={10} depth={20}>
-            <div className="glass-panel p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4 h-full flex flex-col justify-between">
+            <div className="glass-panel p-8 rounded-3xl border border-emerald-950 hover:border-emerald-700/40 transition-all space-y-4 h-full flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
+                <div className="w-12 h-12 rounded-2xl bg-champagne/10 text-champagne flex items-center justify-center font-bold">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Micro-Metric: 100% Quality Credit</span>
+                  <span className="text-[10px] font-mono uppercase text-champagne font-bold block">Micro-Metric: 100% Quality Credit</span>
                   <h3 className="font-display text-xl font-bold text-cream mt-0.5">
                     Zero-Substitution Assurance
                   </h3>
@@ -239,7 +239,7 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/restaurants"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
@@ -261,10 +261,10 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/hotels"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
                   <Hotel className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
@@ -283,7 +283,7 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/care-homes"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
@@ -305,10 +305,10 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/caterers"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
                   <PartyPopper className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
@@ -327,7 +327,7 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/pubs-bars"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
                 <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
@@ -349,10 +349,10 @@ export default function PublicHomePage() {
           <ThreeDTiltCard maxTilt={8} depth={15}>
             <Link
               href="/sectors/schools"
-              className="p-6 rounded-2xl glass-panel border border-zinc-800 hover:border-amber-500/40 transition-all group flex flex-col justify-between h-56 w-full"
+              className="p-6 rounded-2xl glass-panel border border-emerald-950 hover:border-champagne/40 transition-all group flex flex-col justify-between h-56 w-full shadow-lg"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
                   <GraduationCap className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-cream group-hover:text-champagne transition-colors">
@@ -400,7 +400,7 @@ export default function PublicHomePage() {
             </Link>
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-champagne text-cream text-sm font-semibold flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-4 rounded-xl bg-obsidian-900 border border-emerald-900/60 hover:border-champagne text-cream text-sm font-semibold flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-4 h-4 text-champagne" />
               <span>Speak to Marcus (Sales Desk)</span>
