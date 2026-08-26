@@ -5,142 +5,125 @@ import Link from 'next/link';
 
 interface RootwillsLogoProps {
   className?: string;
+  size?: 'sm' | 'md' | 'lg';
+  showText?: boolean;
   variant?: 'full' | 'icon' | 'compact';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  withLink?: boolean;
+  href?: string;
 }
 
 export function RootwillsLogo({
   className = '',
-  variant = 'full',
   size = 'md',
-  withLink = true,
+  showText = true,
+  variant = 'full',
+  href = '/',
 }: RootwillsLogoProps) {
-  const sizeMap = {
-    sm: { icon: 28, text: 'text-base', subtext: 'text-[8px]', gap: 'gap-2' },
-    md: { icon: 38, text: 'text-xl', subtext: 'text-[9px]', gap: 'gap-2.5' },
-    lg: { icon: 48, text: 'text-2xl', subtext: 'text-[10px]', gap: 'gap-3' },
-    xl: { icon: 60, text: 'text-3xl', subtext: 'text-xs', gap: 'gap-3.5' },
+  const iconSizes = {
+    sm: 'w-9 h-9',
+    md: 'w-11 h-11',
+    lg: 'w-14 h-14',
   };
 
-  const { icon: iconSize, text: textSize, subtext: subtextSize, gap } = sizeMap[size];
+  const textSizes = {
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-2xl',
+  };
 
-  const LogoIcon = (
-    <div 
-      className="relative flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300"
-      style={{ width: iconSize, height: iconSize }}
-    >
-      <svg
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-[0_4px_12px_rgba(228,199,103,0.3)]"
+  const logoGraphic = (
+    <div className={`flex items-center gap-3.5 group select-none ${className}`}>
+      {/* Pure Luxury Monogram Crest (Interlocking R & W in Pure Champagne Gold on Deep Emerald Shield) */}
+      <div
+        className={`relative ${iconSizes[size]} rounded-2xl bg-gradient-to-br from-emerald-900 via-obsidian-950 to-emerald-950 border border-champagne/40 p-1.5 shadow-[0_0_20px_rgba(228,199,103,0.25)] group-hover:shadow-[0_0_30px_rgba(228,199,103,0.5)] group-hover:border-champagne transition-all duration-500 shrink-0 flex items-center justify-center`}
       >
-        <defs>
-          {/* Metallic Gold Gradient */}
-          <linearGradient id="rwGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF4D0" />
-            <stop offset="35%" stopColor="#E4C767" />
-            <stop offset="70%" stopColor="#C9A227" />
-            <stop offset="100%" stopColor="#8C6E12" />
-          </linearGradient>
-
-          {/* Royal Emerald Accent Gradient */}
-          <linearGradient id="rwEmeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#34D399" />
-            <stop offset="50%" stopColor="#10B981" />
-            <stop offset="100%" stopColor="#064E3B" />
-          </linearGradient>
-
-          {/* Deep Obsidian Background Gradient */}
-          <linearGradient id="rwBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0F241A" />
-            <stop offset="100%" stopColor="#050B08" />
-          </linearGradient>
-
-          {/* Subtle Inner Shadow Filter */}
-          <filter id="rwGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#E4C767" floodOpacity="0.4" />
-          </filter>
-        </defs>
-
-        {/* Shield / Hexagonal Crest Container */}
-        <polygon
-          points="50,4 92,26 92,74 50,96 8,74 8,26"
-          fill="url(#rwBgGrad)"
-          stroke="url(#rwGoldGrad)"
-          strokeWidth="3.5"
-          strokeLinejoin="round"
-        />
-
-        {/* Inner Subtle Hex Border */}
-        <polygon
-          points="50,11 85,29 85,71 50,89 15,71 15,29"
+        <svg
+          viewBox="0 0 100 100"
+          className="w-full h-full drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           fill="none"
-          stroke="url(#rwEmeraldGrad)"
-          strokeWidth="1.5"
-          opacity="0.6"
-          strokeLinejoin="round"
-        />
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF7D6" />
+              <stop offset="35%" stopColor="#E4C767" />
+              <stop offset="70%" stopColor="#C9A227" />
+              <stop offset="100%" stopColor="#F5E498" />
+            </linearGradient>
+            <linearGradient id="emeraldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#34D399" />
+              <stop offset="100%" stopColor="#059669" />
+            </linearGradient>
+          </defs>
 
-        {/* Organic Crown Leaf Crest at Top */}
-        <path
-          d="M50 18 C54 23 58 25 62 26 C58 29 54 30 50 34 C46 30 42 29 38 26 C42 25 46 23 50 18 Z"
-          fill="url(#rwEmeraldGrad)"
-        />
-        <circle cx="50" cy="20" r="2" fill="url(#rwGoldGrad)" />
+          {/* Outer Geometric Luxury Octagonal Shield Frame */}
+          <polygon
+            points="50,4 88,20 96,62 70,94 30,94 4,62 12,20"
+            stroke="url(#goldMetallic)"
+            strokeWidth="3.5"
+            fill="none"
+            opacity="0.9"
+          />
 
-        {/* Interlocking 'R' & 'W' Geometric Monogram */}
-        {/* Letter 'R' (Left to Center) */}
-        <path
-          d="M32 35 L32 75 M32 35 L48 35 C56 35 56 49 48 49 L32 49 M45 49 L55 75"
-          stroke="url(#rwGoldGrad)"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#rwGlow)"
-        />
+          {/* Inner Accent Line */}
+          <polygon
+            points="50,11 81,24 88,59 66,87 34,87 12,59 19,24"
+            stroke="url(#emeraldTrim)"
+            strokeWidth="1.5"
+            fill="none"
+            opacity="0.6"
+          />
 
-        {/* Letter 'W' (Center to Right interlocking) */}
-        <path
-          d="M50 45 L58 75 L67 52 L76 75 L84 45"
-          stroke="url(#rwGoldGrad)"
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+          {/* Sleek Interlocking 'R' and 'W' (Pure Gold, Clean Vector) */}
+          {/* 'R' Stem & Loop */}
+          <path
+            d="M 32 30 L 32 74 M 32 30 L 52 30 C 62 30 62 48 52 48 L 32 48 M 48 48 L 62 74"
+            stroke="url(#goldMetallic)"
+            strokeWidth="7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
 
-        {/* Small Emerald Center Sprout Dot */}
-        <circle cx="67" cy="48" r="2.5" fill="url(#rwEmeraldGrad)" />
-      </svg>
-    </div>
-  );
+          {/* Interlocking 'W' Base */}
+          <path
+            d="M 44 48 L 54 74 L 66 54 L 78 74 L 86 48"
+            stroke="url(#goldMetallic)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.95"
+          />
 
-  const LogoText = (
-    <div className="flex flex-col text-left">
-      <div className={`font-display font-bold tracking-[0.08em] text-cream leading-none ${textSize} flex items-center gap-1.5`}>
-        <span className="gold-gradient-text">ROOTWILLS</span>
+          {/* Center Diamond Sparkle */}
+          <polygon
+            points="50,22 53,26 50,30 47,26"
+            fill="url(#goldMetallic)"
+          />
+        </svg>
       </div>
-      <div className={`font-mono uppercase tracking-[0.28em] text-emerald-400 font-semibold mt-1 ${subtextSize} flex items-center gap-1.5`}>
-        <span>Wholesale &bull; Foodservice</span>
-      </div>
+
+      {/* Brand Typography */}
+      {showText && variant !== 'icon' && (
+        <div className="flex flex-col">
+          <div className="flex items-baseline gap-1.5">
+            <span
+              className={`font-display ${textSizes[size]} font-bold tracking-wider text-cream group-hover:text-champagne transition-colors leading-none`}
+            >
+              ROOTWILLS
+            </span>
+          </div>
+          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-champagne/90 font-bold mt-1">
+            Wholesale &bull; Foodservice
+          </span>
+        </div>
+      )}
     </div>
   );
 
-  const content = (
-    <div className={`inline-flex items-center ${gap} ${className} group select-none`}>
-      {LogoIcon}
-      {variant !== 'icon' && LogoText}
-    </div>
-  );
-
-  if (!withLink) {
-    return content;
-  }
+  if (!href) return logoGraphic;
 
   return (
-    <Link href="/" className="hover:opacity-95 transition-opacity">
-      {content}
+    <Link href={href} className="inline-block focus:outline-none">
+      {logoGraphic}
     </Link>
   );
 }

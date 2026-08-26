@@ -30,13 +30,12 @@ import {
   Box
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { WebGLProduceExperience } from '@/components/public/WebGLProduceExperience';
+import { Hyper3DHeroShowcase } from '@/components/public/Hyper3DHeroShowcase';
 import { Interactive3DCrateBuilder } from '@/components/3d/Interactive3DCrateBuilder';
 import { ThreeDDepotExplorer } from '@/components/3d/ThreeDDepotExplorer';
-import { ThreeDHeroVisual } from '@/components/public/ThreeDHeroVisual';
-import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
-import { Interactive3DFarmToKitchen } from '@/components/public/Interactive3DFarmToKitchen';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
+import { Interactive3DFarmToKitchen } from '@/components/public/Interactive3DFarmToKitchen';
+import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
 
 const PriceEstimator = dynamic(
   () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
@@ -61,10 +60,10 @@ export default function PublicHomePage() {
   return (
     <div className="space-y-24 sm:space-y-32 pb-24 overflow-hidden">
       
-      {/* 1. 3D HERO SECTION */}
+      {/* 1. HERO SECTION WITH 3D WEBGL PRODUCE SHOWCASE */}
       <section className="relative pt-10 sm:pt-16 lg:pt-20">
-        {/* Background ambient lighting */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+        {/* Background ambient royal emerald lighting */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[950px] h-[650px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none -z-10" />
         <div className="absolute top-10 right-10 w-96 h-96 bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -72,7 +71,7 @@ export default function PublicHomePage() {
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-500/40 text-cream text-xs font-mono mb-6 animate-fade-in shadow-2xl backdrop-blur-md">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
             <span className="text-emerald-400 font-bold">⚡ Live Deliveries: 99.8% On-Time Today</span>
             <span className="text-cream/30 hidden sm:inline">&bull;</span>
@@ -86,7 +85,7 @@ export default function PublicHomePage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-cream/75 max-w-3xl mx-auto font-sans leading-relaxed">
+          <p className="mt-6 text-base sm:text-xl text-cream/80 max-w-3xl mx-auto font-sans leading-relaxed">
             Professional food and farm-fresh produce supply for <strong>restaurants, hotels, caterers, care homes, and commercial kitchens</strong> across Birmingham and the UK. Next-day morning delivery, contract-locked pricing, and smart online ordering.
           </p>
 
@@ -103,14 +102,14 @@ export default function PublicHomePage() {
             <div className="flex w-full sm:w-auto items-center gap-2">
               <Link
                 href="#pricing-calculator"
-                className="flex-1 sm:flex-initial px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/90 border border-emerald-900/60 hover:border-champagne/60 hover:bg-emerald-950/40 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="flex-1 sm:flex-initial px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/90 border border-emerald-900/80 hover:border-champagne/60 hover:bg-emerald-950/40 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <span>Request a Price List</span>
               </Link>
 
               <Link
                 href="/login"
-                className="px-5 py-4 rounded-xl font-medium text-cream/80 hover:text-champagne bg-obsidian-950/60 border border-emerald-900/60 hover:border-emerald-700 flex items-center justify-center gap-1.5 text-sm transition-all"
+                className="px-5 py-4 rounded-xl font-medium text-cream/80 hover:text-champagne bg-obsidian-950/80 border border-emerald-900/80 hover:border-emerald-700 flex items-center justify-center gap-1.5 text-sm transition-all"
                 title="Customer Portal Login"
               >
                 <span>Portal Login</span>
@@ -119,8 +118,8 @@ export default function PublicHomePage() {
             </div>
           </div>
 
-          {/* REAL INTERACTIVE 3D WEBGL PRODUCE VIEWER */}
-          <WebGLProduceExperience />
+          {/* 3D INTERACTIVE HERO SHOWCASE */}
+          <Hyper3DHeroShowcase />
 
           {/* Trust Guarantees Row */}
           <div className="mt-12 pt-8 border-t border-emerald-950 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-5xl mx-auto">
@@ -156,7 +155,7 @@ export default function PublicHomePage() {
       {/* 5. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
       <Interactive3DFarmToKitchen />
 
-      {/* 6. ADVANTAGE METRICS & WHY CHOOSE US (with 3D Tilt Cards) */}
+      {/* 6. ADVANTAGE METRICS & WHY CHOOSE US */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -230,7 +229,7 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 7. SECTOR SOLUTIONS (with 3D Tilt Cards) */}
+      {/* 7. SECTOR SOLUTIONS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">

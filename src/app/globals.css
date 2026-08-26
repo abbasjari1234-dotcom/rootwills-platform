@@ -3,152 +3,109 @@
 @tailwind utilities;
 
 :root {
-  --color-obsidian-950: #050B08;
-  --color-obsidian-900: #0A140F;
-  --color-emerald-deep: #064E3B;
-  --color-emerald-glow: #10B981;
-  --color-champagne: #C9A227;
-  --color-champagne-soft: #E4C767;
-  --color-cream: #F5EFE6;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Royal Emerald Palette Core */
+  --bg-emerald-deep: #021710;
+  --bg-emerald-rich: #062D21;
+  --bg-emerald-surface: #0B3D2E;
+  
+  /* Gold Core */
+  --gold-primary: #E4C767;
+  --gold-light: #FFF4D0;
+  --gold-dark: #C9A227;
+
+  /* Mint Core */
+  --mint-accent: #10B981;
+  --mint-light: #34D399;
 }
 
-body {
-  background-color: #050B08;
+/* Force rich Royal Emerald background across the entire site */
+html, body {
+  background-color: #021710 !important;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(6, 78, 59, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(10, 20, 15, 0.8) 0%, #050B08 100%);
+    radial-gradient(circle at 50% 0%, #0A4333 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(228, 199, 103, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #04241B 0%, #021710 100%) !important;
   background-attachment: fixed;
-  color: #F5EFE6;
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: #F7F5EE;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0A140F;
-}
-::-webkit-scrollbar-thumb {
-  background: #1E382B;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #E4C767;
-}
-
-/* Glassmorphic panels with Emerald & Gold accents */
+/* Custom Luxury Glassmorphism in Royal Emerald */
 .glass-panel {
-  background: rgba(10, 20, 15, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(245, 239, 230, 0.08);
-}
-
-.glass-panel-emerald {
-  background: rgba(6, 44, 34, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(16, 185, 129, 0.25);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15);
 }
 
 .glass-panel-gold {
-  background: rgba(20, 22, 14, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(228, 199, 103, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(228, 199, 103, 0.15);
+  background: linear-gradient(135deg, rgba(10, 56, 42, 0.85) 0%, rgba(4, 30, 22, 0.95) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(228, 199, 103, 0.45);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(228, 199, 103, 0.15), inset 0 1px 2px rgba(255, 244, 208, 0.3);
 }
 
+.glass-panel-emerald {
+  background: linear-gradient(135deg, rgba(5, 60, 44, 0.85) 0%, rgba(2, 28, 20, 0.95) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.25), inset 0 1px 2px rgba(52, 211, 153, 0.3);
+}
+
+/* 3D Transform Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Metallic Champagne Text Gradient */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FFF4D0 0%, #E4C767 50%, #C9A227 100%);
+  background: linear-gradient(135deg, #FFF7D6 0%, #E4C767 50%, #C9A227 100%);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .emerald-gradient-text {
   background: linear-gradient(135deg, #A7F3D0 0%, #34D399 50%, #059669 100%);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* 3D Depth Card Utilities */
-.card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+/* Custom Scrollbar in Emerald */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.card-3d:hover {
-  transform: translateY(-4px) rotateX(2deg);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(228, 199, 103, 0.2);
+::-webkit-scrollbar-track {
+  background: #021710;
 }
 
-/* Production Onboarding Form Utility Tokens */
-.onboarding-input {
-  width: 100%;
-  background-color: #0A140F;
-  border: 1px solid #1E382B;
-  color: #f4f4f5;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-  transition: all 0.2s ease-in-out;
+::-webkit-scrollbar-thumb {
+  background: #0B4B38;
+  border-radius: 4px;
+  border: 1px solid rgba(228, 199, 103, 0.2);
 }
 
-.onboarding-input::placeholder {
-  color: #52796F;
-}
-
-.onboarding-input:focus {
-  outline: none;
-  border-color: #E4C767;
-  box-shadow: 0 0 0 2px rgba(228, 199, 103, 0.35);
-}
-
-.onboarding-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
-  border-radius: 0.75rem;
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: #050B08;
-  background: linear-gradient(135deg, #FFF4D0 0%, #E4C767 50%, #C9A227 100%);
-  box-shadow: 0 0 25px rgba(228, 199, 103, 0.35);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.onboarding-btn-primary:hover:not(:disabled) {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-}
-
-.onboarding-btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.875rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: rgba(245, 239, 230, 0.7);
-  background: rgba(10, 20, 15, 0.6);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.onboarding-btn-ghost:hover {
-  color: #F5EFE6;
-  background: rgba(15, 30, 23, 0.9);
-  border-color: rgba(228, 199, 103, 0.5);
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
 }
