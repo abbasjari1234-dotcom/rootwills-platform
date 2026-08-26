@@ -40,8 +40,9 @@ function getAuthoritativeProductPrice(productId?: string, sku?: string, fallback
     (p) => (productId && p.id === productId) || (sku && p.sku.toLowerCase() === sku.toLowerCase())
   );
   if (match) {
-    // UK VAT rules: mineral waters, sodas, and confectionaries are standard rated (20%)
-    const isStandardRated = match.subcategory === 'drinks' || (match.category === 'ambient' && match.name.toLowerCase().includes('water'));
+    // UK VAT rules: mineral waters, sodas, and confectionery are standard rated (20%)
+    const nameLower = match.name.toLowerCase();
+    const isStandardRated = nameLower.includes('water') || nameLower.includes('soda') || nameLower.includes('juice') || match.subcategory === 'chocolate_pastry';
     return {
       price: match.basePrice,
       name: match.name,
