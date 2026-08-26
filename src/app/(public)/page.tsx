@@ -26,10 +26,13 @@ import {
   PhoneCall,
   Check,
   Leaf,
-  Rotate3d
+  Rotate3d,
+  Box
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { WebGLProduceExperience } from '@/components/public/WebGLProduceExperience';
+import { Interactive3DCrateBuilder } from '@/components/3d/Interactive3DCrateBuilder';
+import { ThreeDDepotExplorer } from '@/components/3d/ThreeDDepotExplorer';
 import { ThreeDHeroVisual } from '@/components/public/ThreeDHeroVisual';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
 import { Interactive3DFarmToKitchen } from '@/components/public/Interactive3DFarmToKitchen';
@@ -141,13 +144,19 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 2. 3D INTERACTIVE PRODUCT CATALOG SHOWCASE */}
+      {/* 2. INTERACTIVE 3D CRATE PACKER STUDIO */}
+      <Interactive3DCrateBuilder />
+
+      {/* 3. 3D INTERACTIVE PRODUCT CATALOG SHOWCASE */}
       <ThreeDProductShowcase />
 
-      {/* 3. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
+      {/* 4. 3D COLD-CHAIN DEPOT DIGITAL TWIN */}
+      <ThreeDDepotExplorer />
+
+      {/* 5. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
       <Interactive3DFarmToKitchen />
 
-      {/* 4. ADVANTAGE METRICS & WHY CHOOSE US (with 3D Tilt Cards) */}
+      {/* 6. ADVANTAGE METRICS & WHY CHOOSE US (with 3D Tilt Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -221,7 +230,7 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 5. SECTOR SOLUTIONS (with 3D Tilt Cards) */}
+      {/* 7. SECTOR SOLUTIONS (with 3D Tilt Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -370,12 +379,12 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 6. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 8. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
 
-      {/* 7. CALL TO ACTION STRIP */}
+      {/* 9. CALL TO ACTION STRIP */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, Cormorant_Garamond, IBM_Plex_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
 import './globals.css';
+import { FullPage3DCanvas } from '@/components/3d/FullPage3DCanvas';
 
 const CartDrawer = dynamic(
   () => import('@/components/portal/CartDrawer').then((mod) => mod.CartDrawer),
@@ -100,8 +101,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-obsidian-950 text-cream font-sans antialiased min-h-screen">
-        {children}
+      <body className="bg-obsidian-950 text-cream font-sans antialiased min-h-screen relative selection:bg-champagne selection:text-obsidian-950">
+        <FullPage3DCanvas />
+        <div className="relative z-10">
+          {children}
+        </div>
         <CartDrawer />
       </body>
     </html>
