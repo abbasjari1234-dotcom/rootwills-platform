@@ -80,7 +80,7 @@ export async function GET() {
         estimatedWeeklySpend: Number(app.estimated_weekly_spend) || 2500,
         status,
         source: 'inbound_web',
-        assignedSalesRep: 'Marcus Vance',
+        assignedSalesRep: 'Rootwills Commercial Desk',
         notes: `Applied online via Onboarding Wizard. Covers: ${app.weekly_covers || 'N/A'}. Credit Tier: ${app.credit_tier_requested || 'Standard'}. Multi-Site: ${app.multi_location ? 'Yes' : 'No'}`,
         createdAt: app.created_at ? new Date(app.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
         updatedAt: app.created_at ? new Date(app.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],

@@ -36,7 +36,7 @@ export default function OnboardingConciergeReviewPage() {
             <div>
               <div className="font-bold text-cream text-sm">Dedicated Account Manager</div>
               <p className="text-cream/60 text-xs mt-0.5">
-                Marcus Vance from our commercial desk will contact you within 2 business hours to verify your locked contract rates.
+                Our Senior Commercial Account Manager will contact you within 2 business hours to verify your locked contract rates.
               </p>
             </div>
           </div>

@@ -206,7 +206,7 @@ export async function getLiveLeadsServerAction(): Promise<Lead[]> {
       estimatedWeeklySpend: app.estimated_weekly_spend || 2500,
       status: (app.status as LeadStatus) || 'new_lead',
       source: 'website_form',
-      assignedSalesRep: 'Marcus Vance',
+      assignedSalesRep: 'Rootwills Commercial Desk',
       notes: `Credit Tier Requested: ${app.credit_tier_requested || 'starter_5k'}. Multi-site: ${app.multi_location ? 'Yes' : 'No'}.`,
       createdAt: app.created_at || new Date().toISOString(),
     }));

@@ -112,7 +112,7 @@ export default function SalesCRMPage() {
     city: 'Birmingham',
     estimatedWeeklySpend: 3000,
     source: 'cold_outreach' as const,
-    assignedSalesRep: 'Marcus Vance',
+    assignedSalesRep: 'Commercial Desk Lead',
     notes: '',
   });
 
@@ -165,7 +165,7 @@ export default function SalesCRMPage() {
       city: 'Birmingham',
       estimatedWeeklySpend: 3000,
       source: 'cold_outreach',
-      assignedSalesRep: 'Marcus Vance',
+      assignedSalesRep: 'Commercial Desk Lead',
       notes: '',
     });
   };

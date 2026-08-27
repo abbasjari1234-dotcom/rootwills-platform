@@ -191,7 +191,7 @@ export default function PublicHomePage() {
               className="w-full sm:w-auto px-6 py-4 rounded-xl bg-obsidian-900 border border-emerald-900/60 hover:border-champagne text-cream text-sm font-semibold flex items-center justify-center gap-2 transition-all"
             >
               <PhoneCall className="w-4 h-4 text-champagne" />
-              <span>Speak to Marcus (Sales Desk)</span>
+              <span>Contact Commercial Sales Desk</span>
             </Link>
           </div>
         </div>

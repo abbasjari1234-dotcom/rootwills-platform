@@ -97,7 +97,7 @@ export function AdminSidebar() {
         <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-1">
           <div className="flex items-center gap-2 text-xs font-bold text-cream">
             <UserCheck className="w-3.5 h-3.5 text-champagne" />
-            <span>Marcus Vance</span>
+            <span>Operations Manager</span>
           </div>
           <div className="text-[10px] text-cream/50 font-mono">Commercial Desk & Admin Lead</div>
         </div>

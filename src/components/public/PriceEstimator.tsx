@@ -37,7 +37,7 @@ export function PriceEstimator() {
       city: 'Birmingham / Midlands',
       estimatedWeeklySpend: weeklySpend,
       source: 'quote_request',
-      assignedSalesRep: 'Marcus Vance',
+      assignedSalesRep: 'Commercial Sales Desk',
       notes: `Instant price quote generated online. Weekly spend: £${weeklySpend.toLocaleString()}. Estimated annual savings: £${estimatedAnnualSavings.toLocaleString()}.`,
     });
 
@@ -197,14 +197,14 @@ export function PriceEstimator() {
               Thank You! Your Price List Request Has Been Generated
             </h3>
             <p className="text-sm text-cream/75 max-w-md mx-auto">
-              We have dispatched your quotation enquiry to our Midlands Commercial Desk. Your dedicated account manager, <strong>Marcus Vance</strong>, is reviewing your custom contract tier.
+              We have dispatched your quotation enquiry to our Midlands Commercial Desk. Your dedicated account manager is reviewing your custom contract tier.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
               <a
                 href="/login"
                 className="px-6 py-2.5 rounded-lg bg-champagne text-obsidian-950 font-semibold text-xs shadow-gold-glow hover:brightness-110"
               >
-                Access Customer Demo Portal
+                Sign In to Customer Portal
               </a>
               <button
                 type="button"

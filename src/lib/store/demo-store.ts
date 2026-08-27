@@ -91,17 +91,17 @@ export const useDemoStore = create<DemoState>()(
         let profile: UserProfile;
         if (role === 'admin' || role === 'sales') {
           profile = {
-            id: 'usr-sales-marcus',
+            id: 'usr-admin-manager',
             organizationId: 'org-rootwills-hq',
-            email: 'marcus.vance@rootwills.co.uk',
-            fullName: 'Marcus Vance (Commercial Sales Lead)',
+            email: 'admin@rootwills.co.uk',
+            fullName: 'Rootwills Operations Manager',
             role: 'admin',
           };
         } else {
           profile = {
             id: `usr-${org.id}`,
             organizationId: org.id,
-            email: `purchasing@${org.name.toLowerCase().replace(/[^a-z]/g, '')}.co.uk`,
+            email: `purchasing@rootwills.co.uk`,
             fullName: `${org.name} Purchasing`,
             role: 'purchaser',
           };
@@ -380,7 +380,7 @@ export const useDemoStore = create<DemoState>()(
       },
     }),
     {
-      name: 'rootwills-demo-storage',
+      name: 'rootwills-b2b-storage-v4',
     }
   )
 );
