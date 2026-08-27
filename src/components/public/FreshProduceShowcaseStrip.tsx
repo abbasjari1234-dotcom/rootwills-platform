@@ -10,7 +10,7 @@ const PRODUCE_HIGHLIGHTS = [
     title: 'Class 1 Heritage & Pink Lady® Apples',
     spec: '14.8° Brix Natural Sugar & Crisp Turgor',
     desc: 'Direct from Kent growers and sunny European orchards. High cell crispness, effervescent acidity, and hand-selected uniform sizing for fine dining menus.',
-    image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=900&auto=format&fit=crop&q=90',
+    image: '/images/branded/rootwills_apples_card.jpg',
     badge: '100% Class 1 Extra',
     color: '#FF4D6D',
   },
@@ -18,15 +18,15 @@ const PRODUCE_HIGHLIGHTS = [
     title: 'Living Hydroponic Microgreens & Herbs',
     spec: 'Delivered with Nutrient Roots Attached',
     desc: 'Red vein sorrel, pea shoots, edible violas, and living basil delivered in clean nutrient pads. Zero soil grit, 10-day shelf life, and vibrant color.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=900&auto=format&fit=crop&q=90',
+    image: '/images/branded/rootwills_microgreens_card.jpg',
     badge: 'Harvested to Order',
     color: '#10B981',
   },
   {
     title: 'Farmhouse Dairy & Free-Range Eggs',
-    spec: 'Lescure Butter & Lion-Code Farm Eggs',
+    spec: 'Cultured Butter & Lion-Code Farm Eggs',
     desc: 'French pastry butter sheets (84% butterfat), unpasteurised West Country cheddar, double cream, and fresh daily farm eggs graded for commercial bakeries.',
-    image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=900&auto=format&fit=crop&q=90',
+    image: '/images/branded/rootwills_dairy_card.jpg',
     badge: 'Continuous +2°C Hold',
     color: '#FFC837',
   },
@@ -34,7 +34,7 @@ const PRODUCE_HIGHLIGHTS = [
 
 export function FreshProduceShowcaseStrip() {
   return (
-    <section className="relative py-20 bg-gradient-to-b from-obsidian-950 via-emerald-950/40 to-obsidian-950 border-y border-emerald-900/60 overflow-hidden">
+    <section className="relative py-20 bg-gradient-to-b from-obsidian-950 via-emerald-950/40 to-obsidian-950 border-y border-emerald-900/60 overflow-hidden relative z-10">
       
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
@@ -57,7 +57,7 @@ export function FreshProduceShowcaseStrip() {
           </p>
         </div>
 
-        {/* 3 Sensory Produce Cards */}
+        {/* 3 Sensory Branded Produce Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {PRODUCE_HIGHLIGHTS.map((item, idx) => (
             <div
@@ -67,7 +67,7 @@ export function FreshProduceShowcaseStrip() {
               <div className="rounded-[22px] bg-obsidian-900/95 p-5 sm:p-6 space-y-4 flex flex-col justify-between h-full">
                 
                 <div className="space-y-4">
-                  {/* Photo Frame */}
+                  {/* Branded Photo Frame */}
                   <div className="relative h-56 w-full rounded-2xl overflow-hidden bg-obsidian-950">
                     <Image
                       src={item.image}

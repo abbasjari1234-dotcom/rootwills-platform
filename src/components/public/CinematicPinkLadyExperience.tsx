@@ -49,8 +49,8 @@ const STORY_SECTIONS: StorySection[] = [
       '100% Class 1 Extra-Select specifications',
       'Full farm-to-fork batch traceability'
     ],
-    image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1200&auto=format&fit=crop&q=90',
-    imageCaption: 'Kent & European Sun Orchards — Hand-Harvested Daily',
+    image: '/images/branded/rootwills_orchard_harvest.jpg',
+    imageCaption: 'Kent & European Sun Orchards — Hand-Harvested Daily into Rootwills Crates',
     badge: 'Class 1 Extra Selection',
   },
   {
@@ -58,15 +58,15 @@ const STORY_SECTIONS: StorySection[] = [
     tag: '02 / Cold-Chain Dual-Temp',
     headline: 'Continuous +2°C Micro-Climate. Zero Thermal Breaks.',
     subheadline: 'Calibrated dual-temperature fleet with real-time GPS telemetry.',
-    description: 'Thermal breaks destroy produce cell walls and leaf vibrancy. Rootwills operates a dedicated fleet of dual-temperature refrigerated vehicles. Tender salads arrive with morning dewdrops intact; delicate berries stay firm and mold-free.',
+    description: 'Thermal breaks destroy produce cell walls and leaf vibrancy. Rootwills operates a dedicated fleet of dual-temperature refrigerated Mercedes-Benz Sprinters. Tender salads arrive with morning dewdrops intact; delicate berries stay firm and mold-free.',
     points: [
       '+2.0°C to +4.0°C chilled produce vault',
       'Continuous calibrated digital telematics',
       'Time-stamped temperature logs on handover',
       'Guaranteed 06:00 AM – 07:30 AM early morning SLA'
     ],
-    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&auto=format&fit=crop&q=90',
-    imageCaption: 'Continuous Dual-Temp Cold Chain — +2.2°C Calibrated Hold',
+    image: '/images/branded/rootwills_fleet_delivery.jpg',
+    imageCaption: 'Continuous Dual-Temp Cold Chain — +2.2°C Calibrated Hold Fleet',
     badge: '100% Cold-Locked Chain',
   },
   {
@@ -81,8 +81,8 @@ const STORY_SECTIONS: StorySection[] = [
       'Living root microgreens with zero soil grit',
       'Dedicated commercial key account desk'
     ],
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&auto=format&fit=crop&q=90',
-    imageCaption: 'Living Hydroponic Microgreen Trays — Roots Attached',
+    image: '/images/branded/rootwills_microgreens_dairy.jpg',
+    imageCaption: 'Living Hydroponic Microgreen Trays & Rootwills Artisan Dairy',
     badge: 'Chef-Selected Grade A',
   },
   {
@@ -97,8 +97,8 @@ const STORY_SECTIONS: StorySection[] = [
       'Personalised contract price list locked for your venue',
       'Instant 1-click repeat reordering on web & mobile'
     ],
-    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&auto=format&fit=crop&q=90',
-    imageCaption: 'Digbeth Central Hub — Next-Day Morning UK Distribution',
+    image: '/images/branded/rootwills_digbeth_hub.jpg',
+    imageCaption: 'Digbeth Central Hub — Next-Day Morning UK Distribution Depot',
     badge: 'Open Your Trade Account',
   }
 ];
@@ -222,7 +222,7 @@ export function CinematicPinkLadyExperience() {
                     muted={isMuted}
                     playsInline
                     className="w-full h-full object-cover brightness-[0.9] contrast-[1.08] group-hover:scale-105 transition-transform duration-700"
-                    poster="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1200&auto=format&fit=crop&q=90"
+                    poster="/images/branded/rootwills_orchard_harvest.jpg"
                   >
                     <source
                       src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-fresh-picked-apples-41221-large.mp4"
@@ -289,7 +289,7 @@ export function CinematicPinkLadyExperience() {
 
       </section>
 
-      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY WITH SCROLL-TRIGGERED ANIMATIONS */}
+      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY WITH BRANDED AI IMAGES */}
       <div id="story-start" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 space-y-28 sm:space-y-40 relative z-10">
         
         {STORY_SECTIONS.map((section, index) => {
@@ -307,7 +307,7 @@ export function CinematicPinkLadyExperience() {
               }`}
             >
               
-              {/* Image Frame Column (Pink Lady High-Impact Photo Card) */}
+              {/* Image Frame Column (High-Impact Branded Photo Card) */}
               <div className={`lg:col-span-6 ${isEven ? 'lg:order-1' : 'lg:order-2 lg:col-start-7'}`}>
                 <div className="relative rounded-3xl p-2 bg-gradient-to-br from-emerald-500/30 via-emerald-900/40 to-champagne/20 border border-emerald-500/30 shadow-2xl group overflow-hidden">
                   
