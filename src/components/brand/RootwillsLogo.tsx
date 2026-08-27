@@ -45,66 +45,55 @@ export function RootwillsLogo({
           <defs>
             <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#FFF9E6" />
-              <stop offset="25%" stopColor="#F3DC82" />
-              <stop offset="60%" stopColor="#C9A227" />
-              <stop offset="100%" stopColor="#E4C767" />
+              <stop offset="35%" stopColor="#E4C767" />
+              <stop offset="70%" stopColor="#C9A227" />
+              <stop offset="100%" stopColor="#F5E498" />
             </linearGradient>
-            <linearGradient id="goldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FFE899" />
-              <stop offset="100%" stopColor="#A88214" />
-            </linearGradient>
-            <linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#053326" />
-              <stop offset="100%" stopColor="#02140E" />
+            <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#10B981" />
+              <stop offset="100%" stopColor="#047857" />
             </linearGradient>
           </defs>
 
           {/* Outer Geometric Luxury Shield */}
           <polygon
             points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
-            fill="url(#emeraldShield)"
             stroke="url(#goldLuxury)"
-            strokeWidth="2.8"
+            strokeWidth="3.5"
+            fill="none"
             opacity="0.95"
           />
 
-          {/* Inner Emerald Accent Ring */}
+          {/* Inner Emerald Accent Shield */}
           <polygon
-            points="50,13 81,25 86,59 64,86 36,86 14,59 19,25"
-            stroke="#10B981"
-            strokeWidth="1.2"
-            strokeDasharray="3 3"
-            opacity="0.55"
+            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+            stroke="url(#emeraldInner)"
+            strokeWidth="1.5"
+            fill="none"
+            opacity="0.75"
           />
 
-          {/* Regal British Serif Typography Monogram (100% Crisp & Elegant) */}
-          <text
-            x="34"
-            y="65"
-            fontFamily="var(--font-cinzel), 'Cinzel', 'Playfair Display', Georgia, serif"
-            fontSize="34"
-            fontWeight="900"
-            fill="url(#goldLuxury)"
-            textAnchor="middle"
-          >
-            R
-          </text>
+          {/* Original 'R' Stem & Loop */}
+          <path
+            d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48"
+            stroke="url(#goldLuxury)"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
 
-          <text
-            x="66"
-            y="65"
-            fontFamily="var(--font-cinzel), 'Cinzel', 'Playfair Display', Georgia, serif"
-            fontSize="34"
-            fontWeight="900"
-            fill="url(#goldLuxury)"
-            textAnchor="middle"
-          >
-            W
-          </text>
+          {/* Original 'R' Leg Cleanly Joined into 'W' (Single Continuous Flow, Zero Overlap) */}
+          <path
+            d="M 44 48 L 54 72 L 66 52 L 78 72 L 86 48"
+            stroke="url(#goldLuxury)"
+            strokeWidth="5.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
 
-          {/* Royal Diamond Finial at Crest Apex */}
+          {/* Center Diamond Sparkle */}
           <polygon
-            points="50,17 53,22 50,26 47,22"
+            points="50,22 53,26 50,30 47,26"
             fill="url(#goldLuxury)"
           />
         </svg>

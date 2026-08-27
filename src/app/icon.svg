@@ -2,13 +2,17 @@
   <defs>
     <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFF9E6" />
-      <stop offset="25%" stop-color="#F3DC82" />
-      <stop offset="60%" stop-color="#C9A227" />
-      <stop offset="100%" stop-color="#E4C767" />
+      <stop offset="35%" stop-color="#E4C767" />
+      <stop offset="70%" stop-color="#C9A227" />
+      <stop offset="100%" stop-color="#F5E498" />
     </linearGradient>
     <linearGradient id="emeraldBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#021F17" />
       <stop offset="100%" stop-color="#063E2E" />
+    </linearGradient>
+    <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
     </linearGradient>
   </defs>
 
@@ -16,47 +20,43 @@
 
   <!-- Outer Geometric Luxury Shield -->
   <polygon
-    points="50,8 86,23 92,63 67,92 33,92 8,63 14,23"
+    points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
     stroke="url(#goldLuxury)"
-    stroke-width="2.8"
+    stroke-width="3.5"
     fill="none"
     opacity="0.95"
   />
 
-  <!-- Inner Emerald Accent Ring -->
+  <!-- Inner Emerald Accent Shield -->
   <polygon
-    points="50,15 80,27 85,60 63,86 37,86 15,60 20,27"
-    stroke="#10B981"
-    stroke-width="1.2"
-    stroke-dasharray="3 3"
-    opacity="0.55"
+    points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+    stroke="url(#emeraldInner)"
+    stroke-width="1.5"
+    fill="none"
+    opacity="0.75"
   />
 
-  <!-- Regal British Serif Typography Monogram -->
-  <text
-    x="34"
-    y="65"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="34"
-    font-weight="900"
-    fill="url(#goldLuxury)"
-    text-anchor="middle"
-  >
-    R
-  </text>
+  <!-- Original 'R' Stem & Loop -->
+  <path
+    d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48"
+    stroke="url(#goldLuxury)"
+    stroke-width="6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <text
-    x="66"
-    y="65"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="34"
-    font-weight="900"
-    fill="url(#goldLuxury)"
-    text-anchor="middle"
-  >
-    W
-  </text>
+  <!-- Original 'R' Leg Cleanly Joined into 'W' (Single Continuous Flow, Zero Overlap) -->
+  <path
+    d="M 44 48 L 54 72 L 66 52 L 78 72 L 86 48"
+    stroke="url(#goldLuxury)"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
 
-  <!-- Royal Diamond Finial -->
-  <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury)" />
+  <!-- Center Diamond Sparkle -->
+  <polygon
+    points="50,22 53,26 50,30 47,26"
+    fill="url(#goldLuxury)"
+  />
 </svg>

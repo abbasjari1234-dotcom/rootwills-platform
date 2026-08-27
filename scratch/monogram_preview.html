@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rootwills Joined Ligature & Monogram Options</title>
+  <title>Rootwills Original Logo Joined</title>
   <style>
     body {
       background: #070706;
@@ -15,159 +15,81 @@
       min-height: 100vh;
       margin: 0;
       gap: 30px;
-      padding: 40px;
-    }
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      align-items: center;
     }
     .card {
       background: #021F17;
-      padding: 25px;
+      padding: 30px;
       border-radius: 24px;
       border: 1px solid rgba(228, 199, 103, 0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 15px;
-      text-align: center;
-      width: 260px;
-    }
-    svg {
-      filter: drop-shadow(0 4px 15px rgba(228, 199, 103, 0.35));
+      gap: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Rootwills Monogram: Joined Ligature vs Seamless Woven</h1>
+  <h1>Original Logo Cleanly Joined</h1>
 
-  <div class="grid">
-    <!-- OPTION 1: Seamless Joined Ligature (The Leg of R IS the First Stroke of W!) -->
-    <div class="card">
-      <h3>Option 1: Seamless Joined RW Ligature</h3>
-      <p style="font-size: 11px; opacity: 0.7;">The R leg flows directly into the W stroke as ONE continuous unified letterform. Zero overlapping lines!</p>
-      <svg width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFF9E6" />
-            <stop offset="25%" stop-color="#F3DC82" />
-            <stop offset="60%" stop-color="#C9A227" />
-            <stop offset="100%" stop-color="#E4C767" />
-          </linearGradient>
-          <linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#053326" />
-            <stop offset="100%" stop-color="#02140E" />
-          </linearGradient>
-        </defs>
+  <div class="card">
+    <svg width="240" height="240" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFF9E6" />
+          <stop offset="35%" stop-color="#E4C767" />
+          <stop offset="70%" stop-color="#C9A227" />
+          <stop offset="100%" stop-color="#F5E498" />
+        </linearGradient>
+        <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#10B981" />
+          <stop offset="100%" stop-color="#047857" />
+        </linearGradient>
+      </defs>
 
-        <!-- Luxury Shield Background -->
-        <polygon
-          points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
-          fill="url(#emeraldShield)"
-          stroke="url(#goldLuxury)"
-          stroke-width="2.8"
-        />
+      <!-- Outer Geometric Luxury Shield -->
+      <polygon
+        points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+        stroke="url(#goldLuxury)"
+        stroke-width="3.5"
+        fill="none"
+        opacity="0.95"
+      />
 
-        <!-- Inner Emerald Accent Ring -->
-        <polygon
-          points="50,13 81,25 86,59 64,86 36,86 14,59 19,25"
-          stroke="#10B981"
-          stroke-width="1.2"
-          stroke-dasharray="3 3"
-          opacity="0.55"
-        />
+      <!-- Inner Emerald Accent Shield -->
+      <polygon
+        points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+        stroke="url(#emeraldInner)"
+        stroke-width="1.5"
+        fill="none"
+        opacity="0.75"
+      />
 
-        <!-- R Spine -->
-        <path
-          d="M 26 28 L 26 72"
-          stroke="url(#goldLuxury)"
-          stroke-width="6"
-          stroke-linecap="round"
-        />
-        <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
-        <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+      <!-- Original 'R' Stem & Loop -->
+      <path
+        d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48"
+        stroke="url(#goldLuxury)"
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
 
-        <!-- R Loop -->
-        <path
-          d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
-          stroke="url(#goldLuxury)"
-          stroke-width="5.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
+      <!-- Original 'R' Leg Seamlessly Joined to 'W' (Single Continuous Flow) -->
+      <path
+        d="M 44 48 L 54 72 L 66 52 L 78 72 L 86 48"
+        stroke="url(#goldLuxury)"
+        stroke-width="5.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
 
-        <!-- THE JOINED FLOW: Leg of R connects seamlessly directly into W! -->
-        <path
-          d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
-          stroke="url(#goldLuxury)"
-          stroke-width="5.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-
-        <!-- Top Apex Diamond -->
-        <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury)" />
-      </svg>
-    </div>
-
-    <!-- OPTION 2: Side-by-Side Balanced Heritage (Clear Gap, Zero Overlap) -->
-    <div class="card">
-      <h3>Option 2: Harmonious Balanced R + W</h3>
-      <p style="font-size: 11px; opacity: 0.7;">Clean separation with dedicated optical breathing room between R and W.</p>
-      <svg width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="goldLuxury2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFF9E6" />
-            <stop offset="25%" stop-color="#F3DC82" />
-            <stop offset="60%" stop-color="#C9A227" />
-            <stop offset="100%" stop-color="#E4C767" />
-          </linearGradient>
-          <linearGradient id="emeraldShield2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#053326" />
-            <stop offset="100%" stop-color="#02140E" />
-          </linearGradient>
-        </defs>
-
-        <polygon
-          points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
-          fill="url(#emeraldShield2)"
-          stroke="url(#goldLuxury2)"
-          stroke-width="2.8"
-        />
-
-        <polygon
-          points="50,13 81,25 86,59 64,86 36,86 14,59 19,25"
-          stroke="#10B981"
-          stroke-width="1.2"
-          stroke-dasharray="3 3"
-          opacity="0.55"
-        />
-
-        <!-- 'R' -->
-        <path
-          d="M 23 30 L 23 70 M 23 30 L 38 30 C 47 30 47 46 38 46 L 23 46 M 34 46 L 44 70"
-          stroke="url(#goldLuxury2)"
-          stroke-width="5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-
-        <!-- 'W' -->
-        <path
-          d="M 49 42 L 56 70 L 66 48 L 76 70 L 83 42"
-          stroke="url(#goldLuxury2)"
-          stroke-width="5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-
-        <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury2)" />
-      </svg>
-    </div>
+      <!-- Center Diamond Sparkle -->
+      <polygon
+        points="50,22 53,26 50,30 47,26"
+        fill="url(#goldLuxury)"
+      />
+    </svg>
   </div>
+
 </body>
 </html>
