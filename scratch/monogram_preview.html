@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rootwills Logo Monogram Preview</title>
+  <title>Rootwills Joined Ligature & Monogram Options</title>
   <style>
     body {
       background: #070706;
@@ -14,47 +14,49 @@
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-      gap: 40px;
+      gap: 30px;
+      padding: 40px;
     }
     .grid {
       display: flex;
-      gap: 50px;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
       align-items: center;
     }
     .card {
       background: #021F17;
-      padding: 30px;
+      padding: 25px;
       border-radius: 24px;
       border: 1px solid rgba(228, 199, 103, 0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 15px;
+      text-align: center;
+      width: 260px;
     }
     svg {
-      filter: drop-shadow(0 4px 15px rgba(228, 199, 103, 0.3));
+      filter: drop-shadow(0 4px 15px rgba(228, 199, 103, 0.35));
     }
   </style>
 </head>
 <body>
 
-  <h1>Rootwills Monogram Precision Comparison</h1>
+  <h1>Rootwills Monogram: Joined Ligature vs Seamless Woven</h1>
 
   <div class="grid">
-    <!-- Option A: Pure Bespoke Interwoven Heraldic Monogram (with optical depth cuts) -->
+    <!-- OPTION 1: Seamless Joined Ligature (The Leg of R IS the First Stroke of W!) -->
     <div class="card">
-      <h3>Bespoke Interwoven Monogram (Deep Zoom Precision)</h3>
-      <svg width="220" height="220" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <h3>Option 1: Seamless Joined RW Ligature</h3>
+      <p style="font-size: 11px; opacity: 0.7;">The R leg flows directly into the W stroke as ONE continuous unified letterform. Zero overlapping lines!</p>
+      <svg width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#FFF9E6" />
             <stop offset="25%" stop-color="#F3DC82" />
             <stop offset="60%" stop-color="#C9A227" />
             <stop offset="100%" stop-color="#E4C767" />
-          </linearGradient>
-          <linearGradient id="goldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#FFE899" />
-            <stop offset="100%" stop-color="#9E780E" />
           </linearGradient>
           <linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#053326" />
@@ -67,7 +69,7 @@
           points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
           fill="url(#emeraldShield)"
           stroke="url(#goldLuxury)"
-          stroke-width="2.5"
+          stroke-width="2.8"
         />
 
         <!-- Inner Emerald Accent Ring -->
@@ -76,60 +78,94 @@
           stroke="#10B981"
           stroke-width="1.2"
           stroke-dasharray="3 3"
-          opacity="0.6"
+          opacity="0.55"
         />
 
-        <!-- Monogram: 'W' (Back Layer) -->
+        <!-- R Spine -->
         <path
-          d="M 44 42 L 54 74 L 65 48 L 76 74 L 86 42"
-          stroke="url(#goldAccent)"
-          stroke-width="4.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          opacity="0.9"
-        />
-
-        <!-- Monogram: 'R' (Front Layer with Optical Clean Bridge) -->
-        <!-- R Main Spine -->
-        <path
-          d="M 28 26 L 28 74"
+          d="M 26 28 L 26 72"
           stroke="url(#goldLuxury)"
-          stroke-width="5.5"
+          stroke-width="6"
           stroke-linecap="round"
         />
-        <!-- Top Serif -->
-        <path d="M 23 26 L 33 26" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
-        <!-- Bottom Serif -->
-        <path d="M 23 74 L 33 74" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
 
         <!-- R Loop -->
         <path
-          d="M 28 26 L 46 26 C 56 26 56 46 46 46 L 28 46"
+          d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
           stroke="url(#goldLuxury)"
+          stroke-width="5.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- THE JOINED FLOW: Leg of R connects seamlessly directly into W! -->
+        <path
+          d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
+          stroke="url(#goldLuxury)"
+          stroke-width="5.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <!-- Top Apex Diamond -->
+        <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury)" />
+      </svg>
+    </div>
+
+    <!-- OPTION 2: Side-by-Side Balanced Heritage (Clear Gap, Zero Overlap) -->
+    <div class="card">
+      <h3>Option 2: Harmonious Balanced R + W</h3>
+      <p style="font-size: 11px; opacity: 0.7;">Clean separation with dedicated optical breathing room between R and W.</p>
+      <svg width="180" height="180" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="goldLuxury2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFF9E6" />
+            <stop offset="25%" stop-color="#F3DC82" />
+            <stop offset="60%" stop-color="#C9A227" />
+            <stop offset="100%" stop-color="#E4C767" />
+          </linearGradient>
+          <linearGradient id="emeraldShield2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#053326" />
+            <stop offset="100%" stop-color="#02140E" />
+          </linearGradient>
+        </defs>
+
+        <polygon
+          points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+          fill="url(#emeraldShield2)"
+          stroke="url(#goldLuxury2)"
+          stroke-width="2.8"
+        />
+
+        <polygon
+          points="50,13 81,25 86,59 64,86 36,86 14,59 19,25"
+          stroke="#10B981"
+          stroke-width="1.2"
+          stroke-dasharray="3 3"
+          opacity="0.55"
+        />
+
+        <!-- 'R' -->
+        <path
+          d="M 23 30 L 23 70 M 23 30 L 38 30 C 47 30 47 46 38 46 L 23 46 M 34 46 L 44 70"
+          stroke="url(#goldLuxury2)"
           stroke-width="5"
           stroke-linecap="round"
           stroke-linejoin="round"
         />
 
-        <!-- Mask/Gap for Leg crossing W to give clean 3D weaving -->
+        <!-- 'W' -->
         <path
-          d="M 42 46 Q 48 58 60 74"
-          stroke="#053326"
-          stroke-width="8"
-          stroke-linecap="round"
-        />
-        <!-- R Dynamic Sweep Leg -->
-        <path
-          d="M 42 46 Q 48 58 60 74"
-          stroke="url(#goldLuxury)"
+          d="M 49 42 L 56 70 L 66 48 L 76 70 L 83 42"
+          stroke="url(#goldLuxury2)"
           stroke-width="5"
           stroke-linecap="round"
+          stroke-linejoin="round"
         />
-        <!-- R Foot Finial -->
-        <path d="M 55 74 L 64 74" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
 
-        <!-- Royal Crown/Star Finial at Apex -->
-        <polygon points="50,17 53,22 50,26 47,22" fill="url(#goldLuxury)" />
+        <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury2)" />
       </svg>
     </div>
   </div>

@@ -77,52 +77,34 @@ export function RootwillsLogo({
             opacity="0.55"
           />
 
-          {/* Monogram: 'W' (Intertwined Base Layer) */}
+          {/* SEAMLESS JOINED 'RW' LIGATURE (Single Unbroken Mark, Zero Overlap) */}
+          {/* R Main Spine */}
           <path
-            d="M 44 42 L 54 74 L 65 48 L 76 74 L 86 42"
-            stroke="url(#goldAccent)"
-            strokeWidth="4.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.9"
-          />
-
-          {/* Monogram: 'R' (Foreground Heraldic Layer with Optical Depth Cut) */}
-          {/* R Main Spine & Serifs */}
-          <path
-            d="M 28 26 L 28 74"
+            d="M 26 28 L 26 72"
             stroke="url(#goldLuxury)"
-            strokeWidth="5.5"
+            strokeWidth="6"
             strokeLinecap="round"
           />
-          <path d="M 23 26 L 33 26" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
-          <path d="M 23 74 L 33 74" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
 
           {/* R Upper Loop */}
           <path
-            d="M 28 26 L 46 26 C 56 26 56 46 46 46 L 28 46"
+            d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
             stroke="url(#goldLuxury)"
-            strokeWidth="5"
+            strokeWidth="5.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Clean Optical Clearance Mask for Intertwine */}
+          {/* THE SEAMLESS JOIN: The leg of R flows continuously into the W */}
           <path
-            d="M 42 46 Q 48 58 60 74"
-            stroke="#053326"
-            strokeWidth="8.5"
-            strokeLinecap="round"
-          />
-
-          {/* R Graceful Sweep Leg */}
-          <path
-            d="M 42 46 Q 48 58 60 74"
+            d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
             stroke="url(#goldLuxury)"
-            strokeWidth="5"
+            strokeWidth="5.5"
             strokeLinecap="round"
+            strokeLinejoin="round"
           />
-          <path d="M 55 74 L 64 74" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
 
           {/* Royal Diamond Finial at Crest Apex */}
           <polygon

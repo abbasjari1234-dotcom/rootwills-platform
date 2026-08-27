@@ -6,10 +6,6 @@
       <stop offset="60%" stop-color="#C9A227" />
       <stop offset="100%" stop-color="#E4C767" />
     </linearGradient>
-    <linearGradient id="goldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFE899" />
-      <stop offset="100%" stop-color="#A88214" />
-    </linearGradient>
     <linearGradient id="emeraldBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#021F17" />
       <stop offset="100%" stop-color="#063E2E" />
@@ -36,52 +32,34 @@
     opacity="0.55"
   />
 
-  <!-- Monogram: 'W' (Intertwined Base Layer) -->
+  <!-- SEAMLESS JOINED 'RW' LIGATURE (Single Unbroken Mark, Zero Overlap) -->
+  <!-- R Main Spine -->
   <path
-    d="M 44 42 L 54 74 L 65 48 L 76 74 L 86 42"
-    stroke="url(#goldAccent)"
-    stroke-width="4.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    opacity="0.9"
-  />
-
-  <!-- Monogram: 'R' (Foreground Heraldic Layer) -->
-  <!-- R Main Spine & Serifs -->
-  <path
-    d="M 28 26 L 28 74"
+    d="M 26 28 L 26 72"
     stroke="url(#goldLuxury)"
-    stroke-width="5.5"
+    stroke-width="6"
     stroke-linecap="round"
   />
-  <path d="M 23 26 L 33 26" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
-  <path d="M 23 74 L 33 74" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
 
   <!-- R Upper Loop -->
   <path
-    d="M 28 26 L 46 26 C 56 26 56 46 46 46 L 28 46"
+    d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
     stroke="url(#goldLuxury)"
-    stroke-width="5"
+    stroke-width="5.5"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
 
-  <!-- Optical Clearance Mask for Intertwine -->
+  <!-- THE SEAMLESS JOIN: Leg of R connects directly into W! -->
   <path
-    d="M 42 46 Q 48 58 60 74"
-    stroke="#021F17"
-    stroke-width="8.5"
-    stroke-linecap="round"
-  />
-
-  <!-- R Graceful Sweep Leg -->
-  <path
-    d="M 42 46 Q 48 58 60 74"
+    d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
     stroke="url(#goldLuxury)"
-    stroke-width="5"
+    stroke-width="5.5"
     stroke-linecap="round"
+    stroke-linejoin="round"
   />
-  <path d="M 55 74 L 64 74" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
 
   <!-- Royal Diamond Finial -->
   <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury)" />
