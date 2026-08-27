@@ -24,7 +24,7 @@ const categories: ProductCategory[] = [
     badge: 'Class 1 Selected',
     headline: 'Crisp Pink Lady, Braeburn, Heirloom Citrus & Berries',
     description: 'Direct grower partnerships delivering sweet, blemish-free fruit graded to the highest UK food-service standards for desserts, bars, and breakfast passes.',
-    image: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/pink_lady_apples_showcase.jpg',
     sampleItems: [
       { name: 'Pink Lady® Apples (Class 1)', grade: 'Extra Firm', pack: '13kg Box / 80 Count' },
       { name: 'Heritage Blood Oranges (Sicilian)', grade: 'High Sugar Brix', pack: '10kg Crate' },
