@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -21,7 +21,9 @@ import {
   Pause,
   Volume2,
   VolumeX,
-  Maximize2
+  Zap,
+  TrendingUp,
+  Activity
 } from 'lucide-react';
 
 interface StorySection {
@@ -34,6 +36,7 @@ interface StorySection {
   image: string;
   imageCaption: string;
   badge: string;
+  icon: any;
 }
 
 const STORY_SECTIONS: StorySection[] = [
@@ -52,6 +55,7 @@ const STORY_SECTIONS: StorySection[] = [
     image: '/images/branded/rootwills_orchard_harvest.jpg',
     imageCaption: 'Kent & European Sun Orchards — Hand-Harvested Daily into Rootwills Crates',
     badge: 'Class 1 Extra Selection',
+    icon: Sun,
   },
   {
     id: 'story-2',
@@ -68,6 +72,7 @@ const STORY_SECTIONS: StorySection[] = [
     image: '/images/branded/rootwills_fleet_delivery.jpg',
     imageCaption: 'Continuous Dual-Temp Cold Chain — +2.2°C Calibrated Hold Fleet',
     badge: '100% Cold-Locked Chain',
+    icon: ThermometerSnowflake,
   },
   {
     id: 'story-3',
@@ -84,6 +89,7 @@ const STORY_SECTIONS: StorySection[] = [
     image: '/images/branded/rootwills_microgreens_dairy.jpg',
     imageCaption: 'Living Hydroponic Microgreen Trays & Rootwills Artisan Dairy',
     badge: 'Chef-Selected Grade A',
+    icon: Leaf,
   },
   {
     id: 'story-4',
@@ -100,6 +106,7 @@ const STORY_SECTIONS: StorySection[] = [
     image: '/images/branded/rootwills_digbeth_hub.jpg',
     imageCaption: 'Digbeth Central Hub — Next-Day Morning UK Distribution Depot',
     badge: 'Open Your Trade Account',
+    icon: ShieldCheck,
   }
 ];
 
@@ -130,99 +137,112 @@ export function CinematicPinkLadyExperience() {
     <div className="w-full text-cream relative">
       
       {/* 1. MASTERPIECE 2-COLUMN HERO WITH FRAMED CINEMA VIDEO REEL */}
-      <section className="relative min-h-[90vh] w-full pt-8 sm:pt-14 pb-16 flex items-center overflow-hidden">
+      <section className="relative min-h-[92vh] w-full pt-8 sm:pt-14 pb-16 flex items-center overflow-hidden">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Animated Bold Typography & CTAs */}
+            {/* Left Column: Animated Bold Typography & Interactive CTAs */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: -35 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-6 text-left"
             >
               
-              {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-cream text-xs font-mono backdrop-blur-xl shadow-2xl">
+              {/* Animated Eyebrow Badge with Pulse Glow */}
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/50 text-cream text-xs font-mono backdrop-blur-xl shadow-[0_0_20px_rgba(16,185,129,0.3)] cursor-pointer"
+              >
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span className="text-emerald-300 font-bold">Farm-to-Kitchen Direct Supply &bull; Birmingham Hub</span>
                 <span className="text-cream/30 hidden sm:inline">&bull;</span>
                 <span className="text-champagne hidden sm:inline">11:00 PM Cut-off</span>
-              </div>
+              </motion.div>
 
-              {/* Main Headline */}
+              {/* Main Headline with Shimmer Effect */}
               <div className="space-y-3">
-                <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-cream uppercase leading-[1.02] drop-shadow-2xl">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-cream uppercase leading-[1.02] drop-shadow-2xl"
+                >
                   WHY ROOTWILLS <br />
-                  <span className="gold-gradient-text">IS SO SPECIAL</span>
-                </h1>
+                  <span className="gold-gradient-text animate-pulse" style={{ animationDuration: '4s' }}>
+                    IS SO SPECIAL
+                  </span>
+                </motion.h1>
 
                 <p className="text-base sm:text-xl text-cream/85 font-sans max-w-xl leading-relaxed">
                   We supply the finest fresh produce, orchard fruits, heritage vegetables, living herbs, and artisan dairy directly to hospitality professionals across the UK.
                 </p>
               </div>
 
-              {/* CTA Group */}
+              {/* Interactive CTA Buttons with Magnetic Spring Hover */}
               <div className="pt-2 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/onboarding"
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-sm shadow-gold-glow hover:brightness-110 flex items-center gap-2 transition-all group"
-                >
-                  <span>Open a Trade Account</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                  <Link
+                    href="/onboarding"
+                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-sm shadow-[0_0_30px_rgba(228,199,103,0.5)] hover:shadow-[0_0_45px_rgba(228,199,103,0.8)] flex items-center gap-2 transition-all group"
+                  >
+                    <span>Open a Trade Account</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </motion.div>
 
-                <Link
-                  href="#story-start"
-                  className="px-6 py-4 rounded-xl bg-emerald-950/70 border border-emerald-500/40 hover:border-champagne text-cream text-sm font-semibold flex items-center gap-2 backdrop-blur-md transition-all"
-                >
-                  <span>Explore The Story &rarr;</span>
-                </Link>
+                <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    href="#story-start"
+                    className="px-6 py-4 rounded-xl bg-emerald-950/80 border border-emerald-500/40 hover:border-champagne text-cream text-sm font-semibold flex items-center gap-2 backdrop-blur-md transition-all shadow-lg hover:shadow-emerald-500/20"
+                  >
+                    <span>Explore The Story &rarr;</span>
+                  </Link>
+                </motion.div>
               </div>
 
-              {/* Trust Badges Bar */}
+              {/* Animated Micro-Metric Badges Grid */}
               <div className="pt-6 border-t border-emerald-950/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-champagne/40 transition-colors">
-                  <span className="text-champagne font-bold block uppercase">11:00 PM Cut-off</span>
-                  <span className="text-cream/60 text-[10px]">Late evening ordering</span>
-                </div>
-                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-emerald-400/40 transition-colors">
-                  <span className="text-emerald-400 font-bold block uppercase">06:00 AM SLA</span>
-                  <span className="text-cream/60 text-[10px]">Early kitchen drop</span>
-                </div>
-                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-champagne/40 transition-colors">
-                  <span className="text-champagne font-bold block uppercase">SALSA Certified</span>
-                  <span className="text-cream/60 text-[10px]">Full batch provenance</span>
-                </div>
-                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-emerald-400/40 transition-colors">
-                  <span className="text-emerald-400 font-bold block uppercase">£30,000 Facility</span>
-                  <span className="text-cream/60 text-[10px]">30-Day trade terms</span>
-                </div>
+                {[
+                  { label: '11:00 PM Cut-off', sub: 'Late evening ordering', color: 'text-champagne', border: 'border-champagne/30' },
+                  { label: '06:00 AM SLA', sub: 'Early kitchen drop', color: 'text-emerald-400', border: 'border-emerald-500/30' },
+                  { label: 'SALSA Certified', sub: 'Full batch provenance', color: 'text-champagne', border: 'border-champagne/30' },
+                  { label: '£30,000 Facility', sub: '30-Day trade terms', color: 'text-emerald-400', border: 'border-emerald-500/30' },
+                ].map((metric, mIdx) => (
+                  <motion.div
+                    key={mIdx}
+                    whileHover={{ y: -4, scale: 1.02 }}
+                    className={`p-3 bg-emerald-950/60 rounded-xl border ${metric.border} font-mono text-xs shadow-md transition-all backdrop-blur-md cursor-default`}
+                  >
+                    <span className={`${metric.color} font-bold block uppercase`}>{metric.label}</span>
+                    <span className="text-cream/60 text-[10px]">{metric.sub}</span>
+                  </motion.div>
+                ))}
               </div>
 
             </motion.div>
 
-            {/* Right Column: High-Definition Cinematic Farm Video Reel Card with Scroll/Hover Depth */}
+            {/* Right Column: High-Definition Panoramic Video Reel Card with Floating Parallax Badges */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.92, x: 35 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 relative"
             >
-              <div className="rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_20px_80px_rgba(2,23,16,0.95),0_0_50px_rgba(16,185,129,0.3)] overflow-hidden group">
+              <div className="rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_25px_90px_rgba(2,23,16,0.95),0_0_60px_rgba(16,185,129,0.35)] overflow-hidden group">
                 
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
                   
-                  {/* Autoplaying HD Video */}
+                  {/* Autoplaying HD Video with Panoramic Fallback Poster */}
                   <video
                     ref={videoRef}
                     autoPlay
                     loop
                     muted={isMuted}
                     playsInline
-                    className="w-full h-full object-cover brightness-[0.9] contrast-[1.08] group-hover:scale-105 transition-transform duration-700"
-                    poster="/images/branded/rootwills_orchard_harvest.jpg"
+                    className="w-full h-full object-cover brightness-[0.92] contrast-[1.08] group-hover:scale-105 transition-transform duration-700"
+                    poster="/images/branded/rootwills_hero_panoramic.jpg"
                   >
                     <source
                       src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-fresh-picked-apples-41221-large.mp4"
@@ -233,51 +253,70 @@ export function CinematicPinkLadyExperience() {
                   {/* Gradient Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-black/30 pointer-events-none" />
 
-                  {/* Top Floating Status Overlay */}
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                    <div className="bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-champagne/40 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
-                      <Sun className="w-3.5 h-3.5 text-champagne" />
+                  {/* Floating Animated Badges (Parallax Floating Oscillation) */}
+                  <motion.div 
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                    className="absolute top-4 left-4 z-10"
+                  >
+                    <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-champagne/50 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(228,199,103,0.3)]">
+                      <Sun className="w-3.5 h-3.5 text-champagne animate-spin" style={{ animationDuration: '10s' }} />
                       <span>Live Harvest Feed &bull; 14.8° Brix</span>
                     </div>
+                  </motion.div>
 
-                    <div className="bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-400/50 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
-                      <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400" />
+                  <motion.div 
+                    animate={{ y: [0, 6, 0] }}
+                    transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
+                    className="absolute top-4 right-4 z-10"
+                  >
+                    <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-emerald-400/60 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                      <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                       <span>+2.2°C Cold-Locked</span>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  {/* Video Control Buttons */}
+                  {/* Interactive Video Control Buttons */}
                   <div className="absolute bottom-20 right-4 flex items-center gap-2 z-10">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.9 }}
                       type="button"
                       onClick={togglePlay}
-                      className="w-9 h-9 rounded-full bg-obsidian-950/80 hover:bg-obsidian-900 border border-champagne/40 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-lg"
+                      className="w-10 h-10 rounded-full bg-obsidian-950/85 hover:bg-obsidian-900 border border-champagne/50 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-xl"
                       title={isPlaying ? 'Pause video' : 'Play video'}
                     >
                       {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                    </button>
-                    <button
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.9 }}
                       type="button"
                       onClick={toggleMute}
-                      className="w-9 h-9 rounded-full bg-obsidian-950/80 hover:bg-obsidian-900 border border-champagne/40 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-lg"
+                      className="w-10 h-10 rounded-full bg-obsidian-950/85 hover:bg-obsidian-900 border border-champagne/50 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-xl"
                       title={isMuted ? 'Unmute' : 'Mute'}
                     >
                       {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                    </button>
+                    </motion.button>
                   </div>
 
-                  {/* Bottom Chef Review Floating Bar */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-obsidian-950/90 backdrop-blur-md p-3.5 rounded-xl border border-emerald-900/70 z-10 shadow-xl">
+                  {/* Floating Chef Review Bottom Card */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="absolute bottom-4 left-4 right-4 bg-obsidian-950/95 backdrop-blur-md p-3.5 rounded-xl border border-emerald-900/80 z-10 shadow-2xl"
+                  >
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                      <p className="text-xs text-cream/90 font-sans italic leading-tight">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 animate-ping" />
+                      <p className="text-xs text-cream/95 font-sans italic leading-tight">
                         "The crispness and Brix sugar consistency of Rootwills produce is unmatched in the Midlands."
                       </p>
                     </div>
                     <span className="text-[10px] font-mono text-champagne font-bold block mt-1">
                       — Executive Chef, Birmingham Fine Dining
                     </span>
-                  </div>
+                  </motion.div>
 
                 </div>
 
@@ -289,27 +328,32 @@ export function CinematicPinkLadyExperience() {
 
       </section>
 
-      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY WITH BRANDED AI IMAGES */}
+      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY WITH SMOOTH MOTION SPRINGS */}
       <div id="story-start" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 space-y-28 sm:space-y-40 relative z-10">
         
         {STORY_SECTIONS.map((section, index) => {
           const isEven = index % 2 === 0;
+          const SectionIcon = section.icon;
 
           return (
             <motion.div 
               key={section.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: '-90px' }}
+              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
                 isEven ? '' : 'lg:grid-flow-dense'
               }`}
             >
               
-              {/* Image Frame Column (High-Impact Branded Photo Card) */}
+              {/* Image Frame Column with Interactive Hover Zoom */}
               <div className={`lg:col-span-6 ${isEven ? 'lg:order-1' : 'lg:order-2 lg:col-start-7'}`}>
-                <div className="relative rounded-3xl p-2 bg-gradient-to-br from-emerald-500/30 via-emerald-900/40 to-champagne/20 border border-emerald-500/30 shadow-2xl group overflow-hidden">
+                <motion.div 
+                  whileHover={{ scale: 1.02, rotate: isEven ? 0.5 : -0.5 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative rounded-3xl p-2 bg-gradient-to-br from-emerald-500/30 via-emerald-900/40 to-champagne/20 border border-emerald-500/30 shadow-2xl group overflow-hidden"
+                >
                   
                   <div className="relative h-[380px] sm:h-[500px] w-full rounded-2xl overflow-hidden bg-obsidian-900">
                     <Image
@@ -321,10 +365,11 @@ export function CinematicPinkLadyExperience() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-transparent" />
 
-                    {/* Floating Badge */}
+                    {/* Floating Animated Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="px-3.5 py-1.5 rounded-full bg-obsidian-950/90 backdrop-blur-md border border-champagne/40 text-champagne text-xs font-mono font-bold shadow-lg">
-                        {section.badge}
+                      <span className="px-3.5 py-1.5 rounded-full bg-obsidian-950/90 backdrop-blur-md border border-champagne/50 text-champagne text-xs font-mono font-bold shadow-lg flex items-center gap-1.5">
+                        <SectionIcon className="w-3.5 h-3.5 text-champagne" />
+                        <span>{section.badge}</span>
                       </span>
                     </div>
 
@@ -334,13 +379,13 @@ export function CinematicPinkLadyExperience() {
                     </div>
                   </div>
 
-                </div>
+                </motion.div>
               </div>
 
-              {/* Editorial Copy Column (Bold Typography & Checkpoints) */}
+              {/* Editorial Copy Column */}
               <div className={`lg:col-span-6 space-y-6 text-left ${isEven ? 'lg:order-2' : 'lg:order-1 lg:col-start-1'}`}>
                 
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold shadow-md">
                   <Leaf className="w-3.5 h-3.5 text-champagne" />
                   <span>{section.tag}</span>
                 </div>
@@ -357,30 +402,33 @@ export function CinematicPinkLadyExperience() {
                   {section.description}
                 </p>
 
-                {/* Bullet Points */}
+                {/* Bullet Points with Interactive Hover */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                   {section.points.map((pt, pIdx) => (
-                    <div
+                    <motion.div
                       key={pIdx}
-                      className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-start gap-2.5 hover:border-emerald-500/40 transition-colors"
+                      whileHover={{ x: 4, scale: 1.02 }}
+                      className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-start gap-2.5 hover:border-emerald-500/40 transition-colors shadow-sm"
                     >
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span className="text-xs text-cream/85 font-mono">{pt}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
-                {/* Action CTA */}
+                {/* Action CTA with Hover Arrow Animation */}
                 <div className="pt-3">
-                  <Link
-                    href="/onboarding"
-                    className="inline-flex items-center gap-2 font-mono text-sm font-bold text-champagne hover:underline group"
-                  >
-                    <span>Request Wholesale Account Specs</span>
-                    <div className="w-7 h-7 rounded-full bg-champagne text-obsidian-950 flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-md">
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </Link>
+                  <motion.div whileHover={{ scale: 1.03 }} className="inline-block">
+                    <Link
+                      href="/onboarding"
+                      className="inline-flex items-center gap-2.5 font-mono text-sm font-bold text-champagne hover:text-champagne-soft group"
+                    >
+                      <span>Request Wholesale Account Specs</span>
+                      <div className="w-8 h-8 rounded-full bg-champagne text-obsidian-950 flex items-center justify-center group-hover:translate-x-1.5 transition-transform shadow-lg shadow-champagne/20">
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </Link>
+                  </motion.div>
                 </div>
 
               </div>
