@@ -77,34 +77,30 @@ export function RootwillsLogo({
             opacity="0.55"
           />
 
-          {/* SEAMLESS JOINED 'RW' LIGATURE (Single Unbroken Mark, Zero Overlap) */}
-          {/* R Main Spine */}
-          <path
-            d="M 26 28 L 26 72"
-            stroke="url(#goldLuxury)"
-            strokeWidth="6"
-            strokeLinecap="round"
-          />
-          <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
-          <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Regal British Serif Typography Monogram (100% Crisp & Elegant) */}
+          <text
+            x="34"
+            y="65"
+            fontFamily="var(--font-cinzel), 'Cinzel', 'Playfair Display', Georgia, serif"
+            fontSize="34"
+            fontWeight="900"
+            fill="url(#goldLuxury)"
+            textAnchor="middle"
+          >
+            R
+          </text>
 
-          {/* R Upper Loop */}
-          <path
-            d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
-            stroke="url(#goldLuxury)"
-            strokeWidth="5.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* THE SEAMLESS JOIN: The leg of R flows continuously into the W */}
-          <path
-            d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
-            stroke="url(#goldLuxury)"
-            strokeWidth="5.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+          <text
+            x="66"
+            y="65"
+            fontFamily="var(--font-cinzel), 'Cinzel', 'Playfair Display', Georgia, serif"
+            fontSize="34"
+            fontWeight="900"
+            fill="url(#goldLuxury)"
+            textAnchor="middle"
+          >
+            W
+          </text>
 
           {/* Royal Diamond Finial at Crest Apex */}
           <polygon

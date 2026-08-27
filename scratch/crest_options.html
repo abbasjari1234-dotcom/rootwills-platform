@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logo Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #061812;
+      color: #FFF9E6;
+      font-family: 'Cinzel', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      gap: 40px;
+      padding: 30px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+    .card {
+      background: #02140E;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid rgba(228, 199, 103, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: rgba(0,0,0,0.3);
+      padding: 15px 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(228,199,103,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rootwills Luxury Crest Options</h1>
+
+  <div class="grid">
+    <!-- OPTION 1: Classical British Serif Monogram "R W" (Cinzel Serif - 100% Crisp & Royal) -->
+    <div class="card">
+      <h3>Option 1: Regal Typography Crest</h3>
+      <div class="brand-row">
+        <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <linearGradient id="gold1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF9E6" />
+              <stop offset="35%" stop-color="#E4C767" />
+              <stop offset="70%" stop-color="#C9A227" />
+              <stop offset="100%" stop-color="#F5E498" />
+            </linearGradient>
+            <linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#053326" />
+              <stop offset="100%" stop-color="#02140E" />
+            </linearGradient>
+          </defs>
+
+          <!-- Outer Gold Shield -->
+          <polygon
+            points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+            fill="url(#emeraldShield)"
+            stroke="url(#gold1)"
+            stroke-width="3"
+          />
+
+          <!-- Inner Accent Ring -->
+          <polygon
+            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+            stroke="#10B981"
+            stroke-width="1.2"
+            opacity="0.6"
+          />
+
+          <!-- Crown / Star Accent -->
+          <polygon points="50,18 53,23 50,27 47,23" fill="url(#gold1)" />
+
+          <!-- Perfectly Crisp Serif "R W" Typography -->
+          <text
+            x="34"
+            y="65"
+            font-family="'Cinzel', 'Playfair Display', serif"
+            font-size="34"
+            font-weight="900"
+            fill="url(#gold1)"
+            text-anchor="middle"
+            letter-spacing="-1"
+          >R</text>
+
+          <text
+            x="66"
+            y="65"
+            font-family="'Cinzel', 'Playfair Display', serif"
+            font-size="34"
+            font-weight="900"
+            fill="url(#gold1)"
+            text-anchor="middle"
+            letter-spacing="-1"
+          >W</text>
+        </svg>
+
+        <div style="text-align: left;">
+          <div style="font-size: 18px; font-weight: 900; letter-spacing: 0.15em; color: #FFF9E6;">ROOTWILLS</div>
+          <div style="font-size: 8px; font-family: monospace; letter-spacing: 0.25em; color: #E4C767;">FRESH FOOD • WHOLESALE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 2: Heritage Interlocked Monogram (Clean Classic Overlap with Depth Shadow) -->
+    <div class="card">
+      <h3>Option 2: Interlocked Harrods-Style Crest</h3>
+      <div class="brand-row">
+        <svg width="60" height="60" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF9E6" />
+              <stop offset="35%" stop-color="#E4C767" />
+              <stop offset="70%" stop-color="#C9A227" />
+              <stop offset="100%" stop-color="#F5E498" />
+            </linearGradient>
+            <linearGradient id="emeraldShield2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#053326" />
+              <stop offset="100%" stop-color="#02140E" />
+            </linearGradient>
+          </defs>
+
+          <!-- Outer Gold Shield -->
+          <polygon
+            points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+            fill="url(#emeraldShield2)"
+            stroke="url(#gold2)"
+            stroke-width="3"
+          />
+
+          <!-- Inner Accent Ring -->
+          <polygon
+            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+            stroke="#10B981"
+            stroke-width="1.2"
+            opacity="0.6"
+          />
+
+          <!-- Crown / Star Accent -->
+          <polygon points="50,18 53,23 50,27 47,23" fill="url(#gold2)" />
+
+          <!-- Layer 1: W -->
+          <text
+            x="58"
+            y="68"
+            font-family="'Cinzel', 'Playfair Display', serif"
+            font-size="40"
+            font-weight="900"
+            fill="url(#gold2)"
+            opacity="0.8"
+            text-anchor="middle"
+          >W</text>
+
+          <!-- Layer 2: R in front with dark contour -->
+          <text
+            x="40"
+            y="62"
+            font-family="'Cinzel', 'Playfair Display', serif"
+            font-size="40"
+            font-weight="900"
+            stroke="#02140E"
+            stroke-width="6"
+            text-anchor="middle"
+          >R</text>
+
+          <text
+            x="40"
+            y="62"
+            font-family="'Cinzel', 'Playfair Display', serif"
+            font-size="40"
+            font-weight="900"
+            fill="url(#gold2)"
+            text-anchor="middle"
+          >R</text>
+        </svg>
+
+        <div style="text-align: left;">
+          <div style="font-size: 18px; font-weight: 900; letter-spacing: 0.15em; color: #FFF9E6;">ROOTWILLS</div>
+          <div style="font-size: 8px; font-family: monospace; letter-spacing: 0.25em; color: #E4C767;">FRESH FOOD • WHOLESALE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

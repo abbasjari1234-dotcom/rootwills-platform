@@ -32,34 +32,30 @@
     opacity="0.55"
   />
 
-  <!-- SEAMLESS JOINED 'RW' LIGATURE (Single Unbroken Mark, Zero Overlap) -->
-  <!-- R Main Spine -->
-  <path
-    d="M 26 28 L 26 72"
-    stroke="url(#goldLuxury)"
-    stroke-width="6"
-    stroke-linecap="round"
-  />
-  <path d="M 21 28 L 31 28" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
-  <path d="M 21 72 L 31 72" stroke="url(#goldLuxury)" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Regal British Serif Typography Monogram -->
+  <text
+    x="34"
+    y="65"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="900"
+    fill="url(#goldLuxury)"
+    text-anchor="middle"
+  >
+    R
+  </text>
 
-  <!-- R Upper Loop -->
-  <path
-    d="M 26 28 L 45 28 C 55 28 55 48 45 48 L 26 48"
-    stroke="url(#goldLuxury)"
-    stroke-width="5.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-
-  <!-- THE SEAMLESS JOIN: Leg of R connects directly into W! -->
-  <path
-    d="M 41 48 L 51 72 L 63 46 L 75 72 L 85 44"
-    stroke="url(#goldLuxury)"
-    stroke-width="5.5"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+  <text
+    x="66"
+    y="65"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="34"
+    font-weight="900"
+    fill="url(#goldLuxury)"
+    text-anchor="middle"
+  >
+    W
+  </text>
 
   <!-- Royal Diamond Finial -->
   <polygon points="50,18 53,23 50,27 47,23" fill="url(#goldLuxury)" />
