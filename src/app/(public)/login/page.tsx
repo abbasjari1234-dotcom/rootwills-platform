@@ -16,7 +16,8 @@ import {
   Eye,
   EyeOff,
   Truck,
-  Sparkles
+  Sparkles,
+  CheckCircle2
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
@@ -34,6 +35,7 @@ function LoginForm() {
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     const roleParam = searchParams?.get('role');
@@ -67,13 +69,22 @@ function LoginForm() {
         return;
       }
 
-      // Update active user state
+      setIsSuccess(true);
+
+      // 1. Update client-side store state
+      const targetRole = res.role || (loginScope === 'staff' ? 'admin' : 'customer');
       if (res.organizationId) {
-        const assignedRole = res.role === 'admin' ? 'admin' : 'customer';
-        setPersona(res.organizationId, assignedRole);
+        setPersona(res.organizationId, targetRole === 'admin' ? 'admin' : 'customer');
       }
 
-      router.push(res.destination || (loginScope === 'staff' ? '/admin/crm' : '/dashboard'));
+      // 2. Set client-side cookie to ensure synchronous middleware pickup
+      if (typeof document !== 'undefined') {
+        document.cookie = `rootwills_role=${targetRole}; path=/; max-age=604800; SameSite=Lax;`;
+      }
+
+      // 3. Navigate with full document reload to send auth cookies to server components
+      const destination = res.destination || (loginScope === 'staff' ? '/admin/crm' : '/dashboard');
+      window.location.href = destination;
     } catch (err: any) {
       setErrorMessage(err?.message || 'Authentication service error. Please try again.');
       setIsLoading(false);
@@ -145,6 +156,14 @@ function LoginForm() {
             </div>
           )}
 
+          {/* Success Notification */}
+          {isSuccess && (
+            <div className="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2.5 animate-fade-in font-mono">
+              <CheckCircle2 className="w-4 h-4 text-champagne" />
+              <span>Authenticated! Loading your portal...</span>
+            </div>
+          )}
+
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -160,7 +179,7 @@ function LoginForm() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={loginScope === 'customer' ? 'chef@your-restaurant.co.uk' : 'name@rootwills.co.uk'}
+                  placeholder={loginScope === 'customer' ? 'manager@sancarlo.co.uk' : 'staff@rootwills.co.uk'}
                   className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30 font-sans"
                 />
               </div>
