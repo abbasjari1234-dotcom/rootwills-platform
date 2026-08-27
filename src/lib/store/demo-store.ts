@@ -58,15 +58,15 @@ export const useDemoStore = create<DemoState>()(
   persist(
     (set, get) => ({
       currentRole: 'customer',
-      currentOrgId: 'org-sancarlo',
-      currentLocationId: 'loc-sc-bham',
+      currentOrgId: 'org-rootwills-partner',
+      currentLocationId: 'loc-primary-site',
       userProfile: {
-        id: 'usr-marco',
-        organizationId: 'org-sancarlo',
-        email: 'marco.chef@sancarlo.co.uk',
-        fullName: 'Executive Chef Marco Rossi',
+        id: 'usr-partner-1',
+        organizationId: 'org-rootwills-partner',
+        email: 'customer@rootwills.co.uk',
+        fullName: 'Trade Account Lead',
         role: 'purchaser',
-        phone: '07700 900123',
+        phone: '0121 285 3910',
       },
 
       products: INITIAL_PRODUCTS,
@@ -74,16 +74,13 @@ export const useDemoStore = create<DemoState>()(
       leads: INITIAL_LEADS,
       orders: INITIAL_ORDERS,
       invoices: INITIAL_INVOICES,
-      favorites: {
-        'org-sancarlo': ['prod-001', 'prod-002', 'prod-010', 'prod-005'],
-        'org-grandhotel': ['prod-008', 'prod-009', 'prod-012', 'prod-002'],
-      },
+      favorites: {},
 
       switchRole: (role: 'customer' | 'admin' | 'sales') => {
         if (role === 'admin' || role === 'sales') {
           get().setPersona('org-rootwills-hq', role);
         } else {
-          get().setPersona('org-sancarlo', 'customer');
+          get().setPersona('org-rootwills-partner', 'customer');
         }
       },
 

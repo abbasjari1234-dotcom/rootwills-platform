@@ -52,41 +52,27 @@ const PRECONFIGURED_ACCOUNTS: Record<
     name: 'Marcus Vance (Commercial Sales Lead)',
   },
 
-  // CUSTOMER PURCHASING MANAGERS & EXECUTIVE CHEFS
-  'manager@sancarlo.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'manager2026', 'chef123', 'password123'],
+  // CUSTOMER TRADE ACCOUNTS (Ready for Live Ordering)
+  'customer@rootwills.co.uk': {
+    passwords: ['Rootwills2026!', 'rootwills2026', 'customer2026', 'password123'],
     role: 'customer',
-    orgId: 'org-sancarlo',
+    orgId: 'org-rootwills-partner',
     destination: '/dashboard',
-    name: 'Purchasing Manager (San Carlo Ristorante)',
+    name: 'Purchasing Director (Partner Account)',
   },
-  'chef@sancarlo.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'chef2026', 'chef123', 'password123'],
+  'purchasing@rootwills.co.uk': {
+    passwords: ['Rootwills2026!', 'rootwills2026', 'purchasing2026', 'password123'],
     role: 'customer',
-    orgId: 'org-sancarlo',
+    orgId: 'org-rootwills-partner',
     destination: '/dashboard',
-    name: 'Executive Chef Marco Rossi (San Carlo)',
+    name: 'Executive Chef (Kitchen Order Pad)',
   },
-  'marco.chef@sancarlo.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'chef2026', 'chef123', 'password123'],
+  'chef@rootwills.co.uk': {
+    passwords: ['Rootwills2026!', 'rootwills2026', 'chef2026', 'password123'],
     role: 'customer',
-    orgId: 'org-sancarlo',
+    orgId: 'org-rootwills-partner',
     destination: '/dashboard',
-    name: 'Executive Chef Marco Rossi (San Carlo)',
-  },
-  'purchasing@thegrandhotel.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'grand2026', 'hotel123', 'password123'],
-    role: 'customer',
-    orgId: 'org-grandhotel',
-    destination: '/dashboard',
-    name: 'F&B Purchasing Director (The Grand Hotel)',
-  },
-  'purchasing@edgbaston.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'edgbaston2026', 'hotel123', 'password123'],
-    role: 'customer',
-    orgId: 'org-edgbaston',
-    destination: '/dashboard',
-    name: 'General Manager (The Edgbaston)',
+    name: 'Head Chef (Morning Orders)',
   },
 
   // DRIVER LOGISTICS ACCOUNT
@@ -199,7 +185,7 @@ export async function loginServerAction(formData: {
         }
 
         const targetRole: 'admin' | 'customer' | 'driver' = scope === 'staff' ? 'admin' : userRole;
-        const targetOrgId = profile?.organization_id || 'org-sancarlo';
+        const targetOrgId = profile?.organization_id || 'org-rootwills-partner';
 
         const cookieStore = cookies();
         cookieStore.set('rootwills_role', targetRole, {
@@ -245,7 +231,7 @@ export async function loginServerAction(formData: {
 
   if (isStandardPassword) {
     const targetRole: 'admin' | 'customer' = (scope === 'staff' || isCorporateStaffEmail) ? 'admin' : 'customer';
-    const targetOrgId = targetRole === 'admin' ? 'org-rootwills-hq' : 'org-sancarlo';
+    const targetOrgId = targetRole === 'admin' ? 'org-rootwills-hq' : 'org-rootwills-partner';
     const destination = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
 
     const cookieStore = cookies();

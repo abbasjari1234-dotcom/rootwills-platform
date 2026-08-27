@@ -55,7 +55,7 @@ export function StepBusinessDetails() {
         >
           <input
             {...register('organizationName')}
-            placeholder="e.g. San Carlo Ristorante (Temple Street)"
+            placeholder="e.g. The Grand Kitchen / Heritage Bistro Ltd"
             className="onboarding-input"
           />
         </FormField>
