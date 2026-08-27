@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: 'da4AvSks5_Lgzy4--BsHwVGBgU6W9kY4tbxhO0CdFew',
   },
   openGraph: {
     type: 'website',
@@ -149,6 +149,7 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}
     >
       <head>
+        <meta name="google-site-verification" content="da4AvSks5_Lgzy4--BsHwVGBgU6W9kY4tbxhO0CdFew" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
