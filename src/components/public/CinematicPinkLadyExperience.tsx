@@ -15,8 +15,8 @@ import {
   Leaf,
   CheckCircle2,
   Award,
-  Flame,
-  Utensils,
+  Sun,
+  Droplets,
   PhoneCall,
   MapPin,
   Check,
@@ -61,10 +61,10 @@ const STORY_SECTIONS: StorySection[] = [
     tag: '02 / Cold-Chain Dual-Temp',
     headline: 'Continuous +2°C Micro-Climate. Zero Thermal Breaks.',
     subheadline: 'Calibrated dual-temperature fleet with real-time GPS telemetry.',
-    description: 'Thermal breaks destroy produce cell walls and meat tenderness. Rootwills operates a dedicated fleet of dual-temperature refrigerated Mercedes-Benz Sprinters. Salads arrive with morning dew intact; butchery lines stay in prime dry-aged condition.',
+    description: 'Thermal breaks destroy produce cell walls and leaf vibrancy. Rootwills operates a dedicated fleet of dual-temperature refrigerated vehicles. Tender salads arrive with morning dewdrops intact; delicate berries stay firm and mold-free.',
     points: [
       '+2.0°C to +4.0°C chilled produce vault',
-      '-18.0°C sub-zero butchery chambers',
+      'Continuous calibrated digital telematics',
       'Time-stamped temperature logs on handover',
       'Guaranteed 06:00 AM – 07:30 AM early morning SLA'
     ],
@@ -76,28 +76,28 @@ const STORY_SECTIONS: StorySection[] = [
   },
   {
     id: 'story-3',
-    tag: '03 / The Meatopia Standard',
-    headline: 'Dry-Aged British Primals & Living Microgreens.',
-    subheadline: 'Crafted for chefs who cook with fire, craft, and zero shortcuts.',
-    description: 'We speak the language of professional executive kitchens. Hand-cut 28-day dry-aged Himalayan salt-vault beef, living hydroponic herbs with roots attached, French cultured butter, and bespoke prep cuts tailored to your menu.',
+    tag: '03 / Living Herbs & Farmhouse Dairy',
+    headline: 'Hydroponic Microgreens & Farmhouse Dairy.',
+    subheadline: 'Living herbs with roots intact, artisan butter, and Lion-code eggs.',
+    description: 'We speak the language of professional executive kitchens. Hand-harvested living herbs delivered in nutrient pads for 10-day shelf life, French cultured pastry butter (84% butterfat), and farmhouse cheeses tailored to your menu.',
     points: [
       'Late 11:00 PM order cut-off (after dinner service)',
       'Zero-substitution policy without chef consent',
-      'Bespoke culinary prep cuts & pack sizing',
+      'Living root microgreens with zero soil grit',
       'Dedicated commercial key account desk'
     ],
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&auto=format&fit=crop&q=90',
-    imageCaption: '28-Day Dry-Aged British Beef Primals — Himalayan Salt Vault',
-    badge: 'Master Butcher Grade A',
-    accentBg: 'bg-rose-950/80',
-    accentText: 'text-rose-300'
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1200&auto=format&fit=crop&q=90',
+    imageCaption: 'Living Hydroponic Microgreen Trays — Roots Attached',
+    badge: 'Chef-Selected Grade A',
+    accentBg: 'bg-emerald-950/80',
+    accentText: 'text-emerald-300'
   },
   {
     id: 'story-4',
     tag: '04 / The Trade Network',
     headline: 'Join the Rootwills Foodservice Network.',
     subheadline: 'Approved 30-day trade credit and locked contract pricing.',
-    description: 'Over 400 fine dining restaurants, boutique hotels, luxury caterers, and healthcare groups trust Rootwills for their daily morning food supply across Birmingham and the UK.',
+    description: 'Over 400 fine dining restaurants, boutique hotels, luxury caterers, and healthcare groups trust Rootwills for their daily morning fresh food supply across Birmingham and the UK.',
     points: [
       'Instant 2-minute digital trade application',
       'Up to £30,000 credit facility (30-Day Terms)',
@@ -126,7 +126,7 @@ export function CinematicPinkLadyExperience() {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover brightness-[0.7] contrast-[1.1] scale-105"
+            className="w-full h-full object-cover brightness-[0.72] contrast-[1.08] scale-105"
             poster="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1600&auto=format&fit=crop&q=85"
           >
             <source
@@ -136,7 +136,7 @@ export function CinematicPinkLadyExperience() {
           </video>
           
           {/* Subtle cinematic gradient vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/30 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/35 to-black/40" />
           <div className="absolute inset-0 bg-gradient-to-r from-obsidian-950/70 via-transparent to-obsidian-950/70" />
         </div>
 
@@ -146,7 +146,7 @@ export function CinematicPinkLadyExperience() {
           {/* Top Live Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-950/85 border border-emerald-500/40 text-emerald-300 text-xs font-mono backdrop-blur-xl shadow-2xl">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            <span className="font-bold">Farm-to-Kitchen Direct Supply &bull; Birmingham & UK</span>
+            <span className="font-bold">Fresh Produce &bull; Farm-to-Kitchen Direct Supply &bull; UK & Midlands</span>
             <span className="text-cream/30 hidden sm:inline">&bull;</span>
             <span className="text-champagne hidden sm:inline">11:00 PM Cut-off for 06:00 AM SLA</span>
           </div>
@@ -159,7 +159,7 @@ export function CinematicPinkLadyExperience() {
             </h1>
 
             <p className="text-base sm:text-xl text-cream/90 font-sans max-w-2xl leading-relaxed drop-shadow">
-              We supply the finest fresh produce, dry-aged meats, artisan dairy, and kitchen essentials directly to hospitality professionals who refuse to compromise on quality.
+              We supply the finest fresh produce, orchard fruits, heritage vegetables, artisan dairy, and bakery staples directly to hospitality professionals across the UK.
             </p>
           </div>
 

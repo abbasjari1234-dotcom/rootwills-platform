@@ -28,12 +28,11 @@ import {
   Leaf,
   Rotate3d,
   Box,
-  Flame,
   Scale
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLadyExperience';
-import { MeatopiaCulinaryStrip } from '@/components/public/MeatopiaCulinaryStrip';
+import { FreshProduceShowcaseStrip } from '@/components/public/FreshProduceShowcaseStrip';
 import { ThreeDCulinaryGrid } from '@/components/3d/ThreeDCulinaryGrid';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
@@ -53,19 +52,19 @@ const PriceEstimator = dynamic(
 );
 
 export const metadata = {
-  title: 'Rootwills Ltd | Premium B2B Foodservice & Fresh Produce Wholesale UK',
-  description: 'Direct farm-to-kitchen fresh produce, dry-aged meats, and artisan culinary supply for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and modern ordering portal.',
+  title: 'Rootwills Ltd | Premium B2B Fresh Produce & Foodservice Wholesale UK',
+  description: 'Farm-direct fresh produce, heritage fruits, living microgreens, and artisan dairy for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and modern ordering portal.',
 };
 
 export default function PublicHomePage() {
   return (
     <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden bg-obsidian-950">
       
-      {/* 1. PINK LADY CINEMATIC VIDEO HERO & SPLIT-SCREEN SCROLLYTELLING */}
+      {/* 1. PINK LADY STYLE FULL-BLEED CINEMATIC VIDEO HERO & SCROLLYTELLING */}
       <CinematicPinkLadyExperience />
 
-      {/* 2. MEATOPIA SENSORY CULINARY SIZZLE STRIP */}
-      <MeatopiaCulinaryStrip />
+      {/* 2. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
+      <FreshProduceShowcaseStrip />
 
       {/* 3. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />
@@ -73,11 +72,11 @@ export default function PublicHomePage() {
       {/* 4. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <ThreeDCulinaryGrid />
 
-      {/* 5. THE ROOTWILLS DIFFERENCE & ADVANTAGE METRICS */}
+      {/* 5. THE ROOTWILLS ADVANTAGE METRICS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
-            The Rootwills Difference
+            The Rootwills Advantage
           </div>
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase">
             Built by Food People for Commercial Kitchens

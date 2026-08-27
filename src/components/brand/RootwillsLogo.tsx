@@ -25,68 +25,68 @@ export function RootwillsLogo({
   };
 
   const textSizes = {
-    sm: 'text-lg',
-    md: 'text-xl',
+    sm: 'text-base',
+    md: 'text-lg',
     lg: 'text-2xl',
   };
 
   const logoGraphic = (
-    <div className={`flex items-center gap-3.5 group select-none ${className}`}>
-      {/* Pure Luxury Monogram Crest (Interlocking R & W in Pure Champagne Gold on Deep Emerald Shield) */}
+    <div className={`flex items-center gap-3 group select-none ${className}`}>
+      {/* Refined Pure Gold British Heraldic Monogram Crest */}
       <div
-        className={`relative ${iconSizes[size]} rounded-2xl bg-gradient-to-br from-emerald-900 via-obsidian-950 to-emerald-950 border border-champagne/40 p-1.5 shadow-[0_0_20px_rgba(228,199,103,0.25)] group-hover:shadow-[0_0_30px_rgba(228,199,103,0.5)] group-hover:border-champagne transition-all duration-500 shrink-0 flex items-center justify-center`}
+        className={`relative ${iconSizes[size]} rounded-2xl bg-gradient-to-br from-emerald-950 via-obsidian-950 to-emerald-900 border border-champagne/60 p-1.5 shadow-[0_0_25px_rgba(228,199,103,0.35)] group-hover:shadow-[0_0_35px_rgba(228,199,103,0.6)] group-hover:border-champagne transition-all duration-500 shrink-0 flex items-center justify-center`}
       >
         <svg
           viewBox="0 0 100 100"
-          className="w-full h-full drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+          className="w-full h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="goldMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFF7D6" />
+            <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FFF9E6" />
               <stop offset="35%" stopColor="#E4C767" />
               <stop offset="70%" stopColor="#C9A227" />
               <stop offset="100%" stopColor="#F5E498" />
             </linearGradient>
-            <linearGradient id="emeraldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#34D399" />
-              <stop offset="100%" stopColor="#059669" />
+            <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#10B981" />
+              <stop offset="100%" stopColor="#047857" />
             </linearGradient>
           </defs>
 
-          {/* Outer Geometric Luxury Octagonal Shield Frame */}
+          {/* Outer Geometric Luxury Shield */}
           <polygon
-            points="50,4 88,20 96,62 70,94 30,94 4,62 12,20"
-            stroke="url(#goldMetallic)"
+            points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+            stroke="url(#goldLuxury)"
             strokeWidth="3.5"
             fill="none"
-            opacity="0.9"
+            opacity="0.95"
           />
 
-          {/* Inner Accent Line */}
+          {/* Inner Emerald Accent Shield */}
           <polygon
-            points="50,11 81,24 88,59 66,87 34,87 12,59 19,24"
-            stroke="url(#emeraldTrim)"
+            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
+            stroke="url(#emeraldInner)"
             strokeWidth="1.5"
             fill="none"
-            opacity="0.6"
+            opacity="0.75"
           />
 
-          {/* Sleek Interlocking 'R' and 'W' (Pure Gold, Clean Vector) */}
-          {/* 'R' Stem & Loop */}
+          {/* Interlocking 'RW' Monogram (Clean, Pure Gold) */}
+          {/* 'R' */}
           <path
-            d="M 32 30 L 32 74 M 32 30 L 52 30 C 62 30 62 48 52 48 L 32 48 M 48 48 L 62 74"
-            stroke="url(#goldMetallic)"
-            strokeWidth="7"
+            d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48 M 44 48 L 56 72"
+            stroke="url(#goldLuxury)"
+            strokeWidth="6.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Interlocking 'W' Base */}
+          {/* 'W' */}
           <path
-            d="M 44 48 L 54 74 L 66 54 L 78 74 L 86 48"
-            stroke="url(#goldMetallic)"
+            d="M 46 48 L 54 72 L 66 52 L 78 72 L 86 48"
+            stroke="url(#goldLuxury)"
             strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -96,34 +96,39 @@ export function RootwillsLogo({
           {/* Center Diamond Sparkle */}
           <polygon
             points="50,22 53,26 50,30 47,26"
-            fill="url(#goldMetallic)"
+            fill="url(#goldLuxury)"
           />
         </svg>
       </div>
 
-      {/* Brand Typography */}
+      {/* Brand Wordmark & Subtitle */}
       {showText && variant !== 'icon' && (
-        <div className="flex flex-col">
-          <div className="flex items-baseline gap-1.5">
+        <div className="flex flex-col text-left">
+          <div className="flex items-center gap-1.5">
             <span
-              className={`font-display ${textSizes[size]} font-bold tracking-wider text-cream group-hover:text-champagne transition-colors leading-none`}
+              className={`font-display font-black tracking-[0.18em] uppercase ${textSizes[size]} bg-gradient-to-r from-cream via-champagne-soft to-champagne bg-clip-text text-transparent group-hover:from-champagne group-hover:to-white transition-all`}
             >
               ROOTWILLS
             </span>
           </div>
-          <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-champagne/90 font-bold mt-1">
-            Wholesale &bull; Foodservice
-          </span>
+
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-[9.5px] uppercase tracking-[0.28em] text-champagne/90 font-bold">
+              Fresh Food &bull; Wholesale
+            </span>
+          </div>
         </div>
       )}
     </div>
   );
 
-  if (!href) return logoGraphic;
+  if (href) {
+    return (
+      <Link href={href} className="inline-flex items-center focus:outline-none">
+        {logoGraphic}
+      </Link>
+    );
+  }
 
-  return (
-    <Link href={href} className="inline-block focus:outline-none">
-      {logoGraphic}
-    </Link>
-  );
+  return logoGraphic;
 }
