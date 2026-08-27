@@ -33,10 +33,12 @@ import {
 import dynamic from 'next/dynamic';
 import { LuxuryAmbientBackground } from '@/components/public/LuxuryAmbientBackground';
 import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLadyExperience';
+import { HospitalityPartnerMarquee } from '@/components/public/HospitalityPartnerMarquee';
 import { FreshProduceShowcaseStrip } from '@/components/public/FreshProduceShowcaseStrip';
 import { ThreeDCulinaryGrid } from '@/components/3d/ThreeDCulinaryGrid';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
+import { InteractiveChefFAQ } from '@/components/public/InteractiveChefFAQ';
 
 const PriceEstimator = dynamic(
   () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
@@ -67,16 +69,19 @@ export default function PublicHomePage() {
       {/* 1. PINK LADY STYLE CINEMATIC VIDEO REEL HERO & SCROLLYTELLING */}
       <CinematicPinkLadyExperience />
 
-      {/* 2. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
+      {/* 2. HOSPITALITY PARTNER INFINITE MARQUEE */}
+      <HospitalityPartnerMarquee />
+
+      {/* 3. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
       <FreshProduceShowcaseStrip />
 
-      {/* 3. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
+      {/* 4. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />
 
-      {/* 4. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
+      {/* 5. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <ThreeDCulinaryGrid />
 
-      {/* 5. THE ROOTWILLS ADVANTAGE METRICS */}
+      {/* 6. THE ROOTWILLS ADVANTAGE METRICS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -150,12 +155,15 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 6. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 7. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <PriceEstimator />
       </section>
 
-      {/* 7. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
+      {/* 8. INTERACTIVE CHEF & OPERATOR FAQ ACCORDION */}
+      <InteractiveChefFAQ />
+
+      {/* 9. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
