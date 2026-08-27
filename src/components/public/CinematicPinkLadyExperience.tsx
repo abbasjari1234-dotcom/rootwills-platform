@@ -223,7 +223,7 @@ export function CinematicPinkLadyExperience() {
 
             </motion.div>
 
-            {/* Right Column: High-Definition Panoramic Video Reel Card with Floating Parallax Badges */}
+            {/* Right Column: High-Definition Branded Commercial Delivery Photo with Floating Parallax Badges */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.92, x: 35 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
@@ -234,21 +234,14 @@ export function CinematicPinkLadyExperience() {
                 
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
                   
-                  {/* Autoplaying HD Video with Panoramic Fallback Poster */}
-                  <video
-                    ref={videoRef}
-                    autoPlay
-                    loop
-                    muted={isMuted}
-                    playsInline
-                    className="w-full h-full object-cover brightness-[0.92] contrast-[1.08] group-hover:scale-105 transition-transform duration-700"
-                    poster="/images/branded/rootwills_hero_panoramic.jpg"
-                  >
-                    <source
-                      src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-fresh-picked-apples-41221-large.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
+                  {/* High-Resolution Branded Commercial Kitchen Image */}
+                  <Image
+                    src="/images/branded/rootwills_hero_chef_delivery.jpg"
+                    alt="Rootwills Commercial Kitchen Delivery with Branded Produce Crate"
+                    fill
+                    priority
+                    className="w-full h-full object-cover brightness-[0.96] contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
+                  />
 
                   {/* Gradient Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-black/30 pointer-events-none" />
@@ -261,7 +254,7 @@ export function CinematicPinkLadyExperience() {
                   >
                     <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-champagne/50 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(228,199,103,0.3)]">
                       <Sun className="w-3.5 h-3.5 text-champagne animate-spin" style={{ animationDuration: '10s' }} />
-                      <span>Live Harvest Feed &bull; 14.8° Brix</span>
+                      <span>Direct Farm-to-Chef &bull; Daily Handover</span>
                     </div>
                   </motion.div>
 
@@ -272,33 +265,9 @@ export function CinematicPinkLadyExperience() {
                   >
                     <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-emerald-400/60 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                       <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                      <span>+2.2°C Cold-Locked</span>
+                      <span>+2.2°C Cold-Locked SLA</span>
                     </div>
                   </motion.div>
-
-                  {/* Interactive Video Control Buttons */}
-                  <div className="absolute bottom-20 right-4 flex items-center gap-2 z-10">
-                    <motion.button
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.9 }}
-                      type="button"
-                      onClick={togglePlay}
-                      className="w-10 h-10 rounded-full bg-obsidian-950/85 hover:bg-obsidian-900 border border-champagne/50 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-xl"
-                      title={isPlaying ? 'Pause video' : 'Play video'}
-                    >
-                      {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.9 }}
-                      type="button"
-                      onClick={toggleMute}
-                      className="w-10 h-10 rounded-full bg-obsidian-950/85 hover:bg-obsidian-900 border border-champagne/50 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-xl"
-                      title={isMuted ? 'Unmute' : 'Mute'}
-                    >
-                      {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                    </motion.button>
-                  </div>
 
                   {/* Floating Chef Review Bottom Card */}
                   <motion.div 
@@ -310,11 +279,11 @@ export function CinematicPinkLadyExperience() {
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 animate-ping" />
                       <p className="text-xs text-cream/95 font-sans italic leading-tight">
-                        "The crispness and Brix sugar consistency of Rootwills produce is unmatched in the Midlands."
+                        "The crispness and consistency of Rootwills produce in our kitchen is unmatched in the Midlands."
                       </p>
                     </div>
                     <span className="text-[10px] font-mono text-champagne font-bold block mt-1">
-                      — Executive Chef, Birmingham Fine Dining
+                      — Executive Chef, Michelin-Recommended Midlands Kitchen
                     </span>
                   </motion.div>
 
