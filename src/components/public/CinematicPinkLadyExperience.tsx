@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -17,71 +16,12 @@ import {
   Award,
   Sun,
   Droplets,
-  PhoneCall,
-  MapPin,
-  Check,
-  UserCheck,
-  Rotate3d,
-  Activity,
-  Layers,
-  Zap
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize2
 } from 'lucide-react';
-
-interface ProduceItem {
-  id: string;
-  name: string;
-  category: string;
-  origin: string;
-  flavorProfile: string;
-  brix: string;
-  firmness: string;
-  tempSla: string;
-  meshType: 'apple' | 'citrus' | 'tomato' | 'leaf';
-  primaryColor: string;
-  glowColor: string;
-}
-
-const HERO_PRODUCE: ProduceItem[] = [
-  {
-    id: 'apple',
-    name: 'Class 1 Pink Lady® Apples',
-    category: 'Orchard Fresh Produce',
-    origin: 'Kent & European Sun Orchards',
-    flavorProfile: 'Intense Crisp Sweetness, Effervescent Acidity',
-    brix: '14.8° Brix (Max Sugar)',
-    firmness: '8.8 kg/cm² Extra Crisp',
-    tempSla: '+2.2°C Cold-Locked',
-    meshType: 'apple',
-    primaryColor: '#E11D48',
-    glowColor: '#FB7185',
-  },
-  {
-    id: 'citrus',
-    name: 'Sicilian Tarocco Blood Oranges',
-    category: 'Heritage Citrus Selection',
-    origin: 'Mount Etna Volcanic Groves',
-    flavorProfile: 'High Anthocyanin, Rich Crimson Juice',
-    brix: '13.6° Brix',
-    firmness: '9.2 kg/cm²',
-    tempSla: '+3.5°C Chilled',
-    meshType: 'citrus',
-    primaryColor: '#EA580C',
-    glowColor: '#FDBA74',
-  },
-  {
-    id: 'tomato',
-    name: 'San Marzano Vine Tomatoes',
-    category: 'Gastronomy Vine Produce',
-    origin: 'Campania Volcanic Soils',
-    flavorProfile: 'Dense Flesh, Low Seed Cavity, Umami-Rich',
-    brix: '11.4° Brix',
-    firmness: '7.9 kg/cm²',
-    tempSla: '+8.0°C Ambient Cell',
-    meshType: 'tomato',
-    primaryColor: '#DC2626',
-    glowColor: '#F87171',
-  },
-];
 
 interface StorySection {
   id: string;
@@ -163,226 +103,43 @@ const STORY_SECTIONS: StorySection[] = [
 ];
 
 export function CinematicPinkLadyExperience() {
-  const [selectedProduce, setSelectedProduce] = useState<ProduceItem>(HERO_PRODUCE[0]);
-  const [mode, setMode] = useState<'360' | 'explode' | 'chill'>('360');
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [rotation, setRotation] = useState({ x: 0.2, y: 0.4 });
-  const [isDragging, setIsDragging] = useState(false);
-  const lastMouse = useRef({ x: 0, y: 0 });
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // 3D Canvas Mesh Simulation
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let animId: number;
-    let autoY = rotation.y;
-    let autoX = rotation.x;
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    // Generate 3D Organic Fruit Mesh
-    const generateMesh = () => {
-      const vertices: Array<[number, number, number]> = [];
-      const rings = 14;
-      const sectors = 18;
-      const radius = 95;
-
-      for (let r = 0; r <= rings; r++) {
-        const theta = (r * Math.PI) / rings;
-        const sinT = Math.sin(theta);
-        const cosT = Math.cos(theta);
-
-        for (let s = 0; s <= sectors; s++) {
-          const phi = (s * 2 * Math.PI) / sectors;
-
-          let fruitR = radius;
-          if (selectedProduce.meshType === 'apple') {
-            fruitR = radius * (1 - 0.16 * Math.cos(2 * theta));
-          } else if (selectedProduce.meshType === 'citrus') {
-            fruitR = radius * (1 + 0.04 * Math.sin(phi * 3));
-          } else {
-            fruitR = radius * (1 - 0.22 * Math.sin(theta));
-          }
-
-          const explodeOffset = mode === 'explode' ? (1 + 0.35 * Math.sin(phi * 2)) : 1;
-          const finalR = fruitR * explodeOffset;
-
-          const x = finalR * Math.cos(phi) * sinT;
-          const y = finalR * cosT * 1.08;
-          const z = finalR * Math.sin(phi) * sinT;
-
-          vertices.push([x, y, z]);
-        }
-      }
-      return vertices;
-    };
-
-    const vertices = generateMesh();
-
-    // 3D Vapor / Dew Particles
-    const vaporParticles: Array<{ x: number; y: number; z: number; vx: number; vy: number; vz: number; size: number }> = [];
-    for (let i = 0; i < 40; i++) {
-      vaporParticles.push({
-        x: (Math.random() - 0.5) * 220,
-        y: (Math.random() - 0.5) * 220,
-        z: (Math.random() - 0.5) * 220,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: -Math.random() * 0.5 - 0.1,
-        vz: (Math.random() - 0.5) * 0.4,
-        size: Math.random() * 2.5 + 1,
-      });
-    }
-
-    const render = () => {
-      const w = rect.width;
-      const h = rect.height;
-      const cx = w / 2;
-      const cy = h / 2;
-
-      ctx.clearRect(0, 0, w, h);
-
-      if (!isDragging) {
-        autoY += 0.007;
-        autoX = Math.sin(autoY * 0.4) * 0.12 + 0.15;
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
       } else {
-        autoX = rotation.x;
-        autoY = rotation.y;
+        videoRef.current.play();
       }
-
-      const cosX = Math.cos(autoX);
-      const sinX = Math.sin(autoX);
-      const cosY = Math.cos(autoY);
-      const sinY = Math.sin(autoY);
-      const fov = 420;
-
-      const project = (x: number, y: number, z: number) => {
-        const x1 = x * cosY - z * sinY;
-        const z1 = z * cosY + x * sinY;
-        const y1 = y * cosX - z1 * sinX;
-        const z2 = z1 * cosX + y * sinX;
-        const scale = fov / (fov + z2);
-        return {
-          x: cx + x1 * scale,
-          y: cy + y1 * scale,
-          z: z2,
-          scale,
-        };
-      };
-
-      // 1. Draw 3D Radial Glow
-      const halo = ctx.createRadialGradient(cx, cy, 10, cx, cy, 170);
-      halo.addColorStop(0, `${selectedProduce.glowColor}30`);
-      halo.addColorStop(0.5, 'rgba(228, 199, 103, 0.1)');
-      halo.addColorStop(1, 'transparent');
-      ctx.fillStyle = halo;
-      ctx.beginPath();
-      ctx.arc(cx, cy, 170, 0, Math.PI * 2);
-      ctx.fill();
-
-      // 2. Draw 3D Vapor Particles (Sub-Zero Mode)
-      if (mode === 'chill') {
-        vaporParticles.forEach((p) => {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.z += p.vz;
-          if (p.y < -120) p.y = 120;
-
-          const pt = project(p.x, p.y, p.z);
-          if (pt.scale > 0) {
-            ctx.fillStyle = '#00F59B';
-            ctx.globalAlpha = 0.5 * pt.scale;
-            ctx.beginPath();
-            ctx.arc(pt.x, pt.y, p.size * pt.scale, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        });
-        ctx.globalAlpha = 1;
-      }
-
-      // 3. Project 3D Mesh
-      const proj = vertices.map(([x, y, z]) => project(x, y, z));
-
-      // Draw Wireframe Ribs
-      ctx.strokeStyle = `${selectedProduce.primaryColor}55`;
-      ctx.lineWidth = 1.2;
-      for (let i = 0; i < proj.length; i += 2) {
-        if (i + 1 < proj.length) {
-          ctx.beginPath();
-          ctx.moveTo(proj[i].x, proj[i].y);
-          ctx.lineTo(proj[i + 1].x, proj[i + 1].y);
-          ctx.stroke();
-        }
-      }
-
-      // 4. Draw Shaded Surface Nodes
-      const sorted = [...proj].sort((a, b) => b.z - a.z);
-      sorted.forEach((pt) => {
-        if (pt.scale > 0) {
-          const depthAlpha = Math.max(0.2, Math.min(1, (pt.z + 140) / 280));
-          const rad = Math.max(1, 3.2 * pt.scale);
-
-          const grad = ctx.createRadialGradient(pt.x - 1, pt.y - 1, 0, pt.x, pt.y, rad * 2);
-          grad.addColorStop(0, '#FFFFFF');
-          grad.addColorStop(0.35, selectedProduce.glowColor);
-          grad.addColorStop(0.8, selectedProduce.primaryColor);
-          grad.addColorStop(1, '#041A13');
-
-          ctx.fillStyle = grad;
-          ctx.globalAlpha = depthAlpha;
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, rad, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      });
-      ctx.globalAlpha = 1;
-
-      animId = requestAnimationFrame(render);
-    };
-
-    render();
-    return () => cancelAnimationFrame(animId);
-  }, [selectedProduce, mode, isDragging, rotation]);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    lastMouse.current = { x: e.clientX, y: e.clientY };
+      setIsPlaying(!isPlaying);
+    }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const dx = e.clientX - lastMouse.current.x;
-    const dy = e.clientY - lastMouse.current.y;
-    setRotation((r) => ({
-      x: Math.max(-1.1, Math.min(1.1, r.x + dy * 0.01)),
-      y: r.y + dx * 0.01,
-    }));
-    lastMouse.current = { x: e.clientX, y: e.clientY };
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
   };
-
-  const handleMouseUp = () => setIsDragging(false);
 
   return (
     <div className="w-full bg-obsidian-950 text-cream">
       
-      {/* 1. MASTERPIECE 2-COLUMN HERO WITH INTERACTIVE 3D PRODUCE STAGE */}
+      {/* 1. MASTERPIECE 2-COLUMN HERO WITH FRAMED CINEMA VIDEO REEL */}
       <section className="relative min-h-[92vh] w-full pt-10 sm:pt-16 pb-16 flex items-center overflow-hidden">
         
-        {/* Ambient Radial Lights */}
-        <div className="absolute top-1/4 left-1/4 w-[700px] h-[500px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none -z-10" />
-        <div className="absolute top-1/3 right-1/4 w-[600px] h-[450px] bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+        {/* Ambient Radial Lighting */}
+        <div className="absolute top-1/4 left-1/4 w-[750px] h-[550px] bg-emerald-500/15 rounded-full blur-[170px] pointer-events-none -z-10" />
+        <div className="absolute top-1/3 right-1/4 w-[650px] h-[480px] bg-champagne/10 rounded-full blur-[150px] pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* Left Column: Bold Typography & CTAs */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="lg:col-span-6 space-y-6 text-left">
               
               {/* Eyebrow Badge */}
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-500/40 text-cream text-xs font-mono backdrop-blur-xl shadow-2xl">
@@ -399,7 +156,7 @@ export function CinematicPinkLadyExperience() {
                   <span className="gold-gradient-text">IS SO SPECIAL</span>
                 </h1>
 
-                <p className="text-base sm:text-xl text-cream/85 font-sans max-w-2xl leading-relaxed">
+                <p className="text-base sm:text-xl text-cream/85 font-sans max-w-xl leading-relaxed">
                   We supply the finest fresh produce, orchard fruits, heritage vegetables, living herbs, and artisan dairy directly to hospitality professionals across the UK.
                 </p>
               </div>
@@ -444,95 +201,75 @@ export function CinematicPinkLadyExperience() {
 
             </div>
 
-            {/* Right Column: Interactive 3D Produce Quality Stage */}
-            <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl p-1 bg-gradient-to-b from-emerald-500/40 via-emerald-900/50 to-obsidian-950 border border-champagne/40 shadow-[0_20px_70px_rgba(2,23,16,0.9),0_0_40px_rgba(16,185,129,0.25)] overflow-hidden backdrop-blur-2xl">
+            {/* Right Column: High-Definition Cinematic Farm Video Reel Card */}
+            <div className="lg:col-span-6 relative">
+              <div className="rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_20px_80px_rgba(2,23,16,0.95),0_0_50px_rgba(16,185,129,0.3)] overflow-hidden group">
                 
-                <div className="rounded-[22px] bg-obsidian-900/95 p-5 sm:p-6 space-y-4">
+                <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
                   
-                  {/* Produce Selector Tabs */}
-                  <div className="flex gap-2">
-                    {HERO_PRODUCE.map((p) => (
-                      <button
-                        key={p.id}
-                        type="button"
-                        onClick={() => setSelectedProduce(p)}
-                        className={`flex-1 py-1.5 px-2 rounded-xl text-xs font-mono font-bold transition-all truncate ${
-                          selectedProduce.id === p.id
-                            ? 'bg-champagne text-obsidian-950 shadow-md'
-                            : 'bg-obsidian-950 text-cream/70 hover:text-cream border border-emerald-950'
-                        }`}
-                      >
-                        {p.name.split(' ')[0]}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* 3D Canvas Box */}
-                  <div
-                    className="relative h-[280px] sm:h-[320px] w-full rounded-2xl bg-gradient-to-b from-obsidian-950 to-obsidian-900 border border-emerald-900/70 overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing shadow-inner"
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseUp}
+                  {/* Autoplaying HD Video */}
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted={isMuted}
+                    playsInline
+                    className="w-full h-full object-cover brightness-[0.9] contrast-[1.08] group-hover:scale-105 transition-transform duration-700"
+                    poster="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1200&auto=format&fit=crop&q=90"
                   >
-                    <canvas ref={canvasRef} className="w-full h-full block touch-none" />
+                    <source
+                      src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-fresh-picked-apples-41221-large.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
 
-                    {/* Top Telemetry Overlay */}
-                    <div className="absolute top-3 left-3 right-3 flex justify-between items-center pointer-events-none">
-                      <div className="bg-obsidian-950/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-champagne/40 text-[11px] font-mono text-champagne font-bold flex items-center gap-1">
-                        <Sun className="w-3.5 h-3.5 text-champagne" />
-                        <span>{selectedProduce.brix}</span>
-                      </div>
+                  {/* Gradient Vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-black/30 pointer-events-none" />
 
-                      <div className="bg-obsidian-950/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-emerald-400/50 text-[11px] font-mono text-emerald-300 font-bold flex items-center gap-1">
-                        <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>{selectedProduce.tempSla}</span>
-                      </div>
+                  {/* Top Floating Status Overlay */}
+                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+                    <div className="bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-champagne/40 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
+                      <Sun className="w-3.5 h-3.5 text-champagne" />
+                      <span>Live Harvest Feed &bull; 14.8° Brix</span>
                     </div>
 
-                    {/* Bottom Rotation Instruction */}
-                    <div className="absolute bottom-3 left-3 bg-obsidian-950/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-emerald-900/60 text-[10px] font-mono text-zinc-300 flex items-center gap-1.5 pointer-events-none">
-                      <Rotate3d className="w-3.5 h-3.5 text-champagne animate-spin" />
-                      <span>Drag to rotate in 360°</span>
+                    <div className="bg-obsidian-950/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-emerald-400/50 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
+                      <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>+2.2°C Cold-Locked</span>
                     </div>
                   </div>
 
-                  {/* Inspection Mode Toggles */}
-                  <div className="grid grid-cols-3 gap-2 text-center font-mono text-[11px]">
+                  {/* Video Control Buttons */}
+                  <div className="absolute bottom-20 right-4 flex items-center gap-2 z-10">
                     <button
                       type="button"
-                      onClick={() => setMode('360')}
-                      className={`p-2 rounded-xl border transition-all ${
-                        mode === '360'
-                          ? 'bg-emerald-950 border-emerald-400 text-emerald-300 font-bold'
-                          : 'bg-obsidian-950 border-emerald-950 text-cream/60 hover:text-cream'
-                      }`}
+                      onClick={togglePlay}
+                      className="w-9 h-9 rounded-full bg-obsidian-950/80 hover:bg-obsidian-900 border border-champagne/40 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-lg"
+                      title={isPlaying ? 'Pause video' : 'Play video'}
                     >
-                      360° Inspection
+                      {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
                     </button>
                     <button
                       type="button"
-                      onClick={() => setMode('explode')}
-                      className={`p-2 rounded-xl border transition-all ${
-                        mode === 'explode'
-                          ? 'bg-emerald-950 border-emerald-400 text-emerald-300 font-bold'
-                          : 'bg-obsidian-950 border-emerald-950 text-cream/60 hover:text-cream'
-                      }`}
+                      onClick={toggleMute}
+                      className="w-9 h-9 rounded-full bg-obsidian-950/80 hover:bg-obsidian-900 border border-champagne/40 text-champagne flex items-center justify-center backdrop-blur-md transition-all shadow-lg"
+                      title={isMuted ? 'Unmute' : 'Mute'}
                     >
-                      Cell Anatomy
+                      {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => setMode('chill')}
-                      className={`p-2 rounded-xl border transition-all ${
-                        mode === 'chill'
-                          ? 'bg-emerald-950 border-emerald-400 text-emerald-300 font-bold'
-                          : 'bg-obsidian-950 border-emerald-950 text-cream/60 hover:text-cream'
-                      }`}
-                    >
-                      Sub-Zero Mist
-                    </button>
+                  </div>
+
+                  {/* Bottom Chef Review Floating Bar */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-obsidian-950/90 backdrop-blur-md p-3.5 rounded-xl border border-emerald-900/70 z-10 shadow-xl">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                      <p className="text-xs text-cream/90 font-sans italic leading-tight">
+                        "The crispness and Brix sugar consistency of Rootwills produce is unmatched in the Midlands."
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-mono text-champagne font-bold block mt-1">
+                      — Executive Chef, Birmingham Fine Dining
+                    </span>
                   </div>
 
                 </div>
