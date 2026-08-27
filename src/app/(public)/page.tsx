@@ -31,6 +31,7 @@ import {
   Scale
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { LuxuryAmbientBackground } from '@/components/public/LuxuryAmbientBackground';
 import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLadyExperience';
 import { FreshProduceShowcaseStrip } from '@/components/public/FreshProduceShowcaseStrip';
 import { ThreeDCulinaryGrid } from '@/components/3d/ThreeDCulinaryGrid';
@@ -58,9 +59,12 @@ export const metadata = {
 
 export default function PublicHomePage() {
   return (
-    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden bg-obsidian-950">
+    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden relative">
       
-      {/* 1. PINK LADY STYLE FULL-BLEED CINEMATIC VIDEO HERO & SCROLLYTELLING */}
+      {/* 0. LUXURY GEOMETRIC TRELLIS PATTERN & SCROLL PROGRESS BAR */}
+      <LuxuryAmbientBackground />
+
+      {/* 1. PINK LADY STYLE CINEMATIC VIDEO REEL HERO & SCROLLYTELLING */}
       <CinematicPinkLadyExperience />
 
       {/* 2. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
@@ -73,7 +77,7 @@ export default function PublicHomePage() {
       <ThreeDCulinaryGrid />
 
       {/* 5. THE ROOTWILLS ADVANTAGE METRICS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
             The Rootwills Advantage
@@ -147,12 +151,12 @@ export default function PublicHomePage() {
       </section>
 
       {/* 6. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
-      <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <PriceEstimator />
       </section>
 
       {/* 7. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-mono uppercase text-champagne font-bold tracking-widest">

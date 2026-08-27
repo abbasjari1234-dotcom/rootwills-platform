@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -126,23 +127,24 @@ export function CinematicPinkLadyExperience() {
   };
 
   return (
-    <div className="w-full bg-obsidian-950 text-cream">
+    <div className="w-full text-cream relative">
       
       {/* 1. MASTERPIECE 2-COLUMN HERO WITH FRAMED CINEMA VIDEO REEL */}
-      <section className="relative min-h-[92vh] w-full pt-10 sm:pt-16 pb-16 flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] w-full pt-8 sm:pt-14 pb-16 flex items-center overflow-hidden">
         
-        {/* Ambient Radial Lighting */}
-        <div className="absolute top-1/4 left-1/4 w-[750px] h-[550px] bg-emerald-500/15 rounded-full blur-[170px] pointer-events-none -z-10" />
-        <div className="absolute top-1/3 right-1/4 w-[650px] h-[480px] bg-champagne/10 rounded-full blur-[150px] pointer-events-none -z-10" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Bold Typography & CTAs */}
-            <div className="lg:col-span-6 space-y-6 text-left">
+            {/* Left Column: Animated Bold Typography & CTAs */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-6 space-y-6 text-left"
+            >
               
               {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-500/40 text-cream text-xs font-mono backdrop-blur-xl shadow-2xl">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-cream text-xs font-mono backdrop-blur-xl shadow-2xl">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span className="text-emerald-300 font-bold">Farm-to-Kitchen Direct Supply &bull; Birmingham Hub</span>
                 <span className="text-cream/30 hidden sm:inline">&bull;</span>
@@ -173,7 +175,7 @@ export function CinematicPinkLadyExperience() {
 
                 <Link
                   href="#story-start"
-                  className="px-6 py-4 rounded-xl bg-obsidian-900/90 border border-emerald-500/40 hover:border-champagne text-cream text-sm font-semibold flex items-center gap-2 backdrop-blur-md transition-all"
+                  className="px-6 py-4 rounded-xl bg-emerald-950/70 border border-emerald-500/40 hover:border-champagne text-cream text-sm font-semibold flex items-center gap-2 backdrop-blur-md transition-all"
                 >
                   <span>Explore The Story &rarr;</span>
                 </Link>
@@ -181,28 +183,33 @@ export function CinematicPinkLadyExperience() {
 
               {/* Trust Badges Bar */}
               <div className="pt-6 border-t border-emerald-950/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-                <div className="p-3 bg-obsidian-900/60 rounded-xl border border-emerald-950 font-mono text-xs">
+                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-champagne/40 transition-colors">
                   <span className="text-champagne font-bold block uppercase">11:00 PM Cut-off</span>
                   <span className="text-cream/60 text-[10px]">Late evening ordering</span>
                 </div>
-                <div className="p-3 bg-obsidian-900/60 rounded-xl border border-emerald-950 font-mono text-xs">
+                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-emerald-400/40 transition-colors">
                   <span className="text-emerald-400 font-bold block uppercase">06:00 AM SLA</span>
                   <span className="text-cream/60 text-[10px]">Early kitchen drop</span>
                 </div>
-                <div className="p-3 bg-obsidian-900/60 rounded-xl border border-emerald-950 font-mono text-xs">
+                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-champagne/40 transition-colors">
                   <span className="text-champagne font-bold block uppercase">SALSA Certified</span>
                   <span className="text-cream/60 text-[10px]">Full batch provenance</span>
                 </div>
-                <div className="p-3 bg-obsidian-900/60 rounded-xl border border-emerald-950 font-mono text-xs">
+                <div className="p-3 bg-emerald-950/50 rounded-xl border border-emerald-900/60 font-mono text-xs hover:border-emerald-400/40 transition-colors">
                   <span className="text-emerald-400 font-bold block uppercase">£30,000 Facility</span>
                   <span className="text-cream/60 text-[10px]">30-Day trade terms</span>
                 </div>
               </div>
 
-            </div>
+            </motion.div>
 
-            {/* Right Column: High-Definition Cinematic Farm Video Reel Card */}
-            <div className="lg:col-span-6 relative">
+            {/* Right Column: High-Definition Cinematic Farm Video Reel Card with Scroll/Hover Depth */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-6 relative"
+            >
               <div className="rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_20px_80px_rgba(2,23,16,0.95),0_0_50px_rgba(16,185,129,0.3)] overflow-hidden group">
                 
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
@@ -275,22 +282,26 @@ export function CinematicPinkLadyExperience() {
                 </div>
 
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
 
       </section>
 
-      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY (Exact Pink Lady Layout) */}
-      <div id="story-start" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 space-y-28 sm:space-y-40">
+      {/* 2. SPLIT-SCREEN FRAMED SCROLLYTELLING JOURNEY WITH SCROLL-TRIGGERED ANIMATIONS */}
+      <div id="story-start" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-36 space-y-28 sm:space-y-40 relative z-10">
         
         {STORY_SECTIONS.map((section, index) => {
           const isEven = index % 2 === 0;
 
           return (
-            <div 
+            <motion.div 
               key={section.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
                 isEven ? '' : 'lg:grid-flow-dense'
               }`}
@@ -351,7 +362,7 @@ export function CinematicPinkLadyExperience() {
                   {section.points.map((pt, pIdx) => (
                     <div
                       key={pIdx}
-                      className="p-3 rounded-xl bg-obsidian-900/80 border border-emerald-900/50 flex items-start gap-2.5"
+                      className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-start gap-2.5 hover:border-emerald-500/40 transition-colors"
                     >
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <span className="text-xs text-cream/85 font-mono">{pt}</span>
@@ -374,7 +385,7 @@ export function CinematicPinkLadyExperience() {
 
               </div>
 
-            </div>
+            </motion.div>
           );
         })}
 
