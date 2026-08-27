@@ -31,8 +31,9 @@ import {
   Flame
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { Hero3DDigitalEcosystem } from '@/components/3d/Hero3DDigitalEcosystem';
-import { ThreeDServiceEcosystem } from '@/components/3d/ThreeDServiceEcosystem';
+import { PinkLadyCinematicScrollytelling } from '@/components/public/PinkLadyCinematicScrollytelling';
+import { MeatopiaCulinaryStrip } from '@/components/public/MeatopiaCulinaryStrip';
+import { Hyper3DHeroShowcase } from '@/components/public/Hyper3DHeroShowcase';
 import { Interactive3DCrateBuilder } from '@/components/3d/Interactive3DCrateBuilder';
 import { ThreeDDepotExplorer } from '@/components/3d/ThreeDDepotExplorer';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
@@ -54,33 +55,51 @@ const PriceEstimator = dynamic(
 );
 
 export const metadata = {
-  title: 'Rootwills Ltd | Connected B2B Foodservice & Cold-Chain Technology UK',
-  description: 'Technology-driven wholesale food and fresh produce supply for restaurants, boutique hotels, luxury caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and 3D digital ordering.',
+  title: 'Rootwills Ltd | Premium B2B Foodservice & Fresh Produce Wholesale UK',
+  description: 'Farm-direct fresh produce, dry-aged meats, and artisan culinary supply for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and modern ordering portal.',
 };
 
 export default function PublicHomePage() {
   return (
-    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden">
+    <div className="space-y-20 sm:space-y-28 pb-24 overflow-hidden">
       
-      {/* 1. FULL-SCREEN 3D WEBGL DIGITAL ECOSYSTEM HERO */}
-      <Hero3DDigitalEcosystem />
+      {/* 1. PINK LADY STYLE FULL-BLEED VIDEO HERO & SCROLLYTELLING */}
+      <PinkLadyCinematicScrollytelling />
 
-      {/* 2. 3D SERVICE ECOSYSTEM ("WHAT WE DO" AS AN INTERACTIVE 3D WORLD) */}
-      <ThreeDServiceEcosystem />
+      {/* 2. MEATOPIA SENSORY CULINARY SIZZLE STRIP */}
+      <MeatopiaCulinaryStrip />
 
-      {/* 3. INTERACTIVE 3D CRATE PACKER STUDIO */}
+      {/* 3. INTERACTIVE 3D PRODUCE QUALITY INSPECTOR */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-6 space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-champagne" />
+            <span>Interactive 3D Produce Studio</span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream">
+            Inspect Orchard Specs in Real-Time 3D
+          </h2>
+          <p className="text-xs sm:text-sm text-cream/70 font-sans">
+            Rotate 3D harvested produce in 360°, inspect cell firmness, Brix sugar levels (14.8°), and cold-chain thermal barriers.
+          </p>
+        </div>
+
+        <Hyper3DHeroShowcase />
+      </section>
+
+      {/* 4. INTERACTIVE 3D WOODEN WHOLESALE CRATE PACKER */}
       <Interactive3DCrateBuilder />
 
-      {/* 4. 3D WHOLESALE PRODUCE RANGE SPOTLIGHT */}
+      {/* 5. WHOLESALE PRODUCE & CULINARY RANGE (3D Tilt Showcase) */}
       <ThreeDProductShowcase />
 
-      {/* 5. 3D COLD-CHAIN DEPOT DIGITAL TWIN */}
+      {/* 6. 3D COLD-CHAIN DEPOT DIGITAL TWIN */}
       <ThreeDDepotExplorer />
 
-      {/* 6. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
+      {/* 7. INTERACTIVE 3D FARM-TO-KITCHEN JOURNEY */}
       <Interactive3DFarmToKitchen />
 
-      {/* 7. THE ROOTWILLS DIFFERENCE (3D Tilt Metric Cards) */}
+      {/* 8. THE ROOTWILLS DIFFERENCE (3D Tilt Metric Cards) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -107,7 +126,7 @@ export default function PublicHomePage() {
                     Late 11:00 PM Ordering Cut-off
                   </h3>
                 </div>
-                <p className="text-xs text-cream/70 leading-relaxed">
+                <p className="text-xs text-cream/70 leading-relaxed font-sans">
                   Never rush evening order pads again. Tally your inventory after dinner service ends, place orders on your mobile, and receive them before morning prep.
                 </p>
               </div>
@@ -126,7 +145,7 @@ export default function PublicHomePage() {
                     Instant 1-Click Repeat Orders
                   </h3>
                 </div>
-                <p className="text-xs text-cream/70 leading-relaxed">
+                <p className="text-xs text-cream/70 leading-relaxed font-sans">
                   Kitchen managers don't have 30 minutes to browse 10,000 items every day. Repeat your last order, adjust crate quantities, or let our AI kitchen assistant prepare your service prep.
                 </p>
               </div>
@@ -145,7 +164,7 @@ export default function PublicHomePage() {
                     Zero-Substitution Assurance
                   </h3>
                 </div>
-                <p className="text-xs text-cream/70 leading-relaxed">
+                <p className="text-xs text-cream/70 leading-relaxed font-sans">
                   No surprise unwanted substitutions. If an item does not meet strict grade-A specifications, our operations desk contacts you directly with verified alternatives.
                 </p>
               </div>
@@ -154,7 +173,7 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 8. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
+      {/* 9. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -303,12 +322,12 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 9. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 10. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
 
-      {/* 10. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
+      {/* 11. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
