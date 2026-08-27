@@ -50,6 +50,8 @@ export const metadata: Metadata = {
   description:
     'Premium wholesale food, dry-aged meats, dairy, and fresh produce supplier for fine dining restaurants, boutique hotels, and luxury caterers across the West Midlands & UK.',
   keywords: [
+    'Rootwills',
+    'Rootwills wholesale food',
     'wholesale food suppliers Birmingham',
     'fresh produce catering UK',
     'restaurant food supplier West Midlands',
@@ -58,6 +60,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Rootwills Ltd' }],
   creator: 'Rootwills Commercial Foodservice',
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
   openGraph: {
     type: 'website',
     locale: 'en_GB',
@@ -75,7 +83,59 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.rootwills.co.uk/#organization',
+      name: 'Rootwills Ltd',
+      alternateName: ['Rootwills Wholesale Foodservice', 'Rootwills Foodservice Ltd'],
+      url: 'https://www.rootwills.co.uk',
+      logo: 'https://www.rootwills.co.uk/icon.svg',
+      description: 'Premium wholesale food, dry-aged meats, dairy, and fresh produce supplier for fine dining restaurants, boutique hotels, and luxury caterers in Birmingham and the UK.',
+      telephone: '+44 121 790 4500',
+      email: 'sales@rootwills.co.uk',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Units 4–6, Digbeth Wholesale Food Hub',
+        addressLocality: 'Birmingham',
+        addressRegion: 'West Midlands',
+        postalCode: 'B5 6DY',
+        addressCountry: 'GB',
+      },
+      areaServed: [
+        'Birmingham',
+        'Solihull',
+        'Coventry',
+        'Wolverhampton',
+        'Stratford-upon-Avon',
+        'Leamington Spa',
+        'West Midlands',
+        'United Kingdom',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.rootwills.co.uk/#website',
+      url: 'https://www.rootwills.co.uk',
+      name: 'Rootwills Wholesale',
+      description: 'B2B Wholesale Food & Fresh Produce Supply UK',
+      publisher: {
+        '@id': 'https://www.rootwills.co.uk/#organization',
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -89,6 +149,10 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${cormorant.variable} ${ibmPlexMono.variable}`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
