@@ -45,57 +45,88 @@ export function RootwillsLogo({
           <defs>
             <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#FFF9E6" />
-              <stop offset="35%" stopColor="#E4C767" />
-              <stop offset="70%" stopColor="#C9A227" />
-              <stop offset="100%" stopColor="#F5E498" />
+              <stop offset="25%" stopColor="#F3DC82" />
+              <stop offset="60%" stopColor="#C9A227" />
+              <stop offset="100%" stopColor="#E4C767" />
             </linearGradient>
-            <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#10B981" />
-              <stop offset="100%" stopColor="#047857" />
+            <linearGradient id="goldAccent" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFE899" />
+              <stop offset="100%" stopColor="#A88214" />
+            </linearGradient>
+            <linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#053326" />
+              <stop offset="100%" stopColor="#02140E" />
             </linearGradient>
           </defs>
 
           {/* Outer Geometric Luxury Shield */}
           <polygon
             points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
+            fill="url(#emeraldShield)"
             stroke="url(#goldLuxury)"
-            strokeWidth="3.5"
-            fill="none"
+            strokeWidth="2.8"
             opacity="0.95"
           />
 
-          {/* Inner Emerald Accent Shield */}
+          {/* Inner Emerald Accent Ring */}
           <polygon
-            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
-            stroke="url(#emeraldInner)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.75"
+            points="50,13 81,25 86,59 64,86 36,86 14,59 19,25"
+            stroke="#10B981"
+            strokeWidth="1.2"
+            strokeDasharray="3 3"
+            opacity="0.55"
           />
 
-          {/* Interlocking 'RW' Monogram (Clean, Pure Gold) */}
-          {/* 'R' */}
+          {/* Monogram: 'W' (Intertwined Base Layer) */}
           <path
-            d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48 M 44 48 L 56 72"
-            stroke="url(#goldLuxury)"
-            strokeWidth="6.5"
+            d="M 44 42 L 54 74 L 65 48 L 76 74 L 86 42"
+            stroke="url(#goldAccent)"
+            strokeWidth="4.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            opacity="0.9"
           />
 
-          {/* 'W' */}
+          {/* Monogram: 'R' (Foreground Heraldic Layer with Optical Depth Cut) */}
+          {/* R Main Spine & Serifs */}
           <path
-            d="M 46 48 L 54 72 L 66 52 L 78 72 L 86 48"
+            d="M 28 26 L 28 74"
+            stroke="url(#goldLuxury)"
+            strokeWidth="5.5"
+            strokeLinecap="round"
+          />
+          <path d="M 23 26 L 33 26" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M 23 74 L 33 74" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+
+          {/* R Upper Loop */}
+          <path
+            d="M 28 26 L 46 26 C 56 26 56 46 46 46 L 28 46"
             stroke="url(#goldLuxury)"
             strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            opacity="0.95"
           />
 
-          {/* Center Diamond Sparkle */}
+          {/* Clean Optical Clearance Mask for Intertwine */}
+          <path
+            d="M 42 46 Q 48 58 60 74"
+            stroke="#053326"
+            strokeWidth="8.5"
+            strokeLinecap="round"
+          />
+
+          {/* R Graceful Sweep Leg */}
+          <path
+            d="M 42 46 Q 48 58 60 74"
+            stroke="url(#goldLuxury)"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
+          <path d="M 55 74 L 64 74" stroke="url(#goldLuxury)" strokeWidth="2.5" strokeLinecap="round" />
+
+          {/* Royal Diamond Finial at Crest Apex */}
           <polygon
-            points="50,22 53,26 50,30 47,26"
+            points="50,17 53,22 50,26 47,22"
             fill="url(#goldLuxury)"
           />
         </svg>
