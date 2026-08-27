@@ -15,17 +15,17 @@ import {
   RotateCcw, 
   Sparkles,
   X,
-  Layers
+  Layers,
+  Leaf
 } from 'lucide-react';
 import { ProductCategory } from '@/types/products';
 
 const CATEGORY_TABS: { key: ProductCategory | 'all'; label: string }[] = [
   { key: 'all', label: 'All SKUs' },
-  { key: 'fresh_produce', label: 'Produce' },
+  { key: 'fresh_produce', label: 'Fresh Produce' },
   { key: 'dairy_eggs', label: 'Dairy & Eggs' },
-  { key: 'meat_poultry', label: 'Butchery' },
-  { key: 'dry_goods', label: 'Dry Goods' },
-  { key: 'specialty', label: 'Specialty & Deli' },
+  { key: 'dry_goods', label: 'Bakery & Pantry' },
+  { key: 'specialty', label: 'Specialty Botanicals' },
 ];
 
 export default function QuickOrderMatrixPage() {
@@ -100,110 +100,77 @@ export default function QuickOrderMatrixPage() {
     setTimeout(() => {
       setBulkResultMsg(null);
       setBulkModalOpen(false);
-      setBulkText('');
-    }, 1200);
+    }, 1500);
   };
 
+  // Add all staged quantities to active cart drawer
   const handleAddAllToCart = () => {
-    let count = 0;
-    Object.entries(quantities).forEach(([productId, qty]) => {
-      if (qty > 0) {
-        const prod = products.find((p) => p.id === productId);
-        if (prod) {
-          addItem(prod, qty);
-          count++;
-        }
+    const activeEntries = Object.entries(quantities).filter(([_, qty]) => qty > 0);
+    if (activeEntries.length === 0) return;
+
+    activeEntries.forEach(([productId, qty]) => {
+      const prod = products.find((p) => p.id === productId);
+      if (prod) {
+        addItem(prod, qty);
       }
     });
 
-    if (count > 0) {
-      setAddedSuccess(true);
-      setTimeout(() => setAddedSuccess(false), 1500);
+    setAddedSuccess(true);
+    setQuantities({});
+    setTimeout(() => {
+      setAddedSuccess(false);
       openCart();
-    }
+    }, 800);
   };
 
-  const activeLineCount = Object.values(quantities).filter((q) => q > 0).length;
-  const runningTotal = Object.entries(quantities).reduce((sum, [productId, qty]) => {
-    const prod = products.find((p) => p.id === productId);
+  const totalLines = Object.values(quantities).filter((q) => q > 0).length;
+  const estimatedSubtotal = Object.entries(quantities).reduce((sum, [pId, qty]) => {
+    const prod = products.find((p) => p.id === pId);
     return sum + (prod ? prod.customerPrice * qty : 0);
   }, 0);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      
       {/* Header Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-4 border-b border-cream/10">
-        <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-champagne uppercase font-bold">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-obsidian-900/90 border border-emerald-900/60 p-6 rounded-3xl backdrop-blur-xl shadow-xl">
+        <div className="space-y-1">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-champagne/40 text-champagne text-xs font-mono font-bold">
             <Clock className="w-3.5 h-3.5" />
-            <span>Chef Speed-Order Grid</span>
+            <span>High-Speed Ordering Grid</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
-            Rapid Multi-Line Order Sheet
+          <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-cream">
+            Speed Order Pad &bull; {currentOrg.name}
           </h1>
-          <p className="text-xs text-cream/60">
-            Key in crate and pack counts in seconds or paste your prep list directly.
+          <p className="text-xs text-cream/70 font-sans">
+            Rapid multi-line crate entry with your agreed locked contract rates.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Paste List Trigger */}
+        {/* Quick Bulk Paste Button */}
+        <div className="flex items-center gap-3">
           <button
-            type="button"
             onClick={() => setBulkModalOpen(true)}
-            className="px-3.5 py-2 rounded-xl bg-obsidian-900 border border-cream/20 hover:border-champagne text-cream text-xs font-semibold flex items-center gap-1.5 transition-colors"
+            className="px-4 py-2.5 rounded-xl bg-obsidian-950 border border-emerald-800/80 hover:border-champagne text-cream text-xs font-mono font-bold flex items-center gap-2 transition-all"
           >
-            <FileText className="w-3.5 h-3.5 text-champagne" />
-            <span>Paste Prep List</span>
-          </button>
-
-          {/* Reset button */}
-          {activeLineCount > 0 && (
-            <button
-              type="button"
-              onClick={handleClearAll}
-              className="px-3 py-2 rounded-xl text-xs text-cream/60 hover:text-rose-400 hover:bg-rose-950/20 border border-cream/10 transition-colors flex items-center gap-1"
-            >
-              <RotateCcw className="w-3 h-3" />
-              <span>Reset</span>
-            </button>
-          )}
-
-          <div className="text-right hidden sm:block pl-2 border-l border-cream/10">
-            <div className="text-[10px] uppercase font-mono text-cream/50">Lines Selected</div>
-            <div className="text-sm font-bold font-mono text-champagne">
-              {activeLineCount} lines &bull; £{runningTotal.toFixed(2)}
-            </div>
-          </div>
-
-          <button
-            onClick={handleAddAllToCart}
-            disabled={activeLineCount === 0}
-            className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-gold-glow flex items-center gap-2 transition-all ${
-              activeLineCount > 0
-                ? 'bg-champagne text-obsidian-950 hover:brightness-110'
-                : 'bg-obsidian-800 text-cream/30 border border-cream/10 cursor-not-allowed'
-            }`}
-          >
-            <ShoppingBag className="w-4 h-4" />
-            <span>Add Selected ({activeLineCount}) to Basket &rarr;</span>
+            <FileText className="w-4 h-4 text-champagne" />
+            <span>Paste Prep List / CSV</span>
           </button>
         </div>
       </div>
 
-      {/* Category Tabs & Search Bar */}
-      <div className="flex flex-col sm:flex-row justify-between gap-4">
-        {/* Category Pills */}
+      {/* Filter and Search Bar */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-obsidian-950/80 border border-emerald-950 p-4 rounded-2xl">
+        {/* Category Tabs */}
         <div className="flex flex-wrap gap-1.5">
           {CATEGORY_TABS.map((tab) => (
             <button
               key={tab.key}
-              type="button"
               onClick={() => setSelectedCategory(tab.key)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors border ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition-colors ${
                 selectedCategory === tab.key
-                  ? 'bg-champagne text-obsidian-950 font-bold border-champagne'
-                  : 'bg-obsidian-900/80 text-cream/60 border-cream/10 hover:text-cream hover:border-cream/20'
+                  ? 'bg-champagne text-obsidian-950 shadow-md'
+                  : 'bg-obsidian-900 text-cream/60 hover:text-cream border border-emerald-950'
               }`}
             >
               {tab.label}
@@ -211,82 +178,85 @@ export default function QuickOrderMatrixPage() {
           ))}
         </div>
 
-        {/* Search Input */}
+        {/* Search Field */}
         <div className="relative w-full sm:w-72">
-          <Search className="w-4 h-4 text-cream/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-cream/40" />
           <input
             type="text"
-            placeholder="Search SKU or name..."
+            placeholder="Search SKU or product..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-obsidian-900 border border-cream/20 rounded-xl pl-10 pr-4 py-1.5 text-xs text-cream focus:outline-none focus:border-champagne"
+            className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl pl-9 pr-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
           />
         </div>
       </div>
 
-      {/* Dense Table View */}
-      <div className="glass-panel rounded-2xl overflow-hidden border border-cream/15 shadow-xl">
+      {/* Matrix Table */}
+      <div className="rounded-3xl border border-emerald-900/60 bg-obsidian-900/80 overflow-hidden shadow-2xl backdrop-blur-xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-obsidian-950/80 text-cream/50 uppercase font-mono text-[10px] border-b border-cream/10">
-              <tr>
-                <th className="p-3.5 pl-5">SKU</th>
-                <th className="p-3.5">Product Name</th>
-                <th className="p-3.5">Category</th>
-                <th className="p-3.5">Pack Size</th>
-                <th className="p-3.5">Contract Price</th>
-                <th className="p-3.5">MOQ</th>
-                <th className="p-3.5 pr-5 text-right">Order Quantity</th>
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-emerald-950 bg-obsidian-950/90 text-[11px] font-mono text-champagne uppercase font-bold tracking-wider">
+                <th className="p-4">SKU</th>
+                <th className="p-4">Product Name & Grade</th>
+                <th className="p-4">Pack Size</th>
+                <th className="p-4">Agreed Rate</th>
+                <th className="p-4 text-center w-36">Quantity</th>
+                <th className="p-4 text-right">Line Total</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-cream/5">
-              {filteredProducts.map((product) => {
-                const qty = quantities[product.id] || 0;
+            <tbody className="divide-y divide-emerald-950/60">
+              {filteredProducts.map((p) => {
+                const qty = quantities[p.id] || 0;
+                const lineTotal = p.customerPrice * qty;
+
                 return (
                   <tr
-                    key={product.id}
-                    className={`hover:bg-obsidian-900/60 transition-colors ${
-                      qty > 0 ? 'bg-champagne/10' : ''
-                    }`}
+                    key={p.id}
+                    className={`hover:bg-emerald-950/40 transition-colors ${qty > 0 ? 'bg-emerald-950/30' : ''}`}
                   >
-                    <td className="p-3.5 pl-5 font-mono text-champagne font-bold">{product.sku}</td>
-                    <td className="p-3.5">
-                      <div className="font-bold text-cream">{product.name}</div>
-                      {product.origin && (
-                        <div className="text-[10px] text-cream/40">{product.origin}</div>
+                    <td className="p-4 font-mono text-champagne/80 font-bold">{p.sku}</td>
+                    <td className="p-4 font-medium text-cream">
+                      <div className="font-bold">{p.name}</div>
+                      <div className="text-[10px] text-cream/50">{p.categoryLabel}</div>
+                    </td>
+                    <td className="p-4 text-cream/70 font-mono">{p.packSize}</td>
+                    <td className="p-4 font-mono font-bold text-cream">
+                      £{p.customerPrice.toFixed(2)}
+                      {p.customerPrice < p.basePrice && (
+                        <span className="ml-1.5 px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9px] uppercase font-bold">
+                          Contract
+                        </span>
                       )}
                     </td>
-                    <td className="p-3.5 text-cream/60">{product.categoryLabel}</td>
-                    <td className="p-3.5 text-cream/70 font-mono">{product.packSize}</td>
-                    <td className="p-3.5 font-mono font-bold text-champagne">
-                      £{product.customerPrice.toFixed(2)}
-                    </td>
-                    <td className="p-3.5 font-mono text-cream/50">{product.moq} {product.unit}</td>
-                    <td className="p-3.5 pr-5 text-right">
-                      <div className="inline-flex items-center border border-cream/20 rounded-lg bg-obsidian-950">
+                    <td className="p-4 text-center">
+                      <div className="inline-flex items-center border border-emerald-900/80 rounded-xl bg-obsidian-950 p-1">
                         <button
                           type="button"
-                          onClick={() => handleQtyChange(product.id, Math.max(0, qty - 1))}
-                          className="p-1.5 text-cream/60 hover:text-cream"
+                          onClick={() => handleQtyChange(p.id, qty - 1)}
+                          className="p-1 rounded-lg hover:bg-emerald-950 text-cream/60 hover:text-cream"
                         >
-                          <Minus className="w-3 h-3" />
+                          <Minus className="w-3.5 h-3.5" />
                         </button>
                         <input
                           type="number"
                           min="0"
                           value={qty === 0 ? '' : qty}
                           placeholder="0"
-                          onChange={(e) => handleQtyChange(product.id, Number(e.target.value))}
-                          className="w-12 bg-transparent text-center font-mono font-bold text-cream focus:outline-none text-xs"
+                          onChange={(e) => handleQtyChange(p.id, parseInt(e.target.value, 10) || 0)}
+                          className="w-12 text-center bg-transparent text-xs font-mono font-bold text-champagne focus:outline-none"
                         />
                         <button
                           type="button"
-                          onClick={() => handleQtyChange(product.id, qty + 1)}
-                          className="p-1.5 text-cream/60 hover:text-cream"
+                          onClick={() => handleQtyChange(p.id, qty + 1)}
+                          className="p-1 rounded-lg hover:bg-emerald-950 text-cream/60 hover:text-cream"
                         >
-                          <Plus className="w-3 h-3" />
+                          <Plus className="w-3.5 h-3.5" />
                         </button>
                       </div>
+                    </td>
+                    <td className="p-4 text-right font-mono font-bold text-cream">
+                      £{lineTotal.toFixed(2)}
                     </td>
                   </tr>
                 );
@@ -296,63 +266,97 @@ export default function QuickOrderMatrixPage() {
         </div>
       </div>
 
-      {/* Paste List Modal */}
+      {/* Floating Bottom Action Bar */}
+      {totalLines > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-3xl bg-obsidian-900/95 border border-champagne/60 rounded-2xl p-4 shadow-[0_10px_40px_rgba(228,199,103,0.35)] backdrop-blur-2xl flex flex-wrap items-center justify-between gap-4 animate-slide-up">
+          <div className="flex items-center gap-4 text-xs">
+            <span className="px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 font-mono font-bold border border-emerald-800">
+              {totalLines} Items Staged
+            </span>
+            <div className="text-cream">
+              Estimated Total: <strong className="text-champagne font-mono text-base font-bold ml-1">£{estimatedSubtotal.toFixed(2)}</strong>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleClearAll}
+              className="px-3 py-2 text-xs font-mono text-cream/60 hover:text-cream"
+            >
+              Clear
+            </button>
+
+            <button
+              onClick={handleAddAllToCart}
+              disabled={addedSuccess}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-2 transition-all"
+            >
+              {addedSuccess ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  <span>Added to Order Basket!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingBag className="w-4 h-4" />
+                  <span>Review & Submit Order &rarr;</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Paste Modal */}
       {bulkModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian-950/80 backdrop-blur-sm">
-          <div className="bg-obsidian-900 border border-cream/20 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl animate-fade-in">
-            <div className="flex justify-between items-center pb-3 border-b border-cream/10">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-champagne" />
-                <h3 className="font-display text-lg font-bold text-cream">Paste Kitchen Order / SKU List</h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setBulkModalOpen(false)}
-                className="p-1 rounded-lg text-cream/50 hover:text-cream"
-              >
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian-950/80 backdrop-blur-md animate-fade-in">
+          <div className="bg-obsidian-900 border border-emerald-900/80 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex justify-between items-center">
+              <h3 className="font-display text-lg font-bold text-cream">Paste Kitchen Prep List</h3>
+              <button onClick={() => setBulkModalOpen(false)} className="text-cream/50 hover:text-cream">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <p className="text-xs text-cream/70">
-              Paste your line items from Excel or message notes. Formats supported: <code className="text-champagne">FP-TOM-01 4</code> or <code className="text-champagne">Maris Piper 2</code>.
+            <p className="text-xs text-cream/70 font-sans">
+              Paste your line entries (e.g. <code className="text-champagne">FP-TOM-01 5</code> or <code className="text-champagne">San Marzano Tomatoes: 3</code>). Our system will automatically parse and stage the quantities.
             </p>
 
-            <form onSubmit={handleBulkParse} className="space-y-4">
-              <textarea
-                rows={6}
-                value={bulkText}
-                onChange={(e) => setBulkText(e.target.value)}
-                placeholder={"FP-TOM-01 4\nFP-POT-06 2\nDAI-BUT-01 6"}
-                className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs font-mono text-cream focus:outline-none focus:border-champagne"
-              />
+            <textarea
+              rows={6}
+              value={bulkText}
+              onChange={(e) => setBulkText(e.target.value)}
+              placeholder={`FP-TOM-01 4\nFP-APP-03 2\nDY-BUT-01 6`}
+              className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl p-3 text-xs font-mono text-cream focus:outline-none focus:border-champagne"
+            />
 
-              {bulkResultMsg && (
-                <div className="p-3 bg-emerald-500/20 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs font-mono flex items-center gap-2">
-                  <Check className="w-4 h-4" />
-                  <span>{bulkResultMsg}</span>
-                </div>
-              )}
-
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setBulkModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs text-cream/60 hover:text-cream border border-cream/10"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110"
-                >
-                  Parse & Fill Quantities
-                </button>
+            {bulkResultMsg && (
+              <div className="p-3 bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs rounded-xl flex items-center gap-2 font-mono">
+                <Check className="w-4 h-4" />
+                <span>{bulkResultMsg}</span>
               </div>
-            </form>
+            )}
+
+            <div className="flex justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setBulkModalOpen(false)}
+                className="px-4 py-2 text-xs text-cream/60 hover:text-cream"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleBulkParse}
+                className="px-5 py-2 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110"
+              >
+                Parse & Populate Matrix
+              </button>
+            </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }

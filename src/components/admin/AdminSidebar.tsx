@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { 
   Users, 
   TrendingUp, 
@@ -10,7 +10,6 @@ import {
   Package, 
   ClipboardList, 
   ShieldAlert, 
-  Sparkles, 
   ArrowLeft,
   Building2,
   DollarSign,
@@ -18,13 +17,16 @@ import {
   UserCheck,
   Repeat,
   Bell,
-  Truck
+  Truck,
+  LogOut
 } from 'lucide-react';
 import { useDemoStore } from '@/lib/store/demo-store';
+import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
 export function AdminSidebar() {
   const pathname = usePathname();
-  const { leads, orders, organizations } = useDemoStore();
+  const router = useRouter();
+  const { leads, orders } = useDemoStore();
 
   const newLeadsCount = (leads || []).filter((l) => l && l.status === 'new_lead').length;
   const activeOrdersCount = (orders || []).filter((o) => o && (o.status === 'received' || o.status === 'picking')).length;
@@ -74,26 +76,27 @@ export function AdminSidebar() {
     },
   ];
 
+  const handleLogout = () => {
+    document.cookie = 'rootwills_role=; Max-Age=0; path=/;';
+    document.cookie = 'sb-access-token=; Max-Age=0; path=/;';
+    router.push('/login?role=admin');
+  };
+
   return (
-    <aside className="w-64 bg-obsidian-950 border-r border-cream/10 flex flex-col justify-between p-4 min-h-screen text-cream">
+    <aside className="w-64 bg-obsidian-950 border-r border-emerald-900/40 flex flex-col justify-between p-4 min-h-screen text-cream shadow-2xl">
       <div className="space-y-6">
         {/* Logo */}
-        <div className="flex items-center gap-3 px-2">
-          <div className="w-9 h-9 rounded-lg bg-emerald-500 text-obsidian-950 font-display font-bold text-lg flex items-center justify-center shadow-emerald-glow">
-            R
-          </div>
-          <div>
-            <span className="font-display text-lg font-bold text-cream tracking-tight block">ROOTWILLS</span>
-            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block -mt-1">
-              Sales & Admin Portal
-            </span>
+        <div className="px-2 pt-2">
+          <RootwillsLogo size="sm" variant="full" />
+          <div className="mt-2 text-[10px] font-mono text-champagne uppercase tracking-widest block font-bold">
+            Sales & Admin Hub
           </div>
         </div>
 
         {/* Staff info card */}
-        <div className="p-3 bg-obsidian-900 rounded-xl border border-cream/10 space-y-1">
+        <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-1">
           <div className="flex items-center gap-2 text-xs font-bold text-cream">
-            <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <UserCheck className="w-3.5 h-3.5 text-champagne" />
             <span>Marcus Vance</span>
           </div>
           <div className="text-[10px] text-cream/50 font-mono">Commercial Desk & Admin Lead</div>
@@ -110,8 +113,8 @@ export function AdminSidebar() {
                 href={link.href}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium transition-all ${
                   active
-                    ? 'bg-emerald-500/15 text-emerald-300 font-bold border border-emerald-500/30'
-                    : 'text-cream/70 hover:text-cream hover:bg-obsidian-900'
+                    ? 'bg-emerald-950/80 text-champagne font-bold border border-champagne/30 shadow-sm'
+                    : 'text-cream/70 hover:text-cream hover:bg-emerald-950/40'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -129,31 +132,14 @@ export function AdminSidebar() {
         </nav>
       </div>
 
-      {/* Footer Switchers & Logout */}
-      <div className="pt-4 border-t border-cream/10 space-y-2 text-xs">
+      {/* Footer Sign Out */}
+      <div className="pt-4 border-t border-emerald-950 space-y-2 text-xs">
         <button
-          onClick={() => {
-            if (typeof document !== 'undefined') {
-              document.cookie = 'rootwills_role=customer; path=/; max-age=86400; SameSite=Lax';
-            }
-            window.location.href = '/dashboard';
-          }}
-          className="w-full py-2 px-3 rounded-lg bg-obsidian-900 hover:bg-obsidian-850 border border-champagne/30 text-champagne text-xs font-semibold flex items-center justify-between"
+          onClick={handleLogout}
+          className="w-full py-2.5 px-3 rounded-xl bg-obsidian-900 hover:bg-rose-950/40 border border-emerald-900/60 hover:border-rose-500/40 text-cream/70 hover:text-rose-300 text-xs font-mono font-bold flex items-center justify-between transition-all"
         >
-          <span>Switch to Customer Portal</span>
-          <Sparkles className="w-3.5 h-3.5" />
-        </button>
-        <button
-          onClick={() => {
-            if (typeof document !== 'undefined') {
-              document.cookie = 'rootwills_role=; path=/; max-age=0; SameSite=Lax';
-            }
-            window.location.href = '/login?role=admin';
-          }}
-          className="w-full py-2 px-3 rounded-lg bg-red-950/40 hover:bg-red-900/50 border border-red-500/20 text-red-300 text-xs font-medium flex items-center justify-between"
-        >
-          <span>Sign Out of Staff Desk</span>
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Sign Out Staff Desk</span>
+          <LogOut className="w-3.5 h-3.5" />
         </button>
       </div>
     </aside>

@@ -2,42 +2,34 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useDemoStore } from '@/lib/store/demo-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   ShoppingBag, 
   MapPin, 
   ChevronDown, 
-  Repeat, 
-  Layers, 
-  Clock, 
-  FileText, 
-  Calendar, 
   User, 
   LogOut, 
-  Sparkles,
-  ShieldAlert,
-  ArrowRight,
-  Zap,
-  Menu,
-  X,
-  CreditCard
+  Menu, 
+  X, 
+  CreditCard,
+  Building2,
+  Phone
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
 export function PortalNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const { 
     currentOrgId, 
     organizations, 
     currentLocationId, 
     setLocation, 
-    setPersona, 
     userProfile 
   } = useDemoStore();
   const { items, openCart } = useCartStore();
-  const [personaDropdownOpen, setPersonaDropdownOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
@@ -58,12 +50,19 @@ export function PortalNav() {
     { href: '/account', label: 'Account' },
   ];
 
+  const handleLogout = () => {
+    // Clear cookies & redirect to login
+    document.cookie = 'rootwills_role=; Max-Age=0; path=/;';
+    document.cookie = 'sb-access-token=; Max-Age=0; path=/;';
+    router.push('/login');
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-b border-emerald-900/40 shadow-2xl">
       {/* Account Info & Credit Top Bar */}
       <div className="bg-obsidian-900/90 border-b border-emerald-950 px-4 py-2 text-xs">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          {/* Active Organization & Location Switcher */}
+          {/* Active Organization & Location */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5 font-bold text-cream">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -94,9 +93,8 @@ export function PortalNav() {
             </span>
           </div>
 
-          {/* Trade Credit Gauge & Persona Switcher */}
+          {/* Trade Credit Gauge & User Logout */}
           <div className="flex items-center gap-4">
-            {/* Credit Gauge */}
             <div className="flex items-center gap-2">
               <div className="text-[11px] text-cream/70">
                 <span>Credit: </span>
@@ -111,66 +109,14 @@ export function PortalNav() {
               </div>
             </div>
 
-            {/* Persona Switcher Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setPersonaDropdownOpen(!personaDropdownOpen)}
-                className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono flex items-center gap-1 hover:bg-emerald-900/60 transition-all"
-              >
-                <Sparkles className="w-3 h-3 text-champagne" />
-                <span>Switch Persona</span>
-                <ChevronDown className="w-3 h-3" />
-              </button>
-
-              {personaDropdownOpen && (
-                <div className="absolute right-0 top-full mt-2 w-72 bg-obsidian-900 border border-emerald-800/80 rounded-2xl shadow-2xl p-2 z-50 animate-fade-in backdrop-blur-xl">
-                  <div className="px-2.5 py-1.5 text-[10px] uppercase font-mono text-champagne font-bold border-b border-emerald-950">
-                    Switch Test Account / Role
-                  </div>
-                  <button
-                    onClick={() => {
-                      setPersona('org-sancarlo', 'customer');
-                      setPersonaDropdownOpen(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-emerald-950/60 text-xs text-cream flex items-center justify-between transition-colors"
-                  >
-                    <div>
-                      <div className="font-bold">San Carlo Ristorante</div>
-                      <div className="text-[10px] text-cream/50">Chef Marco &bull; £7.80 Tomatoes</div>
-                    </div>
-                    {currentOrgId === 'org-sancarlo' && <span className="text-champagne font-bold">✓</span>}
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setPersona('org-edgbaston', 'customer');
-                      setPersonaDropdownOpen(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-emerald-950/60 text-xs text-cream flex items-center justify-between transition-colors"
-                  >
-                    <div>
-                      <div className="font-bold">The Edgbaston Boutique Hotel</div>
-                      <div className="text-[10px] text-cream/50">F&B Director &bull; £14.50 Strawberries</div>
-                    </div>
-                    {currentOrgId === 'org-edgbaston' && <span className="text-champagne font-bold">✓</span>}
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      setPersona('org-manchester-care', 'customer');
-                      setPersonaDropdownOpen(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-emerald-950/60 text-xs text-cream flex items-center justify-between transition-colors"
-                  >
-                    <div>
-                      <div className="font-bold">Priory Care Group</div>
-                      <div className="text-[10px] text-cream/50">Finance &bull; Pureed IDDSI Specs</div>
-                    </div>
-                    {currentOrgId === 'org-manchester-care' && <span className="text-champagne font-bold">✓</span>}
-                  </button>
-                </div>
-              )}
-            </div>
+            {/* Logout Action */}
+            <button
+              onClick={handleLogout}
+              className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-cream/60 hover:text-champagne hover:border-champagne/40 text-[11px] font-mono flex items-center gap-1.5 transition-all"
+            >
+              <LogOut className="w-3 h-3" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
           </div>
         </div>
       </div>

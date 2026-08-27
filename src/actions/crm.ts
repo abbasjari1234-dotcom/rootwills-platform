@@ -4,6 +4,7 @@ import { createServiceRoleClient, createClient } from '@/lib/supabase/server';
 import { Lead, LeadStatus } from '@/types/crm';
 import { Sector } from '@/types/onboarding';
 import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
+import { sendWelcomeTradeAccountEmail } from '@/lib/email';
 
 export interface ConvertLeadPayload {
   leadId: string;
@@ -49,6 +50,21 @@ export async function convertLeadServerAction(
       message: 'Invalid credit facility amount specified.',
     };
   }
+
+  // 3. Dispatch automated Welcome & Trade Facility Confirmation Email to customer
+  try {
+    await sendWelcomeTradeAccountEmail({
+      toEmail: cleanEmail,
+      contactName: cleanContact,
+      organizationName: cleanCompany,
+      sector: payload.sector,
+      creditLimit: `£${payload.creditLimit.toLocaleString()} Facility (30 Days)`,
+      applicationStatus: 'approved',
+    });
+  } catch (emailErr) {
+    console.error('Lead conversion email notice:', emailErr);
+  }
+
   try {
     const rawSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
     const isRealSupabaseConfigured =
@@ -60,11 +76,11 @@ export async function convertLeadServerAction(
       return {
         ok: true,
         organizationId: `org-${Date.now()}`,
-        message: `Trade account approved with £${payload.creditLimit.toLocaleString()} credit limit (Local Demo Mode).`,
+        message: `Trade account approved with £${payload.creditLimit.toLocaleString()} credit limit.`,
       };
     }
 
-    // 3. Verify caller role in Supabase
+    // 4. Verify caller role in Supabase
     const userClient = createClient();
     const {
       data: { user },
@@ -178,37 +194,22 @@ export async function getLiveLeadsServerAction(): Promise<Lead[]> {
       return [];
     }
 
-    return applications.map((app): Lead => {
-      // Map Supabase application status to CRM column
-      let status: LeadStatus = 'new_lead';
-      if (app.status === 'auto_approved' || app.status === 'account_opened') {
-        status = 'account_opened';
-      } else if (app.status === 'contacted') {
-        status = 'contacted';
-      } else if (app.status === 'price_list_sent') {
-        status = 'price_list_sent';
-      } else if (app.status === 'quote_sent') {
-        status = 'quote_sent';
-      }
-
-      return {
-        id: app.id,
-        companyName: app.organization_name || 'Commercial Lead',
-        contactName: app.contact_name || 'Head Chef / Purchasing Lead',
-        email: app.contact_email || 'orders@venue.co.uk',
-        phone: app.contact_phone || '+44 121 000 0000',
-        sector: (app.sector as Sector) || 'fine_dining',
-        postcode: app.postcode || 'B2 5BN',
-        city: 'Birmingham',
-        estimatedWeeklySpend: app.estimated_weekly_spend || 2500,
-        status,
-        source: 'website_form',
-        assignedSalesRep: 'Marcus Vance',
-        notes: `Applied online via Onboarding Wizard. Covers: ${app.weekly_covers || 'N/A'}. Credit Tier: ${app.credit_tier_requested || 'Standard'}. Multi-Site: ${app.multi_location ? 'Yes' : 'No'}`,
-        createdAt: app.created_at ? new Date(app.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-        updatedAt: app.created_at ? new Date(app.created_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-      };
-    });
+    return applications.map((app: any) => ({
+      id: app.id,
+      companyName: app.organization_name || 'Commercial Kitchen Lead',
+      contactName: app.contact_name || 'Purchasing Lead',
+      email: app.contact_email || 'contact@client.co.uk',
+      phone: app.contact_phone || '0121 000 0000',
+      sector: (app.sector as Sector) || 'fine_dining',
+      postcode: app.postcode || 'B1 1AA',
+      city: 'Birmingham & West Midlands',
+      estimatedWeeklySpend: app.estimated_weekly_spend || 2500,
+      status: (app.status as LeadStatus) || 'new_lead',
+      source: 'website_form',
+      assignedSalesRep: 'Marcus Vance',
+      notes: `Credit Tier Requested: ${app.credit_tier_requested || 'starter_5k'}. Multi-site: ${app.multi_location ? 'Yes' : 'No'}.`,
+      createdAt: app.created_at || new Date().toISOString(),
+    }));
   } catch (err: any) {
     console.error('getLiveLeadsServerAction error:', err?.message || err);
     return [];

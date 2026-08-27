@@ -29,9 +29,8 @@ const CATEGORIES: { key: ProductCategory | 'all'; label: string }[] = [
   { key: 'all', label: 'All Products' },
   { key: 'fresh_produce', label: 'Fresh Produce' },
   { key: 'dairy_eggs', label: 'Dairy & Eggs' },
-  { key: 'meat_poultry', label: 'Meat & Poultry' },
-  { key: 'dry_goods', label: 'Dry Goods & Pastry' },
-  { key: 'specialty', label: 'Specialty & Deli' },
+  { key: 'dry_goods', label: 'Bakery & Pastry' },
+  { key: 'specialty', label: 'Specialty Botanicals & Pantry' },
 ];
 
 export default function PublicProductsPage() {

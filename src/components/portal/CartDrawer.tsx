@@ -17,7 +17,10 @@ import {
   Sparkles,
   ShoppingBag,
   Zap,
-  CreditCard
+  CreditCard,
+  Lock,
+  Building2,
+  UserCheck
 } from 'lucide-react';
 import Link from 'next/link';
 import { submitPortalOrder } from '@/actions/orders';
@@ -55,6 +58,15 @@ export function CartDrawer() {
   const [selectedDeliveryDate, setSelectedDeliveryDate] = useState('Tomorrow Morning');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  // Check auth session
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const hasCookie = document.cookie.includes('rootwills_role=');
+      setIsLoggedIn(hasCookie);
+    }
+  }, [isOpen]);
 
   // 11:00 PM Cutoff Live Countdown
   const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number }>({ hours: 0, minutes: 0 });
@@ -106,6 +118,10 @@ export function CartDrawer() {
   };
 
   const handleCheckout = async () => {
+    if (!isLoggedIn) {
+      return;
+    }
+
     if (items.length === 0 || exceedsCredit) return;
 
     setIsSubmitting(true);
@@ -320,81 +336,71 @@ export function CartDrawer() {
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-
-                        <div className="text-right min-w-[55px]">
-                          <span className="text-xs font-bold font-mono text-cream">
-                            £{(item.customerPrice * item.qty).toFixed(2)}
-                          </span>
-                        </div>
-
                         <button
                           type="button"
                           onClick={() => removeItem(item.productId)}
                           aria-label={`Remove ${item.name} from basket`}
-                          className="p-1.5 rounded-lg text-cream/30 hover:text-rose-400 hover:bg-rose-950/30 transition-colors"
+                          className="p-1.5 text-cream/30 hover:text-rose-400 transition-colors"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
                   ))
                 )}
 
-                {/* Delivery Slot & Standing Order Configuration */}
+                {/* Standing Order & Logistics Options */}
                 {items.length > 0 && (
-                  <div className="pt-4 border-t border-emerald-950 space-y-4">
-                    {/* Delivery Slot Picker */}
+                  <div className="mt-6 pt-4 border-t border-emerald-950 space-y-4">
+                    {/* Delivery Slot Selection */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 flex items-center gap-1 font-bold">
-                        <Clock className="w-3.5 h-3.5 text-champagne" />
-                        <span>Select Delivery Window</span>
+                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 font-bold">
+                        Preferred Morning Window
                       </label>
                       <select
                         value={selectedSlot}
                         onChange={(e) => setSelectedSlot(e.target.value)}
                         className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
                       >
-                        <option>Early Morning 05:30 - 07:30 (Keyholder / Walk-in)</option>
-                        <option>Standard Morning 07:30 - 09:30</option>
-                        <option>Midday Top-up 11:30 - 13:00</option>
+                        <option value="Early Morning 05:30 - 07:30">Early Kitchen Keyslot (05:30 – 07:30 AM)</option>
+                        <option value="Standard Morning 07:30 - 09:30">Standard Morning (07:30 – 09:30 AM)</option>
+                        <option value="Mid-Day Emergency 11:00 - 13:00">Mid-Day Emergency Top-Up (11:00 – 13:00)</option>
                       </select>
                     </div>
 
-                    {/* Standing Order Toggle & Cadence Scheduler */}
+                    {/* Standing Order Checkbox */}
                     <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-3">
                       <label className="flex items-center justify-between cursor-pointer">
-                        <span className="text-xs font-bold text-cream flex items-center gap-1.5">
-                          <Repeat className="w-3.5 h-3.5 text-champagne" />
-                          <span>Make this a Recurring Standing Order</span>
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <Repeat className="w-4 h-4 text-champagne" />
+                          <div>
+                            <div className="text-xs font-bold text-cream">Recurring Standing Order</div>
+                            <div className="text-[10px] text-cream/50">Auto-generate and deliver on set days</div>
+                          </div>
+                        </div>
                         <input
                           type="checkbox"
                           checked={isStandingOrder}
                           onChange={(e) => setStandingOrder(e.target.checked)}
-                          className="w-4 h-4 accent-champagne cursor-pointer"
+                          className="rounded border-emerald-900 text-champagne focus:ring-champagne bg-obsidian-950"
                         />
                       </label>
 
                       {isStandingOrder && (
-                        <div className="space-y-2.5 pt-2 border-t border-emerald-950">
-                          <div className="grid grid-cols-4 gap-1.5">
-                            {[
-                              { key: 'daily', label: 'Daily' },
-                              { key: 'mon_wed_fri', label: 'M/W/F' },
-                              { key: 'weekly', label: 'Weekly' },
-                              { key: 'fortnightly', label: 'Fortnightly' },
-                            ].map((r) => (
+                        <div className="pt-2 border-t border-emerald-950 space-y-2 animate-fade-in">
+                          <div className="flex gap-2">
+                            {['daily', 'weekly', 'biweekly'].map((rec) => (
                               <button
-                                key={r.key}
+                                key={rec}
                                 type="button"
-                                onClick={() => setRecurrence(r.key as any)}
-                                className={`py-1 text-[10px] font-mono rounded-lg capitalize border transition-colors ${
-                                  recurrence === r.key
-                                    ? 'bg-champagne text-obsidian-950 font-bold border-champagne'
-                                    : 'bg-obsidian-950 text-cream/60 border-emerald-950 hover:border-emerald-800'
+                                onClick={() => setRecurrence(rec as any)}
+                                className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-bold capitalize transition-colors ${
+                                  recurrence === rec
+                                    ? 'bg-champagne text-obsidian-950'
+                                    : 'bg-obsidian-950 text-cream/60 border border-emerald-900/40'
                                 }`}
                               >
-                                {r.label}
+                                {rec}
                               </button>
                             ))}
                           </div>
@@ -445,81 +451,127 @@ export function CartDrawer() {
                 )}
               </div>
 
-              {/* Footer Summary & Checkout Button */}
+              {/* Footer Summary & Checkout / Auth Panel */}
               {items.length > 0 && (
                 <div className="p-5 border-t border-emerald-950 bg-obsidian-900/90 space-y-4">
-                  {/* Trade Credit Facility Progress Bar */}
-                  <div className="p-3.5 bg-obsidian-950 rounded-2xl border border-emerald-900/60 space-y-2">
-                    <div className="flex justify-between items-center text-[11px]">
-                      <span className="text-cream/70 flex items-center gap-1.5">
-                        <CreditCard className="w-3.5 h-3.5 text-champagne" />
-                        <span>30-Day Trade Credit Facility</span>
-                      </span>
-                      <span className="font-mono text-champagne font-bold">
-                        £{availableCredit.toFixed(2)} available
-                      </span>
-                    </div>
-                    <div className="w-full h-1.5 bg-obsidian-900 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full transition-all duration-300 ${
+                  
+                  {/* If user has an account: show credit bar and total */}
+                  {isLoggedIn ? (
+                    <>
+                      {/* Trade Credit Facility Progress Bar */}
+                      <div className="p-3.5 bg-obsidian-950 rounded-2xl border border-emerald-900/60 space-y-2">
+                        <div className="flex justify-between items-center text-[11px]">
+                          <span className="text-cream/70 flex items-center gap-1.5">
+                            <CreditCard className="w-3.5 h-3.5 text-champagne" />
+                            <span>30-Day Trade Credit Facility</span>
+                          </span>
+                          <span className="font-mono text-champagne font-bold">
+                            £{availableCredit.toFixed(2)} available
+                          </span>
+                        </div>
+                        <div className="w-full h-1.5 bg-obsidian-900 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full transition-all duration-300 ${
+                              exceedsCredit
+                                ? 'bg-rose-500'
+                                : creditUsagePercent > 75
+                                ? 'bg-amber-500'
+                                : 'bg-emerald-400'
+                            }`}
+                            style={{ width: `${creditUsagePercent}%` }}
+                          />
+                        </div>
+                        <div className="flex justify-between text-[10px] text-cream/50 font-mono">
+                          <span>Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
+                          <span>Used: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5 text-xs">
+                        <div className="flex justify-between text-cream/70">
+                          <span>Goods Subtotal:</span>
+                          <span className="font-mono text-cream">£{subtotal.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between text-cream/70">
+                          <span>Estimated VAT:</span>
+                          <span className="font-mono text-cream">£{vatTotal.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between text-sm font-bold text-cream pt-2 border-t border-emerald-950">
+                          <span>Order Total:</span>
+                          <span className="font-mono text-champagne text-base font-bold">£{grandTotal.toFixed(2)}</span>
+                        </div>
+                      </div>
+
+                      {/* Credit limit warning if exceeded */}
+                      {exceedsCredit && (
+                        <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded-xl text-rose-300 text-[11px] flex items-start gap-2">
+                          <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
+                          <span>
+                            This order exceeds your available trade credit balance (£{availableCredit.toFixed(2)} remaining). Please contact accounts to authorize or adjust quantities.
+                          </span>
+                        </div>
+                      )}
+
+                      <button
+                        onClick={handleCheckout}
+                        disabled={isSubmitting || exceedsCredit}
+                        className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-gold-glow transition-all ${
                           exceedsCredit
-                            ? 'bg-rose-500'
-                            : creditUsagePercent > 75
-                            ? 'bg-amber-500'
-                            : 'bg-emerald-400'
+                            ? 'bg-obsidian-800 text-cream/40 cursor-not-allowed border border-emerald-950'
+                            : 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 hover:brightness-110'
                         }`}
-                        style={{ width: `${creditUsagePercent}%` }}
-                      />
-                    </div>
-                    <div className="flex justify-between text-[10px] text-cream/50 font-mono">
-                      <span>Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
-                      <span>Used: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
-                    </div>
-                  </div>
+                      >
+                        {isSubmitting ? (
+                          <span>Placing Order at Birmingham Hub...</span>
+                        ) : (
+                          <>
+                            <span>Confirm & Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </>
+                        )}
+                      </button>
+                    </>
+                  ) : (
+                    /* Customer NOT Logged In: Enforce Account Creation */
+                    <div className="space-y-3">
+                      <div className="space-y-1.5 text-xs">
+                        <div className="flex justify-between text-cream/70">
+                          <span>Estimated Total:</span>
+                          <span className="font-mono text-champagne text-base font-bold">£{grandTotal.toFixed(2)}</span>
+                        </div>
+                      </div>
 
-                  <div className="space-y-1.5 text-xs">
-                    <div className="flex justify-between text-cream/70">
-                      <span>Goods Subtotal:</span>
-                      <span className="font-mono text-cream">£{subtotal.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-cream/70">
-                      <span>Estimated VAT:</span>
-                      <span className="font-mono text-cream">£{vatTotal.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between text-sm font-bold text-cream pt-2 border-t border-emerald-950">
-                      <span>Order Total:</span>
-                      <span className="font-mono text-champagne text-base font-bold">£{grandTotal.toFixed(2)}</span>
-                    </div>
-                  </div>
-
-                  {/* Credit limit warning if exceeded */}
-                  {exceedsCredit && (
-                    <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded-xl text-rose-300 text-[11px] flex items-start gap-2">
-                      <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
-                      <span>
-                        This order exceeds your available trade credit balance (£{availableCredit.toFixed(2)} remaining). Please contact accounts to authorize or adjust quantities.
-                      </span>
+                      <div className="p-4 rounded-2xl bg-emerald-950/80 border border-champagne/40 space-y-3 text-center">
+                        <div className="flex items-center justify-center gap-2 text-champagne text-xs font-mono font-bold uppercase">
+                          <Lock className="w-4 h-4" />
+                          <span>Trade Account Required to Order</span>
+                        </div>
+                        <p className="text-xs text-cream/80 font-sans leading-relaxed">
+                          Rootwills is a dedicated B2B supplier. You must have an approved business account to confirm orders and receive 06:00 AM delivery.
+                        </p>
+                        
+                        <div className="grid grid-cols-1 gap-2 pt-1">
+                          <Link
+                            href="/onboarding"
+                            onClick={closeCart}
+                            className="py-3 px-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5 hover:brightness-110 transition-all"
+                          >
+                            <span>Open Trade Account (Instant Application)</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                          
+                          <Link
+                            href="/login"
+                            onClick={closeCart}
+                            className="py-2.5 px-4 rounded-xl bg-obsidian-900 border border-emerald-800/80 text-cream font-bold text-xs flex items-center justify-center hover:border-champagne transition-all"
+                          >
+                            <span>Sign In to Existing Account</span>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   )}
 
-                  <button
-                    onClick={handleCheckout}
-                    disabled={isSubmitting || exceedsCredit}
-                    className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-gold-glow transition-all ${
-                      exceedsCredit
-                        ? 'bg-obsidian-800 text-cream/40 cursor-not-allowed border border-emerald-950'
-                        : 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 hover:brightness-110'
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <span>Placing Order at Birmingham Hub...</span>
-                    ) : (
-                      <>
-                        <span>Confirm & Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </>
-                    )}
-                  </button>
                 </div>
               )}
             </>

@@ -1,6 +1,5 @@
 'use server';
 
-import { Resend } from 'resend';
 import {
   onboardingApplicationSchema,
   type OnboardingApplicationValues,
@@ -10,8 +9,7 @@ import {
 import { createServiceRoleClient, createClient } from '@/lib/supabase/server';
 import { geocodePostcode, findNearestDepot } from '@/lib/depot-routing';
 import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
-
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
+import { sendWelcomeTradeAccountEmail, sendConciergeAlertEmail } from '@/lib/email';
 
 type SubmitResult =
   | { ok: true; status: 'auto_approved' | 'concierge_review'; applicationId: string }
@@ -40,6 +38,40 @@ export async function submitOnboardingApplication(
 
   const status = needsConciergeReview ? 'concierge_review' : 'auto_approved';
 
+  // 3. Dispatch Automated Luxury Welcome Email to Customer
+  try {
+    const creditLimits: Record<string, string> = {
+      starter_5k: '£5,000 Facility (30 Days)',
+      growth_15k: '£15,000 Facility (30 Days)',
+      enterprise_30k: '£30,000 Facility (30 Days)',
+      custom: 'Custom High-Volume Matrix',
+    };
+
+    await sendWelcomeTradeAccountEmail({
+      toEmail: values.contactEmail.trim(),
+      contactName: values.contactName.trim(),
+      organizationName: values.organizationName.trim(),
+      sector: values.sector,
+      creditLimit: creditLimits[values.creditTierRequested] || '£15,000 Facility (30 Days)',
+      applicationStatus: status === 'auto_approved' ? 'approved' : 'concierge_review',
+    });
+
+    // If concierge review required, notify Rootwills Commercial Sales Desk
+    if (needsConciergeReview) {
+      await sendConciergeAlertEmail({
+        organizationName: values.organizationName.trim(),
+        contactName: values.contactName.trim(),
+        contactEmail: values.contactEmail.trim(),
+        contactPhone: values.contactPhone?.trim(),
+        sector: values.sector,
+        estimatedWeeklySpend: values.estimatedWeeklySpend,
+        postcode: values.postcode.trim(),
+      });
+    }
+  } catch (emailErr) {
+    console.error('Onboarding email dispatch notice:', emailErr);
+  }
+
   try {
     const rawSupabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
     const isRealSupabase =
@@ -48,7 +80,6 @@ export async function submitOnboardingApplication(
       (rawSupabaseUrl.includes('supabase.co') || rawSupabaseUrl.startsWith('http'));
 
     if (!isRealSupabase) {
-      // Demo / development fallback
       return { ok: true, status, applicationId: `app-${Date.now()}` };
     }
 
@@ -68,7 +99,7 @@ export async function submitOnboardingApplication(
       console.error('Depot routing notice:', err);
     }
 
-    // 1. Create or register customer in Supabase Auth if password provided
+    // Create or register customer in Supabase Auth if password provided
     let authUserId: string | null = null;
     if (values.password && values.password.length >= 8) {
       try {
@@ -87,21 +118,18 @@ export async function submitOnboardingApplication(
         if (signUpData?.user) {
           authUserId = signUpData.user.id;
 
-          // Upsert profile record
           await supabase.from('profiles').upsert({
             id: authUserId,
             full_name: values.contactName.trim(),
             role: 'customer',
           });
-        } else if (signUpError) {
-          console.warn('Sign-up notice:', signUpError.message);
         }
       } catch (authErr) {
         console.warn('Auth creation notice:', authErr);
       }
     }
 
-    // 2. Insert Onboarding Application record for CRM
+    // Insert Onboarding Application record for CRM
     const { data: application, error: applicationError } = await supabase
       .from('onboarding_applications')
       .insert({

@@ -5,7 +5,7 @@ import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
 export function PublicFooter() {
   return (
-    <footer className="bg-obsidian-950 border-t border-emerald-900/40 pt-16 pb-12 text-cream/80">
+    <footer className="bg-obsidian-950 border-t border-emerald-900/40 pt-16 pb-12 text-cream/80 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Accreditations & Guarantees Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 border-b border-emerald-950">
@@ -15,7 +15,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">6-Day Delivery SLA</div>
-              <div className="text-xs text-cream/70">Early morning drops by 07:00 AM</div>
+              <div className="text-xs text-cream/70">Early morning drops by 06:00 AM</div>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -33,7 +33,7 @@ export function PublicFooter() {
             </div>
             <div>
               <div className="text-sm font-semibold text-cream">Personalised Trade Pricing</div>
-              <div className="text-xs text-cream/70">Contract rates & volume discounts</div>
+              <div className="text-xs text-cream/70">Locked contract rates & credit</div>
             </div>
           </div>
           <div className="flex items-center gap-3.5">
@@ -53,7 +53,7 @@ export function PublicFooter() {
           <div className="lg:col-span-2 space-y-4">
             <RootwillsLogo size="lg" variant="full" />
             <p className="text-sm text-cream/75 leading-relaxed max-w-sm">
-              Rootwills Ltd is a technology-driven B2B foodservice wholesaler delivering premium fresh produce, artisan dairy, meats, and dry goods to hospitality professionals across the UK.
+              Rootwills Ltd is a technology-driven B2B foodservice wholesaler delivering premium fresh produce, heritage fruits, living microgreens, and artisan dairy to hospitality professionals across the UK.
             </p>
             <div className="space-y-2 pt-2 text-xs text-cream/80">
               <div className="flex items-center gap-2">
@@ -79,8 +79,8 @@ export function PublicFooter() {
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Seasonal & Exotic Fruits</Link></li>
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Living Microgreens & Herbs</Link></li>
               <li><Link href="/products?category=dairy_eggs" className="hover:text-champagne transition-colors">Artisan Dairy & British Eggs</Link></li>
-              <li><Link href="/products?category=meat_poultry" className="hover:text-champagne transition-colors">Dry-Aged Beef & Poultry</Link></li>
-              <li><Link href="/products?category=dry_goods" className="hover:text-champagne transition-colors">Valrhona Pastry & Truffles</Link></li>
+              <li><Link href="/products?category=dry_goods" className="hover:text-champagne transition-colors">Bakery & Pastry Ingredients</Link></li>
+              <li><Link href="/products" className="hover:text-champagne transition-colors">Specialty Oils & Pantry</Link></li>
             </ul>
           </div>
 
@@ -111,7 +111,7 @@ export function PublicFooter() {
           </div>
         </div>
 
-        {/* Bottom Strip */}
+        {/* Bottom Bar */}
         <div className="pt-8 border-t border-emerald-950 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/50">
           <div>
             &copy; {new Date().getFullYear()} Rootwills Ltd. Company No. 14892019. Registered in England & Wales. All rights reserved.

@@ -20,11 +20,11 @@ interface ProductCardProps {
 
 // Category fallback imagery map for visual crispness
 const categoryImageMap: Record<string, string> = {
-  fresh_produce: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=500&auto=format&fit=crop&q=80',
-  dairy_eggs: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80',
-  meat_poultry: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&auto=format&fit=crop&q=80',
+  fresh_produce: '/images/branded/rootwills_apples_card.jpg',
+  dairy_eggs: '/images/branded/rootwills_dairy_card.jpg',
+  living_botanicals: '/images/branded/rootwills_microgreens_card.jpg',
   dry_goods: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80',
-  specialty: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=500&auto=format&fit=crop&q=80',
+  specialty: '/images/branded/rootwills_microgreens_card.jpg',
 };
 
 export function ProductCard({
