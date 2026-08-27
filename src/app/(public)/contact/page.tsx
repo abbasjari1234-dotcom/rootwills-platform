@@ -30,7 +30,7 @@ export default function ContactPage() {
       city: 'Birmingham',
       estimatedWeeklySpend: 2500,
       source: 'website_form',
-      assignedSalesRep: 'Sarah Jenkins',
+      assignedSalesRep: 'Rootwills Commercial Desk',
       notes: `Contact page message: ${formData.message}`,
     });
 

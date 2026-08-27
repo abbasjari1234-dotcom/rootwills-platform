@@ -106,7 +106,7 @@ export function StepTradeAccount() {
         <FormField label="Primary Contact Name *" error={errors.contactName?.message}>
           <input
             {...register('contactName')}
-            placeholder="e.g. Executive Chef Marco Rossi"
+            placeholder="e.g. Head Chef / General Manager"
             className="onboarding-input"
           />
         </FormField>
@@ -115,7 +115,7 @@ export function StepTradeAccount() {
           <input
             type="email"
             {...register('contactEmail')}
-            placeholder="marco.chef@sancarlo.co.uk"
+            placeholder="orders@yourbusiness.co.uk"
             className="onboarding-input"
           />
         </FormField>

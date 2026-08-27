@@ -179,7 +179,7 @@ function LoginForm() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={loginScope === 'customer' ? 'manager@sancarlo.co.uk' : 'staff@rootwills.co.uk'}
+                  placeholder="Enter your registered email address"
                   className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30 font-sans"
                 />
               </div>
@@ -206,7 +206,7 @@ function LoginForm() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
+                  placeholder="Enter your account password"
                   className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-10 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30 font-sans"
                 />
                 <button
