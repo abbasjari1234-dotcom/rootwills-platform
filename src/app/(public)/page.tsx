@@ -32,11 +32,8 @@ import {
   Scale
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { Ultra3DWorldHero } from '@/components/3d/Ultra3DWorldHero';
-import { Interactive3DConveyorCrate } from '@/components/3d/Interactive3DConveyorCrate';
+import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLadyExperience';
 import { MeatopiaCulinaryStrip } from '@/components/public/MeatopiaCulinaryStrip';
-import { Hyper3DHeroShowcase } from '@/components/public/Hyper3DHeroShowcase';
-import { ThreeDFleetJourney } from '@/components/3d/ThreeDFleetJourney';
 import { ThreeDCulinaryGrid } from '@/components/3d/ThreeDCulinaryGrid';
 import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
@@ -56,57 +53,33 @@ const PriceEstimator = dynamic(
 );
 
 export const metadata = {
-  title: 'Rootwills Ltd | 3D Interactive B2B Foodservice & Fresh Produce Wholesale UK',
-  description: 'Next-generation 3D interactive wholesale food and fresh produce supplier for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and 3D digital crate ordering.',
+  title: 'Rootwills Ltd | Premium B2B Foodservice & Fresh Produce Wholesale UK',
+  description: 'Direct farm-to-kitchen fresh produce, dry-aged meats, and artisan culinary supply for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and modern ordering portal.',
 };
 
 export default function PublicHomePage() {
   return (
-    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden">
+    <div className="space-y-24 sm:space-y-36 pb-28 overflow-hidden bg-obsidian-950">
       
-      {/* 1. FULL-SCREEN 3D PRODUCE PHYSICS HERO */}
-      <Ultra3DWorldHero />
+      {/* 1. PINK LADY CINEMATIC VIDEO HERO & SPLIT-SCREEN SCROLLYTELLING */}
+      <CinematicPinkLadyExperience />
 
-      {/* 2. INTERACTIVE 3D WOODEN CONVEYOR CRATE PACKER */}
-      <Interactive3DConveyorCrate />
-
-      {/* 3. MEATOPIA SENSORY CULINARY SIZZLE STRIP */}
+      {/* 2. MEATOPIA SENSORY CULINARY SIZZLE STRIP */}
       <MeatopiaCulinaryStrip />
 
-      {/* 4. INTERACTIVE 3D PRODUCE QUALITY INSPECTOR */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-400/50 text-emerald-300 text-xs font-mono font-bold uppercase backdrop-blur-md shadow-lg">
-            <Sparkles className="w-4 h-4 text-champagne" />
-            <span>Interactive 3D Produce Studio</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-cream uppercase leading-[1.05]">
-            Inspect Orchard Specs in <span className="gold-gradient-text">Real-Time 3D</span>
-          </h2>
-          <p className="text-sm sm:text-base text-cream/80 font-sans max-w-2xl mx-auto">
-            Rotate 3D harvested produce in 360°, inspect cell firmness, Brix sugar levels (14.8°), and cold-chain thermal barriers.
-          </p>
-        </div>
-
-        <Hyper3DHeroShowcase />
-      </section>
-
-      {/* 5. 3D COLD-CHAIN FLEET JOURNEY (Refrigerated Van Simulation) */}
-      <ThreeDFleetJourney />
-
-      {/* 6. WHOLESALE PRODUCE RANGE (3D Tilt Showcase) */}
+      {/* 3. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />
 
-      {/* 7. 3D SPATIAL SECTOR SOLUTIONS */}
+      {/* 4. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <ThreeDCulinaryGrid />
 
-      {/* 8. ADVANTAGE METRICS & WHY CHOOSE US (3D Tilt Cards) */}
+      {/* 5. THE ROOTWILLS DIFFERENCE & ADVANTAGE METRICS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
-            The Rootwills Advantage
+            The Rootwills Difference
           </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream uppercase">
+          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase">
             Built by Food People for Commercial Kitchens
           </h2>
           <p className="text-sm sm:text-base text-cream/70 leading-relaxed font-sans">
@@ -174,19 +147,19 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 9. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 6. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
 
-      {/* 10. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
+      {/* 7. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
             <span className="text-xs font-mono uppercase text-champagne font-bold tracking-widest">
               Ready to Upgrade Your Kitchen Supply?
             </span>
-            <h2 className="font-display text-3xl sm:text-5xl font-bold text-cream uppercase">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase">
               Open a Trade Account in 2 Minutes
             </h2>
             <p className="text-xs sm:text-sm text-cream/70 leading-relaxed font-sans">
@@ -197,7 +170,7 @@ export default function PublicHomePage() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link
               href="/onboarding"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-300 via-champagne to-champagne-dim text-obsidian-950 font-bold text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all"
             >
               <span>Start Trade Application</span>
               <ArrowRight className="w-4 h-4" />
