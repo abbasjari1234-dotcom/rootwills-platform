@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient, createServiceRoleClient } from '@/lib/supabase/server';
+import { createSafeErrorResponse } from '@/lib/security/error-handler';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -23,7 +24,7 @@ export async function GET() {
     } = await userClient.auth.getUser();
 
     if (!user) {
-      return NextResponse.json({ ok: false, error: 'Unauthorized: Login required' }, { status: 401 });
+      return createSafeErrorResponse('Unauthorized: Login required', 401, 'Unauthorized: Login required');
     }
 
     const { data: profile } = await userClient
@@ -37,9 +38,10 @@ export async function GET() {
     const isAuthorized = userRole === 'admin' || userRole === 'sales' || userRole === 'driver' || isStaffDomain;
 
     if (!isAuthorized) {
-      return NextResponse.json(
-        { ok: false, error: 'Forbidden: Staff or Driver authorization required' },
-        { status: 403 }
+      return createSafeErrorResponse(
+        'Forbidden: Staff or Driver authorization required',
+        403,
+        'Forbidden: Staff or Driver authorization required'
       );
     }
 
@@ -200,7 +202,6 @@ export async function GET() {
 
     return NextResponse.json({ ok: true, orders });
   } catch (err: any) {
-    console.error('API /api/admin/orders error:', err);
-    return NextResponse.json({ ok: true, orders: [] });
+    return createSafeErrorResponse(err, 500, 'Unable to load orders. Please retry shortly.');
   }
 }

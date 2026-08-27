@@ -1,15 +1,25 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createDirectDebitMandateFlow } from '@/lib/payments/gocardless';
+import { checkRateLimit, RATE_LIMIT_PRESETS, getClientIp } from '@/lib/security/rate-limit';
+import { createSafeErrorResponse } from '@/lib/security/error-handler';
 
 export async function POST(request: NextRequest) {
+  // Rate Limiting Check
+  const ip = getClientIp(request);
+  const rateLimit = checkRateLimit(`gc_mandate_${ip}`, RATE_LIMIT_PRESETS.ORDERS);
+  if (!rateLimit.success) {
+    return createSafeErrorResponse('Too many requests. Please wait a moment.', 429, 'Too many requests. Please wait a moment.');
+  }
+
   try {
     const body = await request.json();
     const { organizationId, companyName, contactEmail, redirectUrl } = body;
 
     if (!organizationId || !companyName || !contactEmail) {
-      return NextResponse.json(
-        { error: 'Missing required parameters: organizationId, companyName, contactEmail' },
-        { status: 400 }
+      return createSafeErrorResponse(
+        'Missing required parameters: organizationId, companyName, contactEmail',
+        400,
+        'Missing required organization or email parameters.'
       );
     }
 
@@ -26,10 +36,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(mandate);
   } catch (err: any) {
-    console.error('GoCardless mandate error:', err);
-    return NextResponse.json(
-      { error: err?.message || 'Failed to create mandate flow' },
-      { status: 500 }
-    );
+    return createSafeErrorResponse(err, 500, 'Unable to set up Direct Debit mandate. Please retry shortly.');
   }
 }
+

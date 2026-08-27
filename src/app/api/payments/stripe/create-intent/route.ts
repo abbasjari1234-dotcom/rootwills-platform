@@ -1,13 +1,14 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createStripePaymentIntent } from '@/lib/payments/stripe';
 import { checkRateLimit, RATE_LIMIT_PRESETS, getClientIp } from '@/lib/security/rate-limit';
+import { createSafeErrorResponse } from '@/lib/security/error-handler';
 
 export async function POST(request: NextRequest) {
   // 1. Rate Limiting Check
   const ip = getClientIp(request);
   const rateLimit = checkRateLimit(`stripe_intent_${ip}`, RATE_LIMIT_PRESETS.ORDERS);
   if (!rateLimit.success) {
-    return NextResponse.json({ error: 'Too many payment requests. Please wait a moment.' }, { status: 429 });
+    return createSafeErrorResponse('Too many payment requests. Please wait a moment.', 429, 'Too many payment requests. Please wait a moment.');
   }
 
   try {
@@ -16,9 +17,10 @@ export async function POST(request: NextRequest) {
 
     const parsedAmount = Number(amount);
     if (!parsedAmount || isNaN(parsedAmount) || parsedAmount <= 0 || parsedAmount > 100000 || !organizationId) {
-      return NextResponse.json(
-        { error: 'Invalid or missing parameters: amount must be between £0.01 and £100,000.00, organizationId required.' },
-        { status: 400 }
+      return createSafeErrorResponse(
+        'Invalid or missing parameters: amount must be between £0.01 and £100,000.00, organizationId required.',
+        400,
+        'Invalid or missing payment parameters.'
       );
     }
 
@@ -37,11 +39,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (err: any) {
-    console.error('Stripe intent error:', err);
-    return NextResponse.json(
-      { error: err?.message || 'Failed to create payment intent' },
-      { status: 500 }
-    );
+    return createSafeErrorResponse(err, 500, 'Unable to initialize secure payment session. Please retry shortly.');
   }
 }
+
 

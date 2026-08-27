@@ -2,6 +2,8 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Cormorant_Garamond, IBM_Plex_Mono } from 'next/font/google';
 import dynamic from 'next/dynamic';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { FullPage3DCanvas } from '@/components/3d/FullPage3DCanvas';
 
@@ -107,6 +109,8 @@ export default function RootLayout({
           {children}
         </div>
         <CartDrawer />
+        <Analytics mode="auto" />
+        <SpeedInsights />
       </body>
     </html>
   );

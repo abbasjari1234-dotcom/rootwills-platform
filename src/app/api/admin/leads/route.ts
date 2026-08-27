@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient, createServiceRoleClient } from '@/lib/supabase/server';
+import { createSafeErrorResponse } from '@/lib/security/error-handler';
 import { LeadStatus } from '@/types/crm';
 import { Sector } from '@/types/onboarding';
 
@@ -25,7 +26,7 @@ export async function GET() {
     } = await userClient.auth.getUser();
 
     if (!user) {
-      return NextResponse.json({ ok: false, error: 'Unauthorized: Login required' }, { status: 401 });
+      return createSafeErrorResponse('Unauthorized: Login required', 401, 'Unauthorized: Login required');
     }
 
     const { data: profile } = await userClient
@@ -39,9 +40,10 @@ export async function GET() {
     const isAuthorized = userRole === 'admin' || userRole === 'sales' || isStaffDomain;
 
     if (!isAuthorized) {
-      return NextResponse.json(
-        { ok: false, error: 'Forbidden: Administrator or Commercial Sales permission required' },
-        { status: 403 }
+      return createSafeErrorResponse(
+        'Forbidden: Administrator or Commercial Sales permission required',
+        403,
+        'Forbidden: Staff permission required'
       );
     }
 
@@ -89,8 +91,7 @@ export async function GET() {
 
     return NextResponse.json({ ok: true, leads });
   } catch (err: any) {
-    console.error('API /api/admin/leads error:', err);
-    return NextResponse.json({ ok: false, error: 'Internal server error' }, { status: 500 });
+    return createSafeErrorResponse(err, 500, 'Unable to load commercial leads. Please retry shortly.');
   }
 }
 

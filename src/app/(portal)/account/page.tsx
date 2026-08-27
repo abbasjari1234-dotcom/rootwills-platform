@@ -17,8 +17,12 @@ import {
   Landmark,
   CreditCard,
   Lock,
-  ExternalLink
+  ExternalLink,
+  Trash2,
+  Download,
+  AlertTriangle
 } from 'lucide-react';
+import { deleteUserAccountServerAction, exportUserPersonalDataServerAction } from '@/actions/account';
 
 export default function CustomerAccountSettingsPage() {
   const { currentOrgId, organizations, userProfile } = useDemoStore();
@@ -33,10 +37,55 @@ export default function CustomerAccountSettingsPage() {
     outOfStockAlert: true,
   });
 
+  // GDPR Deletion State
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteStatus, setDeleteStatus] = useState<string | null>(null);
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 2000);
+  };
+
+  const handleExportData = async () => {
+    try {
+      const res = await exportUserPersonalDataServerAction();
+      if (res.ok && res.data) {
+        const jsonBlob = new Blob([JSON.stringify(res.data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(jsonBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `rootwills-gdpr-data-export-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+    } catch {
+      alert('Could not export personal data. Please contact support.');
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    if (deleteConfirmText.trim().toUpperCase() !== 'DELETE') return;
+    setIsDeleting(true);
+    try {
+      const res = await deleteUserAccountServerAction();
+      if (res.ok) {
+        setDeleteStatus('Account and personal data erased. Redirecting to home...');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1500);
+      } else {
+        setDeleteStatus(res.message || 'Deletion error');
+        setIsDeleting(false);
+      }
+    } catch (err: any) {
+      setDeleteStatus(err?.message || 'Error executing account deletion');
+      setIsDeleting(false);
+    }
   };
 
   return (
@@ -171,6 +220,51 @@ export default function CustomerAccountSettingsPage() {
               </div>
             </div>
           </div>
+
+          {/* GDPR Privacy & Right to Erasure Section */}
+          <div className="glass-panel p-6 sm:p-8 rounded-2xl space-y-4 border border-rose-900/30">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="font-display text-xl font-bold text-cream flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-champagne" />
+                  <span>Privacy & GDPR Data Management</span>
+                </h2>
+                <p className="text-xs text-cream/60 mt-0.5">
+                  Exercise your UK GDPR rights, export your data records, or request complete account erasure.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <button
+                type="button"
+                onClick={handleExportData}
+                className="p-4 rounded-xl bg-obsidian-950 border border-cream/15 hover:border-champagne text-left transition-all group"
+              >
+                <div className="flex items-center gap-2 text-champagne text-xs font-mono font-bold">
+                  <Download className="w-4 h-4" />
+                  <span>Export Personal Data (JSON)</span>
+                </div>
+                <p className="text-[11px] text-cream/50 mt-1 font-sans">
+                  Download a machine-readable export of all account profile records and stored preferences.
+                </p>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(true)}
+                className="p-4 rounded-xl bg-rose-950/20 border border-rose-900/40 hover:border-rose-500 text-left transition-all group"
+              >
+                <div className="flex items-center gap-2 text-rose-400 text-xs font-mono font-bold">
+                  <Trash2 className="w-4 h-4" />
+                  <span>Erase Account & Personal Data</span>
+                </div>
+                <p className="text-[11px] text-rose-300/60 mt-1 font-sans">
+                  Permanently anonymize personal profile, destroy session tokens, and close your commercial portal access.
+                </p>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Right Column: Banking, Trade Terms & Notifications */}
@@ -283,6 +377,69 @@ export default function CustomerAccountSettingsPage() {
           </div>
         </div>
       </div>
+
+      {/* Account Deletion Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="glass-panel-gold max-w-md w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-rose-500/40 shadow-2xl animate-fade-in">
+            <div className="w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6" />
+            </div>
+
+            <div>
+              <h3 className="font-display text-xl font-bold text-cream">
+                Erase Account & Personal Data?
+              </h3>
+              <p className="text-xs text-cream/70 mt-1.5 leading-relaxed font-sans">
+                Under UK GDPR (Right to Erasure), your personal profile, contact information, and authentication sessions will be permanently deleted and anonymized. Active outstanding invoices remain archived for financial compliance.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-[11px] font-mono uppercase text-cream/80 font-bold">
+                Type <span className="text-rose-400">DELETE</span> to confirm:
+              </label>
+              <input
+                type="text"
+                value={deleteConfirmText}
+                onChange={(e) => setDeleteConfirmText(e.target.value)}
+                placeholder="DELETE"
+                className="w-full bg-obsidian-950 border border-rose-900/60 rounded-xl px-3.5 py-2.5 text-xs text-cream focus:outline-none focus:border-rose-400 font-mono"
+              />
+            </div>
+
+            {deleteStatus && (
+              <div className="p-3 rounded-lg bg-rose-950/60 border border-rose-500/30 text-rose-300 text-xs font-mono">
+                {deleteStatus}
+              </div>
+            )}
+
+            <div className="flex gap-3 pt-2">
+              <button
+                type="button"
+                disabled={isDeleting || deleteConfirmText.trim().toUpperCase() !== 'DELETE'}
+                onClick={handleConfirmDelete}
+                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono font-bold text-xs transition-all disabled:opacity-40"
+              >
+                {isDeleting ? 'Erasing Data...' : 'Confirm Permanent Erasure'}
+              </button>
+
+              <button
+                type="button"
+                disabled={isDeleting}
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setDeleteConfirmText('');
+                  setDeleteStatus(null);
+                }}
+                className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-cream/20 text-cream/70 hover:text-cream text-xs font-mono"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

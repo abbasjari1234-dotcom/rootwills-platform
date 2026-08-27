@@ -297,16 +297,28 @@ export async function submitPortalOrder(
     }
 
     // 9. Dispatch Background Order Confirmation Email
-    sendOrderConfirmationEmail({
-      toEmail: 'chef@san-carlo.co.uk',
-      customerName: 'Executive Head Chef',
-      organizationName: 'San Carlo Ristorante & Hospitality',
-      orderNumber: generatedOrderNumber,
-      deliveryDate: payload.deliveryDate,
-      deliverySlot: payload.deliverySlot,
-      items: payload.items,
-      total: Number(calculatedGrandTotal.toFixed(2)),
-    }).catch((emailErr) => console.warn('Order confirmation email warning:', emailErr));
+    if (targetOrgId) {
+      (async () => {
+        try {
+          const userClient = await createClient();
+          const { data: { user } } = await userClient.auth.getUser();
+          if (user?.email) {
+            await sendOrderConfirmationEmail({
+              toEmail: user.email,
+              customerName: 'Executive Head Chef',
+              organizationName: cleanOrgName,
+              orderNumber: generatedOrderNumber,
+              deliveryDate: payload.deliveryDate,
+              deliverySlot: payload.deliverySlot,
+              items: payload.items,
+              total: Number(calculatedGrandTotal.toFixed(2)),
+            });
+          }
+        } catch {
+          // Silent non-blocking email dispatch in server background
+        }
+      })();
+    }
 
     return {
       ok: true,
@@ -315,7 +327,7 @@ export async function submitPortalOrder(
       recalculatedTotal: Number(calculatedGrandTotal.toFixed(2)),
     };
   } catch (err: any) {
-    console.error('Order submission fallback triggered:', err?.message || err);
+    console.error('Order submission fallback triggered:', err?.message || 'Order submission notice');
     return {
       ok: true,
       orderId: `ord-${Date.now()}`,
@@ -346,20 +358,6 @@ export async function submitDriverPOD(
   if (!cleanRecipient) {
     return { ok: false, message: 'Recipient chef / manager name is required.' };
   }
-
-  // 2. Dispatch Background POD Delivery Receipt Email
-  sendPODDeliveryReceiptEmail({
-    toEmail: 'purchasing@san-carlo.co.uk',
-    customerName: 'Purchasing & Head Chef Team',
-    organizationName: 'San Carlo Ristorante & Hospitality',
-    orderNumber: payload.orderId,
-    recipientName: cleanRecipient,
-    deliveredAt: new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-    driverName: payload.driverName || 'Dave King (Van #04)',
-    chilledTemp: payload.vanProbeChilledTemp,
-    frozenTemp: payload.vanProbeFrozenTemp,
-    totalItemsCount: 8,
-  }).catch((emailErr) => console.warn('POD receipt email notice:', emailErr));
 
   try {
     const rawSupabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';

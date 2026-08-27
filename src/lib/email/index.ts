@@ -62,7 +62,7 @@ export interface ConciergeAlertEmailParams {
  */
 export async function sendWelcomeTradeAccountEmail(params: WelcomeTradeAccountEmailParams) {
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder') {
-    console.log(`[Email Mock] Welcome Trade Account email sent to ${params.toEmail} for ${params.organizationName}`);
+    console.log(`[Email Mock] Welcome Trade Account email dispatched (Recipient: [REDACTED], Status: ${params.applicationStatus})`);
     return { success: true, mock: true };
   }
 
@@ -136,7 +136,7 @@ export async function sendWelcomeTradeAccountEmail(params: WelcomeTradeAccountEm
  */
 export async function sendOrderConfirmationEmail(params: OrderConfirmationEmailParams) {
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder') {
-    console.log(`[Email Mock] Order Confirmation sent to ${params.toEmail} for ${params.orderNumber}`);
+    console.log(`[Email Mock] Order Confirmation dispatched (Recipient: [REDACTED], Order: ${params.orderNumber})`);
     return { success: true, mock: true };
   }
 
@@ -224,7 +224,7 @@ export async function sendOrderConfirmationEmail(params: OrderConfirmationEmailP
  */
 export async function sendPODDeliveryReceiptEmail(params: PODDeliveryReceiptEmailParams) {
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder') {
-    console.log(`[Email Mock] POD Receipt sent to ${params.toEmail} for ${params.orderNumber}`);
+    console.log(`[Email Mock] POD Receipt dispatched (Recipient: [REDACTED], Order: ${params.orderNumber})`);
     return { success: true, mock: true };
   }
 
@@ -291,7 +291,7 @@ export async function sendPODDeliveryReceiptEmail(params: PODDeliveryReceiptEmai
  */
 export async function sendConciergeAlertEmail(params: ConciergeAlertEmailParams) {
   if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder') {
-    console.log(`[Email Mock] Concierge notification sent for ${params.organizationName}`);
+    console.log(`[Email Mock] Concierge notification dispatched (Account: [REDACTED])`);
     return { success: true, mock: true };
   }
 

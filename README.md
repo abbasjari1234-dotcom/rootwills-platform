@@ -140,25 +140,57 @@ supabase db push   # or paste db/schema.sql into the SQL editor, then db/seed.sq
 npm run dev
 ```
 
-## Environment variables
+## ⚠️ Mandatory Secret Rotation Warning (Before Production Deployment)
+
+> [!CAUTION]
+> **CRITICAL SECURITY NOTICE: ROTATE ALL PREVIOUS CREDENTIALS**
+> If any API keys, Supabase credentials, database passwords, or test credentials were previously hardcoded or committed to git history during development:
+> 1. **Rotate Supabase API Keys**: Go to Supabase Dashboard &rarr; Project Settings &rarr; API &rarr; Rotate Anon and Service Role Keys.
+> 2. **Rotate Stripe & GoCardless Keys**: Ensure new production/restricted keys are generated in the Stripe Dashboard and GoCardless Dashboard.
+> 3. **Rotate Resend API Keys**: Regenerate your Resend API token.
+> 4. **Git History**: Remember that removing keys from code does not scrub old git commit history. All secrets ever present in git commits must be considered compromised and rotated immediately.
+
+## Environment Variables Configuration
+
+Copy `.env.example` to `.env.local` for local development:
 
 ```bash
-# Supabase — from your project's Settings > API
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=       # server-only — never expose to the client
+# 1. Site URL
+NEXT_PUBLIC_SITE_URL=https://www.rootwills.co.uk
 
-# Resend — from resend.com, and verify your sending domain before going live
-RESEND_API_KEY=
-CONCIERGE_NOTIFICATION_EMAIL=    # internal address that gets concierge-review alerts
+# 2. Supabase Cloud Database & Authentication (RLS Enforced)
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key   # Server-only — NEVER expose to browser
 
-# Optional — only needed if you upgrade from postcodes.io to full address
-# autocomplete per the original brief
-NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=
-# or
+# 3. Database Connection String (Prisma ORM with SSL/TLS)
+DATABASE_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres?sslmode=require&pgbouncer=true
+
+# 4. Resend Transactional Email Engine
+RESEND_API_KEY=re_your_resend_api_key
+CONCIERGE_NOTIFICATION_EMAIL=sales@rootwills.co.uk
+
+# 5. Stripe Payments
+STRIPE_SECRET_KEY=sk_live_your_stripe_secret_key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_your_stripe_publishable_key
+STRIPE_WEBHOOK_SECRET=whsec_your_stripe_webhook_secret
+
+# 6. GoCardless (UK BACS Direct Debit)
+GOCARDLESS_ACCESS_TOKEN=live_your_gocardless_token
+GOCARDLESS_WEBHOOK_SECRET=your_gocardless_webhook_secret
+GOCARDLESS_ENVIRONMENT=live
+
+# 7. AI Gateway
+AI_ENABLED=true
+AI_MAX_INPUT_LENGTH=1000
+
+# 8. Local Demo / Sandbox Auth (NON-PRODUCTION ONLY)
+DEMO_AUTH_PASSWORD=
+
+# 9. Optional Geocoding & Companies House APIs
 NEXT_PUBLIC_MAPBOX_TOKEN=
-
-# Optional — real Companies House lookup instead of format-only validation
+NEXT_PUBLIC_GOOGLE_PLACES_API_KEY=
 COMPANIES_HOUSE_API_KEY=
 ```
 

@@ -2,6 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
 
 export interface LoginResult {
   ok: boolean;
@@ -11,64 +12,62 @@ export interface LoginResult {
   error?: string;
 }
 
-// Authoritative System Accounts
+// Authoritative System Accounts Directory (Role and Destination Mapping)
 const PRECONFIGURED_ACCOUNTS: Record<
   string,
   {
-    passwords: string[];
     role: 'admin' | 'customer' | 'driver';
     orgId: string;
     destination: string;
     name: string;
   }
 > = {
-  // STAFF & ADMIN ACCOUNTS
+  // COMMERCIAL ADMIN / OPERATIONS ACCOUNTS
   'staff@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'staff2026', 'admin123', 'password123'],
     role: 'admin',
     orgId: 'org-rootwills-hq',
     destination: '/admin/crm',
     name: 'Rootwills Commercial Staff Desk',
   },
   'admin@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'admin2026', 'admin123', 'password123'],
     role: 'admin',
     orgId: 'org-rootwills-hq',
     destination: '/admin/crm',
-    name: 'Rootwills System Administrator',
+    name: 'Rootwills Operations Manager',
   },
   'manager@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'manager2026', 'admin123', 'password123'],
     role: 'admin',
     orgId: 'org-rootwills-hq',
     destination: '/admin/crm',
-    name: 'Operations & Commercial Manager',
+    name: 'Operations Manager',
   },
   'marcus.vance@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'marcus2026', 'admin123', 'password123'],
     role: 'admin',
     orgId: 'org-rootwills-hq',
     destination: '/admin/crm',
     name: 'Marcus Vance (Commercial Sales Lead)',
   },
 
-  // CUSTOMER TRADE ACCOUNTS (Ready for Live Ordering)
+  // B2B HOSPITALITY CUSTOMER ACCOUNTS
   'customer@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'customer2026', 'password123'],
     role: 'customer',
     orgId: 'org-rootwills-partner',
     destination: '/dashboard',
-    name: 'Purchasing Director (Partner Account)',
+    name: 'Trade Account Lead (San Carlo Group)',
   },
   'purchasing@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'purchasing2026', 'password123'],
+    role: 'customer',
+    orgId: 'org-rootwills-partner',
+    destination: '/dashboard',
+    name: 'Group Purchasing Director',
+  },
+  'orders@rootwills.co.uk': {
     role: 'customer',
     orgId: 'org-rootwills-partner',
     destination: '/dashboard',
     name: 'Executive Chef (Kitchen Order Pad)',
   },
   'chef@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'chef2026', 'password123'],
     role: 'customer',
     orgId: 'org-rootwills-partner',
     destination: '/dashboard',
@@ -77,7 +76,6 @@ const PRECONFIGURED_ACCOUNTS: Record<
 
   // DRIVER LOGISTICS ACCOUNT
   'driver@rootwills.co.uk': {
-    passwords: ['Rootwills2026!', 'rootwills2026', 'driver2026', 'driver123', 'password123'],
     role: 'driver',
     orgId: 'org-rootwills-fleet',
     destination: '/driver',
@@ -98,43 +96,16 @@ export async function loginServerAction(formData: {
     return { ok: false, error: 'Please enter both your email address and account password.' };
   }
 
-  // 1. Check Pre-Configured System & Staff Accounts First for Instant Reliability
-  const preconfigured = PRECONFIGURED_ACCOUNTS[cleanEmail];
-  if (preconfigured) {
-    const isPasswordMatch =
-      preconfigured.passwords.includes(cleanPassword) ||
-      cleanPassword === 'Rootwills2026!' ||
-      cleanPassword === 'rootwills2026';
-
-    if (!isPasswordMatch) {
-      return { ok: false, error: 'Invalid password. Please check your credentials.' };
-    }
-
-    // Verify scope restrictions
-    if (scope === 'staff' && preconfigured.role !== 'admin') {
-      return {
-        ok: false,
-        error: `Access Denied: Account (${cleanEmail}) is registered as a Customer and cannot log into the Staff CRM Portal.`,
-      };
-    }
-
-    // Set authorization cookies
-    const cookieStore = cookies();
-    cookieStore.set('rootwills_role', preconfigured.role, {
-      path: '/',
-      maxAge: 86400 * 7,
-      sameSite: 'lax',
-    });
-
-    return {
-      ok: true,
-      role: preconfigured.role,
-      organizationId: preconfigured.orgId,
-      destination: preconfigured.destination,
-    };
+  // Rate Limiting (5 attempts per minute per email / client)
+  const rateLimit = checkRateLimit(`login_${cleanEmail}`, RATE_LIMIT_PRESETS.AUTH);
+  if (!rateLimit.success) {
+    return { ok: false, error: 'Too many login attempts. Please wait 60 seconds before trying again.' };
   }
 
-  // 2. Check Supabase Database Auth for newly registered customer accounts
+  const isProduction = process.env.NODE_ENV === 'production';
+  const demoPassword = (process.env.DEMO_AUTH_PASSWORD || '').trim();
+
+  // 1. Check Supabase Database Auth for real credentials
   const rawUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
   const rawKey = (
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
@@ -192,6 +163,7 @@ export async function loginServerAction(formData: {
           path: '/',
           maxAge: 86400 * 7,
           sameSite: 'lax',
+          secure: isProduction,
         });
 
         if (data.session?.access_token) {
@@ -199,6 +171,8 @@ export async function loginServerAction(formData: {
             path: '/',
             maxAge: 86400 * 7,
             sameSite: 'lax',
+            httpOnly: true,
+            secure: isProduction,
           });
         }
 
@@ -221,15 +195,36 @@ export async function loginServerAction(formData: {
     }
   }
 
-  // 3. Fallback for any corporate rootwills.co.uk staff email or customer email with standard company password
-  const isCorporateStaffEmail = cleanEmail.endsWith('@rootwills.co.uk');
-  const isStandardPassword =
-    cleanPassword === 'Rootwills2026!' ||
-    cleanPassword === 'rootwills2026' ||
-    cleanPassword === 'password123' ||
-    cleanPassword === 'admin123';
+  // 2. Demo / Development Sandbox Auth Bypass (Strictly disabled in production mode)
+  if (!isProduction && demoPassword.length > 0 && cleanPassword === demoPassword) {
+    const preconfigured = PRECONFIGURED_ACCOUNTS[cleanEmail];
+    if (preconfigured) {
+      // Verify scope restrictions
+      if (scope === 'staff' && preconfigured.role !== 'admin') {
+        return {
+          ok: false,
+          error: `Access Denied: Account (${cleanEmail}) is registered as a Customer and cannot log into the Staff CRM Portal.`,
+        };
+      }
 
-  if (isStandardPassword) {
+      // Set authorization cookies
+      const cookieStore = cookies();
+      cookieStore.set('rootwills_role', preconfigured.role, {
+        path: '/',
+        maxAge: 86400 * 7,
+        sameSite: 'lax',
+        secure: isProduction,
+      });
+
+      return {
+        ok: true,
+        role: preconfigured.role,
+        organizationId: preconfigured.orgId,
+        destination: preconfigured.destination,
+      };
+    }
+
+    const isCorporateStaffEmail = cleanEmail.endsWith('@rootwills.co.uk');
     const targetRole: 'admin' | 'customer' = (scope === 'staff' || isCorporateStaffEmail) ? 'admin' : 'customer';
     const targetOrgId = targetRole === 'admin' ? 'org-rootwills-hq' : 'org-rootwills-partner';
     const destination = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
@@ -239,6 +234,7 @@ export async function loginServerAction(formData: {
       path: '/',
       maxAge: 86400 * 7,
       sameSite: 'lax',
+      secure: isProduction,
     });
 
     return {
@@ -254,3 +250,59 @@ export async function loginServerAction(formData: {
     error: 'Invalid credentials. Please verify your email and password.',
   };
 }
+
+export interface PasswordResetResult {
+  ok: boolean;
+  message: string;
+}
+
+/**
+ * Password Reset Server Action
+ * Rate-limited to max 3 attempts per hour to mitigate brute force/enumeration.
+ */
+export async function requestPasswordResetServerAction(formData: {
+  email: string;
+}): Promise<PasswordResetResult> {
+  const cleanEmail = (formData.email || '').trim().toLowerCase();
+
+  if (!cleanEmail || !cleanEmail.includes('@')) {
+    return { ok: false, message: 'Please enter a valid work email address.' };
+  }
+
+  // Rate Limiting (3 attempts per hour per email)
+  const rateLimit = checkRateLimit(`pwd_reset_${cleanEmail}`, RATE_LIMIT_PRESETS.PASSWORD_RESET);
+  if (!rateLimit.success) {
+    return {
+      ok: false,
+      message: 'Too many password reset requests. Please wait before requesting another link.',
+    };
+  }
+
+  try {
+    const rawUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
+    const rawKey = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim();
+
+    if (rawUrl && !rawUrl.includes('placeholder') && rawUrl.includes('supabase.co')) {
+      const supabase = createSupabaseClient(rawUrl, rawKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+      });
+
+      await supabase.auth.resetPasswordForEmail(cleanEmail, {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.uk'}/login?reset=true`,
+      });
+    }
+
+    // Always return safe generic confirmation to prevent user enumeration
+    return {
+      ok: true,
+      message: 'If an account exists with this email address, a secure reset link has been dispatched.',
+    };
+  } catch (err: any) {
+    console.error('Password reset notice:', err?.message || 'Reset error');
+    return {
+      ok: true,
+      message: 'If an account exists with this email address, a secure reset link has been dispatched.',
+    };
+  }
+}
+

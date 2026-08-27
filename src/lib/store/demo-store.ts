@@ -381,6 +381,12 @@ export const useDemoStore = create<DemoState>()(
     }),
     {
       name: 'rootwills-b2b-storage-v4',
+      partialize: (state) => ({
+        currentRole: state.currentRole,
+        currentOrgId: state.currentOrgId,
+        currentLocationId: state.currentLocationId,
+        favorites: state.favorites,
+      }),
     }
   )
 );

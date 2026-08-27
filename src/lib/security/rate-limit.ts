@@ -47,6 +47,10 @@ export const RATE_LIMIT_PRESETS = {
   ORDERS: { maxRequests: 20, windowSeconds: 60 },
   /** Authentication & Login: 5 attempts per minute */
   AUTH: { maxRequests: 5, windowSeconds: 60 },
+  /** Password Reset: 3 attempts per hour */
+  PASSWORD_RESET: { maxRequests: 3, windowSeconds: 3600 },
+  /** Signup & Onboarding Applications: 5 per hour */
+  SIGNUP: { maxRequests: 5, windowSeconds: 3600 },
   /** Lead Conversions & Admin Mutations: 20 requests per minute */
   ADMIN_MUTATION: { maxRequests: 20, windowSeconds: 60 },
   /** Public API endpoints: 60 requests per minute */

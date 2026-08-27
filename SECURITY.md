@@ -78,3 +78,55 @@ All database policies are defined in [`db/production_security_rls.sql`](file:///
 4. **Input Length Cap**: Prompts exceeding 1,000 characters are rejected before model invocation.
 5. **Emergency Kill Switch**: Setting `AI_ENABLED=false` in environment immediately terminates AI execution with HTTP 503.
 
+---
+
+## 5. Secret Safety & Key Rotation Policy
+
+### Secrets Inventory & Environment Segregation
+- **Zero Secrets in Source Code**: No API keys, database credentials, passwords, or tokens are committed to source files.
+- **Frontend / Client Isolation**:
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY` / `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`: Public-safe client key, restricted via Row Level Security (RLS) on all tables.
+  - `SUPABASE_SERVICE_ROLE_KEY`: Server-only secret key with superuser privileges; completely isolated from client bundles and never imported in browser-executable code.
+  - `STRIPE_SECRET_KEY` & `STRIPE_WEBHOOK_SECRET`: Server-only secrets for payment intent creation and cryptographic HMAC webhook verification.
+  - `GOCARDLESS_ACCESS_TOKEN` & `GOCARDLESS_WEBHOOK_SECRET`: Server-only credentials for Direct Debit API and HMAC webhook verification.
+  - `RESEND_API_KEY`: Server-only transactional email token.
+  - `DATABASE_URL`: Server-only direct PostgreSQL URI.
+- **Git History Key Rotation Warning**:
+  - All credentials, tokens, and test passwords that ever appeared in historical git commits MUST be rotated immediately across Supabase, Stripe, GoCardless, and Resend before production traffic is enabled.
+
+---
+
+## 6. Critical Path Security & Deep Audit Findings
+
+### A. Authentication & Authorization (IDOR & JWT Audit)
+- **IDOR Protection**:
+  - In `src/actions/orders.ts`, order queries check `profile.organization_id = ord.organization_id` unless the user possesses explicit `admin`, `sales`, or `driver` roles.
+  - Database Row Level Security (`db/production_security_rls.sql`) enforces tenant isolation at the database engine level via `auth.uid() = id` and `profiles.organization_id = organizations.id`.
+- **JWT & Session Integrity**:
+  - Supabase Auth issues cryptographically signed JWTs.
+  - Session tokens are stored in `httpOnly`, `secure`, `sameSite: 'lax'` cookies (`sb-access-token`), preventing script access and XSS theft.
+- **Password Reset Security**:
+  - Managed by Supabase Auth with cryptographically random single-use tokens expiring within 15 minutes.
+  - Protected by rate limiting (3 requests/hour per email address) in `requestPasswordResetServerAction` to mitigate brute-force enumeration.
+
+### B. Payment Logic & Price Tampering Immunity
+- **Server-Side Price Recalculation**:
+  - Client-submitted unit prices, discounts, and totals in `submitWholesaleOrder` (`src/actions/orders.ts`) are **completely ignored**.
+  - The server independently queries the authoritative product catalog and database, recalculates line totals (`authoritativePrice * qty`), applies HMRC UK VAT rates (0% for food, 20% for standard items), and computes the final grand total.
+  - Bounds checking rejects negative/zero quantities (`qty <= 0`) and excessive amounts (`qty > 10,000`).
+- **Webhook Cryptographic Verification**:
+  - **Stripe**: Verified using `stripe.webhooks.constructEvent(payload, signature, webhookSecret)`.
+  - **GoCardless**: Verified via HMAC-SHA256 signature calculation compared using `crypto.timingSafeEqual` to prevent timing attacks.
+  - Invoices and orders are only marked paid upon verified webhook confirmation.
+
+### C. Input Handling, SQLi & XSS Prevention
+- **SQL Injection**:
+  - 100% of database interactions utilize the Supabase PostgREST query builder or Prisma ORM parameterized statements. Zero raw string concatenation exists in database queries.
+- **Cross-Site Scripting (XSS)**:
+  - React/JSX auto-escapes all rendered text nodes.
+  - `next.config.js` enforces a strict `Content-Security-Policy` and `X-Content-Type-Options: nosniff`.
+- **File & Media Handling**:
+  - Driver POD signatures are captured client-side as HTML5 canvas Base64 image data URLs, validated for length, and stored as data strings. No executable server-side file upload endpoints exist.
+
+
+
