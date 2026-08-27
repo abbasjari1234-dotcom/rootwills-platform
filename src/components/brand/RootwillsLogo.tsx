@@ -90,12 +90,6 @@ export function RootwillsLogo({
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-
-          {/* Center Diamond Sparkle */}
-          <polygon
-            points="50,22 53,26 50,30 47,26"
-            fill="url(#goldLuxury)"
-          />
         </svg>
       </div>
 
