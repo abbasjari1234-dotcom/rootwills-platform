@@ -10,6 +10,7 @@ import { StepLogistics } from '@/components/onboarding/steps/StepLogistics';
 import { StepTradeAccount } from '@/components/onboarding/steps/StepTradeAccount';
 import { STEP_ORDER } from '@/store/onboarding-store';
 import { ShieldCheck, Sparkles, ArrowLeft } from 'lucide-react';
+import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
 const STEP_COMPONENTS = {
   industry: StepIndustry,
@@ -48,12 +49,9 @@ export function OnboardingFlow() {
           <span>Return to Homepage</span>
         </Link>
 
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-lg bg-champagne text-obsidian-950 font-display font-bold text-sm flex items-center justify-center">
-            R
-          </div>
-          <span className="font-display font-bold text-cream tracking-tight text-base">ROOTWILLS</span>
-          <span className="text-[10px] font-mono text-champagne bg-champagne/10 px-2 py-0.5 rounded border border-champagne/20">
+        <div className="flex items-center gap-3">
+          <RootwillsLogo size="sm" variant="full" />
+          <span className="text-[10px] font-mono text-champagne bg-champagne/10 px-2.5 py-1 rounded-full border border-champagne/20 hidden sm:inline-block">
             Trade Account Setup
           </span>
         </div>
