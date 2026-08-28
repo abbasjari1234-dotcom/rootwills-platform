@@ -22,43 +22,67 @@
   --mint-light: #34D399;
 }
 
-/* Force rich Royal Emerald background across the entire site */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base background */
 html, body {
-  background-color: #021710 !important;
-  background-image: 
-    radial-gradient(circle at 50% 0%, #0A4333 0%, transparent 60%),
-    radial-gradient(circle at 10% 40%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(228, 199, 103, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #04241B 0%, #021710 100%) !important;
-  background-attachment: fixed;
+  background-color: #021710;
   color: #F7F5EE;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Custom Luxury Glassmorphism in Royal Emerald */
+/* Dedicated Hardware-Accelerated Ambient Backdrop */
+.ambient-bg-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #021710;
+  background-image: 
+    radial-gradient(circle at 50% 0%, #0A4333 0%, transparent 60%),
+    radial-gradient(circle at 10% 40%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(228, 199, 103, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #04241B 0%, #021710 100%);
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Custom Luxury Glassmorphism with Isolated Compositor Layers */
 .glass-panel {
   background: linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(16, 185, 129, 0.25);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .glass-panel-gold {
   background: linear-gradient(135deg, rgba(10, 56, 42, 0.85) 0%, rgba(4, 30, 22, 0.95) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(228, 199, 103, 0.45);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(228, 199, 103, 0.15), inset 0 1px 2px rgba(255, 244, 208, 0.3);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .glass-panel-emerald {
   background: linear-gradient(135deg, rgba(5, 60, 44, 0.85) 0%, rgba(2, 28, 20, 0.95) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(52, 211, 153, 0.5);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(16, 185, 129, 0.25), inset 0 1px 2px rgba(52, 211, 153, 0.3);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* 3D Transform Utilities */

@@ -188,6 +188,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-obsidian-950 text-cream font-sans antialiased min-h-screen relative selection:bg-champagne selection:text-obsidian-950">
+        <div className="ambient-bg-layer" />
         <FullPage3DCanvas />
         <div className="relative z-10">
           {children}

@@ -21,24 +21,31 @@ export function LuxuryAmbientBackground() {
 
       {/* 2. Luxury Geometric Orchard Trellis Pattern Layer */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0 opacity-40"
+        className="fixed inset-0 pointer-events-none z-0 opacity-40 [transform:translateZ(0)]"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 50% 10%, rgba(16, 185, 129, 0.15), transparent 45%),
-            radial-gradient(circle at 85% 60%, rgba(228, 199, 103, 0.12), transparent 40%),
-            radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.12), transparent 40%),
             linear-gradient(to right, rgba(228, 199, 103, 0.04) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(228, 199, 103, 0.04) 1px, transparent 1px)
           `,
-          backgroundSize: '100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px',
+          backgroundSize: '48px 48px, 48px 48px',
+          willChange: 'transform',
         }}
       />
 
-      {/* 3. Floating Dew Particles / Light Orbs */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[15%] left-[8%] w-72 h-72 rounded-full bg-emerald-500/10 blur-[100px] animate-pulse" />
-        <div className="absolute top-[45%] right-[5%] w-96 h-96 rounded-full bg-champagne/8 blur-[120px] animate-pulse" style={{ animationDuration: '6s' }} />
-        <div className="absolute top-[75%] left-[12%] w-80 h-80 rounded-full bg-emerald-400/10 blur-[110px] animate-pulse" style={{ animationDuration: '8s' }} />
+      {/* 3. High-Performance Hardware-Accelerated Ambient Light Orbs */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden [transform:translateZ(0)]">
+        <div 
+          className="absolute top-[15%] left-[8%] w-[450px] h-[450px] rounded-full opacity-60"
+          style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%)' }}
+        />
+        <div 
+          className="absolute top-[45%] right-[5%] w-[550px] h-[550px] rounded-full opacity-50"
+          style={{ background: 'radial-gradient(circle, rgba(228, 199, 103, 0.1) 0%, transparent 70%)' }}
+        />
+        <div 
+          className="absolute top-[75%] left-[12%] w-[500px] h-[500px] rounded-full opacity-60"
+          style={{ background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)' }}
+        />
       </div>
     </>
   );
