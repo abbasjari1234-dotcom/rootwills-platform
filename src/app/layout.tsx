@@ -91,6 +91,20 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
 };
 
 const jsonLd = {
@@ -102,7 +116,7 @@ const jsonLd = {
       name: 'Rootwills Ltd',
       alternateName: ['Rootwills Wholesale Foodservice', 'Rootwills Foodservice Ltd'],
       url: 'https://www.rootwills.co.uk',
-      logo: 'https://www.rootwills.co.uk/icon.svg',
+      logo: 'https://www.rootwills.co.uk/icon-512x512.png',
       description: 'Premium wholesale food, dry-aged meats, dairy, and fresh produce supplier for fine dining restaurants, boutique hotels, and luxury caterers in Birmingham and the UK.',
       telephone: '+44 121 790 4500',
       email: 'sales@rootwills.co.uk',
@@ -150,6 +164,11 @@ export default function RootLayout({
     >
       <head>
         <meta name="google-site-verification" content="da4AvSks5_Lgzy4--BsHwVGBgU6W9kY4tbxhO0CdFew" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
