@@ -96,118 +96,200 @@ export function PublicHeader() {
 
             {/* Products Dropdown */}
             <div 
-              className="relative"
+              className="relative group"
               onMouseEnter={() => setProductsOpen(true)}
               onMouseLeave={() => setProductsOpen(false)}
             >
               <Link
                 href="/products"
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors"
+                onClick={() => setProductsOpen(false)}
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-colors ${
+                  pathname?.startsWith('/products')
+                    ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
+                    : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
+                }`}
               >
                 <span>Products</span>
-                <ChevronDown className="w-3.5 h-3.5 text-champagne/80" />
+                <ChevronDown className={`w-3.5 h-3.5 text-champagne/80 transition-transform duration-200 ${productsOpen ? 'rotate-180 text-champagne' : ''}`} />
               </Link>
 
-              {productsOpen && (
-                <div className="absolute top-full left-0 w-80 bg-obsidian-900/98 border border-emerald-800/60 rounded-2xl shadow-2xl p-3 grid gap-1.5 animate-fade-in backdrop-blur-2xl z-50">
-                  <Link
-                    href="/products?category=fresh_produce"
-                    className="p-3 rounded-xl hover:bg-emerald-950/80 transition-colors group flex items-start gap-2.5"
+              <AnimatePresence>
+                {productsOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                    className="absolute top-full left-0 pt-2 w-88 min-w-[340px] z-[100]"
                   >
-                    <Leaf className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-sm font-bold text-cream group-hover:text-champagne">Fresh Produce & Fruit</div>
-                      <div className="text-[11px] text-cream/60 font-sans mt-0.5">Heritage apples, citrus, heirloom veg & exotics</div>
-                    </div>
-                  </Link>
+                    <div className="bg-[#031d14] border border-champagne/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(228,199,103,0.18)] p-3 grid gap-1.5">
+                      <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-champagne font-bold border-b border-emerald-900/60 pb-1.5 flex items-center justify-between">
+                        <span>Wholesale Assortment</span>
+                        <span className="text-emerald-400">1,200+ Lines</span>
+                      </div>
 
-                  <Link
-                    href="/products?category=dairy_eggs"
-                    className="p-3 rounded-xl hover:bg-emerald-950/80 transition-colors group flex items-start gap-2.5"
-                  >
-                    <Egg className="w-4 h-4 text-champagne shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-sm font-bold text-cream group-hover:text-champagne">Farmhouse Dairy & Eggs</div>
-                      <div className="text-[11px] text-cream/60 font-sans mt-0.5">Cultured butter sheets, farm milk & Lion eggs</div>
-                    </div>
-                  </Link>
+                      <Link
+                        href="/products?category=fresh_produce"
+                        onClick={() => setProductsOpen(false)}
+                        className="p-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-emerald-500/40 transition-all group flex items-start gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                          <Leaf className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Fresh Produce & Fruit</div>
+                          <div className="text-[11px] text-cream/60 font-sans mt-0.5">Heritage apples, citrus, heirloom veg & exotics</div>
+                        </div>
+                      </Link>
 
-                  <Link
-                    href="/products?category=living_botanicals"
-                    className="p-3 rounded-xl hover:bg-emerald-950/80 transition-colors group flex items-start gap-2.5"
-                  >
-                    <Sun className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-sm font-bold text-cream group-hover:text-champagne">Living Botanicals & Herbs</div>
-                      <div className="text-[11px] text-cream/60 font-sans mt-0.5">Hydroponic microgreens & edible flowers</div>
-                    </div>
-                  </Link>
+                      <Link
+                        href="/products?category=dairy_eggs"
+                        onClick={() => setProductsOpen(false)}
+                        className="p-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/40 transition-all group flex items-start gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                          <Egg className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Farmhouse Dairy & Eggs</div>
+                          <div className="text-[11px] text-cream/60 font-sans mt-0.5">Cultured butter sheets, farm milk & Lion eggs</div>
+                        </div>
+                      </Link>
 
-                  <Link
-                    href="/products?category=bakery_pantry"
-                    className="p-3 rounded-xl hover:bg-emerald-950/80 transition-colors group flex items-start gap-2.5"
-                  >
-                    <Package className="w-4 h-4 text-champagne shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-sm font-bold text-cream group-hover:text-champagne">Bakery & Pantry Essentials</div>
-                      <div className="text-[11px] text-cream/60 font-sans mt-0.5">Artisan flours, oils, chocolate & staples</div>
-                    </div>
-                  </Link>
+                      <Link
+                        href="/products?category=living_botanicals"
+                        onClick={() => setProductsOpen(false)}
+                        className="p-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-emerald-500/40 transition-all group flex items-start gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                          <Sun className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Living Botanicals & Herbs</div>
+                          <div className="text-[11px] text-cream/60 font-sans mt-0.5">Hydroponic microgreens & edible flowers</div>
+                        </div>
+                      </Link>
 
-                  <div className="pt-2 mt-1 border-t border-emerald-950">
-                    <Link
-                      href="/products"
-                      className="text-xs font-mono text-champagne font-bold flex items-center justify-between p-2 rounded-lg hover:bg-emerald-950/60"
-                    >
-                      <span>View Full Product Directory</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-              )}
+                      <Link
+                        href="/products?category=bakery_pantry"
+                        onClick={() => setProductsOpen(false)}
+                        className="p-3 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/40 transition-all group flex items-start gap-3"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                          <Package className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Bakery & Pantry Essentials</div>
+                          <div className="text-[11px] text-cream/60 font-sans mt-0.5">Artisan flours, oils, chocolate & staples</div>
+                        </div>
+                      </Link>
+
+                      <div className="pt-2 mt-1 border-t border-emerald-900/60">
+                        <Link
+                          href="/products"
+                          onClick={() => setProductsOpen(false)}
+                          className="text-xs font-mono text-champagne font-bold flex items-center justify-between p-2.5 rounded-xl bg-emerald-950/60 hover:bg-champagne hover:text-obsidian-950 transition-all"
+                        >
+                          <span>View Full Product Directory</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Sectors Dropdown */}
             <div 
-              className="relative"
+              className="relative group"
               onMouseEnter={() => setSectorsOpen(true)}
               onMouseLeave={() => setSectorsOpen(false)}
             >
               <button
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors"
+                type="button"
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-colors ${
+                  pathname?.startsWith('/sectors')
+                    ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
+                    : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
+                }`}
               >
                 <span>Who We Supply</span>
-                <ChevronDown className="w-3.5 h-3.5 text-champagne/80" />
+                <ChevronDown className={`w-3.5 h-3.5 text-champagne/80 transition-transform duration-200 ${sectorsOpen ? 'rotate-180 text-champagne' : ''}`} />
               </button>
 
-              {sectorsOpen && (
-                <div className="absolute top-full left-0 w-80 bg-obsidian-900/98 border border-emerald-800/60 rounded-2xl shadow-2xl p-3 grid gap-1 animate-fade-in backdrop-blur-2xl z-50">
-                  <Link href="/sectors/restaurants" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Restaurants & Fine Dining</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Chef-led kitchens & high-volume bistros</div>
-                  </Link>
-                  <Link href="/sectors/hotels" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Hotels & Banqueting</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Breakfast ops, room service & large events</div>
-                  </Link>
-                  <Link href="/sectors/care-homes" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Care Homes & Healthcare</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Strict dietary compliance & guaranteed 6am drops</div>
-                  </Link>
-                  <Link href="/sectors/caterers" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Luxury Caterers & Events</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Flexible bulk specs & tailored event deliveries</div>
-                  </Link>
-                  <Link href="/sectors/pubs-bars" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Gastropubs & Bars</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Consistent quality produce & kitchen staples</div>
-                  </Link>
-                  <Link href="/sectors/schools" className="p-2.5 rounded-xl hover:bg-emerald-950/80 transition-colors group">
-                    <div className="text-sm font-bold text-cream group-hover:text-champagne">Schools & Colleges</div>
-                    <div className="text-[11px] text-cream/60 font-sans">Nutritious, cost-controlled seasonal produce</div>
-                  </Link>
-                </div>
-              )}
+              <AnimatePresence>
+                {sectorsOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 4, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                    className="absolute top-full left-0 pt-2 w-88 min-w-[340px] z-[100]"
+                  >
+                    <div className="bg-[#031d14] border border-champagne/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(228,199,103,0.18)] p-3 grid gap-1.5">
+                      <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-champagne font-bold border-b border-emerald-900/60 pb-1.5 flex items-center justify-between">
+                        <span>Commercial Hospitality Sectors</span>
+                        <span className="text-emerald-400">UK SLA</span>
+                      </div>
+
+                      <Link 
+                        href="/sectors/restaurants" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Restaurants & Fine Dining</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Chef-led kitchens & high-volume bistros</div>
+                      </Link>
+
+                      <Link 
+                        href="/sectors/hotels" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Hotels & Banqueting</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Breakfast ops, room service & large events</div>
+                      </Link>
+
+                      <Link 
+                        href="/sectors/care-homes" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Care Homes & Healthcare</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Strict dietary compliance & guaranteed 6am drops</div>
+                      </Link>
+
+                      <Link 
+                        href="/sectors/caterers" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Luxury Caterers & Events</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Flexible bulk specs & tailored event deliveries</div>
+                      </Link>
+
+                      <Link 
+                        href="/sectors/pubs-bars" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Gastropubs & Bars</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Consistent quality produce & kitchen staples</div>
+                      </Link>
+
+                      <Link 
+                        href="/sectors/schools" 
+                        onClick={() => setSectorsOpen(false)}
+                        className="p-2.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/70 border border-transparent hover:border-champagne/30 transition-all group"
+                      >
+                        <div className="text-sm font-bold text-cream group-hover:text-champagne transition-colors">Schools & Colleges</div>
+                        <div className="text-[11px] text-cream/60 font-sans">Nutritious, cost-controlled seasonal produce</div>
+                      </Link>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <Link href="/delivery" className="px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
