@@ -186,7 +186,11 @@ export default function PublicProductsPage() {
                 className="glass-panel rounded-2xl overflow-hidden border border-zinc-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between group shadow-lg"
               >
                 {/* Product Image Box with Vignette & Badges */}
-                <div className="relative h-48 w-full bg-zinc-950 overflow-hidden">
+                <div 
+                  className="relative h-48 w-full bg-zinc-950 overflow-hidden cursor-pointer"
+                  data-cursor="view"
+                  onClick={() => setQuickViewProduct(p)}
+                >
                   <Image
                     src={p.imageUrl}
                     alt={p.name}

@@ -7,6 +7,11 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { FullPage3DCanvas } from '@/components/3d/FullPage3DCanvas';
 
+const LuxuryAnimatedCursor = dynamic(
+  () => import('@/components/ui/LuxuryAnimatedCursor').then((mod) => mod.LuxuryAnimatedCursor),
+  { ssr: false }
+);
+
 const CartDrawer = dynamic(
   () => import('@/components/portal/CartDrawer').then((mod) => mod.CartDrawer),
   { ssr: false }
@@ -188,6 +193,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-obsidian-950 text-cream font-sans antialiased min-h-screen relative selection:bg-champagne selection:text-obsidian-950">
+        <LuxuryAnimatedCursor />
         <div className="ambient-bg-layer" />
         <FullPage3DCanvas />
         <div className="relative z-10">
