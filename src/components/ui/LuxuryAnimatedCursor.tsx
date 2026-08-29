@@ -1,83 +1,117 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
-
-type CursorVariant = 'default' | 'pointer' | 'button' | 'view' | 'drag' | 'text';
+import React, { useEffect, useRef, useState } from 'react';
 
 export function LuxuryAnimatedCursor() {
-  const [isVisible, setIsVisible] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  const [mounted, setMounted] = useState(false);
+  const [variant, setVariant] = useState<'default' | 'pointer' | 'button' | 'view' | 'drag'>('default');
+  const [cursorText, setCursorText] = useState('');
   const [isClicked, setIsClicked] = useState(false);
-  const [variant, setVariant] = useState<CursorVariant>('default');
-  const [cursorText, setCursorText] = useState<string>('');
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
-
-  // Raw mouse coordinates
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-
-  // Smooth elastic physics for the trailing gold ring
-  const springConfig = { damping: 28, stiffness: 350, mass: 0.6 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // 1. Detect touch screens or reduced motion
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // 1. Disable on touch devices or reduced motion
+    const hasTouch =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (hasTouch || prefersReducedMotion) {
-      setIsTouchDevice(true);
-      return;
-    }
+    if (hasTouch) return;
 
-    setIsTouchDevice(false);
+    setMounted(true);
 
-    // 2. Mouse Move Handler
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let isVisible = false;
+    let hasMoved = false;
+    let rafId: number;
+
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-      if (!isVisible) setIsVisible(true);
+      if (!hasMoved) {
+        hasMoved = true;
+        ringX = mouseX;
+        ringY = mouseY;
+      }
 
-      // Detect hover target attributes or tags
+      if (!isVisible) {
+        isVisible = true;
+        if (dotRef.current) dotRef.current.style.opacity = '1';
+        if (ringRef.current) ringRef.current.style.opacity = '1';
+      }
+
+      // Check interactive target
       const target = e.target as HTMLElement | null;
-      if (!target) return;
+      if (target) {
+        const interactive = target.closest(
+          'button, a, input, select, textarea, [role="button"], [data-cursor], .cursor-pointer'
+        ) as HTMLElement | null;
 
-      const interactiveParent = target.closest(
-        'button, a, input, select, textarea, [role="button"], [data-cursor], .cursor-pointer'
-      ) as HTMLElement | null;
+        if (interactive) {
+          const customCursor = interactive.getAttribute('data-cursor');
+          const customText = interactive.getAttribute('data-cursor-text');
 
-      if (interactiveParent) {
-        const customCursor = interactiveParent.getAttribute('data-cursor');
-        const customText = interactiveParent.getAttribute('data-cursor-text');
-
-        if (customCursor === 'view' || customText === 'VIEW') {
-          setVariant('view');
-          setCursorText(customText || 'VIEW');
-        } else if (customCursor === 'drag') {
-          setVariant('drag');
-          setCursorText(customText || 'DRAG');
-        } else if (interactiveParent.tagName === 'BUTTON' || interactiveParent.getAttribute('role') === 'button') {
-          setVariant('button');
-          setCursorText('');
+          if (customCursor === 'view' || customText === 'VIEW') {
+            setVariant('view');
+            setCursorText(customText || 'VIEW');
+          } else if (customCursor === 'drag') {
+            setVariant('drag');
+            setCursorText(customText || 'DRAG');
+          } else if (interactive.tagName === 'BUTTON' || interactive.getAttribute('role') === 'button') {
+            setVariant('button');
+            setCursorText('');
+          } else {
+            setVariant('pointer');
+            setCursorText('');
+          }
         } else {
-          setVariant('pointer');
+          setVariant('default');
           setCursorText('');
         }
-      } else {
-        setVariant('default');
-        setCursorText('');
       }
     };
 
-    // 3. Mouse Down & Up (Click reaction)
     const handleMouseDown = () => setIsClicked(true);
     const handleMouseUp = () => setIsClicked(false);
 
-    // 4. Window Visibility
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => {
+      isVisible = false;
+      if (dotRef.current) dotRef.current.style.opacity = '0';
+      if (ringRef.current) ringRef.current.style.opacity = '0';
+    };
+
+    const handleMouseEnter = () => {
+      isVisible = true;
+      if (dotRef.current) dotRef.current.style.opacity = '1';
+      if (ringRef.current) ringRef.current.style.opacity = '1';
+    };
+
+    // Smooth 120 FPS Animation Loop
+    const loop = () => {
+      // Direct tracking dot
+      if (dotRef.current && hasMoved) {
+        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      }
+
+      // Trailing spring-lerp ring
+      if (ringRef.current && hasMoved) {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      }
+
+      rafId = requestAnimationFrame(loop);
+    };
+
+    rafId = requestAnimationFrame(loop);
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('mousedown', handleMouseDown);
@@ -86,118 +120,57 @@ export function LuxuryAnimatedCursor() {
     document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [isVisible, mouseX, mouseY]);
+  }, []);
 
-  if (isTouchDevice) return null;
+  if (!mounted) return null;
 
-  // Variant size & styling definitions
-  const getRingVariants = () => {
-    switch (variant) {
-      case 'button':
-        return {
-          width: 52,
-          height: 52,
-          x: '-50%',
-          y: '-50%',
-          borderColor: 'rgba(228, 199, 103, 0.95)',
-          backgroundColor: 'rgba(228, 199, 103, 0.12)',
-          boxShadow: '0 0 25px rgba(228, 199, 103, 0.35)',
-        };
-      case 'pointer':
-        return {
-          width: 44,
-          height: 44,
-          x: '-50%',
-          y: '-50%',
-          borderColor: 'rgba(228, 199, 103, 0.85)',
-          backgroundColor: 'rgba(16, 185, 129, 0.08)',
-          boxShadow: '0 0 20px rgba(228, 199, 103, 0.25)',
-        };
-      case 'view':
-      case 'drag':
-        return {
-          width: 72,
-          height: 72,
-          x: '-50%',
-          y: '-50%',
-          borderColor: 'rgba(228, 199, 103, 0.95)',
-          backgroundColor: 'rgba(2, 23, 16, 0.85)',
-          boxShadow: '0 0 35px rgba(228, 199, 103, 0.4), inset 0 0 15px rgba(16, 185, 129, 0.3)',
-        };
-      default:
-        return {
-          width: 32,
-          height: 32,
-          x: '-50%',
-          y: '-50%',
-          borderColor: 'rgba(228, 199, 103, 0.55)',
-          backgroundColor: 'rgba(228, 199, 103, 0.03)',
-          boxShadow: '0 0 12px rgba(228, 199, 103, 0.15)',
-        };
-    }
-  };
+  // Compute ring style classes depending on state
+  let ringClasses = 'w-8 h-8 border border-champagne/60 bg-champagne/5 shadow-[0_0_15px_rgba(228,199,103,0.2)]';
+  if (variant === 'button') {
+    ringClasses = 'w-12 h-12 border-2 border-champagne bg-champagne/15 shadow-[0_0_25px_rgba(228,199,103,0.45)]';
+  } else if (variant === 'pointer') {
+    ringClasses = 'w-11 h-11 border border-champagne bg-emerald-500/10 shadow-[0_0_20px_rgba(228,199,103,0.3)]';
+  } else if (variant === 'view' || variant === 'drag') {
+    ringClasses = 'w-16 h-16 border-2 border-champagne bg-[#021710]/95 shadow-[0_0_35px_rgba(228,199,103,0.5),inset_0_0_15px_rgba(16,185,129,0.3)]';
+  }
 
-  const isExpanded = variant === 'view' || variant === 'drag';
+  const isView = variant === 'view' || variant === 'drag';
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[99999] overflow-hidden">
-      {/* 1. Precision Center Point (0ms direct tracking) */}
-      <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-champagne-soft shadow-[0_0_8px_rgba(228,199,103,0.9)] pointer-events-none"
-        style={{
-          x: mouseX,
-          y: mouseY,
-          translateX: '-50%',
-          translateY: '-50%',
-          opacity: isVisible ? 1 : 0,
-        }}
-        animate={{
-          scale: isClicked ? 0.6 : isExpanded ? 0 : 1,
-        }}
-        transition={{ duration: 0.12 }}
+    <div className="fixed inset-0 pointer-events-none z-[999999] overflow-hidden">
+      {/* 1. Precision Center Point (0ms Instant Track) */}
+      <div
+        ref={dotRef}
+        className={`fixed top-0 left-0 rounded-full bg-champagne-soft shadow-[0_0_10px_rgba(228,199,103,1)] transition-opacity duration-200 pointer-events-none will-change-transform ${
+          isView ? 'w-0 h-0 opacity-0' : isClicked ? 'w-1 h-1 scale-75' : 'w-1.5 h-1.5'
+        }`}
+        style={{ opacity: 0 }}
       />
 
-      {/* 2. Trailing Champagne Gold Spring Ring */}
-      <motion.div
-        className="fixed top-0 left-0 rounded-full border border-champagne/60 backdrop-blur-[1px] pointer-events-none flex items-center justify-center text-center font-mono font-bold select-none"
-        style={{
-          x: smoothX,
-          y: smoothY,
-          opacity: isVisible ? 1 : 0,
-        }}
-        animate={{
-          ...getRingVariants(),
-          scale: isClicked ? 0.85 : 1,
-        }}
-        transition={{
-          width: { duration: 0.22, ease: 'easeOut' },
-          height: { duration: 0.22, ease: 'easeOut' },
-          backgroundColor: { duration: 0.2 },
-          borderColor: { duration: 0.2 },
-          scale: { duration: 0.12 },
-        }}
+      {/* 2. Trailing Smooth Spring Ring */}
+      <div
+        ref={ringRef}
+        className={`fixed top-0 left-0 rounded-full pointer-events-none flex items-center justify-center text-center select-none will-change-transform transition-all duration-200 ease-out ${ringClasses} ${
+          isClicked ? 'scale-90' : 'scale-100'
+        }`}
+        style={{ opacity: 0 }}
       >
-        {/* Context Label ("VIEW", "DRAG") */}
-        <AnimatePresence>
-          {cursorText && (
-            <motion.span
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.5 }}
-              transition={{ duration: 0.15 }}
-              className="text-[10px] uppercase tracking-widest text-champagne font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
-            >
-              {cursorText}
-            </motion.span>
-          )}
-        </AnimatePresence>
-      </motion.div>
+        {cursorText && (
+          <span
+            ref={textRef}
+            className="text-[10px] font-mono font-bold tracking-widest text-champagne uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] animate-fade-in"
+          >
+            {cursorText}
+          </span>
+        )}
+      </div>
     </div>
   );
 }
