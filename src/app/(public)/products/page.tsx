@@ -188,7 +188,6 @@ export default function PublicProductsPage() {
                 {/* Product Image Box with Vignette & Badges */}
                 <div 
                   className="relative h-48 w-full bg-zinc-950 overflow-hidden cursor-pointer"
-                  data-cursor="view"
                   onClick={() => setQuickViewProduct(p)}
                 >
                   <Image
