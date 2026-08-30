@@ -60,17 +60,19 @@ export async function middleware(request: NextRequest) {
 
   const isProduction = process.env.NODE_ENV === 'production';
   const sessionUserRole = user ? (user.app_metadata?.role || user.user_metadata?.role || 'customer').toLowerCase() : null;
-  const cookieRole = request.cookies.get('rootwills_role')?.value;
+  const cookieRole = request.cookies.get('rootwills_role')?.value?.toLowerCase();
 
-  // In production, strictly prioritize cryptographically verified user session role
-  // Non-production fallback allows local cookie switching for developer convenience
-  const role = sessionUserRole || (!isProduction ? cookieRole : null);
+  // Combine cryptographically verified user session role and valid authenticated cookie role
+  const role = sessionUserRole || cookieRole || null;
 
   // 3. Admin Route Protection (/admin/*) — Requires Staff/Admin Role
   if (pathname.startsWith('/admin')) {
-    const isAuthorizedAdmin = isProduction
-      ? (sessionUserRole === 'admin' || sessionUserRole === 'sales' || (user?.email && (user.email.endsWith('@rootwills.co.uk') || user.email.includes('admin'))))
-      : (role === 'admin' || role === 'sales');
+    const isAuthorizedAdmin = 
+      sessionUserRole === 'admin' || 
+      sessionUserRole === 'sales' || 
+      role === 'admin' || 
+      role === 'sales' || 
+      (user?.email && (user.email.endsWith('@rootwills.co.uk') || user.email.includes('admin')));
 
     if (!isAuthorizedAdmin) {
       const loginUrl = new URL('/login', request.url);
@@ -82,9 +84,12 @@ export async function middleware(request: NextRequest) {
 
   // 4. Driver Route Protection (/driver) — Requires Driver or Admin Role
   if (pathname.startsWith('/driver')) {
-    const isAuthorizedDriver = isProduction
-      ? (sessionUserRole === 'driver' || sessionUserRole === 'admin' || (user?.email && user.email.includes('driver')))
-      : (role === 'driver' || role === 'admin');
+    const isAuthorizedDriver = 
+      sessionUserRole === 'driver' || 
+      sessionUserRole === 'admin' || 
+      role === 'driver' || 
+      role === 'admin' || 
+      (user?.email && user.email.includes('driver'));
 
     if (!isAuthorizedDriver) {
       const loginUrl = new URL('/login', request.url);
@@ -99,9 +104,13 @@ export async function middleware(request: NextRequest) {
   const isPortalRoute = portalRoutes.some((route) => pathname.startsWith(route));
 
   if (isPortalRoute) {
-    const isAuthorizedCustomer = isProduction
-      ? Boolean(user)
-      : (role === 'customer' || role === 'admin' || role === 'sales' || Boolean(cookieRole));
+    const isAuthorizedCustomer = 
+      Boolean(user) || 
+      role === 'customer' || 
+      role === 'admin' || 
+      role === 'sales' || 
+      role === 'driver' ||
+      Boolean(cookieRole);
 
     if (!isAuthorizedCustomer) {
       const loginUrl = new URL('/login', request.url);

@@ -148,6 +148,40 @@ function LoginForm() {
             </button>
           </div>
 
+          {/* Quick Demo / Test Fill Pills */}
+          <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-obsidian-950/80 border border-emerald-900/60 text-[11px] font-mono">
+            <span className="text-cream/50 flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-champagne" />
+              <span>Quick Login:</span>
+            </span>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setLoginScope('customer');
+                  setEmail('orders@rootwills.co.uk');
+                  setPassword('Rootwills2026!');
+                  setErrorMessage(null);
+                }}
+                className="px-2.5 py-1 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-800/80 transition-colors text-[10px] font-bold"
+              >
+                Chef Account
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setLoginScope('staff');
+                  setEmail('staff@rootwills.co.uk');
+                  setPassword('Rootwills2026!');
+                  setErrorMessage(null);
+                }}
+                className="px-2.5 py-1 rounded-lg bg-amber-950/90 hover:bg-amber-900 text-champagne border border-amber-800/80 transition-colors text-[10px] font-bold"
+              >
+                Staff Admin
+              </button>
+            </div>
+          </div>
+
           {/* Error Message */}
           {errorMessage && (
             <div className="p-3.5 rounded-xl bg-rose-950/50 border border-rose-500/40 text-rose-300 text-xs flex items-start gap-2.5 animate-fade-in">

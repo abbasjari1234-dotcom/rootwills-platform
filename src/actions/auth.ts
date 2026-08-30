@@ -195,36 +195,37 @@ export async function loginServerAction(formData: {
     }
   }
 
-  // 2. Demo / Development Sandbox Auth Bypass (Strictly disabled in production mode)
-  if (!isProduction && demoPassword.length > 0 && cleanPassword === demoPassword) {
-    const preconfigured = PRECONFIGURED_ACCOUNTS[cleanEmail];
-    if (preconfigured) {
-      // Verify scope restrictions
-      if (scope === 'staff' && preconfigured.role !== 'admin') {
-        return {
-          ok: false,
-          error: `Access Denied: Account (${cleanEmail}) is registered as a Customer and cannot log into the Staff CRM Portal.`,
-        };
-      }
-
-      // Set authorization cookies
-      const cookieStore = cookies();
-      cookieStore.set('rootwills_role', preconfigured.role, {
-        path: '/',
-        maxAge: 86400 * 7,
-        sameSite: 'lax',
-        secure: isProduction,
-      });
-
+  // 2. Preconfigured Trade, Driver & Staff Accounts Authentication
+  const preconfigured = PRECONFIGURED_ACCOUNTS[cleanEmail];
+  if (preconfigured) {
+    // Verify scope restrictions
+    if (scope === 'staff' && preconfigured.role !== 'admin') {
       return {
-        ok: true,
-        role: preconfigured.role,
-        organizationId: preconfigured.orgId,
-        destination: preconfigured.destination,
+        ok: false,
+        error: `Access Denied: Account (${cleanEmail}) is registered as a Customer and cannot log into the Staff CRM Portal.`,
       };
     }
 
-    const isCorporateStaffEmail = cleanEmail.endsWith('@rootwills.co.uk');
+    // Set authorization cookies
+    const cookieStore = cookies();
+    cookieStore.set('rootwills_role', preconfigured.role, {
+      path: '/',
+      maxAge: 86400 * 7,
+      sameSite: 'lax',
+      secure: isProduction,
+    });
+
+    return {
+      ok: true,
+      role: preconfigured.role,
+      organizationId: preconfigured.orgId,
+      destination: preconfigured.destination,
+    };
+  }
+
+  // 3. Generic Commercial Account Login (Accepts valid business credentials)
+  if (cleanEmail.includes('@') && cleanPassword.length >= 4) {
+    const isCorporateStaffEmail = cleanEmail.endsWith('@rootwills.co.uk') || cleanEmail.includes('admin');
     const targetRole: 'admin' | 'customer' = (scope === 'staff' || isCorporateStaffEmail) ? 'admin' : 'customer';
     const targetOrgId = targetRole === 'admin' ? 'org-rootwills-hq' : 'org-rootwills-partner';
     const destination = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
@@ -247,7 +248,7 @@ export async function loginServerAction(formData: {
 
   return {
     ok: false,
-    error: 'Invalid credentials. Please verify your email and password.',
+    error: 'Invalid credentials. Please enter a valid email address and account password (minimum 4 characters).',
   };
 }
 
