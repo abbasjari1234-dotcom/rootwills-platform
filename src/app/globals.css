@@ -102,17 +102,54 @@ html, body {
   backface-visibility: hidden;
 }
 
-/* Metallic Champagne Text Gradient */
+/* Metallic Champagne Text Gradient with High-Contrast Legibility */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FFF7D6 0%, #E4C767 50%, #C9A227 100%);
+  background: linear-gradient(135deg, #FFFDF8 0%, #F5E498 35%, #E4C767 70%, #D4AF37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
 }
 
 .emerald-gradient-text {
-  background: linear-gradient(135deg, #A7F3D0 0%, #34D399 50%, #059669 100%);
+  background: linear-gradient(135deg, #ECFDF5 0%, #6EE7B7 40%, #34D399 75%, #10B981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95));
+}
+
+/* WCAG 2.1 AA Compliant Keyboard Focus Rings */
+:focus-visible {
+  outline: 2px solid #E4C767 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px #021710, 0 0 12px rgba(228, 199, 103, 0.6) !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #E4C767 !important;
+  outline-offset: 2px !important;
+}
+
+/* WCAG Level AA Text Contrast Guarantees (Min 4.5:1 on dark backgrounds) */
+.text-cream\/40 {
+  color: rgba(247, 245, 238, 0.72) !important;
+}
+
+.text-cream\/50 {
+  color: rgba(247, 245, 238, 0.78) !important;
+}
+
+.text-cream\/60 {
+  color: rgba(247, 245, 238, 0.84) !important;
+}
+
+.text-zinc-500 {
+  color: #a1a1aa !important;
 }
 
 /* Custom Scrollbar in Emerald */

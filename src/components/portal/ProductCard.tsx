@@ -131,7 +131,7 @@ export function ProductCard({
                 type="button"
                 onClick={() => setQty((q) => Math.max(moq || 1, q - 1))}
                 className="w-6 h-6 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 text-cream flex items-center justify-center text-xs transition-colors"
-                aria-label="Decrease quantity"
+                aria-label={`Decrease quantity of ${name}`}
               >
                 <Minus className="w-3 h-3" />
               </button>
@@ -142,7 +142,7 @@ export function ProductCard({
                 type="button"
                 onClick={() => setQty((q) => q + 1)}
                 className="w-6 h-6 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/80 text-cream flex items-center justify-center text-xs transition-colors"
-                aria-label="Increase quantity"
+                aria-label={`Increase quantity of ${name}`}
               >
                 <Plus className="w-3 h-3" />
               </button>
@@ -152,6 +152,7 @@ export function ProductCard({
             <button
               type="button"
               onClick={handleAdd}
+              aria-label={added ? `Added ${name} to order basket` : `Add ${qty} ${name} to order basket`}
               className={`h-8 px-3 rounded-xl font-mono text-xs font-bold transition-all duration-300 flex items-center gap-1.5 shadow-md ${
                 added
                   ? 'bg-emerald-500 text-obsidian-950 shadow-emerald-glow'

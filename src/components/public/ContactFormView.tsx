@@ -115,10 +115,12 @@ export function ContactFormView() {
               </p>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Company / Establishment Name *</label>
+                <label htmlFor="contact-company" className="block text-xs font-mono uppercase text-cream/80 mb-1">Company / Establishment Name *</label>
                 <input
+                  id="contact-company"
                   type="text"
                   required
+                  aria-label="Company or Establishment Name"
                   placeholder="e.g. Simpsons Restaurant"
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
@@ -128,10 +130,12 @@ export function ContactFormView() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Contact Name *</label>
+                  <label htmlFor="contact-name" className="block text-xs font-mono uppercase text-cream/80 mb-1">Contact Name *</label>
                   <input
+                    id="contact-name"
                     type="text"
                     required
+                    aria-label="Contact Name"
                     placeholder="e.g. Luke Tipping"
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
@@ -139,10 +143,12 @@ export function ContactFormView() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Postcode *</label>
+                  <label htmlFor="contact-postcode" className="block text-xs font-mono uppercase text-cream/80 mb-1">Postcode *</label>
                   <input
+                    id="contact-postcode"
                     type="text"
                     required
+                    aria-label="Establishment Postcode"
                     placeholder="e.g. B15 3DZ"
                     value={formData.postcode}
                     onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
@@ -153,10 +159,12 @@ export function ContactFormView() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Work Email *</label>
+                  <label htmlFor="contact-email" className="block text-xs font-mono uppercase text-cream/80 mb-1">Work Email *</label>
                   <input
+                    id="contact-email"
                     type="email"
                     required
+                    aria-label="Work Email Address"
                     placeholder="chef@restaurant.co.uk"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -164,10 +172,12 @@ export function ContactFormView() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Phone Number *</label>
+                  <label htmlFor="contact-phone" className="block text-xs font-mono uppercase text-cream/80 mb-1">Phone Number *</label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     required
+                    aria-label="Contact Phone Number"
                     placeholder="0121 454 3434"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -177,9 +187,11 @@ export function ContactFormView() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase text-cream/70 mb-1">Message / Key Products Required</label>
+                <label htmlFor="contact-message" className="block text-xs font-mono uppercase text-cream/80 mb-1">Message / Key Products Required</label>
                 <textarea
+                  id="contact-message"
                   rows={3}
+                  aria-label="Message and Key Products Required"
                   placeholder="Tell us about your menu requirements, current delivery schedules, or questions..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}

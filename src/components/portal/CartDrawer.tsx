@@ -354,13 +354,15 @@ export function CartDrawer() {
                   <div className="mt-6 pt-4 border-t border-emerald-950 space-y-4">
                     {/* Delivery Slot Selection */}
                     <div>
-                      <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 font-bold">
+                      <label htmlFor="delivery-slot-select" className="block text-[11px] font-mono uppercase text-cream/80 mb-1.5 font-bold">
                         Preferred Morning Window
                       </label>
                       <select
+                        id="delivery-slot-select"
+                        aria-label="Preferred morning delivery timeslot"
                         value={selectedSlot}
                         onChange={(e) => setSelectedSlot(e.target.value)}
-                        className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+                        className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne cursor-pointer"
                       >
                         <option value="Early Morning 05:30 - 07:30">Early Kitchen Keyslot (05:30 – 07:30 AM)</option>
                         <option value="Standard Morning 07:30 - 09:30">Standard Morning (07:30 – 09:30 AM)</option>

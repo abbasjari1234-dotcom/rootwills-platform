@@ -136,6 +136,7 @@ export function AdminOrdersView() {
           type="button"
           onClick={fetchLiveOrders}
           disabled={isRefreshing}
+          aria-label="Sync live orders from database"
           className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center gap-1.5 hover:bg-obsidian-850 shadow-sm transition-all cursor-pointer"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -147,9 +148,9 @@ export function AdminOrdersView() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="glass-panel p-4 rounded-2xl flex items-center justify-between border-cream/10">
           <div>
-            <span className="text-[10px] font-mono uppercase text-cream/40 block">Total Orders Value</span>
+            <span className="text-[10px] font-mono uppercase text-cream/70 block">Total Orders Value</span>
             <span className="font-display text-2xl font-bold text-champagne">£{totalRevenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</span>
-            <span className="text-[10px] text-cream/60 block">{combinedOrders.length} Total Orders Recorded</span>
+            <span className="text-[10px] text-cream/80 block">{combinedOrders.length} Total Orders Recorded</span>
           </div>
           <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center font-bold">
             <DollarSign className="w-5 h-5" />

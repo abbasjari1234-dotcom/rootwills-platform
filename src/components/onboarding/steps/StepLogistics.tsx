@@ -85,12 +85,14 @@ export function StepLogistics() {
               <span>Assigned Depot: <strong className="text-cream">{depotPreview}</strong> (06:00 - 08:30 AM SLA)</span>
             </div>
           ) : (
-            <span className="text-[11px] text-cream/40">Enter postcode to verify assigned fulfilment hub</span>
+            <span className="text-[11px] text-cream/70">Enter postcode to verify assigned fulfilment hub</span>
           )}
         </div>
 
-        <FormField label="Driver & Kitchen Access Notes" hint="Optional">
+        <FormField label="Driver & Kitchen Access Notes" htmlFor="deliveryNotes" hint="Optional">
           <textarea
+            id="deliveryNotes"
+            aria-label="Driver and Kitchen Access Notes"
             {...register('deliveryNotes')}
             rows={3}
             placeholder="e.g. Rear service entrance on Needlers Alley. Keyholder early morning cold room drop."

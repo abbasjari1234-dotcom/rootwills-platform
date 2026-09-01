@@ -69,7 +69,12 @@ export function QuickReorderModal({ order, isOpen, onClose }: QuickReorderModalP
               Original Order Date: {order.createdAt.split('T')[0]} &bull; {order.locationName}
             </p>
           </div>
-          <button onClick={onClose} className="p-1 rounded-lg text-cream/50 hover:text-cream">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close repeat order modal"
+            className="p-1 rounded-lg text-cream/70 hover:text-cream"
+          >
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -85,7 +90,7 @@ export function QuickReorderModal({ order, isOpen, onClose }: QuickReorderModalP
               >
                 <div className="flex-1 min-w-0">
                   <div className="font-bold text-cream truncate">{item.name}</div>
-                  <div className="text-[11px] text-cream/50">
+                  <div className="text-[11px] text-cream/70">
                     {item.packSize} &bull; £{item.unitPrice.toFixed(2)} / unit
                   </div>
                 </div>
@@ -93,14 +98,18 @@ export function QuickReorderModal({ order, isOpen, onClose }: QuickReorderModalP
                 <div className="flex items-center gap-2">
                   <div className="flex items-center border border-cream/20 rounded-lg bg-obsidian-900">
                     <button
+                      type="button"
                       onClick={() => handleQtyChange(item.productId, currentQty - 1)}
+                      aria-label={`Decrease quantity of ${item.name}`}
                       className="p-1 text-cream/70 hover:text-cream"
                     >
                       <Minus className="w-3 h-3" />
                     </button>
                     <span className="px-2 font-mono font-bold text-cream">{currentQty}</span>
                     <button
+                      type="button"
                       onClick={() => handleQtyChange(item.productId, currentQty + 1)}
+                      aria-label={`Increase quantity of ${item.name}`}
                       className="p-1 text-cream/70 hover:text-cream"
                     >
                       <Plus className="w-3 h-3" />

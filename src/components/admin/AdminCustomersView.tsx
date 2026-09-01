@@ -169,8 +169,10 @@ export function AdminCustomersView() {
                 </p>
               </div>
               <button
+                type="button"
                 onClick={() => setSelectedOrgForPricing(null)}
-                className="text-cream/50 hover:text-cream text-base"
+                aria-label="Close pricing and credit terms editor"
+                className="text-cream/70 hover:text-cream text-base p-1"
               >
                 ✕
               </button>
@@ -179,12 +181,14 @@ export function AdminCustomersView() {
             {/* Quick Credit & Terms Adjuster */}
             <div className="p-4 rounded-xl bg-obsidian-950 border border-cream/10 grid grid-cols-1 sm:grid-cols-3 gap-4 items-end text-xs">
               <div>
-                <label className="block text-cream/60 uppercase font-mono text-[10px] mb-1">
+                <label htmlFor="customer-credit-limit" className="block text-cream/80 uppercase font-mono text-[10px] mb-1 font-bold">
                   Trade Credit Limit (£)
                 </label>
                 <input
+                  id="customer-credit-limit"
                   type="number"
                   step="500"
+                  aria-label="Trade Credit Limit in Pounds"
                   value={editingCreditLimit}
                   onChange={(e) => setEditingCreditLimit(Number(e.target.value))}
                   className="w-full bg-obsidian-900 border border-cream/20 rounded-lg p-2 font-mono font-bold text-cream focus:outline-none focus:border-emerald-400"
@@ -192,13 +196,15 @@ export function AdminCustomersView() {
               </div>
 
               <div>
-                <label className="block text-cream/60 uppercase font-mono text-[10px] mb-1">
+                <label htmlFor="customer-payment-terms" className="block text-cream/80 uppercase font-mono text-[10px] mb-1 font-bold">
                   Payment Terms
                 </label>
                 <select
+                  id="customer-payment-terms"
+                  aria-label="Payment Terms"
                   value={editingPaymentTerms}
                   onChange={(e) => setEditingPaymentTerms(e.target.value)}
-                  className="w-full bg-obsidian-900 border border-cream/20 rounded-lg p-2 font-mono text-cream focus:outline-none focus:border-emerald-400"
+                  className="w-full bg-obsidian-900 border border-cream/20 rounded-lg p-2 font-mono text-cream focus:outline-none focus:border-emerald-400 cursor-pointer"
                 >
                   <option value="30 Days EOM">30 Days EOM</option>
                   <option value="30 Days Net">30 Days Net</option>

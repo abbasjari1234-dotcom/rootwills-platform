@@ -147,7 +147,7 @@ export function PriceEstimator() {
                 aria-label="Business Name"
                 value={formData.companyName}
                 onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/40 focus:outline-none focus:border-champagne"
+                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
               />
               <input
                 type="text"
@@ -155,7 +155,7 @@ export function PriceEstimator() {
                 aria-label="Contact Name / Role"
                 value={formData.contactName}
                 onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/40 focus:outline-none focus:border-champagne"
+                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
               />
               <input
                 type="email"
@@ -164,7 +164,7 @@ export function PriceEstimator() {
                 aria-label="Work Email Address"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/40 focus:outline-none focus:border-champagne"
+                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
               />
               <input
                 type="tel"
@@ -173,7 +173,7 @@ export function PriceEstimator() {
                 aria-label="Telephone / Mobile"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/40 focus:outline-none focus:border-champagne"
+                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
               />
             </div>
 

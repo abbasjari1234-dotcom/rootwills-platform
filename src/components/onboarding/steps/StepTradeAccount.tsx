@@ -233,6 +233,7 @@ export function StepTradeAccount() {
         <button
           type="submit"
           disabled={store.submitting}
+          aria-label="Submit application and open trade account"
           className="onboarding-btn-primary text-xs shadow-gold-glow flex-1 sm:flex-initial"
         >
           {store.submitting ? (

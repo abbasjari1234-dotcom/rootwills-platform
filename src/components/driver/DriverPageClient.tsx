@@ -329,7 +329,7 @@ export function DriverPageClient() {
         <div className="space-y-3 pt-4 border-t border-cream/10">
           <h3 className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold flex justify-between">
             <span>Delivered POD Receipts ({completedDeliveries.length})</span>
-            <span className="text-[10px] text-cream/40">Audit Log Ready</span>
+            <span className="text-[10px] text-cream/70">Audit Log Ready</span>
           </h3>
           <div className="space-y-2">
             {completedDeliveries.map((ord) => {
@@ -341,6 +341,8 @@ export function DriverPageClient() {
                 >
                   <button
                     type="button"
+                    aria-expanded={isExpanded}
+                    aria-label={`Toggle proof of delivery receipt for order ${ord.orderNumber}`}
                     onClick={() => setExpandedPodId(isExpanded ? null : ord.id)}
                     className="w-full p-3 flex justify-between items-center text-left hover:bg-obsidian-850"
                   >
@@ -349,7 +351,7 @@ export function DriverPageClient() {
                         <span>{ord.organizationName}</span>
                         <span className="text-[10px] font-mono text-champagne font-normal">({ord.orderNumber})</span>
                       </span>
-                      <span className="text-[10px] text-cream/40 block">{ord.locationName}</span>
+                      <span className="text-[10px] text-cream/70 block">{ord.locationName}</span>
                     </span>
                     <span className="flex items-center gap-2">
                       <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
@@ -357,7 +359,7 @@ export function DriverPageClient() {
                         <span>POD Logged</span>
                       </span>
                       <ChevronRight
-                        className={`w-4 h-4 text-cream/40 transition-transform ${
+                        className={`w-4 h-4 text-cream/70 transition-transform ${
                           isExpanded ? 'rotate-90 text-champagne' : ''
                         }`}
                       />

@@ -417,6 +417,7 @@ export function PortalAccountView() {
             <div className="flex gap-3 pt-2">
               <button
                 type="button"
+                aria-label="Confirm permanent account erasure"
                 disabled={isDeleting || deleteConfirmText.trim().toUpperCase() !== 'DELETE'}
                 onClick={handleConfirmDelete}
                 className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono font-bold text-xs transition-all disabled:opacity-40"

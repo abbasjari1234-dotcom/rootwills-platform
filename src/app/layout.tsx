@@ -45,7 +45,16 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body className="bg-obsidian text-cream antialiased min-h-screen selection:bg-champagne selection:text-obsidian flex flex-col font-sans">
-        {children}
+        {/* WCAG Skip to Main Content Link for Keyboard Navigation */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-champagne focus:text-obsidian-950 focus:font-bold focus:text-xs focus:rounded-xl focus:shadow-gold-glow focus:outline-none"
+        >
+          Skip to Main Content &darr;
+        </a>
+        <div id="main-content" className="flex-1 flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );

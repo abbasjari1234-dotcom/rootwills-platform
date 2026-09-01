@@ -250,12 +250,14 @@ export function AdminCRMView() {
             type="button"
             onClick={fetchLiveLeads}
             disabled={isSyncing}
+            aria-label="Sync live sales leads from database"
             className="px-3.5 py-2.5 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-xs hover:bg-obsidian-850 flex items-center gap-1.5 transition-all shadow-sm"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
             <span>{isSyncing ? 'Syncing...' : 'Sync Live Leads'}</span>
           </button>
           <button
+            type="button"
             onClick={() => setNewLeadModalOpen(true)}
             className="px-4 py-2.5 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-2"
           >
@@ -659,24 +661,28 @@ export function AdminCRMView() {
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="glass-panel rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative border-cream/20">
             <button
+              type="button"
               onClick={() => setNewLeadModalOpen(false)}
-              className="absolute top-6 right-6 text-cream/40 hover:text-cream"
+              aria-label="Close add wholesale lead modal"
+              className="absolute top-6 right-6 text-cream/70 hover:text-cream p-1"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="space-y-1">
               <h2 className="font-display text-2xl font-bold text-cream">Add New Wholesale Lead</h2>
-              <p className="text-xs text-cream/60">Manually log a phone inquiry or sales rep site visit.</p>
+              <p className="text-xs text-cream/80">Manually log a phone inquiry or sales rep site visit.</p>
             </div>
 
             <form onSubmit={handleCreateLead} className="space-y-3 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Company / Venue Name *</label>
+                  <label htmlFor="new-lead-company" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Company / Venue Name *</label>
                   <input
+                    id="new-lead-company"
                     type="text"
                     required
+                    aria-label="Company or Venue Name"
                     value={newLeadForm.companyName}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, companyName: e.target.value })}
                     placeholder="e.g. The Ivy Temple Row"
@@ -684,10 +690,12 @@ export function AdminCRMView() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Contact Name *</label>
+                  <label htmlFor="new-lead-contact" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Contact Name *</label>
                   <input
+                    id="new-lead-contact"
                     type="text"
                     required
+                    aria-label="Contact Name"
                     value={newLeadForm.contactName}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, contactName: e.target.value })}
                     placeholder="e.g. Head Chef Alex"
@@ -698,21 +706,25 @@ export function AdminCRMView() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Email Address *</label>
+                  <label htmlFor="new-lead-email" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Email Address *</label>
                   <input
+                    id="new-lead-email"
                     type="email"
                     required
+                    aria-label="Email Address"
                     value={newLeadForm.email}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, email: e.target.value })}
-                    placeholder="alex@theivy.co.uk"
+                    placeholder="chef@venue.co.uk"
                     className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Phone Number *</label>
+                  <label htmlFor="new-lead-phone" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Phone Number *</label>
                   <input
+                    id="new-lead-phone"
                     type="tel"
                     required
+                    aria-label="Phone Number"
                     value={newLeadForm.phone}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, phone: e.target.value })}
                     placeholder="07700 900456"
@@ -723,11 +735,13 @@ export function AdminCRMView() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Sector</label>
+                  <label htmlFor="new-lead-sector" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Sector</label>
                   <select
+                    id="new-lead-sector"
+                    aria-label="Lead Sector"
                     value={newLeadForm.sector}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, sector: e.target.value as Sector })}
-                    className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+                    className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne cursor-pointer"
                   >
                     <option value="fine_dining">Fine Dining</option>
                     <option value="hotel_hospitality">Hotels</option>
@@ -737,18 +751,22 @@ export function AdminCRMView() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">City</label>
+                  <label htmlFor="new-lead-city" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">City</label>
                   <input
+                    id="new-lead-city"
                     type="text"
+                    aria-label="City"
                     value={newLeadForm.city}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, city: e.target.value })}
                     className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-mono text-cream/70 mb-1">Est. Spend (£/wk)</label>
+                  <label htmlFor="new-lead-spend" className="block text-[11px] font-mono text-cream/80 mb-1 font-bold">Est. Spend (£/wk)</label>
                   <input
+                    id="new-lead-spend"
                     type="number"
+                    aria-label="Estimated Weekly Spend"
                     value={newLeadForm.estimatedWeeklySpend}
                     onChange={(e) => setNewLeadForm({ ...newLeadForm, estimatedWeeklySpend: Number(e.target.value) })}
                     className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-champagne"

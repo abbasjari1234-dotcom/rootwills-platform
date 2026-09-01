@@ -135,8 +135,10 @@ export function AIOrderAssistant() {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1 rounded-lg text-cream/50 hover:text-cream hover:bg-obsidian-800"
+                aria-label="Close AI kitchen concierge"
+                className="p-1 rounded-lg text-cream/70 hover:text-cream hover:bg-obsidian-800"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -238,6 +240,7 @@ export function AIOrderAssistant() {
               >
                 <input
                   type="text"
+                  aria-label="Ask AI assistant for recipes, orders, or stock"
                   placeholder="Ask AI for your usual prep, ingredients, or advice..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -245,6 +248,7 @@ export function AIOrderAssistant() {
                 />
                 <button
                   type="submit"
+                  aria-label="Send message to AI kitchen concierge"
                   disabled={!input.trim()}
                   className="p-2.5 rounded-xl bg-champagne text-obsidian-950 font-bold disabled:opacity-40 hover:brightness-110"
                 >

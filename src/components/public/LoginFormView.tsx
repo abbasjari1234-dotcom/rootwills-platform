@@ -201,27 +201,29 @@ function LoginFormContent() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-mono uppercase text-cream/70 mb-1.5 font-bold">
+              <label htmlFor="login-email" className="block text-xs font-mono uppercase text-cream/80 mb-1.5 font-bold">
                 {loginScope === 'customer' ? 'Business Email / Chef Login' : 'Staff Corporate Email'}
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/40">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/70">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
+                  id="login-email"
                   type="email"
                   required
+                  aria-label="Registered Business Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your registered email address"
-                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30 font-sans"
+                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/60 font-sans"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex justify-between items-center mb-1.5">
-                <label className="block text-xs font-mono uppercase text-cream/70 font-bold">
+                <label htmlFor="login-password" className="block text-xs font-mono uppercase text-cream/80 font-bold">
                   Password
                 </label>
                 <Link
@@ -232,21 +234,24 @@ function LoginFormContent() {
                 </Link>
               </div>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/40">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/70">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
+                  id="login-password"
                   type={showPassword ? 'text' : 'password'}
                   required
+                  aria-label="Account Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your account password"
-                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-10 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30 font-sans"
+                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-10 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/60 font-sans"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-cream/40 hover:text-cream"
+                  aria-label={showPassword ? "Hide account password" : "Show account password in cleartext"}
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-cream/70 hover:text-cream"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>

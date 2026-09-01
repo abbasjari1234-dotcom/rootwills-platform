@@ -176,11 +176,13 @@ export function AdminNotificationsView() {
         <form onSubmit={handleSendBroadcast} className="space-y-4 text-xs">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">Target Kitchen Group</label>
+              <label htmlFor="target-group-select" className="block text-[11px] font-mono uppercase text-cream/80 mb-1 font-bold">Target Kitchen Group</label>
               <select
+                id="target-group-select"
+                aria-label="Target Kitchen Group"
                 value={targetSector}
                 onChange={(e) => setTargetSector(e.target.value as any)}
-                className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne"
+                className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne cursor-pointer"
               >
                 <option value="all">All Verified Accounts ({organizations.length} Kitchens)</option>
                 <option value="fine_dining">Fine Dining & Restaurants Only</option>
@@ -190,7 +192,7 @@ export function AdminNotificationsView() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">Channel Delivery</label>
+              <span className="block text-[11px] font-mono uppercase text-cream/80 mb-1 font-bold">Channel Delivery</span>
               <div className="flex gap-2">
                 <span className="flex-1 px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-cream flex items-center gap-2">
                   <Smartphone className="w-4 h-4 text-champagne" />
@@ -205,10 +207,12 @@ export function AdminNotificationsView() {
           </div>
 
           <div>
-            <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1">
+            <label htmlFor="broadcast-msg" className="block text-[11px] font-mono uppercase text-cream/80 mb-1 font-bold">
               Message Content (or leave blank to use intelligent system preset)
             </label>
             <textarea
+              id="broadcast-msg"
+              aria-label="Broadcast message content"
               rows={3}
               value={customMsg}
               onChange={(e) => setCustomMsg(e.target.value)}
@@ -217,7 +221,7 @@ export function AdminNotificationsView() {
                   ? '🚨 Rootwills Reminder: 30 mins to 23:00 order cut-off for tomorrow morning 06:15 drop. Reorder link: https://rootwills.co.uk/quick-order'
                   : '🚚 Rootwills Dispatch: Mercedes Sprinter #04 loaded. Chilled chamber logged at +2.4°C. ETA 06:20 AM.'
               }
-              className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl p-3.5 font-mono text-xs focus:outline-none focus:border-champagne"
+              className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 rounded-xl p-3.5 font-mono text-xs focus:outline-none focus:border-champagne"
             />
           </div>
 

@@ -449,8 +449,10 @@ export function PortalInvoicesView() {
                   </div>
                 ) : (
                   <button
+                    type="button"
                     onClick={handleSetupDirectDebit}
                     disabled={mandateLoading}
+                    aria-label="Authorize GoCardless 30-Day BACS Mandate"
                     className="w-full py-3.5 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {mandateLoading ? (

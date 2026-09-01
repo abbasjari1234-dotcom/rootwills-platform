@@ -176,9 +176,10 @@ export function PortalQuickOrderView() {
 
         {/* Search Field */}
         <div className="relative w-full sm:w-72">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-cream/40" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-cream/70 pointer-events-none" />
           <input
             type="text"
+            aria-label="Search SKU or product in quick order matrix"
             placeholder="Search SKU or product..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -283,8 +284,10 @@ export function PortalQuickOrderView() {
             </button>
 
             <button
+              type="button"
               onClick={handleAddAllToCart}
               disabled={addedSuccess}
+              aria-label={addedSuccess ? "Items added to order basket" : "Review and submit order basket"}
               className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-2 transition-all"
             >
               {addedSuccess ? (
@@ -309,22 +312,32 @@ export function PortalQuickOrderView() {
           <div className="bg-obsidian-900 border border-emerald-900/80 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div className="flex justify-between items-center">
               <h3 className="font-display text-lg font-bold text-cream">Paste Kitchen Prep List</h3>
-              <button onClick={() => setBulkModalOpen(false)} className="text-cream/50 hover:text-cream">
+              <button
+                type="button"
+                onClick={() => setBulkModalOpen(false)}
+                aria-label="Close paste kitchen prep list modal"
+                className="text-cream/70 hover:text-cream p-1"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <p className="text-xs text-cream/70 font-sans">
-              Paste your line entries (e.g. <code className="text-champagne">FP-TOM-01 5</code> or <code className="text-champagne">San Marzano Tomatoes: 3</code>). Our system will automatically parse and stage the quantities.
+            <p className="text-xs text-cream/80 font-sans">
+              Paste your line entries (e.g. <code className="text-champagne font-bold">FP-TOM-01 5</code> or <code className="text-champagne font-bold">San Marzano Tomatoes: 3</code>). Our system will automatically parse and stage the quantities.
             </p>
 
-            <textarea
-              rows={6}
-              value={bulkText}
-              onChange={(e) => setBulkText(e.target.value)}
-              placeholder={`FP-TOM-01 4\nFP-APP-03 2\nDY-BUT-01 6`}
-              className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl p-3 text-xs font-mono text-cream focus:outline-none focus:border-champagne"
-            />
+            <div>
+              <label htmlFor="bulk-prep-text" className="sr-only">Kitchen Prep List Entries</label>
+              <textarea
+                id="bulk-prep-text"
+                aria-label="Kitchen prep list entries"
+                rows={6}
+                value={bulkText}
+                onChange={(e) => setBulkText(e.target.value)}
+                placeholder={`FP-TOM-01 4\nFP-APP-03 2\nDY-BUT-01 6`}
+                className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl p-3 text-xs font-mono text-cream focus:outline-none focus:border-champagne"
+              />
+            </div>
 
             {bulkResultMsg && (
               <div className="p-3 bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs rounded-xl flex items-center gap-2 font-mono">

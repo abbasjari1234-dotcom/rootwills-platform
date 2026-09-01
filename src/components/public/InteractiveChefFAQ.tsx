@@ -76,6 +76,9 @@ export function InteractiveChefFAQ() {
             >
               <button
                 type="button"
+                id={`faq-question-${idx}`}
+                aria-expanded={isOpen}
+                aria-controls={`faq-answer-${idx}`}
                 onClick={() => toggle(idx)}
                 className="w-full p-5 sm:p-6 text-left flex justify-between items-center gap-4 focus:outline-none"
               >
@@ -89,7 +92,7 @@ export function InteractiveChefFAQ() {
                 </span>
 
                 <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 ${
-                  isOpen ? 'bg-champagne text-obsidian-950 border-champagne rotate-180' : 'bg-obsidian-950 text-cream/60 border-emerald-900'
+                  isOpen ? 'bg-champagne text-obsidian-950 border-champagne rotate-180' : 'bg-obsidian-950 text-cream/70 border-emerald-900'
                 }`}>
                   <ChevronDown className="w-4 h-4" />
                 </span>
@@ -98,12 +101,15 @@ export function InteractiveChefFAQ() {
               <AnimatePresence>
                 {isOpen && (
                   <motion.div
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${idx}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-cream/80 font-sans leading-relaxed border-t border-emerald-900/40 mt-1">
+                    <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-cream/90 font-sans leading-relaxed border-t border-emerald-900/40 mt-1">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -115,7 +121,7 @@ export function InteractiveChefFAQ() {
       </div>
 
       <div className="mt-8 text-center">
-        <p className="text-xs font-mono text-cream/60">
+        <p className="text-xs font-mono text-cream/80">
           Have a specific kitchen requirement?{' '}
           <Link href="/contact" className="text-champagne font-bold hover:underline">
             Speak directly with our Birmingham Sales Desk &rarr;

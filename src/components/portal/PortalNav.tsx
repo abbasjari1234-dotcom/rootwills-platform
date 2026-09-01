@@ -71,9 +71,10 @@ export function PortalNav() {
 
             {/* Location selector */}
             {currentOrg.locations.length > 1 && (
-              <div className="flex items-center gap-1 text-cream/70 bg-obsidian-950 px-2.5 py-1 rounded-lg border border-emerald-900/50">
+              <div className="flex items-center gap-1 text-cream/80 bg-obsidian-950 px-2.5 py-1 rounded-lg border border-emerald-900/50">
                 <MapPin className="w-3 h-3 text-champagne" />
                 <select
+                  aria-label="Switch delivery location"
                   value={currentLocationId}
                   onChange={(e) => setLocation(e.target.value)}
                   className="bg-transparent text-cream text-[11px] focus:outline-none cursor-pointer"
@@ -88,7 +89,7 @@ export function PortalNav() {
             )}
 
             <span className="hidden sm:inline text-cream/30">&bull;</span>
-            <span className="hidden sm:inline text-cream/70">
+            <span className="hidden sm:inline text-cream/80">
               Cut-off: <strong className="text-champagne font-mono">11:00 PM tonight</strong> for 06:00 AM delivery
             </span>
           </div>
@@ -96,10 +97,10 @@ export function PortalNav() {
           {/* Trade Credit Gauge & User Logout */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="text-[11px] text-cream/70">
+              <div className="text-[11px] text-cream/80">
                 <span>Credit: </span>
                 <strong className="text-emerald-400 font-mono">£{availableCredit.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
-                <span className="text-cream/40"> / £{currentOrg.creditLimit.toLocaleString()}</span>
+                <span className="text-cream/70"> / £{currentOrg.creditLimit.toLocaleString()}</span>
               </div>
               <div className="w-16 bg-obsidian-950 h-1.5 rounded-full overflow-hidden border border-emerald-900/60 hidden md:block">
                 <div
@@ -111,8 +112,10 @@ export function PortalNav() {
 
             {/* Logout Action */}
             <button
+              type="button"
               onClick={handleLogout}
-              className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-cream/60 hover:text-champagne hover:border-champagne/40 text-[11px] font-mono flex items-center gap-1.5 transition-all"
+              aria-label="Sign out of account"
+              className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-cream/80 hover:text-champagne hover:border-champagne/40 text-[11px] font-mono flex items-center gap-1.5 transition-all"
             >
               <LogOut className="w-3 h-3" />
               <span className="hidden sm:inline">Sign Out</span>
@@ -123,28 +126,21 @@ export function PortalNav() {
 
       {/* Main Portal Nav Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          
-          {/* Logo & Portal Badge */}
-          <div className="flex items-center gap-4">
-            <RootwillsLogo size="sm" variant="full" />
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-[10px] font-mono uppercase tracking-wider font-bold">
-              Trade Portal
-            </span>
-          </div>
+        <div className="flex justify-between items-center py-3">
+          <RootwillsLogo size="md" variant="compact" href="/dashboard" />
 
-          {/* Desktop Nav Items */}
+          {/* Nav Links */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const active = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3.5 py-2 text-xs font-medium rounded-xl transition-all duration-200 ${
-                    isActive
-                      ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30 shadow-sm'
-                      : 'text-cream/75 hover:text-cream hover:bg-emerald-950/30'
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                    active
+                      ? 'bg-champagne/15 text-champagne border border-champagne/30 font-bold'
+                      : 'text-cream/80 hover:text-cream hover:bg-emerald-950/40'
                   }`}
                 >
                   {link.label}
@@ -156,7 +152,9 @@ export function PortalNav() {
           {/* Right Action Trigger: 3D Cart Button */}
           <div className="flex items-center gap-3">
             <button
+              type="button"
               onClick={openCart}
+              aria-label={`Open shopping cart (${cartItemCount} items)`}
               className="relative px-4 py-2.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 transition-all flex items-center gap-2 active:scale-95 group"
             >
               <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -170,9 +168,11 @@ export function PortalNav() {
 
             {/* Mobile Nav Toggle */}
             <button
+              type="button"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
               className="p-2 text-cream hover:text-champagne lg:hidden"
-              aria-label="Toggle navigation menu"
+              aria-label={mobileNavOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileNavOpen}
             >
               {mobileNavOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

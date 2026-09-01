@@ -133,18 +133,21 @@ export function PublicProductsView() {
           <div className="flex items-center gap-2.5 w-full md:w-auto">
             {/* Search Input */}
             <div className="relative flex-1 md:w-64">
-              <Search className="w-4 h-4 text-cream/40 absolute left-3 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-cream/70 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
+                aria-label="Search wholesale product catalogue"
                 placeholder="Search SKU, name, origin..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl pl-9 pr-8 py-2 text-xs focus:outline-none focus:border-champagne"
+                className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 rounded-xl pl-9 pr-8 py-2 text-xs focus:outline-none focus:border-champagne"
               />
               {searchQuery && (
                 <button
+                  type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-cream/40 hover:text-cream text-xs"
+                  aria-label="Clear product search query"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-cream/70 hover:text-cream text-xs p-1"
                 >
                   ✕
                 </button>
@@ -154,6 +157,7 @@ export function PublicProductsView() {
             {/* Sort Dropdown */}
             <div className="relative">
               <select
+                aria-label="Sort wholesale products"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
                 className="bg-zinc-900 border border-zinc-700 text-cream text-xs rounded-xl px-3 py-2 appearance-none pr-8 focus:outline-none focus:border-champagne cursor-pointer"
@@ -163,7 +167,7 @@ export function PublicProductsView() {
                 <option value="price_desc">Price: High to Low</option>
                 <option value="moq">Lowest MOQ</option>
               </select>
-              <ChevronDown className="w-3.5 h-3.5 text-cream/40 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="w-3.5 h-3.5 text-cream/70 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -207,8 +211,10 @@ export function PublicProductsView() {
                     </span>
 
                     <button
+                      type="button"
                       onClick={() => setQuickViewProduct(p)}
-                      className="p-1.5 rounded-lg bg-zinc-900/90 text-cream/70 hover:text-cream hover:bg-zinc-800 border border-zinc-700 transition-colors"
+                      aria-label={`View quick specifications for ${p.name}`}
+                      className="p-1.5 rounded-lg bg-zinc-900/90 text-cream/90 hover:text-cream hover:bg-zinc-800 border border-zinc-700 transition-colors"
                       title="Quick Specs"
                     >
                       <Eye className="w-3.5 h-3.5" />
@@ -227,13 +233,13 @@ export function PublicProductsView() {
                 {/* Content Details */}
                 <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
                   <div className="space-y-1.5">
-                    <div className="text-[10px] font-mono uppercase text-champagne/80">
+                    <div className="text-[10px] font-mono uppercase text-champagne/90 font-bold">
                       {p.categoryLabel} &bull; {p.origin || 'UK Farm Origin'}
                     </div>
                     <h3 className="font-display text-lg font-bold text-cream group-hover:text-champagne transition-colors leading-snug">
                       {p.name}
                     </h3>
-                    <p className="text-xs text-cream/60 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-cream/80 line-clamp-2 leading-relaxed">
                       {p.description}
                     </p>
 
@@ -253,13 +259,13 @@ export function PublicProductsView() {
                   <div className="pt-3 border-t border-zinc-800 space-y-2.5">
                     <div className="flex justify-between items-baseline">
                       <div>
-                        <span className="text-[10px] text-cream/40 font-mono block">Guide Base Price</span>
+                        <span className="text-[10px] text-cream/70 font-mono block">Guide Base Price</span>
                         <span className="font-mono text-base font-bold text-cream">
                           £{p.basePrice.toFixed(2)}
                         </span>
-                        <span className="text-[10px] text-cream/50 font-mono"> / {p.unit}</span>
+                        <span className="text-[10px] text-cream/70 font-mono"> / {p.unit}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-champagne bg-champagne/10 px-2 py-0.5 rounded border border-champagne/20">
+                      <span className="text-[10px] font-mono text-champagne bg-champagne/10 px-2 py-0.5 rounded border border-champagne/20 font-bold">
                         MOQ: {p.moq} {p.unit}
                       </span>
                     </div>
@@ -270,7 +276,8 @@ export function PublicProductsView() {
                         <button
                           type="button"
                           onClick={() => handleQtyChange(p.id, -1, p.moq)}
-                          className="p-1 rounded-lg hover:bg-zinc-800 text-cream/60 hover:text-cream"
+                          aria-label={`Decrease order quantity for ${p.name}`}
+                          className="p-1 rounded-lg hover:bg-zinc-800 text-cream/80 hover:text-cream"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
@@ -280,13 +287,15 @@ export function PublicProductsView() {
                         <button
                           type="button"
                           onClick={() => handleQtyChange(p.id, 1, p.moq)}
-                          className="p-1 rounded-lg hover:bg-zinc-800 text-cream/60 hover:text-cream"
+                          aria-label={`Increase order quantity for ${p.name}`}
+                          className="p-1 rounded-lg hover:bg-zinc-800 text-cream/80 hover:text-cream"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
 
                       <button
+                        type="button"
                         onClick={() => handleAddToCart(p)}
                         className="flex-1 py-2 px-2.5 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-1.5 transition-all"
                       >
@@ -307,8 +316,10 @@ export function PublicProductsView() {
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative border-zinc-700">
             <button
+              type="button"
               onClick={() => setQuickViewProduct(null)}
-              className="absolute top-6 right-6 text-cream/40 hover:text-cream"
+              aria-label="Close product quick specs modal"
+              className="absolute top-6 right-6 text-cream/70 hover:text-cream p-1"
             >
               <X className="w-5 h-5" />
             </button>
@@ -373,15 +384,17 @@ export function PublicProductsView() {
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
           <div className="glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative border-zinc-700">
             <button
+              type="button"
               onClick={() => setRequestModalOpen(false)}
-              className="absolute top-6 right-6 text-cream/40 hover:text-cream"
+              aria-label="Close price schedule modal"
+              className="absolute top-6 right-6 text-cream/70 hover:text-cream p-1"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="space-y-1">
               <h2 className="font-display text-2xl font-bold text-cream">Request Full Wholesale Price Schedule</h2>
-              <p className="text-xs text-cream/60">Receive our 1,200+ SKU commercial rate card by email.</p>
+              <p className="text-xs text-cream/80">Receive our 1,200+ SKU commercial rate card by email.</p>
             </div>
 
             <form
@@ -393,22 +406,26 @@ export function PublicProductsView() {
               className="space-y-3 text-xs"
             >
               <div>
-                <label className="block text-[11px] font-mono text-cream/70 mb-1">Establishment Name *</label>
+                <label htmlFor="schedule-establishment" className="block text-[11px] font-mono text-cream/80 mb-1">Establishment Name *</label>
                 <input
+                  id="schedule-establishment"
                   type="text"
                   required
+                  aria-label="Establishment Name"
                   placeholder="e.g. San Carlo Temple Street"
-                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne"
+                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-mono text-cream/70 mb-1">Work Email Address *</label>
+                <label htmlFor="schedule-email" className="block text-[11px] font-mono text-cream/80 mb-1">Work Email Address *</label>
                 <input
+                  id="schedule-email"
                   type="email"
                   required
+                  aria-label="Work Email Address"
                   placeholder="headchef@restaurant.co.uk"
-                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne"
+                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne"
                 />
               </div>
 
