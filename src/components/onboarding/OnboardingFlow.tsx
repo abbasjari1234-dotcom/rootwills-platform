@@ -43,7 +43,7 @@ export function OnboardingFlow() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-champagne/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Top Brand & Back navigation */}
-      <div className="w-full max-w-2xl flex justify-between items-center mb-8 px-2">
+      <div className="w-full max-w-2xl flex justify-between items-center mb-6 px-2">
         <Link href="/" className="flex items-center gap-2 text-cream/60 hover:text-cream text-xs font-mono transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Return to Homepage</span>
@@ -51,10 +51,17 @@ export function OnboardingFlow() {
 
         <div className="flex items-center gap-3">
           <RootwillsLogo size="sm" variant="full" />
-          <span className="text-[10px] font-mono text-champagne bg-champagne/10 px-2.5 py-1 rounded-full border border-champagne/20 hidden sm:inline-block">
-            Trade Account Setup
-          </span>
         </div>
+      </div>
+
+      {/* Primary Page Heading */}
+      <div className="w-full max-w-2xl text-center mb-6">
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream">
+          Open a Commercial Wholesale Trade Account
+        </h1>
+        <p className="text-xs text-cream/60 mt-1">
+          Instant B2B trade application with up to £50,000 credit line and bespoke contract pricing.
+        </p>
       </div>
 
       {/* Main Glassmorphic Structured Card Container */}
@@ -98,10 +105,13 @@ export function OnboardingFlow() {
         <div className="mt-8 pt-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-cream/50 font-mono">
           <div className="flex items-center gap-1.5 text-emerald-400">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>🔒 256-Bit Encrypted Commercial Application</span>
+            <span>256-Bit Encrypted B2B Onboarding Facility</span>
           </div>
-          <div>Instant Automated Credit Assessment</div>
+          <div>
+            <span>Underwritten by Rootwills Commercial Credit</span>
+          </div>
         </div>
+
       </div>
     </div>
   );

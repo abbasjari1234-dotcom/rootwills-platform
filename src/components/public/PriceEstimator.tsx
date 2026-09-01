@@ -45,7 +45,7 @@ export function PriceEstimator() {
   };
 
   return (
-    <div id="pricing-calculator" className="glass-panel-gold rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+    <div className="pricing-calculator glass-panel-gold rounded-2xl p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
       {/* Decorative glow */}
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-champagne/10 rounded-full blur-3xl pointer-events-none" />
 

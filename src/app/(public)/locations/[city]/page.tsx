@@ -1,8 +1,51 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MapPin, Truck, Clock, ShieldCheck, ArrowRight, Phone, CheckCircle2 } from 'lucide-react';
 import { PriceEstimator } from '@/components/public/PriceEstimator';
+
+const LOCATIONS_SEO: Record<string, { title: string; description: string; h1: string }> = {
+  birmingham: {
+    title: 'Birmingham Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Get early morning wholesale produce and food delivery across Birmingham and the West Midlands. Check your delivery postcode and open an account today.',
+    h1: 'Wholesale Food Supply in Birmingham & West Midlands',
+  },
+  coventry: {
+    title: 'Coventry Wholesale Produce & Food Delivery | Rootwills',
+    description:
+      'Reliable wholesale food and fresh produce delivery across Coventry and Warwickshire commercial kitchens. Register today for morning delivery windows.',
+    h1: 'Wholesale Food Supply in Coventry & Warwickshire',
+  },
+  leicester: {
+    title: 'Leicester Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Direct farm-fresh produce and foodservice delivery for East Midlands restaurants, hotels, and caterers. Sign up today to access locked trade pricing.',
+    h1: 'Wholesale Food Supply in Leicester & East Midlands',
+  },
+  london: {
+    title: 'London Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Early morning dual-temperature food delivery for high-volume restaurants and hospitality across London. Request your trade account access online now.',
+    h1: 'Wholesale Food Supply in Greater London',
+  },
+};
+
+export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+  const seo = LOCATIONS_SEO[params.city.toLowerCase()];
+  if (!seo) {
+    return {
+      title: 'Regional Wholesale Food & Produce Supply | Rootwills',
+      description:
+        'Explore our regional wholesale foodservice network with guaranteed morning delivery windows. Check your kitchen delivery postcode and open an account.',
+    };
+  }
+  return {
+    title: seo.title,
+    description: seo.description,
+  };
+}
 
 const LOCATIONS_DATA: Record<string, {
   name: string;
@@ -59,6 +102,7 @@ const LOCATIONS_DATA: Record<string, {
 export default function LocationPage({ params }: { params: { city: string } }) {
   const loc = LOCATIONS_DATA[params.city];
   if (!loc) return notFound();
+  const seo = LOCATIONS_SEO[params.city.toLowerCase()];
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20">
@@ -70,7 +114,7 @@ export default function LocationPage({ params }: { params: { city: string } }) {
             <span>Regional Wholesale Hub &bull; {loc.name}</span>
           </div>
           <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream">
-            Wholesale Fruit, Vegetable & Foodservice Supplier in {loc.name}
+            {seo?.h1 || `Wholesale Food Supply in ${loc.name}`}
           </h1>
           <p className="text-sm sm:text-base text-cream/70 mt-4 leading-relaxed">
             {loc.description}

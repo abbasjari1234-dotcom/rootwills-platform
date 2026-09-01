@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { Scale, FileText, Truck, Clock, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export const metadata = {
-  title: 'Wholesale Supply Terms & Conditions | Rootwills Ltd',
-  description: 'B2B Wholesale Supply Terms and Conditions for commercial kitchens, restaurants, hotels, and foodservice operators purchasing from Rootwills Ltd.',
+  title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
+  description:
+    'Read the official B2B wholesale terms, ordering cut-offs, credit rules, and delivery conditions for Rootwills customers. Review full account terms now.',
 };
 
 export default function TermsPage() {

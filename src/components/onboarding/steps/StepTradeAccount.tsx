@@ -236,15 +236,15 @@ export function StepTradeAccount() {
           className="onboarding-btn-primary text-xs shadow-gold-glow flex-1 sm:flex-initial"
         >
           {store.submitting ? (
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin" />
+            <span className="flex items-center gap-2">
+              <span className="w-4 h-4 border-2 border-obsidian-950 border-t-transparent rounded-full animate-spin block" />
               <span>Provisioning Trade Account…</span>
-            </div>
+            </span>
           ) : (
-            <div className="flex items-center gap-2">
+            <span className="flex items-center gap-2">
               <span>Submit & Open Trade Account</span>
               <ArrowRight className="w-4 h-4" />
-            </div>
+            </span>
           )}
         </button>
       </div>

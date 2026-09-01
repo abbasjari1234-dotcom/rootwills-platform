@@ -306,31 +306,31 @@ export function ThreeDFleetJourney() {
                         : 'bg-obsidian-950/80 border-emerald-900/50 hover:border-emerald-700 hover:bg-obsidian-900'
                     }`}
                   >
-                    <div
+                    <span
                       className="w-10 h-10 rounded-xl flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5 shadow-md"
                       style={{ backgroundColor: `${stage.color}25`, color: stage.color }}
                     >
                       {stage.step}
-                    </div>
+                    </span>
 
-                    <div className="space-y-1 flex-1">
-                      <div className="flex justify-between items-center">
+                    <span className="space-y-1 flex-1 block">
+                      <span className="flex justify-between items-center">
                         <span className="font-mono text-[11px] text-champagne font-bold uppercase">
                           {stage.time} &bull; {stage.location}
                         </span>
                         <span className="font-mono text-[10px] text-emerald-400 font-bold px-2 py-0.5 rounded-full bg-emerald-950 border border-emerald-800">
                           {stage.temp}
                         </span>
-                      </div>
+                      </span>
 
-                      <h4 className="font-display text-base font-bold text-cream">
+                      <span className="block font-display text-base font-bold text-cream">
                         {stage.title}
-                      </h4>
+                      </span>
 
-                      <p className="text-xs text-cream/70 font-sans leading-relaxed">
+                      <span className="block text-xs text-cream/70 font-sans leading-relaxed">
                         {stage.desc}
-                      </p>
-                    </div>
+                      </span>
+                    </span>
                   </button>
                 );
               })}

@@ -4,8 +4,9 @@ import Image from 'next/image';
 import { Building2, ShieldCheck, HeartHandshake, MapPin, ArrowRight, Award } from 'lucide-react';
 
 export const metadata = {
-  title: 'About Rootwills Ltd | British Foodservice Wholesaler',
-  description: 'Learn about Rootwills Ltd — our history, direct British grower sourcing, Midlands wholesale depot heritage, and technology-driven vision for UK foodservice.',
+  title: 'About Our British Farm Provenance & Story | Rootwills',
+  description:
+    'Learn how Rootwills connects UK growers and hospitality kitchens with farm-direct fresh produce and next-gen tech. Contact our team to learn more.',
 };
 
 export default function AboutPage() {

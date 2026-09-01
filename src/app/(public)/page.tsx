@@ -55,8 +55,9 @@ const PriceEstimator = dynamic(
 );
 
 export const metadata = {
-  title: 'Rootwills Ltd | Premium B2B Fresh Produce & Foodservice Wholesale UK',
-  description: 'Farm-direct fresh produce, heritage fruits, living microgreens, and artisan dairy for restaurants, boutique hotels, caterers, and healthcare across Birmingham and the UK. Guaranteed 06:00 AM delivery, locked trade pricing, and modern ordering portal.',
+  title: 'Premium UK Wholesale Foodservice Supplier | Rootwills',
+  description:
+    'Source farm-fresh wholesale produce, dairy, and culinary goods with guaranteed 6am delivery across the UK. Apply for your Rootwills trade account today.',
 };
 
 export default function PublicHomePage() {

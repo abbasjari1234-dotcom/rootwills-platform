@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useId } from 'react';
 import Link from 'next/link';
 
 interface RootwillsLogoProps {
@@ -18,6 +18,11 @@ export function RootwillsLogo({
   variant = 'full',
   href = '/',
 }: RootwillsLogoProps) {
+  const rawId = useId();
+  const safeId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
+  const goldGradId = `goldLuxury-${safeId}`;
+  const emeraldGradId = `emeraldInner-${safeId}`;
+
   const iconSizes = {
     sm: 'w-9 h-9',
     md: 'w-11 h-11',
@@ -43,13 +48,13 @@ export function RootwillsLogo({
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="goldLuxury" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id={goldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#FFF9E6" />
               <stop offset="35%" stopColor="#E4C767" />
               <stop offset="70%" stopColor="#C9A227" />
               <stop offset="100%" stopColor="#F5E498" />
             </linearGradient>
-            <linearGradient id="emeraldInner" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id={emeraldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#10B981" />
               <stop offset="100%" stopColor="#047857" />
             </linearGradient>
@@ -58,7 +63,7 @@ export function RootwillsLogo({
           {/* Outer Geometric Luxury Shield */}
           <polygon
             points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
-            stroke="url(#goldLuxury)"
+            stroke={`url(#${goldGradId})`}
             strokeWidth="3.5"
             fill="none"
             opacity="0.95"
@@ -67,7 +72,7 @@ export function RootwillsLogo({
           {/* Inner Emerald Accent Shield */}
           <polygon
             points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
-            stroke="url(#emeraldInner)"
+            stroke={`url(#${emeraldGradId})`}
             strokeWidth="1.5"
             fill="none"
             opacity="0.75"
@@ -76,7 +81,7 @@ export function RootwillsLogo({
           {/* Original 'R' Stem & Loop */}
           <path
             d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48"
-            stroke="url(#goldLuxury)"
+            stroke={`url(#${goldGradId})`}
             strokeWidth="6"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -85,7 +90,7 @@ export function RootwillsLogo({
           {/* Original 'R' Leg Cleanly Joined into 'W' (Single Continuous Flow, Zero Overlap) */}
           <path
             d="M 44 48 L 54 72 L 66 52 L 78 72 L 86 48"
-            stroke="url(#goldLuxury)"
+            stroke={`url(#${goldGradId})`}
             strokeWidth="5.5"
             strokeLinecap="round"
             strokeLinejoin="round"

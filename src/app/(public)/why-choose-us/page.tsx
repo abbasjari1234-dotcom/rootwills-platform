@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { Award, ShieldCheck, Repeat, TrendingUp, Clock, CheckCircle2, ArrowRight, Zap } from 'lucide-react';
 
 export const metadata = {
-  title: 'Why Choose Rootwills | Technology-Driven Foodservice Wholesaler',
-  description: 'Discover why leading Michelin kitchens, luxury hotel groups, and care operators choose Rootwills as their primary UK fresh produce and foodservice partner.',
+  title: 'Why Choose Rootwills Wholesale Foodservice | Rootwills',
+  description:
+    'Discover the 5 key advantages of partnering with Rootwills, from 11pm cut-offs to 6am delivery guarantees. Upgrade your commercial kitchen supply today.',
 };
 
 export default function WhyChooseUsPage() {

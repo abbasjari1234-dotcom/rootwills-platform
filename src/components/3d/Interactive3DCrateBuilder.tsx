@@ -347,20 +347,20 @@ export function Interactive3DCrateBuilder() {
                   onClick={() => addItemToCrate(item)}
                   className="p-3 rounded-2xl bg-obsidian-950/80 border border-emerald-950 hover:border-champagne/40 hover:bg-emerald-950/40 transition-all text-left flex items-center justify-between group"
                 >
-                  <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="flex items-center gap-2.5 min-w-0">
                     <span className="text-xl">{item.icon}</span>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-cream truncate group-hover:text-champagne transition-colors">
+                    <span className="min-w-0 block">
+                      <span className="text-xs font-bold text-cream truncate group-hover:text-champagne transition-colors block">
                         {item.name}
-                      </div>
-                      <div className="text-[10px] text-cream/50 font-mono">
+                      </span>
+                      <span className="text-[10px] text-cream/50 font-mono block">
                         £{item.unitPrice.toFixed(2)} &bull; {item.weightKg}kg
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-7 h-7 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center shrink-0 group-hover:bg-champagne group-hover:text-obsidian-950 transition-all">
+                      </span>
+                    </span>
+                  </span>
+                  <span className="w-7 h-7 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center shrink-0 group-hover:bg-champagne group-hover:text-obsidian-950 transition-all">
                     <Plus className="w-3.5 h-3.5" />
-                  </div>
+                  </span>
                 </button>
               ))}
             </div>

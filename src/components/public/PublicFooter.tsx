@@ -73,7 +73,7 @@ export function PublicFooter() {
 
           {/* Product Categories */}
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Product Range</h2>
+            <p className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Product Range</p>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Fresh Vegetables & Salads</Link></li>
               <li><Link href="/products?category=fresh_produce" className="hover:text-champagne transition-colors">Seasonal & Exotic Fruits</Link></li>
@@ -86,7 +86,7 @@ export function PublicFooter() {
 
           {/* Sectors (SEO) */}
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Who We Supply</h2>
+            <p className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Who We Supply</p>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/sectors/restaurants" className="hover:text-champagne transition-colors">Fine Dining & Restaurants</Link></li>
               <li><Link href="/sectors/hotels" className="hover:text-champagne transition-colors">Boutique Hotels & Resorts</Link></li>
@@ -99,7 +99,7 @@ export function PublicFooter() {
 
           {/* Quick Links & Legal */}
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Platform & Account</h2>
+            <p className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Platform & Account</p>
             <ul className="space-y-2.5 text-sm">
               <li><Link href="/onboarding" className="hover:text-champagne transition-colors text-emerald-400 font-semibold">Open Trade Account</Link></li>
               <li><Link href="/login" className="hover:text-champagne transition-colors">Customer Portal Login</Link></li>

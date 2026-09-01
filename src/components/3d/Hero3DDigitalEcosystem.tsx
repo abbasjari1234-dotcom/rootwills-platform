@@ -383,36 +383,36 @@ export function Hero3DDigitalEcosystem() {
                 key={pod.id}
                 type="button"
                 onClick={() => setActivePod(pod)}
-                className={`p-5 rounded-2xl border transition-all duration-300 relative overflow-hidden flex flex-col justify-between backdrop-blur-xl group ${
+                className={`p-5 rounded-2xl border transition-all duration-300 relative overflow-hidden flex flex-col justify-between backdrop-blur-xl group text-left ${
                   isSelected
                     ? 'bg-gradient-to-b from-emerald-950/90 to-obsidian-950/95 border-champagne shadow-gold-glow scale-102'
                     : 'bg-obsidian-900/80 border-emerald-900/50 hover:border-emerald-700 hover:bg-obsidian-900'
                 }`}
               >
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <div
-                      className="w-9 h-9 rounded-xl flex items-center justify-center font-bold"
+                <span className="block space-y-2 w-full">
+                  <span className="flex justify-between items-center">
+                    <span
+                      className="w-9 h-9 rounded-xl flex items-center justify-center font-bold shrink-0"
                       style={{ backgroundColor: `${pod.color}20`, color: pod.color }}
                     >
                       <Icon className="w-5 h-5" />
-                    </div>
+                    </span>
                     <span className="font-mono text-[10px] text-zinc-400 uppercase font-bold">{pod.status}</span>
-                  </div>
+                  </span>
 
-                  <div>
-                    <h3 className="font-display text-sm font-bold text-cream group-hover:text-champagne transition-colors">
+                  <span className="block">
+                    <span className="block font-display text-sm font-bold text-cream group-hover:text-champagne transition-colors">
                       {pod.label}
-                    </h3>
-                    <div className="font-mono text-lg font-extrabold mt-0.5" style={{ color: pod.color }}>
+                    </span>
+                    <span className="block font-mono text-lg font-extrabold mt-0.5" style={{ color: pod.color }}>
                       {pod.metric}
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
 
-                <p className="text-[11px] text-cream/65 font-sans mt-2 line-clamp-2 leading-relaxed">
+                <span className="block text-[11px] text-cream/65 font-sans mt-2 line-clamp-2 leading-relaxed text-left">
                   {pod.description}
-                </p>
+                </span>
               </button>
             );
           })}

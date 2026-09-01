@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { PortalNav } from '@/components/portal/PortalNav';
 import { AIOrderAssistant } from '@/components/portal/AIOrderAssistant';

@@ -79,20 +79,20 @@ export function InteractiveChefFAQ() {
                 onClick={() => toggle(idx)}
                 className="w-full p-5 sm:p-6 text-left flex justify-between items-center gap-4 focus:outline-none"
               >
-                <div className="space-y-1">
+                <span className="space-y-1 block">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
                     {faq.tag}
                   </span>
                   <span className="font-display text-lg sm:text-xl font-bold text-cream block">
                     {faq.question}
                   </span>
-                </div>
+                </span>
 
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 ${
+                <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-transform duration-300 ${
                   isOpen ? 'bg-champagne text-obsidian-950 border-champagne rotate-180' : 'bg-obsidian-950 text-cream/60 border-emerald-900'
                 }`}>
                   <ChevronDown className="w-4 h-4" />
-                </div>
+                </span>
               </button>
 
               <AnimatePresence>

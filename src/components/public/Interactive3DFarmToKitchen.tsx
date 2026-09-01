@@ -103,6 +103,7 @@ export function Interactive3DFarmToKitchen() {
             return (
               <button
                 key={stage.id}
+                type="button"
                 onClick={() => setActiveStageIndex(idx)}
                 className={`relative p-4 rounded-2xl text-left transition-all duration-300 border ${
                   isActive
@@ -111,23 +112,23 @@ export function Interactive3DFarmToKitchen() {
                 }`}
               >
                 {isActive && (
-                  <motion.div
+                  <motion.span
                     layoutId="active-stage-glow"
-                    className="absolute inset-0 rounded-2xl bg-champagne/5 border border-champagne/40 pointer-events-none"
+                    className="absolute inset-0 rounded-2xl bg-champagne/5 border border-champagne/40 pointer-events-none block"
                     transition={{ type: 'spring', damping: 25, stiffness: 250 }}
                   />
                 )}
-                <div className="flex items-center justify-between font-mono text-xs mb-1">
+                <span className="flex items-center justify-between font-mono text-xs mb-1">
                   <span className={isActive ? 'text-champagne font-bold' : 'text-zinc-500'}>
                     {stage.step}
                   </span>
                   <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[10px] text-zinc-300">
                     {stage.time}
                   </span>
-                </div>
-                <div className={`text-sm font-bold font-display ${isActive ? 'text-cream' : 'text-cream/60'}`}>
+                </span>
+                <span className={`text-sm font-bold font-display block ${isActive ? 'text-cream' : 'text-cream/60'}`}>
                   {stage.title}
-                </div>
+                </span>
               </button>
             );
           })}

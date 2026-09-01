@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { 
   CheckCircle2, 
@@ -19,6 +20,66 @@ import {
   Sparkles,
   Phone
 } from 'lucide-react';
+
+const SECTORS_SEO: Record<string, { title: string; description: string; h1: string }> = {
+  restaurants: {
+    title: 'Restaurant Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Chef-led fresh produce, butchery, dairy, and culinary dry goods delivered 6 mornings a week across the UK. Request a bespoke restaurant quote today.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Restaurants',
+  },
+  hotels: {
+    title: 'Hotel Foodservice & Wholesale Food Supply | Rootwills',
+    description:
+      'Reliable multi-department food supply, breakfast produce, and banqueting ingredients for luxury hotels. Open your hotel trade credit facility now.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Boutique Hotels',
+  },
+  'care-homes': {
+    title: 'Care Home Foodservice & Produce Delivery | Rootwills',
+    description:
+      'Nutritious fresh produce, allergen-tracked food lines, and dependable morning supply for UK care facilities. Partner with our healthcare desk today.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Care Homes',
+  },
+  caterers: {
+    title: 'Catering Foodservice & Event Food Supply | Rootwills',
+    description:
+      'High-volume wholesale produce, chilled goods, and flexible morning drops for contract and event caterers. Get locked event pricing with Rootwills.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Luxury Caterers',
+  },
+  'pubs-bars': {
+    title: 'Gastropub Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Seasonal produce, artisan meats, and pantry essentials tailored for high-volume gastropubs and craft venues. Start your trade application online today.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Gastropubs',
+  },
+  pubs: {
+    title: 'Gastropub Wholesale Food & Produce Supply | Rootwills',
+    description:
+      'Seasonal produce, artisan meats, and pantry essentials tailored for high-volume gastropubs and craft venues. Start your trade application online today.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Gastropubs',
+  },
+  schools: {
+    title: 'Education Foodservice & School Produce | Rootwills',
+    description:
+      'Fresh farm-assured produce, compliant school fruit, and dependable delivery schedules for academies and universities. Contact our education desk.',
+    h1: 'Wholesale Food & Fresh Produce Supply for Education',
+  },
+};
+
+export async function generateMetadata({ params }: { params: { sector: string } }): Promise<Metadata> {
+  const seo = SECTORS_SEO[params.sector.toLowerCase()];
+  if (!seo) {
+    return {
+      title: 'Hospitality Sector Wholesale Food Supply | Rootwills',
+      description:
+        'Tailored foodservice programs, locked trade pricing, and guaranteed 6am delivery for hospitality kitchens across the UK. Open an account today.',
+    };
+  }
+  return {
+    title: seo.title,
+    description: seo.description,
+  };
+}
 
 const PriceEstimator = dynamic(
   () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
@@ -242,6 +303,7 @@ const SECTORS_DATA: Record<string, SectorData> = {
 export default function SectorPage({ params }: { params: { sector: string } }) {
   const sector = SECTORS_DATA[params.sector];
   if (!sector) return notFound();
+  const seo = SECTORS_SEO[params.sector.toLowerCase()];
 
   const IconComponent = sector.icon;
 
@@ -257,7 +319,7 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
                 <span>{sector.badge}</span>
               </div>
               <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream leading-tight">
-                {sector.title}
+                {seo?.h1 || sector.title}
               </h1>
               <p className="text-base sm:text-lg text-cream/75 leading-relaxed font-sans">
                 {sector.subtitle}

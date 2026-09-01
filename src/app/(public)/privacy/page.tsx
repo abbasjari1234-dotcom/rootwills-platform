@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ShieldCheck, Lock, Eye, FileText, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy & Data Protection Policy | Rootwills Ltd',
-  description: 'Rootwills Ltd UK GDPR and Data Protection policy for commercial wholesale customers, trade accounts, and online ordering portal users.',
+  title: 'Privacy Policy & UK GDPR Data Protection | Rootwills',
+  description:
+    'Review the Rootwills privacy policy and UK GDPR data compliance standards protecting your commercial trade account. Read our full data practices now.',
 };
 
 export default function PrivacyPolicyPage() {

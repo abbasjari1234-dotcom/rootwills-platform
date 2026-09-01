@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { ShieldCheck, Award, ThermometerSnowflake, CheckCircle2, FileCheck, Truck, Lock } from 'lucide-react';
 
 export const metadata = {
-  title: 'Food Safety, SALSA & HACCP Compliance | Rootwills Ltd',
-  description: 'Rootwills Ltd food safety management system, SALSA accreditation, HACCP protocols, dual-temperature cold chain, and batch traceability standards.',
+  title: 'Food Safety Standards & HACCP Compliance | Rootwills',
+  description:
+    'Learn about our SALSA-certified food safety protocols, HACCP Level 3 compliance, and dual-temp tracking. Discover our certified quality system today.',
 };
 
 export default function FoodSafetySecurityPage() {
