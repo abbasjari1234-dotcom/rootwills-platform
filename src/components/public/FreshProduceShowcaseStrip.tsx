@@ -85,6 +85,8 @@ export function FreshProduceShowcaseStrip() {
                       src={item.image}
                       alt={item.title}
                       fill
+                      loading="lazy"
+                      quality={75}
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-700 brightness-95 group-hover:brightness-105"
                     />

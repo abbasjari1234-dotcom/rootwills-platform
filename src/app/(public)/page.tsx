@@ -34,11 +34,31 @@ import dynamic from 'next/dynamic';
 import { LuxuryAmbientBackground } from '@/components/public/LuxuryAmbientBackground';
 import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLadyExperience';
 import { HospitalityPartnerMarquee } from '@/components/public/HospitalityPartnerMarquee';
-import { FreshProduceShowcaseStrip } from '@/components/public/FreshProduceShowcaseStrip';
-import { ThreeDCulinaryGrid } from '@/components/3d/ThreeDCulinaryGrid';
-import { ThreeDProductShowcase } from '@/components/public/ThreeDProductShowcase';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
-import { InteractiveChefFAQ } from '@/components/public/InteractiveChefFAQ';
+
+const FreshProduceShowcaseStrip = dynamic(
+  () => import('@/components/public/FreshProduceShowcaseStrip').then((mod) => mod.FreshProduceShowcaseStrip),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[400px] w-full animate-pulse bg-emerald-950/20" />,
+  }
+);
+
+const ThreeDProductShowcase = dynamic(
+  () => import('@/components/public/ThreeDProductShowcase').then((mod) => mod.ThreeDProductShowcase),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[500px] w-full animate-pulse bg-emerald-950/20" />,
+  }
+);
+
+const ThreeDCulinaryGrid = dynamic(
+  () => import('@/components/3d/ThreeDCulinaryGrid').then((mod) => mod.ThreeDCulinaryGrid),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[450px] w-full animate-pulse bg-emerald-950/20" />,
+  }
+);
 
 const PriceEstimator = dynamic(
   () => import('@/components/public/PriceEstimator').then((mod) => mod.PriceEstimator),
@@ -51,6 +71,14 @@ const PriceEstimator = dynamic(
         </div>
       </div>
     ),
+  }
+);
+
+const InteractiveChefFAQ = dynamic(
+  () => import('@/components/public/InteractiveChefFAQ').then((mod) => mod.InteractiveChefFAQ),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[350px] w-full animate-pulse bg-emerald-950/20" />,
   }
 );
 

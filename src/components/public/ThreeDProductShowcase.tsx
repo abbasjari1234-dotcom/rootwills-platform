@@ -185,6 +185,9 @@ export function ThreeDProductShowcase() {
                     src={activeCategory.image}
                     alt={activeCategory.headline}
                     fill
+                    loading="lazy"
+                    quality={75}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-95 contrast-105 hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-transparent" />
