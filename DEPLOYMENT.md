@@ -123,3 +123,40 @@ Before launching live traffic, apply the SQL schemas in your Supabase SQL Editor
 2. [`db/production_security_rls.sql`](file:///c:/Users/abc/Desktop/rootwills-platform/db/production_security_rls.sql) — Row Level Security policies and security definer functions.
 3. [`db/seed.sql`](file:///c:/Users/abc/Desktop/rootwills-platform/db/seed.sql) — (Optional) Initial demo data and product catalog.
 
+---
+
+## 7. Gzip & Brotli Compression Server Activation (Grade A+ Score)
+
+To ensure speed testing tools (GTmetrix, Google PageSpeed, Pingdom) achieve 100% on **"Compress Components with Gzip"**, use one of the following configurations depending on your hosting provider:
+
+### Option A: Cloudflare (Recommended for Maximum Speed)
+If your domain DNS is managed through Cloudflare:
+1. Log in to the **[Cloudflare Dashboard](https://dash.cloudflare.com)** and select your domain.
+2. Navigate to **Speed** &rarr; **Optimization** &rarr; **Content Optimization**.
+3. Toggle **Brotli** to **ON**.
+4. Under **Auto Minify**, check **HTML**, **CSS**, and **JS**.
+5. Under **Early Hints**, toggle to **ON**.
+6. Cloudflare will automatically compress 100% of HTML, CSS, JS, and JSON assets at the edge using Brotli & Gzip.
+
+### Option B: Docker Compose with NGINX (Included)
+The repository includes a production-ready [`nginx.conf`](file:///c:/Users/abc/Desktop/rootwills-platform/nginx.conf) with Gzip compression enabled:
+```bash
+# Launch Next.js + NGINX with Gzip compression active
+docker compose up -d --build
+```
+NGINX automatically intercepts all requests on port 80/443 and applies Level 6 Gzip compression with `Vary: Accept-Encoding`.
+
+### Option C: Standalone NGINX Server (VPS / Ubuntu / Debian)
+Copy [`nginx.conf`](file:///c:/Users/abc/Desktop/rootwills-platform/nginx.conf) to your server's `/etc/nginx/sites-available/rootwills.conf`:
+```bash
+sudo cp nginx.conf /etc/nginx/sites-available/rootwills.conf
+sudo ln -s /etc/nginx/sites-available/rootwills.conf /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+### Option D: Apache / cPanel / LiteSpeed
+The included [`public/.htaccess`](file:///c:/Users/abc/Desktop/rootwills-platform/public/.htaccess) automatically activates `mod_deflate`, `mod_brotli`, and 1-year immutable caching for all static assets.
+
+### Option E: Vercel / Netlify
+The included [`vercel.json`](file:///c:/Users/abc/Desktop/rootwills-platform/vercel.json) and [`netlify.toml`](file:///c:/Users/abc/Desktop/rootwills-platform/netlify.toml) automatically instruct the edge network to compress and cache static chunks.
+

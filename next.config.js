@@ -118,6 +118,10 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           {
+            key: 'Vary',
+            value: 'Accept-Encoding',
+          },
+          {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',
           },

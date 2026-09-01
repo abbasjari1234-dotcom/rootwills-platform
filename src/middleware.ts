@@ -46,16 +46,17 @@ export async function middleware(request: NextRequest) {
     // If Supabase session check throws, proceed to cookie verification
   }
 
-  // 2. Attach Standard Security Headers to Every Response
+  // 2. Attach Standard Security & Compression Headers to Every Response
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Vary', 'Accept-Encoding');
 
   // Attach CORS header to valid API responses
   if (pathname.startsWith('/api') && origin && ALLOWED_ORIGINS.includes(origin)) {
     response.headers.set('Access-Control-Allow-Origin', origin);
-    response.headers.set('Vary', 'Origin');
+    response.headers.set('Vary', 'Origin, Accept-Encoding');
   }
 
   const isProduction = process.env.NODE_ENV === 'production';
