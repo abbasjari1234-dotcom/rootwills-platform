@@ -112,14 +112,14 @@ export function PublicFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-emerald-950 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/50">
+        <div className="pt-8 border-t border-emerald-950 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-cream/80">
           <div>
             &copy; {new Date().getFullYear()} Rootwills Ltd. Company No. 14892019. Registered in England & Wales. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-cream transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-cream transition-colors">Wholesale Supply Terms</Link>
-            <Link href="/security" className="hover:text-cream transition-colors">Food Safety & HACCP</Link>
+            <Link href="/privacy" className="text-cream/90 hover:text-champagne transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-cream/90 hover:text-champagne transition-colors">Wholesale Supply Terms</Link>
+            <Link href="/security" className="text-cream/90 hover:text-champagne transition-colors">Food Safety & HACCP</Link>
           </div>
         </div>
       </div>

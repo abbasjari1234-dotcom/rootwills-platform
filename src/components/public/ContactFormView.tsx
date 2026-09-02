@@ -120,6 +120,7 @@ export function ContactFormView() {
                   id="contact-company"
                   type="text"
                   required
+                  autoComplete="organization"
                   aria-label="Company or Establishment Name"
                   placeholder="e.g. Simpsons Restaurant"
                   value={formData.companyName}
@@ -135,6 +136,7 @@ export function ContactFormView() {
                     id="contact-name"
                     type="text"
                     required
+                    autoComplete="name"
                     aria-label="Contact Name"
                     placeholder="e.g. Luke Tipping"
                     value={formData.contactName}
@@ -148,6 +150,7 @@ export function ContactFormView() {
                     id="contact-postcode"
                     type="text"
                     required
+                    autoComplete="postal-code"
                     aria-label="Establishment Postcode"
                     placeholder="e.g. B15 3DZ"
                     value={formData.postcode}
@@ -164,6 +167,7 @@ export function ContactFormView() {
                     id="contact-email"
                     type="email"
                     required
+                    autoComplete="email"
                     aria-label="Work Email Address"
                     placeholder="chef@restaurant.co.uk"
                     value={formData.email}
@@ -177,6 +181,7 @@ export function ContactFormView() {
                     id="contact-phone"
                     type="tel"
                     required
+                    autoComplete="tel"
                     aria-label="Contact Phone Number"
                     placeholder="0121 454 3434"
                     value={formData.phone}

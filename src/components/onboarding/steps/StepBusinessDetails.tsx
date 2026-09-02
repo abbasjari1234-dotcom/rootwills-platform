@@ -50,39 +50,49 @@ export function StepBusinessDetails() {
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <FormField
           label="Trading / Business Name *"
+          htmlFor="organizationName"
           error={errors.organizationName?.message}
           className="sm:col-span-2"
         >
           <input
+            id="organizationName"
             {...register('organizationName')}
+            autoComplete="organization"
+            aria-label="Trading or Business Name"
             placeholder="e.g. The Grand Kitchen / Heritage Bistro Ltd"
             className="onboarding-input"
           />
         </FormField>
 
-        <FormField label="Companies House Number" error={errors.companyRegNumber?.message} hint="Optional">
+        <FormField label="Companies House Number" htmlFor="companyRegNumber" error={errors.companyRegNumber?.message} hint="Optional">
           <input 
+            id="companyRegNumber"
             {...register('companyRegNumber')} 
+            aria-label="Companies House Registration Number"
             placeholder="e.g. 08492019" 
             className="onboarding-input font-mono uppercase" 
           />
         </FormField>
 
-        <FormField label="Estimated Weekly Food Spend (£) *" error={errors.estimatedWeeklySpend?.message}>
+        <FormField label="Estimated Weekly Food Spend (£) *" htmlFor="estimatedWeeklySpend" error={errors.estimatedWeeklySpend?.message}>
           <input
+            id="estimatedWeeklySpend"
             type="number"
             step="100"
             min="250"
             {...register('estimatedWeeklySpend')}
+            aria-label="Estimated Weekly Food Spend in Pounds"
             placeholder="2500"
             className="onboarding-input font-mono"
           />
         </FormField>
 
-        <FormField label="Weekly Covers" error={errors.weeklyCovers?.message} hint="Optional &bull; Hospitality">
+        <FormField label="Weekly Covers" htmlFor="weeklyCovers" error={errors.weeklyCovers?.message} hint="Optional &bull; Hospitality">
           <input 
+            id="weeklyCovers"
             type="number" 
             {...register('weeklyCovers')} 
+            aria-label="Weekly Covers"
             placeholder="e.g. 800" 
             className="onboarding-input font-mono" 
           />
@@ -100,12 +110,14 @@ export function StepBusinessDetails() {
         </div>
 
         {multiLocation && (
-          <FormField label="Number of Kitchen Sites" error={errors.siteCount?.message} className="sm:col-span-2 animate-fade-in">
+          <FormField label="Number of Kitchen Sites" htmlFor="siteCount" error={errors.siteCount?.message} className="sm:col-span-2 animate-fade-in">
             <input 
+              id="siteCount"
               type="number" 
               min={1} 
               max={50}
               {...register('siteCount')} 
+              aria-label="Number of Kitchen Sites"
               className="onboarding-input font-mono" 
             />
           </FormField>

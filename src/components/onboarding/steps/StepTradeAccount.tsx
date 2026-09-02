@@ -103,44 +103,57 @@ export function StepTradeAccount() {
 
       {/* Primary Contact Fields */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-2">
-        <FormField label="Primary Contact Name *" error={errors.contactName?.message}>
+        <FormField label="Primary Contact Name *" htmlFor="contactName" error={errors.contactName?.message}>
           <input
+            id="contactName"
             {...register('contactName')}
+            autoComplete="name"
+            aria-label="Primary Contact Name"
             placeholder="e.g. Head Chef / General Manager"
             className="onboarding-input"
           />
         </FormField>
 
-        <FormField label="Work Email Address *" error={errors.contactEmail?.message}>
+        <FormField label="Work Email Address *" htmlFor="contactEmail" error={errors.contactEmail?.message}>
           <input
+            id="contactEmail"
             type="email"
             {...register('contactEmail')}
+            autoComplete="email"
+            aria-label="Work Email Address"
             placeholder="orders@yourbusiness.co.uk"
             className="onboarding-input"
           />
         </FormField>
 
-        <FormField label="Mobile / Kitchen Direct Line *" error={errors.contactPhone?.message}>
+        <FormField label="Mobile / Kitchen Direct Line *" htmlFor="contactPhone" error={errors.contactPhone?.message}>
           <input
+            id="contactPhone"
             type="tel"
             {...register('contactPhone')}
+            autoComplete="tel"
+            aria-label="Mobile or Kitchen Direct Line"
             placeholder="07700 900123"
             className="onboarding-input"
           />
         </FormField>
 
-        <FormField label="Create Account Password *" error={errors.password?.message}>
+        <FormField label="Create Account Password *" htmlFor="accountPassword" error={errors.password?.message}>
           <div className="relative">
             <input
+              id="accountPassword"
               type={showPassword ? 'text' : 'password'}
               {...register('password')}
+              autoComplete="new-password"
+              aria-label="Create Account Password"
               placeholder="Minimum 8 characters"
               className="onboarding-input pr-10"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/40 hover:text-cream p-1"
+              aria-label={showPassword ? "Hide password" : "Show password in cleartext"}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-cream/70 hover:text-cream p-1 min-w-[36px] min-h-[36px] flex items-center justify-center"
             >
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>

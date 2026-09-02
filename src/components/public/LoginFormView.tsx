@@ -212,6 +212,7 @@ function LoginFormContent() {
                   id="login-email"
                   type="email"
                   required
+                  autoComplete="email"
                   aria-label="Registered Business Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -241,6 +242,7 @@ function LoginFormContent() {
                   id="login-password"
                   type={showPassword ? 'text' : 'password'}
                   required
+                  autoComplete="current-password"
                   aria-label="Account Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

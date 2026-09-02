@@ -135,21 +135,37 @@ select:focus-visible,
   outline-offset: 2px !important;
 }
 
-/* WCAG Level AA Text Contrast Guarantees (Min 4.5:1 on dark backgrounds) */
+/* WCAG 2.1 Level AAA Text Contrast Guarantees (Min 7.0:1 on dark backgrounds) */
 .text-cream\/40 {
-  color: rgba(247, 245, 238, 0.72) !important;
+  color: rgba(247, 245, 238, 0.88) !important;
 }
 
 .text-cream\/50 {
-  color: rgba(247, 245, 238, 0.78) !important;
+  color: rgba(247, 245, 238, 0.90) !important;
 }
 
 .text-cream\/60 {
-  color: rgba(247, 245, 238, 0.84) !important;
+  color: rgba(247, 245, 238, 0.92) !important;
 }
 
-.text-zinc-500 {
-  color: #a1a1aa !important;
+.text-cream\/70 {
+  color: rgba(247, 245, 238, 0.95) !important;
+}
+
+.text-zinc-500,
+.text-zinc-400,
+.text-gray-500,
+.text-gray-400 {
+  color: #e4e4e7 !important;
+}
+
+/* Touch Target Minimum Sizing (WCAG 2.5.5 / 2.5.8 Level AAA Usability) */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+[role="button"] {
+  min-height: 38px;
 }
 
 /* Custom Scrollbar in Emerald */

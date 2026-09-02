@@ -63,9 +63,12 @@ export function StepLogistics() {
       </div>
 
       <div className="mt-6 space-y-4">
-        <FormField label="Primary Delivery Postcode *" error={errors.postcode?.message}>
+        <FormField label="Primary Delivery Postcode *" htmlFor="postcode" error={errors.postcode?.message}>
           <input
+            id="postcode"
             {...register('postcode')}
+            autoComplete="postal-code"
+            aria-label="Primary Delivery Postcode"
             onBlur={handlePostcodeBlur}
             placeholder="e.g. B2 5BN"
             className="onboarding-input font-mono uppercase font-bold"
