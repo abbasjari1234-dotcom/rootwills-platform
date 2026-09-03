@@ -44,6 +44,14 @@ const FreshProduceShowcaseStrip = dynamic(
   }
 );
 
+const InteractiveLogisticsHub = dynamic(
+  () => import('@/components/public/InteractiveLogisticsHub').then((mod) => mod.InteractiveLogisticsHub),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[500px] w-full animate-pulse bg-emerald-950/20" />,
+  }
+);
+
 const ThreeDProductShowcase = dynamic(
   () => import('@/components/public/ThreeDProductShowcase').then((mod) => mod.ThreeDProductShowcase),
   {
@@ -104,10 +112,13 @@ export default function PublicHomePage() {
       {/* 3. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
       <FreshProduceShowcaseStrip />
 
-      {/* 4. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
+      {/* 4. SCROLL-TRIGGERED INTERACTIVE LOGISTICS HUB (Truck driving, Crane loading, Crates dropping) */}
+      <InteractiveLogisticsHub />
+
+      {/* 5. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />
 
-      {/* 5. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
+      {/* 6. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <ThreeDCulinaryGrid />
 
       {/* 6. THE ROOTWILLS ADVANTAGE METRICS */}
