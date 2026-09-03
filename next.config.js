@@ -44,6 +44,8 @@ const nextConfig = {
       'clsx',
       'tailwind-merge',
       'zustand',
+      'gsap',
+      'lenis',
     ],
   },
   webpack: (config, { isServer }) => {
