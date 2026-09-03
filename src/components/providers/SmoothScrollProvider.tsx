@@ -1,48 +1,71 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import Lenis from 'lenis';
-import { ScrollTrigger, gsap } from '@/lib/animations/gsap-core';
 
-interface SmoothScrollProviderProps {
-  children: React.ReactNode;
-}
-
-export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // Disable on reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (typeof window === 'undefined') return;
+
+    // Respect prefers-reduced-motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
     }
 
-    // Only activate inertia smooth scrolling on desktop devices with pointer fine
-    const isTouch = window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768;
-    if (isTouch) {
+    // Only enable on desktop pointer-fine viewports
+    if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 1024) {
       return;
     }
 
-    const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
+    let isCancelled = false;
+    let lenisInstance: any = null;
+    let tickerCb: any = null;
+
+    Promise.all([
+      import('lenis'),
+      import('@/lib/animations/gsap-core'),
+    ]).then(([LenisModule, GsapCore]) => {
+      if (isCancelled) return;
+
+      try {
+        const LenisConstructor = LenisModule.default || LenisModule;
+        const { gsap, ScrollTrigger } = GsapCore;
+
+        lenisInstance = new LenisConstructor({
+          duration: 1.15,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 0.9,
+        });
+
+        lenisInstance.on('scroll', ScrollTrigger.update);
+
+        tickerCb = (time: number) => {
+          if (lenisInstance) {
+            lenisInstance.raf(time * 1000);
+          }
+        };
+
+        gsap.ticker.add(tickerCb);
+        gsap.ticker.lagSmoothing(0);
+      } catch (err) {
+        console.warn('Lenis smooth scrolling bypassed:', err);
+      }
+    }).catch(() => {
+      // Fallback to native smooth scrolling
     });
 
-    lenis.on('scroll', ScrollTrigger.update);
-
-    const tickerCb = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
-
     return () => {
-      gsap.ticker.remove(tickerCb);
-      lenis.destroy();
+      isCancelled = true;
+      if (tickerCb) {
+        import('@/lib/animations/gsap-core').then(({ gsap }) => {
+          gsap.ticker.remove(tickerCb);
+        }).catch(() => {});
+      }
+      if (lenisInstance) {
+        lenisInstance.destroy();
+      }
     };
   }, []);
 

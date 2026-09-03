@@ -1,37 +1,47 @@
 'use client';
 
-import { useLayoutEffect, useEffect, RefObject } from 'react';
+import { useEffect, RefObject } from 'react';
 import { gsap } from './gsap-core';
-
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 /**
  * Clean lifecycle hook for GSAP animations with automatic context reversion.
- * Prevents memory leaks, duplicate triggers, and ghost animations in React 18 StrictMode.
+ * Prevents memory leaks, duplicate triggers, and ghost animations in React 18.
  */
 export function useGsapContext(
   scopeRef: RefObject<HTMLElement | null>,
   animationCreator: (context: gsap.Context) => void,
   deps: any[] = []
 ) {
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
     if (!scopeRef.current) return;
 
     // Respect prefers-reduced-motion
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      animationCreator(ctx);
-    }, scopeRef);
+    let ctx: gsap.Context | null = null;
+
+    // Run animation inside a frame to ensure all DOM refs and children are fully rendered
+    const animFrame = requestAnimationFrame(() => {
+      if (!scopeRef.current) return;
+      try {
+        ctx = gsap.context(() => {
+          animationCreator(ctx!);
+        }, scopeRef);
+      } catch (err) {
+        console.warn('GSAP Context Init Warning:', err);
+      }
+    });
 
     return () => {
-      ctx.revert();
+      cancelAnimationFrame(animFrame);
+      if (ctx) {
+        ctx.revert();
+      }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

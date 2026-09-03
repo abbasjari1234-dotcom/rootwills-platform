@@ -211,101 +211,114 @@ export function CinematicPinkLadyExperience() {
 
     // 2. PINNED CAMERA-TRACK SCROLLYTELLING ("WHY ROOTWILLS IS SO SPECIAL")
     // Applies on desktop/tablet viewports (min-width: 1024px)
-    const mm = gsap.matchMedia();
+    try {
+      const mm = gsap.matchMedia();
 
-    mm.add('(min-width: 1024px)', () => {
-      const storyCards = gsap.utils.toArray<HTMLElement>('.story-desktop-slide');
-      const imageSlides = gsap.utils.toArray<HTMLElement>('.story-image-slide');
+      mm.add('(min-width: 1024px)', () => {
+        if (!storyPinnedRef.current) return;
+        const storyCards = gsap.utils.toArray<HTMLElement>('.story-desktop-slide');
+        const imageSlides = gsap.utils.toArray<HTMLElement>('.story-image-slide');
 
-      // Pinned ScrollTrigger Timeline
-      const scrollyTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: storyPinnedRef.current,
-          start: 'top top+=80',
-          end: `+=${STORY_SECTIONS.length * 100}%`,
-          pin: true,
-          scrub: 0.8,
-          anticipatePin: 1,
-          onUpdate: (self) => {
-            const index = Math.min(
-              Math.floor(self.progress * STORY_SECTIONS.length),
-              STORY_SECTIONS.length - 1
-            );
-            setActiveStoryIndex(index);
-          },
-        },
-      });
+        if (storyCards.length === 0 || imageSlides.length === 0) return;
 
-      storyCards.forEach((card, i) => {
-        if (i === 0) return; // First card is active at start
-
-        // Cross-fade image slide
-        scrollyTl.to(
-          imageSlides[i],
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            ease: 'power2.inOut',
-          },
-          i * 1.5
-        );
-
-        if (i > 0) {
-          scrollyTl.to(
-            imageSlides[i - 1],
-            {
-              opacity: 0,
-              scale: 0.96,
-              duration: 1,
-              ease: 'power2.inOut',
-            },
-            i * 1.5
-          );
-        }
-
-        // Cross-fade content card
-        scrollyTl.to(
-          storyCards[i],
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power2.out',
-          },
-          i * 1.5
-        );
-
-        scrollyTl.to(
-          storyCards[i - 1],
-          {
-            opacity: 0,
-            y: -30,
-            duration: 0.8,
-            ease: 'power2.in',
-          },
-          i * 1.5
-        );
-      });
-    });
-
-    // Mobile Staggered Scroll Triggers (min-width: < 1024px)
-    mm.add('(max-width: 1023px)', () => {
-      const mobileCards = gsap.utils.toArray<HTMLElement>('.story-mobile-card');
-      mobileCards.forEach((card) => {
-        gsap.from(card, {
+        // Pinned ScrollTrigger Timeline
+        const scrollyTl = gsap.timeline({
           scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
+            trigger: storyPinnedRef.current,
+            start: 'top top+=80',
+            end: `+=${STORY_SECTIONS.length * 100}%`,
+            pin: true,
+            scrub: 0.8,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              const index = Math.min(
+                Math.floor(self.progress * STORY_SECTIONS.length),
+                STORY_SECTIONS.length - 1
+              );
+              setActiveStoryIndex(index);
+            },
           },
-          y: 40,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power3.out',
+        });
+
+        storyCards.forEach((card, i) => {
+          if (i === 0) return; // First card is active at start
+
+          if (imageSlides[i]) {
+            scrollyTl.to(
+              imageSlides[i],
+              {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: 'power2.inOut',
+              },
+              i * 1.5
+            );
+          }
+
+          if (i > 0 && imageSlides[i - 1]) {
+            scrollyTl.to(
+              imageSlides[i - 1],
+              {
+                opacity: 0,
+                scale: 0.96,
+                duration: 1,
+                ease: 'power2.inOut',
+              },
+              i * 1.5
+            );
+          }
+
+          // Cross-fade content card
+          if (storyCards[i]) {
+            scrollyTl.to(
+              storyCards[i],
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+              },
+              i * 1.5
+            );
+          }
+
+          if (storyCards[i - 1]) {
+            scrollyTl.to(
+              storyCards[i - 1],
+              {
+                opacity: 0,
+                y: -30,
+                duration: 0.8,
+                ease: 'power2.in',
+              },
+              i * 1.5
+            );
+          }
         });
       });
-    });
+
+      // Mobile Staggered Scroll Triggers (min-width: < 1024px)
+      mm.add('(max-width: 1023px)', () => {
+        const mobileCards = gsap.utils.toArray<HTMLElement>('.story-mobile-card');
+        mobileCards.forEach((card) => {
+          if (!card) return;
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+          });
+        });
+      });
+    } catch (e) {
+      console.warn('Scrollytelling GSAP fallback:', e);
+    }
   });
 
   return (
