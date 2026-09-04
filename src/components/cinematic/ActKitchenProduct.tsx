@@ -76,7 +76,7 @@ export function ActKitchenProduct() {
             <Link
               key={cat.title}
               href="/products"
-              className={`act-kitchen-card-${i} group block glass-panel rounded-2xl overflow-hidden will-change-transform hover:border-champagne/30 transition-all duration-500`}
+              className={`act-kitchen-card-${i} group block glass-panel rounded-2xl overflow-hidden will-change-transform border border-emerald-400/25 hover:border-champagne/40 transition-all duration-500`}
               style={{ transformStyle: 'preserve-3d' }}
             >
               {/* Card image */}
