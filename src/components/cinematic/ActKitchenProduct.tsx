@@ -76,8 +76,17 @@ export function ActKitchenProduct() {
             <Link
               key={cat.title}
               href="/products"
-              className={`act-kitchen-card-${i} group block glass-panel rounded-2xl overflow-hidden will-change-transform border border-emerald-400/25 hover:border-champagne/40 transition-all duration-500`}
-              style={{ transformStyle: 'preserve-3d' }}
+              className={`act-kitchen-card-${i} group block rounded-2xl overflow-hidden will-change-transform transition-all duration-500`}
+              style={{
+                transformStyle: 'preserve-3d',
+                background: 'linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(16, 185, 129, 0.35)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(228, 199, 103, 0.5)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.35)'; }}
             >
               {/* Card image */}
               <div className="relative aspect-[3/2] overflow-hidden">
@@ -91,7 +100,7 @@ export function ActKitchenProduct() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#021710] via-[#021710]/30 to-transparent" />
 
                 {/* Icon badge */}
-                <div className="absolute top-3 right-3 w-9 h-9 rounded-lg glass-panel flex items-center justify-center border-0">
+                <div className="absolute top-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center border border-emerald-400/30 bg-[#021710]/70 backdrop-blur-md">
                   <cat.icon
                     className={`w-4 h-4 ${
                       cat.accent === 'emerald' ? 'text-emerald-400' : 'text-champagne'
