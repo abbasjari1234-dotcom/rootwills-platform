@@ -18,7 +18,9 @@ import {
   Droplets,
   Zap,
   Activity,
-  MapPin
+  MapPin,
+  Play,
+  Pause
 } from 'lucide-react';
 import { gsap, ScrollTrigger } from '@/lib/animations/gsap-core';
 import { useGsapContext } from '@/lib/animations/useGsapContext';
@@ -115,8 +117,21 @@ const STORY_SECTIONS: StorySection[] = [
 export function CinematicPinkLadyExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const storyPinnedRef = useRef<HTMLDivElement>(null);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
+  const [heroPlaying, setHeroPlaying] = useState(true);
+
+  // Guarantee browser autoplay
+  React.useEffect(() => {
+    const video = heroVideoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch((err) => {
+        console.warn('Hero autoplay requires interaction:', err);
+      });
+    }
+  }, []);
 
   // GSAP Cinematic Motion System
   useGsapContext(containerRef, (ctx) => {
@@ -408,6 +423,7 @@ export function CinematicPinkLadyExperience() {
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
                   {/* Real Looping Broadcast Video in Hero */}
                   <video
+                    ref={heroVideoRef}
                     playsInline
                     autoPlay
                     loop
@@ -433,11 +449,31 @@ export function CinematicPinkLadyExperience() {
                     </div>
                   </div>
 
-                  <div className="hero-float-badge hero-float-badge-2 absolute top-4 right-4 z-10">
+                  <div className="hero-float-badge hero-float-badge-2 absolute top-4 right-4 z-10 flex items-center gap-2">
                     <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-emerald-400/60 text-emerald-300 text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                       <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                       <span>+2.2°C Cold-Locked SLA</span>
                     </div>
+
+                    {/* Interactive Play/Pause Hero Video */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const v = heroVideoRef.current;
+                        if (!v) return;
+                        if (heroPlaying) {
+                          v.pause();
+                          setHeroPlaying(false);
+                        } else {
+                          v.play();
+                          setHeroPlaying(true);
+                        }
+                      }}
+                      className="p-2 rounded-full bg-champagne text-obsidian-950 hover:brightness-110 shadow-gold-glow transition-all"
+                      aria-label={heroPlaying ? "Pause hero video" : "Play hero video"}
+                    >
+                      {heroPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
+                    </button>
                   </div>
 
                   {/* Floating Chef Review Bottom Card */}
