@@ -103,17 +103,17 @@ export default function PublicHomePage() {
       {/* 0. LUXURY GEOMETRIC TRELLIS PATTERN & SCROLL PROGRESS BAR */}
       <LuxuryAmbientBackground />
 
-      {/* 1. PINK LADY STYLE CINEMATIC VIDEO REEL HERO & SCROLLYTELLING */}
+      {/* 1. CINEMATIC VIDEO REEL HERO & SCROLLYTELLING */}
       <CinematicPinkLadyExperience />
 
-      {/* 2. HOSPITALITY PARTNER INFINITE MARQUEE */}
+      {/* 2. 4K DCI ANAMORPHIC BROADCAST LOGISTICS REEL & COLD-CHAIN TELEMETRY */}
+      <InteractiveLogisticsHub />
+
+      {/* 3. HOSPITALITY PARTNER INFINITE MARQUEE */}
       <HospitalityPartnerMarquee />
 
-      {/* 3. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP (Zero Meat) */}
+      {/* 4. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP */}
       <FreshProduceShowcaseStrip />
-
-      {/* 4. SCROLL-TRIGGERED INTERACTIVE LOGISTICS HUB (Truck driving, Crane loading, Crates dropping) */}
-      <InteractiveLogisticsHub />
 
       {/* 5. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />

@@ -406,13 +406,21 @@ export function CinematicPinkLadyExperience() {
               <div className="hero-media-frame rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_25px_90px_rgba(2,23,16,0.95),0_0_60px_rgba(16,185,129,0.35)] overflow-hidden group">
                 
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
-                  <Image
-                    src="/images/branded/rootwills_hero_chef_delivery.jpg"
-                    alt="Rootwills Commercial Kitchen Delivery with Branded Produce Crate"
-                    fill
-                    priority
+                  {/* Real Looping Broadcast Video in Hero */}
+                  <video
+                    playsInline
+                    autoPlay
+                    loop
+                    muted
+                    preload="metadata"
+                    poster="/images/branded/rootwills_hero_chef_delivery.jpg"
                     className="w-full h-full object-cover brightness-[0.96] contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
-                  />
+                  >
+                    <source 
+                      src="https://upload.wikimedia.org/wikipedia/commons/e/eb/24_Hours_With_A_Japanese_Izakaya_Chef-_Torasho_Ramen_%26_Charcoal_Bar.webm" 
+                      type="video/webm" 
+                    />
+                  </video>
 
                   {/* Gradient Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-black/30 pointer-events-none" />
@@ -420,8 +428,8 @@ export function CinematicPinkLadyExperience() {
                   {/* Floating Badges with Sinusoidal Float */}
                   <div className="hero-float-badge hero-float-badge-1 absolute top-4 left-4 z-10">
                     <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-champagne/50 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(228,199,103,0.3)]">
-                      <Sun className="w-3.5 h-3.5 text-champagne animate-spin" style={{ animationDuration: '10s' }} />
-                      <span>Direct Farm-to-Chef &bull; Daily Handover</span>
+                      <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                      <span>CINEMATIC REEL &bull; Daily Handover</span>
                     </div>
                   </div>
 
