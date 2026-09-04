@@ -433,7 +433,7 @@ export function CinematicPinkLadyExperience() {
                     className="w-full h-full object-cover brightness-[0.96] contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
                   >
                     <source 
-                      src="https://upload.wikimedia.org/wikipedia/commons/e/eb/24_Hours_With_A_Japanese_Izakaya_Chef-_Torasho_Ramen_%26_Charcoal_Bar.webm" 
+                      src="https://upload.wikimedia.org/wikipedia/commons/7/72/Restaurant_IL_GALLO_D%27ORO_-_Madeira_--_Portugal.webm" 
                       type="video/webm" 
                     />
                   </video>

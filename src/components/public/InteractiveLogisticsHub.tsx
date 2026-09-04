@@ -58,7 +58,7 @@ const CINEMA_SCENES: CinemaScene[] = [
     subtitle: 'Direct cold-room drop with zero thermal breaks before morning prep.',
     location: 'Michelin-Recommended Restaurant Kitchen, Birmingham',
     telemetry: '06:00 AM Guaranteed SLA | Zero-Substitution Policy',
-    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/24_Hours_With_A_Japanese_Izakaya_Chef-_Torasho_Ramen_%26_Charcoal_Bar.webm',
+    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Restaurant_IL_GALLO_D%27ORO_-_Madeira_--_Portugal.webm',
     image: '/images/branded/rootwills_hero_chef_delivery.jpg',
     details: [
       'Head chef physical handover with digital invoice sign-off',
