@@ -18,7 +18,11 @@ import {
   Beer, 
   GraduationCap,
   Sparkles,
-  Phone
+  Phone,
+  Layers,
+  Thermometer,
+  Percent,
+  Calculator
 } from 'lucide-react';
 
 const SECTORS_SEO: Record<string, { title: string; description: string; h1: string }> = {
@@ -101,6 +105,8 @@ interface SectorData {
   badge: string;
   icon: any;
   heroImage: string;
+  prepTimeSaved: string;
+  yieldIncrease: string;
   painPoints: { title: string; desc: string }[];
   keyProducts: string[];
   serviceBenefits: string[];
@@ -114,6 +120,8 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Restaurant & Fine Dining Program',
     icon: UtensilsCrossed,
     heroImage: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: '18% Less Kitchen Trimming',
+    yieldIncrease: '+14% Usable Crate Yield',
     painPoints: [
       { title: 'Inconsistent Produce Quality', desc: 'We visually hand-grade every crate. Zero bruised tomatoes or wilted herbs in your service prep.' },
       { title: 'Early Evening Order Deadlines', desc: 'Our order cut-off is 11:00 PM. Order easily from your phone right after dinner service closes.' },
@@ -146,6 +154,8 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Hotels & Banqueting Program',
     icon: Hotel,
     heroImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: '22% Faster Breakfast Prep',
+    yieldIncrease: '+16% High-Volume Yield',
     painPoints: [
       { title: 'Multi-Outlet Invoicing Chaos', desc: 'We consolidate your main kitchen, bar, banqueting, and room service into structured multi-site accounts with PO support.' },
       { title: 'Bulk Breakfast Volume Deficits', desc: 'Reliable volume supply of British Lion eggs, pasture butter, bacon, and bakery fruit.' },
@@ -178,6 +188,8 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Care Homes & Healthcare Program',
     icon: HeartHandshake,
     heroImage: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: '25% Reduction in Dicing Prep',
+    yieldIncrease: '100% Guaranteed Portions',
     painPoints: [
       { title: 'Budget & Price Volatility', desc: 'Fixed monthly pricing schedules to protect your per-resident daily food budget.' },
       { title: 'Allergen & Traceability Risk', desc: 'Clear digital allergen matrices and batch tracking on every invoice and delivery note.' },
@@ -210,6 +222,8 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Event Catering Program',
     icon: PartyPopper,
     heroImage: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: '15% Banquet Assembly Speed',
+    yieldIncrease: 'Zero Trimming Loss',
     painPoints: [
       { title: 'Irregular Event Delivery Locations', desc: 'We deliver directly to your temporary venue, marquee site, or production kitchen.' },
       { title: 'Weekend Volume Spikes', desc: 'High-capacity surge ordering for 500+ cover corporate banquets and weddings.' },
@@ -241,6 +255,42 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Pub & Bar Supply Program',
     icon: Beer,
     heroImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: 'High-Dry Matter Chipping',
+    yieldIncrease: '+20% Higher French Fry Yield',
+    painPoints: [
+      { title: 'Inconsistent Hand-Cut Chips', desc: 'Selected high-starch Maris Piper potatoes graded specifically for frying and roasting.' },
+      { title: 'High Citrus & Garnish Costs', desc: 'Wholesale cases of unwaxed lemons, limes, and cocktail herbs at direct bulk rates.' },
+      { title: 'Sunday Roast Surges', desc: 'Guaranteed weekend delivery of roast meats, potatoes, and gravy-prep roots.' },
+    ],
+    keyProducts: [
+      'Washed 25kg Maris Piper Potatoes (High-Dry Matter)',
+      'Unwaxed Bar Limes & Lemons (Cases of 100+)',
+      'Fresh Mint & Cocktail Herb Bunches',
+      'Prime British Chuck & Brisket Burger Blends',
+      'Brioche Burger Buns & Sourdoughs',
+      'Sunday Roast Trimmings & Root Veg',
+    ],
+    serviceBenefits: [
+      'Sunday morning early drops for weekend roast readiness',
+      'Volume citrus discounts for high-volume mixology bars',
+      'Simple reordering directly via smartphone',
+      'Generous 30-day trade credit lines',
+    ],
+    testimonial: {
+      quote: 'Our potato consistency used to be a nightmare with previous suppliers. Since switching to Rootwills, our hand-cut triple-cooked chips have never looked better.',
+      author: 'Tom Cartwright',
+      role: 'General Manager',
+      org: 'The Crown & Anchor Gastropub',
+    },
+  },
+  pubs: {
+    title: 'Foodservice Supply for Gastropubs & High-Volume Bars',
+    subtitle: 'Consistent, profit-driving produce and foodservice items for gastropubs, burger kitchens, and cocktail bars.',
+    badge: 'Pub & Bar Supply Program',
+    icon: Beer,
+    heroImage: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: 'High-Dry Matter Chipping',
+    yieldIncrease: '+20% Higher French Fry Yield',
     painPoints: [
       { title: 'Inconsistent Hand-Cut Chips', desc: 'Selected high-starch Maris Piper potatoes graded specifically for frying and roasting.' },
       { title: 'High Citrus & Garnish Costs', desc: 'Wholesale cases of unwaxed lemons, limes, and cocktail herbs at direct bulk rates.' },
@@ -273,6 +323,8 @@ const SECTORS_DATA: Record<string, SectorData> = {
     badge: 'Schools & Colleges Program',
     icon: GraduationCap,
     heroImage: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1200&auto=format&fit=crop&q=80',
+    prepTimeSaved: 'Pre-Washed & Portion Controlled',
+    yieldIncrease: '100% Compliant Yield',
     painPoints: [
       { title: 'Tight Per-Pupil Budget Caps', desc: 'Contract-locked pricing for term-time budgets with zero surprise price spikes.' },
       { title: 'Nut-Free & Allergy Safety', desc: 'Audited nut-free supply segregation and comprehensive allergen documentation.' },
@@ -308,7 +360,7 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
   const IconComponent = sector.icon;
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-20">
+    <div className="space-y-20 sm:space-y-28 pb-20 bg-obsidian-950 text-cream">
       {/* Hero Header */}
       <section className="relative pt-12 sm:pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -318,26 +370,46 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
                 <IconComponent className="w-4 h-4" />
                 <span>{sector.badge}</span>
               </div>
+              
               <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream leading-tight">
                 {seo?.h1 || sector.title}
               </h1>
+              
               <p className="text-base sm:text-lg text-cream/75 leading-relaxed font-sans">
                 {sector.subtitle}
               </p>
 
-              <div className="pt-2 flex flex-col sm:flex-row gap-4">
+              {/* Live Operational Metrics Strip */}
+              <div className="grid grid-cols-2 gap-3 pt-2 font-mono text-xs">
+                <div className="p-3 rounded-xl bg-obsidian-900/90 border border-emerald-900/60 flex items-center gap-2.5">
+                  <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <div>
+                    <span className="text-cream font-bold block">{sector.yieldIncrease}</span>
+                    <span className="text-[10px] text-cream/50">Crate Usability</span>
+                  </div>
+                </div>
+                <div className="p-3 rounded-xl bg-obsidian-900/90 border border-champagne/40 flex items-center gap-2.5">
+                  <Clock className="w-4 h-4 text-champagne shrink-0" />
+                  <div>
+                    <span className="text-cream font-bold block">{sector.prepTimeSaved}</span>
+                    <span className="text-[10px] text-cream/50">Kitchen Efficiency</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row gap-4 font-mono text-xs">
                 <Link
-                  href="/onboarding"
-                  className="px-7 py-3.5 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 text-sm transition-all"
+                  href="/apply"
+                  className="px-7 py-3.5 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all"
                 >
-                  <span>Open a Trade Account</span>
+                  <span>Apply for Sector Trade Account</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="#quote-section"
-                  className="px-6 py-3.5 rounded-xl font-semibold text-cream bg-obsidian-900 border border-cream/20 hover:border-champagne flex items-center justify-center gap-2 text-sm transition-all"
+                  className="px-6 py-3.5 rounded-xl font-semibold text-cream bg-obsidian-900 border border-cream/20 hover:border-champagne flex items-center justify-center gap-2 transition-all"
                 >
-                  <span>Get Custom Sector Pricing</span>
+                  <span>Estimate Kitchen Savings</span>
                 </Link>
               </div>
             </div>
@@ -352,10 +424,46 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-cream/10">
-                <div className="text-xs font-bold text-champagne font-mono uppercase">Direct Delivery Guarantee</div>
-                <div className="text-xs text-cream/80 mt-0.5">Dual-temp fleet arriving 6 mornings a week across the Midlands & UK.</div>
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-obsidian-950/85 backdrop-blur-md border border-emerald-900/60 shadow-xl">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="font-bold text-champagne uppercase">Direct Kitchen Delivery SLA</span>
+                  <span className="text-emerald-400 font-bold">06:00 AM Guaranteed</span>
+                </div>
+                <div className="text-xs text-cream/80 mt-1">Dual-temp fleet arriving 6 mornings a week with zero thermal breaks.</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 24-Hour Operation Timeline Schedule */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 rounded-3xl bg-obsidian-900/80 border border-zinc-800 space-y-6">
+          <div className="text-center max-w-xl mx-auto space-y-1">
+            <span className="text-xs font-mono uppercase text-champagne font-bold">Guaranteed Delivery Cadence</span>
+            <h2 className="font-display text-2xl font-bold text-cream">How Your Daily Supply Operates</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
+            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+              <span className="text-xs font-mono text-champagne font-bold">11:00 PM Tonight</span>
+              <h3 className="font-display text-base font-bold text-cream">Service Close Cut-off</h3>
+              <p className="text-xs text-cream/65">Order on your phone right after evening dinner service finishes.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+              <span className="text-xs font-mono text-emerald-400 font-bold">02:30 AM</span>
+              <h3 className="font-display text-base font-bold text-cream">Optical Quality Grading</h3>
+              <p className="text-xs text-cream/65">Digbeth depot picks and grades every crate into chilled compartments.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+              <span className="text-xs font-mono text-champagne font-bold">05:15 AM</span>
+              <h3 className="font-display text-base font-bold text-cream">Fleet Launch</h3>
+              <p className="text-xs text-cream/65">Dual-temp Mercedes Sprinter leaves depot with calibrated audit log.</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-emerald-500/40 space-y-2 shadow-lg">
+              <span className="text-xs font-mono text-emerald-300 font-bold">06:00 - 07:30 AM</span>
+              <h3 className="font-display text-base font-bold text-cream">Kitchen Cold-Room Drop</h3>
+              <p className="text-xs text-cream/65">Pristine crates placed inside your fridge before prep chefs arrive.</p>
             </div>
           </div>
         </div>
@@ -406,7 +514,7 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
             <div className="pt-4 border-t border-cream/10">
               <Link
                 href="/products"
-                className="text-xs font-semibold text-champagne hover:underline flex items-center gap-1"
+                className="text-xs font-semibold text-champagne hover:underline flex items-center gap-1 font-mono"
               >
                 <span>View all products in our wholesale catalog &rarr;</span>
               </Link>
@@ -431,8 +539,8 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
               ))}
             </ul>
             <div className="pt-4 border-t border-cream/10">
-              <div className="text-xs text-cream/60">
-                Need specific bespoke sourcing? Contact our direct buyer desk: <span className="text-champagne font-mono">0121 790 8800</span>
+              <div className="text-xs text-cream/60 font-mono">
+                Need specific bespoke sourcing? Contact our direct buyer desk: <span className="text-champagne font-bold">0121 790 8800</span>
               </div>
             </div>
           </div>

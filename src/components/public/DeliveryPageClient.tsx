@@ -335,6 +335,30 @@ export function DeliveryPageClient() {
           </div>
         </div>
       </div>
+
+      {/* Activation Action Strip */}
+      <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-obsidian-900 to-emerald-950/80 border border-champagne/40 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="space-y-1.5 text-center sm:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne/10 text-champagne text-xs font-mono font-bold uppercase">
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            <span>Guaranteed Morning Delivery Slot</span>
+          </div>
+          <h3 className="font-display text-2xl font-bold text-cream">
+            Ready to Secure Your 06:00 AM Delivery Slot?
+          </h3>
+          <p className="text-xs text-cream/70 max-w-xl">
+            Open a commercial trade account in under 3 minutes with up to £50,000 credit limit and immediate route allocation.
+          </p>
+        </div>
+
+        <Link
+          href="/apply"
+          className="w-full sm:w-auto px-8 py-4 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs font-mono shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all whitespace-nowrap"
+        >
+          <span>Apply for Trade Delivery Facility</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
     </div>
   );
 }
