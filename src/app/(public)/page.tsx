@@ -36,6 +36,14 @@ import { CinematicPinkLadyExperience } from '@/components/public/CinematicPinkLa
 import { HospitalityPartnerMarquee } from '@/components/public/HospitalityPartnerMarquee';
 import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
 
+const Cinematic3DWorldScrollytelling = dynamic(
+  () => import('@/components/public/Cinematic3DWorldScrollytelling').then((mod) => mod.Cinematic3DWorldScrollytelling),
+  {
+    ssr: true,
+    loading: () => <div className="min-h-[600px] w-full animate-pulse bg-emerald-950/20" />,
+  }
+);
+
 const FreshProduceShowcaseStrip = dynamic(
   () => import('@/components/public/FreshProduceShowcaseStrip').then((mod) => mod.FreshProduceShowcaseStrip),
   {
@@ -103,25 +111,28 @@ export default function PublicHomePage() {
       {/* 0. LUXURY GEOMETRIC TRELLIS PATTERN & SCROLL PROGRESS BAR */}
       <LuxuryAmbientBackground />
 
-      {/* 1. CINEMATIC VIDEO REEL HERO & SCROLLYTELLING */}
+      {/* 1. CINEMATIC VIDEO REEL HERO */}
       <CinematicPinkLadyExperience />
 
-      {/* 2. 4K DCI ANAMORPHIC BROADCAST LOGISTICS REEL & COLD-CHAIN TELEMETRY */}
+      {/* 2. 3D CAMERA WORLD SCROLLYTELLING (400vh Pinned Camera Zoom & Scene Morphing) */}
+      <Cinematic3DWorldScrollytelling />
+
+      {/* 3. 4K DCI ANAMORPHIC BROADCAST LOGISTICS REEL & COLD-CHAIN TELEMETRY */}
       <InteractiveLogisticsHub />
 
-      {/* 3. HOSPITALITY PARTNER INFINITE MARQUEE */}
+      {/* 4. HOSPITALITY PARTNER INFINITE MARQUEE */}
       <HospitalityPartnerMarquee />
 
-      {/* 4. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP */}
+      {/* 5. FRESH PRODUCE & HERITAGE ORCHARD SHOWCASE STRIP */}
       <FreshProduceShowcaseStrip />
 
-      {/* 5. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
+      {/* 6. WHOLESALE PRODUCE & ARTISAN LINES SHOWCASE */}
       <ThreeDProductShowcase />
 
-      {/* 6. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
+      {/* 7. SECTOR SOLUTIONS (Restaurants, Hotels, Care Homes, Caterers, Pubs, Schools) */}
       <ThreeDCulinaryGrid />
 
-      {/* 6. THE ROOTWILLS ADVANTAGE METRICS */}
+      {/* 8. THE ROOTWILLS ADVANTAGE METRICS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
           <div className="text-xs font-mono uppercase text-champagne tracking-widest font-bold">
@@ -195,15 +206,15 @@ export default function PublicHomePage() {
         </div>
       </section>
 
-      {/* 7. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
+      {/* 9. INTERACTIVE B2B PRICING ESTIMATOR WIDGET */}
       <section id="pricing-calculator" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <PriceEstimator />
       </section>
 
-      {/* 8. INTERACTIVE CHEF & OPERATOR FAQ ACCORDION */}
+      {/* 10. INTERACTIVE CHEF & OPERATOR FAQ ACCORDION */}
       <InteractiveChefFAQ />
 
-      {/* 9. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
+      {/* 11. FINAL VIP TRADE ACCOUNT CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="glass-panel-gold rounded-3xl p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-3">
@@ -220,7 +231,7 @@ export default function PublicHomePage() {
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link
-              href="/onboarding"
+              href="/apply"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all"
             >
               <span>Start Trade Application</span>

@@ -317,10 +317,10 @@ export function PublicHeader() {
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
               <Link
-                href="/onboarding"
+                href="/apply"
                 className="px-5 py-2.5 text-xs font-mono font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim rounded-xl hover:brightness-110 shadow-[0_0_20px_rgba(228,199,103,0.4)] transition-all flex items-center gap-2"
               >
-                <span>Become a Customer</span>
+                <span>Open Trade Account</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
