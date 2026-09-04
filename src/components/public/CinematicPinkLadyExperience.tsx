@@ -18,9 +18,7 @@ import {
   Droplets,
   Zap,
   Activity,
-  MapPin,
-  Play,
-  Pause
+  MapPin
 } from 'lucide-react';
 import { gsap, ScrollTrigger } from '@/lib/animations/gsap-core';
 import { useGsapContext } from '@/lib/animations/useGsapContext';
@@ -117,21 +115,8 @@ const STORY_SECTIONS: StorySection[] = [
 export function CinematicPinkLadyExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const storyPinnedRef = useRef<HTMLDivElement>(null);
   const [activeStoryIndex, setActiveStoryIndex] = useState(0);
-  const [heroPlaying, setHeroPlaying] = useState(true);
-
-  // Guarantee browser autoplay
-  React.useEffect(() => {
-    const video = heroVideoRef.current;
-    if (video) {
-      video.muted = true;
-      video.play().catch((err) => {
-        console.warn('Hero autoplay requires interaction:', err);
-      });
-    }
-  }, []);
 
   // GSAP Cinematic Motion System
   useGsapContext(containerRef, (ctx) => {
@@ -421,22 +406,15 @@ export function CinematicPinkLadyExperience() {
               <div className="hero-media-frame rounded-3xl p-1.5 bg-gradient-to-br from-emerald-500/40 via-emerald-900/50 to-champagne/30 border border-champagne/40 shadow-[0_25px_90px_rgba(2,23,16,0.95),0_0_60px_rgba(16,185,129,0.35)] overflow-hidden group">
                 
                 <div className="relative h-[380px] sm:h-[480px] w-full rounded-[22px] overflow-hidden bg-obsidian-900">
-                  {/* Real Looping Broadcast Video in Hero */}
-                  <video
-                    ref={heroVideoRef}
-                    playsInline
-                    autoPlay
-                    loop
-                    muted
-                    preload="metadata"
-                    poster="/images/branded/rootwills_hero_chef_delivery.jpg"
-                    className="w-full h-full object-cover brightness-[0.96] contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
-                  >
-                    <source 
-                      src="https://upload.wikimedia.org/wikipedia/commons/7/72/Restaurant_IL_GALLO_D%27ORO_-_Madeira_--_Portugal.webm" 
-                      type="video/webm" 
-                    />
-                  </video>
+                  {/* High-Resolution Branded Handover Photography */}
+                  <Image
+                    src="/images/branded/rootwills_hero_chef_delivery.jpg"
+                    alt="Rootwills Executive Chef Morning Delivery Handover"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover brightness-[0.96] contrast-[1.05] group-hover:scale-105 transition-transform duration-700"
+                  />
 
                   {/* Gradient Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/90 via-transparent to-black/30 pointer-events-none" />
@@ -444,8 +422,8 @@ export function CinematicPinkLadyExperience() {
                   {/* Floating Badges with Sinusoidal Float */}
                   <div className="hero-float-badge hero-float-badge-1 absolute top-4 left-4 z-10">
                     <div className="bg-obsidian-950/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-champagne/50 text-champagne text-xs font-mono font-bold flex items-center gap-1.5 shadow-[0_0_20px_rgba(228,199,103,0.3)]">
-                      <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-                      <span>CINEMATIC REEL &bull; Daily Handover</span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>DIRECT HANDOVER &bull; 05:45 AM SLA</span>
                     </div>
                   </div>
 
@@ -454,26 +432,6 @@ export function CinematicPinkLadyExperience() {
                       <ThermometerSnowflake className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
                       <span>+2.2°C Cold-Locked SLA</span>
                     </div>
-
-                    {/* Interactive Play/Pause Hero Video */}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const v = heroVideoRef.current;
-                        if (!v) return;
-                        if (heroPlaying) {
-                          v.pause();
-                          setHeroPlaying(false);
-                        } else {
-                          v.play();
-                          setHeroPlaying(true);
-                        }
-                      }}
-                      className="p-2 rounded-full bg-champagne text-obsidian-950 hover:brightness-110 shadow-gold-glow transition-all"
-                      aria-label={heroPlaying ? "Pause hero video" : "Play hero video"}
-                    >
-                      {heroPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
-                    </button>
                   </div>
 
                   {/* Floating Chef Review Bottom Card */}

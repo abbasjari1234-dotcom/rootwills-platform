@@ -104,8 +104,6 @@ const STORY_SLIDES: StorySlide[] = [
 export function PinkLadyCinematicScrollytelling() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <div className="w-full space-y-0 relative">
@@ -113,22 +111,16 @@ export function PinkLadyCinematicScrollytelling() {
       {/* 1. PINK LADY STYLE FULL-BLEED CINEMATIC HERO VIDEO HEADER */}
       <section className="relative h-[85vh] sm:h-[92vh] w-full overflow-hidden flex items-end pb-12 sm:pb-20">
         
-        {/* Background Video */}
+        {/* Background Branded Visual */}
         <div className="absolute inset-0 w-full h-full -z-10">
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover brightness-[0.75] contrast-[1.08] scale-105 transition-transform duration-1000"
-            poster="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1600&auto=format&fit=crop&q=85"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-hands-holding-fresh-picked-apples-41221-large.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <Image
+            src="/images/branded/rootwills_orchard_harvest.jpg"
+            alt="Rootwills Single-Estate Orchard Harvest"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover brightness-[0.75] contrast-[1.08] scale-105 transition-transform duration-1000"
+          />
           {/* Rich Emerald & Gold Gradient Vignette */}
           <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/40 to-obsidian-950/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-obsidian-950/80 via-transparent to-obsidian-950/80" />

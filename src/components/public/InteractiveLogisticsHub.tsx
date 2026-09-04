@@ -1,13 +1,11 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { 
   Play, 
   Pause, 
-  Volume2, 
-  VolumeX, 
   Maximize2, 
   MapPin, 
   Clock, 
@@ -16,9 +14,11 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Activity,
-  Layers,
+  ChevronLeft,
+  ChevronRight,
   Sparkles,
-  Zap
+  Zap,
+  Radio
 } from 'lucide-react';
 import { gsap, ScrollTrigger } from '@/lib/animations/gsap-core';
 import { useGsapContext } from '@/lib/animations/useGsapContext';
@@ -30,7 +30,6 @@ interface CinemaScene {
   subtitle: string;
   location: string;
   telemetry: string;
-  videoUrl: string;
   image: string;
   details: string[];
 }
@@ -43,7 +42,6 @@ const CINEMA_SCENES: CinemaScene[] = [
     subtitle: 'Dual-Temperature Mercedes-Benz Sprinter fleet launching from Birmingham depot.',
     location: 'Loading Bay 07, Digbeth Wholesale Hub, Birmingham (B5 5JR)',
     telemetry: 'Vault Hold: +2.2°C Calibrated | GPS Live Telematics',
-    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Cars_driving_at_night.webm',
     image: '/images/branded/rootwills_cinematic_depot_reel.jpg',
     details: [
       'Dual-temp refrigerated compartmentalisation (+2.0°C / +4.0°C)',
@@ -55,10 +53,9 @@ const CINEMA_SCENES: CinemaScene[] = [
     id: 'scene-2',
     timecode: '06:00 AM',
     title: 'Executive Kitchen Handover & Crate Inspection',
-    subtitle: 'Direct cold-room drop with zero thermal breaks before morning prep.',
+    subtitle: 'Direct cold-room drop with zero thermal breaks before morning kitchen prep.',
     location: 'Michelin-Recommended Restaurant Kitchen, Birmingham',
     telemetry: '06:00 AM Guaranteed SLA | Zero-Substitution Policy',
-    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Restaurant_IL_GALLO_D%27ORO_-_Madeira_--_Portugal.webm',
     image: '/images/branded/rootwills_hero_chef_delivery.jpg',
     details: [
       'Head chef physical handover with digital invoice sign-off',
@@ -69,11 +66,10 @@ const CINEMA_SCENES: CinemaScene[] = [
   {
     id: 'scene-3',
     timecode: '04:30 AM',
-    title: 'Wholesale Market & Estate Sorting',
+    title: 'Wholesale Market & Single-Estate Sorting',
     subtitle: 'Direct farm-to-depot transfer with non-destructive optical quality inspection.',
     location: 'Kent & Single-Estate European Orchards / Wholesale Terminal',
     telemetry: '14.8° Brix Natural Sugar Density | 0 Intermediate Storage',
-    videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c4/Market_for_food_stuff_1.webm',
     image: '/images/branded/rootwills_orchard_harvest.jpg',
     details: [
       'Daily sunrise picking schedule with non-invasive sugar refraction',
@@ -86,74 +82,57 @@ const CINEMA_SCENES: CinemaScene[] = [
 export function InteractiveLogisticsHub() {
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const playerFrameRef = useRef<HTMLDivElement>(null);
 
   const [activeSceneIdx, setActiveSceneIdx] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
   const [playbackProgress, setPlaybackProgress] = useState(0);
 
   const currentScene = CINEMA_SCENES[activeSceneIdx];
 
-  // Video source switch and autoplay
-  useEffect(() => {
-    setVideoLoaded(false);
-    setVideoError(false);
+  const handleNextScene = useCallback(() => {
+    setActiveSceneIdx((prev) => (prev + 1) % CINEMA_SCENES.length);
     setPlaybackProgress(0);
+  }, []);
 
-    const video = videoRef.current;
-    if (video) {
-      video.load();
-      if (isPlaying) {
-        video.play().catch(() => {
-          // Autoplay policy fallback: mute and retry
-          video.muted = true;
-          setIsMuted(true);
-          video.play().catch(() => setVideoError(true));
-        });
-      }
-    }
-  }, [activeSceneIdx, isPlaying]);
+  const handlePrevScene = useCallback(() => {
+    setActiveSceneIdx((prev) => (prev - 1 + CINEMA_SCENES.length) % CINEMA_SCENES.length);
+    setPlaybackProgress(0);
+  }, []);
 
-  // Handle play/pause
+  // Automated scene rotation timer (5.5 seconds per scene)
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const intervalMs = 50;
+    const totalMs = 5500;
+    const increment = (intervalMs / totalMs) * 100;
+
+    const timer = setInterval(() => {
+      setPlaybackProgress((prev) => {
+        if (prev >= 100) {
+          handleNextScene();
+          return 0;
+        }
+        return prev + increment;
+      });
+    }, intervalMs);
+
+    return () => clearInterval(timer);
+  }, [isPlaying, handleNextScene]);
+
+  // Handle play/pause toggle
   const togglePlay = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.pause();
-      setIsPlaying(false);
-    } else {
-      video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
-    }
+    setIsPlaying((prev) => !prev);
   };
 
-  // Handle mute
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
-
-  // Fullscreen
+  // Fullscreen toggle
   const toggleFullscreen = () => {
     if (!playerFrameRef.current) return;
     if (!document.fullscreenElement) {
       playerFrameRef.current.requestFullscreen().catch((err) => console.warn('Fullscreen error:', err));
     } else {
       document.exitFullscreen().catch((err) => console.warn('Exit fullscreen error:', err));
-    }
-  };
-
-  // Time update
-  const handleTimeUpdate = () => {
-    const video = videoRef.current;
-    if (video && video.duration) {
-      setPlaybackProgress((video.currentTime / video.duration) * 100);
     }
   };
 
@@ -210,7 +189,7 @@ export function InteractiveLogisticsHub() {
           <div className="space-y-3 max-w-2xl cinema-header-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold uppercase backdrop-blur-md shadow-lg">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>Broadcast Documentary &bull; 4K DCI Video Reel</span>
+              <span>Broadcast Telemetry &bull; Rootwills Fleet Dispatch</span>
             </div>
             
             <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase leading-[1.05]">
@@ -225,14 +204,14 @@ export function InteractiveLogisticsHub() {
           {/* Broadcast Status Pill */}
           <div className="cinema-header-reveal flex items-center gap-3 bg-obsidian-900/90 p-3 rounded-2xl border border-emerald-900/80 font-mono text-xs shadow-xl backdrop-blur-md">
             <div className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse" />
-            <span className="text-cream/90 font-bold uppercase tracking-wider">REC &bull; LIVE OPERATION</span>
+            <span className="text-cream/90 font-bold uppercase tracking-wider">LIVE OPERATION &bull; DIGBETH DEPOT</span>
             <span className="text-cream/40">&bull;</span>
-            <span className="text-champagne font-bold">24.00 FPS CINEMA</span>
+            <span className="text-champagne font-bold">+2.2°C SLA</span>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* 21:9 ANAMORPHIC CINEMA WIDESCREEN PLAYER */}
+        {/* 21:9 ANAMORPHIC CINEMA WIDESCREEN PLAYER (100% ROOTWILLS BRANDED) */}
         {/* ========================================================================= */}
         <div 
           ref={playerFrameRef}
@@ -241,37 +220,18 @@ export function InteractiveLogisticsHub() {
           
           <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full rounded-2xl overflow-hidden bg-obsidian-950 group">
             
-            {/* Real HTML5 Streaming Video Player with Progressive Buffering */}
-            <video
-              ref={videoRef}
-              key={currentScene.videoUrl}
-              playsInline
-              autoPlay
-              loop
-              muted={isMuted}
-              preload="metadata"
-              poster={currentScene.image}
-              onCanPlay={() => setVideoLoaded(true)}
-              onError={() => setVideoError(true)}
-              onTimeUpdate={handleTimeUpdate}
-              className={`absolute inset-0 w-full h-full object-cover brightness-95 contrast-[1.05] transition-opacity duration-700 ${
-                videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <source src={currentScene.videoUrl} type="video/webm" />
-            </video>
-
-            {/* High-Resolution Cinematic Poster Fallback (while video buffers or on low-power mode) */}
-            <div className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${
-              videoLoaded && !videoError ? 'opacity-0' : 'opacity-100'
-            }`}>
+            {/* High-Resolution Branded Photography with Cinematic Pan & Zoom */}
+            <div className="absolute inset-0 transition-opacity duration-1000">
               <Image
+                key={currentScene.image}
                 src={currentScene.image}
                 alt={currentScene.title}
                 fill
                 priority
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                className="object-cover brightness-95 contrast-[1.05]"
+                className={`object-cover brightness-95 contrast-[1.06] transition-transform duration-[6000ms] ease-out ${
+                  isPlaying ? 'scale-105' : 'scale-100'
+                }`}
               />
             </div>
 
@@ -282,7 +242,7 @@ export function InteractiveLogisticsHub() {
             {/* Playback Progress Indicator Line */}
             <div className="absolute bottom-0 inset-x-0 h-1 bg-obsidian-900/80 z-30">
               <div 
-                className="h-full bg-gradient-to-r from-champagne-soft via-champagne to-champagne shadow-gold-glow transition-all duration-200"
+                className="h-full bg-gradient-to-r from-champagne-soft via-champagne to-champagne shadow-gold-glow transition-all duration-75"
                 style={{ width: `${playbackProgress}%` }}
               />
             </div>
@@ -306,13 +266,11 @@ export function InteractiveLogisticsHub() {
               <div className="space-y-2 max-w-xl bg-obsidian-950/90 backdrop-blur-xl p-4 sm:p-5 rounded-2xl border border-emerald-900/80 shadow-2xl">
                 <div className="flex items-center gap-2">
                   <span className="text-[10px] font-mono uppercase tracking-widest text-champagne font-bold">
-                    Rootwills Field Reel &bull; Scene 0{activeSceneIdx + 1} of 03
+                    Rootwills Field Dispatch &bull; Scene 0{activeSceneIdx + 1} of 03
                   </span>
-                  {videoLoaded && (
-                    <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9px] font-mono font-bold uppercase">
-                      STREAMING
-                    </span>
-                  )}
+                  <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[9px] font-mono font-bold uppercase">
+                    ACTIVE FEED
+                  </span>
                 </div>
                 
                 <h3 className="font-display text-lg sm:text-2xl font-bold text-cream leading-tight">
@@ -338,8 +296,17 @@ export function InteractiveLogisticsHub() {
               <div className="flex items-center gap-2 self-end sm:self-auto bg-obsidian-950/90 backdrop-blur-xl p-2 rounded-2xl border border-champagne/40 shadow-2xl">
                 <button
                   type="button"
+                  onClick={handlePrevScene}
+                  aria-label="Previous scene"
+                  className="p-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 text-cream border border-emerald-800/60 transition-all"
+                >
+                  <ChevronLeft className="w-4 h-4 text-cream/80" />
+                </button>
+
+                <button
+                  type="button"
                   onClick={togglePlay}
-                  aria-label={isPlaying ? "Pause cinematic reel" : "Play cinematic reel"}
+                  aria-label={isPlaying ? "Pause dispatch reel" : "Resume dispatch reel"}
                   className="p-3 rounded-xl bg-champagne text-obsidian-950 hover:brightness-110 shadow-gold-glow transition-all"
                 >
                   {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
@@ -347,11 +314,11 @@ export function InteractiveLogisticsHub() {
 
                 <button
                   type="button"
-                  onClick={toggleMute}
-                  aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                  className="p-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 text-cream border border-emerald-800/60 transition-all"
+                  onClick={handleNextScene}
+                  aria-label="Next scene"
+                  className="p-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 text-cream border border-emerald-800/60 transition-all"
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4 text-cream/70" /> : <Volume2 className="w-4 h-4 text-champagne" />}
+                  <ChevronRight className="w-4 h-4 text-cream/80" />
                 </button>
 
                 <button
@@ -380,6 +347,7 @@ export function InteractiveLogisticsHub() {
                 type="button"
                 onClick={() => {
                   setActiveSceneIdx(idx);
+                  setPlaybackProgress(0);
                   setIsPlaying(true);
                 }}
                 className={`text-left p-4 rounded-2xl border transition-all duration-300 space-y-2 relative overflow-hidden group ${
@@ -422,7 +390,7 @@ export function InteractiveLogisticsHub() {
           </div>
 
           <Link
-            href="/onboarding"
+            href="/apply"
             className="w-full sm:w-auto px-6 py-3 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs font-mono shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all"
           >
             <span>Open 30-Day Trade Account</span>
