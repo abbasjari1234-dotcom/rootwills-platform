@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { Leaf, ThermometerSnowflake, Award, MapPin } from 'lucide-react';
-import { use3dTilt } from '@/hooks/use3dTilt';
 
 const provenanceData = [
   {
@@ -35,36 +34,6 @@ const provenanceData = [
     detail: 'Field to kitchen unbroken',
   },
 ];
-
-function ProvenanceCard({ item, index }: { item: typeof provenanceData[0], index: number }) {
-  const tiltRef = use3dTilt<HTMLDivElement>({ maxRotation: 15, scale: 1.05, duration: 0.4 });
-
-  return (
-    <div
-      ref={tiltRef}
-      className={`act-harvest-card-${index} glass-panel rounded-2xl p-6 sm:p-7 will-change-transform hover:border-champagne/30 transition-colors duration-500 group cursor-default`}
-      style={{ transformStyle: 'preserve-3d' }}
-    >
-      <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center mb-4 group-hover:border-champagne/30 transition-colors">
-        <item.icon className="w-4 h-4 text-emerald-400 group-hover:text-champagne transition-colors duration-500" />
-      </div>
-      <div className="flex items-baseline gap-1.5 mb-1" style={{ transform: 'translateZ(20px)' }}>
-        <span className="text-3xl sm:text-4xl font-display font-black text-cream tracking-tight">
-          {item.metric}
-        </span>
-        <span className="text-sm font-sans font-medium text-champagne/70">
-          {item.unit}
-        </span>
-      </div>
-      <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400/60 mb-2 font-semibold" style={{ transform: 'translateZ(10px)' }}>
-        {item.label}
-      </div>
-      <p className="text-cream/45 text-xs font-sans leading-relaxed" style={{ transform: 'translateZ(5px)' }}>
-        {item.detail}
-      </p>
-    </div>
-  );
-}
 
 export function ActHarvestProvenance() {
   return (
@@ -108,7 +77,29 @@ export function ActHarvestProvenance() {
         {/* Provenance data cards — positioned for 3D reveal */}
         <div className="act-harvest-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {provenanceData.map((item, i) => (
-            <ProvenanceCard key={item.label} item={item} index={i} />
+            <div
+              key={item.label}
+              className={`act-harvest-card-${i} glass-panel rounded-2xl p-6 sm:p-7 will-change-transform hover:border-champagne/30 transition-colors duration-500 group`}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center mb-4 group-hover:border-champagne/30 transition-colors">
+                <item.icon className="w-4 h-4 text-emerald-400 group-hover:text-champagne transition-colors duration-500" />
+              </div>
+              <div className="flex items-baseline gap-1.5 mb-1">
+                <span className="text-3xl sm:text-4xl font-display font-black text-cream tracking-tight">
+                  {item.metric}
+                </span>
+                <span className="text-sm font-sans font-medium text-champagne/70">
+                  {item.unit}
+                </span>
+              </div>
+              <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400/60 mb-2 font-semibold">
+                {item.label}
+              </div>
+              <p className="text-cream/45 text-xs font-sans leading-relaxed">
+                {item.detail}
+              </p>
+            </div>
           ))}
         </div>
 

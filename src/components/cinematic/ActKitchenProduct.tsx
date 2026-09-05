@@ -4,8 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Leaf, Sparkles, Layers, UtensilsCrossed, ArrowRight } from 'lucide-react';
-import { use3dTilt } from '@/hooks/use3dTilt';
-import { MagneticButton } from '../ui/MagneticButton';
 
 const productCategories = [
   {
@@ -37,63 +35,6 @@ const productCategories = [
     accent: 'champagne',
   },
 ];
-
-function KitchenCard({ cat, index }: { cat: typeof productCategories[0], index: number }) {
-  const tiltRef = use3dTilt<HTMLAnchorElement>({ maxRotation: 10, scale: 1.03, duration: 0.5 });
-
-  return (
-    <Link
-      ref={tiltRef}
-      href="/products"
-      className={`act-kitchen-card-${index} group block rounded-2xl overflow-hidden will-change-transform transition-all duration-500`}
-      style={{
-        transformStyle: 'preserve-3d',
-        background: 'linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '2px solid rgba(16, 185, 129, 0.45)',
-        boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15)',
-      }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(228, 199, 103, 0.5)'; }}
-      onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.35)'; }}
-    >
-      {/* Card image */}
-      <div className="relative aspect-[3/2] overflow-hidden" style={{ transform: 'translateZ(10px)' }}>
-        <Image
-          src={cat.image}
-          alt={cat.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
-          sizes="(max-width: 640px) 100vw, 50vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#021710] via-[#021710]/30 to-transparent" />
-
-        {/* Icon badge */}
-        <div className="absolute top-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center border border-emerald-400/30 bg-[#021710]/70 backdrop-blur-md">
-          <cat.icon
-            className={`w-4 h-4 ${
-              cat.accent === 'emerald' ? 'text-emerald-400' : 'text-champagne'
-            }`}
-          />
-        </div>
-      </div>
-
-      {/* Card body */}
-      <div className="p-5 sm:p-6" style={{ transform: 'translateZ(25px)' }}>
-        <h3 className="text-base font-display font-bold text-cream uppercase tracking-wide group-hover:text-champagne transition-colors duration-400">
-          {cat.title}
-        </h3>
-        <p className="mt-1.5 text-xs text-cream/45 font-sans leading-relaxed">
-          {cat.description}
-        </p>
-        <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400/60 group-hover:text-champagne/70 transition-colors">
-          <span>Explore Range</span>
-          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 export function ActKitchenProduct() {
   return (
@@ -132,20 +73,68 @@ export function ActKitchenProduct() {
           style={{ perspective: '800px' }}
         >
           {productCategories.map((cat, i) => (
-            <KitchenCard key={cat.title} cat={cat} index={i} />
+            <Link
+              key={cat.title}
+              href="/products"
+              className={`act-kitchen-card-${i} group block rounded-2xl overflow-hidden will-change-transform transition-all duration-500`}
+              style={{
+                transformStyle: 'preserve-3d',
+                background: 'linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '2px solid rgba(16, 185, 129, 0.45)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15)',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(228, 199, 103, 0.5)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(16, 185, 129, 0.35)'; }}
+            >
+              {/* Card image */}
+              <div className="relative aspect-[3/2] overflow-hidden">
+                <Image
+                  src={cat.image}
+                  alt={cat.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#021710] via-[#021710]/30 to-transparent" />
+
+                {/* Icon badge */}
+                <div className="absolute top-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center border border-emerald-400/30 bg-[#021710]/70 backdrop-blur-md">
+                  <cat.icon
+                    className={`w-4 h-4 ${
+                      cat.accent === 'emerald' ? 'text-emerald-400' : 'text-champagne'
+                    }`}
+                  />
+                </div>
+              </div>
+
+              {/* Card body */}
+              <div className="p-5 sm:p-6">
+                <h3 className="text-base font-display font-bold text-cream uppercase tracking-wide group-hover:text-champagne transition-colors duration-400">
+                  {cat.title}
+                </h3>
+                <p className="mt-1.5 text-xs text-cream/45 font-sans leading-relaxed">
+                  {cat.description}
+                </p>
+                <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400/60 group-hover:text-champagne/70 transition-colors">
+                  <span>Explore Range</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
 
         {/* Full catalogue CTA */}
         <div className="act-kitchen-cta mt-12 sm:mt-16 text-center">
-          <MagneticButton
-            as={Link}
+          <Link
             href="/products"
             className="group inline-flex items-center gap-2.5 px-7 py-3.5 border border-champagne/25 text-champagne/90 font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:bg-champagne/5 hover:border-champagne/50 transition-all duration-400"
           >
             View Full Catalogue
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </MagneticButton>
+          </Link>
         </div>
       </div>
     </section>
