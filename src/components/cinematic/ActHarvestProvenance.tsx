@@ -105,7 +105,7 @@ export function ActHarvestProvenance() {
           className="act-harvest-featured mt-16 sm:mt-24 relative mx-auto max-w-3xl"
           style={{ perspective: '600px' }}
         >
-          <div className="act-harvest-featured-img relative rounded-2xl overflow-hidden aspect-[16/9] shadow-royal-depth will-change-transform">
+          <div className="act-harvest-featured-img relative rounded-2xl overflow-hidden aspect-[16/9] shadow-royal-depth will-change-transform border border-emerald-400/30">
             <Image
               src="/images/branded/rootwills_apples_card.jpg"
               alt="Premium Rootwills Pink Lady apples"

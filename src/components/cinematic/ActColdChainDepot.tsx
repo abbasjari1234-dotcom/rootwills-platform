@@ -78,7 +78,7 @@ export function ActColdChainDepot() {
         {/* Fleet + Corridor grid */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Fleet image with depth */}
-          <div className="act-coldchain-fleet relative rounded-2xl overflow-hidden aspect-[4/3] shadow-royal-depth will-change-transform group">
+          <div className="act-coldchain-fleet relative rounded-2xl overflow-hidden aspect-[4/3] shadow-royal-depth will-change-transform group border border-emerald-400/30">
             <Image
               src="/images/branded/rootwills_fleet_delivery.jpg"
               alt="Rootwills refrigerated delivery fleet"
