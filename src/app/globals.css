@@ -186,3 +186,139 @@ input[type="submit"],
 ::-webkit-scrollbar-thumb:hover {
   background: #10B981;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   CINEMATIC UI ENHANCEMENTS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Subtle Dot Grid Texture Overlay */
+.dot-grid-texture {
+  background-image: radial-gradient(circle, rgba(16, 185, 129, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Floating Ambient Glow Orb */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  25% { transform: translate(30px, -20px) scale(1.1); opacity: 0.6; }
+  50% { transform: translate(-15px, -40px) scale(0.95); opacity: 0.35; }
+  75% { transform: translate(20px, -10px) scale(1.05); opacity: 0.55; }
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orbFloat 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.ambient-orb-emerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0) 70%);
+}
+
+.ambient-orb-gold {
+  background: radial-gradient(circle, rgba(228, 199, 103, 0.2) 0%, rgba(228, 199, 103, 0) 70%);
+}
+
+/* Animated Gold Shimmer for Premium Text */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #C9A227 0%, #F5E498 25%, #FFFDF8 50%, #F5E498 75%, #C9A227 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Section Divider — Horizontal Gold Line */
+.section-divider {
+  position: relative;
+  height: 1px;
+  max-width: 200px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(228, 199, 103, 0.3), transparent);
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(228, 199, 103, 0.5);
+  box-shadow: 0 0 12px rgba(228, 199, 103, 0.3);
+}
+
+/* Cinematic Vignette Overlay */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(2, 23, 16, 0.4) 100%);
+}
+
+/* Animated Pulse Ring */
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
+  100% { transform: scale(0.8); opacity: 0.6; }
+}
+
+.pulse-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(228, 199, 103, 0.25);
+  animation: pulseRing 4s ease-in-out infinite;
+}
+
+/* Card Hover Glow Effect */
+.card-hover-glow {
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.card-hover-glow:hover {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(16, 185, 129, 0.15), inset 0 1px 2px rgba(255, 244, 208, 0.2);
+}
+
+/* Smooth Section Fade Transition */
+.section-fade-in {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, #021710 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.section-fade-out {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(0deg, #021710 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Counter/Stat Number Glow */
+.stat-glow {
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.1);
+}
+
+.stat-glow-gold {
+  text-shadow: 0 0 20px rgba(228, 199, 103, 0.3), 0 0 40px rgba(228, 199, 103, 0.1);
+}

@@ -33,6 +33,13 @@ export function ActColdChainDepot() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#021710] via-emerald-950/90 to-[#021710]" />
       </div>
 
+      {/* Section fade-in from previous */}
+      <div className="section-fade-in" />
+
+      {/* Ambient glow orbs */}
+      <div className="ambient-orb ambient-orb-emerald" style={{ width: '350px', height: '350px', top: '20%', right: '-5%', animationDelay: '2s' }} />
+      <div className="ambient-orb ambient-orb-gold" style={{ width: '250px', height: '250px', bottom: '15%', left: '-3%', animationDelay: '6s' }} />
+
       {/* Scanning line — ambient operational feel */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="act-coldchain-scanline absolute w-full h-px bg-gradient-to-r from-transparent via-emerald-400/15 to-transparent top-0 will-change-transform" />
@@ -65,7 +72,7 @@ export function ActColdChainDepot() {
               <div className="w-9 h-9 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center mx-auto mb-3 group-hover:border-emerald-400/40 transition-colors">
                 <stat.icon className="w-4 h-4 text-emerald-400" />
               </div>
-              <div className="text-lg sm:text-xl font-display font-black text-cream tracking-tight">
+              <div className="text-lg sm:text-xl font-display font-black text-cream tracking-tight stat-glow">
                 {stat.value}
               </div>
               <div className="text-[9px] font-mono uppercase tracking-[0.2em] text-emerald-400/50 mt-1.5 font-semibold">
@@ -113,7 +120,7 @@ export function ActColdChainDepot() {
               {corridors.map((corridor, i) => (
                 <div
                   key={corridor.name}
-                  className={`act-coldchain-corridor-${i} glass-panel rounded-xl px-5 py-4 flex items-center justify-between will-change-transform hover:border-emerald-400/30 transition-all duration-400 cursor-default group flex-1`}
+                  className={`act-coldchain-corridor-${i} glass-panel rounded-xl px-5 py-4 flex items-center justify-between will-change-transform hover:border-emerald-400/30 card-hover-glow transition-all duration-400 cursor-default group flex-1`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.5)] animate-pulse" />
