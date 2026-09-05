@@ -82,7 +82,7 @@ export function ActKitchenProduct() {
                 background: 'linear-gradient(135deg, rgba(6, 45, 33, 0.75) 0%, rgba(2, 23, 16, 0.9) 100%)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(16, 185, 129, 0.35)',
+                border: '2px solid rgba(16, 185, 129, 0.45)',
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 244, 208, 0.15)',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(228, 199, 103, 0.5)'; }}
