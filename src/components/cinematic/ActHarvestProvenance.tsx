@@ -56,10 +56,6 @@ export function ActHarvestProvenance() {
       {/* Section fade-in */}
       <div className="section-fade-in" />
 
-      {/* Ambient glow orbs */}
-      <div className="ambient-orb ambient-orb-gold" style={{ width: '300px', height: '300px', top: '15%', right: '0%', animationDelay: '3s' }} />
-      <div className="ambient-orb ambient-orb-emerald" style={{ width: '250px', height: '250px', bottom: '10%', left: '-5%', animationDelay: '7s' }} />
-
       {/* Content container */}
       <div className="act-harvest-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

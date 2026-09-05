@@ -47,20 +47,6 @@ export function ActOriginHero() {
       {/* === DOT GRID TEXTURE (adds depth) === */}
       <div className="absolute inset-0 dot-grid-texture opacity-30 pointer-events-none" />
 
-      {/* === FLOATING AMBIENT GLOW ORBS === */}
-      <div
-        className="ambient-orb ambient-orb-emerald"
-        style={{ width: '400px', height: '400px', top: '10%', left: '-5%', animationDelay: '0s' }}
-      />
-      <div
-        className="ambient-orb ambient-orb-gold"
-        style={{ width: '300px', height: '300px', top: '60%', right: '-3%', animationDelay: '4s' }}
-      />
-      <div
-        className="ambient-orb ambient-orb-emerald"
-        style={{ width: '250px', height: '250px', bottom: '5%', left: '40%', animationDelay: '8s', opacity: 0.2 }}
-      />
-
       {/* === FOREGROUND CONTENT === */}
       <div className="act-origin-content relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6">
         {/* Establishment Label */}

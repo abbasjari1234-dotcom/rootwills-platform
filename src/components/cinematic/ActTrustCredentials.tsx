@@ -55,10 +55,6 @@ export function ActTrustCredentials() {
       {/* Section fade-in */}
       <div className="section-fade-in" />
 
-      {/* Ambient glow orbs */}
-      <div className="ambient-orb ambient-orb-gold" style={{ width: '350px', height: '350px', top: '20%', left: '-3%', animationDelay: '1s' }} />
-      <div className="ambient-orb ambient-orb-emerald" style={{ width: '280px', height: '280px', bottom: '15%', right: '-2%', animationDelay: '5s' }} />
-
       <div className="act-trust-content relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
         <div className="act-trust-header text-center mb-14 sm:mb-20">

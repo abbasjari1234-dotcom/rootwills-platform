@@ -36,10 +36,6 @@ export function ActColdChainDepot() {
       {/* Section fade-in from previous */}
       <div className="section-fade-in" />
 
-      {/* Ambient glow orbs */}
-      <div className="ambient-orb ambient-orb-emerald" style={{ width: '350px', height: '350px', top: '20%', right: '-5%', animationDelay: '2s' }} />
-      <div className="ambient-orb ambient-orb-gold" style={{ width: '250px', height: '250px', bottom: '15%', left: '-3%', animationDelay: '6s' }} />
-
       {/* Scanning line — ambient operational feel */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="act-coldchain-scanline absolute w-full h-px bg-gradient-to-r from-transparent via-emerald-400/15 to-transparent top-0 will-change-transform" />

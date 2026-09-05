@@ -29,10 +29,6 @@ export function ActFinalCTA() {
       {/* Section fade-in */}
       <div className="section-fade-in" />
 
-      {/* Floating ambient orbs */}
-      <div className="ambient-orb ambient-orb-gold" style={{ width: '400px', height: '400px', top: '25%', left: '10%', animationDelay: '0s' }} />
-      <div className="ambient-orb ambient-orb-emerald" style={{ width: '300px', height: '300px', bottom: '20%', right: '5%', animationDelay: '5s' }} />
-
       <div className="act-cta-content relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto py-20">
         {/* Decorative ornament */}
         <div className="act-cta-ornament mb-8 flex justify-center">
