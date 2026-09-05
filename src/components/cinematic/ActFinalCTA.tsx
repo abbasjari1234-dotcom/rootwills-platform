@@ -34,17 +34,13 @@ export function ActFinalCTA() {
       <div className="ambient-orb ambient-orb-emerald" style={{ width: '300px', height: '300px', bottom: '20%', right: '5%', animationDelay: '5s' }} />
 
       <div className="act-cta-content relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto py-20">
-        {/* Pulse rings */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] pulse-ring pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[600px] sm:h-[600px] pulse-ring pointer-events-none" style={{ animationDelay: '2s' }} />
-
         {/* Decorative ornament */}
         <div className="act-cta-ornament mb-8 flex justify-center">
           <div className="w-px h-16 bg-gradient-to-b from-transparent via-champagne/40 to-champagne/15" />
         </div>
 
         {/* Main headline */}
-        <h2 className="act-cta-title font-display text-3xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.88] tracking-tight">
+        <h2 className="act-cta-title font-display text-3xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.88] tracking-tight heading-glow-gold">
           <span className="block text-cream">Ready to Elevate</span>
           <span className="block gold-shimmer-text mt-2 sm:mt-3">Your Kitchen?</span>
         </h2>

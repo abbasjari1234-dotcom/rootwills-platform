@@ -63,17 +63,13 @@ export function ActOriginHero() {
 
       {/* === FOREGROUND CONTENT === */}
       <div className="act-origin-content relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6">
-        {/* Animated pulse ring behind title */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] pulse-ring pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] sm:w-[520px] sm:h-[520px] lg:w-[700px] lg:h-[700px] pulse-ring pointer-events-none" style={{ animationDelay: '2s' }} />
-
         {/* Establishment Label */}
         <div className="act-origin-label font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.35em] text-champagne/70 mb-4 sm:mb-6 font-semibold">
           Digbeth, Birmingham &bull; Premium Foodservice Distribution
         </div>
 
         {/* Main Title — Large cinematic typography with shimmer */}
-        <h1 className="act-origin-title font-display font-black uppercase leading-[0.82] tracking-[-0.02em]">
+        <h1 className="act-origin-title font-display font-black uppercase leading-[0.82] tracking-[-0.02em] heading-glow-gold">
           <span className="block text-[52px] sm:text-[80px] md:text-[110px] lg:text-[140px] xl:text-[160px] gold-shimmer-text drop-shadow-[0_4px_30px_rgba(228,199,103,0.3)]">
             ROOTWILLS
           </span>
