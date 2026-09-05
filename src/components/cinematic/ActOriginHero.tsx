@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { MagneticButton } from '../ui/MagneticButton';
 
 export function ActOriginHero() {
   return (
@@ -55,9 +56,13 @@ export function ActOriginHero() {
         </div>
 
         {/* Main Title — Large cinematic typography with shimmer */}
-        <h1 className="act-origin-title font-display font-black uppercase leading-[0.82] tracking-[-0.02em] heading-glow-gold">
+        <h1 className="act-origin-title font-display font-black uppercase leading-[0.82] tracking-[-0.02em] heading-glow-gold flex justify-center">
           <span className="block text-[52px] sm:text-[80px] md:text-[110px] lg:text-[140px] xl:text-[160px] gold-shimmer-text drop-shadow-[0_4px_30px_rgba(228,199,103,0.3)]">
-            ROOTWILLS
+            {'ROOTWILLS'.split('').map((char, i) => (
+              <span key={i} className="clip-text-container inline-block">
+                <span className="act-origin-title-char clip-text-inner inline-block">{char}</span>
+              </span>
+            ))}
           </span>
         </h1>
 
@@ -75,21 +80,25 @@ export function ActOriginHero() {
           for professional kitchens.
         </p>
 
-        {/* CTA Buttons — Enhanced with glow */}
+        {/* CTA Buttons — Enhanced with glow and Magnetic interactions */}
         <div className="act-origin-cta mt-7 sm:mt-9 flex flex-col sm:flex-row gap-3 sm:gap-4">
-          <Link
+          <MagneticButton
+            as={Link}
             href="/apply"
+            strength={40}
             className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-champagne to-champagne-soft text-obsidian-950 font-sans font-bold text-xs sm:text-sm uppercase tracking-widest rounded-xl shadow-gold-glow hover:shadow-[0_0_60px_rgba(228,199,103,0.7)] transition-all duration-500 hover:scale-[1.04]"
           >
             Open Trade Account
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link
+          </MagneticButton>
+          <MagneticButton
+            as={Link}
             href="/products"
+            strength={30}
             className="inline-flex items-center gap-2 px-7 py-3.5 border border-cream/25 text-cream/85 font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:border-champagne/60 hover:text-champagne hover:bg-champagne/5 hover:shadow-[0_0_25px_rgba(228,199,103,0.15)] transition-all duration-500"
           >
             View Catalogue
-          </Link>
+          </MagneticButton>
         </div>
 
         {/* Trust micro-badges */}

@@ -8,6 +8,7 @@ import { ActColdChainDepot } from './ActColdChainDepot';
 import { ActKitchenProduct } from './ActKitchenProduct';
 import { ActTrustCredentials } from './ActTrustCredentials';
 import { ActFinalCTA } from './ActFinalCTA';
+import { CustomCursor } from '../ui/CustomCursor';
 
 export function CinematicScrollExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,8 +56,21 @@ export function CinematicScrollExperience() {
               duration: 0.15,
             },
             0
-          )
-          // Content drifts upward and fades
+          );
+
+        // Kinetic Text Reveal
+        gsap.from('.act-origin-title-char', {
+          y: 120,
+          opacity: 0,
+          rotateX: -90,
+          stagger: 0.05,
+          duration: 1.2,
+          ease: 'power4.out',
+          transformOrigin: '50% 50% -50px',
+        });
+
+        // Content drifts upward and fades
+        heroTl
           .to(
             '.act-origin-content',
             {
@@ -468,8 +482,13 @@ export function CinematicScrollExperience() {
 
   return (
     <div ref={containerRef} className="cinematic-experience relative">
+      <CustomCursor />
+      
       {/* Global dot-grid texture overlay */}
       <div className="fixed inset-0 dot-grid-texture opacity-20 pointer-events-none z-[1]" />
+      
+      {/* Animated Film Grain */}
+      <div className="film-grain" />
 
       <ActOriginHero />
 

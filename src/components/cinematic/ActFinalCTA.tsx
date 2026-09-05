@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, PhoneCall } from 'lucide-react';
+import { MagneticButton } from '../ui/MagneticButton';
 
 export function ActFinalCTA() {
   return (
@@ -49,20 +50,25 @@ export function ActFinalCTA() {
 
         {/* CTA Buttons */}
         <div className="act-cta-buttons mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
+          <MagneticButton
+            as={Link}
             href="/apply"
+            strength={40}
             className="group inline-flex items-center gap-2.5 px-8 py-4 bg-gradient-to-r from-champagne to-champagne-soft text-obsidian-950 font-sans font-bold text-xs sm:text-sm uppercase tracking-widest rounded-xl shadow-gold-glow hover:shadow-[0_0_60px_rgba(228,199,103,0.7)] transition-all duration-500 hover:scale-[1.04]"
           >
             Open Your 30-Day Trade Account
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-          </Link>
-          <Link
+          </MagneticButton>
+          
+          <MagneticButton
+            as={Link}
             href="/contact"
-            className="inline-flex items-center gap-2 px-7 py-4 border border-cream/20 text-cream/75 font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:border-champagne/50 hover:text-champagne hover:bg-champagne/5 transition-all duration-400"
+            strength={30}
+            className="group inline-flex items-center gap-2.5 px-8 py-4 border border-cream/20 text-cream/90 font-sans font-semibold text-xs sm:text-sm uppercase tracking-widest rounded-xl hover:bg-cream/5 hover:border-cream/40 transition-all duration-400"
           >
-            <PhoneCall className="w-4 h-4" />
-            Speak to Our Team
-          </Link>
+            <PhoneCall className="w-4 h-4 text-cream/70 group-hover:text-champagne transition-colors" />
+            Speak to a Consultant
+          </MagneticButton>
         </div>
 
         {/* Trust stats */}
