@@ -78,17 +78,19 @@ export function PublicHeader() {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20 gap-2 xl:gap-4">
           
           {/* Refined British Monogram Brand Logo */}
-          <RootwillsLogo size="md" variant="full" />
+          <div className="shrink-0">
+            <RootwillsLogo size="md" variant="full" />
+          </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 font-mono text-xs uppercase tracking-wider">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2 font-mono text-xs uppercase tracking-wider shrink-0">
             <Link
               href="/"
-              className={`px-3.5 py-2 rounded-xl transition-all ${
+              className={`px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-all ${
                 pathname === '/' 
                   ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30 shadow-[0_0_15px_rgba(228,199,103,0.15)]' 
                   : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
@@ -99,14 +101,14 @@ export function PublicHeader() {
 
             {/* Products Dropdown */}
             <div 
-              className="relative group"
+              className="relative group shrink-0"
               onMouseEnter={() => setProductsOpen(true)}
               onMouseLeave={() => setProductsOpen(false)}
             >
               <Link
                 href="/products"
                 onClick={() => setProductsOpen(false)}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-colors ${
+                className={`flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-colors ${
                   pathname?.startsWith('/products')
                     ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
                     : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
@@ -205,13 +207,13 @@ export function PublicHeader() {
 
             {/* Sectors Dropdown */}
             <div 
-              className="relative group"
+              className="relative group shrink-0"
               onMouseEnter={() => setSectorsOpen(true)}
               onMouseLeave={() => setSectorsOpen(false)}
             >
               <button
                 type="button"
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl transition-colors ${
+                className={`flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-colors ${
                   pathname?.startsWith('/sectors')
                     ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
                     : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
@@ -295,54 +297,54 @@ export function PublicHeader() {
               </AnimatePresence>
             </div>
 
-            <Link href="/delivery" className="px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link href="/delivery" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
               Delivery
             </Link>
-            <Link href="/why-choose-us" className="px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link href="/why-choose-us" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
               Why Us
             </Link>
-            <Link href="/about" className="px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link href="/about" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
               About
             </Link>
-            <Link href="/contact" className="px-3.5 py-2 rounded-xl text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link href="/contact" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
               Contact
             </Link>
           </nav>
 
           {/* Desktop Right CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-2.5">
+          <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 2xl:gap-2.5 shrink-0">
             {/* Cart Trigger Button */}
             <button
               type="button"
               onClick={openCart}
               aria-label={`Open basket (${cartItemCount} items)`}
-              className="relative px-3.5 py-2.5 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold flex items-center gap-2 transition-all shadow-sm group hover:bg-emerald-900/40"
+              className="relative px-2.5 xl:px-3 py-2 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold flex items-center gap-1.5 xl:gap-2 transition-all shadow-sm group hover:bg-emerald-900/40 whitespace-nowrap shrink-0"
             >
-              <ShoppingBag className="w-4 h-4 text-champagne group-hover:scale-110 transition-transform" />
-              <span className="hidden xl:inline">Basket</span>
+              <ShoppingBag className="w-4 h-4 text-champagne group-hover:scale-110 transition-transform shrink-0" />
+              <span className="hidden 2xl:inline">Basket</span>
               {cartItemCount > 0 ? (
                 <span className="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-champagne to-champagne-light text-obsidian-950 text-[10px] font-mono font-black shadow-gold-glow animate-pulse">
                   {cartItemCount}
                 </span>
               ) : (
-                <span className="text-[11px] text-cream/40 font-mono hidden xl:inline">0</span>
+                <span className="text-[11px] text-cream/40 font-mono hidden 2xl:inline">0</span>
               )}
             </button>
 
             <Link
               href="/login"
-              className="px-4 py-2.5 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm"
+              className="px-3 xl:px-4 py-2 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm whitespace-nowrap shrink-0"
             >
               Customer Login
             </Link>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="shrink-0">
               <Link
                 href="/apply"
-                className="px-5 py-2.5 text-xs font-mono font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim rounded-xl hover:brightness-110 shadow-[0_0_20px_rgba(228,199,103,0.4)] transition-all flex items-center gap-2"
+                className="px-3.5 xl:px-5 py-2 text-xs font-mono font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim rounded-xl hover:brightness-110 shadow-[0_0_20px_rgba(228,199,103,0.4)] transition-all flex items-center gap-1.5 xl:gap-2 whitespace-nowrap shrink-0"
               >
                 <span>Open Trade Account</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
               </Link>
             </motion.div>
           </div>
