@@ -78,22 +78,22 @@ export function PublicHeader() {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-2 xl:gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           
           {/* Refined British Monogram Brand Logo */}
-          <div className="shrink-0">
+          <div className="shrink-0 flex items-center">
             <RootwillsLogo size="md" variant="full" />
           </div>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 2xl:gap-2 font-mono text-xs uppercase tracking-wider shrink-0">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1.5 2xl:gap-2 font-mono text-xs uppercase tracking-wider">
             <Link
               href="/"
-              className={`px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-all ${
+              className={`inline-flex items-center justify-center gap-1.5 h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-all border ${
                 pathname === '/' 
-                  ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30 shadow-[0_0_15px_rgba(228,199,103,0.15)]' 
-                  : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
+                  ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40 shadow-[0_0_15px_rgba(228,199,103,0.15)]' 
+                  : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
               }`}
             >
               Home
@@ -108,10 +108,10 @@ export function PublicHeader() {
               <Link
                 href="/products"
                 onClick={() => setProductsOpen(false)}
-                className={`flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-colors ${
+                className={`inline-flex items-center justify-center gap-1.5 h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
                   pathname?.startsWith('/products')
-                    ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
-                    : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
+                    ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                    : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
                 }`}
               >
                 <span>Products</span>
@@ -213,10 +213,10 @@ export function PublicHeader() {
             >
               <button
                 type="button"
-                className={`flex items-center gap-1 xl:gap-1.5 px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 transition-colors ${
+                className={`inline-flex items-center justify-center gap-1.5 h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
                   pathname?.startsWith('/sectors')
-                    ? 'text-champagne font-bold bg-emerald-950/70 border border-champagne/30'
-                    : 'text-cream/75 hover:text-cream hover:bg-emerald-950/40'
+                    ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                    : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
                 }`}
               >
                 <span>Who We Supply</span>
@@ -297,43 +297,69 @@ export function PublicHeader() {
               </AnimatePresence>
             </div>
 
-            <Link href="/delivery" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link 
+              href="/delivery" 
+              className={`inline-flex items-center justify-center h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
+                pathname === '/delivery'
+                  ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                  : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
+              }`}
+            >
               Delivery
             </Link>
-            <Link href="/why-choose-us" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link 
+              href="/why-choose-us" 
+              className={`inline-flex items-center justify-center h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
+                pathname === '/why-choose-us'
+                  ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                  : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
+              }`}
+            >
               Why Us
             </Link>
-            <Link href="/about" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link 
+              href="/about" 
+              className={`inline-flex items-center justify-center h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
+                pathname === '/about'
+                  ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                  : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
+              }`}
+            >
               About
             </Link>
-            <Link href="/contact" className="px-2.5 xl:px-3.5 py-2 rounded-xl whitespace-nowrap shrink-0 text-cream/75 hover:text-cream hover:bg-emerald-950/40 transition-colors">
+            <Link 
+              href="/contact" 
+              className={`inline-flex items-center justify-center h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
+                pathname === '/contact'
+                  ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'
+                  : 'text-cream/75 border-transparent hover:text-cream hover:bg-emerald-950/40 hover:border-emerald-800/40'
+              }`}
+            >
               Contact
             </Link>
           </nav>
 
           {/* Desktop Right CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-1.5 xl:gap-2 2xl:gap-2.5 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
             {/* Cart Trigger Button */}
             <button
               type="button"
               onClick={openCart}
               aria-label={`Open basket (${cartItemCount} items)`}
-              className="relative px-2.5 xl:px-3 py-2 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold flex items-center gap-1.5 xl:gap-2 transition-all shadow-sm group hover:bg-emerald-900/40 whitespace-nowrap shrink-0"
+              className="relative h-9 px-3 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold inline-flex items-center gap-2 transition-all shadow-sm group hover:bg-emerald-900/40 whitespace-nowrap shrink-0"
             >
               <ShoppingBag className="w-4 h-4 text-champagne group-hover:scale-110 transition-transform shrink-0" />
-              <span className="hidden 2xl:inline">Basket</span>
-              {cartItemCount > 0 ? (
+              <span>Basket</span>
+              {cartItemCount > 0 && (
                 <span className="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-champagne to-champagne-light text-obsidian-950 text-[10px] font-mono font-black shadow-gold-glow animate-pulse">
                   {cartItemCount}
                 </span>
-              ) : (
-                <span className="text-[11px] text-cream/40 font-mono hidden 2xl:inline">0</span>
               )}
             </button>
 
             <Link
               href="/login"
-              className="px-3 xl:px-4 py-2 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm whitespace-nowrap shrink-0"
+              className="h-9 px-3 xl:px-3.5 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm whitespace-nowrap shrink-0 inline-flex items-center justify-center"
             >
               Customer Login
             </Link>
@@ -341,7 +367,7 @@ export function PublicHeader() {
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className="shrink-0">
               <Link
                 href="/apply"
-                className="px-3.5 xl:px-5 py-2 text-xs font-mono font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim rounded-xl hover:brightness-110 shadow-[0_0_20px_rgba(228,199,103,0.4)] transition-all flex items-center gap-1.5 xl:gap-2 whitespace-nowrap shrink-0"
+                className="h-9 px-3.5 xl:px-5 text-xs font-mono font-bold text-obsidian-950 bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim rounded-xl hover:brightness-110 shadow-[0_0_20px_rgba(228,199,103,0.4)] transition-all inline-flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0"
               >
                 <span>Open Trade Account</span>
                 <ArrowRight className="w-3.5 h-3.5 shrink-0" />
