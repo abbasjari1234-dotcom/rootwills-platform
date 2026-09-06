@@ -99,14 +99,14 @@ const corridors = [
 
 export function ActColdChainDepot() {
   return (
-    <section className="act-coldchain relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-14 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
+    <section className="act-coldchain relative w-full overflow-hidden pt-4 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
       {/* Background — Digbeth depot image with multi-layered atmospheric lighting */}
-      <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform">
+      <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform overflow-hidden">
         <Image
           src="/images/branded/rootwills_digbeth_hub.jpg"
           alt="Rootwills Digbeth distribution hub"
           fill
-          className="object-cover opacity-25 scale-105"
+          className="object-cover opacity-25 scale-105 [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
           sizes="100vw"
         />
         {/* Dynamic atmospheric gradients eliminating the dark void */}
@@ -120,7 +120,7 @@ export function ActColdChainDepot() {
       </div>
 
       {/* Seamless top blend from Act II */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#02140e] to-transparent pointer-events-none z-[5]" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[5]" />
 
       {/* Seamless bottom fade into Act IV to eliminate gaps and image seams */}
       <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[5]" />

@@ -59,26 +59,23 @@ const provenanceData = [
 
 export function ActHarvestProvenance() {
   return (
-    <section
-      className="act-harvest relative w-full overflow-hidden pt-20 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 bg-[#021710]"
-      style={{ perspective: '1000px' }}
-    >
-      {/* Background image — Cinematic Orchard Harvest Overlay with Golden Sun Rim */}
-      <div className="act-harvest-bg absolute inset-0 will-change-transform pointer-events-none">
+    <section className="act-harvest relative w-full overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-6 sm:pb-10 bg-[#02140e]">
+      {/* Background image — Cinematic Orchard Harvest with top-only visibility */}
+      <div className="act-harvest-bg absolute inset-0 will-change-transform pointer-events-none overflow-hidden">
         <Image
           src="/images/branded/rootwills_orchard_harvest.jpg"
           alt="Rootwills partner orchard harvest"
           fill
-          className="object-cover opacity-30 scale-105"
+          className="object-cover opacity-25 scale-105 [mask-image:linear-gradient(to_bottom,black_0%,black_30%,transparent_65%)]"
           sizes="100vw"
           priority
         />
-        {/* Multilayered radial lighting to eliminate the flat dark void */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-[#021710]/75 to-[#02140e]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(228,199,103,0.15),_transparent_60%)]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-        {/* Seamless bottom fade into Act III to eliminate any image seams or gaps */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[2]" />
+        {/* Multilayered radial lighting to eliminate flat dark void while guaranteeing solid bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02140e]/60 via-[#02140e]/90 to-[#02140e]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(228,199,103,0.15),_transparent_55%)]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Solid bottom half coverage so zero background image can ever appear below the card */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#02140e] via-[#02140e] to-transparent pointer-events-none z-[2]" />
       </div>
 
       {/* Content container */}
