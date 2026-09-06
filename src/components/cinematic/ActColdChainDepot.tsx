@@ -99,7 +99,7 @@ const corridors = [
 
 export function ActColdChainDepot() {
   return (
-    <section className="act-coldchain relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-14 pb-20 sm:pb-28 lg:pb-32 bg-[#02140e]">
+    <section className="act-coldchain relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-14 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
       {/* Background — Digbeth depot image with multi-layered atmospheric lighting */}
       <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform">
         <Image
@@ -121,6 +121,9 @@ export function ActColdChainDepot() {
 
       {/* Seamless top blend from Act II */}
       <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#02140e] to-transparent pointer-events-none z-[5]" />
+
+      {/* Seamless bottom fade into Act IV to eliminate gaps and image seams */}
+      <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[5]" />
 
       {/* Scanning radar line — ambient operational command feel */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">

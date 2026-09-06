@@ -44,20 +44,16 @@ const credentials = [
 
 export function ActTrustCredentials() {
   return (
-    <section className="act-trust relative w-full overflow-hidden py-24 sm:py-32 lg:py-40 flex items-center">
+    <section className="act-trust relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-12 pb-16 sm:pb-24 lg:pb-28 flex items-center bg-[#02140e]">
       {/* Background gradient — clean, restrained */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-emerald-950/25 to-[#021710]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#02140e] via-emerald-950/25 to-[#02140e]" />
 
-      {/* Gold accent lines */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-champagne/25" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-t from-transparent to-champagne/25" />
-
-      {/* Section fade-in */}
-      <div className="section-fade-in" />
+      {/* Seamless top blend from Act IV */}
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#02140e] to-transparent pointer-events-none z-[5]" />
 
       <div className="act-trust-content relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Header */}
-        <div className="act-trust-header text-center mb-14 sm:mb-20">
+        <div className="act-trust-header text-center mb-10 sm:mb-14">
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-champagne/50 mb-3 font-semibold">
             Compliance &amp; Accreditation
           </div>
