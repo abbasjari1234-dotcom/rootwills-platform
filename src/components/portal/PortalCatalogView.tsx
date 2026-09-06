@@ -18,7 +18,6 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { ProductCategory } from '@/types/products';
-import { ThreeDTiltCard } from '@/components/public/ThreeDTiltCard';
 
 const CATEGORIES: { key: ProductCategory | 'all'; label: string }[] = [
   { key: 'all', label: 'All Products' },
@@ -60,16 +59,16 @@ export function PortalCatalogView() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header with Pricing Explanation */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-6 border-b border-emerald-950">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-6 border-b border-emerald-950/80">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 uppercase font-bold">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-champagne" />
             <span>Personalised Commercial Contract Pricing Active</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1 tracking-tight">
             Wholesale Produce & Goods Catalog
           </h1>
-          <p className="text-xs text-cream/60 mt-0.5">
+          <p className="text-xs text-cream/60 mt-1">
             Showing locked contract rates for <strong className="text-cream">{currentOrg.name}</strong>. Cut-off tonight at 11:00 PM for next-morning depot delivery.
           </p>
         </div>
@@ -84,7 +83,7 @@ export function PortalCatalogView() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="glass-panel p-4 rounded-2xl flex flex-col md:flex-row gap-4 justify-between items-center border border-emerald-950">
+      <div className="glass-panel p-4 rounded-2xl flex flex-col md:flex-row gap-4 justify-between items-center border border-emerald-950/80 shadow-sm">
         {/* Category Tabs */}
         <div className="flex flex-wrap gap-2 w-full md:w-auto">
           {CATEGORIES.map((cat) => (
@@ -94,7 +93,7 @@ export function PortalCatalogView() {
               className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
                 selectedCategory === cat.key
                   ? 'bg-champagne text-obsidian-950 font-bold shadow-gold-glow'
-                  : 'bg-obsidian-900/90 text-cream/70 hover:text-cream border border-emerald-900/50'
+                  : 'bg-obsidian-900/90 text-cream/70 hover:text-cream border border-emerald-900/40 hover:border-champagne/40'
               }`}
             >
               {cat.label}
@@ -103,35 +102,56 @@ export function PortalCatalogView() {
 
           <button
             onClick={() => setOnlyFavorites(!onlyFavorites)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1 transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition-all ${
               onlyFavorites
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-400/40'
-                : 'bg-obsidian-900/90 text-cream/60 hover:text-cream border border-emerald-900/50'
+                : 'bg-obsidian-900/90 text-cream/60 hover:text-cream border border-emerald-900/40 hover:border-champagne/40'
             }`}
           >
-            <Star className="w-3.5 h-3.5 fill-current text-amber-400" />
+            <Star className={`w-3.5 h-3.5 ${onlyFavorites ? 'text-amber-400 fill-amber-400' : 'text-cream/50'}`} />
             <span>Favourites Only</span>
           </button>
         </div>
 
         {/* Search Input */}
-        <div className="relative w-full md:w-72">
+        <div className="relative w-full md:w-80">
           <Search className="w-4 h-4 text-emerald-400/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search produce, SKU, cuts..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+            className="w-full bg-obsidian-900 border border-emerald-900/50 rounded-xl pl-10 pr-4 py-2 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/40"
           />
         </div>
       </div>
 
-      {/* 3D Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProducts.map((product) => (
-          <ThreeDTiltCard key={product.id} maxTilt={8} depth={15}>
-            <div className="glass-panel rounded-2xl overflow-hidden hover:border-champagne/40 border border-emerald-950/80 transition-all flex flex-col justify-between group h-full shadow-lg">
+      {/* Products Grid or Empty State */}
+      {filteredProducts.length === 0 ? (
+        <div className="glass-panel rounded-2xl p-12 text-center space-y-3 border border-emerald-950/80">
+          <Search className="w-10 h-10 text-cream/30 mx-auto" />
+          <h3 className="font-display text-lg font-bold text-cream">No wholesale items match your search</h3>
+          <p className="text-xs text-cream/60 max-w-sm mx-auto">
+            Try adjusting your search keywords or switching category filters to see available fresh produce and kitchen staples.
+          </p>
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              setSelectedCategory('all');
+              setOnlyFavorites(false);
+            }}
+            className="px-4 py-2 rounded-xl bg-obsidian-900 hover:bg-champagne hover:text-obsidian-950 text-xs font-mono text-cream border border-emerald-900/60 transition-all"
+          >
+            Reset Filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="glass-panel rounded-2xl overflow-hidden hover:border-champagne/40 border border-emerald-950/80 transition-all flex flex-col justify-between group h-full shadow-md hover:shadow-xl"
+            >
               <div>
                 {/* Product Image & Badges */}
                 <div className="aspect-[4/3] bg-obsidian-900 relative overflow-hidden">
@@ -241,9 +261,9 @@ export function PortalCatalogView() {
                 </button>
               </div>
             </div>
-          </ThreeDTiltCard>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

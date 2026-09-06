@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export interface CartItem {
   productId: string;
@@ -39,14 +40,16 @@ interface CartState {
   setNotes: (notes: string) => void;
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
-  items: [],
-  isOpen: false,
-  isStandingOrder: false,
-  recurrence: null,
-  recurrenceDays: ['Mon', 'Wed', 'Fri'],
-  deliverySlot: null,
-  notes: '',
+export const useCartStore = create<CartState>()(
+  persist(
+    (set, get) => ({
+      items: [],
+      isOpen: false,
+      isStandingOrder: false,
+      recurrence: null,
+      recurrenceDays: ['Mon', 'Wed', 'Fri'],
+      deliverySlot: null,
+      notes: '',
 
   addItem: (product, qty = product.moq || 1) => {
     const existing = get().items.find((i) => i.productId === product.id || i.productId === product.productId);
@@ -121,7 +124,20 @@ export const useCartStore = create<CartState>((set, get) => ({
   setRecurrenceDays: (recurrenceDays) => set({ recurrenceDays }),
   setDeliverySlot: (deliverySlot) => set({ deliverySlot }),
   setNotes: (notes) => set({ notes }),
-}));
+}),
+    {
+      name: 'rootwills_b2b_cart',
+      partialize: (state) => ({
+        items: state.items,
+        isStandingOrder: state.isStandingOrder,
+        recurrence: state.recurrence,
+        recurrenceDays: state.recurrenceDays,
+        deliverySlot: state.deliverySlot,
+        notes: state.notes,
+      }),
+    }
+  )
+);
 
 export function cartTotal(items: CartItem[]): number {
   return items.reduce((sum, item) => sum + item.customerPrice * item.qty, 0);

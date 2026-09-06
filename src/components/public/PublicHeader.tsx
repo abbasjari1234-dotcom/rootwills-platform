@@ -22,12 +22,15 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
+import { useCartStore } from '@/store/cart-store';
 
 export function PublicHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [sectorsOpen, setSectorsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const pathname = usePathname();
+  const { items, openCart } = useCartStore();
+  const cartItemCount = items.reduce((sum, item) => sum + item.qty, 0);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-obsidian-950/95 backdrop-blur-2xl border-b border-emerald-900/40 shadow-[0_10px_35px_rgba(2,23,16,0.8)]">
@@ -307,7 +310,25 @@ export function PublicHeader() {
           </nav>
 
           {/* Desktop Right CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
+            {/* Cart Trigger Button */}
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open basket (${cartItemCount} items)`}
+              className="relative px-3.5 py-2.5 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold flex items-center gap-2 transition-all shadow-sm group hover:bg-emerald-900/40"
+            >
+              <ShoppingBag className="w-4 h-4 text-champagne group-hover:scale-110 transition-transform" />
+              <span className="hidden xl:inline">Basket</span>
+              {cartItemCount > 0 ? (
+                <span className="px-1.5 py-0.5 rounded-full bg-gradient-to-r from-champagne to-champagne-light text-obsidian-950 text-[10px] font-mono font-black shadow-gold-glow animate-pulse">
+                  {cartItemCount}
+                </span>
+              ) : (
+                <span className="text-[11px] text-cream/40 font-mono hidden xl:inline">0</span>
+              )}
+            </button>
+
             <Link
               href="/login"
               className="px-4 py-2.5 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm"
@@ -328,6 +349,21 @@ export function PublicHeader() {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-2">
+            {/* Mobile Cart Trigger */}
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Open basket (${cartItemCount} items)`}
+              className="relative p-2 rounded-lg bg-emerald-950/60 border border-champagne/30 text-champagne"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {cartItemCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-champagne text-obsidian-950 text-[9px] font-mono font-black flex items-center justify-center shadow-gold-glow">
+                  {cartItemCount}
+                </span>
+              )}
+            </button>
+
             <Link
               href="/login"
               className="px-3 py-1.5 text-xs font-mono font-bold text-champagne border border-champagne/40 bg-emerald-950/60 rounded-lg"
