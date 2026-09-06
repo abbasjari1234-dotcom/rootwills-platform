@@ -99,7 +99,7 @@ const corridors = [
 
 export function ActColdChainDepot() {
   return (
-    <section className="act-coldchain relative w-full overflow-hidden py-24 sm:py-32 lg:py-40 bg-[#02140e]">
+    <section className="act-coldchain relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-14 pb-20 sm:pb-28 lg:pb-32 bg-[#02140e]">
       {/* Background — Digbeth depot image with multi-layered atmospheric lighting */}
       <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform">
         <Image
@@ -110,7 +110,7 @@ export function ActColdChainDepot() {
           sizes="100vw"
         />
         {/* Dynamic atmospheric gradients eliminating the dark void */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-[#021710]/75 to-[#021710]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#02140e] via-[#02140e]/80 to-[#02140e]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.18),_transparent_65%)]" />
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[300px] bg-amber-400/5 rounded-full blur-[120px] pointer-events-none" />
@@ -119,8 +119,8 @@ export function ActColdChainDepot() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
       </div>
 
-      {/* Section fade-in from previous */}
-      <div className="section-fade-in" />
+      {/* Seamless top blend from Act II */}
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#02140e] to-transparent pointer-events-none z-[5]" />
 
       {/* Scanning radar line — ambient operational command feel */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">

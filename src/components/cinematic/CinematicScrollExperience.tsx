@@ -472,40 +472,10 @@ export function CinematicScrollExperience() {
       <div className="fixed inset-0 dot-grid-texture opacity-20 pointer-events-none z-[1]" />
 
       <ActOriginHero />
-
-      {/* ─── Divider I→II ─── */}
-      <div className="relative z-10 py-8">
-        <div className="section-divider" />
-      </div>
-
       <ActHarvestProvenance />
-
-      {/* ─── Divider II→III ─── */}
-      <div className="relative z-10 py-8">
-        <div className="section-divider" />
-      </div>
-
       <ActColdChainDepot />
-
-      {/* ─── Divider III→IV ─── */}
-      <div className="relative z-10 py-8">
-        <div className="section-divider" />
-      </div>
-
       <ActKitchenProduct />
-
-      {/* ─── Divider IV→V ─── */}
-      <div className="relative z-10 py-8">
-        <div className="section-divider" />
-      </div>
-
       <ActTrustCredentials />
-
-      {/* ─── Divider V→VI ─── */}
-      <div className="relative z-10 py-8">
-        <div className="section-divider" />
-      </div>
-
       <ActFinalCTA />
     </div>
   );

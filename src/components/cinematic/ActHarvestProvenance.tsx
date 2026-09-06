@@ -60,7 +60,7 @@ const provenanceData = [
 export function ActHarvestProvenance() {
   return (
     <section
-      className="act-harvest relative w-full overflow-hidden py-24 sm:py-32 lg:py-36"
+      className="act-harvest relative w-full overflow-hidden pt-20 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 bg-[#021710]"
       style={{ perspective: '1000px' }}
     >
       {/* Background image — Cinematic Orchard Harvest Overlay with Golden Sun Rim */}
@@ -74,9 +74,11 @@ export function ActHarvestProvenance() {
           priority
         />
         {/* Multilayered radial lighting to eliminate the flat dark void */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-[#021710]/75 to-[#021710]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-[#021710]/75 to-[#02140e]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(228,199,103,0.15),_transparent_60%)]" />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+        {/* Seamless bottom fade into Act III to eliminate any image seams or gaps */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[2]" />
       </div>
 
       {/* Content container */}
