@@ -213,6 +213,9 @@ export function PublicHeader() {
             >
               <button
                 type="button"
+                aria-haspopup="true"
+                aria-expanded={sectorsOpen}
+                onClick={() => setSectorsOpen(!sectorsOpen)}
                 className={`inline-flex items-center justify-center gap-1.5 h-9 px-2.5 xl:px-3 rounded-xl whitespace-nowrap font-mono text-xs uppercase tracking-wider transition-colors border ${
                   pathname?.startsWith('/sectors')
                     ? 'text-champagne font-bold bg-emerald-950/70 border-champagne/40'

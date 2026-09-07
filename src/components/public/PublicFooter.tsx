@@ -101,7 +101,7 @@ export function PublicFooter() {
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-champagne mb-4 font-bold">Platform & Account</p>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/onboarding" className="hover:text-champagne transition-colors text-emerald-400 font-semibold">Open Trade Account</Link></li>
+              <li><Link href="/apply" className="hover:text-champagne transition-colors text-champagne font-semibold">Open Trade Account</Link></li>
               <li><Link href="/login" className="hover:text-champagne transition-colors">Customer Portal Login</Link></li>
               <li><Link href="/delivery" className="hover:text-champagne transition-colors">Delivery Coverage & Depots</Link></li>
               <li><Link href="/why-choose-us" className="hover:text-champagne transition-colors">Why Choose Rootwills</Link></li>
