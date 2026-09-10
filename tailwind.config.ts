@@ -6,6 +6,7 @@ const config: Config = {
     extend: {
       colors: {
         obsidian: {
+          DEFAULT: '#021710',
           950: '#021710', // Deepest Royal Forest
           900: '#062D21', // Rich Botanical Emerald
           850: '#0A382A',

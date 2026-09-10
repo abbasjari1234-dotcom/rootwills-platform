@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useCartStore } from '@/store/cart-store';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import {
   X,
   Trash2,
@@ -52,7 +52,7 @@ export function CartDrawer() {
     organizations,
     currentLocationId,
     placeOrder
-  } = useDemoStore();
+  } = useAppStore();
 
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);

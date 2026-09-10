@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { 
   BarChart3, 
   TrendingUp, 
@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 export function AdminAnalyticsView() {
-  const { organizations, orders } = useDemoStore();
+  const { organizations, orders } = useAppStore();
 
   const totalRevenue = orders.reduce((sum, ord) => sum + ord.total, 0);
   const totalOrdersCount = orders.length;

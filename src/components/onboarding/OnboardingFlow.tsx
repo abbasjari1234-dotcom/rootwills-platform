@@ -42,28 +42,34 @@ const slideVariants = {
   exit: (direction: 1 | -1) => ({ x: direction * -40, opacity: 0 }),
 };
 
-export function OnboardingFlow() {
+interface OnboardingFlowProps {
+  isStandalone?: boolean;
+}
+
+export function OnboardingFlow({ isStandalone = true }: OnboardingFlowProps) {
   const { currentStep, direction } = useOnboardingStore();
   const StepComponent = STEP_COMPONENTS[currentStep];
   const stepIndex = STEP_ORDER.indexOf(currentStep);
 
   return (
-    <div className="min-h-screen py-10 sm:py-16 px-4 sm:px-6 relative overflow-hidden flex flex-col justify-center items-center">
+    <div className={`${isStandalone ? 'min-h-screen py-10 sm:py-16' : 'py-8 sm:py-12'} px-4 sm:px-6 relative overflow-hidden flex flex-col justify-center items-center`}>
       {/* Ambient background lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-champagne/10 rounded-full blur-[150px] pointer-events-none -z-10" />
       <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
-      {/* Top Brand & Back navigation */}
-      <div className="w-full max-w-2xl flex justify-between items-center mb-6 px-2">
-        <Link href="/" className="flex items-center gap-2 text-cream/70 hover:text-cream text-xs font-mono transition-colors">
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Return to Homepage</span>
-        </Link>
+      {/* Top Brand & Back navigation (Only when standalone without site header) */}
+      {isStandalone && (
+        <div className="w-full max-w-2xl flex justify-between items-center mb-6 px-2">
+          <Link href="/" className="flex items-center gap-2 text-cream/70 hover:text-cream text-xs font-mono transition-colors">
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Return to Homepage</span>
+          </Link>
 
-        <div className="flex items-center gap-3">
-          <RootwillsLogo size="sm" variant="full" />
+          <div className="flex items-center gap-3">
+            <RootwillsLogo size="sm" variant="full" />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Primary Page Heading */}
       <div className="w-full max-w-2xl text-center mb-6 space-y-2">

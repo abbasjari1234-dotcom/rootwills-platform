@@ -33,10 +33,10 @@ export function PublicHeader() {
   const cartItemCount = items.reduce((sum, item) => sum + item.qty, 0);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-obsidian-950/95 backdrop-blur-2xl border-b border-emerald-900/40 shadow-[0_10px_35px_rgba(2,23,16,0.8)]">
+    <header className="sticky top-0 z-50 w-full glass-nav">
       
       {/* Top Notification Live Status Bar */}
-      <div className="bg-obsidian-900/90 border-b border-emerald-950/80 text-xs text-cream/80 py-2 px-4 relative z-10">
+      <div className="bg-obsidian-950/60 backdrop-blur-md border-b border-emerald-900/40 text-xs text-cream/80 py-2 px-4 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-2.5">
             <span className="flex h-2 w-2 relative">
@@ -127,7 +127,7 @@ export function PublicHeader() {
                     transition={{ duration: 0.18, ease: 'easeOut' }}
                     className="absolute top-full left-0 pt-2 w-88 min-w-[340px] z-[100]"
                   >
-                    <div className="bg-[#031d14] border border-champagne/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(228,199,103,0.18)] p-3 grid gap-1.5">
+                    <div className="glass-dropdown rounded-2xl p-3 grid gap-1.5">
                       <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-champagne font-bold border-b border-emerald-900/60 pb-1.5 flex items-center justify-between">
                         <span>Wholesale Assortment</span>
                         <span className="text-emerald-400">1,200+ Lines</span>
@@ -235,7 +235,7 @@ export function PublicHeader() {
                     transition={{ duration: 0.18, ease: 'easeOut' }}
                     className="absolute top-full left-0 pt-2 w-88 min-w-[340px] z-[100]"
                   >
-                    <div className="bg-[#031d14] border border-champagne/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_35px_rgba(228,199,103,0.18)] p-3 grid gap-1.5">
+                    <div className="glass-dropdown rounded-2xl p-3 grid gap-1.5">
                       <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-champagne font-bold border-b border-emerald-900/60 pb-1.5 flex items-center justify-between">
                         <span>Commercial Hospitality Sectors</span>
                         <span className="text-emerald-400">UK SLA</span>
@@ -349,7 +349,7 @@ export function PublicHeader() {
               type="button"
               onClick={openCart}
               aria-label={`Open basket (${cartItemCount} items)`}
-              className="relative h-9 px-3 rounded-xl border border-emerald-800/60 bg-emerald-950/40 hover:border-champagne/60 text-cream text-xs font-mono font-bold inline-flex items-center gap-2 transition-all shadow-sm group hover:bg-emerald-900/40 whitespace-nowrap shrink-0"
+              className="relative h-9 px-3 rounded-xl glass-pill text-cream text-xs font-mono font-bold inline-flex items-center gap-2 shadow-sm group whitespace-nowrap shrink-0"
             >
               <ShoppingBag className="w-4 h-4 text-champagne group-hover:scale-110 transition-transform shrink-0" />
               <span>Basket</span>
@@ -362,7 +362,7 @@ export function PublicHeader() {
 
             <Link
               href="/login"
-              className="h-9 px-3 xl:px-3.5 text-xs font-mono font-bold text-cream/90 hover:text-champagne border border-emerald-800/60 bg-emerald-950/40 rounded-xl hover:border-champagne/60 transition-all shadow-sm whitespace-nowrap shrink-0 inline-flex items-center justify-center"
+              className="h-9 px-3 xl:px-3.5 text-xs font-mono font-bold text-cream/90 hover:text-champagne glass-pill rounded-xl shadow-sm whitespace-nowrap shrink-0 inline-flex items-center justify-center"
             >
               Customer Login
             </Link>
@@ -415,7 +415,7 @@ export function PublicHeader() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="lg:hidden bg-obsidian-900/98 border-b border-emerald-900/80 px-4 pt-4 pb-6 space-y-4 animate-slide-up backdrop-blur-2xl">
+        <div className="lg:hidden glass-dropdown border-b border-emerald-900/80 px-4 pt-4 pb-6 space-y-4 animate-slide-up backdrop-blur-2xl">
           <div className="grid gap-2 text-sm font-mono">
             <Link href="/" onClick={() => setMobileOpen(false)} className="px-3 py-2 text-cream hover:text-champagne">
               Home

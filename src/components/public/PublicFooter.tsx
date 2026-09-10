@@ -8,8 +8,8 @@ export function PublicFooter() {
     <footer className="bg-obsidian-950 border-t border-emerald-900/40 pt-16 pb-12 text-cream/80 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Accreditations & Guarantees Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 border-b border-emerald-950">
-          <div className="flex items-center gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-12 border-b border-emerald-950">
+          <div className="glass-card p-4 rounded-2xl flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
               <Truck className="w-5 h-5" />
             </div>
@@ -18,7 +18,7 @@ export function PublicFooter() {
               <div className="text-xs text-cream/70">Early morning drops by 06:00 AM</div>
             </div>
           </div>
-          <div className="flex items-center gap-3.5">
+          <div className="glass-card p-4 rounded-2xl flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
@@ -27,7 +27,7 @@ export function PublicFooter() {
               <div className="text-xs text-cream/70">Full cold-chain traceability</div>
             </div>
           </div>
-          <div className="flex items-center gap-3.5">
+          <div className="glass-card p-4 rounded-2xl flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne shrink-0">
               <Award className="w-5 h-5" />
             </div>
@@ -36,7 +36,7 @@ export function PublicFooter() {
               <div className="text-xs text-cream/70">Locked contract rates & credit</div>
             </div>
           </div>
-          <div className="flex items-center gap-3.5">
+          <div className="glass-card p-4 rounded-2xl flex items-center gap-3.5">
             <div className="w-10 h-10 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne shrink-0">
               <Clock className="w-5 h-5" />
             </div>

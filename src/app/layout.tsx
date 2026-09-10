@@ -52,7 +52,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
-      <body className="bg-obsidian text-cream antialiased min-h-screen selection:bg-champagne selection:text-obsidian flex flex-col font-sans">
+      <body className="bg-obsidian-950 text-cream antialiased min-h-screen selection:bg-champagne selection:text-obsidian-950 flex flex-col font-sans relative">
+        {/* Universal Hardware-Accelerated Ambient Backdrop */}
+        <div className="ambient-bg-layer" aria-hidden="true" />
+
         {/* WCAG Skip to Main Content Link for Keyboard Navigation */}
         <a
           href="#main-content"
@@ -60,7 +63,7 @@ export default function RootLayout({
         >
           Skip to Main Content &darr;
         </a>
-        <div id="main-content" className="flex-1 flex flex-col">
+        <div id="main-content" className="flex-1 flex flex-col relative z-10">
           {children}
         </div>
         <CartDrawer />

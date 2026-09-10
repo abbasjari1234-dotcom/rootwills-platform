@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Order, OrderStatus } from '@/types/orders';
 import { OrderStatusBadge } from '@/components/portal/OrderStatusBadge';
 import { 
@@ -32,7 +32,7 @@ const STATUS_FLOW: OrderStatus[] = [
 ];
 
 export function AdminOrdersView() {
-  const { orders: storeOrders, updateOrderStatus } = useDemoStore();
+  const { orders: storeOrders, updateOrderStatus } = useAppStore();
   const [liveDbOrders, setLiveDbOrders] = useState<Order[]>([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedOrderForPicking, setSelectedOrderForPicking] = useState<Order | null>(null);

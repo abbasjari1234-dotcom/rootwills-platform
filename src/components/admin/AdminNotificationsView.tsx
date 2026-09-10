@@ -16,7 +16,7 @@ import {
   Thermometer,
   ShieldCheck
 } from 'lucide-react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 
 interface BroadcastLog {
   id: string;
@@ -28,7 +28,7 @@ interface BroadcastLog {
 }
 
 export function AdminNotificationsView() {
-  const { organizations } = useDemoStore();
+  const { organizations } = useAppStore();
   const [selectedCampaign, setSelectedCampaign] = useState<'cutoff' | 'dispatch' | 'promo'>('cutoff');
   const [targetSector, setTargetSector] = useState<'all' | 'fine_dining' | 'hotel' | 'care_home'>('all');
   const [customMsg, setCustomMsg] = useState('');

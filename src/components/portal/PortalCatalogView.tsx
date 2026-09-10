@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   Search, 
@@ -28,7 +28,7 @@ const CATEGORIES: { key: ProductCategory | 'all'; label: string }[] = [
 ];
 
 export function PortalCatalogView() {
-  const { currentOrgId, organizations, getCustomerProducts, toggleFavorite } = useDemoStore();
+  const { currentOrgId, organizations, getCustomerProducts, toggleFavorite } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');

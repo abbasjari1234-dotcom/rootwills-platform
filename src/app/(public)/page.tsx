@@ -64,11 +64,24 @@ export default function PublicHomePage() {
       {/* ─── Cinematic 3D Scroll Journey (Acts I–VI) ─── */}
       <CinematicScrollExperience />
 
-      {/* ─── Post-Experience Functional Sections ─── */}
-      <div className="space-y-20 sm:space-y-28 py-20 sm:py-28 relative z-10">
+      {/* ─── Post-Experience Functional Sections with Seamless Ambient Blending ─── */}
+      <div className="relative z-10 space-y-20 sm:space-y-24 py-16 sm:py-24">
+        {/* Subtle Ambient Depth Lighting behind functional sections */}
+        <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-emerald-500/8 rounded-full blur-[140px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[350px] bg-champagne/6 rounded-full blur-[130px]" />
+        </div>
+
+        {/* Elegant Gold Section Divider */}
+        <div className="section-divider" />
+
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <PriceEstimator />
         </section>
+
+        {/* Elegant Gold Section Divider */}
+        <div className="section-divider" />
+
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <InteractiveChefFAQ />
         </section>

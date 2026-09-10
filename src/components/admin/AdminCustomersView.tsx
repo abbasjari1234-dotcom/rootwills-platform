@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { CustomerOrganization } from '@/types/customer';
 import { 
   DollarSign, 
@@ -24,7 +24,7 @@ export function AdminCustomersView() {
     products, 
     updateCustomerPrice, 
     updateCustomerCredit 
-  } = useDemoStore();
+  } = useAppStore();
 
   const [selectedOrgForPricing, setSelectedOrgForPricing] = useState<CustomerOrganization | null>(null);
   const [search, setSearch] = useState('');

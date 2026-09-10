@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { Order } from '@/types/orders';
 import { X, Plus, Minus, Repeat, Check, ArrowRight, ShoppingBag } from 'lucide-react';
@@ -13,7 +13,7 @@ interface QuickReorderModalProps {
 }
 
 export function QuickReorderModal({ order, isOpen, onClose }: QuickReorderModalProps) {
-  const { getCustomerProducts } = useDemoStore();
+  const { getCustomerProducts } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const [quantities, setQuantities] = useState<Record<string, number>>(() => {

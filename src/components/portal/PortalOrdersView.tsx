@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { OrderStatusBadge } from '@/components/portal/OrderStatusBadge';
 import { QuickReorderModal } from '@/components/portal/QuickReorderModal';
 import { 
@@ -18,7 +18,7 @@ import {
 import { OrderStatus, Order } from '@/types/orders';
 
 export function PortalOrdersView() {
-  const { currentOrgId, organizations, orders: storeOrders } = useDemoStore();
+  const { currentOrgId, organizations, orders: storeOrders } = useAppStore();
   const [liveDbOrders, setLiveDbOrders] = useState<Order[]>([]);
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [search, setSearch] = useState('');

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { 
   Repeat, 
   Calendar, 
@@ -65,7 +65,7 @@ const DEFAULT_SCHEDULES: StandingSchedule[] = [
 ];
 
 export function AdminStandingOrdersView() {
-  const { organizations, placeOrder } = useDemoStore();
+  const { organizations, placeOrder } = useAppStore();
   const [schedules, setSchedules] = useState<StandingSchedule[]>(DEFAULT_SCHEDULES);
   const [executedSuccess, setExecutedSuccess] = useState(false);
 

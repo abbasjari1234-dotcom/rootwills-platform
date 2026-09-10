@@ -112,7 +112,7 @@ export function ThreeDProductShowcase() {
                 className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border ${
                   isSelected
                     ? 'bg-champagne text-obsidian-950 font-bold border-champagne shadow-gold-glow'
-                    : 'bg-zinc-900/80 text-cream/70 border-zinc-800 hover:border-zinc-700 hover:text-cream'
+                    : 'bg-emerald-950/40 text-cream/70 border-emerald-800/50 hover:border-champagne/40 hover:text-cream'
                 }`}
               >
                 {cat.name}
@@ -123,7 +123,7 @@ export function ThreeDProductShowcase() {
 
         {/* Interactive 3D Showcase Card */}
         <ThreeDTiltCard maxTilt={6} depth={20} className="w-full">
-          <div className="relative rounded-3xl overflow-hidden bg-obsidian-950/90 border border-zinc-800 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+          <div className="relative rounded-3xl overflow-hidden glass-panel-emerald p-6 sm:p-10 shadow-2xl backdrop-blur-xl border border-emerald-500/20">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory.id}
@@ -149,17 +149,17 @@ export function ThreeDProductShowcase() {
 
                   {/* Sample Items List */}
                   <div className="space-y-2.5 pt-2">
-                    <div className="text-xs font-mono uppercase tracking-wider text-zinc-400">
+                    <div className="text-xs font-mono uppercase tracking-wider text-cream/60">
                       Featured Trade Lines:
                     </div>
                     {activeCategory.sampleItems.map((item, i) => (
                       <div
                         key={i}
-                        className="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 flex items-center justify-between"
+                        className="p-3 rounded-xl bg-obsidian-900/90 border border-emerald-900/60 flex items-center justify-between"
                       >
                         <div>
                           <div className="text-sm font-bold text-cream">{item.name}</div>
-                          <div className="text-xs text-zinc-400 font-mono">{item.pack}</div>
+                          <div className="text-xs text-cream/60 font-mono">{item.pack}</div>
                         </div>
                         <span className="text-xs font-mono font-bold text-emerald-400 px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/30">
                           {item.grade}
@@ -180,7 +180,7 @@ export function ThreeDProductShowcase() {
                 </div>
 
                 {/* Right Image Frame */}
-                <div className="lg:col-span-6 relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden border border-zinc-700/60 shadow-2xl">
+                <div className="lg:col-span-6 relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden border border-champagne/30 shadow-2xl">
                   <Image
                     src={activeCategory.image}
                     alt={activeCategory.headline}

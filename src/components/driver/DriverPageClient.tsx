@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Order } from '@/types/orders';
 import { 
   Truck, 
@@ -30,7 +30,7 @@ import { submitDriverPOD } from '@/actions/orders';
 type PodMode = 'signature' | 'photo';
 
 export function DriverPageClient() {
-  const { orders, updateOrderStatus } = useDemoStore();
+  const { orders, updateOrderStatus } = useAppStore();
   const [activeOrder, setActiveOrder] = useState<Order | null>(null);
   const [podMode, setPodMode] = useState<PodMode>('signature');
   const [chilledTemp, setChilledTemp] = useState('2.4');

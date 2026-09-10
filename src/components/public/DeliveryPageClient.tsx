@@ -106,12 +106,12 @@ export function DeliveryPageClient() {
               placeholder="e.g. B2 5BN, CV3 4FL, W1D 3PU..."
               value={postcodeInput}
               onChange={(e) => setPostcodeInput(e.target.value)}
-              className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-mono font-bold focus:outline-none focus:border-champagne"
+              className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-mono font-bold focus:outline-none focus:border-champagne"
             />
           </div>
           <button
             type="submit"
-            className="px-6 py-3 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-1.5"
+            className="px-6 py-3 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-1.5 font-mono"
           >
             <Search className="w-3.5 h-3.5" />
             <span>Verify SLA</span>
@@ -120,8 +120,8 @@ export function DeliveryPageClient() {
 
         {/* SLA Result Card */}
         {slaResult && (
-          <div className="max-w-3xl mx-auto p-5 bg-zinc-950/90 rounded-2xl border border-emerald-500/30 text-xs animate-fade-in shadow-xl">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-zinc-800 pb-3">
+          <div className="max-w-3xl mx-auto p-5 bg-obsidian-950/90 rounded-2xl border border-emerald-500/40 text-xs animate-fade-in shadow-xl">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-emerald-900/60 pb-3">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                 <strong className="text-cream text-sm">Postcode {slaResult.postcode} is 100% Covered</strong>
@@ -166,7 +166,7 @@ export function DeliveryPageClient() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
               <Thermometer className="w-6 h-6" />
             </div>
@@ -183,7 +183,7 @@ export function DeliveryPageClient() {
             </div>
           </div>
 
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
               <Clock className="w-6 h-6" />
             </div>
@@ -200,7 +200,7 @@ export function DeliveryPageClient() {
             </div>
           </div>
 
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-zinc-800 hover:border-amber-500/40 transition-all space-y-4">
+          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
               <Camera className="w-6 h-6" />
             </div>
@@ -220,7 +220,8 @@ export function DeliveryPageClient() {
       </div>
 
       {/* Overnight Fulfillment Timeline */}
-      <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-zinc-800 space-y-8">
+      {/* Overnight Fulfillment Timeline */}
+      <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-900/60 space-y-8">
         <div className="text-center max-w-xl mx-auto space-y-2">
           <span className="text-xs font-mono uppercase text-champagne font-bold">Precision Operations</span>
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
@@ -229,34 +230,34 @@ export function DeliveryPageClient() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-          <div className="p-4 bg-zinc-900/60 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
             <div className="font-mono text-champagne font-bold text-base">23:00 PM</div>
             <strong className="text-cream block">Order Cut-off Lock</strong>
-            <p className="text-cream/60 leading-relaxed">
+            <p className="text-cream/70 leading-relaxed">
               Customer orders lock into our Central Warehouse Management System. Automatic picking manifests generate.
             </p>
           </div>
 
-          <div className="p-4 bg-zinc-900/60 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
             <div className="font-mono text-champagne font-bold text-base">01:00 AM</div>
             <strong className="text-cream block">Depot Batch Picking</strong>
-            <p className="text-cream/60 leading-relaxed">
+            <p className="text-cream/70 leading-relaxed">
               Depot selectors pick fresh produce and butchery cuts directly from refrigerated intake bays with barcoded verification.
             </p>
           </div>
 
-          <div className="p-4 bg-zinc-900/60 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
             <div className="font-mono text-champagne font-bold text-base">05:00 AM</div>
             <strong className="text-cream block">Driver Route Dispatch</strong>
-            <p className="text-cream/60 leading-relaxed">
+            <p className="text-cream/70 leading-relaxed">
               Dual-temp Sprinters pre-chill to +2.0°C, crates load by drop order, and drivers begin optimized morning runs.
             </p>
           </div>
 
-          <div className="p-4 bg-zinc-900/60 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 space-y-2">
+          <div className="p-4 bg-emerald-950/60 rounded-2xl border border-emerald-500/40 space-y-2 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
             <div className="font-mono text-emerald-400 font-bold text-base">06:30 AM</div>
             <strong className="text-cream block">Kitchen Delivery & POD</strong>
-            <p className="text-cream/60 leading-relaxed">
+            <p className="text-cream/70 leading-relaxed">
               Order placed in walk-in cold room, temperature logged, and digital receipt sent before morning chef arrival.
             </p>
           </div>
@@ -270,15 +271,15 @@ export function DeliveryPageClient() {
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
               Regional Fulfilment Depots
             </h2>
-            <p className="text-xs text-cream/60">Strategically located hubs across the UK motorway network</p>
+            <p className="text-xs text-cream/70">Strategically located hubs across the UK motorway network</p>
           </div>
-          <span className="text-xs font-mono text-champagne bg-champagne/10 px-3 py-1 rounded-full border border-champagne/20">
+          <span className="text-xs font-mono text-champagne bg-champagne/10 px-3 py-1 rounded-full border border-champagne/30">
             4 Midlands & London Hubs
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-          <div className="p-5 bg-zinc-950/80 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-champagne font-bold text-sm">
                 <MapPin className="w-4 h-4" />
@@ -286,13 +287,13 @@ export function DeliveryPageClient() {
               </div>
               <span className="text-[10px] font-mono text-emerald-400">18 Vans Active</span>
             </div>
-            <p className="text-cream/70">
+            <p className="text-cream/80">
               Digbeth Wholesale Quarter, Birmingham, B5 5JR. Serving Birmingham, Solihull, Black Country, Sutton Coldfield.
             </p>
-            <div className="pt-1 text-[11px] text-cream/50 font-mono">Operations Desk: 0121 496 0800 &bull; Ext #1</div>
+            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 0121 496 0800 &bull; Ext #1</div>
           </div>
 
-          <div className="p-5 bg-zinc-950/80 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-champagne font-bold text-sm">
                 <MapPin className="w-4 h-4" />
@@ -300,13 +301,13 @@ export function DeliveryPageClient() {
               </div>
               <span className="text-[10px] font-mono text-emerald-400">8 Vans Active</span>
             </div>
-            <p className="text-cream/70">
+            <p className="text-cream/80">
               Rowley Road Distribution Park, Coventry, CV3 4FL. Serving Coventry, Warwick, Leamington, Stratford-upon-Avon.
             </p>
-            <div className="pt-1 text-[11px] text-cream/50 font-mono">Operations Desk: 024 7699 0820 &bull; Ext #2</div>
+            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 024 7699 0820 &bull; Ext #2</div>
           </div>
 
-          <div className="p-5 bg-zinc-950/80 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-champagne font-bold text-sm">
                 <MapPin className="w-4 h-4" />
@@ -314,13 +315,13 @@ export function DeliveryPageClient() {
               </div>
               <span className="text-[10px] font-mono text-emerald-400">10 Vans Active</span>
             </div>
-            <p className="text-cream/70">
+            <p className="text-cream/80">
               Thurmaston Commercial Centre, Leicester, LE4 8JF. Serving Leicester, Nottingham, Derby, Loughborough.
             </p>
-            <div className="pt-1 text-[11px] text-cream/50 font-mono">Operations Desk: 0116 496 0910 &bull; Ext #3</div>
+            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 0116 496 0910 &bull; Ext #3</div>
           </div>
 
-          <div className="p-5 bg-zinc-950/80 rounded-2xl border border-zinc-800 space-y-2">
+          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 text-champagne font-bold text-sm">
                 <MapPin className="w-4 h-4" />

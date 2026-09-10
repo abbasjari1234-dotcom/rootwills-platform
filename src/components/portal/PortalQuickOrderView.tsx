@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   Clock, 
@@ -29,7 +29,7 @@ const CATEGORY_TABS: { key: ProductCategory | 'all'; label: string }[] = [
 ];
 
 export function PortalQuickOrderView() {
-  const { currentOrgId, organizations, getCustomerProducts } = useDemoStore();
+  const { currentOrgId, organizations, getCustomerProducts } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const [quantities, setQuantities] = useState<Record<string, number>>({});

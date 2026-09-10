@@ -63,9 +63,9 @@ export function ThreeDHeroVisual() {
           rotateY,
           transformStyle: 'preserve-3d',
         }}
-        className="relative w-full max-w-4xl mx-auto rounded-3xl p-1 bg-gradient-to-b from-champagne/40 via-zinc-800/80 to-zinc-950/90 shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_50px_rgba(228,199,103,0.15)] backdrop-blur-xl border border-champagne/30"
+        className="relative w-full max-w-4xl mx-auto rounded-3xl p-1 bg-gradient-to-b from-champagne/40 via-emerald-950/80 to-obsidian-950/90 shadow-[0_30px_90px_rgba(0,0,0,0.8),0_0_50px_rgba(228,199,103,0.15)] backdrop-blur-xl border border-champagne/30"
       >
-        <div className="relative rounded-[22px] overflow-hidden bg-obsidian-950/90 p-6 sm:p-10 border border-zinc-800/80">
+        <div className="relative rounded-[22px] overflow-hidden bg-obsidian-950/90 p-6 sm:p-10 border border-emerald-900/60">
           
           {/* Subtle Grid / Radial pattern */}
           <div className="absolute inset-0 bg-[radial-gradient(#e4c767_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
@@ -90,12 +90,12 @@ export function ThreeDHeroVisual() {
 
               {/* Live Spec Badges */}
               <div className="pt-2 grid grid-cols-2 gap-3 font-mono text-xs">
-                <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-zinc-400 block text-[10px] uppercase">Chilled Fleet</span>
+                <div className="p-3 rounded-xl bg-obsidian-900/90 border border-emerald-900/60 shadow-sm">
+                  <span className="text-cream/60 block text-[10px] uppercase">Chilled Fleet</span>
                   <span className="text-emerald-400 font-bold text-sm">+2.4°C Active</span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800">
-                  <span className="text-zinc-400 block text-[10px] uppercase">Morning Transit</span>
+                <div className="p-3 rounded-xl bg-obsidian-900/90 border border-emerald-900/60 shadow-sm">
+                  <span className="text-cream/60 block text-[10px] uppercase">Morning Transit</span>
                   <span className="text-champagne font-bold text-sm">&lt; 4 Hours</span>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export function ThreeDHeroVisual() {
                   duration: 6,
                   ease: 'easeInOut',
                 }}
-                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-700/60 group"
+                className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-champagne/30 group"
               >
                 <Image
                   src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=1200&q=85"
@@ -125,7 +125,7 @@ export function ThreeDHeroVisual() {
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-transparent to-transparent opacity-80" />
                 
                 {/* Floating badge inside image */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-zinc-700/80">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-emerald-900/60">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-champagne/20 border border-champagne/40 flex items-center justify-center text-champagne">
                       <Sparkles className="w-4 h-4" />
@@ -152,13 +152,13 @@ export function ThreeDHeroVisual() {
         style={{ x: frontLayerX, y: frontLayerY }}
         animate={{ y: [-8, 8, -8] }}
         transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
-        className="absolute -top-4 sm:-top-8 left-2 sm:left-6 z-30 pointer-events-none hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-900/95 backdrop-blur-xl border border-emerald-500/50 shadow-[0_15px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(16,185,129,0.2)]"
+        className="absolute -top-4 sm:-top-8 left-2 sm:left-6 z-30 pointer-events-none hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-obsidian-950/95 backdrop-blur-xl border border-emerald-500/50 shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(16,185,129,0.25)]"
       >
         <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
           <ThermometerSnowflake className="w-5 h-5 animate-pulse" />
         </div>
         <div>
-          <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">Cold-Chain Guard</div>
+          <div className="text-[11px] font-mono text-cream/60 uppercase tracking-wider">Cold-Chain Guard</div>
           <div className="text-sm font-bold text-cream flex items-center gap-1.5 font-mono">
             <span>+2.4°C</span>
             <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping" />
@@ -172,13 +172,13 @@ export function ThreeDHeroVisual() {
         style={{ x: midLayerX, y: midLayerY }}
         animate={{ y: [8, -8, 8] }}
         transition={{ repeat: Infinity, duration: 5.2, ease: 'easeInOut' }}
-        className="absolute -bottom-6 sm:-bottom-8 right-2 sm:right-6 z-30 pointer-events-none flex items-center gap-3 p-3.5 rounded-2xl bg-zinc-900/95 backdrop-blur-xl border border-champagne/50 shadow-[0_15px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(228,199,103,0.2)]"
+        className="absolute -bottom-6 sm:-bottom-8 right-2 sm:right-6 z-30 pointer-events-none flex items-center gap-3 p-3.5 rounded-2xl bg-obsidian-950/95 backdrop-blur-xl border border-champagne/50 shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(228,199,103,0.25)]"
       >
         <div className="w-10 h-10 rounded-xl bg-champagne/20 border border-champagne/40 flex items-center justify-center text-champagne">
           <Truck className="w-5 h-5" />
         </div>
         <div>
-          <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">Morning Delivery</div>
+          <div className="text-[11px] font-mono text-cream/60 uppercase tracking-wider">Morning Delivery</div>
           <div className="text-sm font-bold text-cream flex items-center gap-1.5 font-mono">
             <span className="text-champagne">06:00 AM – 07:30 AM</span>
           </div>
@@ -190,7 +190,7 @@ export function ThreeDHeroVisual() {
         style={{ x: bgLayerX, y: bgLayerY }}
         animate={{ y: [-5, 5, -5] }}
         transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-        className="absolute top-8 right-4 sm:-right-4 z-20 pointer-events-none hidden md:flex items-center gap-2.5 px-4 py-2 rounded-xl bg-zinc-900/90 backdrop-blur-md border border-zinc-700/80 shadow-xl"
+        className="absolute top-8 right-4 sm:-right-4 z-20 pointer-events-none hidden md:flex items-center gap-2.5 px-4 py-2 rounded-xl bg-obsidian-950/90 backdrop-blur-md border border-champagne/40 shadow-xl"
       >
         <Award className="w-4 h-4 text-champagne" />
         <span className="text-xs font-mono text-cream/90 font-medium">BRCGS Food Safety Certified</span>

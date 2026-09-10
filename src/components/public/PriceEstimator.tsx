@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Sparkles, ArrowRight, CheckCircle2, Building2, Phone, Mail, User } from 'lucide-react';
 import { Sector } from '@/types/onboarding';
 
 export function PriceEstimator() {
-  const addLead = useDemoStore((state) => state.addLead);
+  const addLead = useAppStore((state) => state.addLead);
   const [sector, setSector] = useState<Sector>('fine_dining');
   const [weeklySpend, setWeeklySpend] = useState<number>(3500);
   const [submitted, setSubmitted] = useState(false);
@@ -51,7 +51,7 @@ export function PriceEstimator() {
 
       <div className="max-w-3xl mx-auto">
         <div className="text-center space-y-2 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill-gold text-champagne text-xs font-mono uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Interactive Trade Pricing Calculator</span>
           </div>
@@ -76,7 +76,7 @@ export function PriceEstimator() {
                   aria-label="Select Your Business Sector"
                   value={sector}
                   onChange={(e) => setSector(e.target.value as Sector)}
-                  className="w-full bg-obsidian-900 border border-cream/20 rounded-xl px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne"
+                  className="w-full glass-input rounded-xl px-4 py-3 text-cream text-sm focus:outline-none focus:border-champagne"
                 >
                   <option value="fine_dining">Fine Dining & Restaurants</option>
                   <option value="boutique_hotel">Boutique Hotels & Resorts</option>
@@ -121,7 +121,7 @@ export function PriceEstimator() {
             </div>
 
             {/* Savings preview cards */}
-            <div className="grid grid-cols-2 gap-4 bg-obsidian-950/80 border border-cream/10 rounded-xl p-4 sm:p-6 text-center">
+            <div className="grid grid-cols-2 gap-4 glass-card rounded-xl p-4 sm:p-6 text-center">
               <div>
                 <div className="text-xs text-cream/70 uppercase font-mono">Estimated Monthly Savings</div>
                 <div className="text-2xl sm:text-3xl font-bold font-display text-champagne mt-1">
@@ -129,7 +129,7 @@ export function PriceEstimator() {
                 </div>
                 <div className="text-[11px] text-cream/70 mt-0.5">based on ~12% direct-tier pricing</div>
               </div>
-              <div className="border-l border-cream/10">
+              <div className="border-l border-emerald-900/50">
                 <div className="text-xs text-cream/70 uppercase font-mono">Projected Annual Bottom-Line</div>
                 <div className="text-2xl sm:text-3xl font-bold font-display emerald-gradient-text mt-1">
                   £{estimatedAnnualSavings.toLocaleString()} / yr
@@ -147,7 +147,7 @@ export function PriceEstimator() {
                 aria-label="Business Name"
                 value={formData.companyName}
                 onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
+                className="glass-input rounded-xl px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/50"
               />
               <input
                 type="text"
@@ -155,7 +155,7 @@ export function PriceEstimator() {
                 aria-label="Contact Name / Role"
                 value={formData.contactName}
                 onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
+                className="glass-input rounded-xl px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/50"
               />
               <input
                 type="email"
@@ -164,7 +164,7 @@ export function PriceEstimator() {
                 aria-label="Work Email Address"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
+                className="glass-input rounded-xl px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/50"
               />
               <input
                 type="tel"
@@ -173,7 +173,7 @@ export function PriceEstimator() {
                 aria-label="Telephone / Mobile"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="bg-obsidian-900 border border-cream/20 rounded-lg px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/60 focus:outline-none focus:border-champagne"
+                className="glass-input rounded-xl px-3.5 py-2.5 text-xs text-cream placeholder:text-cream/50"
               />
             </div>
 

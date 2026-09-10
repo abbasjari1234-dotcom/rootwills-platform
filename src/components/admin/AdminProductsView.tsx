@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Product } from '@/types/products';
 import { Package, Search, Plus, Edit3, Check, Sparkles, Filter } from 'lucide-react';
 
 export function AdminProductsView() {
-  const { products } = useDemoStore();
+  const { products } = useAppStore();
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 

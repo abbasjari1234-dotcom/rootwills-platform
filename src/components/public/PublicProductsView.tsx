@@ -27,7 +27,7 @@ import {
   SlidersHorizontal,
   Flame
 } from 'lucide-react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { Product, ProductCategory } from '@/types/products';
 
@@ -40,7 +40,7 @@ const CATEGORIES: { key: ProductCategory | 'all'; label: string; badge?: string 
 ];
 
 export function PublicProductsView() {
-  const { products, getCustomerProduct } = useDemoStore();
+  const { products, getCustomerProduct } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
@@ -150,7 +150,7 @@ export function PublicProductsView() {
           </Link>
           <button
             onClick={() => setRequestModalOpen(true)}
-            className="px-5 py-3 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-champagne text-cream text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all"
+            className="px-5 py-3 rounded-xl bg-emerald-950/40 border border-emerald-800/60 hover:border-champagne/60 text-cream text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all shadow-sm"
           >
             <FileSpreadsheet className="w-4 h-4 text-champagne" />
             <span>Request Full CSV Price Schedule</span>
@@ -158,8 +158,8 @@ export function PublicProductsView() {
         </div>
       </div>
 
-      {/* Sticky Unified Filter, Search & Sort Toolbar */}
-      <div className="sticky top-0 z-30 bg-zinc-950/95 backdrop-blur-md border-y border-zinc-800/80 shadow-xl py-3.5">
+      {/* Sticky Unified Filter, Search & Sort Toolbar - Anchored below PublicHeader */}
+      <div className="sticky top-20 lg:top-[112px] z-30 glass-nav py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-4 justify-between items-center">
           {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
@@ -170,7 +170,7 @@ export function PublicProductsView() {
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 ${
                   selectedCategory === cat.key
                     ? 'bg-champagne text-obsidian-950 font-bold shadow-gold-glow'
-                    : 'bg-zinc-900 text-cream/70 hover:text-cream border border-zinc-800'
+                    : 'bg-emerald-950/40 text-cream/75 hover:text-cream border border-emerald-800/50 hover:border-champagne/40'
                 }`}
               >
                 <span>{cat.label}</span>
@@ -196,7 +196,7 @@ export function PublicProductsView() {
                 placeholder="Search SKU, name, terroir origin..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 rounded-xl pl-9 pr-8 py-2 text-xs focus:outline-none focus:border-champagne font-sans"
+                className="w-full glass-input text-cream placeholder:text-cream/50 rounded-xl pl-9 pr-8 py-2 text-xs focus:outline-none focus:border-champagne font-sans"
               />
               {searchQuery && (
                 <button
@@ -216,12 +216,12 @@ export function PublicProductsView() {
                 aria-label="Sort wholesale products"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-zinc-900 border border-zinc-700 text-cream text-xs rounded-xl px-3 py-2 appearance-none pr-8 focus:outline-none focus:border-champagne cursor-pointer font-mono"
+                className="glass-input text-cream text-xs rounded-xl px-3 py-2 appearance-none pr-8 focus:outline-none focus:border-champagne cursor-pointer font-mono"
               >
-                <option value="popular">Sort: Featured</option>
-                <option value="price_asc">Price: Low to High</option>
-                <option value="price_desc">Price: High to Low</option>
-                <option value="moq">Lowest MOQ</option>
+                <option value="popular" className="bg-obsidian-900 text-cream">Sort: Featured</option>
+                <option value="price_asc" className="bg-obsidian-900 text-cream">Price: Low to High</option>
+                <option value="price_desc" className="bg-obsidian-900 text-cream">Price: High to Low</option>
+                <option value="moq" className="bg-obsidian-900 text-cream">Lowest MOQ</option>
               </select>
               <ChevronDown className="w-3.5 h-3.5 text-cream/70 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
@@ -248,11 +248,11 @@ export function PublicProductsView() {
             return (
               <div
                 key={p.id}
-                className="glass-panel rounded-2xl overflow-hidden border border-zinc-800 hover:border-champagne/60 transition-all duration-300 flex flex-col justify-between group shadow-lg hover:shadow-[0_10px_30px_rgba(2,23,16,0.8)]"
+                className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group"
               >
                 {/* Product Image Box with Vignette & Badges */}
                 <div 
-                  className="relative h-48 w-full bg-zinc-950 overflow-hidden cursor-pointer"
+                  className="relative h-48 w-full bg-obsidian-950 overflow-hidden cursor-pointer"
                   onClick={() => setQuickViewProduct(p)}
                 >
                   <Image
@@ -267,7 +267,7 @@ export function PublicProductsView() {
 
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
-                    <span className="px-2 py-0.5 rounded-full bg-zinc-900/90 text-champagne text-[10px] font-mono border border-zinc-700 shadow-md">
+                    <span className="px-2 py-0.5 rounded-full glass-pill-gold text-champagne text-[10px] font-mono shadow-md">
                       {p.sku}
                     </span>
 
@@ -278,7 +278,7 @@ export function PublicProductsView() {
                         setQuickViewProduct(p);
                       }}
                       aria-label={`View quick specifications for ${p.name}`}
-                      className="p-1.5 rounded-lg bg-zinc-900/90 text-cream/90 hover:text-cream hover:bg-zinc-800 border border-zinc-700 transition-colors shadow-md flex items-center gap-1 text-[10px] font-mono"
+                      className="p-1.5 rounded-lg glass-pill text-cream/90 hover:text-champagne transition-colors shadow-md flex items-center gap-1 text-[10px] font-mono"
                       title="Quick Specs"
                     >
                       <Eye className="w-3.5 h-3.5" />
@@ -288,12 +288,12 @@ export function PublicProductsView() {
 
                   {/* Sensory Origin Tag Overlay */}
                   <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end">
-                    <span className="px-2 py-0.5 rounded bg-emerald-950/90 text-emerald-300 text-[10px] font-mono border border-emerald-500/30 flex items-center gap-1 shadow-md">
+                    <span className="px-2 py-0.5 rounded glass-pill text-emerald-300 text-[10px] font-mono flex items-center gap-1 shadow-md">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       <span>{qualityBadge}</span>
                     </span>
 
-                    <span className="text-[10px] font-mono text-champagne bg-obsidian-950/80 px-2 py-0.5 rounded border border-champagne/30">
+                    <span className="text-[10px] font-mono text-champagne glass-pill px-2 py-0.5 rounded">
                       +2.0°C Hold
                     </span>
                   </div>
@@ -336,7 +336,7 @@ export function PublicProductsView() {
                   </div>
 
                   {/* Pricing, MOQ & Order Stepper */}
-                  <div className="pt-3 border-t border-zinc-800 space-y-2.5">
+                  <div className="pt-3 border-t border-emerald-900/60 space-y-2.5">
                     <div className="flex justify-between items-baseline">
                       <div>
                         <span className="text-[10px] text-cream/60 font-mono block">Guide Base Price</span>
@@ -353,12 +353,12 @@ export function PublicProductsView() {
                     {/* Inline Stepper & Action Buttons */}
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="flex items-center bg-zinc-900 rounded-xl border border-zinc-700 p-0.5">
+                        <div className="flex items-center bg-obsidian-900 rounded-xl border border-emerald-800/60 p-0.5">
                           <button
                             type="button"
                             onClick={() => handleQtyChange(p.id, -1, p.moq)}
                             aria-label={`Decrease order quantity for ${p.name}`}
-                            className="p-1 rounded-lg hover:bg-zinc-800 text-cream/80 hover:text-cream"
+                            className="p-1 rounded-lg hover:bg-emerald-900/60 text-cream/80 hover:text-cream"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
@@ -369,7 +369,7 @@ export function PublicProductsView() {
                             type="button"
                             onClick={() => handleQtyChange(p.id, 1, p.moq)}
                             aria-label={`Increase order quantity for ${p.name}`}
-                            className="p-1 rounded-lg hover:bg-zinc-800 text-cream/80 hover:text-cream"
+                            className="p-1 rounded-lg hover:bg-emerald-900/60 text-cream/80 hover:text-cream"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -406,7 +406,7 @@ export function PublicProductsView() {
       {/* Quick View Specification Drawer / Modal */}
       {quickViewProduct && (
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative border-zinc-700 animate-in fade-in zoom-in-95 duration-200">
+          <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative border-champagne/40 animate-in fade-in zoom-in-95 duration-200">
             <button
               type="button"
               onClick={() => setQuickViewProduct(null)}
@@ -417,7 +417,7 @@ export function PublicProductsView() {
             </button>
 
             <div className="flex gap-4 items-start">
-              <div className="w-24 h-24 rounded-2xl bg-zinc-950 relative overflow-hidden shrink-0 border border-zinc-800 shadow-md">
+              <div className="w-24 h-24 rounded-2xl bg-obsidian-950 relative overflow-hidden shrink-0 border border-champagne/30 shadow-md">
                 <Image
                   src={quickViewProduct.imageUrl}
                   alt={quickViewProduct.name}
@@ -441,25 +441,25 @@ export function PublicProductsView() {
               </div>
             </div>
 
-            <p className="text-xs text-cream/80 leading-relaxed bg-zinc-950/60 p-3.5 rounded-xl border border-zinc-800 font-sans">
+            <p className="text-xs text-cream/80 leading-relaxed bg-obsidian-900/60 p-3.5 rounded-xl border border-emerald-900/50 font-sans">
               {quickViewProduct.description}
             </p>
 
             {/* Sensory & Logistics Specifications Grid */}
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 bg-zinc-950 rounded-xl border border-zinc-800 space-y-0.5">
+              <div className="p-3 bg-obsidian-950/80 rounded-xl border border-emerald-900/50 space-y-0.5">
                 <span className="text-[10px] text-cream/40 uppercase block">Pack Specification</span>
                 <span className="font-bold text-cream">{quickViewProduct.packSize}</span>
               </div>
-              <div className="p-3 bg-zinc-950 rounded-xl border border-zinc-800 space-y-0.5">
+              <div className="p-3 bg-obsidian-950/80 rounded-xl border border-emerald-900/50 space-y-0.5">
                 <span className="text-[10px] text-cream/40 uppercase block">Minimum Order</span>
                 <span className="font-bold text-champagne">{quickViewProduct.moq} {quickViewProduct.unit}</span>
               </div>
-              <div className="p-3 bg-zinc-950 rounded-xl border border-zinc-800 space-y-0.5">
+              <div className="p-3 bg-obsidian-950/80 rounded-xl border border-emerald-900/50 space-y-0.5">
                 <span className="text-[10px] text-cream/40 uppercase block">Storage Temperature</span>
                 <span className="font-bold text-emerald-300">+2.0°C to +4.0°C Chilled</span>
               </div>
-              <div className="p-3 bg-zinc-950 rounded-xl border border-zinc-800 space-y-0.5">
+              <div className="p-3 bg-obsidian-950/80 rounded-xl border border-emerald-900/50 space-y-0.5">
                 <span className="text-[10px] text-cream/40 uppercase block">Delivery Lead Time</span>
                 <span className="font-bold text-cream">Next Day (Order by 11pm)</span>
               </div>
@@ -478,7 +478,7 @@ export function PublicProductsView() {
               </button>
               <button
                 onClick={() => setQuickViewProduct(null)}
-                className="px-5 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-cream/70 hover:text-cream text-xs font-mono"
+                className="px-5 py-3 rounded-xl bg-emerald-950/60 border border-emerald-800/60 text-cream/70 hover:text-cream text-xs font-mono"
               >
                 Close
               </button>
@@ -490,7 +490,7 @@ export function PublicProductsView() {
       {/* Chef Sample Trial Request Modal */}
       {sampleModalProduct && (
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative border-zinc-700 animate-in fade-in zoom-in-95 duration-200">
+          <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative border-champagne/40 animate-in fade-in zoom-in-95 duration-200">
             <button
               type="button"
               onClick={() => setSampleModalProduct(null)}
@@ -545,7 +545,7 @@ export function PublicProductsView() {
                     type="text"
                     required
                     placeholder="e.g. The Grand Hotel Kitchen"
-                    className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
+                    className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
                   />
                 </div>
 
@@ -558,7 +558,7 @@ export function PublicProductsView() {
                     type="text"
                     required
                     placeholder="e.g. Marcus Wareing"
-                    className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
+                    className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
                   />
                 </div>
 
@@ -571,7 +571,7 @@ export function PublicProductsView() {
                     type="text"
                     required
                     placeholder="e.g. B2 5BN"
-                    className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
+                    className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
                   />
                 </div>
 
@@ -592,7 +592,7 @@ export function PublicProductsView() {
       {/* Full Wholesale Price Schedule Modal */}
       {requestModalOpen && (
         <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative border-zinc-700 animate-in fade-in zoom-in-95 duration-200">
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative border-champagne/40 animate-in fade-in zoom-in-95 duration-200">
             <button
               type="button"
               onClick={() => setRequestModalOpen(false)}
@@ -623,7 +623,7 @@ export function PublicProductsView() {
                   required
                   aria-label="Establishment Name"
                   placeholder="e.g. San Carlo Temple Street"
-                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
+                  className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
                 />
               </div>
 
@@ -635,7 +635,7 @@ export function PublicProductsView() {
                   required
                   aria-label="Work Email Address"
                   placeholder="headchef@restaurant.co.uk"
-                  className="w-full bg-zinc-900 border border-zinc-700 text-zinc-100 placeholder:text-zinc-500 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
+                  className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-champagne font-sans"
                 />
               </div>
 

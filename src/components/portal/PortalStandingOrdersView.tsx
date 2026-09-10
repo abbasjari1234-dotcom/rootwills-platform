@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   Repeat, 
@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 
 export function PortalStandingOrdersView() {
-  const { currentOrgId, organizations, getCustomerProducts } = useDemoStore();
+  const { currentOrgId, organizations, getCustomerProducts } = useAppStore();
   const { openCart, setStandingOrder } = useCartStore();
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];

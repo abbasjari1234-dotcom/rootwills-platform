@@ -12,7 +12,7 @@ import {
   INITIAL_INVOICES,
 } from '@/lib/mock-data';
 
-interface DemoState {
+export interface AppState {
   // Current active user / persona
   currentRole: 'customer' | 'admin' | 'sales';
   currentOrgId: string;
@@ -54,7 +54,7 @@ interface DemoState {
   payInvoice: (invoiceId: string) => void;
 }
 
-export const useDemoStore = create<DemoState>()(
+export const useAppStore = create<AppState>()(
   persist(
     (set, get) => ({
       currentRole: 'customer',
@@ -390,3 +390,7 @@ export const useDemoStore = create<DemoState>()(
     }
   )
 );
+
+// Backward-compatibility aliases during migration
+export const useDemoStore = useAppStore;
+export type DemoState = AppState;

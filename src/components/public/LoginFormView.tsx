@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { loginServerAction } from '@/actions/auth';
 import {
   Lock,
@@ -26,7 +26,7 @@ type LoginScope = 'customer' | 'staff';
 function LoginFormContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const setPersona = useDemoStore((state) => state.setPersona);
+  const setPersona = useAppStore((state) => state.setPersona);
 
   const [loginScope, setLoginScope] = useState<LoginScope>('customer');
   const [email, setEmail] = useState('');
@@ -92,10 +92,10 @@ function LoginFormContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-obsidian-950 via-emerald-950/30 to-obsidian-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-[calc(100vh-220px)] flex flex-col justify-center py-12 sm:py-16 sm:px-6 lg:px-8 relative overflow-hidden">
       
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Header Monogram Logo */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">

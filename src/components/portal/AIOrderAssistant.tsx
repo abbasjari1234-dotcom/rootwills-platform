@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   Sparkles, 
@@ -31,7 +31,7 @@ export function AIOrderAssistant() {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const { currentOrgId, organizations, getCustomerProducts } = useDemoStore();
+  const { currentOrgId, organizations, getCustomerProducts } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];

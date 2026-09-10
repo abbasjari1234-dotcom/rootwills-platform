@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function ApplyPage() {
   return (
-    <main className="min-h-screen bg-obsidian-950 bg-[radial-gradient(ellipse_at_top,_rgba(201,169,39,0.08),_transparent_65%)]">
-      <OnboardingFlow />
-    </main>
+    <div className="w-full bg-[radial-gradient(ellipse_at_top,_rgba(201,169,39,0.08),_transparent_65%)]">
+      <OnboardingFlow isStandalone={false} />
+    </div>
   );
 }

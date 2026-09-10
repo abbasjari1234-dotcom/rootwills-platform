@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Printer, Download, FileText, CheckCircle2, ShieldCheck, Clock, Sparkles } from 'lucide-react';
 
 export function PortalPriceListView() {
-  const { currentOrgId, organizations, getCustomerProducts } = useDemoStore();
+  const { currentOrgId, organizations, getCustomerProducts } = useAppStore();
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
   const products = getCustomerProducts();
 

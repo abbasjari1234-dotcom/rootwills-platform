@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   ShoppingBag, 
@@ -28,7 +28,7 @@ export function PortalNav() {
     currentLocationId, 
     setLocation, 
     userProfile 
-  } = useDemoStore();
+  } = useAppStore();
   const { items, openCart } = useCartStore();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 

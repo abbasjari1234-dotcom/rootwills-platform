@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Printer, ArrowLeft, Download, ShieldCheck, Landmark, CheckCircle2 } from 'lucide-react';
 
 interface PortalInvoicePrintViewProps {
@@ -13,7 +13,7 @@ interface PortalInvoicePrintViewProps {
 export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoicePrintViewProps = {}) {
   const params = useParams();
   const router = useRouter();
-  const { invoices, organizations, currentOrgId } = useDemoStore();
+  const { invoices, organizations, currentOrgId } = useAppStore();
 
   const invoiceId = propInvoiceId || (params?.id as string);
   const invoice = invoices.find((i) => i.id === invoiceId || i.invoiceNumber === invoiceId) || invoices[0];

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { Lead, LeadStatus } from '@/types/crm';
 import { 
   Users, 
@@ -47,7 +47,7 @@ const COLUMNS: ColumnConfig[] = [
 ];
 
 export function AdminCRMView() {
-  const { leads: storeLeads, updateLeadStatus, convertLeadToCustomer, addLead } = useDemoStore();
+  const { leads: storeLeads, updateLeadStatus, convertLeadToCustomer, addLead } = useAppStore();
   const [liveDbLeads, setLiveDbLeads] = useState<Lead[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
   

@@ -24,7 +24,10 @@ export function ActFinalCTA() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e4c76708_1px,transparent_1px),linear-gradient(to_bottom,#e4c76708_1px,transparent_1px)] bg-[size:36px_36px] opacity-35 pointer-events-none" />
 
       {/* Seamless top blend from Act V */}
-      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#02140e] to-transparent pointer-events-none z-[5]" />
+      <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#021710] to-transparent pointer-events-none z-[5]" />
+
+      {/* Seamless bottom fade into post-experience functional sections */}
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#021710] to-transparent pointer-events-none z-[5]" />
 
       <div className="act-cta-content relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto w-full">
         {/* Executive Provenance & Commercial Badge */}

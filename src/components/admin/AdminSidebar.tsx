@@ -20,13 +20,13 @@ import {
   Truck,
   LogOut
 } from 'lucide-react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
 export function AdminSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { leads, orders } = useDemoStore();
+  const { leads, orders } = useAppStore();
 
   const newLeadsCount = (leads || []).filter((l) => l && l.status === 'new_lead').length;
   const activeOrdersCount = (orders || []).filter((o) => o && (o.status === 'received' || o.status === 'picking')).length;

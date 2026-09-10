@@ -107,8 +107,8 @@ export function Interactive3DFarmToKitchen() {
                 onClick={() => setActiveStageIndex(idx)}
                 className={`relative p-4 rounded-2xl text-left transition-all duration-300 border ${
                   isActive
-                    ? 'bg-zinc-900/90 border-champagne shadow-[0_0_25px_rgba(228,199,103,0.2)]'
-                    : 'bg-zinc-900/40 border-zinc-800/80 hover:border-zinc-700 hover:bg-zinc-900/60'
+                    ? 'bg-obsidian-900/90 border-champagne shadow-[0_0_25px_rgba(228,199,103,0.25)]'
+                    : 'bg-emerald-950/30 border-emerald-900/60 hover:border-champagne/40 hover:bg-emerald-950/60'
                 }`}
               >
                 {isActive && (
@@ -119,14 +119,14 @@ export function Interactive3DFarmToKitchen() {
                   />
                 )}
                 <span className="flex items-center justify-between font-mono text-xs mb-1">
-                  <span className={isActive ? 'text-champagne font-bold' : 'text-zinc-500'}>
+                  <span className={isActive ? 'text-champagne font-bold' : 'text-cream/50'}>
                     {stage.step}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-zinc-800 text-[10px] text-zinc-300">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-800/40 text-[10px] text-emerald-300 font-mono">
                     {stage.time}
                   </span>
                 </span>
-                <span className={`text-sm font-bold font-display block ${isActive ? 'text-cream' : 'text-cream/60'}`}>
+                <span className={`text-sm font-bold font-display block ${isActive ? 'text-cream' : 'text-cream/70'}`}>
                   {stage.title}
                 </span>
               </button>
@@ -136,7 +136,7 @@ export function Interactive3DFarmToKitchen() {
 
         {/* 3D Interactive Stage Display */}
         <ThreeDTiltCard maxTilt={8} depth={25} className="max-w-5xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden bg-obsidian-950/90 border border-zinc-800/90 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+          <div className="relative rounded-3xl overflow-hidden glass-panel p-6 sm:p-10 shadow-2xl backdrop-blur-xl border border-emerald-900/60">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStage.id}
@@ -167,9 +167,9 @@ export function Interactive3DFarmToKitchen() {
                   </p>
 
                   {/* Telemetry Metric Card */}
-                  <div className="p-4 rounded-2xl bg-zinc-900/90 border border-zinc-800 flex items-center justify-between">
+                  <div className="p-4 rounded-2xl bg-obsidian-900/90 border border-emerald-900/60 flex items-center justify-between shadow-md">
                     <div>
-                      <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+                      <div className="text-[11px] font-mono text-cream/60 uppercase tracking-wider">
                         {currentStage.metricLabel}
                       </div>
                       <div className="text-xl font-bold font-mono text-emerald-400 mt-0.5">
@@ -183,7 +183,7 @@ export function Interactive3DFarmToKitchen() {
                 </div>
 
                 {/* Right 3D High-Res Visual Frame */}
-                <div className="lg:col-span-6 relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden border border-zinc-700/60 shadow-2xl">
+                <div className="lg:col-span-6 relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden border border-champagne/30 shadow-2xl">
                   <Image
                     src={currentStage.image}
                     alt={currentStage.title}
@@ -193,7 +193,7 @@ export function Interactive3DFarmToKitchen() {
                   <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950/80 via-transparent to-transparent" />
                   
                   {/* Floating Corner Indicator */}
-                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-zinc-700 text-xs font-mono text-champagne font-bold shadow-lg">
+                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-xl bg-obsidian-950/80 backdrop-blur-md border border-champagne/40 text-xs font-mono text-champagne font-bold shadow-lg">
                     {currentStage.step}
                   </div>
                 </div>

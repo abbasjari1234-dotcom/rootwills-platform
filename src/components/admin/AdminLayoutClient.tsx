@@ -2,10 +2,10 @@
 
 import React, { useEffect } from 'react';
 import { AdminSidebar } from '@/components/admin/AdminSidebar';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 
 export function AdminLayoutClient({ children }: { children: React.ReactNode }) {
-  const { currentRole, switchRole } = useDemoStore();
+  const { currentRole, switchRole } = useAppStore();
 
   useEffect(() => {
     try {

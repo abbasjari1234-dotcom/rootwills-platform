@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 
 export function ContactFormView() {
-  const addLead = useDemoStore((state) => state.addLead);
+  const addLead = useAppStore((state) => state.addLead);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     companyName: '',

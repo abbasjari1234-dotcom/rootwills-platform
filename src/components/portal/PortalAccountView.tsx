@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { 
   Building2, 
   MapPin, 
@@ -25,7 +25,7 @@ import {
 import { deleteUserAccountServerAction, exportUserPersonalDataServerAction } from '@/actions/account';
 
 export function PortalAccountView() {
-  const { currentOrgId, organizations, userProfile } = useDemoStore();
+  const { currentOrgId, organizations, userProfile } = useAppStore();
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
 
   const [savedSuccess, setSavedSuccess] = useState(false);

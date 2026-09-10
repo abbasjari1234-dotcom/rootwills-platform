@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useDemoStore } from '@/lib/store/demo-store';
+import { useAppStore } from '@/store/app-store';
 import { useCartStore } from '@/store/cart-store';
 import { 
   Repeat, 
@@ -35,7 +35,7 @@ export function PortalDashboardView() {
     invoices, 
     getCustomerProducts, 
     toggleFavorite 
-  } = useDemoStore();
+  } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
   const [reorderModalOrder, setReorderModalOrder] = useState<any>(null);

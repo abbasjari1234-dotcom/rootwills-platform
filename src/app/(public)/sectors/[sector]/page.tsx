@@ -438,32 +438,32 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
 
       {/* 24-Hour Operation Timeline Schedule */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 rounded-3xl bg-obsidian-900/80 border border-zinc-800 space-y-6">
+        <div className="glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-900/60 space-y-6">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-xs font-mono uppercase text-champagne font-bold">Guaranteed Delivery Cadence</span>
-            <h2 className="font-display text-2xl font-bold text-cream">How Your Daily Supply Operates</h2>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">How Your Daily Supply Operates</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
-            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+            <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/50 space-y-2">
               <span className="text-xs font-mono text-champagne font-bold">11:00 PM Tonight</span>
               <h3 className="font-display text-base font-bold text-cream">Service Close Cut-off</h3>
-              <p className="text-xs text-cream/65">Order on your phone right after evening dinner service finishes.</p>
+              <p className="text-xs text-cream/75 leading-relaxed">Order on your phone right after evening dinner service finishes.</p>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+            <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/50 space-y-2">
               <span className="text-xs font-mono text-emerald-400 font-bold">02:30 AM</span>
               <h3 className="font-display text-base font-bold text-cream">Optical Quality Grading</h3>
-              <p className="text-xs text-cream/65">Digbeth depot picks and grades every crate into chilled compartments.</p>
+              <p className="text-xs text-cream/75 leading-relaxed">Digbeth depot picks and grades every crate into chilled compartments.</p>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800 space-y-2">
+            <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-800/50 space-y-2">
               <span className="text-xs font-mono text-champagne font-bold">05:15 AM</span>
               <h3 className="font-display text-base font-bold text-cream">Fleet Launch</h3>
-              <p className="text-xs text-cream/65">Dual-temp Mercedes Sprinter leaves depot with calibrated audit log.</p>
+              <p className="text-xs text-cream/75 leading-relaxed">Dual-temp Mercedes Sprinter leaves depot with calibrated audit log.</p>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-950/60 border border-emerald-500/40 space-y-2 shadow-lg">
+            <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 space-y-2 shadow-lg">
               <span className="text-xs font-mono text-emerald-300 font-bold">06:00 - 07:30 AM</span>
               <h3 className="font-display text-base font-bold text-cream">Kitchen Cold-Room Drop</h3>
-              <p className="text-xs text-cream/65">Pristine crates placed inside your fridge before prep chefs arrive.</p>
+              <p className="text-xs text-cream/75 leading-relaxed">Pristine crates placed inside your fridge before prep chefs arrive.</p>
             </div>
           </div>
         </div>

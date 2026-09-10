@@ -42,10 +42,10 @@ export function InteractiveChefFAQ() {
   };
 
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+    <div className="w-full relative z-10">
       
       <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-emerald-300 text-xs font-mono font-bold">
           <HelpCircle className="w-3.5 h-3.5 text-champagne" />
           <span>Executive Chef & Operator FAQ</span>
         </div>
@@ -68,10 +68,10 @@ export function InteractiveChefFAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+              className={`rounded-2xl transition-all duration-300 overflow-hidden ${
                 isOpen 
-                  ? 'bg-emerald-950/60 border-champagne/50 shadow-[0_0_25px_rgba(228,199,103,0.15)]' 
-                  : 'bg-obsidian-900/80 border-emerald-950 hover:border-emerald-800/60'
+                  ? 'glass-panel-gold' 
+                  : 'glass-card'
               }`}
             >
               <button
@@ -129,6 +129,6 @@ export function InteractiveChefFAQ() {
         </p>
       </div>
 
-    </section>
+    </div>
   );
 }
