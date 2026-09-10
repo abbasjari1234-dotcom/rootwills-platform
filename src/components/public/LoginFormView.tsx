@@ -16,7 +16,6 @@ import {
   Eye,
   EyeOff,
   Truck,
-  Sparkles,
   CheckCircle2
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
@@ -77,12 +76,7 @@ function LoginFormContent() {
         setPersona(res.organizationId, targetRole === 'admin' ? 'admin' : 'customer');
       }
 
-      // 2. Set client-side cookie to ensure synchronous middleware pickup
-      if (typeof document !== 'undefined') {
-        document.cookie = `rootwills_role=${targetRole}; path=/; max-age=604800; SameSite=Lax;`;
-      }
-
-      // 3. Navigate with full document reload to send auth cookies to server components
+      // 2. Navigate with full document reload to send auth cookies to server components
       const destination = res.destination || (loginScope === 'staff' ? '/admin/crm' : '/dashboard');
       window.location.href = destination;
     } catch (err: any) {
@@ -146,40 +140,6 @@ function LoginFormContent() {
               <Briefcase className="w-3.5 h-3.5" />
               <span>Staff CRM Portal</span>
             </button>
-          </div>
-
-          {/* Quick Demo / Test Fill Pills */}
-          <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-obsidian-950/80 border border-emerald-900/60 text-[11px] font-mono">
-            <span className="text-cream/50 flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-champagne" />
-              <span>Quick Login:</span>
-            </span>
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setLoginScope('customer');
-                  setEmail('orders@rootwills.co.uk');
-                  setPassword('Rootwills2026!');
-                  setErrorMessage(null);
-                }}
-                className="px-2.5 py-1 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 border border-emerald-800/80 transition-colors text-[10px] font-bold"
-              >
-                Chef Account
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setLoginScope('staff');
-                  setEmail('staff@rootwills.co.uk');
-                  setPassword('Rootwills2026!');
-                  setErrorMessage(null);
-                }}
-                className="px-2.5 py-1 rounded-lg bg-amber-950/90 hover:bg-amber-900 text-champagne border border-amber-800/80 transition-colors text-[10px] font-bold"
-              >
-                Staff Admin
-              </button>
-            </div>
           </div>
 
           {/* Error Message */}

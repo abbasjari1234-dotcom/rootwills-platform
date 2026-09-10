@@ -19,13 +19,18 @@ export async function updateSession(request: NextRequest) {
       supabaseAnonKey,
       {
         cookies: {
-          getAll() {
-            return request.cookies.getAll();
+          get(name: string) {
+            return request.cookies.get(name)?.value;
           },
-          setAll(cookiesToSet: Array<{ name: string; value: string; options?: any }>) {
-            cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+          set(name: string, value: string, options: any) {
+            request.cookies.set({ name, value, ...options });
             response = NextResponse.next({ request });
-            cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+            response.cookies.set({ name, value, ...options });
+          },
+          remove(name: string, options: any) {
+            request.cookies.set({ name, value: '', ...options, maxAge: 0 });
+            response = NextResponse.next({ request });
+            response.cookies.set({ name, value: '', ...options, maxAge: 0 });
           },
         },
       }

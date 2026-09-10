@@ -31,12 +31,19 @@ export function createClient() {
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
-      getAll() {
-        return cookieStore.getAll();
+      get(name: string) {
+        return cookieStore.get(name)?.value;
       },
-      setAll(cookiesToSet: Array<{ name: string; value: string; options?: any }>) {
+      set(name: string, value: string, options: any) {
         try {
-          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+          cookieStore.set({ name, value, ...options });
+        } catch {
+          // Called from a Server Component with no request context — safe to ignore
+        }
+      },
+      remove(name: string, options: any) {
+        try {
+          cookieStore.set({ name, value: '', ...options, maxAge: 0 });
         } catch {
           // Called from a Server Component with no request context — safe to ignore
         }

@@ -27,27 +27,43 @@ export async function requireProfile(): Promise<CurrentProfile> {
     redirect('/login');
   }
 
-  const { data: profile, error } = await supabase
-    .from('profiles')
-    .select('id, role, full_name, organization_id, organizations(name, credit_tier)')
-    .eq('id', user.id)
-    .single();
+  let profile = null;
+  try {
+    const { data: userProfile, error } = await supabase
+      .from('profiles')
+      .select('id, role, full_name, organization_id, organizations(name, credit_tier)')
+      .eq('id', user.id)
+      .maybeSingle();
 
-  if (error || !profile || !profile.organizations) {
-    redirect('/login');
+    if (!error && userProfile) {
+      profile = userProfile;
+    }
+  } catch {
+    // Database RLS or network fallback
   }
 
-  // Supabase's generated types return joined tables as arrays unless you use
-  // !inner or configure the relationship explicitly — cast defensively here.
-  const org = Array.isArray(profile.organizations) ? profile.organizations[0] : profile.organizations;
+  const rawRole = (user.app_metadata?.role || user.user_metadata?.role || 'purchaser').toLowerCase();
+  const defaultRole: UserRole = rawRole === 'admin' ? 'admin' : rawRole === 'finance' ? 'finance' : 'purchaser';
+
+  if (profile) {
+    const org = Array.isArray(profile.organizations) ? profile.organizations[0] : profile.organizations;
+    return {
+      id: profile.id,
+      organizationId: profile.organization_id || 'org-rootwills-partner',
+      role: (profile.role as UserRole) || defaultRole,
+      fullName: profile.full_name || user.user_metadata?.full_name || null,
+      organizationName: org?.name || user.user_metadata?.organization_name || 'Rootwills Trade Partner',
+      creditTier: (org?.credit_tier as any) || 'standard',
+    };
+  }
 
   return {
-    id: profile.id,
-    organizationId: profile.organization_id,
-    role: profile.role as UserRole,
-    fullName: profile.full_name,
-    organizationName: org.name,
-    creditTier: org.credit_tier,
+    id: user.id,
+    organizationId: user.user_metadata?.organization_id || 'org-rootwills-partner',
+    role: defaultRole,
+    fullName: user.user_metadata?.full_name || null,
+    organizationName: user.user_metadata?.organization_name || 'Rootwills Trade Partner',
+    creditTier: 'standard',
   };
 }
 

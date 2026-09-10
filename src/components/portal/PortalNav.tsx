@@ -15,9 +15,10 @@ import {
   X, 
   CreditCard,
   Building2,
-  Phone
+  Phone,
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
+import { logoutServerAction } from '@/actions/auth';
 
 export function PortalNav() {
   const pathname = usePathname();
@@ -50,11 +51,13 @@ export function PortalNav() {
     { href: '/account', label: 'Account' },
   ];
 
-  const handleLogout = () => {
-    // Clear cookies & redirect to login
-    document.cookie = 'rootwills_role=; Max-Age=0; path=/;';
-    document.cookie = 'sb-access-token=; Max-Age=0; path=/;';
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await logoutServerAction();
+    } catch (e) {
+      console.warn('Logout notice:', e);
+    }
+    window.location.href = '/login';
   };
 
   return (

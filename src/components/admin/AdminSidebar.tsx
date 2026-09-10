@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
+import { logoutServerAction } from '@/actions/auth';
 
 export function AdminSidebar() {
   const pathname = usePathname();
@@ -76,10 +77,13 @@ export function AdminSidebar() {
     },
   ];
 
-  const handleLogout = () => {
-    document.cookie = 'rootwills_role=; Max-Age=0; path=/;';
-    document.cookie = 'sb-access-token=; Max-Age=0; path=/;';
-    router.push('/login?role=admin');
+  const handleLogout = async () => {
+    try {
+      await logoutServerAction();
+    } catch (e) {
+      console.warn('Logout notice:', e);
+    }
+    window.location.href = '/login?role=admin';
   };
 
   return (

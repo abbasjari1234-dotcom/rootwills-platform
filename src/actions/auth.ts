@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { createClient } from '@/lib/supabase/server';
 import { checkRateLimit, RATE_LIMIT_PRESETS } from '@/lib/security/rate-limit';
 
 export interface LoginResult {
@@ -12,77 +12,11 @@ export interface LoginResult {
   error?: string;
 }
 
-// Authoritative System Accounts Directory (Role and Destination Mapping)
-const PRECONFIGURED_ACCOUNTS: Record<
-  string,
-  {
-    role: 'admin' | 'customer' | 'driver';
-    orgId: string;
-    destination: string;
-    name: string;
-  }
-> = {
-  // COMMERCIAL ADMIN / OPERATIONS ACCOUNTS
-  'staff@rootwills.co.uk': {
-    role: 'admin',
-    orgId: 'org-rootwills-hq',
-    destination: '/admin/crm',
-    name: 'Rootwills Commercial Staff Desk',
-  },
-  'admin@rootwills.co.uk': {
-    role: 'admin',
-    orgId: 'org-rootwills-hq',
-    destination: '/admin/crm',
-    name: 'Rootwills Operations Manager',
-  },
-  'manager@rootwills.co.uk': {
-    role: 'admin',
-    orgId: 'org-rootwills-hq',
-    destination: '/admin/crm',
-    name: 'Operations Manager',
-  },
-  'marcus.vance@rootwills.co.uk': {
-    role: 'admin',
-    orgId: 'org-rootwills-hq',
-    destination: '/admin/crm',
-    name: 'Marcus Vance (Commercial Sales Lead)',
-  },
-
-  // B2B HOSPITALITY CUSTOMER ACCOUNTS
-  'customer@rootwills.co.uk': {
-    role: 'customer',
-    orgId: 'org-rootwills-partner',
-    destination: '/dashboard',
-    name: 'Trade Account Lead (San Carlo Group)',
-  },
-  'purchasing@rootwills.co.uk': {
-    role: 'customer',
-    orgId: 'org-rootwills-partner',
-    destination: '/dashboard',
-    name: 'Group Purchasing Director',
-  },
-  'orders@rootwills.co.uk': {
-    role: 'customer',
-    orgId: 'org-rootwills-partner',
-    destination: '/dashboard',
-    name: 'Executive Chef (Kitchen Order Pad)',
-  },
-  'chef@rootwills.co.uk': {
-    role: 'customer',
-    orgId: 'org-rootwills-partner',
-    destination: '/dashboard',
-    name: 'Head Chef (Morning Orders)',
-  },
-
-  // DRIVER LOGISTICS ACCOUNT
-  'driver@rootwills.co.uk': {
-    role: 'driver',
-    orgId: 'org-rootwills-fleet',
-    destination: '/driver',
-    name: 'Dave King (Van #04 - Digbeth Fleet)',
-  },
-};
-
+/**
+ * Authoritative Server-Side Login Action
+ * Authenticates exclusively against the backend Supabase database.
+ * No hardcoded bypasses, no demo fallbacks, no credential guessing.
+ */
 export async function loginServerAction(formData: {
   email: string;
   password: string;
@@ -96,160 +30,137 @@ export async function loginServerAction(formData: {
     return { ok: false, error: 'Please enter both your email address and account password.' };
   }
 
-  // Rate Limiting (5 attempts per minute per email / client)
+  // Rate Limiting (5 attempts per minute per email / IP identifier)
   const rateLimit = checkRateLimit(`login_${cleanEmail}`, RATE_LIMIT_PRESETS.AUTH);
   if (!rateLimit.success) {
     return { ok: false, error: 'Too many login attempts. Please wait 60 seconds before trying again.' };
   }
 
-  const isProduction = process.env.NODE_ENV === 'production';
-  const demoPassword = (process.env.DEMO_AUTH_PASSWORD || '').trim();
+  try {
+    const supabase = createClient();
 
-  // 1. Check Supabase Database Auth for real credentials
-  const rawUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim().replace(/^["']|["']$/g, '');
-  const rawKey = (
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
-    ''
-  ).trim().replace(/^["']|["']$/g, '');
+    // 1. Authenticate with Supabase Auth (verifies email & bcrypt/argon2 password hash server-side)
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: cleanEmail,
+      password: cleanPassword,
+    });
 
-  const isRealSupabase =
-    rawUrl.length > 0 &&
-    !rawUrl.includes('placeholder') &&
-    (rawUrl.includes('supabase.co') || rawUrl.startsWith('http'));
-
-  if (isRealSupabase) {
-    try {
-      const supabase = createSupabaseClient(rawUrl, rawKey, {
-        auth: { autoRefreshToken: false, persistSession: false },
-      });
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: cleanEmail,
-        password: cleanPassword,
-      });
-
-      if (!error && data?.user) {
-        // Query profiles table for role & organization
-        let profile: { id?: string; role?: string; organization_id?: string } | null = null;
-        try {
-          const { data: userProfile } = await supabase
-            .from('profiles')
-            .select('id, role, organization_id')
-            .eq('id', data.user.id)
-            .maybeSingle();
-
-          profile = userProfile;
-        } catch {
-          // Continue if profile lookup fails
-        }
-
-        const userRole = (profile?.role || 'customer').toLowerCase() as 'admin' | 'customer' | 'driver';
-        const isStaffDomain = cleanEmail.includes('rootwills.co.uk') || cleanEmail.includes('admin');
-        const hasStaffPermission = userRole === 'admin' || isStaffDomain;
-
-        if (scope === 'staff' && !hasStaffPermission) {
-          return {
-            ok: false,
-            error: `Access Denied: Account (${cleanEmail}) does not have Staff Administrator permissions.`,
-          };
-        }
-
-        const targetRole: 'admin' | 'customer' | 'driver' = scope === 'staff' ? 'admin' : userRole;
-        const targetOrgId = profile?.organization_id || 'org-rootwills-partner';
-
+    if (error || !data?.user) {
+      // Invalidate any lingering session or role cookies to prevent session piggybacking
+      try {
+        await supabase.auth.signOut();
         const cookieStore = cookies();
-        cookieStore.set('rootwills_role', targetRole, {
-          path: '/',
-          maxAge: 86400 * 7,
-          sameSite: 'lax',
-          secure: isProduction,
-        });
-
-        if (data.session?.access_token) {
-          cookieStore.set('sb-access-token', data.session.access_token, {
-            path: '/',
-            maxAge: 86400 * 7,
-            sameSite: 'lax',
-            httpOnly: true,
-            secure: isProduction,
-          });
-        }
-
-        const destination =
-          scope === 'staff'
-            ? '/admin/crm'
-            : targetRole === 'driver'
-              ? '/driver'
-              : '/dashboard';
-
-        return {
-          ok: true,
-          role: targetRole,
-          organizationId: targetOrgId,
-          destination,
-        };
+        cookieStore.delete('rootwills_role');
+        cookieStore.delete('sb-access-token');
+      } catch {
+        // Safe to ignore
       }
-    } catch (err: any) {
-      console.warn('Supabase auth check note:', err?.message || err);
-    }
-  }
 
-  // 2. Preconfigured Trade, Driver & Staff Accounts Authentication
-  const preconfigured = PRECONFIGURED_ACCOUNTS[cleanEmail];
-  if (preconfigured) {
-    // Verify scope restrictions
-    if (scope === 'staff' && preconfigured.role !== 'admin') {
+      // Safe generic message to prevent user enumeration
       return {
         ok: false,
-        error: `Access Denied: Account (${cleanEmail}) is registered as a Customer and cannot log into the Staff CRM Portal.`,
+        error: 'Invalid email or password. Please check your credentials and try again.',
       };
     }
 
-    // Set authorization cookies
+    // 2. Determine authoritative role from authenticated user's metadata & profiles
+    const rawRole = (
+      data.user.app_metadata?.role ||
+      data.user.user_metadata?.role ||
+      'customer'
+    ).toLowerCase();
+
+    let resolvedRole: 'admin' | 'customer' | 'driver' = 'customer';
+    if (rawRole === 'admin' || rawRole === 'sales') {
+      resolvedRole = 'admin';
+    } else if (rawRole === 'driver') {
+      resolvedRole = 'driver';
+    }
+
+    let organizationId = resolvedRole === 'admin' ? 'org-rootwills-hq' : 'org-rootwills-partner';
+
+    // Query profiles table for custom organization mapping if available
+    try {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('organization_id, role')
+        .eq('id', data.user.id)
+        .maybeSingle();
+
+      if (profile?.role) {
+        const pRole = profile.role.toLowerCase();
+        if (pRole === 'admin' || pRole === 'sales') {
+          resolvedRole = 'admin';
+        } else if (pRole === 'driver') {
+          resolvedRole = 'driver';
+        }
+      }
+      if (profile?.organization_id) {
+        organizationId = profile.organization_id;
+      }
+    } catch {
+      // Profiles query error is non-fatal; role is securely established from Supabase user metadata
+    }
+
+    // 3. Strict Scope & Authorization Enforcement
+    // A customer account must NEVER be granted access to the Staff CRM Portal
+    if (scope === 'staff' && resolvedRole !== 'admin') {
+      // Immediately revoke the newly created session
+      await supabase.auth.signOut();
+      return {
+        ok: false,
+        error: 'Access Denied: This account is registered as a customer and does not have Staff CRM permissions.',
+      };
+    }
+
+    // 4. Set UI role cookie (used strictly for display badges/client UI, never for authorization)
     const cookieStore = cookies();
-    cookieStore.set('rootwills_role', preconfigured.role, {
+    cookieStore.set('rootwills_role', resolvedRole, {
       path: '/',
       maxAge: 86400 * 7,
       sameSite: 'lax',
-      secure: isProduction,
+      secure: process.env.NODE_ENV === 'production',
     });
+
+    // 5. Determine secure destination
+    const destination =
+      scope === 'staff' || resolvedRole === 'admin'
+        ? '/admin/crm'
+        : resolvedRole === 'driver'
+          ? '/driver'
+          : '/dashboard';
 
     return {
       ok: true,
-      role: preconfigured.role,
-      organizationId: preconfigured.orgId,
-      destination: preconfigured.destination,
-    };
-  }
-
-  // 3. Generic Commercial Account Login (Accepts valid business credentials)
-  if (cleanEmail.includes('@') && cleanPassword.length >= 4) {
-    const isCorporateStaffEmail = cleanEmail.endsWith('@rootwills.co.uk') || cleanEmail.includes('admin');
-    const targetRole: 'admin' | 'customer' = (scope === 'staff' || isCorporateStaffEmail) ? 'admin' : 'customer';
-    const targetOrgId = targetRole === 'admin' ? 'org-rootwills-hq' : 'org-rootwills-partner';
-    const destination = targetRole === 'admin' ? '/admin/crm' : '/dashboard';
-
-    const cookieStore = cookies();
-    cookieStore.set('rootwills_role', targetRole, {
-      path: '/',
-      maxAge: 86400 * 7,
-      sameSite: 'lax',
-      secure: isProduction,
-    });
-
-    return {
-      ok: true,
-      role: targetRole,
-      organizationId: targetOrgId,
+      role: resolvedRole,
+      organizationId,
       destination,
     };
+  } catch (err: any) {
+    console.error('Authentication service exception:', err?.message || 'Unknown error');
+    return {
+      ok: false,
+      error: 'An unexpected authentication error occurred. Please try again.',
+    };
   }
+}
 
-  return {
-    ok: false,
-    error: 'Invalid credentials. Please enter a valid email address and account password (minimum 4 characters).',
-  };
+/**
+ * Server-Side Logout Action
+ * Invalidates the cryptographic Supabase session and clears auth cookies.
+ */
+export async function logoutServerAction(): Promise<{ ok: boolean }> {
+  try {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+
+    const cookieStore = cookies();
+    cookieStore.delete('rootwills_role');
+    cookieStore.delete('sb-access-token');
+  } catch (err) {
+    console.error('Logout error:', err);
+  }
+  return { ok: true };
 }
 
 export interface PasswordResetResult {
@@ -280,18 +191,10 @@ export async function requestPasswordResetServerAction(formData: {
   }
 
   try {
-    const rawUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
-    const rawKey = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '').trim();
-
-    if (rawUrl && !rawUrl.includes('placeholder') && rawUrl.includes('supabase.co')) {
-      const supabase = createSupabaseClient(rawUrl, rawKey, {
-        auth: { autoRefreshToken: false, persistSession: false },
-      });
-
-      await supabase.auth.resetPasswordForEmail(cleanEmail, {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.uk'}/login?reset=true`,
-      });
-    }
+    const supabase = createClient();
+    await supabase.auth.resetPasswordForEmail(cleanEmail, {
+      redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.uk'}/login?reset=true`,
+    });
 
     // Always return safe generic confirmation to prevent user enumeration
     return {

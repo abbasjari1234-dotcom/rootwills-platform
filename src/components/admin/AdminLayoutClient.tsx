@@ -12,9 +12,6 @@ export function AdminLayoutClient({ children }: { children: React.ReactNode }) {
       if (currentRole !== 'admin' && currentRole !== 'sales' && typeof switchRole === 'function') {
         switchRole('admin');
       }
-      if (typeof document !== 'undefined') {
-        document.cookie = 'rootwills_role=admin; path=/; max-age=86400; SameSite=Lax';
-      }
     } catch (e) {
       console.warn('Admin layout init note:', e);
     }
