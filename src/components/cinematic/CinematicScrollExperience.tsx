@@ -224,14 +224,6 @@ export function CinematicScrollExperience() {
           });
         }
 
-        // Scanning line ambient animation
-        gsap.to('.act-coldchain-scanline', {
-          y: '100vh',
-          repeat: -1,
-          duration: 4,
-          ease: 'none',
-        });
-
         // Background parallax
         gsap.to('.act-coldchain-bg', {
           y: -50,
