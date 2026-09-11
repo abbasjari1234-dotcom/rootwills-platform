@@ -73,14 +73,14 @@ export function CinematicActNavigator() {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  if (!isVisible) return null;
-
   return (
     <aside
       aria-label="Cinematic Act Navigation"
-      className="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-3 select-none pointer-events-none transition-opacity duration-500"
+      className={`fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-end gap-3 select-none transition-all duration-500 ${
+        isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}
     >
-      <div className="p-2 rounded-2xl bg-obsidian-950/75 backdrop-blur-xl border border-champagne/20 shadow-[0_10px_35px_rgba(0,0,0,0.7)] flex flex-col items-end gap-2.5 pointer-events-auto">
+      <div className="p-2 rounded-2xl bg-obsidian-950/75 backdrop-blur-xl border border-champagne/20 shadow-[0_10px_35px_rgba(0,0,0,0.7)] flex flex-col items-end gap-2.5">
         {ACTS.map((act) => {
           const isActive = activeActId === act.id;
           return (

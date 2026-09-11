@@ -34,11 +34,19 @@ export function ThreeDTiltCard({
   const glareX = useTransform(springX, [-0.5, 0.5], [0, 100]);
   const glareY = useTransform(springY, [-0.5, 0.5], [0, 100]);
 
+  const glareBg = useTransform(
+    [glareX, glareY],
+    ([x, y]) =>
+      `radial-gradient(circle at ${x}% ${y}%, rgba(228, 199, 103, 0.15) 0%, rgba(255, 255, 255, 0.05) 30%, transparent 70%)`
+  );
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
+    if (!width || !height || width <= 0 || height <= 0) return;
+
     const xPos = (e.clientX - rect.left) / width - 0.5;
     const yPos = (e.clientY - rect.top) / height - 0.5;
 
@@ -83,7 +91,7 @@ export function ThreeDTiltCard({
         {glareEffect && (
           <motion.div
             style={{
-              background: `radial-gradient(circle at ${glareX.get()}% ${glareY.get()}%, rgba(228, 199, 103, 0.15) 0%, rgba(255, 255, 255, 0.05) 30%, transparent 70%)`,
+              background: glareBg,
             }}
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.2 }}

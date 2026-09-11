@@ -12,6 +12,7 @@ import { CinematicActNavigator } from './CinematicActNavigator';
 
 export function CinematicScrollExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mouseCleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined' || !containerRef.current) return;
@@ -439,8 +440,8 @@ export function CinematicScrollExperience() {
 
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
-        // Store cleanup function
-        (ctx as any)._mouseCleanup = () => {
+        // Store cleanup function in ref
+        mouseCleanupRef.current = () => {
           window.removeEventListener('mousemove', handleMouseMove);
         };
       }, containerRef.current);
@@ -451,9 +452,12 @@ export function CinematicScrollExperience() {
 
     return () => {
       cancelAnimationFrame(initTimer);
+      if (mouseCleanupRef.current) {
+        mouseCleanupRef.current();
+        mouseCleanupRef.current = null;
+      }
       const ctx = (containerRef as any)?._gsapCtx;
       if (ctx) {
-        if ((ctx as any)._mouseCleanup) (ctx as any)._mouseCleanup();
         ctx.revert();
       }
     };
