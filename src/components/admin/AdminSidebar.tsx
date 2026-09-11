@@ -87,23 +87,23 @@ export function AdminSidebar() {
   };
 
   return (
-    <aside className="w-64 bg-obsidian-950 border-r border-emerald-900/40 flex flex-col justify-between p-4 min-h-screen text-cream shadow-2xl">
+    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-4 min-h-screen text-slate-800 shadow-sm">
       <div className="space-y-6">
         {/* Logo */}
         <div className="px-2 pt-2">
           <RootwillsLogo size="sm" variant="full" />
-          <div className="mt-2 text-[10px] font-mono text-champagne uppercase tracking-widest block font-bold">
-            Sales & Admin Hub
+          <div className="mt-2 text-[10px] font-mono text-emerald-800 uppercase tracking-widest block font-bold">
+            Sales &amp; Admin Hub
           </div>
         </div>
 
         {/* Staff info card */}
-        <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-1">
-          <div className="flex items-center gap-2 text-xs font-bold text-cream">
-            <UserCheck className="w-3.5 h-3.5 text-champagne" />
+        <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-1">
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
+            <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
             <span>Operations Manager</span>
           </div>
-          <div className="text-[10px] text-cream/50 font-mono">Commercial Desk & Admin Lead</div>
+          <div className="text-[10px] text-slate-500 font-mono">Commercial Desk &amp; Admin Lead</div>
         </div>
 
         {/* Navigation */}
@@ -117,16 +117,16 @@ export function AdminSidebar() {
                 href={link.href}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium transition-all ${
                   active
-                    ? 'bg-emerald-950/80 text-champagne font-bold border border-champagne/30 shadow-sm'
-                    : 'text-cream/70 hover:text-cream hover:bg-emerald-950/40'
+                    ? 'bg-emerald-50 text-emerald-900 font-bold border border-emerald-200/90 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100/80'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 text-emerald-400" />
+                  <Icon className={`w-4 h-4 ${active ? 'text-emerald-700' : 'text-slate-400'}`} />
                   <span>{link.label}</span>
                 </div>
                 {link.badge && (
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">
                     {link.badge}
                   </span>
                 )}
@@ -137,10 +137,10 @@ export function AdminSidebar() {
       </div>
 
       {/* Footer Sign Out */}
-      <div className="pt-4 border-t border-emerald-950 space-y-2 text-xs">
+      <div className="pt-4 border-t border-slate-200 space-y-2 text-xs">
         <button
           onClick={handleLogout}
-          className="w-full py-2.5 px-3 rounded-xl bg-obsidian-900 hover:bg-rose-950/40 border border-emerald-900/60 hover:border-rose-500/40 text-cream/70 hover:text-rose-300 text-xs font-mono font-bold flex items-center justify-between transition-all"
+          className="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 text-slate-600 hover:text-rose-700 text-xs font-mono font-bold flex items-center justify-between transition-all"
         >
           <span>Sign Out Staff Desk</span>
           <LogOut className="w-3.5 h-3.5" />

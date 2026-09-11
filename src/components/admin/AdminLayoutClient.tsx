@@ -18,9 +18,9 @@ export function AdminLayoutClient({ children }: { children: React.ReactNode }) {
   }, [currentRole, switchRole]);
 
   return (
-    <div className="min-h-screen flex bg-obsidian-950 text-cream">
+    <div className="min-h-screen flex bg-[#F8FAFC] text-slate-900 font-sans">
       <AdminSidebar />
-      <main className="flex-1 overflow-y-auto min-h-screen bg-obsidian-900/30">
+      <main className="flex-1 overflow-y-auto min-h-screen bg-[#F8FAFC]">
         {children}
       </main>
     </div>
