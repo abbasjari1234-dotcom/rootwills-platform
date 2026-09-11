@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Leaf, 
   ThermometerSnowflake, 
@@ -10,72 +11,80 @@ import {
   CheckCircle2, 
   Sparkles, 
   ShieldCheck, 
-  Clock, 
   Truck,
   Layers,
-  Activity
+  Activity,
+  ArrowRight
 } from 'lucide-react';
 
 const provenanceData = [
   {
     icon: Leaf,
-    index: 'SPEC 01',
+    index: 'PILLAR 01',
     metric: '14.8°',
-    unit: 'Brix',
-    label: 'Sugar Density & Dry Matter',
+    unit: 'Brix Peak',
+    label: 'Sugar Density & Flavor',
     tag: 'Optimal Brix Peak',
     meterPercent: 96,
-    detail: 'Refractometer verified at harvest gate for maximum natural flavor and shelf life in service.',
+    subheading: 'Kent Heritage Orchards',
+    detail: 'Field refractometer tested at harvest gate for maximum natural fruit sugars, crisp cell structure, and extended kitchen shelf life.',
   },
   {
     icon: MapPin,
-    index: 'ESTATE 02',
+    index: 'PILLAR 02',
     metric: 'Kent',
-    unit: 'Orchards',
+    unit: '& Evesham',
     label: 'Single-Estate Provenance',
-    tag: '51.27° N, 0.52° E',
-    detail: 'Direct grower partnerships in the Garden of England. Zero intermediate wholesale brokers.',
+    tag: 'Direct Farm Partnerships',
+    subheading: 'Garden of England',
+    detail: 'Direct multi-generation grower contracts spanning Kent orchards and Evesham Vale. 100% transparent provenance with zero broker markups.',
   },
   {
     icon: Award,
-    index: 'GRADE 03',
+    index: 'PILLAR 03',
     metric: 'Class 1',
-    unit: 'Extra',
-    label: 'Culinary Receiving Standard',
-    tag: 'BRCGS Grade A &bull; Red Tractor',
-    detail: 'Strict diameter, skin integrity, and blemish-free specs selected specifically for high-end kitchens.',
+    unit: 'Extra Grade',
+    label: 'Culinary Pass Standard',
+    tag: 'BRCGS Grade AA &bull; Red Tractor',
+    subheading: 'Executive Inspection',
+    detail: 'Rigorous caliper sizing, skin integrity, and blemish-free specs graded specifically for Michelin-starred kitchens and luxury hospitality.',
   },
   {
     icon: ThermometerSnowflake,
-    index: 'CHAIN 04',
+    index: 'PILLAR 04',
     metric: '2–4°C',
-    unit: 'Chain',
+    unit: 'Active Chain',
     label: 'Unbroken Cold-Chain',
     tag: 'Dual-Zone Telemetry',
     meterPercent: 100,
-    detail: 'Pre-cooled at orchard packing station and maintained in dual-temp fleet directly to kitchen door.',
+    subheading: 'Zero Thermal Break',
+    detail: 'Hydro-cooled at farm packhouses and transported in dual-temperature Mercedes fleet directly into your walk-in fridges before 06:00 AM.',
   },
 ];
 
 export function ActHarvestProvenance() {
   return (
-    <section id="act-harvest" className="act-harvest relative w-full overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-6 sm:pb-10 bg-[#02140e]">
-      {/* Background image — Cinematic Orchard Harvest with top-only visibility */}
+    <section 
+      id="act-harvest" 
+      className="act-harvest relative w-full overflow-hidden pt-20 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 lg:pb-28 bg-[#021710]"
+    >
+      {/* Background Ambience — Luxurious Dark Obsidian with Warm Champagne Lighting */}
       <div className="act-harvest-bg absolute inset-0 will-change-transform pointer-events-none overflow-hidden">
-        <Image
-          src="/images/branded/rootwills_orchard_harvest.jpg"
-          alt="Rootwills partner orchard harvest"
-          fill
-          className="object-cover opacity-25 scale-105 [mask-image:linear-gradient(to_bottom,black_0%,black_30%,transparent_65%)]"
-          sizes="100vw"
-          priority
-        />
-        {/* Multilayered radial lighting to eliminate flat dark void while guaranteeing solid bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02140e]/60 via-[#02140e]/90 to-[#02140e]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(228,199,103,0.15),_transparent_55%)]" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-        {/* Solid bottom half coverage so zero background image can ever appear below the card */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-[#02140e] via-[#02140e] to-transparent pointer-events-none z-[2]" />
+        {/* Softened, subtle high-res orchard texture with luxury gradient masking */}
+        <div className="absolute inset-0 opacity-15 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]">
+          <Image
+            src="/images/branded/rootwills_orchard_harvest.jpg"
+            alt="Rootwills partner orchard harvest"
+            fill
+            className="object-cover scale-105"
+            sizes="100vw"
+          />
+        </div>
+
+        {/* Ambient Warm Champagne & Botanical Lighting */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-champagne/15 via-emerald-500/10 to-transparent rounded-full blur-[140px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[350px] bg-champagne/10 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 dot-grid-texture opacity-20 pointer-events-none" />
       </div>
 
       {/* Content container */}
@@ -83,112 +92,120 @@ export function ActHarvestProvenance() {
         
         {/* Section Header */}
         <div className="act-harvest-header text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-900/90 border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.25em] font-semibold mb-5 shadow-[0_0_20px_rgba(228,199,103,0.15)]">
+          {/* Executive Capsule Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 backdrop-blur-md border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.28em] font-semibold mb-6 shadow-[0_0_25px_rgba(228,199,103,0.2)]">
             <Sparkles className="w-3.5 h-3.5 text-champagne" />
             <span>Single-Estate Provenance &bull; Class 1 Standards</span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-cream uppercase leading-[0.95] tracking-tight">
-            From Field to
+          {/* Sculpted Metallic Gold Headline */}
+          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black uppercase leading-[0.95] tracking-tight text-cream">
+            From British Fields to
             <br />
-            <span className="gold-gradient-text">Professional Kitchen</span>
+            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.3)]">
+              Your Kitchen Pass
+            </span>
           </h2>
 
-          <p className="mt-5 text-cream/80 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed">
+          <p className="mt-5 text-cream/85 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto font-sans leading-relaxed">
             Every crate traced to its grower &bull; Every specification verified at receiving &bull; Full cold-chain integrity on every morning delivery.
           </p>
         </div>
 
-        {/* Provenance data cards — High-Contrast B2B Specification Panels */}
+        {/* Provenance Data Cards — Warm Champagne & Deep Obsidian Luxury Glass Panels */}
         <div className="act-harvest-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {provenanceData.map((item, i) => (
             <div
               key={item.label}
-              className={`act-harvest-card-${i} glass-panel rounded-2xl p-6 sm:p-7 will-change-transform border border-champagne/20 hover:border-champagne/60 hover:shadow-[0_20px_45px_rgba(0,0,0,0.8),0_0_25px_rgba(228,199,103,0.12)] transition-all duration-500 group flex flex-col justify-between relative overflow-hidden`}
+              className={`act-harvest-card-${i} rounded-2xl p-6 sm:p-7 will-change-transform bg-obsidian-950/80 backdrop-blur-xl border border-champagne/25 hover:border-champagne hover:shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(228,199,103,0.22)] transition-all duration-500 group flex flex-col justify-between relative overflow-hidden`}
               style={{ transformStyle: 'preserve-3d' }}
             >
-              {/* Subtle metallic top highlight shimmer */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+              {/* Gold Top Hairline Shimmer */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
 
               <div>
-                {/* Top bar with metallic icon and spec index */}
+                {/* Top bar with brass icon and pillar index */}
                 <div className="flex justify-between items-start mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-champagne/15 to-emerald-950/70 border border-champagne/30 flex items-center justify-center group-hover:border-champagne group-hover:scale-105 transition-all shadow-sm">
-                    <item.icon className="w-5 h-5 text-champagne transition-colors duration-500" />
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-champagne/20 via-obsidian-900 to-obsidian-950 border border-champagne/40 flex items-center justify-center group-hover:border-champagne group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(228,199,103,0.4)] transition-all shadow-md">
+                    <item.icon className="w-5 h-5 text-champagne group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-obsidian-950/80 border border-emerald-900/60 font-mono text-[10px] text-champagne/90 font-bold tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-obsidian-900/90 border border-champagne/30 font-mono text-[10px] text-champagne font-bold tracking-wider">
                     {item.index}
                   </span>
                 </div>
 
                 {/* Big Metric Display */}
                 <div className="flex items-baseline gap-2 mb-1.5">
-                  <span className="text-3xl sm:text-4xl lg:text-[42px] font-display font-black text-cream tracking-tight leading-none group-hover:text-champagne transition-colors">
+                  <span className="text-3xl sm:text-4xl lg:text-[40px] font-display font-black text-cream tracking-tight leading-none group-hover:text-champagne transition-colors">
                     {item.metric}
                   </span>
-                  <span className="text-sm sm:text-base font-sans font-bold text-champagne">
+                  <span className="text-xs sm:text-sm font-sans font-bold text-champagne uppercase tracking-wider">
                     {item.unit}
                   </span>
                 </div>
 
                 {/* Specification Category Label */}
-                <div className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-3">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-champagne font-semibold mb-1">
                   {item.label}
+                </div>
+
+                <div className="text-[12px] font-sans font-medium text-cream/70 mb-3">
+                  {item.subheading}
                 </div>
 
                 {/* Micro visual gauge or tag */}
                 {item.meterPercent ? (
-                  <div className="mb-3.5 space-y-1">
-                    <div className="w-full h-1.5 bg-obsidian-950 rounded-full overflow-hidden border border-emerald-900/40">
+                  <div className="mb-4 space-y-1.5">
+                    <div className="w-full h-1.5 bg-obsidian-900 rounded-full overflow-hidden border border-champagne/20">
                       <div 
-                        className="h-full bg-gradient-to-r from-emerald-400 to-champagne rounded-full" 
+                        className="h-full bg-gradient-to-r from-emerald-400 via-champagne to-champagne-soft rounded-full" 
                         style={{ width: `${item.meterPercent}%` }} 
                       />
                     </div>
-                    <div className="flex justify-between text-[10px] font-mono text-cream/50">
+                    <div className="flex justify-between text-[10px] font-mono text-cream/60">
                       <span>{item.tag}</span>
                       <span className="text-champagne font-bold">{item.metric}</span>
                     </div>
                   </div>
                 ) : (
-                  <div className="mb-3.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-obsidian-950/80 border border-emerald-800/40 text-[10px] font-mono text-champagne/90">
+                  <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-obsidian-900/80 border border-champagne/25 text-[10px] font-mono text-champagne">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     <span>{item.tag}</span>
                   </div>
                 )}
               </div>
 
-              <p className="text-cream/70 text-xs font-sans leading-relaxed pt-3 border-t border-emerald-950/80">
+              <p className="text-cream/80 text-xs sm:text-[13px] font-sans leading-relaxed pt-3.5 border-t border-champagne/15">
                 {item.detail}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Featured Product Hero Showcase — Grand Inspection Frame */}
+        {/* Featured Seasonal Produce Showcase — Executive Brass Crate Ledger */}
         <div
           className="act-harvest-featured mt-16 sm:mt-20 relative mx-auto max-w-5xl"
           style={{ perspective: '800px' }}
         >
-          {/* Ambient rim glow behind the card */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-champagne/20 via-emerald-500/20 to-champagne/20 rounded-3xl blur-xl opacity-60 pointer-events-none" />
+          {/* Soft ambient backlight halo */}
+          <div className="absolute -inset-1.5 bg-gradient-to-r from-champagne/20 via-emerald-500/15 to-champagne/20 rounded-3xl blur-2xl opacity-50 pointer-events-none" />
 
-          <div className="act-harvest-featured-img relative rounded-2xl overflow-hidden glass-panel-gold border border-champagne/40 shadow-[0_25px_70px_rgba(0,0,0,0.95)] will-change-transform">
+          <div className="act-harvest-featured-img relative rounded-2xl overflow-hidden bg-obsidian-950 border border-champagne/35 shadow-[0_30px_80px_rgba(0,0,0,0.95)] will-change-transform">
             
             {/* Executive Brass Inspection Bar */}
-            <div className="px-5 py-3 bg-obsidian-950/90 border-b border-champagne/25 flex flex-wrap justify-between items-center gap-2 text-xs font-mono">
-              <div className="flex items-center gap-2 text-champagne font-bold">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="px-5 py-3.5 bg-obsidian-950/95 border-b border-champagne/25 flex flex-wrap justify-between items-center gap-3 text-xs font-mono">
+              <div className="flex items-center gap-2.5 text-champagne font-bold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                 <span>[BATCH LOT #RW-KNT-4820]</span>
-                <span className="text-cream/50 font-normal hidden sm:inline">&bull; SINGLE-ESTATE SELECTION</span>
+                <span className="text-cream/60 font-normal hidden sm:inline">&bull; KENT ORCHARD SELECTION</span>
               </div>
-              <div className="flex items-center gap-3 text-cream/70 text-[11px]">
-                <span className="flex items-center gap-1 text-emerald-400">
+              <div className="flex items-center gap-4 text-cream/80 text-[11px]">
+                <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>QC Verified at Gate</span>
+                  <span>QC Passed at Gate</span>
                 </span>
-                <span className="hidden md:inline text-cream/40">&bull;</span>
-                <span className="hidden md:inline text-champagne font-bold">Cold-Chilled in 120 Mins</span>
+                <span className="hidden md:inline text-champagne/40">&bull;</span>
+                <span className="hidden md:inline text-champagne font-bold">Cold-Chilled within 120 Mins</span>
               </div>
             </div>
 
@@ -198,71 +215,80 @@ export function ActHarvestProvenance() {
                 src="/images/branded/rootwills_apples_card.jpg"
                 alt="Premium Rootwills Pink Lady apples harvested in Kent Orchards"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out brightness-95 contrast-105"
                 sizes="(max-width: 1280px) 100vw, 1200px"
                 priority
               />
               
-              {/* Radial gradient vignette for contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#021710] via-[#021710]/40 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#021710]/70 via-transparent to-transparent hidden sm:block" />
+              {/* Radial gradient vignette for contrast and legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-obsidian-950/80 via-transparent to-transparent hidden sm:block" />
 
               {/* Floating Badge (Top Right) */}
               <div className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-2">
-                <div className="glass-panel-gold rounded-xl px-3 py-1.5 border border-champagne/40 backdrop-blur-md shadow-lg flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-champagne" />
-                  <span className="font-mono text-[10px] text-champagne uppercase tracking-wider font-bold">
-                    Class 1 Extra &bull; Red Tractor
+                <div className="rounded-xl px-3.5 py-1.5 bg-obsidian-950/85 border border-champagne/40 backdrop-blur-md shadow-lg flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-champagne" />
+                  <span className="font-mono text-[10px] sm:text-[11px] text-champagne uppercase tracking-wider font-bold">
+                    Class 1 Extra &bull; Red Tractor Certified
                   </span>
                 </div>
               </div>
 
               {/* Bottom Information Overlay */}
               <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-obsidian-950/90 border border-champagne/30 text-[10px] font-mono text-champagne uppercase tracking-widest font-bold">
-                    <span>Featured Seasonal Produce</span>
+                <div className="space-y-1.5">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-obsidian-950/90 border border-champagne/40 text-[10px] font-mono text-champagne uppercase tracking-widest font-bold">
+                    <span>Featured Seasonal Harvest</span>
                   </div>
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-cream tracking-tight drop-shadow-md">
-                    Pink Lady Apples &bull; Kent Orchards
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-cream tracking-tight drop-shadow-lg">
+                    Heritage Pink Lady Apples &bull; Kent Orchards
                   </h3>
-                  <p className="text-xs sm:text-sm text-cream/80 max-w-md drop-shadow">
-                    Heritage orchard hand-picked at 14.8° Brix. Packed into branded wooden crates for Michelin and boutique dining kitchens.
+                  <p className="text-xs sm:text-sm text-cream/90 max-w-lg drop-shadow font-sans">
+                    Hand-harvested at peak 14.8° Brix. Packed into branded wooden crates for Michelin dining rooms and boutique breakfast passes.
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 self-end sm:self-auto">
-                  <span className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-mono text-xs font-bold shadow-gold-glow flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-obsidian-950 animate-ping inline-block" />
-                    <span>In Season Now</span>
-                  </span>
+                <div className="flex items-center gap-3 self-end sm:self-auto">
+                  <Link
+                    href="/apply"
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] text-obsidian-950 font-sans font-bold text-xs uppercase tracking-wider shadow-[0_4px_20px_rgba(228,199,103,0.4)] hover:brightness-105 transition-all flex items-center gap-2"
+                  >
+                    <span>Order Tasting Crate</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
 
             {/* Bottom 3-Column Verification Ledger */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-emerald-950/80 bg-obsidian-950/95 border-t border-champagne/25 p-4 text-xs font-mono">
-              <div className="flex items-center gap-3 px-3 py-2 sm:py-1">
-                <Truck className="w-4 h-4 text-champagne shrink-0" />
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-champagne/15 bg-obsidian-950 border-t border-champagne/25 p-4 text-xs font-mono">
+              <div className="flex items-center gap-3.5 px-4 py-2 sm:py-1">
+                <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/25 flex items-center justify-center text-champagne shrink-0">
+                  <Truck className="w-4 h-4" />
+                </div>
                 <div>
                   <div className="text-[10px] uppercase text-cream/50">Field-to-Depot SLA</div>
-                  <div className="font-bold text-cream">&lt; 180 Mins Orchard to Hub</div>
+                  <div className="font-bold text-cream">&lt; 180 Mins Tree to Hub</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 px-3 py-2 sm:py-1">
-                <Layers className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="flex items-center gap-3.5 px-4 py-2 sm:py-1">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+                  <Layers className="w-4 h-4" />
+                </div>
                 <div>
                   <div className="text-[10px] uppercase text-cream/50">Packaging Specification</div>
                   <div className="font-bold text-cream">6kg Slatted Wooden Heritage Crate</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 px-3 py-2 sm:py-1">
-                <Activity className="w-4 h-4 text-champagne shrink-0" />
+              <div className="flex items-center gap-3.5 px-4 py-2 sm:py-1">
+                <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/25 flex items-center justify-center text-champagne shrink-0">
+                  <Activity className="w-4 h-4" />
+                </div>
                 <div>
                   <div className="text-[10px] uppercase text-cream/50">Cold Transit Temperature</div>
-                  <div className="font-bold text-emerald-400">+2.4°C Calibrated Average</div>
+                  <div className="font-bold text-emerald-400">+2.4°C Dual-Zone Locked</div>
                 </div>
               </div>
             </div>
