@@ -88,25 +88,25 @@ export function AdminStandingOrdersView() {
   };
 
   return (
-    <div className="p-6 sm:p-8 space-y-8">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 min-h-screen bg-slate-50 text-slate-900">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-cream/10">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 uppercase font-bold">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase font-bold">
             <Repeat className="w-3.5 h-3.5" />
             <span>Recurring Orders Execution Engine</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
             Master Standing Orders & Cadence
           </h1>
-          <p className="text-xs text-cream/60">
+          <p className="text-xs text-slate-500 mt-1">
             Review active contract standing orders and execute the weekly morning delivery batch.
           </p>
         </div>
 
         <button
           onClick={handleExecuteBatch}
-          className="px-5 py-2.5 rounded-xl bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-2"
+          className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm hover:shadow flex items-center gap-2 transition-all cursor-pointer"
         >
           <Play className="w-4 h-4" />
           <span>Execute Tomorrow's Standing Run</span>
@@ -114,8 +114,8 @@ export function AdminStandingOrdersView() {
       </div>
 
       {executedSuccess && (
-        <div className="p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2 font-mono">
-          <CheckCircle2 className="w-4 h-4" />
+        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2 font-mono font-semibold shadow-sm">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
           <span>Success! Standing orders batch executed and pushed to the Warehouse Picking Queue.</span>
         </div>
       )}
@@ -128,36 +128,36 @@ export function AdminStandingOrdersView() {
           return (
             <div
               key={so.id}
-              className="glass-panel p-5 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-champagne/30 transition-all"
+              className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-emerald-300 hover:shadow-md transition-all"
             >
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-cream text-base">{so.name}</span>
-                  <span className="px-2 py-0.5 rounded bg-champagne/10 text-champagne text-[10px] font-mono border border-champagne/20 capitalize">
+              <div className="space-y-1.5 flex-1 min-w-0">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="font-bold text-slate-900 text-base">{so.name}</span>
+                  <span className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 text-[10px] font-mono border border-indigo-200 capitalize font-semibold">
                     {so.recurrence}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] font-mono border border-emerald-500/20">
+                  <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 text-[10px] font-mono border border-emerald-200 font-semibold">
                     Active
                   </span>
                 </div>
 
-                <div className="text-xs text-cream/60">
-                  Customer: <strong>{so.orgName}</strong> &bull; Location: <strong>{so.locationName}</strong>
+                <div className="text-xs text-slate-500">
+                  Customer: <strong className="text-slate-800">{so.orgName}</strong> &bull; Location: <strong className="text-slate-700">{so.locationName}</strong>
                 </div>
 
-                <div className="text-xs text-cream/40 flex flex-wrap gap-2 pt-1 font-mono">
+                <div className="text-xs text-slate-600 flex flex-wrap gap-2 pt-1 font-mono">
                   {so.items.map((it, i) => (
-                    <span key={i} className="bg-obsidian-950 px-2 py-0.5 rounded border border-cream/5">
-                      {it.qty}x {it.name}
+                    <span key={i} className="bg-slate-50 text-slate-700 px-2.5 py-0.5 rounded border border-slate-200 text-[11px]">
+                      <strong>{it.qty}x</strong> {it.name}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="text-right flex flex-col items-end gap-1">
-                <div className="text-[10px] font-mono uppercase text-cream/40">Scheduled Batch Total</div>
-                <div className="font-mono font-bold text-champagne text-base">£{total.toFixed(2)}</div>
-                <div className="text-[10px] text-cream/50">Next scheduled: Tomorrow 05:30 AM</div>
+              <div className="text-right flex flex-col items-end gap-1 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 w-full md:w-auto">
+                <div className="text-[10px] font-mono uppercase text-slate-400 font-semibold">Scheduled Batch Total</div>
+                <div className="font-mono font-bold text-slate-900 text-lg">£{total.toFixed(2)}</div>
+                <div className="text-[10px] text-emerald-700 font-mono font-medium">Next scheduled: Tomorrow 05:30 AM</div>
               </div>
             </div>
           );

@@ -7,31 +7,31 @@ const STATUS_CONFIG: Record<
 > = {
   received: {
     label: 'Order Received',
-    className: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+    className: 'bg-blue-50 text-blue-700 border-blue-200 font-semibold',
   },
   confirmed: {
     label: 'Confirmed',
-    className: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+    className: 'bg-indigo-50 text-indigo-700 border-indigo-200 font-semibold',
   },
   picking: {
     label: 'Being Picked at Depot',
-    className: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    className: 'bg-amber-50 text-amber-800 border-amber-200 font-semibold',
   },
   dispatch_ready: {
     label: 'Ready for Dispatch',
-    className: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+    className: 'bg-purple-50 text-purple-700 border-purple-200 font-semibold',
   },
   out_for_delivery: {
     label: 'Out for Delivery',
-    className: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30 animate-pulse',
+    className: 'bg-emerald-50 text-emerald-700 border-emerald-300 font-semibold animate-pulse',
   },
   delivered: {
     label: 'Delivered',
-    className: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+    className: 'bg-emerald-100 text-emerald-800 border-emerald-300 font-semibold',
   },
   cancelled: {
     label: 'Cancelled',
-    className: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+    className: 'bg-rose-50 text-rose-700 border-rose-200 font-semibold',
   },
 };
 

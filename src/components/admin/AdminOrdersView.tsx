@@ -115,18 +115,18 @@ export function AdminOrdersView() {
   const liveActiveCount = combinedOrders.filter((o) => o?.status !== 'delivered' && o?.status !== 'cancelled').length;
 
   return (
-    <div className="p-6 sm:p-8 space-y-8 min-h-screen bg-obsidian-950">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 min-h-screen bg-slate-50 text-slate-900">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-cream/10">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-2 text-[11px] font-mono text-emerald-400 uppercase font-bold">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 uppercase font-bold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>Warehouse Live Dispatch & Orders Hub</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
             Live Fulfilment & Dispatch Desk
           </h1>
-          <p className="text-xs text-cream/60">
+          <p className="text-xs text-slate-500 mt-1">
             Real-time orders placed on customer phones or laptops appear here instantly via live Supabase database.
           </p>
         </div>
@@ -137,60 +137,60 @@ export function AdminOrdersView() {
           onClick={fetchLiveOrders}
           disabled={isRefreshing}
           aria-label="Sync live orders from database"
-          className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold flex items-center gap-1.5 hover:bg-obsidian-850 shadow-sm transition-all cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
         >
-          <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`w-3.5 h-3.5 text-emerald-600 ${isRefreshing ? 'animate-spin' : ''}`} />
           <span>{isRefreshing ? 'Syncing...' : 'Sync Live Orders'}</span>
         </button>
       </div>
 
       {/* Summary Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="glass-panel p-4 rounded-2xl flex items-center justify-between border-cream/10">
+        <div className="bg-white p-5 rounded-2xl flex items-center justify-between border border-slate-200 shadow-sm">
           <div>
-            <span className="text-[10px] font-mono uppercase text-cream/70 block">Total Orders Value</span>
-            <span className="font-display text-2xl font-bold text-champagne">£{totalRevenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</span>
-            <span className="text-[10px] text-cream/80 block">{combinedOrders.length} Total Orders Recorded</span>
+            <span className="text-[10px] font-mono uppercase text-slate-500 block">Total Orders Value</span>
+            <span className="font-display text-2xl font-bold text-slate-900">£{totalRevenue.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</span>
+            <span className="text-[11px] text-slate-500 block mt-0.5">{combinedOrders.length} Total Orders Recorded</span>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-champagne/10 text-champagne flex items-center justify-center font-bold">
-            <DollarSign className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold">
+            <DollarSign className="w-5 h-5 text-emerald-600" />
           </div>
         </div>
 
-        <div className="glass-panel p-4 rounded-2xl flex items-center justify-between border-emerald-500/30 bg-emerald-500/5">
+        <div className="bg-emerald-50/60 p-5 rounded-2xl flex items-center justify-between border border-emerald-200/80 shadow-sm">
           <div>
-            <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold block">Active In-Progress</span>
-            <span className="font-display text-2xl font-bold text-emerald-300">{liveActiveCount} Orders Live</span>
-            <span className="text-[10px] text-emerald-400/80 block">Digbeth Depot Queue</span>
+            <span className="text-[10px] font-mono uppercase text-emerald-700 font-bold block">Active In-Progress</span>
+            <span className="font-display text-2xl font-bold text-emerald-900">{liveActiveCount} Orders Live</span>
+            <span className="text-[11px] text-emerald-700/80 block mt-0.5">Digbeth Depot Picking Queue</span>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-500 text-obsidian-950 flex items-center justify-center font-bold shadow-emerald-glow">
+          <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold shadow-sm">
             <Truck className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="glass-panel p-4 rounded-2xl flex items-center justify-between border-cream/10">
+        <div className="bg-white p-5 rounded-2xl flex items-center justify-between border border-slate-200 shadow-sm">
           <div>
-            <span className="text-[10px] font-mono uppercase text-cream/40 block">Fleet Target Window</span>
-            <span className="font-display text-2xl font-bold text-cream">06:00 – 08:30 AM</span>
-            <span className="text-[10px] text-champagne font-mono block">99.8% On-Time SLA</span>
+            <span className="text-[10px] font-mono uppercase text-slate-500 block">Fleet Target Window</span>
+            <span className="font-display text-2xl font-bold text-slate-900">06:00 – 08:30 AM</span>
+            <span className="text-[11px] text-emerald-700 font-mono block mt-0.5">99.8% On-Time SLA</span>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-obsidian-900 border border-cream/10 text-champagne flex items-center justify-center font-bold">
-            <Clock className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center font-bold">
+            <Clock className="w-5 h-5 text-slate-600" />
           </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="glass-panel p-4 rounded-2xl flex flex-col md:flex-row gap-4 justify-between items-center">
+      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 justify-between items-center">
         <div className="flex flex-wrap gap-2">
           {['all', 'received', 'confirmed', 'picking', 'dispatch_ready', 'out_for_delivery', 'delivered'].map((st) => (
             <button
               key={st}
               onClick={() => setFilterStatus(st)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium capitalize transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold capitalize transition-all cursor-pointer ${
                 filterStatus === st
-                  ? 'bg-emerald-500 text-obsidian-950 font-bold shadow-emerald-glow'
-                  : 'bg-obsidian-900 text-cream/70 hover:text-cream border border-cream/10'
+                  ? 'bg-emerald-600 text-white font-bold shadow-sm'
+                  : 'bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-100'
               }`}
             >
               {st === 'all' ? `All Orders (${combinedOrders.length})` : st.replace('_', ' ')}
@@ -199,13 +199,13 @@ export function AdminOrdersView() {
         </div>
 
         <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-cream/40 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search order #, customer, site..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-obsidian-900 border border-cream/20 rounded-xl pl-10 pr-4 py-2 text-xs text-cream focus:outline-none focus:border-emerald-400"
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
           />
         </div>
       </div>
@@ -213,9 +213,9 @@ export function AdminOrdersView() {
       {/* Orders Fulfillment Stream */}
       <div className="space-y-3">
         {filteredOrders.length === 0 ? (
-          <div className="glass-panel p-8 rounded-2xl text-center text-xs text-cream/50 space-y-2">
-            <ClipboardList className="w-8 h-8 text-cream/30 mx-auto" />
-            <p className="font-bold text-cream">No orders match this filter.</p>
+          <div className="bg-white border border-slate-200 p-10 rounded-2xl text-center text-xs text-slate-500 space-y-2 shadow-sm">
+            <ClipboardList className="w-10 h-10 text-slate-300 mx-auto" />
+            <p className="font-bold text-slate-700 text-sm">No orders match this filter.</p>
             <p>Orders placed on any mobile device or laptop will appear here in real-time.</p>
           </div>
         ) : (
@@ -229,56 +229,56 @@ export function AdminOrdersView() {
             return (
               <div
                 key={order.id}
-                className="glass-panel p-5 rounded-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:border-emerald-500/30 transition-all border border-cream/10 shadow-lg"
+                className="bg-white p-5 rounded-2xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 hover:border-emerald-300 hover:shadow-md transition-all border border-slate-200 shadow-sm"
               >
-                <div className="space-y-1 flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="font-mono font-bold text-champagne text-base">{order.orderNumber || 'RW-ORDER'}</span>
-                    <span className="font-bold text-cream text-sm">&bull; {order.organizationName || 'San Carlo Ristorante'}</span>
+                <div className="space-y-1.5 flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <span className="font-mono font-bold text-emerald-800 text-base">{order.orderNumber || 'RW-ORDER'}</span>
+                    <span className="font-bold text-slate-800 text-sm">&bull; {order.organizationName || 'San Carlo Ristorante'}</span>
                     <OrderStatusBadge status={order.status || 'received'} />
                     {isLiveSupabase && (
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-mono text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                         <span>LIVE CLOUD DB</span>
                       </span>
                     )}
                     {order.isStandingOrder && (
-                      <span className="px-2 py-0.5 rounded bg-champagne/10 text-champagne font-mono text-[10px]">
+                      <span className="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-mono text-[10px] font-semibold border border-amber-200">
                         Standing ({order.recurrence})
                       </span>
                     )}
                   </div>
 
-                  <div className="text-xs text-cream/60">
-                    <span>Site: <strong>{order.locationName || 'Kitchen Drop Point'}</strong></span>
-                    <span className="mx-2 text-cream/30">&bull;</span>
-                    <span>Target: <strong className="text-champagne">{order.deliveryDate || 'Next-Day'} ({order.deliverySlot || '06:00 - 08:30 AM'})</strong></span>
+                  <div className="text-xs text-slate-500">
+                    <span>Site: <strong className="text-slate-700">{order.locationName || 'Kitchen Drop Point'}</strong></span>
+                    <span className="mx-2 text-slate-300">&bull;</span>
+                    <span>Target: <strong className="text-emerald-700">{order.deliveryDate || 'Next-Day'} ({order.deliverySlot || '06:00 - 08:30 AM'})</strong></span>
                   </div>
 
                   {itemsList.length > 0 && (
-                    <div className="text-xs text-cream/40 flex flex-wrap gap-2 pt-1 font-mono">
+                    <div className="text-xs text-slate-600 flex flex-wrap gap-1.5 pt-1 font-mono">
                       {itemsList.map((i, idx) => (
-                        <span key={idx} className="bg-obsidian-950 px-2 py-0.5 rounded border border-cream/5">
-                          {i.qty}x {i.sku || 'PRD'} ({i.name})
+                        <span key={idx} className="bg-slate-50 text-slate-700 px-2 py-0.5 rounded border border-slate-200 text-[11px]">
+                          <strong>{i.qty}x</strong> {i.sku || 'PRD'} ({i.name})
                         </span>
                       ))}
                     </div>
                   )}
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-cream/10">
+                <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-between lg:justify-end pt-3 lg:pt-0 border-t lg:border-t-0 border-slate-100">
                   <div className="text-right mr-2">
-                    <div className="text-[10px] uppercase font-mono text-cream/40">Order Value</div>
-                    <div className="font-mono font-bold text-champagne text-sm">£{totalVal.toFixed(2)}</div>
+                    <div className="text-[10px] uppercase font-mono text-slate-400 font-semibold">Order Value</div>
+                    <div className="font-mono font-bold text-slate-900 text-base">£{totalVal.toFixed(2)}</div>
                   </div>
 
                   {/* Print Picking List Button */}
                   <button
                     type="button"
                     onClick={() => setSelectedOrderForPicking(order)}
-                    className="px-3.5 py-2 rounded-lg bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
+                    className="px-3.5 py-2 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-xs text-slate-700 hover:text-slate-900 font-medium flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer"
                   >
-                    <Printer className="w-3.5 h-3.5 text-champagne" />
+                    <Printer className="w-3.5 h-3.5 text-slate-500" />
                     <span>Print Picking Sheet</span>
                   </button>
 
@@ -287,7 +287,7 @@ export function AdminOrdersView() {
                     <button
                       type="button"
                       onClick={() => handleAdvanceStatus(order)}
-                      className="px-4 py-2 rounded-lg bg-emerald-500 text-obsidian-950 font-bold text-xs shadow-emerald-glow hover:brightness-110 flex items-center gap-1.5 transition-all cursor-pointer"
+                      className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm hover:shadow flex items-center gap-1.5 transition-all cursor-pointer"
                     >
                       <span>Advance to {nextStatus.replace(/_/g, ' ')}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -302,64 +302,64 @@ export function AdminOrdersView() {
 
       {/* Warehouse Picking List Print Modal */}
       {selectedOrderForPicking && (
-        <div className="fixed inset-0 z-50 bg-obsidian-950/85 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white text-black rounded-2xl max-w-2xl w-full p-8 space-y-6 shadow-2xl relative font-sans">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white text-slate-900 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 relative font-sans">
             {/* Depot Picking Sheet Header */}
-            <div className="flex justify-between items-start border-b-2 border-black pb-4">
+            <div className="flex justify-between items-start border-b-2 border-slate-900 pb-4">
               <div>
-                <div className="text-xs font-mono font-bold uppercase tracking-wider text-gray-600">
+                <div className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-800">
                   ROOTWILLS LTD &bull; CENTRAL FULFILMENT DEPOT
                 </div>
-                <h2 className="text-2xl font-bold font-mono mt-0.5">
+                <h2 className="text-2xl font-bold font-mono mt-0.5 text-slate-900">
                   WAREHOUSE PICKING LIST — {selectedOrderForPicking.orderNumber}
                 </h2>
-                <div className="text-xs text-gray-600">
+                <div className="text-xs text-slate-500 mt-1">
                   Target Dispatch: {selectedOrderForPicking.deliveryDate} ({selectedOrderForPicking.deliverySlot})
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setSelectedOrderForPicking(null)}
-                className="text-gray-500 hover:text-black text-lg p-1 cursor-pointer"
+                className="text-slate-400 hover:text-slate-900 text-lg p-1 cursor-pointer transition-colors"
               >
                 ✕
               </button>
             </div>
 
             {/* Destination info */}
-            <div className="grid grid-cols-2 gap-4 text-xs bg-gray-100 p-4 rounded-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-slate-50 border border-slate-200 p-4 rounded-xl">
               <div>
-                <strong className="block text-sm">{selectedOrderForPicking.organizationName}</strong>
-                <div>{selectedOrderForPicking.locationName}</div>
+                <strong className="block text-sm text-slate-900">{selectedOrderForPicking.organizationName}</strong>
+                <div className="text-slate-600 mt-0.5">{selectedOrderForPicking.locationName}</div>
               </div>
               <div>
-                <span className="font-bold">Driver Instructions:</span>
-                <p className="text-gray-700 italic">
+                <span className="font-bold text-slate-800">Driver Instructions:</span>
+                <p className="text-slate-600 italic mt-0.5">
                   {selectedOrderForPicking.deliveryNotes || 'Standard keyholder early delivery.'}
                 </p>
               </div>
             </div>
 
             {/* Picking Table */}
-            <div>
+            <div className="border border-slate-200 rounded-xl overflow-hidden">
               <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-gray-300 font-mono text-[11px]">
-                    <th className="py-2">[ ] Picked</th>
-                    <th className="py-2">SKU</th>
-                    <th className="py-2">Product Description</th>
-                    <th className="py-2">Pack Spec</th>
-                    <th className="py-2 text-right">Quantity</th>
+                <thead className="bg-slate-100 border-b border-slate-200 text-slate-700">
+                  <tr className="font-mono text-[11px]">
+                    <th className="py-2.5 px-3">[ ] Picked</th>
+                    <th className="py-2.5 px-3">SKU</th>
+                    <th className="py-2.5 px-3">Product Description</th>
+                    <th className="py-2.5 px-3">Pack Spec</th>
+                    <th className="py-2.5 px-3 text-right">Quantity</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-slate-100">
                   {(Array.isArray(selectedOrderForPicking.items) ? selectedOrderForPicking.items : []).map((item, idx) => (
-                    <tr key={idx} className="py-2">
-                      <td className="py-2 font-mono">[  ]</td>
-                      <td className="py-2 font-mono font-bold">{item.sku}</td>
-                      <td className="py-2 font-bold">{item.name}</td>
-                      <td className="py-2 text-gray-600">{item.packSize}</td>
-                      <td className="py-2 font-mono font-bold text-right text-sm">
+                    <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                      <td className="py-2 px-3 font-mono text-slate-400">[  ]</td>
+                      <td className="py-2 px-3 font-mono font-bold text-slate-900">{item.sku}</td>
+                      <td className="py-2 px-3 font-bold text-slate-800">{item.name}</td>
+                      <td className="py-2 px-3 text-slate-500">{item.packSize}</td>
+                      <td className="py-2 px-3 font-mono font-bold text-right text-sm text-emerald-800">
                         {item.qty} units
                       </td>
                     </tr>
@@ -369,15 +369,15 @@ export function AdminOrdersView() {
             </div>
 
             {/* Sign-off footer */}
-            <div className="pt-4 border-t-2 border-black flex justify-between items-center text-xs">
-              <div>
-                Selector Name: ____________________ &bull; Checked By: ____________________
+            <div className="pt-4 border-t-2 border-slate-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
+              <div className="text-slate-500 font-mono">
+                Selector Name: _________________ &bull; Checked: _______________
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full sm:w-auto justify-end">
                 <button
                   type="button"
                   onClick={() => alert('Printing warehouse picking sheet...')}
-                  className="px-4 py-2 bg-black text-white font-bold rounded-lg text-xs flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 cursor-pointer shadow-sm"
                 >
                   <Printer className="w-4 h-4" />
                   <span>Print Sheet</span>
@@ -385,7 +385,7 @@ export function AdminOrdersView() {
                 <button
                   type="button"
                   onClick={() => setSelectedOrderForPicking(null)}
-                  className="px-4 py-2 border border-gray-300 rounded-lg text-xs cursor-pointer"
+                  className="px-4 py-2 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-xl text-xs font-semibold cursor-pointer shadow-sm"
                 >
                   Close
                 </button>
