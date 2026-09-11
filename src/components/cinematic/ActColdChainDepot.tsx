@@ -99,41 +99,41 @@ const corridors = [
 
 export function ActColdChainDepot() {
   return (
-    <section id="act-coldchain" className="act-coldchain relative w-full overflow-hidden pt-4 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
+    <section id="act-coldchain" className="act-coldchain relative w-full overflow-hidden pt-4 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-14 bg-[#021710]">
       {/* Background — Digbeth depot image with multi-layered atmospheric lighting */}
       <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform overflow-hidden">
         <Image
           src="/images/branded/rootwills_digbeth_hub.jpg"
           alt="Rootwills Digbeth distribution hub"
           fill
-          className="object-cover opacity-25 scale-105 [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
+          className="object-cover opacity-20 scale-105 [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_80%,transparent_100%)]"
           sizes="100vw"
         />
         {/* Dynamic atmospheric gradients eliminating the dark void */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#02140e] via-[#02140e]/80 to-[#02140e]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(16,185,129,0.18),_transparent_65%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#021710] via-[#021710]/80 to-[#021710]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(228,199,103,0.12),_transparent_65%)]" />
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[300px] bg-amber-400/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/4 w-[500px] h-[300px] bg-champagne/8 rounded-full blur-[120px] pointer-events-none" />
         
         {/* High-tech telemetry grid texture */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e4c76706_1px,transparent_1px),linear-gradient(to_bottom,#e4c76706_1px,transparent_1px)] bg-[size:32px_32px] opacity-40" />
       </div>
 
       {/* Seamless top blend from Act II */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[5]" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#021710] via-[#021710]/95 to-transparent pointer-events-none z-[5]" />
 
       {/* Seamless bottom fade into Act IV to eliminate gaps and image seams */}
-      <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#02140e] via-[#02140e]/95 to-transparent pointer-events-none z-[5]" />
+      <div className="absolute bottom-0 left-0 right-0 h-44 bg-gradient-to-t from-[#021710] via-[#021710]/95 to-transparent pointer-events-none z-[5]" />
 
       {/* Scanning radar line — ambient operational command feel */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
-        <div className="act-coldchain-scanline absolute w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-400/35 to-transparent top-0 will-change-transform shadow-[0_0_15px_rgba(52,211,153,0.5)]" />
+        <div className="act-coldchain-scanline absolute w-full h-[2px] bg-gradient-to-r from-transparent via-champagne/40 to-transparent top-0 will-change-transform shadow-[0_0_15px_rgba(228,199,103,0.5)]" />
       </div>
 
       <div className="act-coldchain-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="act-coldchain-header text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-900/90 border border-emerald-400/35 text-emerald-400 text-[11px] font-mono uppercase tracking-[0.25em] font-semibold mb-5 shadow-[0_0_25px_rgba(16,185,129,0.18)]">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-950/80 backdrop-blur-md border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.25em] font-semibold mb-5 shadow-[0_0_25px_rgba(228,199,103,0.18)]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
@@ -144,11 +144,13 @@ export function ActColdChainDepot() {
           <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-cream uppercase leading-[0.92] tracking-tight">
             Digbeth Distribution
             <br />
-            <span className="emerald-gradient-text">Command Centre</span>
+            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.3)]">
+              Command Centre
+            </span>
           </h2>
           
-          <p className="mt-5 text-cream/80 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed">
-            Temperature-controlled from cold store to kitchen pass &bull; 38 multi-temp vehicles &bull; 200-mile West Midlands & national radius &bull; Every delivery before 6:00 AM.
+          <p className="mt-5 text-cream/85 text-sm sm:text-base max-w-2xl mx-auto font-sans leading-relaxed">
+            Temperature-controlled from cold store to kitchen pass &bull; 38 multi-temp vehicles &bull; 200-mile West Midlands &amp; national radius &bull; Every delivery before 06:00 AM.
           </p>
         </div>
 
