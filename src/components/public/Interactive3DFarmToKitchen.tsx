@@ -137,7 +137,7 @@ export function Interactive3DFarmToKitchen() {
 
         {/* 3D Interactive Stage Display with Tilt Card */}
         <ThreeDTiltCard maxTilt={6} depth={20} className="max-w-5xl mx-auto">
-          <div className="relative rounded-3xl overflow-hidden glass-panel-gold p-6 sm:p-10 shadow-2xl border border-champagne/25">
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden glass-panel-gold p-4 sm:p-8 lg:p-10 shadow-2xl border border-champagne/25">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStage.id}

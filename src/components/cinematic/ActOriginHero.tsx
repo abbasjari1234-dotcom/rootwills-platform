@@ -51,14 +51,14 @@ export function ActOriginHero() {
       {/* === FOREGROUND CONTENT === */}
       <div className="act-origin-content relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-5xl mx-auto">
         {/* Establishment Capsule Label */}
-        <div className="act-origin-label inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/70 backdrop-blur-md border border-champagne/25 shadow-sm text-champagne font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.32em] mb-4 sm:mb-6 font-semibold">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-          <span>Digbeth, Birmingham &bull; Wholesale Foodservice Distribution</span>
+        <div className="act-origin-label inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-obsidian-950/70 backdrop-blur-md border border-champagne/25 shadow-sm text-champagne font-mono text-[9px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.32em] mb-4 sm:mb-6 font-semibold max-w-[92vw]">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)] shrink-0" />
+          <span className="truncate">Digbeth, Birmingham &bull; Wholesale Foodservice</span>
         </div>
 
         {/* Main Title — Sculpted Royal British Gold Typography */}
         <h1 className="act-origin-title font-display font-black uppercase leading-[0.84] tracking-[0.02em] select-none">
-          <span className="block text-[52px] sm:text-[84px] md:text-[116px] lg:text-[144px] xl:text-[164px] bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.35)] drop-shadow-[0_12px_45px_rgba(0,0,0,0.9)]">
+          <span className="block text-[44px] xs:text-[52px] sm:text-[84px] md:text-[116px] lg:text-[144px] xl:text-[164px] bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.35)] drop-shadow-[0_12px_45px_rgba(0,0,0,0.9)]">
             ROOTWILLS
           </span>
         </h1>

@@ -286,7 +286,7 @@ export function AdminCRMView() {
   ).length;
 
   return (
-    <div className="p-6 sm:p-8 space-y-7 min-h-screen bg-[#F8FAFC] text-slate-900">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-5 sm:space-y-7 min-h-screen bg-[#F8FAFC] text-slate-900">
       
       {/* ─── Top Header Bar ─── */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-2 border-b border-slate-200">
@@ -510,8 +510,17 @@ export function AdminCRMView() {
       {/* ─── VIEW 1: Clean Actionable Table View (Default) ─── */}
       {viewMode === 'table' && (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+          {/* Mobile Swipe Hint (< sm) */}
+          <div className="sm:hidden px-4 py-2.5 bg-slate-50 border-b border-slate-200 text-[11px] text-slate-500 font-mono flex items-center justify-between">
+            <span className="flex items-center gap-1 text-emerald-800 font-medium">
+              <span>Swipe table horizontally for actions</span>
+              <ArrowRight className="w-3 h-3" />
+            </span>
+            <span className="text-slate-400">{filteredLeads.length} leads</span>
+          </div>
+
           <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+            <table className="w-full text-left border-collapse min-w-[780px]">
               <thead>
                 <tr className="bg-slate-50/80 border-b border-slate-200 text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
                   <th className="py-3.5 px-4 sm:px-6">Business / Venue</th>

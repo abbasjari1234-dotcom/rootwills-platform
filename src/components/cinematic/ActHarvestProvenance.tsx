@@ -300,7 +300,7 @@ export function ActHarvestProvenance() {
             </div>
 
             {/* Visual Photo Area */}
-            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-obsidian-950 group">
+            <div className="relative min-h-[360px] sm:min-h-0 aspect-[4/3] sm:aspect-[21/9] w-full overflow-hidden bg-obsidian-950 group">
               <Image
                 key={currentCategory.image}
                 src={currentCategory.image}

@@ -90,7 +90,7 @@ export function PriceEstimator() {
   };
 
   return (
-    <div className="pricing-calculator glass-panel-gold rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden border border-champagne/25">
+    <div className="pricing-calculator glass-panel-gold rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden border border-champagne/25">
       {/* Ambient background glows */}
       <div className="absolute -top-20 -right-20 w-80 h-80 bg-champagne/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -117,16 +117,19 @@ export function PriceEstimator() {
               <label className="block text-xs font-mono uppercase tracking-wider text-champagne mb-3">
                 1. Select Kitchen Sector &amp; Operational Model
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-                {SECTORS.map((s) => {
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
+                {SECTORS.map((s, idx) => {
                   const Icon = s.icon;
                   const isSelected = s.id === sector;
+                  const isLastOdd = idx === 4;
                   return (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => handleSectorChange(s)}
                       className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-1.5 ${
+                        isLastOdd ? 'col-span-2 sm:col-span-1' : ''
+                      } ${
                         isSelected
                           ? 'bg-champagne/15 border-champagne shadow-[0_0_20px_rgba(228,199,103,0.3)] text-cream'
                           : 'bg-obsidian-900/60 border-champagne/15 hover:border-champagne/40 text-cream/70 hover:text-cream'
