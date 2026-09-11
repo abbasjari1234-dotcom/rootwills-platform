@@ -64,7 +64,7 @@ const productCategories = [
 
 export function ActKitchenProduct() {
   return (
-    <section className="act-kitchen relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-12 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
+    <section id="act-kitchen" className="act-kitchen relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-12 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
       {/* Background — Chef receiving delivery with warm culinary pass lighting */}
       <div className="act-kitchen-bg absolute inset-0 pointer-events-none will-change-transform">
         <Image

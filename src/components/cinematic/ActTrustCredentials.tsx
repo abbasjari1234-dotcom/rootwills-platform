@@ -44,7 +44,7 @@ const credentials = [
 
 export function ActTrustCredentials() {
   return (
-    <section className="act-trust relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-12 pb-16 sm:pb-24 lg:pb-28 flex items-center bg-[#02140e]">
+    <section id="act-trust" className="act-trust relative w-full overflow-hidden pt-6 sm:pt-10 lg:pt-12 pb-16 sm:pb-24 lg:pb-28 flex items-center bg-[#02140e]">
       {/* Background gradient — clean, restrained */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#02140e] via-emerald-950/25 to-[#02140e]" />
 

@@ -6,7 +6,7 @@ import { ArrowRight, PhoneCall, ShieldCheck, CheckCircle2, Award, Sparkles } fro
 
 export function ActFinalCTA() {
   return (
-    <section className="act-cta relative w-full overflow-hidden py-14 sm:py-20 lg:py-24 bg-[#02140e] flex items-center justify-center">
+    <section id="act-cta" className="act-cta relative w-full overflow-hidden py-14 sm:py-20 lg:py-24 bg-[#02140e] flex items-center justify-center">
       {/* Ambient background lighting */}
       <div
         className="absolute inset-0 pointer-events-none"

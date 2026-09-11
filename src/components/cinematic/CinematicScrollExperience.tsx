@@ -8,6 +8,7 @@ import { ActColdChainDepot } from './ActColdChainDepot';
 import { ActKitchenProduct } from './ActKitchenProduct';
 import { ActTrustCredentials } from './ActTrustCredentials';
 import { ActFinalCTA } from './ActFinalCTA';
+import { CinematicActNavigator } from './CinematicActNavigator';
 
 export function CinematicScrollExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -470,6 +471,9 @@ export function CinematicScrollExperience() {
     <div ref={containerRef} className="cinematic-experience relative">
       {/* Global dot-grid texture overlay */}
       <div className="fixed inset-0 dot-grid-texture opacity-20 pointer-events-none z-[1]" />
+
+      {/* Floating Act Navigator HUD */}
+      <CinematicActNavigator />
 
       <ActOriginHero />
       <ActHarvestProvenance />

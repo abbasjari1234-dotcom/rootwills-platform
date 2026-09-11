@@ -38,6 +38,19 @@ const PriceEstimator = dynamic(
   }
 );
 
+const Interactive3DFarmToKitchen = dynamic(
+  () =>
+    import('@/components/public/Interactive3DFarmToKitchen').then(
+      (mod) => mod.Interactive3DFarmToKitchen
+    ),
+  {
+    ssr: true,
+    loading: () => (
+      <div className="min-h-[400px] w-full animate-pulse bg-emerald-950/20 rounded-3xl" />
+    ),
+  }
+);
+
 const InteractiveChefFAQ = dynamic(
   () =>
     import('@/components/public/InteractiveChefFAQ').then(
@@ -77,6 +90,13 @@ export default function PublicHomePage() {
 
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <PriceEstimator />
+        </section>
+
+        {/* Elegant Gold Section Divider */}
+        <div className="section-divider" />
+
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Interactive3DFarmToKitchen />
         </section>
 
         {/* Elegant Gold Section Divider */}

@@ -59,7 +59,7 @@ const provenanceData = [
 
 export function ActHarvestProvenance() {
   return (
-    <section className="act-harvest relative w-full overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-6 sm:pb-10 bg-[#02140e]">
+    <section id="act-harvest" className="act-harvest relative w-full overflow-hidden pt-16 sm:pt-24 lg:pt-28 pb-6 sm:pb-10 bg-[#02140e]">
       {/* Background image — Cinematic Orchard Harvest with top-only visibility */}
       <div className="act-harvest-bg absolute inset-0 will-change-transform pointer-events-none overflow-hidden">
         <Image

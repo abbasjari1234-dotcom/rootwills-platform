@@ -99,7 +99,7 @@ const corridors = [
 
 export function ActColdChainDepot() {
   return (
-    <section className="act-coldchain relative w-full overflow-hidden pt-4 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
+    <section id="act-coldchain" className="act-coldchain relative w-full overflow-hidden pt-4 sm:pt-8 lg:pt-10 pb-8 sm:pb-12 lg:pb-14 bg-[#02140e]">
       {/* Background — Digbeth depot image with multi-layered atmospheric lighting */}
       <div className="act-coldchain-bg absolute inset-0 pointer-events-none will-change-transform overflow-hidden">
         <Image
