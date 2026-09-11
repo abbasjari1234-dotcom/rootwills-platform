@@ -1,186 +1,262 @@
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, Award, ThermometerSnowflake, CheckCircle2, FileCheck, Truck, Lock } from 'lucide-react';
+import { 
+  ShieldCheck, 
+  Award, 
+  ThermometerSnowflake, 
+  CheckCircle2, 
+  FileCheck, 
+  Truck, 
+  Lock, 
+  Sparkles,
+  ArrowRight,
+  Phone,
+  Mail,
+  Building2,
+  FileSpreadsheet
+} from 'lucide-react';
 
 export const metadata = {
-  title: 'Food Safety Standards & HACCP Compliance | Rootwills',
+  title: 'Food Safety Standards, SALSA & HACCP Compliance | Rootwills',
   description:
-    'Learn about our SALSA-certified food safety protocols, HACCP Level 3 compliance, and dual-temp tracking. Discover our certified quality system today.',
+    'Learn about our SALSA-certified food safety protocols, HACCP Level 3 compliance, continuous +2°C to +4°C cold-chain telemetry, and enterprise data security.',
 };
 
 export default function FoodSafetySecurityPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-12">
-      {/* Header */}
-      <div className="text-center space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono uppercase">
-          <Award className="w-3.5 h-3.5 text-champagne" />
-          <span>SALSA Certified & HACCP Level 3 Audited</span>
+    <div className="min-h-screen bg-obsidian-950 text-cream pb-24 relative overflow-hidden">
+      {/* Ambient Lighting & Atmosphere */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-champagne/15 via-emerald-500/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[350px] bg-champagne/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 dot-grid-texture opacity-20 pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 space-y-12 sm:space-y-16 relative z-10">
+        {/* Header */}
+        <div className="text-center space-y-4 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 backdrop-blur-md border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.28em] font-semibold shadow-[0_0_25px_rgba(228,199,103,0.18)]">
+            <Award className="w-3.5 h-3.5 text-champagne" />
+            <span>SALSA Certified &bull; HACCP Level 3 Audited</span>
+          </div>
+
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[0.95] text-cream">
+            Food Safety, HACCP &amp;
+            <br />
+            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.3)]">
+              Digital Compliance
+            </span>
+          </h1>
+
+          <p className="text-sm sm:text-base lg:text-lg text-cream/80 max-w-2xl mx-auto font-sans leading-relaxed">
+            Rigorous quality inspection, unbroken +2°C to +4°C cold-chain telematics, farm-to-fork batch traceability, and enterprise digital data security.
+          </p>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-extrabold text-cream">
-          Food Safety, HACCP & Security Compliance
-        </h1>
-        <p className="text-sm sm:text-base text-cream/70 max-w-2xl mx-auto">
-          Rigorous quality assurance, unbroken cold-chain micro-climates, farm-to-fork batch traceability, and enterprise digital security.
-        </p>
-      </div>
 
-      {/* Content Container */}
-      <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-emerald-950/80 space-y-8 text-cream/80 text-sm leading-relaxed">
-        
-        {/* Section 1: Quality Certifications */}
-        <section className="space-y-3">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            1. Accreditations & Regulatory Standards
-          </h2>
-          <p>
-            Rootwills operates under stringent UK Food Standards Agency (FSA) guidelines and holds leading industry accreditations ensuring that commercial kitchens receive safe, wholesome, and ethically sourced produce.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-            <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-900/50 space-y-1 text-center">
-              <div className="w-8 h-8 mx-auto rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
-                <FileCheck className="w-4 h-4" />
-              </div>
-              <div className="font-bold text-cream text-xs">SALSA Accredited</div>
-              <div className="text-[11px] text-cream/60">Safe and Local Supplier Approval standard for UK foodservice.</div>
+        {/* 3 Core Accreditations Showcase */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-xl relative overflow-hidden group hover:border-champagne transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-60 group-hover:opacity-100" />
+            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center mb-4 text-champagne">
+              <FileCheck className="w-6 h-6" />
             </div>
-
-            <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-900/50 space-y-1 text-center">
-              <div className="w-8 h-8 mx-auto rounded-lg bg-champagne/20 text-champagne flex items-center justify-center mb-2">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <div className="font-bold text-cream text-xs">HACCP Level 3</div>
-              <div className="text-[11px] text-cream/60">Hazard Analysis Critical Control Point system across all depot workflows.</div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-900/50 space-y-1 text-center">
-              <div className="w-8 h-8 mx-auto rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
-                <Award className="w-4 h-4" />
-              </div>
-              <div className="font-bold text-cream text-xs">FSA 5-Star Rating</div>
-              <div className="text-[11px] text-cream/60">Top hygiene rating issued by Birmingham City Council Food Safety inspectors.</div>
-            </div>
+            <div className="font-display text-xl font-bold text-cream mb-1">SALSA Accredited</div>
+            <div className="text-xs font-mono uppercase text-champagne tracking-wider mb-2 font-semibold">UK Foodservice Standard</div>
+            <p className="text-xs text-cream/75 leading-relaxed font-sans">
+              Safe and Local Supplier Approval standard audited annually to ensure premier hygiene, management control, and supplier verification.
+            </p>
           </div>
-        </section>
 
-        {/* Section 2: Cold-Chain Architecture */}
-        <section className="space-y-3">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            2. Continuous +2.0°C to +4.0°C Cold Chain
-          </h2>
-          <p>
-            Thermal breaks are the primary cause of cell degradation and shortened shelf life in culinary produce. Rootwills maintains an unbroken, temperature-locked micro-climate from farm intake through final kitchen handover.
-          </p>
-          <ul className="list-disc pl-5 space-y-2 text-cream/75">
-            <li><strong>Intake Temperature Screening:</strong> Every inbound grower delivery is probed with calibrated infrared digital thermometers. Inbound loads exceeding threshold limits are immediately rejected.</li>
-            <li><strong>Dual-Temperature Refrigerated Fleet:</strong> Mercedes-Benz Sprinter delivery vans are partitioned with dual-temperature zones (+2°C chilled produce, +8°C sensitive herbs/orchard fruit).</li>
-            <li><strong>Real-Time Telematics & Digital Logs:</strong> On-board GPS sensors continuously log cargo temperatures every 60 seconds. Delivery receipts include time-stamped temperature readings.</li>
-          </ul>
-        </section>
-
-        {/* Section 3: Traceability */}
-        <section className="space-y-3">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            3. Farm-to-Fork Batch Traceability
-          </h2>
-          <p>
-            Every crate dispatched from our Digbeth Central Hub carries a unique barcode identifier linking directly to:
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-3 rounded-xl bg-obsidian-900 border border-emerald-900/60 font-mono text-xs flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Grower estate & field harvest batch number</span>
+          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-xl relative overflow-hidden group hover:border-champagne transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-60 group-hover:opacity-100" />
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-4 text-emerald-400">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <div className="p-3 rounded-xl bg-obsidian-900 border border-emerald-900/60 font-mono text-xs flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Depot QA intake timestamp and inspector ID</span>
-            </div>
-            <div className="p-3 rounded-xl bg-obsidian-900 border border-emerald-900/60 font-mono text-xs flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Allergen segregation zone verification</span>
-            </div>
-            <div className="p-3 rounded-xl bg-obsidian-900 border border-emerald-900/60 font-mono text-xs flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Driver route and handover timestamp</span>
-            </div>
+            <div className="font-display text-xl font-bold text-cream mb-1">HACCP Level 3</div>
+            <div className="text-xs font-mono uppercase text-emerald-400 tracking-wider mb-2 font-semibold">Critical Control Points</div>
+            <p className="text-xs text-cream/75 leading-relaxed font-sans">
+              Hazard Analysis Critical Control Point system operating across all intake, temperature monitoring, picking, and fleet handover stages.
+            </p>
           </div>
-          <p className="pt-2 text-xs text-cream/70">
-            In the event of a quality recall, our digital inventory system can isolate, trace, and notify affected venues in under <strong>15 minutes</strong>.
-          </p>
-        </section>
 
-        {/* Section 4: Allergen & Hygiene Protocols */}
-        <section className="space-y-3">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            4. Allergen Segregation & Warehouse Hygiene
-          </h2>
-          <p>
-            Our depot follows strict physical segregation protocols to eliminate cross-contamination risks:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-cream/75">
-            <li><strong>Dedicated Dairy & Egg Vaults:</strong> Dairy and eggs are stored in isolated chilled chambers physically separated from raw vegetables and living microgreens.</li>
-            <li><strong>Sanitised Crates:</strong> Returnable plastic crates (RPCs) undergo high-pressure 85°C thermal washing and food-grade sanitisation after each delivery cycle.</li>
-            <li><strong>Staff Hygiene & Training:</strong> All warehouse operatives and delivery drivers hold valid Level 2 or Level 3 Food Hygiene certifications.</li>
-          </ul>
-        </section>
+          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-xl relative overflow-hidden group hover:border-champagne transition-all duration-300">
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-60 group-hover:opacity-100" />
+            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center mb-4 text-champagne">
+              <Award className="w-6 h-6" />
+            </div>
+            <div className="font-display text-xl font-bold text-cream mb-1">FSA 5-Star Rating</div>
+            <div className="text-xs font-mono uppercase text-champagne tracking-wider mb-2 font-semibold">Top Hygiene Grade</div>
+            <p className="text-xs text-cream/75 leading-relaxed font-sans">
+              Top commercial food hygiene rating issued by Birmingham City Council Food Safety Inspectors for our central Digbeth distribution hub.
+            </p>
+          </div>
+        </div>
 
-        {/* Section 5: Digital Platform Security */}
-        <section className="space-y-3 pt-4 border-t border-emerald-950">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            5. Digital Platform & Financial Data Security
-          </h2>
-          <p>
-            In addition to physical food safety, your commercial transactions and trade accounts are protected by enterprise cloud security:
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-900/50">
-              <div className="font-bold text-cream text-xs mb-1 flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-emerald-400" />
-                Row-Level Security (RLS)
+        {/* Detailed Compliance Sections in Obsidian Glass */}
+        <div className="rounded-3xl p-6 sm:p-10 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-2xl space-y-10 text-cream/85 text-sm leading-relaxed">
+          
+          {/* Section 1: Cold-Chain Architecture */}
+          <section className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-xs">
+                01
               </div>
-              <div className="text-[11px] text-cream/70">Multi-tenant database isolation ensures your order history, contract rates, and invoices are accessible solely by your authorised staff.</div>
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-cream">
+                Continuous +2.0°C to +4.0°C Cold Chain Architecture
+              </h2>
             </div>
-            <div className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-900/50">
-              <div className="font-bold text-cream text-xs mb-1 flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-champagne" />
-                PCI-DSS Level 1 Payments
+            <p className="text-cream/80 leading-relaxed font-sans">
+              Thermal breaks are the single greatest cause of produce cellular degradation and shortened service shelf life. Rootwills guarantees an unbroken, temperature-locked micro-climate from field intake through kitchen handover.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1.5">
+                <div className="font-mono text-xs text-champagne font-bold uppercase">Intake Screening</div>
+                <div className="text-xs text-cream/70 font-sans">Inbound loads are probed with calibrated infrared digital thermometers. Out-of-spec loads are immediately quarantined.</div>
               </div>
-              <div className="text-[11px] text-cream/70">Encrypted tokenisation via Stripe & GoCardless with cryptographic HMAC-SHA256 webhook validation.</div>
+              <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1.5">
+                <div className="font-mono text-xs text-emerald-400 font-bold uppercase">Dual-Temp Fleet</div>
+                <div className="text-xs text-cream/70 font-sans">Mercedes-Benz Sprinter delivery vans partitioned with +2°C chilled and +8°C herb/orchard temperature chambers.</div>
+              </div>
+              <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1.5">
+                <div className="font-mono text-xs text-champagne font-bold uppercase">60-Sec Telematics</div>
+                <div className="text-xs text-cream/70 font-sans">GPS telemetry transmitters continuously log hold temperatures every 60s, automatically printed on your digital delivery receipts.</div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Section 6: Quality Assurance Contact */}
-        <section className="space-y-3 pt-4 border-t border-emerald-950">
-          <h2 className="text-lg font-bold text-champagne flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-champagne inline-block" />
-            6. Quality Assurance & Audit Desk
-          </h2>
-          <p>
-            For SALSA audit certificates, supplier questionnaires, technical specifications, or batch traceability reports, contact our Technical Director:
-          </p>
-          <div className="p-4 rounded-2xl bg-obsidian-900 border border-emerald-900/60 font-mono text-xs space-y-1">
-            <div className="text-cream font-bold">Rootwills Ltd — Technical & Food Safety Desk</div>
-            <div>Technical Inquiries: <span className="text-champagne">qa@rootwills.co.uk</span></div>
-            <div>Direct Line: <span className="text-champagne">+44 121 790 8800</span></div>
-            <div>Address: Digbeth Wholesale Food Hub, Birmingham, B5 6DY</div>
-          </div>
-        </section>
-      </div>
+          {/* Section 2: Traceability */}
+          <section className="space-y-4 pt-6 border-t border-champagne/15">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-xs">
+                02
+              </div>
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-cream">
+                Farm-to-Fork Batch Traceability
+              </h2>
+            </div>
+            <p className="text-cream/80 leading-relaxed font-sans">
+              Every single crate dispatched from our Digbeth Central Hub carries a unique barcode identifier linking directly into our digital supply ledger:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="p-3.5 rounded-xl bg-obsidian-900 border border-champagne/15 font-mono text-xs flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Grower estate &amp; field harvest batch lot number</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-obsidian-900 border border-champagne/15 font-mono text-xs flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Depot QA intake timestamp &amp; inspector credentials</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-obsidian-900 border border-champagne/15 font-mono text-xs flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Allergen segregation zone verification</span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-obsidian-900 border border-champagne/15 font-mono text-xs flex items-center gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Driver van manifest &amp; digital kitchen handover timestamp</span>
+              </div>
+            </div>
+            <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-xs font-mono text-emerald-300 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-champagne shrink-0" />
+              <span>Rapid Recall Guarantee: In the event of a quality recall, our digital inventory system can trace, isolate, and notify all affected kitchens in under 15 minutes.</span>
+            </div>
+          </section>
 
-      {/* Bottom CTA */}
-      <div className="flex justify-between items-center text-xs font-mono text-cream/60">
-        <Link href="/terms" className="hover:text-champagne transition-colors">
-          &larr; Wholesale Supply Terms
-        </Link>
-        <Link href="/onboarding" className="text-champagne hover:underline">
-          Open a Trade Account &rarr;
-        </Link>
+          {/* Section 3: Allergen & Hygiene */}
+          <section className="space-y-4 pt-6 border-t border-champagne/15">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-xs">
+                03
+              </div>
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-cream">
+                Allergen Segregation &amp; Depot Hygiene
+              </h2>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+              <li className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1 text-xs">
+                <div className="font-bold text-champagne font-mono uppercase">Dedicated Vaults</div>
+                <div className="text-cream/70 font-sans">Dairy, cheeses, and eggs are stored in isolated chilled chambers physically segregated from raw produce and microgreens.</div>
+              </li>
+              <li className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1 text-xs">
+                <div className="font-bold text-emerald-400 font-mono uppercase">85°C Thermal Washing</div>
+                <div className="text-cream/70 font-sans">Returnable crates undergo high-pressure 85°C thermal washing and food-grade sanitisation after each delivery run.</div>
+              </li>
+              <li className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1 text-xs">
+                <div className="font-bold text-champagne font-mono uppercase">Certified Personnel</div>
+                <div className="text-cream/70 font-sans">All depot logistics operatives and drivers hold valid Level 2 or Level 3 Food Hygiene certifications.</div>
+              </li>
+            </ul>
+          </section>
+
+          {/* Section 4: Enterprise Digital Security */}
+          <section className="space-y-4 pt-6 border-t border-champagne/15">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-xs">
+                04
+              </div>
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-cream">
+                Digital Platform &amp; Financial Security
+              </h2>
+            </div>
+            <p className="text-cream/80 leading-relaxed font-sans">
+              Your trade accounts, custom contracted price matrices, and commercial orders are protected by enterprise cloud security architecture:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1.5">
+                <div className="font-mono text-xs text-champagne font-bold uppercase flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5 text-emerald-400" />
+                  Row-Level Security (RLS) Multi-Tenancy
+                </div>
+                <div className="text-xs text-cream/70 font-sans">
+                  Database isolation ensures your proprietary pricing tiers, invoice schedules, and purchase volumes are strictly restricted to your authorized organisation members.
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-1.5">
+                <div className="font-mono text-xs text-champagne font-bold uppercase flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5 text-champagne" />
+                  PCI-DSS Level 1 Encrypted Payments
+                </div>
+                <div className="text-xs text-cream/70 font-sans">
+                  Tokenised card processing via Stripe and automated Direct Debit via GoCardless with HMAC-SHA256 cryptographic webhook verification.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 5: Technical Audit & QA Contact Desk */}
+          <section className="pt-6 border-t border-champagne/15">
+            <div className="rounded-2xl p-6 bg-gradient-to-br from-obsidian-900 to-obsidian-950 border border-champagne/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+              <div className="space-y-1.5">
+                <div className="text-xs font-mono uppercase tracking-wider text-champagne font-bold">
+                  Technical Compliance Desk
+                </div>
+                <div className="font-display text-lg sm:text-xl font-bold text-cream">
+                  Request Complete SALSA Audit Pack &amp; Questionnaires
+                </div>
+                <p className="text-xs text-cream/70 max-w-lg font-sans">
+                  Need supplier compliance questionnaires, BRCGS certifications, or technical specifications for your group procurement audit?
+                </p>
+              </div>
+
+              <a
+                href="mailto:qa@rootwills.co.uk?subject=Technical%20Audit%20Pack%20Request"
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] text-obsidian-950 font-sans font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:brightness-105 transition-all shrink-0 flex items-center gap-2"
+              >
+                <span>Request Audit Pack</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </section>
+
+        </div>
+
+        {/* Bottom Navigation Links */}
+        <div className="flex flex-wrap justify-between items-center gap-4 text-xs font-mono text-cream/70 pt-4">
+          <Link href="/terms" className="hover:text-champagne transition-colors flex items-center gap-1">
+            &larr; Wholesale Supply Terms
+          </Link>
+          <Link href="/apply" className="px-5 py-2.5 rounded-xl bg-obsidian-900 border border-champagne/30 text-champagne hover:text-white hover:border-champagne transition-colors font-bold uppercase tracking-wider">
+            Open a Trade Account &rarr;
+          </Link>
+        </div>
       </div>
     </div>
   );
