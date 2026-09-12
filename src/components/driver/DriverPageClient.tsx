@@ -25,12 +25,14 @@ import {
   Image as ImageIcon,
   Check
 } from 'lucide-react';
-import { submitDriverPOD } from '@/actions/orders';
+import { submitDriverPOD, getLiveOrdersServerAction } from '@/actions/orders';
 
 type PodMode = 'signature' | 'photo';
 
 export function DriverPageClient() {
   const { orders, updateOrderStatus } = useAppStore();
+  const [liveDbOrders, setLiveDbOrders] = useState<Order[]>([]);
+  const [isSyncing, setIsSyncing] = useState(false);
   const [activeOrder, setActiveOrder] = useState<Order | null>(null);
   const [podMode, setPodMode] = useState<PodMode>('signature');
   const [chilledTemp, setChilledTemp] = useState('2.4');
@@ -47,8 +49,38 @@ export function DriverPageClient() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
-  const activeDeliveries = orders.filter((o) => o.status !== 'delivered');
-  const completedDeliveries = orders.filter((o) => o.status === 'delivered');
+  const syncRunSheet = async () => {
+    setIsSyncing(true);
+    try {
+      const dbOrders = await getLiveOrdersServerAction();
+      if (Array.isArray(dbOrders) && dbOrders.length > 0) {
+        setLiveDbOrders(dbOrders);
+      }
+    } catch (e) {
+      console.warn('Driver sync error:', e);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
+  useEffect(() => {
+    syncRunSheet();
+  }, []);
+
+  // Merge live DB orders with local store orders
+  const allOrdersMap = new Map<string, Order>();
+  liveDbOrders.forEach((o) => {
+    if (o && o.id) allOrdersMap.set(o.id, o);
+  });
+  (orders || []).forEach((o) => {
+    if (o && o.id) {
+      allOrdersMap.set(o.id, o);
+    }
+  });
+
+  const mergedOrders = Array.from(allOrdersMap.values());
+  const activeDeliveries = mergedOrders.filter((o) => o.status !== 'delivered');
+  const completedDeliveries = mergedOrders.filter((o) => o.status === 'delivered');
 
   // Temperature compliance check
   const isChilledCompliant = parseFloat(chilledTemp) <= 4.0;
@@ -196,9 +228,19 @@ export function DriverPageClient() {
             <h1 className="font-display text-lg font-bold text-cream">Driver Delivery Manifest & Route</h1>
           </div>
         </div>
-        <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
-          Route Live
-        </span>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={syncRunSheet}
+            disabled={isSyncing}
+            className="p-2 rounded-xl bg-obsidian-900 border border-emerald-500/30 text-emerald-400 hover:text-champagne transition-colors"
+            title="Sync live route manifest"
+          >
+            <RotateCcw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+          </button>
+          <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">
+            Route Live
+          </span>
+        </div>
       </div>
 
       {/* Temperature Compliance Check Card */}
@@ -305,6 +347,11 @@ export function DriverPageClient() {
                   )}`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => {
+                    if (order.status !== 'out_for_delivery') {
+                      updateOrderStatus(order.id, 'out_for_delivery', 'Driver en route to venue with dual-temp van.');
+                    }
+                  }}
                   className="flex-1 py-2 rounded-xl bg-obsidian-900 border border-cream/15 text-xs text-cream flex items-center justify-center gap-1.5 font-medium hover:text-champagne transition-colors"
                 >
                   <Navigation className="w-3.5 h-3.5 text-emerald-400" />
