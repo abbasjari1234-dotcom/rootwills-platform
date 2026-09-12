@@ -177,7 +177,7 @@ export const useAppStore = create<AppState>()(
         const locationId = orderData.locationId || currentLocationId || org.locations[0]?.id || 'loc-main';
         const loc = org.locations.find((l) => l.id === locationId) || org.locations[0];
         const randomDigits = Math.floor(1000 + Math.random() * 9000);
-        const orderNumber = `RW-${randomDigits}`;
+        const orderNumber = orderData.orderNumber || `RW-${randomDigits}`;
         const now = new Date().toISOString();
 
         const defaultItems: OrderItem[] = [

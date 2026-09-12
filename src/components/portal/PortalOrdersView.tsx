@@ -16,6 +16,7 @@ import {
   Layers
 } from 'lucide-react';
 import { OrderStatus, Order } from '@/types/orders';
+import { getLiveOrdersServerAction } from '@/actions/orders';
 
 export function PortalOrdersView() {
   const { currentOrgId, organizations, orders: storeOrders } = useAppStore();
@@ -25,14 +26,13 @@ export function PortalOrdersView() {
   const [reorderOrder, setReorderOrder] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/api/admin/orders')
-      .then((res) => (res.ok ? res.json() : { orders: [] }))
-      .then((data) => {
-        if (data && Array.isArray(data.orders)) {
-          setLiveDbOrders(data.orders);
+    getLiveOrdersServerAction()
+      .then((orders) => {
+        if (orders && Array.isArray(orders)) {
+          setLiveDbOrders(orders);
         }
       })
-      .catch((err) => console.warn('Orders fetch error:', err));
+      .catch((err) => console.warn('Portal orders fetch error:', err));
   }, []);
 
   const currentOrg = (organizations && organizations.find((o) => o.id === currentOrgId)) || (organizations && organizations[0]) || { id: 'org-default', name: 'Commercial Venue' };

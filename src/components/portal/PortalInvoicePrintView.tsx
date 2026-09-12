@@ -13,10 +13,17 @@ interface PortalInvoicePrintViewProps {
 export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoicePrintViewProps = {}) {
   const params = useParams();
   const router = useRouter();
-  const { invoices, organizations, currentOrgId } = useAppStore();
+  const { invoices, organizations, currentOrgId, orders } = useAppStore();
 
   const invoiceId = propInvoiceId || (params?.id as string);
-  const invoice = invoices.find((i) => i.id === invoiceId || i.invoiceNumber === invoiceId) || invoices[0];
+  const invoice = invoices.find(
+    (i) => i.id === invoiceId || i.invoiceNumber === invoiceId || i.orderId === invoiceId || i.orderNumber === invoiceId
+  ) || invoices[0];
+
+  const associatedOrder = orders.find(
+    (o) => o.id === invoice?.orderId || o.orderNumber === invoice?.orderNumber || o.id === invoiceId || o.orderNumber === invoiceId
+  );
+
   const currentOrg = organizations.find((o) => o.id === invoice?.organizationId || o.id === currentOrgId) || organizations[0];
 
   const handlePrint = () => {
@@ -35,6 +42,85 @@ export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoi
       </div>
     );
   }
+
+  // Determine line items: from associated order or high-grade defaults
+  const rawItems = associatedOrder?.items && associatedOrder.items.length > 0 ? associatedOrder.items : null;
+
+  const displayItems = rawItems
+    ? rawItems.map((item) => {
+        const nameLower = item.name.toLowerCase();
+        const isStandardRated =
+          nameLower.includes('water') ||
+          nameLower.includes('soda') ||
+          nameLower.includes('juice') ||
+          nameLower.includes('chocolate');
+        const lineNet = item.totalPrice ?? item.unitPrice * item.qty;
+        const vatRate = isStandardRated ? 0.20 : 0.00;
+        return {
+          name: item.name,
+          sku: item.sku,
+          packSize: item.packSize || 'Standard Wholesale Pack',
+          qty: item.qty,
+          unitPrice: item.unitPrice,
+          isStandardRated,
+          lineNet,
+          vatAmount: lineNet * vatRate,
+        };
+      })
+    : [
+        {
+          name: 'San Marzano D.O.P. Whole Peeled Tomatoes',
+          sku: 'PRD-001',
+          packSize: '6 × 2.5kg Tin',
+          qty: 12,
+          unitPrice: 38.50,
+          isStandardRated: false,
+          lineNet: 462.00,
+          vatAmount: 0.00,
+        },
+        {
+          name: 'Burrata Pugliese Artigianale (Fresh Chilled)',
+          sku: 'PRD-002',
+          packSize: '8 × 125g Tub',
+          qty: 16,
+          unitPrice: 22.80,
+          isStandardRated: false,
+          lineNet: 364.80,
+          vatAmount: 0.00,
+        },
+        {
+          name: 'Organic Extra Virgin Olive Oil D.O.P.',
+          sku: 'PRD-003',
+          packSize: '4 × 5L Tin',
+          qty: 6,
+          unitPrice: 68.00,
+          isStandardRated: false,
+          lineNet: 408.00,
+          vatAmount: 0.00,
+        },
+        {
+          name: 'San Pellegrino Sparkling Mineral Water',
+          sku: 'PRD-009',
+          packSize: '24 × 750ml',
+          qty: 8,
+          unitPrice: 18.50,
+          isStandardRated: true,
+          lineNet: 148.00,
+          vatAmount: 29.60,
+        },
+      ];
+
+  const zeroRatedNet = displayItems
+    .filter((i) => !i.isStandardRated)
+    .reduce((sum, i) => sum + i.lineNet, 0);
+
+  const standardRatedNet = displayItems
+    .filter((i) => i.isStandardRated)
+    .reduce((sum, i) => sum + i.lineNet, 0);
+
+  const calculatedVat = displayItems.reduce((sum, i) => sum + i.vatAmount, 0);
+  const totalNet = zeroRatedNet + standardRatedNet;
+  const grandTotal = totalNet + calculatedVat;
 
   return (
     <div className="min-h-screen bg-zinc-100 text-zinc-900 py-8 px-4 sm:px-6 print:bg-white print:p-0">
@@ -139,50 +225,23 @@ export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoi
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-200 font-sans">
-              <tr className="text-zinc-900">
-                <td className="py-3 pr-2">
-                  <div className="font-bold">San Marzano D.O.P. Whole Peeled Tomatoes</div>
-                  <div className="text-[10px] text-zinc-500 font-mono">SKU: PRD-001 &bull; Origin: Campania, Italy</div>
-                </td>
-                <td className="py-3 text-center text-zinc-600 font-mono">6 × 2.5kg Tin</td>
-                <td className="py-3 text-center font-bold font-mono">12</td>
-                <td className="py-3 text-right font-mono">£38.50</td>
-                <td className="py-3 text-center font-mono">0% (Zero)</td>
-                <td className="py-3 text-right font-bold font-mono">£462.00</td>
-              </tr>
-              <tr className="text-zinc-900">
-                <td className="py-3 pr-2">
-                  <div className="font-bold">Burrata Pugliese Artigianale (Fresh Chilled)</div>
-                  <div className="text-[10px] text-zinc-500 font-mono">SKU: PRD-002 &bull; Origin: Puglia, Italy (Chamber: 2.4°C)</div>
-                </td>
-                <td className="py-3 text-center text-zinc-600 font-mono">8 × 125g Tub</td>
-                <td className="py-3 text-center font-bold font-mono">16</td>
-                <td className="py-3 text-right font-mono">£22.80</td>
-                <td className="py-3 text-center font-mono">0% (Zero)</td>
-                <td className="py-3 text-right font-bold font-mono">£364.80</td>
-              </tr>
-              <tr className="text-zinc-900">
-                <td className="py-3 pr-2">
-                  <div className="font-bold">Organic Extra Virgin Olive Oil D.O.P.</div>
-                  <div className="text-[10px] text-zinc-500 font-mono">SKU: PRD-003 &bull; Cold Extracted Single Estate</div>
-                </td>
-                <td className="py-3 text-center text-zinc-600 font-mono">4 × 5L Tin</td>
-                <td className="py-3 text-center font-bold font-mono">6</td>
-                <td className="py-3 text-right font-mono">£68.00</td>
-                <td className="py-3 text-center font-mono">0% (Zero)</td>
-                <td className="py-3 text-right font-bold font-mono">£408.00</td>
-              </tr>
-              <tr className="text-zinc-900">
-                <td className="py-3 pr-2">
-                  <div className="font-bold">San Pellegrino Sparkling Mineral Water</div>
-                  <div className="text-[10px] text-zinc-500 font-mono">SKU: PRD-009 &bull; Glass Bottles Standard Rated</div>
-                </td>
-                <td className="py-3 text-center text-zinc-600 font-mono">24 × 750ml</td>
-                <td className="py-3 text-center font-bold font-mono">8</td>
-                <td className="py-3 text-right font-mono">£18.50</td>
-                <td className="py-3 text-center font-mono">20% (Std)</td>
-                <td className="py-3 text-right font-bold font-mono">£148.00</td>
-              </tr>
+              {displayItems.map((item, idx) => (
+                <tr key={idx} className="text-zinc-900">
+                  <td className="py-3 pr-2">
+                    <div className="font-bold">{item.name}</div>
+                    <div className="text-[10px] text-zinc-500 font-mono">
+                      SKU: {item.sku} &bull; {item.isStandardRated ? 'Standard Rated Beverage/Confectionery' : 'Foodservice Culinary Produce'}
+                    </div>
+                  </td>
+                  <td className="py-3 text-center text-zinc-600 font-mono">{item.packSize}</td>
+                  <td className="py-3 text-center font-bold font-mono">{item.qty}</td>
+                  <td className="py-3 text-right font-mono">£{item.unitPrice.toFixed(2)}</td>
+                  <td className="py-3 text-center font-mono">
+                    {item.isStandardRated ? '20% (Std)' : '0% (Zero)'}
+                  </td>
+                  <td className="py-3 text-right font-bold font-mono">£{item.lineNet.toFixed(2)}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -204,13 +263,13 @@ export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoi
               <tbody className="divide-y divide-zinc-100 text-zinc-700">
                 <tr>
                   <td className="py-1">Zero Rated (0%)</td>
-                  <td className="py-1 text-right">£1,234.80</td>
+                  <td className="py-1 text-right">£{zeroRatedNet.toFixed(2)}</td>
                   <td className="py-1 text-right">£0.00</td>
                 </tr>
                 <tr>
                   <td className="py-1">Standard Rated (20%)</td>
-                  <td className="py-1 text-right">£148.00</td>
-                  <td className="py-1 text-right">£29.60</td>
+                  <td className="py-1 text-right">£{standardRatedNet.toFixed(2)}</td>
+                  <td className="py-1 text-right">£{(standardRatedNet * 0.20).toFixed(2)}</td>
                 </tr>
               </tbody>
             </table>
@@ -219,15 +278,15 @@ export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoi
           <div className="space-y-2 text-right">
             <div className="flex justify-between text-zinc-600 font-mono">
               <span>Total Goods (Net):</span>
-              <strong className="text-zinc-950">£{invoice.subtotal.toFixed(2)}</strong>
+              <strong className="text-zinc-950">£{totalNet.toFixed(2)}</strong>
             </div>
             <div className="flex justify-between text-zinc-600 font-mono">
               <span>Total VAT (0% & 20%):</span>
-              <strong className="text-zinc-950">£{invoice.vatAmount.toFixed(2)}</strong>
+              <strong className="text-zinc-950">£{calculatedVat.toFixed(2)}</strong>
             </div>
             <div className="flex justify-between text-base font-bold text-zinc-950 font-mono pt-2 border-t-2 border-zinc-900">
               <span>Gross Amount Due:</span>
-              <span className="text-amber-800">£{invoice.totalAmount.toFixed(2)}</span>
+              <span className="text-amber-800">£{grandTotal.toFixed(2)}</span>
             </div>
             <div className="text-[10px] text-zinc-500 pt-1">
               Status: <span className="uppercase font-bold font-mono text-emerald-700">{invoice.status}</span>

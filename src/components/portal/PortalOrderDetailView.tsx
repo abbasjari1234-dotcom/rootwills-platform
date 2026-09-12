@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useAppStore } from '@/store/app-store';
 import { OrderStatusBadge } from '@/components/portal/OrderStatusBadge';
 import { QuickReorderModal } from '@/components/portal/QuickReorderModal';
 import { INITIAL_ORDERS } from '@/lib/mock-data';
+import { getLiveOrdersServerAction } from '@/actions/orders';
 import { 
   ArrowLeft, 
   Repeat, 
@@ -52,16 +53,30 @@ export function PortalOrderDetailView({ id, orderId }: { id?: string; orderId?: 
   const [issueReason, setIssueReason] = useState<string>('temperature_deviation');
   const [creditSubmitted, setCreditSubmitted] = useState(false);
   const [copiedPO, setCopiedPO] = useState(false);
+  const [remoteOrder, setRemoteOrder] = useState<Order | null>(null);
 
   const targetId = orderId || id;
   
   // Find order or provide rich default mock order
   const storeOrder = orders.find((o) => o.id === targetId || o.orderNumber === targetId);
   const fallbackOrder = INITIAL_ORDERS[0];
-  const order: Order = storeOrder || {
+  const order: Order = storeOrder || remoteOrder || {
     ...fallbackOrder,
     orderNumber: targetId ? targetId.toUpperCase() : fallbackOrder.orderNumber,
   };
+
+  useEffect(() => {
+    if (!storeOrder && targetId) {
+      getLiveOrdersServerAction()
+        .then((liveOrders) => {
+          const match = liveOrders.find((o) => o.id === targetId || o.orderNumber === targetId);
+          if (match) {
+            setRemoteOrder(match);
+          }
+        })
+        .catch((err) => console.warn('Order detail fetch note:', err));
+    }
+  }, [storeOrder, targetId]);
 
   const currentStageIndex = STAGES.findIndex((s) => s.key === order.status);
 
@@ -157,7 +172,7 @@ export function PortalOrderDetailView({ id, orderId }: { id?: string; orderId?: 
           </button>
 
           <Link
-            href="/invoices"
+            href={`/invoices/${order.orderNumber || order.id}/print`}
             className="px-4 py-2.5 rounded-xl glass-pill text-xs font-mono font-medium hover:text-champagne transition-all flex items-center gap-2 shadow-sm"
           >
             <FileText className="w-3.5 h-3.5 text-emerald-400" />

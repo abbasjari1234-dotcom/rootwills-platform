@@ -437,28 +437,44 @@ export async function getLiveOrdersServerAction(): Promise<any[]> {
     }
 
     return dbOrders.map((ord: any) => {
-      const orgName = ord.organizations?.name || 'San Carlo Ristorante & Hospitality';
+      let orgName = ord.organizations?.name || 'San Carlo Ristorante & Hospitality';
+      let locName = 'Temple Street Venue (Kitchen Inwards Door)';
+      let itemsList: any[] = [];
+      let deliverySlot = '06:00 – 08:30 AM (Morning Keyslot)';
       const createdDate = ord.created_at ? new Date(ord.created_at) : new Date();
-      const orderNum = `RW-${createdDate.getFullYear()}-${ord.id.slice(0, 4).toUpperCase()}`;
+      let deliveryDate = createdDate.toLocaleDateString('en-GB', { dateStyle: 'short' });
+      let deliveryNotes = 'Deliver to kitchen inwards door.';
+      let customOrderNumber: string | null = null;
 
-      // Map Supabase status to UI status
-      let status = ord.status || 'received';
-      if (status === 'submitted') status = 'received';
+      // Parse rich structured metadata if present
+      if (typeof ord.notes === 'string' && ord.notes.includes('__RW_META__:')) {
+        try {
+          const jsonStr = ord.notes.split('__RW_META__:')[1];
+          const meta = JSON.parse(jsonStr);
+          if (meta.organizationName) orgName = meta.organizationName;
+          if (meta.locationName) locName = meta.locationName;
+          if (meta.deliverySlot) deliverySlot = meta.deliverySlot;
+          if (meta.deliveryDate) deliveryDate = meta.deliveryDate;
+          if (meta.driverNotes) deliveryNotes = meta.driverNotes;
+          if (meta.orderNumber) customOrderNumber = meta.orderNumber;
+          if (Array.isArray(meta.items) && meta.items.length > 0) {
+            itemsList = meta.items;
+          }
+        } catch (e) {
+          console.warn('Metadata parse note in server action:', e);
+        }
+      } else if (typeof ord.notes === 'string' && ord.notes.trim().length > 0) {
+        deliveryNotes = ord.notes;
+      }
 
-      return {
-        id: ord.id,
-        orderNumber: orderNum,
-        organizationId: ord.organization_id,
-        organizationName: orgName,
-        locationId: 'loc-temple',
-        locationName: 'Temple Street Venue (Kitchen Inwards Door)',
-        status,
-        items: [
+      // If itemsList is empty (legacy or non-annotated orders), supply realistic culinary lines
+      if (itemsList.length === 0) {
+        itemsList = [
           {
             productId: 'prd-001',
             sku: 'PRD-001',
             name: 'San Marzano D.O.P. Whole Peeled Tomatoes',
-            packSize: '6 × 2.5kg Tin',
+            packSize: '6 × 2.5kg Case',
             qty: 2,
             unitPrice: 38.50,
             totalPrice: 77.00,
@@ -471,15 +487,32 @@ export async function getLiveOrdersServerAction(): Promise<any[]> {
             qty: 2,
             unitPrice: 22.80,
             totalPrice: 45.60,
-          }
-        ],
+          },
+        ];
+      }
+
+      const orderNum = customOrderNumber || `RW-${createdDate.getFullYear()}-${ord.id.slice(0, 4).toUpperCase()}`;
+
+      // Map Supabase status to UI status
+      let status = ord.status || 'received';
+      if (status === 'submitted') status = 'received';
+
+      return {
+        id: ord.id,
+        orderNumber: orderNum,
+        organizationId: ord.organization_id,
+        organizationName: orgName,
+        locationId: 'loc-temple',
+        locationName: locName,
+        status,
+        items: itemsList,
         subtotal: ord.subtotal || 0,
         vatTotal: ord.vat_total || 0,
         total: ord.total || 0,
         isStandingOrder: ord.is_standing_order || false,
-        deliveryDate: createdDate.toLocaleDateString('en-GB', { dateStyle: 'short' }),
-        deliverySlot: '06:00 – 08:30 AM (Morning Keyslot)',
-        deliveryNotes: ord.notes || 'Deliver to kitchen inwards door.',
+        deliveryDate: deliveryDate,
+        deliverySlot: deliverySlot,
+        deliveryNotes: deliveryNotes,
         createdAt: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
         updatedAt: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
         trackingHistory: [
@@ -487,7 +520,7 @@ export async function getLiveOrdersServerAction(): Promise<any[]> {
             status: 'received',
             timestamp: createdDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
             note: 'Order received via online ordering pad',
-          }
+          },
         ],
       };
     });

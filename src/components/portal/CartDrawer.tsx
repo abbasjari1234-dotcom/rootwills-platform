@@ -164,6 +164,7 @@ export function CartDrawer() {
 
       // 2. Update local state store
       const newOrder = placeOrder({
+        orderNumber: dbResult?.orderNumber,
         organizationId: currentOrg.id,
         organizationName: currentOrg.name,
         locationId: currentLocation?.id,
