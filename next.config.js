@@ -83,9 +83,23 @@ const nextConfig = {
     return config;
   },
   async headers() {
+    if (process.env.NODE_ENV !== 'production') {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'no-cache, no-store, max-age=0, must-revalidate',
+            },
+          ],
+        },
+      ];
+    }
+
     return [
       {
-        // Cache immutable static JS/CSS chunks for 1 year
+        // Cache immutable static JS/CSS chunks for 1 year in production
         source: '/_next/static/(.*)',
         headers: [
           {
