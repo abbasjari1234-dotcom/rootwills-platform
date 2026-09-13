@@ -36,14 +36,14 @@ export function createClient() {
       },
       set(name: string, value: string, options: any) {
         try {
-          cookieStore.set({ name, value, ...options });
+          cookieStore.set(name, value, options);
         } catch {
           // Called from a Server Component with no request context — safe to ignore
         }
       },
       remove(name: string, options: any) {
         try {
-          cookieStore.set({ name, value: '', ...options, maxAge: 0 });
+          cookieStore.delete(name);
         } catch {
           // Called from a Server Component with no request context — safe to ignore
         }

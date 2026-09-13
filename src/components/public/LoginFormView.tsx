@@ -4,7 +4,8 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAppStore } from '@/store/app-store';
-import { loginServerAction } from '@/actions/auth';
+import { loginServerAction, logoutServerAction } from '@/actions/auth';
+import { createClient } from '@/lib/supabase/client';
 import {
   Lock,
   Mail,
@@ -15,8 +16,9 @@ import {
   AlertCircle,
   Eye,
   EyeOff,
-  Truck,
-  CheckCircle2
+  LogOut,
+  CheckCircle2,
+  Sparkles,
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
@@ -35,7 +37,23 @@ function LoginFormContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [activeUserEmail, setActiveUserEmail] = useState<string | null>(null);
 
+  // Check for active session on load
+  useEffect(() => {
+    try {
+      const supabase = createClient();
+      supabase.auth.getUser().then(({ data }) => {
+        if (data?.user?.email) {
+          setActiveUserEmail(data.user.email);
+        }
+      }).catch(() => {});
+    } catch {
+      // Safe to ignore
+    }
+  }, []);
+
+  // Handle URL query parameters (?role=admin or ?staff=true)
   useEffect(() => {
     const roleParam = searchParams?.get('role');
     const staffParam = searchParams?.get('staff');
@@ -44,11 +62,65 @@ function LoginFormContent() {
     }
   }, [searchParams]);
 
+  // BFCache (Browser Back-Forward Cache) recovery to prevent frozen loading states
+  useEffect(() => {
+    setIsLoading(false);
+    setIsSuccess(false);
+
+    const onPageShow = (event: PageTransitionEvent) => {
+      setIsLoading(false);
+      setIsSuccess(false);
+      setErrorMessage(null);
+    };
+
+    window.addEventListener('pageshow', onPageShow);
+    return () => window.removeEventListener('pageshow', onPageShow);
+  }, []);
+
+  const handleScopeChange = (newScope: LoginScope) => {
+    setLoginScope(newScope);
+    setIsLoading(false);
+    setIsSuccess(false);
+    setErrorMessage(null);
+    setPassword('');
+  };
+
+  const handleSignOutActiveSession = async () => {
+    try {
+      setIsLoading(true);
+      await logoutServerAction();
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      setActiveUserEmail(null);
+      setIsLoading(false);
+      setErrorMessage(null);
+    } catch {
+      setActiveUserEmail(null);
+      setIsLoading(false);
+    }
+  };
+
+  const handleQuickFill = (presetEmail: string) => {
+    setEmail(presetEmail);
+    setPassword('Rootwills2026!');
+    setErrorMessage(null);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage(null);
+    if (isLoading) return;
 
-    if (!email || !password) {
+    setErrorMessage(null);
+    setIsSuccess(false);
+
+    let cleanEmail = (email || '').trim().toLowerCase();
+    // Auto-correct common phonetic typo "coustomer" -> "customer"
+    if (cleanEmail.startsWith('coustomer@')) {
+      cleanEmail = 'customer@' + cleanEmail.slice(10);
+      setEmail(cleanEmail);
+    }
+
+    if (!cleanEmail || !password) {
       setErrorMessage('Please enter your business email and account password.');
       return;
     }
@@ -57,7 +129,7 @@ function LoginFormContent() {
 
     try {
       const res = await loginServerAction({
-        email,
+        email: cleanEmail,
         password,
         scope: loginScope,
       });
@@ -65,6 +137,7 @@ function LoginFormContent() {
       if (!res.ok) {
         setErrorMessage(res.error || 'Invalid credentials. Please verify your email and password.');
         setIsLoading(false);
+        setIsSuccess(false);
         return;
       }
 
@@ -73,21 +146,31 @@ function LoginFormContent() {
       // 1. Update client-side store state
       const targetRole = res.role || (loginScope === 'staff' ? 'admin' : 'customer');
       if (res.organizationId) {
-        setPersona(res.organizationId, targetRole === 'admin' ? 'admin' : 'customer');
+        try {
+          setPersona(res.organizationId, targetRole === 'admin' ? 'admin' : 'customer');
+        } catch {
+          // Non-blocking
+        }
       }
 
       // 2. Navigate with full document reload to send auth cookies to server components
       const destination = res.destination || (loginScope === 'staff' ? '/admin/crm' : '/dashboard');
+
+      // Safety timeout: if window.location takes longer than 4s, release button
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
+
       window.location.href = destination;
     } catch (err: any) {
       setErrorMessage(err?.message || 'Authentication service error. Please try again.');
       setIsLoading(false);
+      setIsSuccess(false);
     }
   };
 
   return (
     <div className="min-h-[calc(100vh-220px)] flex flex-col justify-center py-12 sm:py-16 sm:px-6 lg:px-8 relative overflow-hidden">
-      
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
@@ -107,14 +190,29 @@ function LoginFormContent() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
         <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-900/60 backdrop-blur-2xl space-y-6">
           
+          {/* Active Session Notification & Fast-Switch */}
+          {activeUserEmail && (
+            <div className="p-3.5 rounded-2xl bg-emerald-950/60 border border-champagne/40 flex items-center justify-between gap-3 font-mono text-xs animate-fade-in">
+              <div className="min-w-0 flex-1">
+                <div className="text-[10px] uppercase tracking-wider text-cream/60">Active Session</div>
+                <div className="text-champagne font-bold truncate">{activeUserEmail}</div>
+              </div>
+              <button
+                type="button"
+                onClick={handleSignOutActiveSession}
+                className="px-2.5 py-1.5 rounded-lg bg-rose-950/60 border border-rose-500/40 text-rose-300 hover:bg-rose-900/80 text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all shrink-0"
+              >
+                <LogOut className="w-3 h-3" />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          )}
+
           {/* Scope Selector Tabs */}
           <div className="grid grid-cols-2 p-1 bg-obsidian-950/80 rounded-2xl border border-emerald-950">
             <button
               type="button"
-              onClick={() => {
-                setLoginScope('customer');
-                setErrorMessage(null);
-              }}
+              onClick={() => handleScopeChange('customer')}
               className={`py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 ${
                 loginScope === 'customer'
                   ? 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 shadow-md'
@@ -127,10 +225,7 @@ function LoginFormContent() {
 
             <button
               type="button"
-              onClick={() => {
-                setLoginScope('staff');
-                setErrorMessage(null);
-              }}
+              onClick={() => handleScopeChange('staff')}
               className={`py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 ${
                 loginScope === 'staff'
                   ? 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 shadow-md'
@@ -153,7 +248,7 @@ function LoginFormContent() {
           {/* Success Notification */}
           {isSuccess && (
             <div className="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2.5 animate-fade-in font-mono">
-              <CheckCircle2 className="w-4 h-4 text-champagne" />
+              <CheckCircle2 className="w-4 h-4 text-champagne shrink-0" />
               <span>Authenticated! Loading your portal...</span>
             </div>
           )}
@@ -176,7 +271,7 @@ function LoginFormContent() {
                   aria-label="Registered Business Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your registered email address"
+                  placeholder={loginScope === 'customer' ? 'customer@rootwills.co.uk' : 'staff@rootwills.co.uk'}
                   className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/60 font-sans"
                 />
               </div>
@@ -236,7 +331,7 @@ function LoginFormContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs sm:text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50"
+              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs sm:text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <span>Authenticating Credentials...</span>
@@ -249,8 +344,33 @@ function LoginFormContent() {
             </button>
           </form>
 
+          {/* Quick Fill Testing Helper */}
+          <div className="pt-2 border-t border-emerald-950/60 flex items-center justify-center gap-2 text-[11px] font-mono text-cream/60">
+            <span>Quick Test:</span>
+            <button
+              type="button"
+              onClick={() => {
+                handleScopeChange('customer');
+                handleQuickFill('customer@rootwills.co.uk');
+              }}
+              className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800/60 text-champagne hover:border-champagne text-[10px]"
+            >
+              Customer
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                handleScopeChange('staff');
+                handleQuickFill('staff@rootwills.co.uk');
+              }}
+              className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800/60 text-champagne hover:border-champagne text-[10px]"
+            >
+              Staff
+            </button>
+          </div>
+
           {/* Open Account Prompt */}
-          <div className="pt-4 border-t border-emerald-950 text-center space-y-2">
+          <div className="pt-2 text-center space-y-2">
             <p className="text-xs text-cream/70 font-sans">
               Need a wholesale food supply account for your kitchen?
             </p>
@@ -264,7 +384,6 @@ function LoginFormContent() {
 
         </div>
       </div>
-
     </div>
   );
 }
@@ -276,3 +395,4 @@ export function LoginFormView() {
     </Suspense>
   );
 }
+

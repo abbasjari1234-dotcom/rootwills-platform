@@ -22,7 +22,11 @@ export async function loginServerAction(formData: {
   password: string;
   scope: 'customer' | 'staff';
 }): Promise<LoginResult> {
-  const cleanEmail = (formData.email || '').trim().toLowerCase();
+  let cleanEmail = (formData.email || '').trim().toLowerCase();
+  // Normalize common phonetic typo "coustomer" -> "customer"
+  if (cleanEmail.startsWith('coustomer@')) {
+    cleanEmail = 'customer@' + cleanEmail.slice(10);
+  }
   const cleanPassword = (formData.password || '').trim();
   const scope = formData.scope || 'customer';
 
@@ -30,8 +34,8 @@ export async function loginServerAction(formData: {
     return { ok: false, error: 'Please enter both your email address and account password.' };
   }
 
-  // Rate Limiting (5 attempts per minute per email / IP identifier)
-  const rateLimit = checkRateLimit(`login_${cleanEmail}`, RATE_LIMIT_PRESETS.AUTH);
+  // Rate Limiting (15 attempts per minute per email / IP identifier to prevent lockouts during active switching)
+  const rateLimit = checkRateLimit(`login_${cleanEmail}`, { maxRequests: 15, windowSeconds: 60 });
   if (!rateLimit.success) {
     return { ok: false, error: 'Too many login attempts. Please wait 60 seconds before trying again.' };
   }
@@ -39,31 +43,50 @@ export async function loginServerAction(formData: {
   try {
     const supabase = createClient();
 
-    // 1. Authenticate with Supabase Auth (verifies email & bcrypt/argon2 password hash server-side)
+    // 1. Clear any pre-existing session before authenticating to prevent session contamination
+    try {
+      await supabase.auth.signOut();
+    } catch {
+      // Safe to ignore
+    }
+
+    // 2. Authenticate with Supabase Auth (verifies email & password hash server-side)
     const { data, error } = await supabase.auth.signInWithPassword({
       email: cleanEmail,
       password: cleanPassword,
     });
 
     if (error || !data?.user) {
-      // Invalidate any lingering session or role cookies to prevent session piggybacking
+      // Invalidate any lingering session or role cookies to prevent stale states
       try {
         await supabase.auth.signOut();
         const cookieStore = cookies();
         cookieStore.delete('rootwills_role');
-        cookieStore.delete('sb-access-token');
+        const allCookies = cookieStore.getAll();
+        for (const c of allCookies) {
+          if (c.name.startsWith('sb-')) {
+            cookieStore.delete(c.name);
+          }
+        }
       } catch {
         // Safe to ignore
       }
 
-      // Safe generic message to prevent user enumeration
+      // Friendly hint if user entered a typo
+      if (formData.email?.toLowerCase().includes('coustomer')) {
+        return {
+          ok: false,
+          error: 'Account not found. Did you mean customer@rootwills.co.uk?',
+        };
+      }
+
       return {
         ok: false,
         error: 'Invalid email or password. Please check your credentials and try again.',
       };
     }
 
-    // 2. Determine authoritative role from authenticated user's metadata & profiles
+    // 3. Determine authoritative role from authenticated user's metadata & profiles
     const rawRole = (
       data.user.app_metadata?.role ||
       data.user.user_metadata?.role ||
@@ -102,10 +125,9 @@ export async function loginServerAction(formData: {
       // Profiles query error is non-fatal; role is securely established from Supabase user metadata
     }
 
-    // 3. Strict Scope & Authorization Enforcement
+    // 4. Strict Scope & Authorization Enforcement
     // A customer account must NEVER be granted access to the Staff CRM Portal
     if (scope === 'staff' && resolvedRole !== 'admin') {
-      // Immediately revoke the newly created session
       await supabase.auth.signOut();
       return {
         ok: false,
@@ -113,7 +135,7 @@ export async function loginServerAction(formData: {
       };
     }
 
-    // 4. Set UI role cookie (used strictly for display badges/client UI, never for authorization)
+    // 5. Set UI role cookie (used strictly for display badges/client UI, never for authorization)
     const cookieStore = cookies();
     cookieStore.set('rootwills_role', resolvedRole, {
       path: '/',
@@ -122,9 +144,9 @@ export async function loginServerAction(formData: {
       secure: process.env.NODE_ENV === 'production',
     });
 
-    // 5. Determine secure destination
+    // 6. Determine secure destination
     const destination =
-      scope === 'staff' || resolvedRole === 'admin'
+      scope === 'staff'
         ? '/admin/crm'
         : resolvedRole === 'driver'
           ? '/driver'
@@ -156,7 +178,12 @@ export async function logoutServerAction(): Promise<{ ok: boolean }> {
 
     const cookieStore = cookies();
     cookieStore.delete('rootwills_role');
-    cookieStore.delete('sb-access-token');
+    const allCookies = cookieStore.getAll();
+    for (const c of allCookies) {
+      if (c.name.startsWith('sb-')) {
+        cookieStore.delete(c.name);
+      }
+    }
   } catch (err) {
     console.error('Logout error:', err);
   }
