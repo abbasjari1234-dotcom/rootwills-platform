@@ -100,11 +100,6 @@ function LoginFormContent() {
     }
   };
 
-  const handleQuickFill = (presetEmail: string) => {
-    setEmail(presetEmail);
-    setPassword('Rootwills2026!');
-    setErrorMessage(null);
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -344,30 +339,6 @@ function LoginFormContent() {
             </button>
           </form>
 
-          {/* Quick Fill Testing Helper */}
-          <div className="pt-2 border-t border-emerald-950/60 flex items-center justify-center gap-2 text-[11px] font-mono text-cream/60">
-            <span>Quick Test:</span>
-            <button
-              type="button"
-              onClick={() => {
-                handleScopeChange('customer');
-                handleQuickFill('customer@rootwills.co.uk');
-              }}
-              className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800/60 text-champagne hover:border-champagne text-[10px]"
-            >
-              Customer
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                handleScopeChange('staff');
-                handleQuickFill('staff@rootwills.co.uk');
-              }}
-              className="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800/60 text-champagne hover:border-champagne text-[10px]"
-            >
-              Staff
-            </button>
-          </div>
 
           {/* Open Account Prompt */}
           <div className="pt-2 text-center space-y-2">
