@@ -8,6 +8,16 @@
   font-family: 'Caveat', cursive;
 }
 
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
 :root {
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Cormorant Garamond', serif;

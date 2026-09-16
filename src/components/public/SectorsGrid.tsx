@@ -77,25 +77,25 @@ const SECTORS: SectorItem[] = [
 
 export function SectorsGrid() {
   return (
-    <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 gap-3 sm:gap-6">
           <div>
-            <div className="mb-2">
+            <div className="mb-1.5 sm:mb-2">
               <span className="text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.2em] text-emerald-600">
                 WHO WE SUPPLY
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-sans font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-sans font-extrabold text-slate-900 tracking-tight">
               Trusted by Businesses Across Every Sector
             </h2>
           </div>
 
           <Link
             href="/sectors/restaurants"
-            className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-800 font-sans font-bold text-sm sm:text-base group shrink-0"
+            className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-800 font-sans font-bold text-xs sm:text-base group shrink-0"
           >
             <span>View All Sectors</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -66,29 +66,29 @@ const CATEGORIES: ProductCategory[] = [
 
 export function ProductCategoryGrid() {
   return (
-    <section className="py-16 lg:py-24 bg-[#F9FAFB] border-b border-slate-200">
+    <section className="py-10 sm:py-16 lg:py-24 bg-[#F9FAFB] border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Heading, Commercial Pitch & CTA */}
-          <div className="lg:col-span-4">
-            <div className="mb-3">
+          <div className="lg:col-span-4 mb-2 lg:mb-0">
+            <div className="mb-2 sm:mb-3">
               <span className="text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.2em] text-emerald-600">
                 OUR PRODUCTS
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-sans font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+            <h2 className="text-2xl sm:text-4xl font-sans font-extrabold text-slate-900 tracking-tight leading-tight mb-2.5 sm:mb-4">
               Wide Range of Fresh &amp; Foodservice Products
             </h2>
 
-            <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed mb-8">
+            <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed mb-5 sm:mb-8">
               From fresh produce to premium foodservice essentials, we supply everything your business needs.
             </p>
 
             <Link
               href="/products"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-sm shadow-sm transition-all duration-200 transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-sm shadow-sm transition-all duration-200 transform hover:-translate-y-0.5 w-full sm:w-auto text-center"
             >
               <span>View All Products</span>
               <ArrowRight className="w-4 h-4" />
@@ -97,7 +97,7 @@ export function ProductCategoryGrid() {
 
           {/* Right Column: 8 Category Cards Grid (4 cols x 2 rows) */}
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
               {CATEGORIES.map((cat, idx) => (
                 <motion.div
                   key={cat.id}
