@@ -9,7 +9,6 @@ import {
   AlertTriangle, 
   Mail, 
   Phone, 
-  Sparkles, 
   CheckCircle2, 
   ShoppingBag,
   Award
@@ -120,7 +119,7 @@ export function AdminAnalyticsView() {
                   <button
                     onClick={() =>
                       alert(
-                        `AI Reorder Email sent to ${org.name}:\n\n"Hi there! We noticed you haven't placed your usual weekly order for potatoes and spinach. Would you like to repeat your previous order in 1 click?"`
+                        `Wholesale Reorder Reminder sent to ${org.name}:\n\n"Hello Chef. We noticed you haven't placed your usual schedule for produce restock. Would you like to repeat your previous order?"`
                       )
                     }
                     className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all cursor-pointer"

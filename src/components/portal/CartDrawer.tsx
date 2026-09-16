@@ -17,7 +17,6 @@ import {
   CreditCard,
   Lock,
   RotateCcw,
-  Sparkles,
   Truck
 } from 'lucide-react';
 import Link from 'next/link';
@@ -609,21 +608,15 @@ export function CartDrawer() {
                         </button>
                       ) : (
                         <div className="space-y-2">
-                          <button
-                            onClick={() => handleCheckout(true)}
-                            disabled={isSubmitting}
+                          <Link
+                            href="/login"
+                            onClick={closeCart}
                             className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 active:scale-[0.99] transition-all"
                           >
-                            {isSubmitting ? (
-                              <span>Simulating Dispatch...</span>
-                            ) : (
-                              <>
-                                <Sparkles className="w-4 h-4" />
-                                <span>Place Test Wholesale Order (Demo Mode)</span>
-                                <ArrowRight className="w-4 h-4" />
-                              </>
-                            )}
-                          </button>
+                            <Lock className="w-4 h-4" />
+                            <span>Sign In to Place Wholesale Order</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
 
                           <div className="grid grid-cols-2 gap-2 pt-1">
                             <Link

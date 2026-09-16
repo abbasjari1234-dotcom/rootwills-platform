@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useAppStore } from '@/store/app-store';
 import { Product } from '@/types/products';
-import { Package, Search, Plus, Edit3, Check, Sparkles, Filter } from 'lucide-react';
+import { Package, Search, Plus, Edit3, Check, Filter } from 'lucide-react';
 
 export function AdminProductsView() {
   const { products } = useAppStore();

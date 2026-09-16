@@ -13,7 +13,6 @@ import {
   PauseCircle, 
   PlayCircle,
   ShoppingBag,
-  Sparkles,
   MapPin,
   Edit3,
   Check,

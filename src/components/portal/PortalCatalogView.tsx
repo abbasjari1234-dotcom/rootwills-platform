@@ -12,7 +12,7 @@ import {
   Minus, 
   ShoppingBag, 
   Check, 
-  Sparkles, 
+  ShieldCheck, 
   Info,
   Layers,
   ArrowRight
@@ -65,8 +65,8 @@ export function PortalCatalogView() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 pb-6 border-b border-slate-200">
         <div>
           <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-800 uppercase font-bold tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Personalised Commercial Contract Pricing Active</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span>Commercial Contract Pricing Active</span>
           </div>
           <h1 className="font-sans text-2xl sm:text-3xl font-bold text-slate-900 mt-1 tracking-tight">
             Wholesale Produce &amp; Goods Catalog

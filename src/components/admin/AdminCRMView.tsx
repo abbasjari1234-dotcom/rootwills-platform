@@ -10,7 +10,8 @@ import {
   Building2,
   Phone,
   Mail,
-  Sparkles,
+  UserCheck,
+  Layers,
   CheckCircle2,
   Clock,
   X,
@@ -760,7 +761,7 @@ export function AdminCRMView() {
                           : 'border-slate-200 text-slate-400'
                       }`}
                     >
-                      <Sparkles className="w-5 h-5 mb-1 opacity-40 text-slate-400" />
+                      <Layers className="w-5 h-5 mb-1 opacity-40 text-slate-400" />
                       <span>Drop leads here to advance</span>
                     </div>
                   ) : (
@@ -1030,8 +1031,8 @@ export function AdminCRMView() {
 
             <div className="space-y-1">
               <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase text-emerald-700 font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                <span>1-Click Lead-to-Customer Conversion</span>
+                <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Trade Account Provisioning</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
                 Open Trade Account: {selectedLeadForConvert.companyName}

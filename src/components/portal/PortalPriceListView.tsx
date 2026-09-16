@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useAppStore } from '@/store/app-store';
-import { Printer, Download, FileText, CheckCircle2, ShieldCheck, Clock, Sparkles } from 'lucide-react';
+import { Printer, Download, FileText, CheckCircle2, ShieldCheck, Clock } from 'lucide-react';
 
 export function PortalPriceListView() {
   const { currentOrgId, organizations, getCustomerProducts } = useAppStore();

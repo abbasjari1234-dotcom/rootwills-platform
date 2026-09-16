@@ -17,7 +17,6 @@ import {
   CheckCircle2, 
   FileText, 
   ShieldCheck, 
-  Sparkles,
   Phone,
   ThermometerSnowflake,
   MapPin,

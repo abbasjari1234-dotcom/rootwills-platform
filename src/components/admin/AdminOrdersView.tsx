@@ -16,7 +16,6 @@ import {
   FileText,
   RefreshCw,
   Zap,
-  Sparkles,
   DollarSign,
   Package
 } from 'lucide-react';

@@ -13,7 +13,6 @@ import {
   ArrowRight, 
   FileText, 
   RotateCcw, 
-  Sparkles,
   X,
   Layers,
   Leaf

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Plus, Minus, Check, Sparkles, ShoppingBag } from 'lucide-react';
+import { Plus, Minus, Check, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cart-store';
 
 interface ProductCardProps {

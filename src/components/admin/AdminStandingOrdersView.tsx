@@ -9,8 +9,7 @@ import {
   CheckCircle2, 
   Clock, 
   Building2, 
-  ArrowRight,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 
 interface StandingSchedule {

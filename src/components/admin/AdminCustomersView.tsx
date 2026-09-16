@@ -9,7 +9,6 @@ import {
   Edit3, 
   MapPin, 
   ShieldCheck, 
-  Sparkles, 
   Check, 
   X,
   CreditCard,

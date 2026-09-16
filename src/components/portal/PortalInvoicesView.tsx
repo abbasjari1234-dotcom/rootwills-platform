@@ -15,7 +15,6 @@ import {
   Building2,
   Clock,
   Printer,
-  Sparkles,
   ArrowDownToLine,
   Layers,
   Check,
