@@ -15,7 +15,6 @@ import {
   ArrowRight,
   ShoppingBag,
   CreditCard,
-  Lock,
   RotateCcw,
   Truck
 } from 'lucide-react';
@@ -40,8 +39,6 @@ export function CartDrawer() {
     setRecurrence,
     recurrenceDays,
     setRecurrenceDays,
-    deliverySlot,
-    setDeliverySlot,
     notes,
     setNotes
   } = useCartStore();
@@ -59,21 +56,12 @@ export function CartDrawer() {
   const [selectedDeliveryDate, setSelectedDeliveryDate] = useState('Tomorrow Morning');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState<any>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Check auth session
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const hasCookie = document.cookie.includes('rootwills_role=');
-      setIsLoggedIn(hasCookie);
-    }
-  }, [isOpen]);
-
-  // 11:00 PM Cutoff Live Countdown
+  // 11:00 PM Cutoff Countdown
   const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number }>({ hours: 0, minutes: 0 });
 
   useEffect(() => {
@@ -98,6 +86,7 @@ export function CartDrawer() {
   }, []);
 
   if (!mounted) return null;
+  // Dedicated marketplace page uses its own inline cart drawer
   if (pathname === '/products') return null;
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0] || {
@@ -110,7 +99,7 @@ export function CartDrawer() {
   const currentLocation = currentOrg?.locations?.find((l) => l.id === currentLocationId) || currentOrg?.locations?.[0];
 
   const subtotal = items.reduce((sum, item) => sum + item.customerPrice * item.qty, 0);
-  const vatTotal = subtotal * 0.05; // blended VAT for fresh/processed items
+  const vatTotal = subtotal * 0.05; // 5% blended food & packaging VAT
   const grandTotal = subtotal + vatTotal;
 
   const availableCredit = Math.max(0, currentOrg.creditLimit - currentOrg.creditUsed);
@@ -118,17 +107,6 @@ export function CartDrawer() {
     ? Math.min(100, Math.round(((currentOrg.creditUsed + grandTotal) / currentOrg.creditLimit) * 100))
     : 0;
   const exceedsCredit = grandTotal > availableCredit && currentOrg.creditLimit > 0;
-
-  // Check if we are in a portal route or demo context
-  const isPortalContext = pathname?.startsWith('/dashboard') || 
-                          pathname?.startsWith('/catalog') || 
-                          pathname?.startsWith('/orders') || 
-                          pathname?.startsWith('/quick-order') || 
-                          pathname?.startsWith('/standing-orders') || 
-                          pathname?.startsWith('/invoices') || 
-                          pathname?.startsWith('/account');
-
-  const canDirectCheckout = isLoggedIn || isPortalContext;
 
   const toggleRecurrenceDay = (day: string) => {
     if (recurrenceDays.includes(day)) {
@@ -140,9 +118,8 @@ export function CartDrawer() {
     }
   };
 
-  const handleCheckout = async (forceDemoOrder = false) => {
-    if (!canDirectCheckout && !forceDemoOrder) return;
-    if (items.length === 0 || (exceedsCredit && !forceDemoOrder)) return;
+  const handleCheckout = async () => {
+    if (items.length === 0 || exceedsCredit) return;
 
     setIsSubmitting(true);
     try {
@@ -165,7 +142,7 @@ export function CartDrawer() {
         total: Number(grandTotal.toFixed(2)),
         deliveryDate: selectedDeliveryDate,
         deliverySlot: selectedSlot,
-        notes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards coldroom.',
+        notes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards goods coldroom.',
       });
 
       // 2. Update local state store
@@ -178,7 +155,7 @@ export function CartDrawer() {
         status: 'received',
         deliveryDate: selectedDeliveryDate,
         deliverySlot: selectedSlot,
-        deliveryNotes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards coldroom.',
+        deliveryNotes: notes || currentLocation?.deliveryInstructions || 'Deliver to kitchen inwards goods coldroom.',
         subtotal: Number(subtotal.toFixed(2)),
         vatTotal: Number(vatTotal.toFixed(2)),
         total: Number(grandTotal.toFixed(2)),
@@ -217,7 +194,7 @@ export function CartDrawer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={closeCart}
             className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"
           />
@@ -237,9 +214,9 @@ export function CartDrawer() {
                     <ShoppingBag className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="font-sans text-lg font-bold text-slate-900 tracking-tight">Wholesale Basket</h2>
+                    <h2 className="font-sans text-lg font-bold text-slate-900 tracking-tight">Trade Order Basket</h2>
                     <span className="text-[11px] text-emerald-800 font-mono font-semibold">
-                      {items.length} {items.length === 1 ? 'line item' : 'line items'} &bull; Contract Locked Rates
+                      {items.length} {items.length === 1 ? 'line item' : 'line items'} &bull; Locked Contract Rates
                     </span>
                   </div>
                 </div>
@@ -249,7 +226,7 @@ export function CartDrawer() {
                     <button
                       type="button"
                       onClick={clearCart}
-                      title="Empty all items from basket"
+                      title="Clear basket"
                       className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-50 transition-colors"
                       aria-label="Clear basket"
                     >
@@ -259,7 +236,7 @@ export function CartDrawer() {
                   <button
                     type="button"
                     onClick={closeCart}
-                    aria-label="Close order basket"
+                    aria-label="Close basket"
                     className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
                   >
                     <X className="w-5 h-5" />
@@ -267,20 +244,19 @@ export function CartDrawer() {
                 </div>
               </div>
 
-              {/* Delivery Site Indicator & Live 11:00 PM Cutoff Banner */}
+              {/* Delivery Site & Cutoff Info Bar */}
               <div className="bg-slate-50 border-b border-slate-200 text-xs">
                 <div className="px-5 py-2.5 flex justify-between items-center text-slate-600 border-b border-slate-100">
-                  <span className="truncate">Delivering to: <strong className="text-slate-900">{currentLocation?.name}</strong></span>
+                  <span className="truncate">Destination: <strong className="text-slate-900">{currentLocation?.name}</strong></span>
                   <span className="text-emerald-800 font-mono text-[11px] font-bold shrink-0 ml-2">{currentLocation?.postcode}</span>
                 </div>
-                {/* Cutoff countdown */}
-                <div className="px-5 py-2 bg-emerald-50/80 flex items-center justify-between text-[11px] font-mono border-b border-emerald-100 text-emerald-900">
-                  <span className="font-bold flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping inline-block" />
-                    <span>11:00 PM Cutoff:</span>
+                <div className="px-5 py-2 bg-emerald-50/60 flex items-center justify-between text-[11px] font-mono text-emerald-900">
+                  <span className="font-semibold flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                    <span>Order Cut-off:</span>
                   </span>
                   <span>
-                    Order in <strong>{timeLeft.hours}h {timeLeft.minutes}m</strong> for 06:00 AM drop
+                    Order within <strong>{timeLeft.hours}h {timeLeft.minutes}m</strong> for 06:00 AM drop
                   </span>
                 </div>
               </div>
@@ -291,23 +267,23 @@ export function CartDrawer() {
                   <div className="w-16 h-16 rounded-2xl bg-emerald-100 border border-emerald-200 text-emerald-700 flex items-center justify-center shadow-xs">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-sans text-2xl font-bold text-slate-900">Order Received!</h3>
+                  <h3 className="font-sans text-2xl font-bold text-slate-900">Order Confirmed</h3>
                   <p className="text-xs text-slate-600 max-w-xs leading-relaxed">
-                    Order <strong className="text-emerald-800 font-mono font-bold">{orderSuccess.orderNumber}</strong> has been logged with our Digbeth Central Depot picking queue.
+                    Order <strong className="text-emerald-800 font-mono font-bold">{orderSuccess.orderNumber}</strong> has been sent to our Birmingham Central Hub picking queue.
                   </p>
                   
                   <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left w-full space-y-2 font-mono shadow-xs">
                     <div className="flex justify-between text-slate-600">
-                      <span>Delivery Target:</span>
+                      <span>Scheduled Delivery:</span>
                       <span className="text-slate-900 font-bold">{orderSuccess.deliveryDate}</span>
                     </div>
                     <div className="flex justify-between text-slate-600">
-                      <span>Time Window:</span>
+                      <span>Window:</span>
                       <span className="text-slate-900 font-bold">{orderSuccess.deliverySlot}</span>
                     </div>
                     {orderSuccess.isStandingOrder && (
                       <div className="flex justify-between text-slate-600">
-                        <span>Schedule:</span>
+                        <span>Recurrence:</span>
                         <span className="text-emerald-800 uppercase font-bold">{orderSuccess.recurrence || 'Weekly'}</span>
                       </div>
                     )}
@@ -324,18 +300,18 @@ export function CartDrawer() {
                       className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs flex items-center justify-center gap-1.5 transition-all"
                     >
                       <Truck className="w-4 h-4" />
-                      <span>Track Live Delivery Progress &rarr;</span>
+                      <span>View Order &amp; Delivery Tracking &rarr;</span>
                     </Link>
-                    <button
-                      type="button"
+                    <Link
+                      href="/catalog"
                       onClick={() => {
                         setOrderSuccess(null);
                         closeCart();
                       }}
-                      className="py-2.5 text-xs text-slate-500 hover:text-slate-800 font-mono transition-colors font-medium"
+                      className="py-2.5 text-center text-xs text-slate-600 hover:text-slate-900 font-mono transition-colors font-medium"
                     >
-                      Return to Menu
-                    </button>
+                      Continue Purchasing in Catalog
+                    </Link>
                   </div>
                 </div>
               ) : (
@@ -348,13 +324,13 @@ export function CartDrawer() {
                           <ShoppingBag className="w-8 h-8" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-slate-900">Your basket is currently empty</div>
+                          <div className="text-sm font-bold text-slate-900">Your trade basket is empty</div>
                           <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
-                            Add fresh produce, artisan dairy, or bakery goods from our live wholesale catalog.
+                            Add fresh produce, artisan dairy, or bakery lines from your wholesale catalog.
                           </p>
                         </div>
                         <Link
-                          href="/products"
+                          href="/catalog"
                           onClick={closeCart}
                           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-all"
                         >
@@ -366,7 +342,7 @@ export function CartDrawer() {
                       items.map((item) => (
                         <div
                           key={item.productId}
-                          className="p-3.5 rounded-2xl bg-white border border-slate-200 flex gap-3 items-center justify-between hover:border-slate-300 transition-all shadow-xs group"
+                          className="p-3.5 rounded-2xl bg-white border border-slate-200 flex gap-3 items-center justify-between hover:border-slate-300 transition-all shadow-xs"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
@@ -426,10 +402,10 @@ export function CartDrawer() {
                     {/* Standing Order & Logistics Options */}
                     {items.length > 0 && (
                       <div className="mt-6 pt-4 border-t border-slate-200 space-y-4">
-                        {/* Delivery Slot Selection */}
+                        {/* Delivery Window Selection */}
                         <div>
                           <label htmlFor="delivery-slot-select" className="block text-[11px] font-mono uppercase text-slate-700 mb-1.5 font-bold tracking-wider">
-                            Preferred Morning Window
+                            Morning Delivery Window
                           </label>
                           <select
                             id="delivery-slot-select"
@@ -444,14 +420,14 @@ export function CartDrawer() {
                           </select>
                         </div>
 
-                        {/* Standing Order Checkbox */}
+                        {/* Standing Order Schedule Toggle */}
                         <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
                           <label className="flex items-center justify-between cursor-pointer">
                             <div className="flex items-center gap-2.5">
                               <Repeat className="w-4 h-4 text-emerald-700" />
                               <div>
-                                <div className="text-xs font-bold text-slate-900">Recurring Standing Order</div>
-                                <div className="text-[10px] text-slate-500">Auto-generate and deliver on preset schedule</div>
+                                <div className="text-xs font-bold text-slate-900">Standing Repeat Schedule</div>
+                                <div className="text-[10px] text-slate-500">Auto-dispatch crates on recurring schedule</div>
                               </div>
                             </div>
                             <input
@@ -481,7 +457,6 @@ export function CartDrawer() {
                                 ))}
                               </div>
 
-                              {/* Day selector checkboxes */}
                               <div>
                                 <span className="text-[10px] uppercase font-mono text-slate-500 block mb-1">
                                   Repeat on Days:
@@ -510,14 +485,14 @@ export function CartDrawer() {
                           )}
                         </div>
 
-                        {/* Driver Notes */}
+                        {/* Driver Key Drop Instructions */}
                         <div>
                           <label className="block text-[11px] font-mono uppercase text-slate-700 mb-1.5 font-bold tracking-wider">
-                            Driver Instructions / Kitchen Key Drop Notes
+                            Driver Notes &amp; Kitchen Key Drop Instructions
                           </label>
                           <input
                             type="text"
-                            placeholder="e.g. Leave crates inside prep fridge door code 4821"
+                            placeholder="e.g. Inwards goods bay door code or refrigeration instructions"
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400"
@@ -527,16 +502,16 @@ export function CartDrawer() {
                     )}
                   </div>
 
-                  {/* Footer Summary & Checkout / Auth Panel */}
+                  {/* Footer Order Summary & Direct B2B Checkout */}
                   {items.length > 0 && (
                     <div className="p-5 border-t border-slate-200 bg-white space-y-4 shadow-lg">
                       
                       {/* Trade Credit Facility Progress Bar */}
                       <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
                         <div className="flex justify-between items-center text-[11px]">
-                          <span className="text-slate-600 flex items-center gap-1.5 font-sans font-medium">
+                          <span className="text-slate-700 flex items-center gap-1.5 font-sans font-medium">
                             <CreditCard className="w-3.5 h-3.5 text-emerald-700" />
-                            <span>30-Day Trade Credit Facility</span>
+                            <span>Trade Credit Account</span>
                           </span>
                           <span className="font-mono text-emerald-800 font-bold">
                             £{availableCredit.toFixed(2)} available
@@ -555,15 +530,15 @@ export function CartDrawer() {
                           />
                         </div>
                         <div className="flex justify-between text-[10px] text-slate-500 font-mono">
-                          <span>Facility Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
-                          <span>Used: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
+                          <span>Facility: £{currentOrg.creditLimit.toLocaleString()}</span>
+                          <span>Committed: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
                         </div>
                       </div>
 
-                      {/* Pricing Calculation Summary */}
+                      {/* Line Breakdown */}
                       <div className="space-y-1.5 text-xs">
                         <div className="flex justify-between text-slate-600">
-                          <span>Wholesale Goods Subtotal:</span>
+                          <span>Produce &amp; Goods Subtotal:</span>
                           <span className="font-mono text-slate-900 font-semibold">£{subtotal.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between text-slate-600">
@@ -576,66 +551,35 @@ export function CartDrawer() {
                         </div>
                       </div>
 
-                      {/* Credit limit warning if exceeded */}
+                      {/* Credit Limit Alert */}
                       {exceedsCredit && (
                         <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-[11px] flex items-start gap-2">
                           <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
                           <span>
-                            This order exceeds your available trade credit balance (£{availableCredit.toFixed(2)} remaining). Please contact accounts to authorize or adjust quantities.
+                            This order exceeds your trade credit balance (£{availableCredit.toFixed(2)} remaining). Contact accounts to authorize or adjust items.
                           </span>
                         </div>
                       )}
 
-                      {/* Checkout Buttons: Authenticated OR Guest Demo Paths */}
-                      {canDirectCheckout ? (
-                        <button
-                          onClick={() => handleCheckout(false)}
-                          disabled={isSubmitting || exceedsCredit}
-                          className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-all ${
-                            exceedsCredit
-                              ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300'
-                              : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-[0.99]'
-                          }`}
-                        >
-                          {isSubmitting ? (
-                            <span>Placing Order at Birmingham Hub...</span>
-                          ) : (
-                            <>
-                              <span>Confirm &amp; Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
-                              <ArrowRight className="w-4 h-4" />
-                            </>
-                          )}
-                        </button>
-                      ) : (
-                        <div className="space-y-2">
-                          <Link
-                            href="/login"
-                            onClick={closeCart}
-                            className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 active:scale-[0.99] transition-all"
-                          >
-                            <Lock className="w-4 h-4" />
-                            <span>Sign In to Place Wholesale Order</span>
+                      {/* Direct B2B Confirmation Button */}
+                      <button
+                        onClick={handleCheckout}
+                        disabled={isSubmitting || exceedsCredit}
+                        className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-all ${
+                          exceedsCredit
+                            ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300'
+                            : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-[0.99]'
+                        }`}
+                      >
+                        {isSubmitting ? (
+                          <span>Submitting Order to Hub Picking Queue...</span>
+                        ) : (
+                          <>
+                            <span>Confirm &amp; Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
                             <ArrowRight className="w-4 h-4" />
-                          </Link>
-
-                          <div className="grid grid-cols-2 gap-2 pt-1">
-                            <Link
-                              href="/apply"
-                              onClick={closeCart}
-                              className="py-2.5 px-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 font-mono font-bold text-[11px] text-center hover:bg-slate-100 transition-all flex items-center justify-center gap-1"
-                            >
-                              <span>Apply for Credit</span>
-                            </Link>
-                            <Link
-                              href="/login"
-                              onClick={closeCart}
-                              className="py-2.5 px-3 rounded-xl bg-white border border-emerald-600 text-emerald-800 font-mono font-bold text-[11px] text-center hover:bg-emerald-50 transition-all flex items-center justify-center gap-1"
-                            >
-                              <span>Customer Login</span>
-                            </Link>
-                          </div>
-                        </div>
-                      )}
+                          </>
+                        )}
+                      </button>
 
                     </div>
                   )}

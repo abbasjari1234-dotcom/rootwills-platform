@@ -108,7 +108,7 @@ export function PortalDashboardView() {
           
           <div className="md:col-span-8 space-y-2 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-mono text-xs font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-emerald-600" />
               <span>Live Fleet Telemetry: Active Morning Route</span>
             </div>
             <h3 className="font-sans text-xl sm:text-2xl font-bold text-slate-900">
@@ -149,7 +149,7 @@ export function PortalDashboardView() {
             <div className="lg:col-span-2 space-y-2">
               <div className="inline-flex items-center gap-1.5 text-emerald-800 font-mono text-xs uppercase font-bold">
                 <Repeat className="w-4 h-4" />
-                <span>One-Click Reorder System</span>
+                <span>Repeat Order Facility</span>
               </div>
               <h2 className="font-sans text-xl sm:text-2xl font-bold text-slate-900">
                 Repeat Your Previous Order in Seconds

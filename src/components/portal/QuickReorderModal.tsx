@@ -60,7 +60,7 @@ export function QuickReorderModal({ order, isOpen, onClose }: QuickReorderModalP
           <div>
             <div className="flex items-center gap-1.5 text-emerald-800 font-mono text-xs uppercase font-bold">
               <Repeat className="w-4 h-4" />
-              <span>1-Click Quick Reorder</span>
+              <span>Quick Reorder</span>
             </div>
             <h3 className="font-sans text-xl sm:text-2xl font-bold text-slate-900 mt-1">
               Repeat Order #{order.orderNumber}
