@@ -90,22 +90,18 @@ export function PriceEstimator() {
   };
 
   return (
-    <div className="pricing-calculator glass-panel-gold rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden border border-champagne/25">
-      {/* Ambient background glows */}
-      <div className="absolute -top-20 -right-20 w-80 h-80 bg-champagne/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
-
+    <div className="pricing-calculator bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative overflow-hidden">
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center space-y-3 mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
             <span>Interactive Wholesale Commercial Calculator</span>
           </div>
-          <h2 className="font-display text-2xl sm:text-4xl font-bold text-cream">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
             Calculate Your Kitchen&apos;s Direct Wholesale Savings
           </h2>
-          <p className="text-sm sm:text-base text-cream/75 max-w-xl mx-auto font-sans">
+          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto">
             Compare Rootwills single-estate direct sourcing, locked tier contracts, and 0% split-delivery surcharges against standard foodservice distributors.
           </p>
         </div>
@@ -114,7 +110,7 @@ export function PriceEstimator() {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* 1. Sector Selection Chips */}
             <div>
-              <label className="block text-xs font-mono uppercase tracking-wider text-champagne mb-3">
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-600 font-bold mb-3">
                 1. Select Kitchen Sector &amp; Operational Model
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
@@ -127,17 +123,19 @@ export function PriceEstimator() {
                       key={s.id}
                       type="button"
                       onClick={() => handleSectorChange(s)}
-                      className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center gap-1.5 ${
+                      className={`p-3.5 rounded-2xl border text-center transition-all flex flex-col items-center gap-2 ${
                         isLastOdd ? 'col-span-2 sm:col-span-1' : ''
                       } ${
                         isSelected
-                          ? 'bg-champagne/15 border-champagne shadow-[0_0_20px_rgba(228,199,103,0.3)] text-cream'
-                          : 'bg-obsidian-900/60 border-champagne/15 hover:border-champagne/40 text-cream/70 hover:text-cream'
+                          ? 'bg-emerald-600 border-emerald-600 text-white shadow-md'
+                          : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100 text-slate-700'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 ${isSelected ? 'text-champagne' : 'text-cream/50'}`} />
-                      <span className="text-xs font-bold font-sans">{s.name}</span>
-                      <span className="text-[10px] font-mono text-emerald-400">~{(s.savingRate * 100).toFixed(0)}% avg save</span>
+                      <Icon className={`w-5 h-5 ${isSelected ? 'text-white' : 'text-slate-500'}`} />
+                      <span className="text-xs font-bold">{s.name}</span>
+                      <span className={`text-[10px] font-mono font-semibold ${isSelected ? 'text-emerald-100' : 'text-emerald-600'}`}>
+                        ~{(s.savingRate * 100).toFixed(0)}% avg save
+                      </span>
                     </button>
                   );
                 })}
@@ -145,19 +143,19 @@ export function PriceEstimator() {
             </div>
 
             {/* 2. Interactive Spend Range */}
-            <div className="bg-obsidian-950/70 border border-champagne/20 rounded-2xl p-5 sm:p-6 space-y-4">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
-                  <label htmlFor="spend-range" className="text-xs font-mono uppercase tracking-wider text-cream/90 block">
+                  <label htmlFor="spend-range" className="text-xs font-mono uppercase tracking-wider text-slate-800 font-bold block">
                     2. Estimated Weekly Food &amp; Fresh Produce Spend
                   </label>
-                  <span className="text-[11px] text-cream/60">Includes fresh produce, dairy, bakery &amp; chef essentials</span>
+                  <span className="text-[11px] text-slate-500">Includes fresh produce, butchery, dairy, bakery &amp; dry goods</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl sm:text-3xl font-bold font-display text-champagne">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                     £{weeklySpend.toLocaleString()}
                   </span>
-                  <span className="text-xs font-mono text-cream/60 uppercase">/ week</span>
+                  <span className="text-xs font-mono text-slate-500 uppercase">/ week</span>
                 </div>
               </div>
 
@@ -172,9 +170,9 @@ export function PriceEstimator() {
                   step="250"
                   value={weeklySpend}
                   onChange={(e) => setWeeklySpend(Number(e.target.value))}
-                  className="w-full h-2.5 bg-obsidian-800 rounded-lg appearance-none cursor-pointer accent-champagne"
+                  className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
-                <div className="flex justify-between text-[11px] text-cream/50 font-mono">
+                <div className="flex justify-between text-[11px] text-slate-500 font-mono">
                   <span>£500</span>
                   <span>£5,000</span>
                   <span>£10,000</span>
@@ -185,16 +183,16 @@ export function PriceEstimator() {
 
               {/* Quick spend shortcut chips */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-[11px] font-mono uppercase text-cream/50">Quick Pick:</span>
+                <span className="text-[11px] font-mono uppercase text-slate-500 font-semibold">Quick Pick:</span>
                 {SPEND_PRESETS.map((preset) => (
                   <button
                     key={preset.value}
                     type="button"
                     onClick={() => setWeeklySpend(preset.value)}
-                    className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors ${
+                    className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-colors ${
                       weeklySpend === preset.value
-                        ? 'bg-champagne text-obsidian-950 font-bold'
-                        : 'bg-obsidian-900 border border-champagne/20 text-cream/70 hover:text-cream hover:border-champagne/40'
+                        ? 'bg-slate-900 text-white'
+                        : 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300'
                     }`}
                   >
                     {preset.label}
@@ -205,35 +203,35 @@ export function PriceEstimator() {
 
             {/* 3. Live ROI & Value Metric Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-              <div className="rounded-2xl p-4 bg-obsidian-900/80 border border-champagne/20 text-center relative overflow-hidden">
-                <div className="text-[11px] text-cream/70 uppercase font-mono tracking-wider">Estimated Monthly Savings</div>
-                <div className="text-2xl sm:text-3xl font-bold font-display text-champagne mt-1.5">
+              <div className="rounded-2xl p-5 bg-white border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                <div className="text-[11px] text-slate-500 uppercase font-mono tracking-wider font-semibold">Estimated Monthly Savings</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5">
                   £{monthlySavings.toLocaleString()}
                 </div>
-                <div className="text-[11px] text-cream/60 mt-1 flex items-center justify-center gap-1">
-                  <Percent className="w-3 h-3 text-champagne" />
+                <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-center gap-1">
+                  <Percent className="w-3 h-3 text-emerald-600" />
                   <span>Direct grower pricing tier</span>
                 </div>
               </div>
 
-              <div className="rounded-2xl p-4 bg-emerald-950/40 border border-emerald-500/30 text-center relative overflow-hidden">
-                <div className="text-[11px] text-emerald-300 uppercase font-mono tracking-wider">Projected Annual Retained Profit</div>
-                <div className="text-2xl sm:text-3xl font-bold font-display text-emerald-400 mt-1.5">
+              <div className="rounded-2xl p-5 bg-emerald-50 border border-emerald-200 text-center relative overflow-hidden">
+                <div className="text-[11px] text-emerald-800 uppercase font-mono tracking-wider font-bold">Projected Annual Retained Profit</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-700 mt-1.5">
                   £{estimatedAnnualSavings.toLocaleString()} / yr
                 </div>
-                <div className="text-[11px] text-emerald-400/80 mt-1 flex items-center justify-center gap-1">
-                  <TrendingUp className="w-3 h-3" />
+                <div className="text-[11px] text-emerald-700 font-semibold mt-1 flex items-center justify-center gap-1">
+                  <TrendingUp className="w-3.5 h-3.5" />
                   <span>Retained kitchen margin</span>
                 </div>
               </div>
 
-              <div className="rounded-2xl p-4 bg-obsidian-900/80 border border-champagne/20 text-center relative overflow-hidden">
-                <div className="text-[11px] text-cream/70 uppercase font-mono tracking-wider">Zero Surcharge Advantage</div>
-                <div className="text-2xl sm:text-3xl font-bold font-display text-champagne-soft mt-1.5">
+              <div className="rounded-2xl p-5 bg-white border border-slate-200 shadow-sm text-center relative overflow-hidden">
+                <div className="text-[11px] text-slate-500 uppercase font-mono tracking-wider font-semibold">Zero Surcharge Advantage</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5">
                   +£{splitSurchargeSavings.toLocaleString()} / yr
                 </div>
-                <div className="text-[11px] text-cream/60 mt-1 flex items-center justify-center gap-1">
-                  <Truck className="w-3 h-3 text-champagne" />
+                <div className="text-[11px] text-slate-500 mt-1 flex items-center justify-center gap-1">
+                  <Truck className="w-3 h-3 text-emerald-600" />
                   <span>0% split delivery fee</span>
                 </div>
               </div>
@@ -241,7 +239,7 @@ export function PriceEstimator() {
 
             {/* 4. Instant Quote Request Form */}
             <div className="space-y-3 pt-2">
-              <label className="block text-xs font-mono uppercase tracking-wider text-champagne">
+              <label className="block text-xs font-mono uppercase tracking-wider text-slate-700 font-bold">
                 3. Dispatch Tailored Price Matrix to Your Brigade
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -252,7 +250,7 @@ export function PriceEstimator() {
                   aria-label="Business / Venue Name"
                   value={formData.companyName}
                   onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                  className="glass-input rounded-xl px-3.5 py-3 text-xs text-cream placeholder:text-cream/40"
+                  className="rounded-xl px-3.5 py-3 text-sm bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
                 <input
                   type="text"
@@ -260,7 +258,7 @@ export function PriceEstimator() {
                   aria-label="Head Chef / GM Name"
                   value={formData.contactName}
                   onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                  className="glass-input rounded-xl px-3.5 py-3 text-xs text-cream placeholder:text-cream/40"
+                  className="rounded-xl px-3.5 py-3 text-sm bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
                 <input
                   type="email"
@@ -269,62 +267,62 @@ export function PriceEstimator() {
                   aria-label="Work Email Address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="glass-input rounded-xl px-3.5 py-3 text-xs text-cream placeholder:text-cream/40"
+                  className="rounded-xl px-3.5 py-3 text-sm bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
                 <input
                   type="tel"
                   required
-                  placeholder="Direct Mobile / Kitchen Phone"
-                  aria-label="Direct Mobile / Kitchen Phone"
+                  placeholder="Direct Phone Number"
+                  aria-label="Direct Phone Number"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="glass-input rounded-xl px-3.5 py-3 text-xs text-cream placeholder:text-cream/40"
+                  className="rounded-xl px-3.5 py-3 text-sm bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] hover:brightness-105 shadow-[0_8px_30px_rgba(228,199,103,0.35)] flex items-center justify-center gap-2.5 text-sm sm:text-base uppercase tracking-wider transition-all"
+                className="w-full py-4 rounded-xl font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2.5 text-sm sm:text-base uppercase tracking-wider transition-all"
               >
                 <span>Generate Tailored Sector Price Matrix &amp; Open Account</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-cream/60 pt-1 font-mono">
-                <span className="flex items-center gap-1 text-emerald-400">
-                  <ShieldCheck className="w-3.5 h-3.5" /> No-commitment quote
+              <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-500 pt-1">
+                <span className="flex items-center gap-1.5 font-medium text-emerald-700">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> No-commitment quote
                 </span>
                 <span>&bull;</span>
-                <span className="flex items-center gap-1 text-champagne">
-                  <Clock className="w-3.5 h-3.5" /> 30-min Account Desk SLA
+                <span className="flex items-center gap-1.5 font-medium text-slate-700">
+                  <Clock className="w-4 h-4 text-emerald-600" /> 30-min Account Desk SLA
                 </span>
                 <span>&bull;</span>
-                <span>Includes dedicated account manager</span>
+                <span className="font-medium text-slate-700">Includes dedicated account manager</span>
               </div>
             </div>
           </form>
         ) : (
           <div className="text-center py-10 space-y-5 animate-fade-in">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-cream">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Your Customized Price List Has Been Prepared
             </h3>
-            <p className="text-sm sm:text-base text-cream/75 max-w-lg mx-auto leading-relaxed">
-              We have assigned your enquiry to our Digbeth Commercial Desk. Your dedicated account manager will transmit your tailored wholesale pricing schedule for <span className="text-champagne font-semibold">{formData.companyName}</span> within 30 minutes.
+            <p className="text-sm sm:text-base text-slate-600 max-w-lg mx-auto leading-relaxed">
+              We have assigned your enquiry to our Digbeth Commercial Desk. Your dedicated account manager will transmit your tailored wholesale pricing schedule for <span className="font-bold text-slate-900">{formData.companyName}</span> within 30 minutes.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
               <a
                 href="/login"
-                className="px-7 py-3 rounded-xl bg-gradient-to-r from-champagne to-champagne-soft text-obsidian-950 font-bold text-xs uppercase tracking-wider shadow-gold-glow hover:brightness-110"
+                className="px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
               >
                 Sign In to Customer Portal
               </a>
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="px-6 py-3 rounded-xl border border-champagne/30 text-cream/80 text-xs font-semibold hover:text-champagne hover:border-champagne"
+                className="px-6 py-3.5 rounded-xl border border-slate-300 text-slate-700 text-xs font-semibold hover:bg-slate-50 transition-colors"
               >
                 Calculate Another Kitchen Quote
               </button>

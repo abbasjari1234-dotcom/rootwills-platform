@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import { 
   Building2, 
   ShieldCheck, 
@@ -9,373 +10,229 @@ import {
   Award, 
   CheckCircle2, 
   Leaf, 
-  Sparkles,
-  Truck,
-  Layers,
-  Activity
+  Truck, 
+  Layers, 
+  Clock,
+  Check
 } from 'lucide-react';
+import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
-export const metadata = {
-  title: 'About Our British Farm Provenance, History & Operations | Rootwills',
+export const metadata: Metadata = {
+  title: 'About Rootwills | British Farm Provenance & Wholesale Operations',
   description:
-    'Learn how Rootwills connects UK generational growers with commercial hospitality kitchens through single-estate fresh produce, daily 2am Digbeth market grading, and temperature-locked logistics.',
+    'Learn how Rootwills connects UK generational growers and coastal fisheries directly with professional hospitality kitchens. Daily 2am market grading and guaranteed pre-dawn drops.',
 };
+
+const OPERATIONAL_METRICS = [
+  {
+    metric: '02:00 AM',
+    label: 'Daily Market Grading',
+    desc: 'Senior buyers inspect and hand-select Class 1 produce at wholesale markets every morning.',
+  },
+  {
+    metric: '99.4%',
+    label: 'On-Time Drop Rate',
+    desc: 'Pre-dawn logistics ensuring kitchen ingredients arrive before morning prep brigades clock in.',
+  },
+  {
+    metric: '1,200+',
+    label: 'Wholesale Commercial Lines',
+    desc: 'From daily vegetables and salads to butchery, artisan dairy, and kitchen dry goods.',
+  },
+  {
+    metric: 'EOM + 30',
+    label: 'Trade Credit Facility',
+    desc: 'Transparent 30-day billing terms designed for commercial hospitality cash flow.',
+  },
+];
+
+const ACCREDITATIONS = [
+  {
+    name: 'BRCGS Storage & Distribution',
+    level: 'Grade AA Audited',
+    desc: 'Global benchmark for food safety, warehouse hygiene, and cold-chain traceability.',
+  },
+  {
+    name: 'Red Tractor Farm Assured',
+    level: '100% British Traceability',
+    desc: 'Ensuring poultry, meats, and produce are sourced from vetted British family farms.',
+  },
+  {
+    name: 'SALSA Certification',
+    level: 'Approved Supplier Standard',
+    desc: 'Rigorous food safety compliance certification for professional commercial catering.',
+  },
+  {
+    name: 'Lion Quality Code of Practice',
+    level: 'Class A British Eggs',
+    desc: 'Complete flock vaccination and full eggshell stamping for food safety assurance.',
+  },
+];
+
+const SUPPLY_CHAIN_STEPS = [
+  {
+    step: '01',
+    title: 'Grower Partnerships & Farm Contracts',
+    desc: 'We contract directly with generational growers across Worcestershire, Warwickshire, Lincolnshire, and Kent, securing field-fresh crops at locked commercial rates.',
+  },
+  {
+    step: '02',
+    title: 'Daily 02:00 AM Depot Grading',
+    desc: 'Produce arrives at our temperature-controlled Digbeth and London depot hubs where quality controllers inspect every crate for size, firmness, and shelf life.',
+  },
+  {
+    step: '03',
+    title: 'Evening 11:00 PM Service Cutoff',
+    desc: 'Chefs finalize exact daily requirements after their dinner services close. Orders are routed directly into automated pick-and-pack warehouse lines.',
+  },
+  {
+    step: '04',
+    title: 'Pre-Dawn 06:00 AM Delivery Drop',
+    desc: 'Dual-temperature refrigerated vans complete drops between 05:30 and 07:30 AM, placing chilled crates directly into walk-in fridges with photo verification.',
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-obsidian-950 text-cream pb-24 space-y-20 sm:space-y-28 relative overflow-hidden">
-      {/* Ambient Lighting & Luxury Atmosphere */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-champagne/15 via-emerald-500/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[350px] bg-champagne/8 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 dot-grid-texture opacity-20 pointer-events-none" />
-
+    <div className="bg-white min-h-screen text-slate-900">
+      
       {/* ─── ACT I: HERO HEADER ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 relative z-10">
-        <div className="text-center max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 backdrop-blur-md border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.28em] font-semibold shadow-[0_0_25px_rgba(228,199,103,0.18)]">
-            <Building2 className="w-3.5 h-3.5 text-champagne" />
-            <span>Digbeth Wholesale Quarter &bull; British Farm Provenance</span>
+      <section className="relative py-16 lg:py-24 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-radial-at-t from-emerald-950/40 via-slate-950/90 to-slate-950 pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
+            <Building2 className="w-3.5 h-3.5" />
+            <span>British Farm Provenance &bull; Digbeth Wholesale Hub</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-cream uppercase tracking-tight leading-[0.95]">
-            From Historic Digbeth to the
-            <br />
-            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.3)]">
-              UK’s Premier Kitchens
-            </span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-sans font-black tracking-tight text-white leading-tight">
+            Connecting British Growers to <br className="hidden sm:inline" />
+            <span className="text-emerald-400">The UK’s Premier Kitchens</span>
           </h1>
 
-          <p className="text-sm sm:text-base lg:text-lg text-cream/80 leading-relaxed font-sans max-w-2xl mx-auto">
-            Founded with a singular standard: connect Britain’s finest generational growers, single-herd dairies, and coastal producers directly with professional chefs — eliminating brokers, preserving margins, and guaranteeing 06:00 AM kitchen deliveries.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed">
+            Founded with a singular standard: connect Britain’s finest generational growers, single-herd dairies, and coastal fisheries directly with professional kitchens, eliminating intermediary brokers, preserving margins, and guaranteeing pre-dawn deliveries.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/apply"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] text-xs uppercase tracking-wider shadow-[0_8px_30px_rgba(228,199,103,0.35)] hover:brightness-105 hover:scale-[1.03] transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-sans font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-950/60 transition-all"
             >
-              <span>Open Trade Account</span>
+              <span>Open Business Trade Account</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/80 border border-champagne/30 hover:border-champagne hover:text-champagne text-xs font-mono uppercase tracking-wider transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-sans font-semibold text-slate-200 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 text-sm transition-all"
             >
-              <span>Explore 1,200+ Lines</span>
+              <span>Explore 1,200+ Wholesale Lines</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* ─── ACT II: OPERATIONAL SCALE METRICS ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-2 text-center hover:border-champagne hover:shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(228,199,103,0.15)] transition-all duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="font-mono text-3xl sm:text-4xl font-black text-champagne">02:00 AM</div>
-            <div className="text-xs font-bold text-cream uppercase font-mono tracking-wider">Daily Market Selection</div>
-            <p className="text-[11px] text-cream/70 font-sans leading-relaxed">
-              Senior buyers inspect and hand-select Class 1 produce at Birmingham wholesale market every morning.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-2 text-center hover:border-champagne hover:shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(228,199,103,0.15)] transition-all duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="font-mono text-3xl sm:text-4xl font-black text-champagne">06:00 AM</div>
-            <div className="text-xs font-bold text-cream uppercase font-mono tracking-wider">Kitchen Drop SLA</div>
-            <p className="text-[11px] text-cream/70 font-sans leading-relaxed">
-              Pre-dawn deliveries checked straight into walk-in fridges before breakfast brigade prep begins.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-2 text-center hover:border-champagne hover:shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(228,199,103,0.15)] transition-all duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="font-mono text-3xl sm:text-4xl font-black text-champagne">1,200+</div>
-            <div className="text-xs font-bold text-cream uppercase font-mono tracking-wider">Wholesale Lines</div>
-            <p className="text-[11px] text-cream/70 font-sans leading-relaxed">
-              Single-estate fruits, Evesham brassicas, artisan cheese rolls, dry store pantry, and living herbs.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-2 text-center hover:border-champagne hover:shadow-[0_15px_35px_rgba(0,0,0,0.8),0_0_25px_rgba(228,199,103,0.15)] transition-all duration-300 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="font-mono text-3xl sm:text-4xl font-black text-emerald-400">99.8%</div>
-            <div className="text-xs font-bold text-cream uppercase font-mono tracking-wider">On-Time Fulfilment</div>
-            <p className="text-[11px] text-cream/70 font-sans leading-relaxed">
-              Dual-temperature Mercedes fleet equipped with live GPS &amp; hold temperature telemetry.
-            </p>
-          </div>
+      <section className="py-12 -mt-6 relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {OPERATIONAL_METRICS.map((m, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm space-y-2 text-center"
+            >
+              <div className="font-mono text-2xl sm:text-3xl font-black text-emerald-700">
+                {m.metric}
+              </div>
+              <div className="text-xs font-bold text-slate-900 uppercase font-sans tracking-wide">
+                {m.label}
+              </div>
+              <p className="text-xs text-slate-500 font-sans leading-relaxed">
+                {m.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── ACT III: OUR HERITAGE & SOURCING PHILOSOPHY ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div className="lg:col-span-6 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-950/80 border border-champagne/30 text-champagne text-xs font-mono uppercase font-semibold">
-              <Leaf className="w-3.5 h-3.5" />
-              <span>Digbeth Trading Heritage</span>
-            </div>
-
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-cream uppercase leading-tight">
-              Rooted in Britain’s Most Famous Wholesale Hub
-            </h2>
-
-            <div className="space-y-4 text-sm sm:text-base text-cream/80 leading-relaxed font-sans">
-              <p>
-                Rootwills was born in the historic wholesale trading corridors of Pershore Street, Digbeth. Where traditional suppliers relied on scribbled carbon-copy receipts and unmonitored transit vans, we saw an urgent opportunity to modernize British foodservice from the ground up.
-              </p>
-              <p>
-                Every night while the UK sleeps, our direct farm lines arrive from Evesham, Kent, and the Lincolnshire fens into our high-hygiene temperature-zoned consolidation depot. By 02:30 AM, our QC inspectors verify brix levels, firmness, and freshness before packing orders into barcode-scanned crates.
-              </p>
-              <p>
-                By blending this deep produce pedigree with custom digital kitchen software, we give chefs transparent fixed pricing, instant photo credit notes, and 1-click repeat orders that legacy broadliners cannot match.
-              </p>
-            </div>
-
-            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono text-champagne">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Zero Broker Fees</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Single-Estate Traceability</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>Locked Contract Rates</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-6">
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_25px_70px_rgba(0,0,0,0.9)] border border-champagne/35 bg-obsidian-900 group">
-              <Image
-                src="/images/branded/rootwills_digbeth_hub.jpg"
-                alt="Rootwills Digbeth consolidation depot hub"
-                fill
-                quality={90}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-95"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/30 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-obsidian-950/85 backdrop-blur-md border border-champagne/30 text-xs">
-                <span className="font-mono text-champagne uppercase tracking-wider font-bold block mb-1">
-                  Digbeth Wholesale Consolidation Hub
-                </span>
-                <span className="text-cream/80 font-sans">
-                  Daily 02:00 AM Class 1 grading inspection &amp; multi-temperature dual-zone loading bay.
-                </span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ─── ACT IV: 4 CORE PROVENANCE PILLARS ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 border border-champagne/30 text-champagne text-xs font-mono uppercase font-semibold">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Operational Integrity</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream uppercase">
-            The Four Pillars of Rootwills Excellence
+      {/* ─── ACT III: THE 4-STEP SUPPLY CHAIN STORY ─── */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+            Farm to Prep Brigade
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-sans font-extrabold text-slate-900 tracking-tight">
+            How Rootwills Powers Commercial Kitchens
           </h2>
-          <p className="text-xs sm:text-sm text-cream/75 font-sans">
-            How we protect culinary kitchen standards from farm gate to service pass.
+          <p className="text-xs sm:text-sm text-slate-600 font-sans leading-relaxed">
+            Our lean supply chain reduces transit times, maintains cold-chain integrity, and delivers maximum shelf-life for professional culinary teams.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              01
-            </div>
-            <h3 className="font-display text-lg font-bold text-cream">Grower-Direct Partnerships</h3>
-            <p className="text-xs text-cream/75 leading-relaxed font-sans">
-              We contract directly with generational British growers across Evesham, Kent, and Worcestershire, ensuring maximum shelf life and field freshness.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              02
-            </div>
-            <h3 className="font-display text-lg font-bold text-cream">Dual-Temp Cold-Chain</h3>
-            <p className="text-xs text-cream/75 leading-relaxed font-sans">
-              Our fleet features dual-compartment chillers maintaining crisp salads at +4°C and frozen lines at -18°C with live temperature telemetry.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              03
-            </div>
-            <h3 className="font-display text-lg font-bold text-cream">Sensory &amp; Class 1 Grading</h3>
-            <p className="text-xs text-cream/75 leading-relaxed font-sans">
-              Every crate is physically inspected for uniformity, aroma, color, and firmness before loading. Substandard produce is rejected at the bay.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-6 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              04
-            </div>
-            <h3 className="font-display text-lg font-bold text-cream">Digital Kitchen Platform</h3>
-            <p className="text-xs text-cream/75 leading-relaxed font-sans">
-              Submit orders until 11:00 PM post-dinner service, manage standing orders, view locked contracts, and download VAT invoices in one click.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── ACT V: REGIONAL PROVENANCE MAP ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        <div className="rounded-3xl p-8 sm:p-12 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-2xl space-y-8">
-          <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-4 border-b border-champagne/20 pb-6">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-champagne font-bold block mb-1">
-                Regional Sourcing Map
+          {SUPPLY_CHAIN_STEPS.map((s, idx) => (
+            <div
+              key={idx}
+              className="bg-slate-50/80 rounded-2xl p-6 border border-slate-200/80 space-y-3 relative"
+            >
+              <span className="text-3xl font-mono font-black text-emerald-600/30 block">
+                {s.step}
               </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream uppercase">
-                Where Our Fresh Produce Comes From
-              </h2>
-            </div>
-            <div className="text-xs font-mono text-emerald-400 font-bold">
-              100% Traceable Single-Estate Origins
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-xs font-sans">
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-2">
-              <div className="flex items-center gap-2 text-champagne font-bold font-mono uppercase">
-                <MapPin className="w-3.5 h-3.5 text-champagne" />
-                <span>Vale of Evesham</span>
-              </div>
-              <div className="text-cream font-semibold">Worcestershire Market Gardens</div>
-              <p className="text-cream/70 leading-relaxed">
-                Heritage asparagus, heirloom brassicas, baby leeks, beetroot, and traditional root vegetables harvested daily.
+              <h3 className="font-sans font-bold text-base text-slate-900 leading-snug">
+                {s.title}
+              </h3>
+              <p className="font-sans text-xs text-slate-600 leading-relaxed">
+                {s.desc}
               </p>
             </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-2">
-              <div className="flex items-center gap-2 text-champagne font-bold font-mono uppercase">
-                <MapPin className="w-3.5 h-3.5 text-champagne" />
-                <span>Kent &amp; East Anglia</span>
-              </div>
-              <div className="text-cream font-semibold">The Garden of England Orchards</div>
-              <p className="text-cream/70 leading-relaxed">
-                Heritage Cox &amp; Bramley apples, Conference pears, soft summer berries, and seasonal stone fruit direct from grower co-ops.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-2">
-              <div className="flex items-center gap-2 text-champagne font-bold font-mono uppercase">
-                <MapPin className="w-3.5 h-3.5 text-champagne" />
-                <span>Somerset &amp; Cotswolds</span>
-              </div>
-              <div className="text-cream font-semibold">Artisan Farmstead Dairies</div>
-              <p className="text-cream/70 leading-relaxed">
-                Cultured butter sheets, unpasteurised farmhouse cheeses, clotted cream, and pasture-raised British Lion egg crates.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/15 space-y-2">
-              <div className="flex items-center gap-2 text-champagne font-bold font-mono uppercase">
-                <MapPin className="w-3.5 h-3.5 text-champagne" />
-                <span>Midlands Hydroponics</span>
-              </div>
-              <div className="text-cream font-semibold">Precision Indoor Urban Farms</div>
-              <p className="text-cream/70 leading-relaxed">
-                Living microgreens cut on order, pea shoots, edible viola flowers, and aromatic hydroponic coriander &amp; basil.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── ACT VI: ACCREDITATIONS & CERTIFICATIONS ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 sm:p-10 rounded-2xl bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-xl text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase font-bold">
-            <Award className="w-3.5 h-3.5" />
-            <span>Commercial Quality Accreditations</span>
-          </div>
-
-          <h3 className="font-display text-2xl sm:text-3xl font-bold text-cream uppercase">
-            Independent UK Food Safety &amp; Quality Assurances
-          </h3>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-4 text-xs font-mono">
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/20 space-y-1.5">
-              <div className="text-champagne font-bold text-sm">BRCGS Storage &amp; Distribution</div>
-              <div className="text-cream/60">Certified Grade AA Facility</div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/20 space-y-1.5">
-              <div className="text-champagne font-bold text-sm">SALSA Assured</div>
-              <div className="text-cream/60">Safe and Local Supplier Approval</div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/20 space-y-1.5">
-              <div className="text-champagne font-bold text-sm">Red Tractor Assured</div>
-              <div className="text-cream/60">Full Farm-to-Fork Traceability</div>
-            </div>
-
-            <div className="p-4 rounded-xl bg-obsidian-900 border border-champagne/20 space-y-1.5">
-              <div className="text-champagne font-bold text-sm">HACCP Certified</div>
-              <div className="text-cream/60">Rigorous Hazard Analysis Standards</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── ACT VII: FINAL CONVERSION CTA ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="glass-panel-gold p-8 sm:p-14 rounded-3xl text-center space-y-6 relative overflow-hidden border border-champagne/30">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne/20 border border-champagne/40 text-champagne text-xs font-mono uppercase font-bold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Ready to Elevate Your Kitchen Supply?</span>
-          </div>
-
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase max-w-2xl mx-auto">
-            Experience British Foodservice{' '}
-            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent">
-              Engineered for Chefs
+      {/* ─── ACT IV: QUALITY ACCREDITATIONS ─── */}
+      <section className="py-16 bg-slate-50/70 border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+              Compliance &amp; Traceability
             </span>
-          </h2>
+            <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-slate-900 tracking-tight">
+              Rigorous Food Safety Certifications
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 font-sans">
+              Every facility, vehicle, and supplier within our network is held to the highest audited UK food hygiene standards.
+            </p>
+          </div>
 
-          <p className="text-xs sm:text-sm text-cream/80 max-w-xl mx-auto font-sans leading-relaxed">
-            Join premier Michelin-starred venues, boutique hotels, and luxury catering kitchens who trust Rootwills every single morning. Apply in 3 minutes for instant trade credit.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link
-              href="/apply"
-              className="px-8 py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] shadow-[0_8px_30px_rgba(228,199,103,0.35)] hover:brightness-105 text-xs font-mono uppercase tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-            >
-              <span>Open Commercial Trade Account</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-950/80 border border-champagne/40 hover:bg-champagne/10 hover:text-champagne text-xs font-mono uppercase tracking-wider transition-all"
-            >
-              <span>Speak with Birmingham Commercial Desk</span>
-            </Link>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {ACCREDITATIONS.map((acc, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs space-y-2.5"
+              >
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-100">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-sans font-bold text-sm text-slate-900">
+                    {acc.name}
+                  </h3>
+                  <span className="text-[11px] font-mono text-emerald-700 font-semibold block mt-0.5">
+                    {acc.level}
+                  </span>
+                </div>
+                <p className="font-sans text-xs text-slate-600 leading-relaxed">
+                  {acc.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ─── ACT V: BOTTOM SPLIT CTA ─── */}
+      <CommercialBottomCTA />
 
     </div>
   );

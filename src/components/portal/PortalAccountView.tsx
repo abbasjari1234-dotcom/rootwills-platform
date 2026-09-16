@@ -11,16 +11,11 @@ import {
   Plus, 
   Edit3, 
   CheckCircle2, 
-  Phone, 
-  Mail,
-  Sparkles,
-  Landmark,
-  CreditCard,
-  Lock,
-  ExternalLink,
-  Trash2,
-  Download,
-  AlertTriangle
+  Landmark, 
+  Trash2, 
+  Download, 
+  AlertTriangle,
+  BadgeCheck
 } from 'lucide-react';
 import { deleteUserAccountServerAction, exportUserPersonalDataServerAction } from '@/actions/account';
 
@@ -29,7 +24,6 @@ export function PortalAccountView() {
   const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
 
   const [savedSuccess, setSavedSuccess] = useState(false);
-  const [mandateActive, setMandateActive] = useState(true);
   const [notifications, setNotifications] = useState({
     smsArrival: true,
     emailInvoice: true,
@@ -91,24 +85,24 @@ export function PortalAccountView() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-cream/10">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono text-champagne uppercase font-bold">
-            <Building2 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 uppercase tracking-wider">
+            <Building2 className="w-4 h-4" />
             <span>Commercial Account & Multi-Site Configuration</span>
           </div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-cream mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
             Account Settings & Kitchen Profile
           </h1>
-          <p className="text-xs text-cream/60">
-            {currentOrg.name} &bull; Manage your kitchen locations, user permissions, and automated payment facilities.
+          <p className="text-sm text-slate-600 mt-1">
+            {currentOrg.name} &bull; Manage your delivery locations, authorized kitchen staff, and automated BACS billing.
           </p>
         </div>
 
         {savedSuccess && (
-          <span className="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono flex items-center gap-1 animate-fade-in">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Settings Saved!</span>
+          <span className="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-medium flex items-center gap-1.5 shadow-xs animate-fade-in">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <span>Preferences saved successfully</span>
           </span>
         )}
       </div>
@@ -117,59 +111,62 @@ export function PortalAccountView() {
         {/* Left Column (2 cols) */}
         <div className="lg:col-span-2 space-y-8">
           {/* Multi-Site Locations Manager */}
-          <div className="glass-panel p-6 sm:p-8 rounded-2xl space-y-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 shadow-xs space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="font-display text-xl font-bold text-cream flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-champagne" />
-                  <span>Delivery Locations & Kitchen Drop Points</span>
+                <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-emerald-600" />
+                  <span>Delivery Locations & Drop Points</span>
                 </h2>
-                <p className="text-xs text-cream/50 mt-0.5">
-                  Your kitchen venues and loading bay instructions
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Designated kitchen venues, access codes, and driver loading bay instructions
                 </p>
               </div>
               <button
+                type="button"
                 onClick={() => alert('New kitchen location creation form')}
-                className="px-3 py-1.5 rounded-lg bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-medium flex items-center gap-1"
+                className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-xs text-slate-700 font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
               >
-                <Plus className="w-3.5 h-3.5 text-champagne" />
+                <Plus className="w-4 h-4 text-slate-500" />
                 <span>Add Site</span>
               </button>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {currentOrg.locations.map((loc) => (
                 <div
                   key={loc.id}
-                  className="p-4 rounded-xl bg-obsidian-950 border border-cream/10 space-y-2"
+                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 hover:border-slate-300 transition-colors"
                 >
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center gap-2">
-                        <strong className="text-cream text-sm">{loc.name}</strong>
+                        <strong className="text-slate-900 text-sm font-semibold">{loc.name}</strong>
                         {loc.isPrimary && (
-                          <span className="px-2 py-0.5 rounded bg-champagne/10 text-champagne text-[10px] font-mono border border-champagne/20">
+                          <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200">
                             Primary Venue
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-cream/60 mt-0.5">
-                        {loc.addressLine1}, {loc.city}, <span className="font-mono text-champagne">{loc.postcode}</span>
+                      <div className="text-xs text-slate-600 mt-1">
+                        {loc.addressLine1}, {loc.city}, <span className="font-mono font-medium text-slate-900">{loc.postcode}</span>
                       </div>
                     </div>
 
                     <button
+                      type="button"
                       onClick={() => alert(`Edit ${loc.name}`)}
-                      className="text-xs text-cream/40 hover:text-cream"
+                      className="p-1.5 rounded-md hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
+                      title={`Edit ${loc.name}`}
                     >
-                      <Edit3 className="w-3.5 h-3.5" />
+                      <Edit3 className="w-4 h-4" />
                     </button>
                   </div>
 
-                  <div className="pt-2 border-t border-cream/5 text-[11px] text-cream/70">
-                    <span className="font-mono text-champagne/80 uppercase text-[9px] block">Driver Drop Instructions</span>
-                    <p className="italic text-cream/60 mt-0.5">
-                      {loc.deliveryInstructions || 'Standard keyholder morning drop.'}
+                  <div className="pt-2 border-t border-slate-200/60 text-xs text-slate-700">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Driver Drop Instructions</span>
+                    <p className="text-slate-600 mt-0.5 italic">
+                      &ldquo;{loc.deliveryInstructions || 'Standard keyholder morning drop.'}&rdquo;
                     </p>
                   </div>
                 </div>
@@ -178,43 +175,44 @@ export function PortalAccountView() {
           </div>
 
           {/* Team Permissions & User Roles */}
-          <div className="glass-panel p-6 sm:p-8 rounded-2xl space-y-6">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 shadow-xs space-y-6">
             <div className="flex justify-between items-center">
               <div>
-                <h2 className="font-display text-xl font-bold text-cream flex items-center gap-2">
-                  <Users className="w-5 h-5 text-champagne" />
+                <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-emerald-600" />
                   <span>Authorized Users & Roles</span>
                 </h2>
-                <p className="text-xs text-cream/50 mt-0.5">
-                  Control who in your team can place orders vs. manage invoices
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Control who can build baskets, authorize PO spend, or export financial statements
                 </p>
               </div>
               <button
+                type="button"
                 onClick={() => alert('Invite staff member to account')}
-                className="px-3 py-1.5 rounded-lg bg-obsidian-900 border border-cream/20 hover:border-champagne text-xs text-cream font-medium flex items-center gap-1"
+                className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-xs text-slate-700 font-semibold flex items-center gap-1.5 shadow-xs transition-colors"
               >
-                <Plus className="w-3.5 h-3.5 text-champagne" />
-                <span>Invite User</span>
+                <Plus className="w-4 h-4 text-slate-500" />
+                <span>Invite Staff</span>
               </button>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3.5 bg-obsidian-950 rounded-xl border border-cream/10 flex justify-between items-center">
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
                 <div>
-                  <div className="font-bold text-cream">{userProfile.fullName}</div>
-                  <div className="text-[11px] text-cream/50">{userProfile.email}</div>
+                  <div className="font-semibold text-slate-900 text-sm">{userProfile.fullName}</div>
+                  <div className="text-xs text-slate-500 mt-0.5">{userProfile.email}</div>
                 </div>
-                <span className="px-2.5 py-1 rounded bg-champagne/10 text-champagne font-mono text-[10px] border border-champagne/20 capitalize">
+                <span className="px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 font-medium text-xs border border-emerald-200 capitalize">
                   {userProfile.role} (Full Ordering & Approval)
                 </span>
               </div>
 
-              <div className="p-3.5 bg-obsidian-950 rounded-xl border border-cream/10 flex justify-between items-center">
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center">
                 <div>
-                  <div className="font-bold text-cream">Finance & Accounts Controller</div>
-                  <div className="text-[11px] text-cream/50">accounts@{currentOrg.name.toLowerCase().replace(/[^a-z]/g, '')}.co.uk</div>
+                  <div className="font-semibold text-slate-900 text-sm">Finance & Accounts Controller</div>
+                  <div className="text-xs text-slate-500 mt-0.5">accounts@{currentOrg.name.toLowerCase().replace(/[^a-z]/g, '')}.co.uk</div>
                 </div>
-                <span className="px-2.5 py-1 rounded bg-purple-500/10 text-purple-300 font-mono text-[10px] border border-purple-500/20">
+                <span className="px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-medium text-xs border border-slate-200">
                   Finance (Invoices & Statements Only)
                 </span>
               </div>
@@ -222,15 +220,15 @@ export function PortalAccountView() {
           </div>
 
           {/* GDPR Privacy & Right to Erasure Section */}
-          <div className="glass-panel p-6 sm:p-8 rounded-2xl space-y-4 border border-rose-900/30">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="font-display text-xl font-bold text-cream flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-champagne" />
-                  <span>Privacy & GDPR Data Management</span>
+                <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                  <span>Privacy & UK GDPR Compliance</span>
                 </h2>
-                <p className="text-xs text-cream/60 mt-0.5">
-                  Exercise your UK GDPR rights, export your data records, or request complete account erasure.
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Exercise your statutory UK GDPR rights, export machine-readable files, or request account closure.
                 </p>
               </div>
             </div>
@@ -239,28 +237,28 @@ export function PortalAccountView() {
               <button
                 type="button"
                 onClick={handleExportData}
-                className="p-4 rounded-xl bg-obsidian-950 border border-cream/15 hover:border-champagne text-left transition-all group"
+                className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/20 text-left transition-all group"
               >
-                <span className="flex items-center gap-2 text-champagne text-xs font-mono font-bold">
+                <span className="flex items-center gap-2 text-emerald-700 text-xs font-bold">
                   <Download className="w-4 h-4" />
                   <span>Export Personal Data (JSON)</span>
                 </span>
-                <span className="block text-[11px] text-cream/50 mt-1 font-sans">
-                  Download a machine-readable export of all account profile records and stored preferences.
+                <span className="block text-xs text-slate-500 mt-1.5 leading-relaxed">
+                  Download a complete, machine-readable export of your verified profile, addresses, and account logs.
                 </span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setShowDeleteModal(true)}
-                className="p-4 rounded-xl bg-rose-950/20 border border-rose-900/40 hover:border-rose-500 text-left transition-all group"
+                className="p-4 rounded-xl bg-rose-50/40 border border-rose-200 hover:border-rose-300 hover:bg-rose-50 text-left transition-all group"
               >
-                <span className="flex items-center gap-2 text-rose-400 text-xs font-mono font-bold">
-                  <Trash2 className="w-4 h-4" />
+                <span className="flex items-center gap-2 text-rose-700 text-xs font-bold">
+                  <Trash2 className="w-4 h-4 text-rose-600" />
                   <span>Erase Account & Personal Data</span>
                 </span>
-                <span className="block text-[11px] text-rose-300/60 mt-1 font-sans">
-                  Permanently anonymize personal profile, destroy session tokens, and close your commercial portal access.
+                <span className="block text-xs text-rose-700/70 mt-1.5 leading-relaxed">
+                  Permanently anonymize personal profile credentials, revoke sessions, and close commercial access.
                 </span>
               </button>
             </div>
@@ -270,108 +268,117 @@ export function PortalAccountView() {
         {/* Right Column: Banking, Trade Terms & Notifications */}
         <div className="space-y-6">
           {/* Automated BACS Direct Debit Card */}
-          <div className="glass-panel p-6 rounded-2xl space-y-4 text-xs border-emerald-500/30 bg-emerald-500/5">
-            <div className="flex justify-between items-start">
-              <div className="flex items-center gap-2">
-                <Landmark className="w-4 h-4 text-emerald-400" />
-                <h3 className="font-display text-base font-bold text-cream">BACS Direct Debit</h3>
+          <div className="bg-white border border-emerald-200 rounded-xl p-6 shadow-xs space-y-4 text-xs relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-full -mr-8 -mt-8 -z-0" />
+            
+            <div className="relative z-10">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                    <Landmark className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-sm">BACS Direct Debit</h3>
+                    <p className="text-[11px] text-slate-500">Automated settlement</p>
+                  </div>
+                </div>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold border border-emerald-200">
+                  ACTIVE MANDATE
+                </span>
               </div>
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold border border-emerald-500/30">
-                ACTIVE MANDATE
-              </span>
-            </div>
 
-            <div className="p-3 bg-zinc-950/80 rounded-xl border border-zinc-800 space-y-2 font-mono text-[11px]">
-              <div className="flex justify-between text-cream/60">
-                <span>Direct Debit Scheme:</span>
-                <span className="text-cream">UK BACS</span>
+              <div className="mt-4 p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2 text-xs">
+                <div className="flex justify-between text-slate-500">
+                  <span>Direct Debit Scheme:</span>
+                  <span className="text-slate-900 font-semibold">UK BACS</span>
+                </div>
+                <div className="flex justify-between text-slate-500">
+                  <span>Account Ending:</span>
+                  <span className="text-slate-900 font-mono font-bold">•••• 4192</span>
+                </div>
+                <div className="flex justify-between text-slate-500">
+                  <span>Settlement Terms:</span>
+                  <span className="text-emerald-700 font-bold">{currentOrg.paymentTerms}</span>
+                </div>
               </div>
-              <div className="flex justify-between text-cream/60">
-                <span>Account Ending:</span>
-                <span className="text-champagne font-bold">•••• 4192</span>
-              </div>
-              <div className="flex justify-between text-cream/60">
-                <span>Settlement Terms:</span>
-                <span className="text-emerald-400 font-bold">{currentOrg.paymentTerms}</span>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-1.5 text-[10px] text-cream/50">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-              <span>Protected by the UK Direct Debit Guarantee</span>
+              <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-3 pt-3 border-t border-slate-100">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Protected by the UK Direct Debit Guarantee</span>
+              </div>
             </div>
           </div>
 
           {/* Trade Terms Overview */}
-          <div className="glass-panel p-6 rounded-2xl space-y-4 text-xs">
-            <h3 className="font-display text-lg font-bold text-cream flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-champagne" />
+          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-xs space-y-4 text-xs">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <BadgeCheck className="w-4 h-4 text-emerald-600" />
               <span>Commercial Terms</span>
             </h3>
 
-            <div className="space-y-2.5 text-cream/70 font-mono">
-              <div className="flex justify-between">
+            <div className="space-y-2.5 text-slate-600 divide-y divide-slate-100">
+              <div className="flex justify-between pt-1">
                 <span>Account Status:</span>
-                <span className="text-emerald-400 font-bold uppercase">Active Approved</span>
+                <span className="text-emerald-700 font-bold uppercase">Active Approved</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between pt-2">
                 <span>Credit Limit:</span>
-                <span className="text-cream font-bold">£{currentOrg.creditLimit.toLocaleString()}</span>
+                <span className="text-slate-900 font-bold font-mono">£{currentOrg.creditLimit.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between pt-2">
                 <span>Payment Terms:</span>
-                <span className="text-champagne font-bold">{currentOrg.paymentTerms}</span>
+                <span className="text-slate-900 font-bold">{currentOrg.paymentTerms}</span>
               </div>
-              <div className="flex justify-between">
-                <span>Assigned Depot:</span>
-                <span className="text-cream">{currentOrg.assignedDepot}</span>
+              <div className="flex justify-between pt-2">
+                <span>Assigned Hub Depot:</span>
+                <span className="text-slate-900 font-medium">{currentOrg.assignedDepot}</span>
               </div>
             </div>
           </div>
 
           {/* Notifications Preferences */}
-          <div className="glass-panel p-6 rounded-2xl space-y-4 text-xs">
-            <h3 className="font-display text-lg font-bold text-cream flex items-center gap-2">
-              <Bell className="w-4 h-4 text-champagne" />
+          <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-xs space-y-4 text-xs">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Bell className="w-4 h-4 text-emerald-600" />
               <span>Alert Preferences</span>
             </h3>
 
             <form onSubmit={handleSave} className="space-y-3">
-              <label className="flex items-center justify-between cursor-pointer">
-                <span>Driver Arrival SMS Alerts</span>
+              <label className="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                <span className="text-slate-700 font-medium">Driver Arrival SMS Alerts</span>
                 <input
                   type="checkbox"
                   checked={notifications.smsArrival}
                   onChange={(e) => setNotifications({ ...notifications, smsArrival: e.target.checked })}
-                  className="w-4 h-4 accent-champagne cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
 
-              <label className="flex items-center justify-between cursor-pointer">
-                <span>Invoice Issued Email Alerts</span>
+              <label className="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                <span className="text-slate-700 font-medium">Invoice Issued Email Alerts</span>
                 <input
                   type="checkbox"
                   checked={notifications.emailInvoice}
                   onChange={(e) => setNotifications({ ...notifications, emailInvoice: e.target.checked })}
-                  className="w-4 h-4 accent-champagne cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
 
-              <label className="flex items-center justify-between cursor-pointer">
-                <span>Out of Stock Substitution Prompts</span>
+              <label className="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                <span className="text-slate-700 font-medium">Out of Stock Substitution Alerts</span>
                 <input
                   type="checkbox"
                   checked={notifications.outOfStockAlert}
                   onChange={(e) => setNotifications({ ...notifications, outOfStockAlert: e.target.checked })}
-                  className="w-4 h-4 accent-champagne cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
 
               <button
                 type="submit"
-                className="w-full mt-3 py-2 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110"
+                className="w-full mt-3 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-xs transition-colors"
               >
-                Save Notification Settings
+                Save Alert Settings
               </button>
             </form>
           </div>
@@ -380,36 +387,36 @@ export function PortalAccountView() {
 
       {/* Account Deletion Confirmation Modal */}
       {showDeleteModal && (
-        <div className="fixed inset-0 z-50 bg-obsidian-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-panel-gold max-w-md w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-rose-500/40 shadow-2xl animate-fade-in">
-            <div className="w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white max-w-md w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-slate-200 shadow-2xl animate-fade-in">
+            <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center">
               <AlertTriangle className="w-6 h-6" />
             </div>
 
             <div>
-              <h3 className="font-display text-xl font-bold text-cream">
+              <h3 className="text-lg font-bold text-slate-900">
                 Erase Account & Personal Data?
               </h3>
-              <p className="text-xs text-cream/70 mt-1.5 leading-relaxed font-sans">
+              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                 Under UK GDPR (Right to Erasure), your personal profile, contact information, and authentication sessions will be permanently deleted and anonymized. Active outstanding invoices remain archived for financial compliance.
               </p>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-[11px] font-mono uppercase text-cream/80 font-bold">
-                Type <span className="text-rose-400">DELETE</span> to confirm:
+              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                Type <span className="text-rose-600 font-bold">DELETE</span> to confirm:
               </label>
               <input
                 type="text"
                 value={deleteConfirmText}
                 onChange={(e) => setDeleteConfirmText(e.target.value)}
                 placeholder="DELETE"
-                className="w-full bg-obsidian-950 border border-rose-900/60 rounded-xl px-3.5 py-2.5 text-xs text-cream focus:outline-none focus:border-rose-400 font-mono"
+                className="w-full bg-white border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-rose-500 font-mono"
               />
             </div>
 
             {deleteStatus && (
-              <div className="p-3 rounded-lg bg-rose-950/60 border border-rose-500/30 text-rose-300 text-xs font-mono">
+              <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-mono">
                 {deleteStatus}
               </div>
             )}
@@ -417,10 +424,9 @@ export function PortalAccountView() {
             <div className="flex gap-3 pt-2">
               <button
                 type="button"
-                aria-label="Confirm permanent account erasure"
                 disabled={isDeleting || deleteConfirmText.trim().toUpperCase() !== 'DELETE'}
                 onClick={handleConfirmDelete}
-                className="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-mono font-bold text-xs transition-all disabled:opacity-40"
+                className="flex-1 py-2.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs transition-all shadow-xs disabled:opacity-40"
               >
                 {isDeleting ? 'Erasing Data...' : 'Confirm Permanent Erasure'}
               </button>
@@ -433,7 +439,7 @@ export function PortalAccountView() {
                   setDeleteConfirmText('');
                   setDeleteStatus(null);
                 }}
-                className="px-4 py-2.5 rounded-xl bg-obsidian-900 border border-cream/20 text-cream/70 hover:text-cream text-xs font-mono"
+                className="px-4 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors"
               >
                 Cancel
               </button>

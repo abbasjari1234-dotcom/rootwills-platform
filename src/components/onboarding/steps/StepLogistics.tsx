@@ -53,11 +53,11 @@ export function StepLogistics() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="space-y-1">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-champagne font-bold">Step 3 of 4</p>
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
-          Delivery & Kitchen Logistics
+        <p className="font-mono text-xs uppercase tracking-wider text-emerald-700 font-bold">Step 3 of 4</p>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Delivery &amp; Kitchen Logistics
         </h2>
-        <p className="text-xs text-cream/60">
+        <p className="text-sm text-slate-600">
           We route your deliveries to the nearest regional depot and schedule your morning driver window.
         </p>
       </div>
@@ -71,44 +71,51 @@ export function StepLogistics() {
             aria-label="Primary Delivery Postcode"
             onBlur={handlePostcodeBlur}
             placeholder="e.g. B2 5BN"
-            className="onboarding-input font-mono uppercase font-bold"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-mono uppercase font-bold"
           />
         </FormField>
 
         {/* Depot Routing Preview Badge */}
         <div className="min-h-[36px] flex items-center gap-2 text-xs font-mono">
           {checking ? (
-            <div className="flex items-center gap-2 text-champagne">
-              <Loader2 className="h-4 w-4 animate-spin text-champagne" />
-              <span>Locating nearest regional cold-chain depot…</span>
+            <div className="flex items-center gap-2 text-emerald-700">
+              <Loader2 className="h-4 w-4 animate-spin text-emerald-600" />
+              <span>Locating nearest regional cold-chain depot...</span>
             </div>
           ) : depotPreview ? (
-            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs w-full">
-              <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
-              <span>Assigned Depot: <strong className="text-cream">{depotPreview}</strong> (06:00 - 08:30 AM SLA)</span>
+            <div className="flex items-center gap-2 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs w-full">
+              <MapPin className="h-4 w-4 text-emerald-600 shrink-0" />
+              <span>Assigned Depot: <strong className="text-slate-900">{depotPreview}</strong> (05:30 - 08:00 AM SLA)</span>
             </div>
           ) : (
-            <span className="text-[11px] text-cream/70">Enter postcode to verify assigned fulfilment hub</span>
+            <span className="text-xs text-slate-500">Enter postcode to verify assigned fulfilment hub</span>
           )}
         </div>
 
-        <FormField label="Driver & Kitchen Access Notes" htmlFor="deliveryNotes" hint="Optional">
+        <FormField label="Driver &amp; Kitchen Access Notes" htmlFor="deliveryNotes" hint="Optional">
           <textarea
             id="deliveryNotes"
             aria-label="Driver and Kitchen Access Notes"
             {...register('deliveryNotes')}
             rows={3}
-            placeholder="e.g. Rear service entrance on Needlers Alley. Keyholder early morning cold room drop."
-            className="onboarding-input resize-none"
+            placeholder="e.g. Rear service entrance on Needlers Alley. Keyholder early morning walk-in drop."
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all resize-none font-sans"
           />
         </FormField>
       </div>
 
-      <div className="pt-4 flex items-center justify-between gap-4">
-        <button type="button" onClick={goBack} className="onboarding-btn-ghost text-xs">
+      <div className="pt-4 flex items-center justify-between gap-4 border-t border-slate-100">
+        <button 
+          type="button" 
+          onClick={goBack} 
+          className="px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 font-bold text-xs font-mono transition-colors"
+        >
           &larr; Back
         </button>
-        <button type="submit" className="onboarding-btn-primary text-xs shadow-gold-glow flex items-center gap-2">
+        <button 
+          type="submit" 
+          className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md flex items-center gap-2 transition-all"
+        >
           <span>Continue to Credit Terms</span>
           <ArrowRight className="w-4 h-4" />
         </button>

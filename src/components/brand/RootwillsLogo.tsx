@@ -9,6 +9,7 @@ interface RootwillsLogoProps {
   showText?: boolean;
   variant?: 'full' | 'icon' | 'compact';
   href?: string;
+  theme?: 'dark' | 'light';
 }
 
 export function RootwillsLogo({
@@ -17,6 +18,7 @@ export function RootwillsLogo({
   showText = true,
   variant = 'full',
   href = '/',
+  theme = 'dark',
 }: RootwillsLogoProps) {
   const rawId = useId();
   const safeId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
@@ -103,14 +105,22 @@ export function RootwillsLogo({
         <div className="flex flex-col text-left">
           <div className="flex items-center gap-1.5">
             <span
-              className={`font-display font-black tracking-[0.18em] uppercase ${textSizes[size]} bg-gradient-to-r from-cream via-champagne-soft to-champagne bg-clip-text text-transparent group-hover:from-champagne group-hover:to-white transition-all`}
+              className={`font-display font-black tracking-[0.18em] uppercase ${textSizes[size]} ${
+                theme === 'light'
+                  ? 'text-slate-900 group-hover:text-emerald-700 transition-colors'
+                  : 'bg-gradient-to-r from-cream via-champagne-soft to-champagne bg-clip-text text-transparent group-hover:from-champagne group-hover:to-white transition-all'
+              }`}
             >
               ROOTWILLS
             </span>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[9.5px] uppercase tracking-[0.28em] text-champagne/90 font-bold">
+            <span
+              className={`font-mono text-[9.5px] uppercase tracking-[0.28em] font-bold ${
+                theme === 'light' ? 'text-emerald-700' : 'text-champagne/90'
+              }`}
+            >
               Fresh Food &bull; Wholesale
             </span>
           </div>

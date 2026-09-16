@@ -32,10 +32,10 @@ export function PortalInvoicePrintView({ invoiceId: propInvoiceId }: PortalInvoi
 
   if (!invoice) {
     return (
-      <div className="min-h-screen bg-obsidian-950 text-cream flex items-center justify-center p-4">
+      <div className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center p-4">
         <div className="text-center space-y-3">
-          <p className="text-sm text-cream/60">Invoice not found.</p>
-          <Link href="/invoices" className="text-champagne font-bold text-xs hover:underline">
+          <p className="text-sm text-slate-500">Invoice not found.</p>
+          <Link href="/invoices" className="text-emerald-700 font-semibold text-xs hover:underline">
             &larr; Return to Invoices
           </Link>
         </div>

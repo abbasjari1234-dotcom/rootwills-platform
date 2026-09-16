@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MapPin, Truck, Clock, ShieldCheck, ArrowRight, Phone, CheckCircle2 } from 'lucide-react';
 import { PriceEstimator } from '@/components/public/PriceEstimator';
+import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
 const LOCATIONS_SEO: Record<string, { title: string; description: string; h1: string }> = {
   birmingham: {
@@ -105,28 +106,34 @@ export default function LocationPage({ params }: { params: { city: string } }) {
   const seo = LOCATIONS_SEO[params.city.toLowerCase()];
 
   return (
-    <div className="space-y-16 sm:space-y-24 pb-20">
+    <div className="min-h-screen bg-slate-50/50 pb-20 space-y-16 sm:space-y-24">
       {/* Header */}
-      <section className="pt-12 sm:pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase mb-4">
+      <section className="bg-slate-950 text-white relative overflow-hidden border-b border-slate-800 pt-12 sm:pt-20 pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             <MapPin className="w-3.5 h-3.5" />
             <span>Regional Wholesale Hub &bull; {loc.name}</span>
           </div>
-          <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
             {seo?.h1 || `Wholesale Food Supply in ${loc.name}`}
           </h1>
-          <p className="text-sm sm:text-base text-cream/70 mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
             {loc.description}
           </p>
 
-          <div className="mt-8 flex justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/onboarding"
-              className="px-7 py-3.5 rounded-xl bg-champagne text-obsidian-950 font-bold shadow-gold-glow hover:brightness-110 text-sm flex items-center gap-2"
+              href="/apply"
+              className="px-7 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-md text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
             >
               <span>Open a Local Business Account</span>
               <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/products"
+              className="px-6 py-4 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 font-semibold text-sm flex items-center justify-center gap-2 transition-all"
+            >
+              <span>Browse Regional Wholesale Catalog</span>
             </Link>
           </div>
         </div>
@@ -135,33 +142,33 @@ export default function LocationPage({ params }: { params: { city: string } }) {
       {/* Logistics & SLA Specifications */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
-              <Clock className="w-5 h-5" />
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+              <Clock className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-lg font-bold text-cream">Order Cut-off: {loc.cutoff}</h3>
-            <p className="text-xs text-cream/60">
-              Late night portal ordering so kitchen managers can finalize orders after dinner service closes.
+            <h3 className="text-xl font-bold text-slate-900">Order Cut-off: {loc.cutoff}</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Late night portal ordering so kitchen managers can finalize orders after evening dinner service closes.
             </p>
           </div>
 
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <Truck className="w-5 h-5" />
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+              <Truck className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-lg font-bold text-cream">Delivery: {loc.deliveryWindow}</h3>
-            <p className="text-xs text-cream/60">
-              Guaranteed morning delivery before your chefs arrive for mise-en-place prep.
+            <h3 className="text-xl font-bold text-slate-900">Delivery: {loc.deliveryWindow}</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Guaranteed early morning drop before head chefs and prep brigades arrive for morning mise-en-place.
             </p>
           </div>
 
-          <div className="glass-panel p-6 rounded-2xl space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+              <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-lg font-bold text-cream">Regional Depot Fulfilment</h3>
-            <p className="text-xs text-cream/60">
-              Dispatched directly from <strong>{loc.depotName}</strong> ({loc.depotAddress}).
+            <h3 className="text-xl font-bold text-slate-900">Regional Depot Fulfilment</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Dispatched directly from <strong className="text-slate-900">{loc.depotName}</strong> ({loc.depotAddress}).
             </p>
           </div>
         </div>
@@ -169,17 +176,19 @@ export default function LocationPage({ params }: { params: { city: string } }) {
 
       {/* Postcode Coverage Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel p-8 rounded-2xl space-y-6">
-          <h3 className="font-display text-xl font-bold text-cream">
-            Active Next-Day Postcode Coverage in {loc.name}
-          </h3>
-          <p className="text-xs text-cream/60">
-            Our temperature-controlled fleet runs regular morning routes across the following postal sectors daily:
-          </p>
+        <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+          <div className="space-y-1">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+              Active Next-Day Postcode Coverage in {loc.name}
+            </h3>
+            <p className="text-sm text-slate-600">
+              Our temperature-controlled fleet runs regular morning routes across the following postal sectors daily:
+            </p>
+          </div>
 
           <div className="flex flex-wrap gap-2.5">
             {loc.postcodes.map((pc, idx) => (
-              <span key={idx} className="px-3.5 py-1.5 rounded-lg bg-obsidian-900 border border-cream/15 text-xs font-mono text-champagne">
+              <span key={idx} className="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono font-bold text-slate-800">
                 {pc}
               </span>
             ))}
@@ -191,6 +200,9 @@ export default function LocationPage({ params }: { params: { city: string } }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <PriceEstimator />
       </section>
+
+      {/* Commercial Bottom CTA */}
+      <CommercialBottomCTA />
     </div>
   );
 }

@@ -33,21 +33,18 @@ const nextConfig = {
     ],
   },
   experimental: {
+    cpus: 1,
+    workerThreads: false,
     optimizePackageImports: [
       'lucide-react',
       'framer-motion',
-      '@react-three/fiber',
-      '@react-three/drei',
-      'three',
-      'recharts',
-      'date-fns',
       'clsx',
       'tailwind-merge',
       'zustand',
     ],
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
+  webpack: (config, { isServer, dev }) => {
+    if (!isServer && !dev) {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
@@ -165,6 +162,20 @@ const nextConfig = {
               "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.supabase.co https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://images.unsplash.com https://res.cloudinary.com https://*.supabase.co https:; media-src 'self' https: blob: data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.mapbox.com https://api.companieshouse.gov.uk https://vitals.vercel-insights.com https://va.vercel-scripts.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self';",
           },
         ],
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/portal',
+        destination: '/dashboard',
+        permanent: false,
+      },
+      {
+        source: '/portal/:path*',
+        destination: '/:path*',
+        permanent: false,
       },
     ];
   },

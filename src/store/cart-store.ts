@@ -10,6 +10,7 @@ export interface CartItem {
   customerPrice: number;
   moq: number;
   qty: number;
+  image?: string;
 }
 
 interface CartState {
@@ -22,7 +23,7 @@ interface CartState {
   notes: string;
 
   // Actions
-  addItem: (product: any, qty?: number) => void;
+  addItem: (product: any, qty?: number, openDrawer?: boolean) => void;
   addLine: (line: any, qty?: number) => void;
   updateQty: (productId: string, qty: number) => void;
   removeItem: (productId: string) => void;
@@ -51,12 +52,13 @@ export const useCartStore = create<CartState>()(
       deliverySlot: null,
       notes: '',
 
-  addItem: (product, qty = product.moq || 1) => {
+  addItem: (product, qty = product.moq || 1, openDrawer = false) => {
     const existing = get().items.find((i) => i.productId === product.id || i.productId === product.productId);
     const productId = product.id || product.productId;
     const price = product.customerPrice ?? product.unitPrice ?? product.basePrice ?? 0;
     const packSize = product.packSize || 'Standard';
     const unit = product.unit || 'unit';
+    const image = product.image || product.imageUrl;
 
     if (existing) {
       set({
@@ -77,11 +79,14 @@ export const useCartStore = create<CartState>()(
             customerPrice: price,
             moq: product.moq || 1,
             qty,
+            image,
           },
         ],
       });
     }
-    set({ isOpen: true });
+    if (openDrawer) {
+      set({ isOpen: true });
+    }
   },
 
   addLine: (line, qty) => get().addItem(line, qty),

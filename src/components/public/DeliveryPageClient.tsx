@@ -11,12 +11,11 @@ import {
   CheckCircle2, 
   ArrowRight,
   Search,
-  Zap,
   Phone,
-  Radio,
-  Camera,
-  Navigation
+  Navigation,
+  Check
 } from 'lucide-react';
+import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
 interface SLAResult {
   postcode: string;
@@ -27,14 +26,47 @@ interface SLAResult {
   status: 'covered' | 'express';
 }
 
+const DELIVERY_SCHEDULE = [
+  { day: 'Monday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Sun', status: 'Active 6am Run' },
+  { day: 'Tuesday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Mon', status: 'Active 6am Run' },
+  { day: 'Wednesday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Tue', status: 'Active 6am Run' },
+  { day: 'Thursday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Wed', status: 'Active 6am Run' },
+  { day: 'Friday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Thu', status: 'Active 6am Run' },
+  { day: 'Saturday', window: '05:30 - 07:30 AM', cutoff: '11:00 PM Fri', status: 'Weekend Service' },
+  { day: 'Sunday', window: 'Depot Fleet Rest', cutoff: 'Order for Mon', status: 'Depot Maintenance' },
+];
+
+const COLD_CHAIN_PILLARS = [
+  {
+    icon: Thermometer,
+    title: 'Dual-Temp Active Refrigeration',
+    desc: 'Mercedes-Benz fleet equipped with dual-zone Carrier refrigeration units holding +1°C to +4°C chilled produce and -18°C frozen lines.',
+  },
+  {
+    icon: Clock,
+    title: 'Pre-Dawn Kitchen Drop Guarantee',
+    desc: 'Drivers complete drops between 05:30 and 07:30 AM so your breakfast and prep brigade never wait on produce deliveries.',
+  },
+  {
+    icon: Navigation,
+    title: 'Keyholder & Walk-in Drop Service',
+    desc: 'Vetted drivers can access your prep area or walk-in fridge via secure lockbox or night key codes, with photo drop receipts logged.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Real-Time Temperature Telematics',
+    desc: 'Continuous temperature logging on every crate. Full digital proof of cold-chain compliance delivered with your morning manifest.',
+  },
+];
+
 export function DeliveryPageClient() {
   const [postcodeInput, setPostcodeInput] = useState('');
   const [slaResult, setSlaResult] = useState<SLAResult | null>({
     postcode: 'B2 5BN',
     depot: 'Birmingham Central Fulfilment Hub (Digbeth)',
-    guaranteedSlot: '06:00 - 08:30 AM',
+    guaranteedSlot: '05:30 - 07:30 AM',
     cutoff: '11:00 PM Tonight',
-    fleetType: 'Dual-Temp Mercedes Sprinter #04',
+    fleetType: 'Dual-Temp Mercedes-Benz Sprinter Fleet',
     status: 'covered',
   });
 
@@ -44,17 +76,17 @@ export function DeliveryPageClient() {
 
     const upper = postcodeInput.trim().toUpperCase();
     let depot = 'Birmingham Central Fulfilment Hub (Digbeth)';
-    let slot = '06:00 - 08:30 AM';
+    let slot = '05:30 - 07:30 AM';
 
     if (upper.startsWith('CV')) {
-      depot = 'Coventry & Warwickshire Hub (Rowley Road)';
-      slot = '06:15 - 08:30 AM';
+      depot = 'Coventry & Warwickshire Depot';
+      slot = '05:45 - 07:30 AM';
     } else if (upper.startsWith('LE') || upper.startsWith('NG') || upper.startsWith('DE')) {
       depot = 'East Midlands Logistics Hub (Leicester)';
-      slot = '06:30 - 08:45 AM';
-    } else if (upper.startsWith('EC') || upper.startsWith('WC') || upper.startsWith('W') || upper.startsWith('SW')) {
+      slot = '06:00 - 08:00 AM';
+    } else if (upper.startsWith('EC') || upper.startsWith('WC') || upper.startsWith('W') || upper.startsWith('SW') || upper.startsWith('E')) {
       depot = 'Greater London Gateway (Park Royal)';
-      slot = '05:30 - 08:00 AM';
+      slot = '05:30 - 07:30 AM';
     }
 
     setSlaResult({
@@ -68,298 +100,224 @@ export function DeliveryPageClient() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-20">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase font-bold">
-          <Truck className="w-3.5 h-3.5" />
-          <span>Cold-Chain Logistics & SLA Standards</span>
-        </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream">
-          6-Day Morning Delivery Guarantee
-        </h1>
-        <p className="text-xs sm:text-base text-cream/70 leading-relaxed">
-          Kitchens cannot afford missing or late morning deliveries. Rootwills operates a dedicated temperature-controlled fleet delivering before your prep chefs arrive.
-        </p>
-      </div>
-
-      {/* Interactive Postcode SLA Lookup Widget */}
-      <div className="glass-panel-gold rounded-3xl p-6 sm:p-10 border border-champagne/40 shadow-2xl space-y-6">
-        <div className="max-w-xl mx-auto text-center space-y-2">
-          <div className="text-xs font-mono uppercase text-champagne font-bold">
-            Live Kitchen Delivery SLA Checker
+    <div className="bg-white min-h-screen text-slate-900">
+      
+      {/* ─── ACT I: HERO HEADER ─── */}
+      <section className="relative py-16 lg:py-20 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-radial-at-t from-emerald-950/40 via-slate-950/90 to-slate-950 pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
+            <Truck className="w-3.5 h-3.5" />
+            <span>Cold-Chain Logistics &amp; SLA Standards</span>
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
-            Check Your Morning Delivery Window
-          </h2>
-          <p className="text-xs text-cream/60">
-            Enter your restaurant or hotel kitchen postcode to verify guaranteed delivery times and assigned hub.
+
+          <h1 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-white leading-tight">
+            6-Day Morning Delivery Guarantee
+          </h1>
+
+          <p className="text-sm sm:text-base text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed">
+            Kitchens cannot afford missing or delayed morning produce. Rootwills operates a dedicated temperature-controlled fleet delivering before your prep brigade arrives.
           </p>
-        </div>
 
-        {/* Search input form */}
-        <form onSubmit={handleLookup} className="max-w-md mx-auto flex gap-2">
-          <div className="relative flex-1">
-            <MapPin className="w-4 h-4 text-champagne absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="e.g. B2 5BN, CV3 4FL, W1D 3PU..."
-              value={postcodeInput}
-              onChange={(e) => setPostcodeInput(e.target.value)}
-              className="w-full bg-obsidian-900/90 border border-emerald-800/60 text-cream placeholder:text-cream/50 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-mono font-bold focus:outline-none focus:border-champagne"
-            />
-          </div>
-          <button
-            type="submit"
-            className="px-6 py-3 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-1.5 font-mono"
-          >
-            <Search className="w-3.5 h-3.5" />
-            <span>Verify SLA</span>
-          </button>
-        </form>
-
-        {/* SLA Result Card */}
-        {slaResult && (
-          <div className="max-w-3xl mx-auto p-5 bg-obsidian-950/90 rounded-2xl border border-emerald-500/40 text-xs animate-fade-in shadow-xl">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-emerald-900/60 pb-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                <strong className="text-cream text-sm">Postcode {slaResult.postcode} is 100% Covered</strong>
-              </div>
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/30">
-                Active 6-Day Service
-              </span>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-3 text-left">
-              <div>
-                <span className="text-[10px] font-mono uppercase text-cream/40 block">Guaranteed SLA Drop</span>
-                <span className="font-mono text-sm font-bold text-champagne">{slaResult.guaranteedSlot}</span>
-              </div>
-              <div>
-                <span className="text-[10px] font-mono uppercase text-cream/40 block">Evening Cut-off</span>
-                <span className="font-mono text-sm font-bold text-cream">{slaResult.cutoff}</span>
-              </div>
-              <div>
-                <span className="text-[10px] font-mono uppercase text-cream/40 block">Assigned Hub</span>
-                <span className="text-xs text-cream/80 block line-clamp-1">{slaResult.depot}</span>
-              </div>
-              <div>
-                <span className="text-[10px] font-mono uppercase text-cream/40 block">Vehicle Specification</span>
-                <span className="text-xs text-emerald-400 font-mono block">Chilled (+2°C) + Ambient</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Fleet & Cold Chain Details */}
-      <div className="space-y-6">
-        <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="text-xs font-mono uppercase text-champagne font-bold">Fleet Telemetry</div>
-          <h2 className="font-display text-2xl sm:text-4xl font-bold text-cream">
-            Dual-Temperature Mercedes-Benz Fleet
-          </h2>
-          <p className="text-xs text-cream/60">
-            Engineered for farm-to-kitchen thermal integrity without breaking the cold-chain.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold">
-              <Thermometer className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-blue-400 font-bold block">Chamber 1: +2.0°C to +4.0°C</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">Partitioned Chilled Compartment</h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              Dedicated high-airflow refrigerated zone for delicate salad microgreens, Cotswold dairy, butchery meats, and cut vegetables. Continuous probe logging.
-            </p>
-            <div className="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5 pt-1">
-              <Radio className="w-3.5 h-3.5 animate-pulse" />
-              <span>Real-Time Cellular Probe Logging</span>
-            </div>
-          </div>
-
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold">
-              <Clock className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">Chamber 2: Ambient Dry Goods</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">Humidity-Controlled Dry Storage</h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              Protected ambient bay for Valrhona chocolates, flours, cooking oils, vinegars, and dry store goods. Zero moisture condensation transfer.
-            </p>
-            <div className="text-[10px] font-mono text-cream/50 flex items-center gap-1.5 pt-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-champagne" />
-              <span>Moisture Barrier Partitioned</span>
-            </div>
-          </div>
-
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-emerald-900/60 hover:border-champagne/50 transition-all space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
-              <Camera className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase text-emerald-400 font-bold block">Security & Access</span>
-              <h3 className="font-display text-xl font-bold text-cream mt-0.5">Keyholder & Walk-in Drop</h3>
-            </div>
-            <p className="text-xs text-cream/70 leading-relaxed">
-              Vetted drivers trained in cellar alarm keyholders and walk-in cold room stacking. Drivers photograph the stacked delivery and log sign-on-glass POD.
-            </p>
-            <div className="text-[10px] font-mono text-emerald-400 flex items-center gap-1.5 pt-1">
-              <Navigation className="w-3.5 h-3.5" />
-              <span>GPS Geofence Sign-off Verification</span>
-            </div>
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400">
+            <span className="flex items-center gap-1.5 text-emerald-400">
+              <Clock className="w-4 h-4" />
+              <span>11:00 PM Order Cut-off</span>
+            </span>
+            <span className="flex items-center gap-1.5 text-emerald-400">
+              <Truck className="w-4 h-4" />
+              <span>05:30 - 07:30 AM Drop Window</span>
+            </span>
+            <span className="flex items-center gap-1.5 text-emerald-400">
+              <ShieldCheck className="w-4 h-4" />
+              <span>100% On-Time SLA Guarantee</span>
+            </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Overnight Fulfillment Timeline */}
-      {/* Overnight Fulfillment Timeline */}
-      <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-emerald-900/60 space-y-8">
-        <div className="text-center max-w-xl mx-auto space-y-2">
-          <span className="text-xs font-mono uppercase text-champagne font-bold">Precision Operations</span>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
-            The Overnight Fulfillment Workflow
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
-            <div className="font-mono text-champagne font-bold text-base">23:00 PM</div>
-            <strong className="text-cream block">Order Cut-off Lock</strong>
-            <p className="text-cream/70 leading-relaxed">
-              Customer orders lock into our Central Warehouse Management System. Automatic picking manifests generate.
-            </p>
-          </div>
-
-          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
-            <div className="font-mono text-champagne font-bold text-base">01:00 AM</div>
-            <strong className="text-cream block">Depot Batch Picking</strong>
-            <p className="text-cream/70 leading-relaxed">
-              Depot selectors pick fresh produce and butchery cuts directly from refrigerated intake bays with barcoded verification.
-            </p>
-          </div>
-
-          <div className="p-4 bg-emerald-950/40 rounded-2xl border border-emerald-800/50 space-y-2">
-            <div className="font-mono text-champagne font-bold text-base">05:00 AM</div>
-            <strong className="text-cream block">Driver Route Dispatch</strong>
-            <p className="text-cream/70 leading-relaxed">
-              Dual-temp Sprinters pre-chill to +2.0°C, crates load by drop order, and drivers begin optimized morning runs.
-            </p>
-          </div>
-
-          <div className="p-4 bg-emerald-950/60 rounded-2xl border border-emerald-500/40 space-y-2 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-            <div className="font-mono text-emerald-400 font-bold text-base">06:30 AM</div>
-            <strong className="text-cream block">Kitchen Delivery & POD</strong>
-            <p className="text-cream/70 leading-relaxed">
-              Order placed in walk-in cold room, temperature logged, and digital receipt sent before morning chef arrival.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Depots List */}
-      <div className="glass-panel-gold p-8 sm:p-12 rounded-3xl space-y-6">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-champagne/20 pb-4">
-          <div>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
-              Regional Fulfilment Depots
+      {/* ─── ACT II: INTERACTIVE POSTCODE SLA CHECKER ─── */}
+      <section className="py-12 lg:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm space-y-6">
+          <div className="text-center space-y-1.5">
+            <span className="text-xs font-mono uppercase tracking-wider text-emerald-700 font-bold">
+              Live Kitchen Coverage Checker
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-slate-900 tracking-tight">
+              Check Your Postcode Delivery Window
             </h2>
-            <p className="text-xs text-cream/70">Strategically located hubs across the UK motorway network</p>
+            <p className="text-xs sm:text-sm text-slate-500 font-sans max-w-lg mx-auto">
+              Enter your restaurant, hotel, or catering kitchen postcode to verify morning drop times and assigned depot fleet.
+            </p>
           </div>
-          <span className="text-xs font-mono text-champagne bg-champagne/10 px-3 py-1 rounded-full border border-champagne/30">
-            4 Midlands & London Hubs
-          </span>
+
+          {/* Form */}
+          <form onSubmit={handleLookup} className="max-w-md mx-auto flex gap-2">
+            <div className="relative flex-1">
+              <MapPin className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="e.g. B2 5BN, CV3 4FL, W1D 3PU..."
+                value={postcodeInput}
+                onChange={(e) => setPostcodeInput(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-mono font-bold focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
+              />
+            </div>
+            <button
+              type="submit"
+              className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all shrink-0 cursor-pointer active:scale-95"
+            >
+              <Search className="w-3.5 h-3.5" />
+              <span>Verify SLA</span>
+            </button>
+          </form>
+
+          {/* SLA Result Card */}
+          {slaResult && (
+            <div className="p-5 bg-emerald-50/70 rounded-2xl border border-emerald-200 text-xs animate-fade-in space-y-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-emerald-200/80 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <strong className="text-slate-900 text-sm font-sans">
+                    Postcode {slaResult.postcode} is Fully Covered
+                  </strong>
+                </div>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono text-[11px] font-bold">
+                  Active 6-Day Morning Service
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-slate-500 block">Delivery Window</span>
+                  <span className="font-mono text-sm font-bold text-emerald-900">{slaResult.guaranteedSlot}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-slate-500 block">Evening Cutoff</span>
+                  <span className="font-mono text-sm font-bold text-slate-800">{slaResult.cutoff}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-slate-500 block">Assigned Depot</span>
+                  <span className="font-sans text-xs font-semibold text-slate-800 block truncate">{slaResult.depot}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-slate-500 block">Fleet Spec</span>
+                  <span className="font-sans text-xs font-semibold text-slate-800 block truncate">{slaResult.fleetType}</span>
+                </div>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between border-t border-emerald-200/80">
+                <span className="text-[11px] text-emerald-800 font-sans">
+                  Free refrigerated delivery on all trade orders £150+
+                </span>
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center gap-1 text-xs font-sans font-bold text-emerald-800 hover:text-emerald-900 hover:underline"
+                >
+                  <span>Open Account for {slaResult.postcode}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-champagne font-bold text-sm">
-                <MapPin className="w-4 h-4" />
-                <span>Birmingham Central Hub (HQ)</span>
-              </div>
-              <span className="text-[10px] font-mono text-emerald-400">18 Vans Active</span>
+      {/* ─── ACT III: 6-DAY WEEKLY SCHEDULE TABLE ─── */}
+      <section className="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-xl font-sans font-extrabold text-slate-900">
+                Standard Weekly Delivery Schedule
+              </h3>
+              <p className="text-xs text-slate-500 font-sans">
+                Operating 6 mornings a week across the Midlands and Greater London.
+              </p>
             </div>
-            <p className="text-cream/80">
-              Digbeth Wholesale Quarter, Birmingham, B5 5JR. Serving Birmingham, Solihull, Black Country, Sutton Coldfield.
-            </p>
-            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 0121 496 0800 &bull; Ext #1</div>
+            <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+              Cut-off: 11:00 PM Night Prior
+            </span>
           </div>
 
-          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-champagne font-bold text-sm">
-                <MapPin className="w-4 h-4" />
-                <span>Coventry & Warwickshire Hub</span>
-              </div>
-              <span className="text-[10px] font-mono text-emerald-400">8 Vans Active</span>
-            </div>
-            <p className="text-cream/80">
-              Rowley Road Distribution Park, Coventry, CV3 4FL. Serving Coventry, Warwick, Leamington, Stratford-upon-Avon.
-            </p>
-            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 024 7699 0820 &bull; Ext #2</div>
-          </div>
-
-          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-champagne font-bold text-sm">
-                <MapPin className="w-4 h-4" />
-                <span>East Midlands Logistics Hub</span>
-              </div>
-              <span className="text-[10px] font-mono text-emerald-400">10 Vans Active</span>
-            </div>
-            <p className="text-cream/80">
-              Thurmaston Commercial Centre, Leicester, LE4 8JF. Serving Leicester, Nottingham, Derby, Loughborough.
-            </p>
-            <div className="pt-1 text-[11px] text-cream/60 font-mono">Operations Desk: 0116 496 0910 &bull; Ext #3</div>
-          </div>
-
-          <div className="p-5 bg-obsidian-950/80 rounded-2xl border border-emerald-900/60 space-y-2 hover:border-champagne/40 transition-colors">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 text-champagne font-bold text-sm">
-                <MapPin className="w-4 h-4" />
-                <span>Greater London Gateway</span>
-              </div>
-              <span className="text-[10px] font-mono text-emerald-400">14 Vans Active</span>
-            </div>
-            <p className="text-cream/70">
-              Park Royal Logistics Park, London, NW10 7HQ. Serving Central London, West End, City, and M25 corridor.
-            </p>
-            <div className="pt-1 text-[11px] text-cream/50 font-mono">Operations Desk: 020 7946 0880 &bull; Ext #4</div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[550px]">
+              <thead>
+                <tr className="border-b border-slate-200 text-slate-500 font-mono uppercase text-xs">
+                  <th className="py-3 px-4 font-bold">Delivery Day</th>
+                  <th className="py-3 px-4 font-bold">Kitchen Arrival Slot</th>
+                  <th className="py-3 px-4 font-bold">Order Cut-off</th>
+                  <th className="py-3 px-4 font-bold">Fleet Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 font-sans">
+                {DELIVERY_SCHEDULE.map((s, idx) => (
+                  <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-slate-900">{s.day}</td>
+                    <td className="py-3.5 px-4 font-mono font-semibold text-emerald-800">{s.window}</td>
+                    <td className="py-3.5 px-4 font-mono text-slate-600">{s.cutoff}</td>
+                    <td className="py-3.5 px-4">
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium ${
+                        s.status.includes('Active')
+                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                          : s.status.includes('Weekend')
+                          ? 'bg-amber-50 text-amber-800 border border-amber-200'
+                          : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        {s.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Activation Action Strip */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-obsidian-900 to-emerald-950/80 border border-champagne/40 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="space-y-1.5 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne/10 text-champagne text-xs font-mono font-bold uppercase">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Guaranteed Morning Delivery Slot</span>
+      {/* ─── ACT IV: COLD-CHAIN PILLARS ─── */}
+      <section className="py-16 bg-slate-50/70 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+              Logistics Standards
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-slate-900 tracking-tight">
+              Uncompromised Cold-Chain Quality
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 font-sans">
+              From warehouse dispatch to your prep counter, our temperature controls protect every leaf, cut, and dairy carton.
+            </p>
           </div>
-          <h3 className="font-display text-2xl font-bold text-cream">
-            Ready to Secure Your 06:00 AM Delivery Slot?
-          </h3>
-          <p className="text-xs text-cream/70 max-w-xl">
-            Open a commercial trade account in under 3 minutes with up to £50,000 credit limit and immediate route allocation.
-          </p>
-        </div>
 
-        <Link
-          href="/apply"
-          className="w-full sm:w-auto px-8 py-4 rounded-xl bg-champagne text-obsidian-950 font-bold text-xs font-mono shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all whitespace-nowrap"
-        >
-          <span>Apply for Trade Delivery Facility</span>
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {COLD_CHAIN_PILLARS.map((p, idx) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs space-y-2.5"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-100">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-sans font-bold text-sm text-slate-900 leading-snug">
+                    {p.title}
+                  </h3>
+                  <p className="font-sans text-xs text-slate-600 leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ACT V: BOTTOM SPLIT CTA ─── */}
+      <CommercialBottomCTA />
+
     </div>
   );
 }

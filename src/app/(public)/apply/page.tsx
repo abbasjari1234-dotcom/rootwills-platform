@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ApplyPage() {
   return (
-    <div className="w-full bg-[radial-gradient(ellipse_at_top,_rgba(201,169,39,0.08),_transparent_65%)]">
+    <div className="w-full min-h-screen bg-slate-50/50">
       <OnboardingFlow isStandalone={false} />
     </div>
   );

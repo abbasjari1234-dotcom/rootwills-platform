@@ -18,7 +18,7 @@ const outfit = Outfit({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#021710',
+  themeColor: '#059669',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -46,20 +46,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} dark`}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
-      <body className="bg-obsidian-950 text-cream antialiased min-h-screen selection:bg-champagne selection:text-obsidian-950 flex flex-col font-sans relative">
-        {/* Universal Hardware-Accelerated Ambient Backdrop */}
-        <div className="ambient-bg-layer" aria-hidden="true" />
+      <body className="bg-white text-slate-900 antialiased min-h-screen selection:bg-emerald-600 selection:text-white flex flex-col font-sans relative">
 
         {/* WCAG Skip to Main Content Link for Keyboard Navigation */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-champagne focus:text-obsidian-950 focus:font-bold focus:text-xs focus:rounded-xl focus:shadow-gold-glow focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-emerald-600 focus:text-white focus:font-bold focus:text-xs focus:rounded-xl focus:shadow-md focus:outline-none"
         >
           Skip to Main Content &darr;
         </a>

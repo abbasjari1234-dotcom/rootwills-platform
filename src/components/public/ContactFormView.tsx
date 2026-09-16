@@ -1,8 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  Send, 
+  CheckCircle2, 
+  Building2, 
+  ShieldCheck,
+  ArrowRight
+} from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
+import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
 export function ContactFormView() {
   const addLead = useAppStore((state) => state.addLead);
@@ -38,199 +50,254 @@ export function ContactFormView() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-16">
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-champagne/10 border border-champagne/30 text-champagne text-xs font-mono uppercase">
-          <Phone className="w-3.5 h-3.5" />
-          <span>Commercial Sales Desk</span>
+    <div className="bg-white min-h-screen text-slate-900">
+      
+      {/* ─── ACT I: HERO HEADER ─── */}
+      <section className="relative py-16 lg:py-20 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-radial-at-t from-emerald-950/40 via-slate-950/90 to-slate-950 pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
+            <Phone className="w-3.5 h-3.5" />
+            <span>Commercial Support &bull; Digbeth Central Desk</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-sans font-black tracking-tight text-white leading-tight">
+            Speak with Our Wholesale Specialists
+          </h1>
+
+          <p className="text-sm sm:text-base text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed">
+            Whether you require a bespoke contract rate sheet, produce samples for a menu redevelopment, or daily logistics assistance, our team is standing by.
+          </p>
         </div>
-        <h1 className="font-display text-3xl sm:text-5xl font-bold text-cream">
-          Speak with Our Wholesale Specialists
-        </h1>
-        <p className="text-sm sm:text-base text-cream/70 leading-relaxed">
-          Whether you need a bespoke contract quote, produce samples for a new menu launch, or emergency morning support, our Birmingham team is here.
-        </p>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Contact Info */}
-        <div className="glass-panel p-8 rounded-2xl space-y-8">
-          <h2 className="font-display text-2xl font-bold text-cream">Central Commercial Office</h2>
-
-          <div className="space-y-6 text-sm text-cream/80">
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
+      {/* ─── ACT II: CONTACT & FORM SECTION ─── */}
+      <section className="py-12 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 items-start">
+          
+          {/* Left Column: Direct Phone & Depot Details */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-slate-50/80 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs space-y-6">
               <div>
-                <strong className="block text-cream">Midlands Headquarters & Fulfilment Hub</strong>
-                <span className="text-xs text-cream/60">Digbeth Wholesale Quarter, Pershore Street, Birmingham, B5 5JR</span>
+                <h2 className="text-xl font-sans font-extrabold text-slate-900 tracking-tight">
+                  Central Operations &amp; Commercial Hub
+                </h2>
+                <p className="text-xs text-slate-500 font-sans mt-1">
+                  Serving Midlands and London commercial hospitality kitchens.
+                </p>
               </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block text-cream">Direct Phone Lines</strong>
-                <span className="text-xs text-cream/60 block">Commercial Desk: 0121 790 8800</span>
-                <span className="text-xs text-cream/60 block">Night Order Hotline (20:00 - 23:00): 0121 790 8801</span>
-              </div>
-            </div>
+              <div className="space-y-4 text-xs font-sans">
+                {/* Address */}
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white border border-slate-200/80">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong className="block text-slate-900 text-sm font-bold">Midlands Fulfilment Hub</strong>
+                    <span className="text-slate-600 block mt-0.5">
+                      Digbeth Wholesale Quarter, Pershore Street, Birmingham, B5 5JR
+                    </span>
+                  </div>
+                </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center shrink-0">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block text-cream">Email Enquiries</strong>
-                <span className="text-xs text-cream/60 block">New Accounts: sales@rootwills.co.uk</span>
-                <span className="text-xs text-cream/60 block">Customer Invoicing: accounts@rootwills.co.uk</span>
-              </div>
-            </div>
+                {/* Direct Phone Lines */}
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white border border-slate-200/80">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="space-y-1">
+                    <strong className="block text-slate-900 text-sm font-bold">Direct Telephone Desks</strong>
+                    <div className="text-slate-600 space-y-0.5">
+                      <p><span className="font-semibold text-slate-800">Commercial Sales Desk:</span> 0121 790 8800</p>
+                      <p><span className="font-semibold text-slate-800">Night Order Desk (20:00 - 23:00):</span> 0121 790 8801</p>
+                      <p><span className="font-semibold text-slate-800">Early Kitchen Dispatch (05:00 - 08:00):</span> 0121 790 8802</p>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-champagne/10 text-champagne flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div>
-                <strong className="block text-cream">Operating Hours</strong>
-                <span className="text-xs text-cream/60 block">Commercial Desk: Mon – Sat, 06:00 AM – 23:00 PM</span>
-                <span className="text-xs text-cream/60 block">Customer Online Portal: 24/7 Availability</span>
+                {/* Email Support */}
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-white border border-slate-200/80">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <strong className="block text-slate-900 text-sm font-bold">Digital Desk</strong>
+                    <p className="text-slate-600 mt-0.5">General &amp; Accounts: orders@rootwills.com</p>
+                    <p className="text-slate-600">New Accounts: trade@rootwills.com</p>
+                  </div>
+                </div>
+
+                {/* SLA Reassurance */}
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 text-emerald-900">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div className="text-[11px] leading-relaxed">
+                    <strong className="block font-bold">Guaranteed Response Window</strong>
+                    <span>Commercial enquiries submitted during business hours are reviewed within 45 minutes.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Contact Form */}
-        <div className="glass-panel-gold p-8 rounded-2xl">
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <h2 className="font-display text-2xl font-bold text-cream mb-2">
-                Send an Inquiry to Sales
-              </h2>
-              <p className="text-xs text-cream/70 mb-4">
-                Fill out the form below. Your request will be routed directly to your regional account manager.
-              </p>
-
-              <div>
-                <label htmlFor="contact-company" className="block text-xs font-mono uppercase text-cream/80 mb-1">Company / Establishment Name *</label>
-                <input
-                  id="contact-company"
-                  type="text"
-                  required
-                  autoComplete="organization"
-                  aria-label="Company or Establishment Name"
-                  placeholder="e.g. Simpsons Restaurant"
-                  value={formData.companyName}
-                  onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                  className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="contact-name" className="block text-xs font-mono uppercase text-cream/80 mb-1">Contact Name *</label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    aria-label="Contact Name"
-                    placeholder="e.g. Luke Tipping"
-                    value={formData.contactName}
-                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                  />
+          {/* Right Column: Interactive Contact Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm">
+              {submitted ? (
+                <div className="py-12 text-center space-y-4 animate-fade-in">
+                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-sans font-extrabold text-slate-900">
+                    Enquiry Received
+                  </h3>
+                  <p className="text-sm text-slate-600 font-sans max-w-md mx-auto leading-relaxed">
+                    Thank you, <strong className="text-slate-900">{formData.contactName || 'Chef'}</strong>. Your commercial enquiry for <strong className="text-slate-900">{formData.companyName}</strong> has been assigned to our Birmingham commercial desk. A specialist will follow up shortly.
+                  </p>
+                  <div className="pt-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFormData({
+                          companyName: '',
+                          contactName: '',
+                          email: '',
+                          phone: '',
+                          postcode: '',
+                          message: '',
+                        });
+                      }}
+                      className="px-6 py-2.5 rounded-full border border-slate-300 hover:border-emerald-500 text-slate-700 text-xs font-sans font-semibold transition-all"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
                 </div>
-                <div>
-                  <label htmlFor="contact-postcode" className="block text-xs font-mono uppercase text-cream/80 mb-1">Postcode *</label>
-                  <input
-                    id="contact-postcode"
-                    type="text"
-                    required
-                    autoComplete="postal-code"
-                    aria-label="Establishment Postcode"
-                    placeholder="e.g. B15 3DZ"
-                    value={formData.postcode}
-                    onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
-                    className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                  />
-                </div>
-              </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <h2 className="text-xl font-sans font-extrabold text-slate-900 tracking-tight">
+                      Send a Message to the Commercial Desk
+                    </h2>
+                    <p className="text-xs text-slate-500 font-sans mt-0.5">
+                      Fill out the details below and an account manager will get back to you today.
+                    </p>
+                  </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="contact-email" className="block text-xs font-mono uppercase text-cream/80 mb-1">Work Email *</label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    aria-label="Work Email Address"
-                    placeholder="chef@restaurant.co.uk"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-phone" className="block text-xs font-mono uppercase text-cream/80 mb-1">Phone Number *</label>
-                  <input
-                    id="contact-phone"
-                    type="tel"
-                    required
-                    autoComplete="tel"
-                    aria-label="Contact Phone Number"
-                    placeholder="0121 454 3434"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                  />
-                </div>
-              </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-sans font-bold text-slate-700">
+                        Company or Venue Name <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. The Grand Gastro Pub"
+                        value={formData.companyName}
+                        onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      />
+                    </div>
 
-              <div>
-                <label htmlFor="contact-message" className="block text-xs font-mono uppercase text-cream/80 mb-1">Message / Key Products Required</label>
-                <textarea
-                  id="contact-message"
-                  rows={3}
-                  aria-label="Message and Key Products Required"
-                  placeholder="Tell us about your menu requirements, current delivery schedules, or questions..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-obsidian-950 border border-cream/20 rounded-xl p-3 text-xs text-cream focus:outline-none focus:border-champagne"
-                />
-              </div>
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-sans font-bold text-slate-700">
+                        Contact Name / Role <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Chef Marcus Vance"
+                        value={formData.contactName}
+                        onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      />
+                    </div>
+                  </div>
 
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-xl bg-champagne text-obsidian-950 font-bold shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 text-sm transition-all"
-              >
-                <Send className="w-4 h-4" />
-                <span>Submit Inquiry to Commercial Desk</span>
-              </button>
-            </form>
-          ) : (
-            <div className="text-center py-12 space-y-4 animate-fade-in">
-              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-8 h-8" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-cream">Message Received</h3>
-              <p className="text-xs text-cream/70 max-w-sm mx-auto">
-                Thank you! Your inquiry has been routed to our Birmingham Commercial Desk. A sales manager will contact you shortly.
-              </p>
-              <button
-                onClick={() => setSubmitted(false)}
-                className="mt-4 px-6 py-2 rounded-lg border border-cream/20 text-xs text-cream/70 hover:text-cream"
-              >
-                Send Another Message
-              </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-sans font-bold text-slate-700">
+                        Business Email <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="e.g. chef@venue.co.uk"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="block text-xs font-sans font-bold text-slate-700">
+                        Phone Number <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="e.g. 07123 456789"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-sans font-bold text-slate-700">
+                      Kitchen Delivery Postcode
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. B2 5BN, CV3 4FL..."
+                      value={formData.postcode}
+                      onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-mono uppercase focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="block text-xs font-sans font-bold text-slate-700">
+                      Enquiry Details / Menu Requirements
+                    </label>
+                    <textarea
+                      rows={4}
+                      placeholder="Tell us about your weekly produce spend, delivery timing requirements, or specific products..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full bg-slate-50 border border-slate-300 text-slate-900 placeholder:text-slate-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 px-6 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
+                    >
+                      <Send className="w-4 h-4" />
+                      <span>Submit Commercial Enquiry</span>
+                    </button>
+                  </div>
+
+                  <div className="text-center pt-1">
+                    <p className="text-[11px] text-slate-400 font-sans">
+                      Need immediate trade terms? <Link href="/apply" className="text-emerald-700 font-bold hover:underline">Apply for 30-Day Trade Credit directly &rarr;</Link>
+                    </p>
+                  </div>
+                </form>
+              )}
             </div>
-          )}
+          </div>
+
         </div>
-      </div>
+      </section>
+
+      {/* ─── ACT III: BOTTOM SPLIT CTA ─── */}
+      <CommercialBottomCTA />
+
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { 
   Award, 
   ShieldCheck, 
@@ -9,52 +10,142 @@ import {
   ArrowRight, 
   Zap, 
   Truck, 
-  Sparkles, 
-  ThermometerSnowflake,
-  DollarSign,
+  Thermometer,
+  Percent,
   Camera,
   Layers,
-  Phone
+  Phone,
+  Building2,
+  FileText
 } from 'lucide-react';
+import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
-export const metadata = {
-  title: 'Why Choose Rootwills Wholesale Foodservice | Rootwills',
+export const metadata: Metadata = {
+  title: 'Why Choose Rootwills Wholesale Foodservice | Rootwills UK',
   description:
-    'Discover the key advantages of partnering with Rootwills, from 11pm cut-offs to 6am delivery guarantees, locked contract pricing, and 60-second photo credits.',
+    'Discover the Rootwills advantage: 11:00 PM post-service cutoffs, guaranteed 06:00 AM delivery drops, locked contract pricing, and instant photo credits for UK kitchens.',
 };
+
+const OPERATIONAL_PILLARS = [
+  {
+    icon: Clock,
+    title: '11:00 PM Post-Service Cutoff',
+    desc: 'Input orders after your dinner rush closes. No more guessing covers at 4:00 PM or carrying dead stock in your walk-in fridge.',
+  },
+  {
+    icon: Truck,
+    title: 'Guaranteed 06:00 AM Delivery Drop',
+    desc: 'Our dual-temperature refrigerated fleet delivers before your prep brigade clocks in, with secure keyholder drop access available.',
+  },
+  {
+    icon: Percent,
+    title: 'Locked Contract Pricing',
+    desc: 'Transparent wholesale pricing locked on monthly or seasonal terms. Zero surprise distributor margin creep or fuel surcharges.',
+  },
+  {
+    icon: Camera,
+    title: '60-Second Photo Credit Note',
+    desc: 'If a crate does not meet your standard, snap a photo in the app for an instant digital credit note automatically applied to your statement.',
+  },
+  {
+    icon: Thermometer,
+    title: 'Dual-Temp Cold-Chain Integrity',
+    desc: 'Every vehicle is real-time telematics tracked (+1°C to +4°C chilled, -18°C frozen) to guarantee HACCP and SALSA compliance on delivery.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Dedicated Depot Account Desk',
+    desc: 'Speak directly to your assigned Birmingham or London account manager who knows your kitchen specs, order cadence, and team.',
+  },
+];
+
+const COMPARISON_ROWS = [
+  {
+    feature: 'Daily Order Cut-off',
+    legacy: '04:00 - 05:00 PM (Forces guessing dinner covers)',
+    rootwills: '11:00 PM Post-Service Night Prior',
+    advantage: 'Zero food waste; order on actual prep requirements',
+  },
+  {
+    feature: 'Pricing Stability',
+    legacy: 'Volatile weekly market price fluctuations',
+    rootwills: 'Locked Monthly & Seasonal Contracts',
+    advantage: 'Total cost certainty; protects your food GP margins',
+  },
+  {
+    feature: 'Delivery Arrival Window',
+    legacy: 'Vague 08:00 AM to 02:00 PM delivery window',
+    rootwills: 'Guaranteed 05:30 - 07:30 AM Drop SLA',
+    advantage: 'Stock in walk-in before morning prep brigade starts',
+  },
+  {
+    feature: 'Reordering Workflow',
+    legacy: '15-minute phone calls and paper clipboards',
+    rootwills: '45-Second Mobile & Web Portal',
+    advantage: 'Chefs spend time on prep and cooking, not supplier admin',
+  },
+  {
+    feature: 'Damaged or Rejected Crates',
+    legacy: 'Days chasing driver carbon copy credit slips',
+    rootwills: '60-Second Photo Credit Note in App',
+    advantage: 'Instant automated ledger adjustment on your VAT statement',
+  },
+  {
+    feature: 'Delivery Surcharges',
+    legacy: 'Split-drop penalties and fuel levies',
+    rootwills: 'Zero Surcharges Ever on Trade Accounts',
+    advantage: 'Completely transparent net contracted figures',
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: 'The 11:00 PM cutoff changed how our kitchen operates. We place orders after last orders are plated and arrive to find fresh produce already in the walk-in fridge at 6:30 AM.',
+    author: 'Marcus Vance',
+    role: 'Executive Head Chef',
+    venue: 'The Grand Gastro Collection (Birmingham)',
+  },
+  {
+    quote: 'Rootwills gave us locked quarterly pricing on our high-volume lines. That consistency gave us absolute certainty on our food cost margins across our hotel restaurants.',
+    author: 'David Chen',
+    role: 'Procurement Director',
+    venue: 'Midlands Boutique Hotel Group',
+  },
+  {
+    quote: 'Credit notes used to take two weeks of phone calls with broadliners. With Rootwills, one photo in the portal generates an instant credit memo. That is real respect for chefs.',
+    author: 'Elena Rostova',
+    role: 'Head of Culinary Operations',
+    venue: 'Boutique Event Caterers',
+  },
+];
 
 export default function WhyChooseUsPage() {
   return (
-    <div className="min-h-screen bg-obsidian-950 text-cream pb-24 space-y-20 sm:space-y-28 relative overflow-hidden">
-      {/* Ambient Lighting & Luxury Atmosphere */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-champagne/15 via-emerald-500/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[350px] bg-champagne/8 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 dot-grid-texture opacity-20 pointer-events-none" />
-
+    <div className="bg-white min-h-screen text-slate-900">
+      
       {/* ─── ACT I: HERO HEADER ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 relative z-10">
-        <div className="text-center max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 backdrop-blur-md border border-champagne/30 text-champagne text-[11px] font-mono uppercase tracking-[0.28em] font-semibold shadow-[0_0_25px_rgba(228,199,103,0.18)]">
-            <Award className="w-3.5 h-3.5 text-champagne" />
+      <section className="relative py-16 lg:py-24 bg-slate-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-radial-at-t from-emerald-950/40 via-slate-950/90 to-slate-950 pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">
+            <Award className="w-3.5 h-3.5 text-emerald-400" />
             <span>The Rootwills Operational Difference</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-cream uppercase tracking-tight leading-[0.95]">
-            Engineered to Solve the
-            <br />
-            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(228,199,103,0.3)]">
-              Wholesale Frustrations
-            </span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-sans font-black tracking-tight text-white leading-tight">
+            Engineered to Solve Wholesale <br className="hidden sm:inline" />
+            <span className="text-emerald-400">Frustrations for UK Kitchens</span>
           </h1>
 
-          <p className="text-sm sm:text-base lg:text-lg text-cream/80 leading-relaxed font-sans max-w-2xl mx-auto">
-            We spent months interviewing Michelin-starred head chefs, hotel F&amp;B directors, and contract caterers across the UK. Then we built the modern wholesale foodservice platform they actually asked for.
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed">
+            We interviewed Michelin-starred head chefs, hotel F&amp;B directors, and contract caterers across the UK. Then we built the modern wholesale foodservice platform they actually asked for.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/apply"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] text-xs uppercase tracking-wider shadow-[0_8px_30px_rgba(228,199,103,0.35)] hover:brightness-105 hover:scale-[1.03] transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-sans font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-950/60 transition-all"
             >
               <span>Open Business Trade Account</span>
               <ArrowRight className="w-4 h-4" />
@@ -62,126 +153,77 @@ export default function WhyChooseUsPage() {
 
             <Link
               href="/delivery"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-xl font-semibold text-cream bg-obsidian-900/80 border border-champagne/30 hover:border-champagne hover:text-champagne text-xs font-mono uppercase tracking-wider transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-sans font-semibold text-slate-200 hover:text-white bg-white/10 hover:bg-white/15 border border-white/20 text-sm transition-all"
             >
-              <span>Check Delivery Coverage</span>
+              <span>Check Delivery Postcode</span>
             </Link>
+          </div>
+
+          {/* Quick Metrics Bar */}
+          <div className="pt-6 grid grid-cols-3 gap-3 max-w-2xl mx-auto border-t border-slate-800/80 text-center font-mono">
+            <div>
+              <span className="block text-emerald-400 font-black text-base sm:text-xl">11:00 PM</span>
+              <span className="text-[11px] text-slate-400">Order Cutoff</span>
+            </div>
+            <div>
+              <span className="block text-emerald-400 font-black text-base sm:text-xl">06:00 AM</span>
+              <span className="text-[11px] text-slate-400">Drop Guarantee</span>
+            </div>
+            <div>
+              <span className="block text-emerald-400 font-black text-base sm:text-xl">30-Day</span>
+              <span className="text-[11px] text-slate-400">Trade Credit Facility</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── ACT II: COMPARISON MATRIX (LEGACY VS ROOTWILLS) ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="rounded-3xl p-6 sm:p-10 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-2xl space-y-6">
+      {/* ─── ACT II: COMPARISON MATRIX ─── */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm space-y-6">
           <div className="text-center sm:text-left space-y-1">
-            <span className="font-mono text-xs uppercase tracking-widest text-champagne font-bold">
-              Direct Side-by-Side Analysis
-            </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream uppercase">
-              Traditional Food Suppliers vs. Rootwills Modern Platform
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-700 font-bold">
+              <span>Direct Operational Comparison</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-slate-900 tracking-tight">
+              Traditional Food Broadliners vs. Rootwills Platform
             </h2>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse min-w-[680px]">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[700px]">
               <thead>
-                <tr className="border-b border-champagne/20 text-cream/70 font-mono uppercase tracking-wider">
-                  <th className="py-3.5 px-4">Core Operational Standard</th>
-                  <th className="py-3.5 px-4 text-rose-400">Legacy Broadliner</th>
-                  <th className="py-3.5 px-4 text-champagne font-bold">Rootwills Direct Platform</th>
-                  <th className="py-3.5 px-4 text-emerald-400">Executive Kitchen Advantage</th>
+                <tr className="border-b border-slate-200 text-slate-500 font-mono uppercase text-xs tracking-wider">
+                  <th className="py-3.5 px-4 font-bold">Operational Standard</th>
+                  <th className="py-3.5 px-4 font-bold text-rose-600">Legacy Broadliners</th>
+                  <th className="py-3.5 px-4 font-bold text-emerald-700 bg-emerald-50/60 rounded-t-xl">
+                    Rootwills Direct Platform
+                  </th>
+                  <th className="py-3.5 px-4 font-bold text-slate-700">Commercial Advantage</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-champagne/10 text-cream/80 font-sans">
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Daily Order Cut-off</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>05:00 PM (Forces guessing dinner counts)</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>11:00 PM Post-Service</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Zero food waste; order on verified prep requirements</td>
-                </tr>
-
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Pricing Transparency</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>Volatile weekly market price fluctuations</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>Locked Weekly &amp; Monthly Contracts</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Total cost certainty; stabilizes kitchen GP margins</td>
-                </tr>
-
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Delivery Window</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>Vague 08:00 AM – 02:00 PM window</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>Guaranteed 06:00 AM Drop SLA</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Stock in walk-in before breakfast &amp; prep brigade clocks in</td>
-                </tr>
-
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Reordering Workflow</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>15-minute phone calls &amp; clipboards</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>45-Second 1-Click Mobile Portal</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Chefs spend time on cooking, not procurement admin</td>
-                </tr>
-
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Damaged / Rejected Crate</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>Days chasing driver carbon credit slips</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>60-Second Photo Credit Note</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Immediate automated ledger adjustment on your VAT statement</td>
-                </tr>
-
-                <tr className="hover:bg-champagne/5 transition-colors">
-                  <td className="py-4 px-4 font-bold text-cream font-mono">Delivery Surcharges</td>
-                  <td className="py-4 px-4 text-rose-300 flex items-center gap-1.5">
-                    <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                    <span>Split-drop penalties &amp; fuel levies</span>
-                  </td>
-                  <td className="py-4 px-4 text-champagne font-semibold">
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>0% Surcharges Ever</span>
-                    </div>
-                  </td>
-                  <td className="py-4 px-4 text-emerald-300">Completely transparent net contracted figures with zero surprises</td>
-                </tr>
+              <tbody className="divide-y divide-slate-100 font-sans text-slate-700">
+                {COMPARISON_ROWS.map((row, idx) => (
+                  <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="py-4 px-4 font-bold text-slate-900 font-sans">
+                      {row.feature}
+                    </td>
+                    <td className="py-4 px-4 text-rose-700">
+                      <div className="flex items-center gap-2">
+                        <XCircle className="w-4 h-4 text-rose-500 shrink-0" />
+                        <span>{row.legacy}</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4 font-semibold text-emerald-900 bg-emerald-50/40">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <span>{row.rootwills}</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4 text-slate-600 text-xs">
+                      {row.advantage}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -189,168 +231,76 @@ export default function WhyChooseUsPage() {
       </section>
 
       {/* ─── ACT III: THE 6 OPERATIONAL PILLARS ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-950/80 border border-champagne/30 text-champagne text-xs font-mono uppercase font-semibold">
-            <Zap className="w-3.5 h-3.5" />
-            <span>6 Core Pillars</span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-cream uppercase">
-            Built for the Pressures of Real Kitchens
-          </h2>
-          <p className="text-xs sm:text-sm text-cream/75 font-sans">
-            Every feature on our platform was engineered directly around kitchen brigade workflow realities.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              01
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">No Volatile "Market Price" Surprises</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              Legacy wholesalers fluctuate daily prices without warning, destroying kitchen GP targets. With Rootwills, your trade account is locked to fixed weekly or monthly contract rates, giving your finance team complete cost certainty.
+      <section className="py-16 lg:py-20 bg-slate-50/70 border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+              Operational Standards
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-sans font-extrabold text-slate-900 tracking-tight">
+              Built for the Demands of Real Kitchens
+            </h2>
+            <p className="text-sm text-slate-600 font-sans leading-relaxed">
+              Every feature of our service was created to eliminate procurement friction, protect margins, and keep kitchens fully stocked before morning service.
             </p>
           </div>
 
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              02
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">Late 11:00 PM Chef Order Cut-Off</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              Most broadliners cut off orders at 05:00 PM before dinner service even begins. Our automated picking system lets you submit your daily orders via web portal right after the last ticket leaves the pass at 11:00 PM.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              03
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">45-Second Quick Reorder Flow</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              No more scribbling lists on clipboard paper or leaving 15-minute midnight voicemails. Pull up yesterday&apos;s order on your smartphone, adjust crate quantities, and confirm in under 45 seconds with instant WhatsApp and email confirmation.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              04
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">Zero Split-Drop or Fuel Fees</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              We never charge hidden congestion levies, fuel surcharges, or split-delivery administrative penalties. The price you see in your portal contract is the exact net figure on your weekly consolidated VAT invoice.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              05
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">60-Second Photo Credit Guarantee</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              If an avocado isn&apos;t perfectly ripe or a berry crate arrived bruised, snap a photo in the customer portal. Our dispatch team issues an instant digital credit note within 60 seconds — zero arguing with drivers or paper slips.
-            </p>
-          </div>
-
-          <div className="rounded-2xl p-8 bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 space-y-4 hover:border-champagne hover:shadow-[0_20px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(228,199,103,0.18)] transition-all group relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-champagne to-transparent opacity-50 group-hover:opacity-100" />
-            <div className="w-12 h-12 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne font-mono font-bold text-lg group-hover:scale-110 transition-transform">
-              06
-            </div>
-            <h3 className="font-display text-xl font-bold text-cream">Dual-Temp Telemetry Compliance</h3>
-            <p className="text-xs sm:text-sm text-cream/75 leading-relaxed font-sans">
-              Every delivery vehicle is equipped with dual-zone live sensors recording temperature every 30 seconds. Your HACCP and EHO compliance audit logs are automatically saved in your portal for effortless inspection verification.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {OPERATIONAL_PILLARS.map((pillar, idx) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all space-y-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-sans font-bold text-slate-900 tracking-tight">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-slate-600 font-sans leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ─── ACT IV: VERIFIED CHEF TESTIMONIALS ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 sm:p-12 rounded-3xl bg-obsidian-950/85 backdrop-blur-xl border border-champagne/25 shadow-2xl space-y-8">
-          <div className="text-center space-y-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-champagne font-bold">
-              Trusted by 350+ Commercial Kitchens
-            </span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-cream uppercase">
-              What Head Chefs Say About Partnering With Rootwills
-            </h3>
-          </div>
+      {/* ─── ACT IV: OPERATOR TESTIMONIALS ─── */}
+      <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center max-w-2xl mx-auto space-y-2">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold">
+            Client Voices
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-sans font-extrabold text-slate-900 tracking-tight">
+            Trusted by Head Chefs &amp; Operators
+          </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs font-sans">
-            <div className="p-6 rounded-2xl bg-obsidian-900 border border-champagne/20 space-y-4">
-              <p className="text-cream/85 italic leading-relaxed text-sm">
-                &ldquo;The 11:00 PM cut-off was a complete game changer for our kitchen brigade. With our previous supplier, we had to guess our produce requirements before dinner service even began. Now we count our walk-in at 10:30 PM, place the order on our phone, and the crates are sitting inside at 06:15 AM.&rdquo;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((t, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4"
+            >
+              <p className="text-xs sm:text-sm text-slate-700 font-sans italic leading-relaxed">
+                &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="border-t border-champagne/15 pt-3 flex items-center justify-between">
-                <div>
-                  <div className="font-bold text-cream">Chef Anthony Cole</div>
-                  <div className="text-cream/60">Executive Head Chef, Birmingham Botanical Bistro</div>
-                </div>
-                <div className="text-champagne font-mono font-bold">Birmingham, B15</div>
+              <div className="pt-2 border-t border-slate-100">
+                <div className="font-sans font-bold text-sm text-slate-900">{t.author}</div>
+                <div className="text-xs text-slate-500">{t.role}</div>
+                <div className="text-xs font-mono text-emerald-700 font-medium mt-0.5">{t.venue}</div>
               </div>
             </div>
-
-            <div className="p-6 rounded-2xl bg-obsidian-900 border border-champagne/20 space-y-4">
-              <p className="text-cream/85 italic leading-relaxed text-sm">
-                &ldquo;Locked monthly contract pricing has stabilized our food margins completely. No more arguing with account managers over unexplained invoice surcharges or sudden weekly price spikes on butter and cream. Rootwills is the most professional supplier we&apos;ve used in 15 years.&rdquo;
-              </p>
-              <div className="border-t border-champagne/15 pt-3 flex items-center justify-between">
-                <div>
-                  <div className="font-bold text-cream">Sarah Jenkins</div>
-                  <div className="text-cream/60">Director of Food &amp; Beverage, Grand Midland Hotel Group</div>
-                </div>
-                <div className="text-champagne font-mono font-bold">West Midlands</div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── ACT V: HIGH-CONVERSION CTA ─── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="glass-panel-gold p-8 sm:p-14 rounded-3xl text-center space-y-6 relative overflow-hidden border border-champagne/30">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne/20 border border-champagne/40 text-champagne text-xs font-mono uppercase font-bold">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Ready to Upgrade Your Kitchen Supply Chain?</span>
-          </div>
-
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-cream uppercase max-w-2xl mx-auto">
-            Open Your Commercial Account in{' '}
-            <span className="bg-gradient-to-b from-[#FFFFFF] via-[#F6E199] to-[#C59B27] bg-clip-text text-transparent">
-              Under 3 Minutes
-            </span>
-          </h2>
-
-          <p className="text-xs sm:text-sm text-cream/80 max-w-xl mx-auto font-sans leading-relaxed">
-            Instant B2B credit approval up to £50,000, 30-day settlement terms, and locked contract rates for restaurants, hotels, and caterers across the UK.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <Link
-              href="/apply"
-              className="px-8 py-4 rounded-xl font-bold text-obsidian-950 bg-gradient-to-r from-[#FFF4D0] via-[#E4C767] to-[#C9A227] shadow-[0_8px_30px_rgba(228,199,103,0.35)] hover:brightness-105 text-xs font-mono uppercase tracking-wider flex items-center gap-2 transition-all hover:scale-105"
-            >
-              <span>Apply for Trade Facility</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-
-            <Link
-              href="/contact"
-              className="px-6 py-4 rounded-xl font-semibold text-cream bg-obsidian-950/80 border border-champagne/40 hover:bg-champagne/10 hover:text-champagne text-xs font-mono uppercase tracking-wider transition-all"
-            >
-              <span>Call Commercial Desk: 0121 790 8800</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* ─── ACT V: BOTTOM CONVERSION SPLIT CTA ─── */}
+      <CommercialBottomCTA />
 
     </div>
   );

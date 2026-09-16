@@ -34,7 +34,10 @@ export function AIOrderAssistant() {
   const { currentOrgId, organizations, getCustomerProducts } = useAppStore();
   const { addItem, openCart } = useCartStore();
 
-  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
+  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0] || {
+    id: 'org-default',
+    name: 'Commercial Client'
+  };
   const products = getCustomerProducts();
 
   const [messages, setMessages] = useState<AIMessage[]>([
@@ -109,72 +112,72 @@ export function AIOrderAssistant() {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 px-4 py-3 rounded-full bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 flex items-center gap-2 border border-white/20 transition-all hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 px-4 py-3 rounded-full bg-slate-900 text-white font-bold text-xs shadow-xl hover:bg-slate-800 flex items-center gap-2 border border-slate-700 transition-all hover:scale-105 active:scale-95"
       >
-        <Sparkles className="w-4 h-4" />
+        <Sparkles className="w-4 h-4 text-emerald-400" />
         <span className="hidden sm:inline">AI Order Assistant</span>
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
       </button>
 
       {/* AI Assistant Modal / Drawer */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-obsidian-950/70 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-obsidian-900 border-l border-cream/15 text-cream flex flex-col h-full shadow-2xl">
+        <div className="fixed inset-0 z-50 overflow-hidden flex justify-end bg-slate-900/60 backdrop-blur-xs">
+          <div className="w-full max-w-md bg-white border-l border-slate-200 text-slate-900 flex flex-col h-full shadow-2xl animate-slide-left">
             {/* Header */}
-            <div className="p-4 border-b border-cream/10 bg-obsidian-950 flex justify-between items-center">
+            <div className="p-4 border-b border-slate-200 bg-white flex justify-between items-center">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-champagne text-obsidian-950 flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center font-bold">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-cream flex items-center gap-1.5">
+                  <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
                     <span>Rootwills AI Kitchen Concierge</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   </div>
-                  <div className="text-[10px] text-cream/50">Personalised to {currentOrg.name}</div>
+                  <div className="text-[10px] text-slate-500">Personalised to {currentOrg.name}</div>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close AI kitchen concierge"
-                className="p-1 rounded-lg text-cream/70 hover:text-cream hover:bg-obsidian-800"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Quick Prompt Chips */}
-            <div className="p-3 bg-obsidian-950/60 border-b border-cream/5 flex gap-2 overflow-x-auto text-[11px]">
+            <div className="p-3 bg-slate-50 border-b border-slate-200 flex gap-2 overflow-x-auto text-[11px] custom-scroll">
               <button
                 onClick={() => handleSend('Prepare my usual weekend steak service')}
-                className="px-2.5 py-1 rounded-full bg-obsidian-900 hover:bg-obsidian-800 border border-cream/15 text-cream/80 whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium whitespace-nowrap shadow-2xs"
               >
                 🥩 Weekend Steak Service
               </button>
               <button
                 onClick={() => handleSend('I need fresh salad and microgreens')}
-                className="px-2.5 py-1 rounded-full bg-obsidian-900 hover:bg-obsidian-800 border border-cream/15 text-cream/80 whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium whitespace-nowrap shadow-2xs"
               >
-                🥗 Fresh Salads & Microgreens
+                🥗 Fresh Salads &amp; Microgreens
               </button>
               <button
                 onClick={() => handleSend('Pastry chocolate and double cream')}
-                className="px-2.5 py-1 rounded-full bg-obsidian-900 hover:bg-obsidian-800 border border-cream/15 text-cream/80 whitespace-nowrap"
+                className="px-2.5 py-1 rounded-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-medium whitespace-nowrap shadow-2xs"
               >
-                🍫 Pastry & Cream
+                🍫 Pastry &amp; Cream
               </button>
             </div>
 
             {/* Messages Scroll Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs custom-scroll">
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
                   className={`flex gap-3 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.sender === 'ai' && (
-                    <div className="w-7 h-7 rounded-lg bg-champagne/10 text-champagne border border-champagne/25 flex items-center justify-center shrink-0">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shrink-0">
                       <Bot className="w-3.5 h-3.5" />
                     </div>
                   )}
@@ -182,26 +185,26 @@ export function AIOrderAssistant() {
                   <div
                     className={`max-w-[85%] rounded-2xl p-3.5 space-y-2.5 leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-champagne text-obsidian-950 font-medium rounded-tr-none'
-                        : 'bg-obsidian-950 border border-cream/10 text-cream rounded-tl-none'
+                        ? 'bg-emerald-600 text-white font-medium rounded-tr-none'
+                        : 'bg-slate-50 border border-slate-200 text-slate-800 rounded-tl-none'
                     }`}
                   >
                     <p>{msg.text}</p>
 
                     {/* AI Item Suggestions */}
                     {msg.suggestedItems && msg.suggestedItems.length > 0 && (
-                      <div className="pt-2 border-t border-cream/10 space-y-2">
+                      <div className="pt-2 border-t border-slate-200 space-y-2">
                         <div className="space-y-1.5">
                           {msg.suggestedItems.map((item, i) => (
                             <div
                               key={i}
-                              className="p-2 bg-obsidian-900 rounded-lg border border-cream/10 flex justify-between items-center text-[11px]"
+                              className="p-2 bg-white rounded-lg border border-slate-200 flex justify-between items-center text-[11px] shadow-2xs"
                             >
                               <div>
-                                <span className="font-bold text-cream block">{item.qty}x {item.name}</span>
-                                <span className="text-cream/50 text-[10px]">{item.packSize}</span>
+                                <span className="font-bold text-slate-900 block">{item.qty}x {item.name}</span>
+                                <span className="text-slate-500 text-[10px]">{item.packSize}</span>
                               </div>
-                              <span className="font-mono text-champagne font-bold">
+                              <span className="font-mono text-emerald-800 font-bold">
                                 £{(item.customerPrice * item.qty).toFixed(2)}
                               </span>
                             </div>
@@ -210,7 +213,7 @@ export function AIOrderAssistant() {
 
                         <button
                           onClick={() => handleAddItems(msg.suggestedItems!)}
-                          className="w-full py-2 bg-gradient-to-r from-champagne to-champagne-soft text-obsidian-950 font-bold text-xs rounded-lg shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-1.5"
+                          className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-xs flex items-center justify-center gap-1.5 transition-all"
                         >
                           <ShoppingBag className="w-3.5 h-3.5" />
                           <span>{msg.actionLabel || 'Add All Items to Basket'}</span>
@@ -222,15 +225,15 @@ export function AIOrderAssistant() {
               ))}
 
               {isTyping && (
-                <div className="flex gap-2 items-center text-xs text-cream/50 font-mono">
-                  <Bot className="w-4 h-4 text-champagne animate-spin" />
+                <div className="flex gap-2 items-center text-xs text-slate-500 font-mono">
+                  <Bot className="w-4 h-4 text-emerald-600 animate-spin" />
                   <span>AI assistant is analyzing your ordering history...</span>
                 </div>
               )}
             </div>
 
             {/* Input Bar */}
-            <div className="p-3 border-t border-cream/10 bg-obsidian-950">
+            <div className="p-3 border-t border-slate-200 bg-white">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -244,13 +247,13 @@ export function AIOrderAssistant() {
                   placeholder="Ask AI for your usual prep, ingredients, or advice..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="flex-1 bg-obsidian-900 border border-cream/20 rounded-xl px-3.5 py-2 text-xs text-cream focus:outline-none focus:border-champagne"
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
                 />
                 <button
                   type="submit"
                   aria-label="Send message to AI kitchen concierge"
                   disabled={!input.trim()}
-                  className="p-2.5 rounded-xl bg-champagne text-obsidian-950 font-bold disabled:opacity-40 hover:brightness-110"
+                  className="p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold disabled:opacity-40 shadow-xs"
                 >
                   <Send className="w-4 h-4" />
                 </button>

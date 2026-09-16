@@ -18,7 +18,7 @@ import {
   EyeOff,
   LogOut,
   CheckCircle2,
-  Sparkles,
+  ShoppingBag,
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 
@@ -100,31 +100,17 @@ function LoginFormContent() {
     }
   };
 
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isLoading) return;
 
     setErrorMessage(null);
-    setIsSuccess(false);
-
-    let cleanEmail = (email || '').trim().toLowerCase();
-    // Auto-correct common phonetic typo "coustomer" -> "customer"
-    if (cleanEmail.startsWith('coustomer@')) {
-      cleanEmail = 'customer@' + cleanEmail.slice(10);
-      setEmail(cleanEmail);
-    }
-
-    if (!cleanEmail || !password) {
-      setErrorMessage('Please enter your business email and account password.');
-      return;
-    }
-
     setIsLoading(true);
 
     try {
+      // Call our Next.js server action
       const res = await loginServerAction({
-        email: cleanEmail,
+        email,
         password,
         scope: loginScope,
       });
@@ -136,16 +122,14 @@ function LoginFormContent() {
         return;
       }
 
+      // Success
       setIsSuccess(true);
 
-      // 1. Update client-side store state
-      const targetRole = res.role || (loginScope === 'staff' ? 'admin' : 'customer');
-      if (res.organizationId) {
-        try {
-          setPersona(res.organizationId, targetRole === 'admin' ? 'admin' : 'customer');
-        } catch {
-          // Non-blocking
-        }
+      // 1. Sync persona with Zustand store
+      if (loginScope === 'staff') {
+        setPersona('admin');
+      } else {
+        setPersona('restaurant_head_chef');
       }
 
       // 2. Navigate with full document reload to send auth cookies to server components
@@ -165,37 +149,34 @@ function LoginFormContent() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-220px)] flex flex-col justify-center py-12 sm:py-16 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10" />
-
+    <div className="min-h-[calc(100vh-200px)] flex flex-col justify-center py-12 sm:py-16 sm:px-6 lg:px-8 bg-slate-50/50 relative overflow-hidden">
       {/* Header Monogram Logo */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-2">
           <RootwillsLogo size="lg" variant="full" />
         </div>
-        <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-cream uppercase tracking-wide">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           B2B Trade Portal Login
         </h1>
-        <p className="text-xs sm:text-sm text-cream/70 font-sans max-w-sm mx-auto">
-          Log in to manage kitchen orders, daily deliveries, and locked contract prices.
+        <p className="text-sm text-slate-600 max-w-sm mx-auto">
+          Sign in to manage kitchen orders, daily morning deliveries, and locked contract prices.
         </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="glass-panel-gold rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-900/60 backdrop-blur-2xl space-y-6">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 space-y-6">
           
-          {/* Active Session Notification & Fast-Switch */}
+          {/* Active Session Notification */}
           {activeUserEmail && (
-            <div className="p-3.5 rounded-2xl bg-emerald-950/60 border border-champagne/40 flex items-center justify-between gap-3 font-mono text-xs animate-fade-in">
+            <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-3 font-mono text-xs animate-fade-in">
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] uppercase tracking-wider text-cream/60">Active Session</div>
-                <div className="text-champagne font-bold truncate">{activeUserEmail}</div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Active Session</div>
+                <div className="text-emerald-800 font-bold truncate">{activeUserEmail}</div>
               </div>
               <button
                 type="button"
                 onClick={handleSignOutActiveSession}
-                className="px-2.5 py-1.5 rounded-lg bg-rose-950/60 border border-rose-500/40 text-rose-300 hover:bg-rose-900/80 text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all shrink-0"
+                className="px-2.5 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-100 text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all shrink-0"
               >
                 <LogOut className="w-3 h-3" />
                 <span>Sign Out</span>
@@ -203,47 +184,67 @@ function LoginFormContent() {
             </div>
           )}
 
+          {/* Pending Checkout Order Notification */}
+          {searchParams?.get('checkout') === 'true' && (
+            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1.5 animate-fade-in">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-800 uppercase tracking-wider">
+                  <ShoppingBag className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Pending Wholesale Order</span>
+                </div>
+                {searchParams?.get('total') && (
+                  <span className="font-mono text-xs font-bold text-slate-900">
+                    £{searchParams.get('total')}
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Log in below to charge this order to your 30-day trade credit account for tomorrow morning&apos;s 06:00 AM delivery drop.
+              </p>
+            </div>
+          )}
+
           {/* Scope Selector Tabs */}
-          <div className="grid grid-cols-2 p-1 bg-obsidian-950/80 rounded-2xl border border-emerald-950">
+          <div className="grid grid-cols-2 p-1 bg-slate-100 rounded-2xl border border-slate-200">
             <button
               type="button"
               onClick={() => handleScopeChange('customer')}
-              className={`py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 ${
+              className={`py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
                 loginScope === 'customer'
-                  ? 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 shadow-md'
-                  : 'text-cream/60 hover:text-cream'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Building2 className="w-3.5 h-3.5" />
+              <Building2 className="w-4 h-4" />
               <span>Customer Account</span>
             </button>
 
             <button
               type="button"
               onClick={() => handleScopeChange('staff')}
-              className={`py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center justify-center gap-2 ${
+              className={`py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
                 loginScope === 'staff'
-                  ? 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 shadow-md'
-                  : 'text-cream/60 hover:text-cream'
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <Briefcase className="w-3.5 h-3.5" />
+              <Briefcase className="w-4 h-4" />
               <span>Staff CRM Portal</span>
             </button>
           </div>
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="p-3.5 rounded-xl bg-rose-950/50 border border-rose-500/40 text-rose-300 text-xs flex items-start gap-2.5 animate-fade-in">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-start gap-2.5 animate-fade-in">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
               <span className="leading-relaxed font-sans">{errorMessage}</span>
             </div>
           )}
 
           {/* Success Notification */}
           {isSuccess && (
-            <div className="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2.5 animate-fade-in font-mono">
-              <CheckCircle2 className="w-4 h-4 text-champagne shrink-0" />
+            <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2.5 animate-fade-in font-mono">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Authenticated! Loading your portal...</span>
             </div>
           )}
@@ -251,11 +252,11 @@ function LoginFormContent() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="login-email" className="block text-xs font-mono uppercase text-cream/80 mb-1.5 font-bold">
+              <label htmlFor="login-email" className="block text-xs font-mono uppercase text-slate-700 mb-1.5 font-bold">
                 {loginScope === 'customer' ? 'Business Email / Chef Login' : 'Staff Corporate Email'}
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/70">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                   <Mail className="w-4 h-4" />
                 </div>
                 <input
@@ -267,25 +268,25 @@ function LoginFormContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={loginScope === 'customer' ? 'customer@rootwills.co.uk' : 'staff@rootwills.co.uk'}
-                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-4 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/60 font-sans"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 font-sans"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex justify-between items-center mb-1.5">
-                <label htmlFor="login-password" className="block text-xs font-mono uppercase text-cream/80 font-bold">
+                <label htmlFor="login-password" className="block text-xs font-mono uppercase text-slate-700 font-bold">
                   Password
                 </label>
                 <Link
                   href="/contact"
-                  className="text-[11px] font-mono text-champagne hover:underline"
+                  className="text-xs font-mono text-emerald-700 hover:underline font-semibold"
                 >
                   Forgot password?
                 </Link>
               </div>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-cream/70">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                   <Lock className="w-4 h-4" />
                 </div>
                 <input
@@ -297,13 +298,13 @@ function LoginFormContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your account password"
-                  className="w-full bg-obsidian-950 border border-emerald-900/60 rounded-xl pl-10 pr-10 py-3 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/60 font-sans"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-10 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 font-sans"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? "Hide account password" : "Show account password in cleartext"}
-                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-cream/70 hover:text-cream"
+                  className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -311,22 +312,22 @@ function LoginFormContent() {
             </div>
 
             <div className="flex items-center justify-between pt-1">
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-cream/70 select-none">
+              <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-600 select-none">
                 <input
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="rounded border-emerald-900 text-champagne focus:ring-champagne bg-obsidian-950"
+                  className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 h-4 w-4"
                 />
                 <span>Remember this terminal</span>
               </label>
-              <span className="text-[10px] font-mono text-emerald-400">256-Bit SSL Encrypted</span>
+              <span className="text-[11px] font-mono font-medium text-emerald-700">256-Bit SSL Encrypted</span>
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs sm:text-sm shadow-gold-glow hover:brightness-110 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider"
             >
               {isLoading ? (
                 <span>Authenticating Credentials...</span>
@@ -339,17 +340,16 @@ function LoginFormContent() {
             </button>
           </form>
 
-
           {/* Open Account Prompt */}
-          <div className="pt-2 text-center space-y-2">
-            <p className="text-xs text-cream/70 font-sans">
+          <div className="pt-4 border-t border-slate-100 text-center space-y-1.5">
+            <p className="text-xs text-slate-600">
               Need a wholesale food supply account for your kitchen?
             </p>
             <Link
-              href="/onboarding"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-champagne hover:underline"
+              href="/apply"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 uppercase tracking-wider font-mono"
             >
-              <span>Apply for a Trade Account & 30-Day Credit &rarr;</span>
+              <span>Apply for a Trade Account &amp; 30-Day Credit &rarr;</span>
             </Link>
           </div>
 
@@ -361,9 +361,8 @@ function LoginFormContent() {
 
 export function LoginFormView() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-obsidian-950 flex items-center justify-center text-champagne font-mono text-xs">Loading Secure Login...</div>}>
+    <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center text-slate-500 font-mono text-xs">Loading Secure Login...</div>}>
       <LoginFormContent />
     </Suspense>
   );
 }
-

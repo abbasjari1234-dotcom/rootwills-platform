@@ -9,23 +9,29 @@ export function CreditTracker({ creditLimit, creditUsed, tier }: CreditTrackerPr
   const usedPercent = creditLimit > 0 ? Math.min((creditUsed / creditLimit) * 100, 100) : 0;
 
   return (
-    <div className="rounded-lg border border-white/10 bg-obsidian-800/40 p-6">
+    <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs space-y-3">
       <div className="flex items-baseline justify-between">
-        <p className="font-mono text-xs uppercase tracking-[0.14em] text-champagne">Trade credit · {tier}</p>
-        <span className="text-xs font-light text-cream/40">
+        <p className="font-mono text-xs uppercase tracking-wider text-emerald-800 font-bold">
+          Trade Credit &bull; {tier}
+        </p>
+        <span className="text-xs font-mono text-slate-500">
           £{creditUsed.toFixed(2)} of £{creditLimit.toFixed(2)}
         </span>
       </div>
 
-      <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
         <div
-          className="h-full rounded-full bg-champagne transition-all duration-700"
+          className={`h-full rounded-full transition-all duration-700 ${
+            usedPercent > 85 ? 'bg-rose-500' : 'bg-emerald-500'
+          }`}
           style={{ width: `${usedPercent}%` }}
         />
       </div>
 
-      <p className="mt-4 font-display text-2xl font-light text-cream">£{available.toFixed(2)}</p>
-      <p className="text-xs font-light text-cream/40">available to spend</p>
+      <div>
+        <p className="font-sans text-2xl font-bold text-slate-900">£{available.toFixed(2)}</p>
+        <p className="text-xs text-slate-500">available purchasing power</p>
+      </div>
     </div>
   );
 }

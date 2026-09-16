@@ -99,9 +99,16 @@ export function CartDrawer() {
   }, []);
 
   if (!mounted) return null;
+  if (pathname === '/products') return null;
 
-  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
-  const currentLocation = currentOrg?.locations.find((l) => l.id === currentLocationId) || currentOrg?.locations[0];
+  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0] || {
+    id: 'org-default',
+    name: 'Commercial Client',
+    creditLimit: 25000,
+    creditUsed: 4200,
+    locations: [{ id: 'loc-1', name: 'Main Kitchen', postcode: 'B1 1AA', deliveryInstructions: '' }]
+  };
+  const currentLocation = currentOrg?.locations?.find((l) => l.id === currentLocationId) || currentOrg?.locations?.[0];
 
   const subtotal = items.reduce((sum, item) => sum + item.customerPrice * item.qty, 0);
   const vatTotal = subtotal * 0.05; // blended VAT for fresh/processed items
@@ -213,7 +220,7 @@ export function CartDrawer() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={closeCart}
-            className="absolute inset-0 bg-obsidian-950/80 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"
           />
 
           <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10 pointer-events-none">
@@ -222,17 +229,17 @@ export function CartDrawer() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-              className="w-screen max-w-md bg-obsidian-950 border-l border-champagne/30 text-cream flex flex-col shadow-[0_0_80px_rgba(0,0,0,0.95)] backdrop-blur-2xl pointer-events-auto"
+              className="w-screen max-w-md bg-white border-l border-slate-200 text-slate-900 flex flex-col shadow-2xl pointer-events-auto"
             >
               {/* Header */}
-              <div className="p-5 border-b border-emerald-950/80 flex items-center justify-between bg-obsidian-900/90">
+              <div className="p-5 border-b border-slate-200 flex items-center justify-between bg-white">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-champagne/10 border border-champagne/30 flex items-center justify-center text-champagne shadow-[0_0_15px_rgba(228,199,103,0.15)]">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700">
                     <ShoppingBag className="w-4 h-4" />
                   </div>
                   <div>
-                    <h2 className="font-display text-lg font-bold text-cream tracking-tight">Wholesale Basket</h2>
-                    <span className="text-[11px] text-emerald-400 font-mono font-semibold">
+                    <h2 className="font-sans text-lg font-bold text-slate-900 tracking-tight">Wholesale Basket</h2>
+                    <span className="text-[11px] text-emerald-800 font-mono font-semibold">
                       {items.length} {items.length === 1 ? 'line item' : 'line items'} &bull; Contract Locked Rates
                     </span>
                   </div>
@@ -244,7 +251,7 @@ export function CartDrawer() {
                       type="button"
                       onClick={clearCart}
                       title="Empty all items from basket"
-                      className="p-2 text-cream/40 hover:text-rose-400 rounded-lg hover:bg-rose-950/30 transition-colors"
+                      className="p-2 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-slate-50 transition-colors"
                       aria-label="Clear basket"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
@@ -254,7 +261,7 @@ export function CartDrawer() {
                     type="button"
                     onClick={closeCart}
                     aria-label="Close order basket"
-                    className="p-2 rounded-xl text-cream/60 hover:text-cream hover:bg-emerald-950/60 transition-colors"
+                    className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -262,18 +269,18 @@ export function CartDrawer() {
               </div>
 
               {/* Delivery Site Indicator & Live 11:00 PM Cutoff Banner */}
-              <div className="bg-obsidian-900/40 border-b border-emerald-950/80 text-xs">
-                <div className="px-5 py-2.5 flex justify-between items-center text-cream/70 border-b border-emerald-950/40">
-                  <span className="truncate">Delivering to: <strong className="text-cream">{currentLocation?.name}</strong></span>
-                  <span className="text-champagne font-mono text-[11px] font-bold shrink-0 ml-2">{currentLocation?.postcode}</span>
+              <div className="bg-slate-50 border-b border-slate-200 text-xs">
+                <div className="px-5 py-2.5 flex justify-between items-center text-slate-600 border-b border-slate-100">
+                  <span className="truncate">Delivering to: <strong className="text-slate-900">{currentLocation?.name}</strong></span>
+                  <span className="text-emerald-800 font-mono text-[11px] font-bold shrink-0 ml-2">{currentLocation?.postcode}</span>
                 </div>
                 {/* Cutoff countdown */}
-                <div className="px-5 py-2 bg-emerald-950/50 flex items-center justify-between text-[11px] font-mono border-b border-emerald-900/30">
-                  <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+                <div className="px-5 py-2 bg-emerald-50/80 flex items-center justify-between text-[11px] font-mono border-b border-emerald-100 text-emerald-900">
+                  <span className="font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-600 animate-ping inline-block" />
                     <span>11:00 PM Cutoff:</span>
                   </span>
-                  <span className="text-emerald-300">
+                  <span>
                     Order in <strong>{timeLeft.hours}h {timeLeft.minutes}m</strong> for 06:00 AM drop
                   </span>
                 </div>
@@ -282,32 +289,32 @@ export function CartDrawer() {
               {/* Order Success State */}
               {orderSuccess ? (
                 <div className="flex-1 p-6 flex flex-col items-center justify-center text-center space-y-4 animate-fade-in">
-                  <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-emerald-glow">
+                  <div className="w-16 h-16 rounded-2xl bg-emerald-100 border border-emerald-200 text-emerald-700 flex items-center justify-center shadow-xs">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="font-display text-2xl font-bold text-cream">Order Received!</h3>
-                  <p className="text-xs text-cream/70 max-w-xs leading-relaxed">
-                    Order <strong className="text-champagne font-mono font-bold">{orderSuccess.orderNumber}</strong> has been logged with our Digbeth Central Depot picking queue.
+                  <h3 className="font-sans text-2xl font-bold text-slate-900">Order Received!</h3>
+                  <p className="text-xs text-slate-600 max-w-xs leading-relaxed">
+                    Order <strong className="text-emerald-800 font-mono font-bold">{orderSuccess.orderNumber}</strong> has been logged with our Digbeth Central Depot picking queue.
                   </p>
                   
-                  <div className="p-4 rounded-2xl bg-obsidian-900/90 border border-emerald-900/60 text-xs text-left w-full space-y-2 font-mono shadow-lg">
-                    <div className="flex justify-between text-cream/70">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-left w-full space-y-2 font-mono shadow-xs">
+                    <div className="flex justify-between text-slate-600">
                       <span>Delivery Target:</span>
-                      <span className="text-cream font-bold">{orderSuccess.deliveryDate}</span>
+                      <span className="text-slate-900 font-bold">{orderSuccess.deliveryDate}</span>
                     </div>
-                    <div className="flex justify-between text-cream/70">
+                    <div className="flex justify-between text-slate-600">
                       <span>Time Window:</span>
-                      <span className="text-champagne font-bold">{orderSuccess.deliverySlot}</span>
+                      <span className="text-slate-900 font-bold">{orderSuccess.deliverySlot}</span>
                     </div>
                     {orderSuccess.isStandingOrder && (
-                      <div className="flex justify-between text-cream/70">
+                      <div className="flex justify-between text-slate-600">
                         <span>Schedule:</span>
-                        <span className="text-champagne uppercase font-bold">{orderSuccess.recurrence || 'Weekly'}</span>
+                        <span className="text-emerald-800 uppercase font-bold">{orderSuccess.recurrence || 'Weekly'}</span>
                       </div>
                     )}
-                    <div className="flex justify-between text-cream/70 pt-1.5 border-t border-emerald-950">
+                    <div className="flex justify-between text-slate-600 pt-1.5 border-t border-slate-200">
                       <span>Total (inc. VAT):</span>
-                      <span className="text-emerald-400 font-bold text-sm">£{orderSuccess.total.toFixed(2)}</span>
+                      <span className="text-emerald-800 font-bold text-sm">£{orderSuccess.total.toFixed(2)}</span>
                     </div>
                   </div>
 
@@ -315,7 +322,7 @@ export function CartDrawer() {
                     <Link
                       href={`/orders/${orderSuccess.id}`}
                       onClick={closeCart}
-                      className="w-full py-3.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow flex items-center justify-center gap-1.5 hover:brightness-110 transition-all"
+                      className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs flex items-center justify-center gap-1.5 transition-all"
                     >
                       <Truck className="w-4 h-4" />
                       <span>Track Live Delivery Progress &rarr;</span>
@@ -326,7 +333,7 @@ export function CartDrawer() {
                         setOrderSuccess(null);
                         closeCart();
                       }}
-                      className="py-2.5 text-xs text-cream/60 hover:text-cream font-mono transition-colors"
+                      className="py-2.5 text-xs text-slate-500 hover:text-slate-800 font-mono transition-colors font-medium"
                     >
                       Return to Menu
                     </button>
@@ -335,22 +342,22 @@ export function CartDrawer() {
               ) : (
                 <>
                   {/* Items List */}
-                  <div className="flex-1 overflow-y-auto p-5 space-y-3">
+                  <div className="flex-1 overflow-y-auto p-5 space-y-3 custom-scroll">
                     {items.length === 0 ? (
                       <div className="text-center py-16 space-y-4">
-                        <div className="w-16 h-16 rounded-2xl bg-emerald-950/40 border border-emerald-900/40 flex items-center justify-center mx-auto text-champagne/60">
+                        <div className="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center mx-auto text-slate-400">
                           <ShoppingBag className="w-8 h-8" />
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-cream">Your basket is currently empty</div>
-                          <p className="text-xs text-cream/50 mt-1 max-w-xs mx-auto">
+                          <div className="text-sm font-bold text-slate-900">Your basket is currently empty</div>
+                          <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
                             Add fresh produce, artisan dairy, or bakery goods from our live wholesale catalog.
                           </p>
                         </div>
                         <Link
                           href="/products"
                           onClick={closeCart}
-                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-obsidian-900 border border-champagne/30 text-xs text-champagne font-mono font-bold hover:bg-champagne hover:text-obsidian-950 transition-all"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-all"
                         >
                           <span>Browse Wholesale Catalog</span>
                           <ArrowRight className="w-3 h-3" />
@@ -360,22 +367,22 @@ export function CartDrawer() {
                       items.map((item) => (
                         <div
                           key={item.productId}
-                          className="p-3.5 rounded-2xl bg-obsidian-900/80 border border-emerald-950/80 flex gap-3 items-center justify-between hover:border-emerald-800/60 transition-all shadow-sm group"
+                          className="p-3.5 rounded-2xl bg-white border border-slate-200 flex gap-3 items-center justify-between hover:border-slate-300 transition-all shadow-xs group"
                         >
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
-                              <span className="text-[10px] font-mono text-champagne truncate font-bold px-1.5 py-0.5 rounded bg-obsidian-950 border border-champagne/20">
+                              <span className="text-[10px] font-mono text-emerald-800 truncate font-bold px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">
                                 {item.sku}
                               </span>
                             </div>
-                            <div className="text-xs font-bold text-cream truncate mt-1 group-hover:text-champagne transition-colors">
+                            <div className="text-xs font-bold text-slate-900 truncate mt-1">
                               {item.name}
                             </div>
-                            <div className="text-[11px] text-cream/50 flex items-center gap-1.5 mt-0.5">
+                            <div className="text-[11px] text-slate-500 flex items-center gap-1.5 mt-0.5">
                               <span>{item.packSize}</span>
                               <span>&bull;</span>
                               <span>£{item.customerPrice.toFixed(2)} / {item.unit}</span>
-                              <span className="text-champagne font-mono font-bold ml-1">
+                              <span className="text-emerald-800 font-mono font-bold ml-1">
                                 = £{(item.customerPrice * item.qty).toFixed(2)}
                               </span>
                             </div>
@@ -383,23 +390,23 @@ export function CartDrawer() {
 
                           {/* Quantity Stepper */}
                           <div className="flex items-center gap-2 shrink-0">
-                            <div className="flex items-center border border-emerald-900/60 rounded-xl bg-obsidian-950 p-0.5 shadow-inner">
+                            <div className="flex items-center border border-slate-200 rounded-xl bg-slate-50 p-0.5 shadow-2xs">
                               <button
                                 type="button"
                                 onClick={() => updateQty(item.productId, item.qty - 1)}
                                 aria-label={`Decrease quantity of ${item.name}`}
-                                className="p-1 rounded-lg hover:bg-emerald-950 text-cream/70 hover:text-cream transition-colors"
+                                className="p-1 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition-colors"
                               >
                                 <Minus className="w-3 h-3" />
                               </button>
-                              <span className="px-2.5 text-xs font-mono font-bold text-champagne min-w-[24px] text-center">
+                              <span className="px-2.5 text-xs font-mono font-bold text-slate-900 min-w-[24px] text-center">
                                 {item.qty}
                               </span>
                               <button
                                 type="button"
                                 onClick={() => updateQty(item.productId, item.qty + 1)}
                                 aria-label={`Increase quantity of ${item.name}`}
-                                className="p-1 rounded-lg hover:bg-emerald-950 text-cream/70 hover:text-cream transition-colors"
+                                className="p-1 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition-colors"
                               >
                                 <Plus className="w-3 h-3" />
                               </button>
@@ -408,7 +415,7 @@ export function CartDrawer() {
                               type="button"
                               onClick={() => removeItem(item.productId)}
                               aria-label={`Remove ${item.name} from basket`}
-                              className="p-1.5 text-cream/30 hover:text-rose-400 transition-colors"
+                              className="p-1.5 text-slate-400 hover:text-rose-600 transition-colors"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>
@@ -419,10 +426,10 @@ export function CartDrawer() {
 
                     {/* Standing Order & Logistics Options */}
                     {items.length > 0 && (
-                      <div className="mt-6 pt-4 border-t border-emerald-950/80 space-y-4">
+                      <div className="mt-6 pt-4 border-t border-slate-200 space-y-4">
                         {/* Delivery Slot Selection */}
                         <div>
-                          <label htmlFor="delivery-slot-select" className="block text-[11px] font-mono uppercase text-cream/80 mb-1.5 font-bold tracking-wider">
+                          <label htmlFor="delivery-slot-select" className="block text-[11px] font-mono uppercase text-slate-700 mb-1.5 font-bold tracking-wider">
                             Preferred Morning Window
                           </label>
                           <select
@@ -430,7 +437,7 @@ export function CartDrawer() {
                             aria-label="Preferred morning delivery timeslot"
                             value={selectedSlot}
                             onChange={(e) => setSelectedSlot(e.target.value)}
-                            className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3.5 py-2.5 text-xs text-cream focus:outline-none focus:border-champagne cursor-pointer"
+                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white cursor-pointer"
                           >
                             <option value="Early Morning 05:30 - 07:30">Early Kitchen Keyslot (05:30 – 07:30 AM)</option>
                             <option value="Standard Morning 07:30 - 09:30">Standard Morning (07:30 – 09:30 AM)</option>
@@ -439,25 +446,25 @@ export function CartDrawer() {
                         </div>
 
                         {/* Standing Order Checkbox */}
-                        <div className="p-3.5 bg-obsidian-900/90 rounded-2xl border border-emerald-900/60 space-y-3">
+                        <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
                           <label className="flex items-center justify-between cursor-pointer">
                             <div className="flex items-center gap-2.5">
-                              <Repeat className="w-4 h-4 text-champagne" />
+                              <Repeat className="w-4 h-4 text-emerald-700" />
                               <div>
-                                <div className="text-xs font-bold text-cream">Recurring Standing Order</div>
-                                <div className="text-[10px] text-cream/50">Auto-generate and deliver on preset schedule</div>
+                                <div className="text-xs font-bold text-slate-900">Recurring Standing Order</div>
+                                <div className="text-[10px] text-slate-500">Auto-generate and deliver on preset schedule</div>
                               </div>
                             </div>
                             <input
                               type="checkbox"
                               checked={isStandingOrder}
                               onChange={(e) => setStandingOrder(e.target.checked)}
-                              className="rounded border-emerald-900 text-champagne focus:ring-champagne bg-obsidian-950 w-4 h-4 cursor-pointer"
+                              className="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4 cursor-pointer"
                             />
                           </label>
 
                           {isStandingOrder && (
-                            <div className="pt-2 border-t border-emerald-950 space-y-2 animate-fade-in">
+                            <div className="pt-2 border-t border-slate-200 space-y-2 animate-fade-in">
                               <div className="flex gap-2">
                                 {['daily', 'weekly', 'biweekly'].map((rec) => (
                                   <button
@@ -466,8 +473,8 @@ export function CartDrawer() {
                                     onClick={() => setRecurrence(rec as any)}
                                     className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-bold capitalize transition-colors ${
                                       recurrence === rec
-                                        ? 'bg-champagne text-obsidian-950 shadow-sm'
-                                        : 'bg-obsidian-950 text-cream/60 border border-emerald-900/40 hover:text-cream'
+                                        ? 'bg-emerald-600 text-white shadow-xs'
+                                        : 'bg-white text-slate-600 border border-slate-200 hover:text-slate-900'
                                     }`}
                                   >
                                     {rec}
@@ -477,7 +484,7 @@ export function CartDrawer() {
 
                               {/* Day selector checkboxes */}
                               <div>
-                                <span className="text-[10px] uppercase font-mono text-cream/50 block mb-1">
+                                <span className="text-[10px] uppercase font-mono text-slate-500 block mb-1">
                                   Repeat on Days:
                                 </span>
                                 <div className="flex gap-1.5">
@@ -490,8 +497,8 @@ export function CartDrawer() {
                                         onClick={() => toggleRecurrenceDay(day)}
                                         className={`flex-1 py-1 rounded-lg text-[10px] font-mono font-bold border transition-colors ${
                                           isSelected
-                                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
-                                            : 'bg-obsidian-950 text-cream/40 border-emerald-950 hover:text-cream'
+                                            ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                                            : 'bg-white text-slate-500 border-slate-200 hover:text-slate-800'
                                         }`}
                                       >
                                         {day}
@@ -506,7 +513,7 @@ export function CartDrawer() {
 
                         {/* Driver Notes */}
                         <div>
-                          <label className="block text-[11px] font-mono uppercase text-cream/70 mb-1.5 font-bold tracking-wider">
+                          <label className="block text-[11px] font-mono uppercase text-slate-700 mb-1.5 font-bold tracking-wider">
                             Driver Instructions / Kitchen Key Drop Notes
                           </label>
                           <input
@@ -514,7 +521,7 @@ export function CartDrawer() {
                             placeholder="e.g. Leave crates inside prep fridge door code 4821"
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
-                            className="w-full bg-obsidian-900 border border-emerald-900/60 rounded-xl px-3.5 py-2 text-xs text-cream focus:outline-none focus:border-champagne placeholder:text-cream/30"
+                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400"
                           />
                         </div>
                       </div>
@@ -523,32 +530,32 @@ export function CartDrawer() {
 
                   {/* Footer Summary & Checkout / Auth Panel */}
                   {items.length > 0 && (
-                    <div className="p-5 border-t border-emerald-950/80 bg-obsidian-900/90 space-y-4 shadow-2xl">
+                    <div className="p-5 border-t border-slate-200 bg-white space-y-4 shadow-lg">
                       
                       {/* Trade Credit Facility Progress Bar */}
-                      <div className="p-3.5 bg-obsidian-950 rounded-2xl border border-emerald-900/60 space-y-2">
+                      <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
                         <div className="flex justify-between items-center text-[11px]">
-                          <span className="text-cream/70 flex items-center gap-1.5 font-sans font-medium">
-                            <CreditCard className="w-3.5 h-3.5 text-champagne" />
+                          <span className="text-slate-600 flex items-center gap-1.5 font-sans font-medium">
+                            <CreditCard className="w-3.5 h-3.5 text-emerald-700" />
                             <span>30-Day Trade Credit Facility</span>
                           </span>
-                          <span className="font-mono text-champagne font-bold">
+                          <span className="font-mono text-emerald-800 font-bold">
                             £{availableCredit.toFixed(2)} available
                           </span>
                         </div>
-                        <div className="w-full h-1.5 bg-obsidian-900 rounded-full overflow-hidden">
+                        <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
                           <div
                             className={`h-full transition-all duration-300 ${
                               exceedsCredit
                                 ? 'bg-rose-500'
                                 : creditUsagePercent > 75
                                 ? 'bg-amber-500'
-                                : 'bg-emerald-400'
+                                : 'bg-emerald-500'
                             }`}
                             style={{ width: `${creditUsagePercent}%` }}
                           />
                         </div>
-                        <div className="flex justify-between text-[10px] text-cream/50 font-mono">
+                        <div className="flex justify-between text-[10px] text-slate-500 font-mono">
                           <span>Facility Limit: £{currentOrg.creditLimit.toLocaleString()}</span>
                           <span>Used: £{(currentOrg.creditUsed + grandTotal).toFixed(2)}</span>
                         </div>
@@ -556,24 +563,24 @@ export function CartDrawer() {
 
                       {/* Pricing Calculation Summary */}
                       <div className="space-y-1.5 text-xs">
-                        <div className="flex justify-between text-cream/70">
+                        <div className="flex justify-between text-slate-600">
                           <span>Wholesale Goods Subtotal:</span>
-                          <span className="font-mono text-cream font-medium">£{subtotal.toFixed(2)}</span>
+                          <span className="font-mono text-slate-900 font-semibold">£{subtotal.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between text-cream/70">
+                        <div className="flex justify-between text-slate-600">
                           <span>Blended VAT (5%):</span>
-                          <span className="font-mono text-cream font-medium">£{vatTotal.toFixed(2)}</span>
+                          <span className="font-mono text-slate-900 font-semibold">£{vatTotal.toFixed(2)}</span>
                         </div>
-                        <div className="flex justify-between text-sm font-bold text-cream pt-2 border-t border-emerald-950/80">
+                        <div className="flex justify-between text-sm font-bold text-slate-900 pt-2 border-t border-slate-200">
                           <span>Order Total (inc. VAT):</span>
-                          <span className="font-mono text-champagne text-base font-bold">£{grandTotal.toFixed(2)}</span>
+                          <span className="font-mono text-emerald-800 text-base font-bold">£{grandTotal.toFixed(2)}</span>
                         </div>
                       </div>
 
                       {/* Credit limit warning if exceeded */}
                       {exceedsCredit && (
-                        <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded-xl text-rose-300 text-[11px] flex items-start gap-2">
-                          <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5" />
+                        <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-[11px] flex items-start gap-2">
+                          <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
                           <span>
                             This order exceeds your available trade credit balance (£{availableCredit.toFixed(2)} remaining). Please contact accounts to authorize or adjust quantities.
                           </span>
@@ -585,17 +592,17 @@ export function CartDrawer() {
                         <button
                           onClick={() => handleCheckout(false)}
                           disabled={isSubmitting || exceedsCredit}
-                          className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-gold-glow transition-all ${
+                          className={`w-full py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xs transition-all ${
                             exceedsCredit
-                              ? 'bg-obsidian-800 text-cream/40 cursor-not-allowed border border-emerald-950'
-                              : 'bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 hover:brightness-110 active:scale-[0.99]'
+                              ? 'bg-slate-200 text-slate-400 cursor-not-allowed border border-slate-300'
+                              : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-[0.99]'
                           }`}
                         >
                           {isSubmitting ? (
                             <span>Placing Order at Birmingham Hub...</span>
                           ) : (
                             <>
-                              <span>Confirm & Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
+                              <span>Confirm &amp; Place Order ({isStandingOrder ? 'Standing Schedule' : 'Morning Drop'})</span>
                               <ArrowRight className="w-4 h-4" />
                             </>
                           )}
@@ -605,7 +612,7 @@ export function CartDrawer() {
                           <button
                             onClick={() => handleCheckout(true)}
                             disabled={isSubmitting}
-                            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs sm:text-sm shadow-gold-glow flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.99] transition-all"
+                            className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 active:scale-[0.99] transition-all"
                           >
                             {isSubmitting ? (
                               <span>Simulating Dispatch...</span>
@@ -622,14 +629,14 @@ export function CartDrawer() {
                             <Link
                               href="/apply"
                               onClick={closeCart}
-                              className="py-2.5 px-3 rounded-xl bg-obsidian-950 border border-champagne/40 text-champagne font-mono font-bold text-[11px] text-center hover:bg-champagne/10 transition-all flex items-center justify-center gap-1"
+                              className="py-2.5 px-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 font-mono font-bold text-[11px] text-center hover:bg-slate-100 transition-all flex items-center justify-center gap-1"
                             >
                               <span>Apply for Credit</span>
                             </Link>
                             <Link
                               href="/login"
                               onClick={closeCart}
-                              className="py-2.5 px-3 rounded-xl bg-obsidian-950 border border-emerald-800/60 text-cream/80 font-mono font-bold text-[11px] text-center hover:text-champagne transition-all flex items-center justify-center gap-1"
+                              className="py-2.5 px-3 rounded-xl bg-white border border-emerald-600 text-emerald-800 font-mono font-bold text-[11px] text-center hover:bg-emerald-50 transition-all flex items-center justify-center gap-1"
                             >
                               <span>Customer Login</span>
                             </Link>

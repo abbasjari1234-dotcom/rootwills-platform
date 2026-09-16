@@ -15,7 +15,7 @@ export default async function PortalLayout({ children }: { children: React.React
   }
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-cream selection:bg-champagne selection:text-obsidian-950">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900">
       <PortalNav />
       <main className="min-h-[calc(100vh-120px)]">{children}</main>
       <AIOrderAssistant />

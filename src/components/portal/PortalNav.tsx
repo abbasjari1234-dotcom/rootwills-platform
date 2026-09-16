@@ -16,6 +16,7 @@ import {
   CreditCard,
   Building2,
   Phone,
+  Clock
 } from 'lucide-react';
 import { RootwillsLogo } from '@/components/brand/RootwillsLogo';
 import { logoutServerAction } from '@/actions/auth';
@@ -33,8 +34,14 @@ export function PortalNav() {
   const { items, openCart } = useCartStore();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0];
-  const currentLocation = currentOrg?.locations.find((l) => l.id === currentLocationId) || currentOrg?.locations[0];
+  const currentOrg = organizations.find((o) => o.id === currentOrgId) || organizations[0] || {
+    id: 'org-default',
+    name: 'Trade Client',
+    creditLimit: 25000,
+    creditUsed: 4200,
+    locations: [{ id: 'loc-1', name: 'Main Kitchen', postcode: 'B1 1AA' }]
+  };
+  const currentLocation = currentOrg?.locations?.find((l) => l.id === currentLocationId) || currentOrg?.locations?.[0];
   const cartItemCount = items.reduce((sum, item) => sum + item.qty, 0);
 
   const availableCredit = Math.max(0, currentOrg.creditLimit - currentOrg.creditUsed);
@@ -61,29 +68,29 @@ export function PortalNav() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-b border-emerald-900/40 shadow-2xl">
-      {/* Account Info & Credit Top Bar */}
-      <div className="bg-obsidian-900/90 border-b border-emerald-950 px-4 py-2 text-xs">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+      {/* ─── Top Context Bar: Operational Status, Postcode & Credit Headroom ─── */}
+      <div className="bg-slate-900 text-slate-200 border-b border-slate-800 px-4 py-2 text-xs">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          {/* Active Organization & Location */}
+          {/* Active Organization & Location Dropdown */}
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 font-bold text-cream">
+            <div className="flex items-center gap-1.5 font-bold text-white">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>{currentOrg.name}</span>
             </div>
 
             {/* Location selector */}
-            {currentOrg.locations.length > 1 && (
-              <div className="flex items-center gap-1 text-cream/80 bg-obsidian-950 px-2.5 py-1 rounded-lg border border-emerald-900/50">
-                <MapPin className="w-3 h-3 text-champagne" />
+            {currentOrg?.locations && currentOrg.locations.length > 1 && (
+              <div className="flex items-center gap-1 text-slate-300 bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700">
+                <MapPin className="w-3 h-3 text-emerald-400" />
                 <select
                   aria-label="Switch delivery location"
                   value={currentLocationId}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="bg-transparent text-cream text-[11px] focus:outline-none cursor-pointer"
+                  className="bg-transparent text-white text-[11px] focus:outline-none cursor-pointer"
                 >
                   {currentOrg.locations.map((loc) => (
-                    <option key={loc.id} value={loc.id} className="bg-obsidian-900 text-cream">
+                    <option key={loc.id} value={loc.id} className="bg-slate-900 text-white">
                       {loc.name} ({loc.postcode})
                     </option>
                   ))}
@@ -91,23 +98,25 @@ export function PortalNav() {
               </div>
             )}
 
-            <span className="hidden sm:inline text-cream/30">&bull;</span>
-            <span className="hidden sm:inline text-cream/80">
-              Cut-off: <strong className="text-champagne font-mono">11:00 PM tonight</strong> for 06:00 AM delivery
+            <span className="hidden sm:inline text-slate-600">&bull;</span>
+            <span className="hidden sm:inline text-slate-300">
+              Cut-off: <strong className="text-emerald-400 font-mono">11:00 PM tonight</strong> for 06:00 AM delivery
             </span>
           </div>
 
-          {/* Trade Credit Gauge & User Logout */}
+          {/* Trade Credit Gauge & User Sign Out */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <div className="text-[11px] text-cream/80">
+              <div className="text-[11px] text-slate-300">
                 <span>Credit: </span>
-                <strong className="text-emerald-400 font-mono">£{availableCredit.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
-                <span className="text-cream/70"> / £{currentOrg.creditLimit.toLocaleString()}</span>
+                <strong className="text-emerald-400 font-mono">
+                  £{availableCredit.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                </strong>
+                <span className="text-slate-400"> / £{currentOrg.creditLimit.toLocaleString()}</span>
               </div>
-              <div className="w-16 bg-obsidian-950 h-1.5 rounded-full overflow-hidden border border-emerald-900/60 hidden md:block">
+              <div className="w-16 bg-slate-800 h-1.5 rounded-full overflow-hidden border border-slate-700 hidden md:block">
                 <div
-                  className={`h-full ${creditUsagePercent > 85 ? 'bg-rose-500' : 'bg-gradient-to-r from-emerald-400 to-champagne'}`}
+                  className={`h-full ${creditUsagePercent > 85 ? 'bg-rose-500' : 'bg-emerald-400'}`}
                   style={{ width: `${creditUsagePercent}%` }}
                 />
               </div>
@@ -118,7 +127,7 @@ export function PortalNav() {
               type="button"
               onClick={handleLogout}
               aria-label="Sign out of account"
-              className="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-cream/80 hover:text-champagne hover:border-champagne/40 text-[11px] font-mono flex items-center gap-1.5 transition-all"
+              className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-[11px] font-mono flex items-center gap-1.5 transition-all"
             >
               <LogOut className="w-3 h-3" />
               <span className="hidden sm:inline">Sign Out</span>
@@ -127,7 +136,7 @@ export function PortalNav() {
         </div>
       </div>
 
-      {/* Main Portal Nav Bar */}
+      {/* ─── Main Portal Nav Bar ─── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3">
           <RootwillsLogo size="md" variant="compact" href="/dashboard" />
@@ -140,10 +149,10 @@ export function PortalNav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     active
-                      ? 'bg-champagne/15 text-champagne border border-champagne/30 font-bold'
-                      : 'text-cream/80 hover:text-cream hover:bg-emerald-950/40'
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold shadow-2xs'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   {link.label}
@@ -152,18 +161,18 @@ export function PortalNav() {
             })}
           </nav>
 
-          {/* Right Action Trigger: 3D Cart Button */}
+          {/* Right Action Trigger: Live Basket Button */}
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={openCart}
               aria-label={`Open shopping cart (${cartItemCount} items)`}
-              className="relative px-4 py-2.5 rounded-xl bg-gradient-to-r from-champagne-soft via-champagne to-champagne-dim text-obsidian-950 font-bold text-xs shadow-gold-glow hover:brightness-110 transition-all flex items-center gap-2 active:scale-95 group"
+              className="relative px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-2 active:scale-95 group"
             >
               <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              <span>Cart</span>
+              <span>Basket</span>
               {cartItemCount > 0 && (
-                <span className="px-1.5 py-0.5 rounded-full bg-obsidian-950 text-champagne text-[10px] font-mono font-bold animate-pulse">
+                <span className="px-1.5 py-0.5 rounded-full bg-white text-emerald-800 text-[10px] font-mono font-bold">
                   {cartItemCount}
                 </span>
               )}
@@ -173,7 +182,7 @@ export function PortalNav() {
             <button
               type="button"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="p-2 text-cream hover:text-champagne lg:hidden"
+              className="p-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-xl lg:hidden transition-colors"
               aria-label={mobileNavOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileNavOpen}
             >
@@ -183,17 +192,19 @@ export function PortalNav() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* ─── Mobile Menu Drawer ─── */}
       {mobileNavOpen && (
-        <div className="lg:hidden bg-obsidian-900 border-b border-emerald-950 px-4 pt-3 pb-6 space-y-2 animate-slide-up">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 animate-slide-up shadow-lg">
           <div className="grid gap-1 text-sm">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileNavOpen(false)}
-                className={`px-3 py-2 rounded-lg ${
-                  pathname === link.href ? 'text-champagne font-bold bg-emerald-950/60' : 'text-cream/80'
+                className={`px-3 py-2 rounded-xl font-medium transition-colors ${
+                  pathname === link.href
+                    ? 'text-emerald-800 font-bold bg-emerald-50 border border-emerald-200'
+                    : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
                 {link.label}

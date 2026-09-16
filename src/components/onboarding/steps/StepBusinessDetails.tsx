@@ -38,11 +38,11 @@ export function StepBusinessDetails() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="space-y-1">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-champagne font-bold">Step 2 of 4</p>
-        <h2 className="font-display text-2xl sm:text-3xl font-bold text-cream">
+        <p className="font-mono text-xs uppercase tracking-wider text-emerald-700 font-bold">Step 2 of 4</p>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Tell Us About Your Establishment
         </h2>
-        <p className="text-xs text-cream/60">
+        <p className="text-sm text-slate-600">
           This helps our commercial sales desk structure your wholesale contract terms.
         </p>
       </div>
@@ -60,7 +60,7 @@ export function StepBusinessDetails() {
             autoComplete="organization"
             aria-label="Trading or Business Name"
             placeholder="e.g. The Grand Kitchen / Heritage Bistro Ltd"
-            className="onboarding-input"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-sans"
           />
         </FormField>
 
@@ -70,7 +70,7 @@ export function StepBusinessDetails() {
             {...register('companyRegNumber')} 
             aria-label="Companies House Registration Number"
             placeholder="e.g. 08492019" 
-            className="onboarding-input font-mono uppercase" 
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-mono uppercase" 
           />
         </FormField>
 
@@ -83,7 +83,7 @@ export function StepBusinessDetails() {
             {...register('estimatedWeeklySpend')}
             aria-label="Estimated Weekly Food Spend in Pounds"
             placeholder="2500"
-            className="onboarding-input font-mono"
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-mono"
           />
         </FormField>
 
@@ -94,18 +94,18 @@ export function StepBusinessDetails() {
             {...register('weeklyCovers')} 
             aria-label="Weekly Covers"
             placeholder="e.g. 800" 
-            className="onboarding-input font-mono" 
+            className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-mono" 
           />
         </FormField>
 
-        <div className="sm:col-span-2 pt-2">
-          <label className="flex items-center gap-3 text-xs text-cream/80 cursor-pointer p-3 rounded-xl bg-zinc-950/60 border border-zinc-800">
+        <div className="sm:col-span-2 pt-1">
+          <label className="flex items-center gap-3 text-xs text-slate-700 cursor-pointer p-3.5 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100/60 transition-colors">
             <input 
               type="checkbox" 
               {...register('multiLocation')} 
-              className="h-4 w-4 rounded accent-champagne cursor-pointer" 
+              className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer" 
             />
-            <span>Yes, we operate and order across multiple kitchen venues</span>
+            <span className="font-medium">Yes, we operate and order across multiple kitchen venues</span>
           </label>
         </div>
 
@@ -118,17 +118,24 @@ export function StepBusinessDetails() {
               max={50}
               {...register('siteCount')} 
               aria-label="Number of Kitchen Sites"
-              className="onboarding-input font-mono" 
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white placeholder:text-slate-400 transition-all font-mono" 
             />
           </FormField>
         )}
       </div>
 
-      <div className="pt-4 flex items-center justify-between gap-4">
-        <button type="button" onClick={goBack} className="onboarding-btn-ghost text-xs">
+      <div className="pt-4 flex items-center justify-between gap-4 border-t border-slate-100">
+        <button 
+          type="button" 
+          onClick={goBack} 
+          className="px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 font-bold text-xs font-mono transition-colors"
+        >
           &larr; Back
         </button>
-        <button type="submit" className="onboarding-btn-primary text-xs shadow-gold-glow flex items-center gap-2">
+        <button 
+          type="submit" 
+          className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-md flex items-center gap-2 transition-all"
+        >
           <span>Continue to Logistics</span>
           <ArrowRight className="w-4 h-4" />
         </button>
