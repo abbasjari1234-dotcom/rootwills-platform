@@ -46,7 +46,7 @@ export function CommercialB2BHero() {
           {/* Buttons: Primary Gold Solid + Secondary Burgundy Outlined with Nested Arrow Pills */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <a
-              href="#services"
+              href="/#services"
               className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
             >
               <span>Our Services</span>
@@ -56,7 +56,7 @@ export function CommercialB2BHero() {
             </a>
 
             <a
-              href="#about"
+              href="/#about"
               className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#250409]/80 hover:bg-[#380710] ring-1 ring-[#BA8E4E]/40 hover:ring-[#BA8E4E] text-white text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
             >
               <span className="text-[#EDE4D8]">About Rootwills</span>

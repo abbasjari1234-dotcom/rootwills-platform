@@ -1,21 +1,18 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { 
   X, 
-  ShoppingBag, 
-  Plus, 
-  Minus, 
-  Check, 
   ShieldCheck, 
   Thermometer, 
-  Truck, 
-  Layers, 
   Globe, 
-  Clock 
+  Clock, 
+  Mail, 
+  Phone,
+  CheckCircle2,
+  FileText
 } from 'lucide-react';
 import { Product } from '@/types/products';
-import { useCartStore } from '@/store/cart-store';
 
 interface MarketplaceProductQuickViewModalProps {
   product: Product | null;
@@ -26,8 +23,6 @@ export function MarketplaceProductQuickViewModal({
   product,
   onClose,
 }: MarketplaceProductQuickViewModalProps) {
-  const { items, addItem, updateQty } = useCartStore();
-
   // Close on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,28 +32,7 @@ export function MarketplaceProductQuickViewModal({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  const existingCartItem = product ? items.find((i) => i.productId === product.id) : null;
-  const [selectedQty, setSelectedQty] = useState<number>(1);
-  const [addedFeedback, setAddedFeedback] = useState(false);
-
-  useEffect(() => {
-    if (product) {
-      const existing = items.find((i) => i.productId === product.id);
-      setSelectedQty(existing ? existing.qty : product.moq || 1);
-    }
-  }, [product, items]);
-
   if (!product) return null;
-
-  // Volume Tier Pricing calculations
-  const tier1Price = product.basePrice;
-  const tier2Price = product.basePrice * 0.92; // 8% off for 5-19 units
-  const tier3Price = product.basePrice * 0.85; // 15% off for 20+ units
-
-  const activeUnitPrice =
-    selectedQty >= 20 ? tier3Price : selectedQty >= 5 ? tier2Price : tier1Price;
-
-  const activeLineTotal = activeUnitPrice * selectedQty;
 
   // Temperature classification helper
   const getStorageTemp = (category: string) => {
@@ -75,30 +49,23 @@ export function MarketplaceProductQuickViewModal({
     }
   };
 
-  const handleAddOrUpdate = () => {
-    if (existingCartItem) {
-      updateQty(product.id, selectedQty);
-    } else {
-      addItem(product, selectedQty, false);
-    }
-    setAddedFeedback(true);
-    setTimeout(() => {
-      setAddedFeedback(false);
-      onClose();
-    }, 600);
+  const handleEnquire = () => {
+    onClose();
+    const mailto = `mailto:info@rootwills.co.uk?subject=Wholesale%20Supply%20Enquiry%20-%20${encodeURIComponent(product.name)}%20(${encodeURIComponent(product.sku)})&body=Hello%20Rootwills%20Commercial%20Desk,%0A%0AWe%20would%20like%20to%20enquire%20about%20supply%20availability%20and%20contract%20terms%20for:%0A-%20Product:%20${encodeURIComponent(product.name)}%0A-%20SKU:%20${encodeURIComponent(product.sku)}%0A-%20Pack%20Size:%20${encodeURIComponent(product.packSize)}%0A%0AThank%20you.`;
+    window.location.href = mailto;
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in">
       <div 
-        className="bg-white rounded-3xl p-6 sm:p-7 max-w-2xl w-full shadow-2xl border border-slate-200 relative overflow-hidden max-h-[92vh] overflow-y-auto custom-scroll"
+        className="bg-white rounded-3xl p-6 sm:p-7 max-w-2xl w-full shadow-2xl border border-[#BA8E4E]/30 relative overflow-hidden max-h-[92vh] overflow-y-auto custom-scroll"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors z-10"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors z-10 cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-4 h-4" />
@@ -106,11 +73,11 @@ export function MarketplaceProductQuickViewModal({
 
         {/* Top Header Category Pill */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/80 px-2.5 py-0.5 rounded-full">
+          <span className="text-[11px] font-serif font-bold uppercase tracking-wider text-[#4E0D17] bg-[#FAF6EE] border border-[#BA8E4E]/40 px-2.5 py-0.5 rounded-full">
             {product.categoryLabel || product.category.replace('_', ' ')}
           </span>
           <span className="text-[11px] font-mono text-slate-400">
-            SKU: {product.sku}
+            Line Spec: {product.sku}
           </span>
         </div>
 
@@ -125,26 +92,21 @@ export function MarketplaceProductQuickViewModal({
                 alt={product.name}
                 className="w-full h-full object-cover object-center"
               />
-              {product.featured && (
-                <div className="absolute top-2.5 left-2.5 bg-rose-500 text-white text-[10px] font-sans font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-xs">
-                  Trade Deal
-                </div>
-              )}
             </div>
 
             {/* Storage & Quality Badges */}
-            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/70 space-y-1.5 text-[11px] font-sans text-slate-600">
+            <div className="p-3 bg-stone-50 rounded-xl border border-stone-200/80 space-y-2 text-[11px] font-sans text-stone-700">
               <div className="flex items-center gap-2">
-                <Thermometer className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <Thermometer className="w-3.5 h-3.5 text-[#BA8E4E] shrink-0" />
                 <span>{getStorageTemp(product.category)}</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>BRCGS &amp; Red Tractor Audited</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E] shrink-0" />
+                <span>SALSA &amp; Cold-Chain Assured</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>Guaranteed 5+ Days Chilled Life</span>
+                <Clock className="w-3.5 h-3.5 text-[#BA8E4E] shrink-0" />
+                <span>Guaranteed Fresh Shelf Vitality</span>
               </div>
             </div>
           </div>
@@ -152,11 +114,11 @@ export function MarketplaceProductQuickViewModal({
           {/* Right Product Specs Column */}
           <div className="sm:col-span-7 space-y-3.5">
             <div>
-              <h2 className="text-xl sm:text-2xl font-sans font-extrabold text-slate-900 tracking-tight leading-snug">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#4E0D17] tracking-tight leading-snug">
                 {product.name}
               </h2>
-              <p className="text-xs font-mono font-semibold text-emerald-700 mt-1">
-                Pack Size: {product.packSize} &bull; Sold by the {product.unit}
+              <p className="text-xs font-mono font-semibold text-[#BA8E4E] mt-1">
+                Standard Pack Spec: {product.packSize} &bull; Sold by {product.unit}
               </p>
             </div>
 
@@ -167,18 +129,18 @@ export function MarketplaceProductQuickViewModal({
             {/* Origin & Traceability */}
             {product.origin && (
               <div className="flex items-center gap-2 text-xs font-sans text-slate-700">
-                <Globe className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>Origin: <strong className="font-semibold text-slate-900">{product.origin}</strong></span>
+                <Globe className="w-3.5 h-3.5 text-[#BA8E4E] shrink-0" />
+                <span>Lineage: <strong className="font-semibold text-slate-900">{product.origin}</strong></span>
               </div>
             )}
 
-            {/* Dietary & Allergen Badges */}
+            {/* Dietary & Specification Badges */}
             {product.dietary && product.dietary.length > 0 && (
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {product.dietary.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-mono font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md"
+                    className="text-[10px] font-mono font-semibold text-[#4E0D17] bg-[#FAF6EE] border border-[#BA8E4E]/30 px-2 py-0.5 rounded-md"
                   >
                     {tag}
                   </span>
@@ -186,139 +148,43 @@ export function MarketplaceProductQuickViewModal({
               </div>
             )}
 
-            {/* Base Price Display */}
-            <div className="pt-2 flex items-baseline gap-2">
-              <span className="text-2xl font-sans font-black text-slate-900">
-                £{activeUnitPrice.toFixed(2)}
+            {/* Supply Guarantee Notice */}
+            <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E7DEC8] space-y-1 mt-2">
+              <span className="text-[11px] font-serif font-bold text-[#4E0D17] uppercase tracking-wider block">
+                Wholesale Supply Terms
               </span>
-              <span className="text-xs font-sans text-slate-500">
-                per {product.unit} (ex. VAT)
-              </span>
+              <p className="text-[11px] text-stone-600 leading-normal font-sans">
+                Supplied on standing delivery schedules across London and UK hospitality hubs with verified cold-chain logistics.
+              </p>
             </div>
           </div>
 
         </div>
 
-        {/* Wholesale Volume Tier Pricing Table */}
-        <div className="py-4 border-b border-slate-100">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-sans font-bold uppercase tracking-wider text-slate-800">
-              Commercial Volume Pricing
-            </span>
-            <span className="text-[11px] font-mono text-emerald-700 font-medium">
-              Tier discounts apply automatically
-            </span>
+        {/* Enquiry Actions (Pure B2B Intro Sourcing) */}
+        <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-xs text-slate-500 font-sans text-center sm:text-left">
+            <span>Speak directly with our trade desk for pricing schedules:</span>
           </div>
 
-          <div className="grid grid-cols-3 gap-2">
-            {/* Tier 1 */}
-            <div
-              className={`p-2.5 rounded-xl border text-center transition-all ${
-                selectedQty < 5
-                  ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/20'
-                  : 'bg-slate-50/70 border-slate-200'
-              }`}
-            >
-              <div className="text-[11px] font-mono text-slate-500">1 to 4 {product.unit}s</div>
-              <div className="text-sm font-sans font-black text-slate-900 mt-0.5">
-                £{tier1Price.toFixed(2)}
-              </div>
-              <div className="text-[10px] text-slate-400 font-sans">Standard Wholesale</div>
-            </div>
-
-            {/* Tier 2 */}
-            <div
-              className={`p-2.5 rounded-xl border text-center transition-all ${
-                selectedQty >= 5 && selectedQty < 20
-                  ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/20'
-                  : 'bg-slate-50/70 border-slate-200'
-              }`}
-            >
-              <div className="text-[11px] font-mono text-slate-500">5 to 19 {product.unit}s</div>
-              <div className="text-sm font-sans font-black text-emerald-700 mt-0.5">
-                £{tier2Price.toFixed(2)}
-              </div>
-              <div className="text-[10px] text-emerald-700 font-sans font-bold">Save 8% Kitchen Tier</div>
-            </div>
-
-            {/* Tier 3 */}
-            <div
-              className={`p-2.5 rounded-xl border text-center transition-all ${
-                selectedQty >= 20
-                  ? 'bg-emerald-50/80 border-emerald-500 ring-2 ring-emerald-500/20'
-                  : 'bg-slate-50/70 border-slate-200'
-              }`}
-            >
-              <div className="text-[11px] font-mono text-slate-500">20+ {product.unit}s</div>
-              <div className="text-sm font-sans font-black text-emerald-800 mt-0.5">
-                £{tier3Price.toFixed(2)}
-              </div>
-              <div className="text-[10px] text-emerald-800 font-sans font-bold">Save 15% Pallet Contract</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Direct Add to Basket Footer Section */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          
-          {/* Quantity Stepper */}
-          <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
-            <span className="text-xs font-sans font-semibold text-slate-600">
-              Order Quantity:
-            </span>
-
-            <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl border border-slate-200">
-              <button
-                type="button"
-                onClick={() => setSelectedQty((prev) => Math.max(product.moq || 1, prev - 1))}
-                className="w-8 h-8 rounded-lg bg-white text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200/80 flex items-center justify-center transition-colors shadow-xs"
-                aria-label="Decrease quantity"
-              >
-                <Minus className="w-3.5 h-3.5" />
-              </button>
-
-              <span className="text-sm font-sans font-black text-slate-900 min-w-[32px] text-center font-mono">
-                {selectedQty}
-              </span>
-
-              <button
-                type="button"
-                onClick={() => setSelectedQty((prev) => prev + 1)}
-                className="w-8 h-8 rounded-lg bg-white text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200/80 flex items-center justify-center transition-colors shadow-xs"
-                aria-label="Increase quantity"
-              >
-                <Plus className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Action CTA Button */}
-          <div className="w-full sm:flex-1 sm:max-w-xs">
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <button
               type="button"
-              onClick={handleAddOrUpdate}
-              className={`w-full py-3 px-5 rounded-2xl font-sans font-bold text-xs sm:text-sm text-white shadow-md transition-all flex items-center justify-center gap-2 active:scale-[0.98] ${
-                addedFeedback
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-emerald-600 hover:bg-emerald-700'
-              }`}
+              onClick={handleEnquire}
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs font-serif font-bold tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer"
             >
-              {addedFeedback ? (
-                <>
-                  <Check className="w-4 h-4 text-white" />
-                  <span>Basket Updated!</span>
-                </>
-              ) : (
-                <>
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>
-                    {existingCartItem ? 'Update Basket' : 'Add to Basket'} &bull; £{activeLineTotal.toFixed(2)}
-                  </span>
-                </>
-              )}
+              <Mail className="w-3.5 h-3.5 text-[#2D060D]" />
+              <span>Enquire for Supply</span>
             </button>
-          </div>
 
+            <a
+              href="tel:+442012345678"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-serif font-bold tracking-wider uppercase transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#BA8E4E]" />
+              <span className="hidden sm:inline">Call Desk</span>
+            </a>
+          </div>
         </div>
 
       </div>

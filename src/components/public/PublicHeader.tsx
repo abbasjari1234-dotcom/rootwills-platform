@@ -11,11 +11,11 @@ export function PublicHeader() {
   const [activeNav, setActiveNav] = useState('home');
 
   const navLinks = [
-    { label: 'HOME', href: '#home', id: 'home' },
-    { label: 'ABOUT US', href: '#about', id: 'about' },
-    { label: 'OUR SERVICES', href: '#services', id: 'services' },
-    { label: 'OUR APPROACH', href: '#approach', id: 'approach' },
-    { label: 'CONTACT', href: '#contact', id: 'contact' },
+    { label: 'HOME', href: '/#home', id: 'home' },
+    { label: 'ABOUT US', href: '/#about', id: 'about' },
+    { label: 'OUR SERVICES', href: '/#services', id: 'services' },
+    { label: 'OUR APPROACH', href: '/#approach', id: 'approach' },
+    { label: 'CONTACT', href: '/#contact', id: 'contact' },
   ];
 
   return (
@@ -128,6 +128,27 @@ export function PublicHeader() {
                 </a>
               ))}
             </nav>
+
+            {/* Mobile Direct Enquire Contact Bar */}
+            <div className="pt-3 border-t border-[#BA8E4E]/20 space-y-2">
+              <span className="block text-[10px] font-serif uppercase tracking-[0.2em] text-[#D4A86A]/80 px-3">
+                Commercial Enquiries
+              </span>
+              <div className="flex flex-col gap-1.5 px-3">
+                <a
+                  href="tel:+442012345678"
+                  className="text-xs text-white/90 hover:text-[#D4A86A] font-sans flex items-center gap-2"
+                >
+                  <span className="text-[#D4A86A]">📞</span> +44 (0) 20 1234 5678
+                </a>
+                <a
+                  href="mailto:info@rootwills.co.uk"
+                  className="text-xs text-white/90 hover:text-[#D4A86A] font-sans flex items-center gap-2"
+                >
+                  <span className="text-[#D4A86A]">✉️</span> info@rootwills.co.uk
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

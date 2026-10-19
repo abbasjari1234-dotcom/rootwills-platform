@@ -79,11 +79,11 @@ export function PublicFooter() {
             </h3>
             <ul className="space-y-1.5 sm:space-y-2.5 text-xs sm:text-[13px] font-sans">
               {[
-                { label: 'Home', href: '#home' },
-                { label: 'About Us', href: '#about' },
-                { label: 'Our Services', href: '#services' },
-                { label: 'Our Approach', href: '#approach' },
-                { label: 'Reviews', href: '#testimonials' },
+                { label: 'Home', href: '/#home' },
+                { label: 'About Us', href: '/#about' },
+                { label: 'Our Services', href: '/#services' },
+                { label: 'Our Approach', href: '/#approach' },
+                { label: 'Reviews', href: '/#testimonials' },
               ].map((link) => (
                 <li key={link.label}>
                   <a

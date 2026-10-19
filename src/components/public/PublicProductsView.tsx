@@ -15,7 +15,6 @@ import {
   Eye
 } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
-import { useCartStore } from '@/store/cart-store';
 import { Product, ProductCategory } from '@/types/products';
 import { CommercialMarketplaceHeroBanner } from './marketplace/CommercialMarketplaceHeroBanner';
 import { MarketplaceCategorySidebar } from './marketplace/MarketplaceCategorySidebar';
@@ -26,15 +25,10 @@ import { MarketplaceProductQuickViewModal } from './marketplace/MarketplaceProdu
 
 export function PublicProductsView() {
   const { products } = useAppStore();
-  const { items, openCart } = useCartStore();
 
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
-
-  // Cart totals for mobile summary bar
-  const totalCartQty = items.reduce((sum, item) => sum + item.qty, 0);
-  const cartSubtotal = items.reduce((sum, item) => sum + item.customerPrice * item.qty, 0);
 
   // Filtered products based on search & category
   const filteredProducts = useMemo(() => {
@@ -324,28 +318,7 @@ export function PublicProductsView() {
 
       </div>
 
-      {/* Mobile Sticky Bottom Floating Cart Trigger (< xl viewports) */}
-      {totalCartQty > 0 && (
-        <div className="fixed bottom-4 left-4 right-4 z-40 xl:hidden animate-slide-up">
-          <button
-            type="button"
-            onClick={openCart}
-            className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-700 text-white font-sans font-bold text-xs sm:text-sm shadow-xl flex items-center justify-between border border-emerald-500/40"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="w-6 h-6 rounded-full bg-white text-emerald-700 flex items-center justify-center text-xs font-black">
-                {totalCartQty}
-              </div>
-              <span>View Wholesale Basket</span>
-            </div>
 
-            <div className="flex items-center gap-1.5 font-mono text-emerald-100">
-              <span>£{cartSubtotal.toFixed(2)}</span>
-              <ArrowRight className="w-4 h-4 text-white" />
-            </div>
-          </button>
-        </div>
-      )}
 
       {/* Elevated Commercial Quick View & Volume Spec Modal */}
       <MarketplaceProductQuickViewModal

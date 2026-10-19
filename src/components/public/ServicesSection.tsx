@@ -62,7 +62,7 @@ export function ServicesSection() {
             {/* Smooth-Scroll Button Linking to Approach Section */}
             <div className="mb-5 lg:mb-0">
               <a
-                href="#approach"
+                href="/#approach"
                 className="group inline-flex items-center gap-2.5 sm:gap-3 pl-4 pr-1.5 py-1.5 sm:pl-7 sm:pr-3 sm:py-3 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
               >
                 <span>Discover More</span>
