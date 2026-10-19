@@ -4,7 +4,7 @@ import Image from 'next/image';
 export function MidBannerSection() {
   return (
     <>
-      <section className="relative py-16 sm:py-20 lg:py-28 overflow-hidden bg-[#160205] border-t border-b border-[#BA8E4E]/25">
+      <section className="relative py-16 sm:py-20 lg:py-28 overflow-hidden bg-[#0C1210] border-t border-b border-[#BA8E4E]/25">
         {/* Full-Width Panoramic Background: The Kitchen Pass */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -16,13 +16,13 @@ export function MidBannerSection() {
             className="object-cover filter brightness-[0.42] contrast-105 saturate-[0.85]"
           />
           {/* Cinematic Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#160205] via-black/55 to-[#160205]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#160205]/85 via-transparent to-[#160205]/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C1210] via-black/55 to-[#0C1210]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0C1210]/90 via-transparent to-[#0C1210]/90" />
         </div>
 
         {/* Top Architectural Diamond Accent */}
         <div className="relative z-10 flex items-center justify-center mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 border border-[#BA8E4E]/40 rounded-full bg-[#160205]/90 text-[9px] text-[#D4A86A] font-serif tracking-widest shadow-md">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 border border-[#BA8E4E]/40 rounded-full bg-[#0F1714]/90 text-[9px] text-[#D4A86A] font-serif tracking-widest shadow-md">
             <span className="text-[8px] text-[#BA8E4E]">◆</span>
             <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.25em] font-serif text-[#D4A86A] font-semibold">
               PURVEYOR BENCHMARK
@@ -53,7 +53,7 @@ export function MidBannerSection() {
 
           {/* ─── Architectural Credential Ribbon (Replaces AI Slop Glass Boxes) ─── */}
           <div className="w-full max-w-4xl mx-auto mb-8 sm:mb-10 p-1 rounded-2xl bg-white/[0.04] ring-1 ring-[#BA8E4E]/35 backdrop-blur-md shadow-2xl">
-            <div className="rounded-[calc(1rem-0.125rem)] bg-[#120104]/85 px-4 py-5 sm:px-6 sm:py-6 border border-white/[0.08]">
+            <div className="rounded-[calc(1rem-0.125rem)] bg-[#0E1613]/90 px-4 py-5 sm:px-6 sm:py-6 border border-white/[0.08]">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-4 md:gap-0 md:divide-x divide-[#BA8E4E]/25">
                 
                 {/* Stat 1: Fulfillment */}

@@ -19,7 +19,7 @@ export function PublicHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#2E060D] border-b border-[#BA8E4E]/20 shadow-md">
+    <header className="sticky top-0 z-50 w-full bg-[#0F1714] border-b border-[#BA8E4E]/25 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full flex items-center justify-between h-14 sm:h-20 relative">
           
@@ -99,7 +99,7 @@ export function PublicHeader() {
 
       {/* Decorative thin separator line with center diamond on mobile */}
       <div className="relative w-full h-[1px] bg-[#BA8E4E]/25 flex items-center justify-center">
-        <div className="absolute bg-[#2E060D] px-1.5 text-[8px] text-[#D4A86A]">
+        <div className="absolute bg-[#0F1714] px-1.5 text-[8px] text-[#D4A86A]">
           ◆
         </div>
       </div>
@@ -111,7 +111,7 @@ export function PublicHeader() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#240409] border-b border-[#BA8E4E]/25 px-4 pt-3 pb-6 space-y-3"
+            className="md:hidden bg-[#0A110E] border-b border-[#BA8E4E]/25 px-4 pt-3 pb-6 space-y-3"
           >
             <nav className="flex flex-col space-y-2">
               {navLinks.map((item) => (
