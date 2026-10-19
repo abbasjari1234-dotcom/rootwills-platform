@@ -37,13 +37,18 @@ export function MarketplaceProductQuickViewModal({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  if (!product) return null;
-
-  const existingCartItem = items.find((i) => i.productId === product.id);
-  const [selectedQty, setSelectedQty] = useState<number>(
-    existingCartItem ? existingCartItem.qty : product.moq || 1
-  );
+  const existingCartItem = product ? items.find((i) => i.productId === product.id) : null;
+  const [selectedQty, setSelectedQty] = useState<number>(1);
   const [addedFeedback, setAddedFeedback] = useState(false);
+
+  useEffect(() => {
+    if (product) {
+      const existing = items.find((i) => i.productId === product.id);
+      setSelectedQty(existing ? existing.qty : product.moq || 1);
+    }
+  }, [product, items]);
+
+  if (!product) return null;
 
   // Volume Tier Pricing calculations
   const tier1Price = product.basePrice;
