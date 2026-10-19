@@ -31,11 +31,21 @@ export default function PublicHomePage() {
       {/* ─── 5. Mid Banner: Supporting the Food Industry Across the UK ─── */}
       <MidBannerSection />
 
-      {/* ─── 6. Testimonials: Trusted by Food Businesses ─── */}
-      <TestimonialsSection />
+      {/* ─── 6 & 7. Testimonials & Direct Trade Enquiries (Unified Seamless Flow on Single Crest Canvas) ─── */}
+      <section className="bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-b border-[#E8DEC8]">
+        {/* Continuous Neoclassical Laurel Wreaths & Architectural Crest Watermark Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/texture_testimonials_crest.jpg')`,
+          }}
+        />
 
-      {/* ─── 7. Direct Commercial Trade Inquiries ─── */}
-      <GetInTouchBanner />
+        <div className="relative z-10">
+          <TestimonialsSection />
+          <GetInTouchBanner />
+        </div>
+      </section>
     </div>
   );
 }

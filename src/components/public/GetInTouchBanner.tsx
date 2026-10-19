@@ -10,16 +10,8 @@ export function GetInTouchBanner() {
 
   return (
     <>
-      <section id="contact" className="py-12 sm:py-16 lg:py-24 bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-b border-[#E8DEC8]">
-        {/* ─── Neoclassical Parchment Watermark Texture ─── */}
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
-          style={{ 
-            backgroundImage: `url('/images/textures/cream_parchment_texture.jpg')`,
-          }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="contact" className="pt-4 sm:pt-6 pb-12 sm:pb-16 lg:pb-24 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#2E060D] via-[#240409] to-[#1A0307] border border-[#BA8E4E]/35 p-7 sm:p-10 lg:p-12 shadow-2xl text-white">
             
@@ -98,7 +90,7 @@ export function GetInTouchBanner() {
           </div>
 
         </div>
-      </section>
+      </div>
 
       <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </>

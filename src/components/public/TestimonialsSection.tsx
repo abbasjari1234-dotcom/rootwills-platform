@@ -70,16 +70,8 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section id="testimonials" className="py-10 sm:py-16 lg:py-28 bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-b border-[#E8DEC8]">
-      {/* ─── Neoclassical Laurel Wreaths & Architectural Crest Watermark Texture ─── */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
-        style={{
-          backgroundImage: `url('/images/textures/texture_testimonials_crest.jpg')`,
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="testimonials" className="pt-10 sm:pt-16 lg:pt-24 pb-4 sm:pb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center max-w-xl mx-auto mb-6 sm:mb-14">
@@ -188,6 +180,6 @@ export function TestimonialsSection() {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
