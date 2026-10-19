@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 export function PublicFooter() {
   return (
-    <footer id="contact" className="bg-[#240409] text-white relative overflow-hidden">
+    <footer id="footer" className="bg-[#240409] text-white relative overflow-hidden">
       {/* ─── Deep Burgundy Damask Engraving Texture Overlay ─── */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"

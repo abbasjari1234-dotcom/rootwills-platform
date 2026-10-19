@@ -13,7 +13,7 @@ export function GetInTouchBanner() {
       <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#3D0810] via-[#4E0D17] to-[#36060E] border border-[#BA8E4E]/40 p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#2E060D] via-[#240409] to-[#1A0307] border border-[#BA8E4E]/35 p-7 sm:p-10 lg:p-12 shadow-2xl text-white">
             
             {/* Background Greek Engraving Watermark */}
             <div className="absolute inset-y-0 left-0 w-1/3 opacity-15 pointer-events-none mix-blend-screen overflow-hidden">
@@ -28,52 +28,60 @@ export function GetInTouchBanner() {
 
             <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
               
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-2">
-                Get in Touch
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <span className="text-[#D4A86A] text-[10px] sm:text-[11px] font-serif tracking-[0.25em] uppercase font-semibold">
+                  — DIRECT COMMERCIAL ENQUIRIES —
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-2 tracking-tight">
+                Partner With Rootwills
               </h2>
 
-              <p className="text-xs sm:text-sm text-cream-200/90 font-sans leading-relaxed mb-8 max-w-xl">
-                Have a question or want to discuss your business needs? We’d love to hear from you.
+              <p className="text-xs sm:text-sm text-[#EDE4D8]/90 font-sans leading-relaxed mb-6 sm:mb-8 max-w-xl">
+                Speak directly with our wholesale team to arrange tasting samples, tiered volume rates, or bespoke dawn delivery schedules for your kitchen.
               </p>
 
               {/* Contact Icons Row */}
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-cream-100 font-sans mb-8">
+              <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10 text-xs sm:text-sm text-[#EDE4D8] font-sans mb-7 sm:mb-9">
                 <a
                   href="tel:+442012345678"
-                  className="flex items-center gap-2 hover:text-[#CCA362] transition-colors"
+                  className="flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#CCA362]">
+                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span>+44 (0) 20 1234 5678</span>
+                  <span className="font-medium">+44 (0) 20 1234 5678</span>
                 </a>
 
                 <a
                   href="mailto:info@rootwills.co.uk"
-                  className="flex items-center gap-2 hover:text-[#CCA362] transition-colors"
+                  className="flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#CCA362]">
+                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>info@rootwills.co.uk</span>
+                  <span className="font-medium">info@rootwills.co.uk</span>
                 </a>
 
-                <div className="flex items-center gap-2 text-cream-200/80">
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-[#CCA362]">
+                <div className="flex items-center gap-2.5 text-[#EDE4D8]/80">
+                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <span>London, United Kingdom</span>
                 </div>
               </div>
 
-              {/* Send Enquiry CTA Button */}
+              {/* Send Enquiry CTA Button with Nested Arrow Pill */}
               <div>
                 <button
                   onClick={() => setInquiryOpen(true)}
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded bg-[#BA8E4E] hover:bg-[#A87D38] text-white text-xs sm:text-sm font-serif font-bold tracking-wider uppercase shadow-xl hover:shadow-2xl transition-all"
+                  className="group inline-flex items-center gap-2.5 sm:gap-3 pl-6 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-lg hover:shadow-2xl active:scale-[0.98] cursor-pointer"
                 >
-                  <span>Send Enquiry</span>
-                  <ArrowRight className="w-4 h-4 text-white" />
+                  <span>Submit Trade Enquiry</span>
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
+                  </div>
                 </button>
               </div>
 

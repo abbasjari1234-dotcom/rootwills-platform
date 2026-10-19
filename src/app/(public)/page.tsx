@@ -5,6 +5,7 @@ import { ServicesSection } from '@/components/public/ServicesSection';
 import { ApproachSection } from '@/components/public/ApproachSection';
 import { MidBannerSection } from '@/components/public/MidBannerSection';
 import { TestimonialsSection } from '@/components/public/TestimonialsSection';
+import { GetInTouchBanner } from '@/components/public/GetInTouchBanner';
 
 export const metadata = {
   title: 'Rootwills | A Trusted Partner in Food Services & Wholesale UK',
@@ -32,6 +33,9 @@ export default function PublicHomePage() {
 
       {/* ─── 6. Testimonials: Trusted by Food Businesses ─── */}
       <TestimonialsSection />
+
+      {/* ─── 7. Direct Commercial Trade Inquiries ─── */}
+      <GetInTouchBanner />
     </div>
   );
 }

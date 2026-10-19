@@ -64,8 +64,8 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             transition={{ duration: 0.25, ease: 'easeOut' }}
             className="relative w-full max-w-xl bg-[#FAF7F2] rounded-2xl shadow-2xl border border-[#BA8E4E]/30 overflow-hidden z-10"
           >
-            {/* Header with burgundy bar */}
-            <div className="bg-[#4E0D17] text-white p-6 sm:p-7 relative">
+            {/* Header with royal burgundy bar */}
+            <div className="bg-[#2E060D] text-white p-6 sm:p-7 relative border-b border-[#BA8E4E]/25">
               <button
                 onClick={onClose}
                 className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors"
@@ -73,7 +73,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               >
                 <X className="w-5 h-5" />
               </button>
-              <div className="text-[11px] uppercase tracking-[0.2em] text-[#BA8E4E] font-medium mb-1">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-[#D4A86A] font-medium mb-1">
                 — ROOTWILLS PARTNERSHIP —
               </div>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
@@ -88,10 +88,10 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             <div className="p-6 sm:p-8">
               {submitted ? (
                 <div className="py-12 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-[#4E0D17]/10 text-[#4E0D17] flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#2E060D]/10 text-[#2E060D] flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h4 className="text-2xl font-serif font-bold text-[#4E0D17] mb-2">
+                  <h4 className="text-2xl font-serif font-bold text-[#2E060D] mb-2">
                     Enquiry Received
                   </h4>
                   <p className="text-sm text-slate-600 max-w-sm">
@@ -111,7 +111,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                         placeholder="e.g. James Wilson"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                     <div>
@@ -124,7 +124,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                         placeholder="e.g. The Dorchester Bistro"
                         value={formData.business}
                         onChange={(e) => setFormData({ ...formData, business: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                         placeholder="james@restaurant.co.uk"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                     <div>
@@ -153,7 +153,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                         placeholder="+44 7123 456789"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     <select
                       value={formData.sector}
                       onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17]"
+                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                     >
                       <option value="Restaurant / Hospitality">Restaurant & Hospitality</option>
                       <option value="Hotel & Boutique Resort">Hotel & Boutique Resort</option>
@@ -185,18 +185,18 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       placeholder="Tell us about your produce volume, delivery frequency, or specific supply needs..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#4E0D17] focus:ring-1 focus:ring-[#4E0D17] resize-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D] resize-none"
                     />
                   </div>
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="group w-full py-3.5 px-6 rounded-lg bg-[#BA8E4E] hover:bg-[#A87D38] text-white font-serif font-bold text-base tracking-wide flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] active:translate-y-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] cursor-pointer"
+                      className="group w-full py-3.5 px-6 rounded-xl bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] font-serif font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] cursor-pointer"
                     >
                       <span>Submit Partnership Enquiry</span>
-                      <div className="w-6 h-6 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-                        <Send className="w-3.5 h-3.5" />
+                      <div className="w-6 h-6 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                        <Send className="w-3.5 h-3.5 text-[#2D060D]" />
                       </div>
                     </button>
                   </div>
