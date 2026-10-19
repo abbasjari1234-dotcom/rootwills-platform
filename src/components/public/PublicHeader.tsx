@@ -111,9 +111,9 @@ export function PublicHeader() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#240409] border-b border-[#BA8E4E]/25 px-4 pt-3 pb-6 space-y-3"
+            className="md:hidden bg-gradient-to-b from-[#2B060D] via-[#240409] to-[#1C0307] border-b border-[#BA8E4E]/30 px-4 pt-3 pb-6 space-y-4 shadow-2xl"
           >
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-1">
               {navLinks.map((item) => (
                 <a
                   key={item.id}
@@ -122,31 +122,36 @@ export function PublicHeader() {
                     setActiveNav(item.id);
                     setMobileOpen(false);
                   }}
-                  className="px-3 py-2 text-sm text-[#D4A86A] hover:text-[#F3E5D0] hover:bg-white/5 rounded-md transition-colors font-serif tracking-wider uppercase font-medium"
+                  className="px-3.5 py-2.5 text-xs font-serif font-semibold text-[#F5EEDB] hover:text-[#D4A86A] hover:bg-white/[0.05] rounded-lg transition-all tracking-[0.18em] uppercase flex items-center justify-between group"
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  <span className="text-[10px] text-[#BA8E4E]/60 group-hover:text-[#D4A86A] transition-colors">
+                    →
+                  </span>
                 </a>
               ))}
             </nav>
 
-            {/* Mobile Direct Enquire Contact Bar */}
-            <div className="pt-3 border-t border-[#BA8E4E]/20 space-y-2">
-              <span className="block text-[10px] font-serif uppercase tracking-[0.2em] text-[#D4A86A]/80 px-3">
-                Commercial Enquiries
-              </span>
-              <div className="flex flex-col gap-1.5 px-3">
-                <a
-                  href="tel:+442012345678"
-                  className="text-xs text-white/90 hover:text-[#D4A86A] font-sans flex items-center gap-2"
-                >
-                  <span className="text-[#D4A86A]">📞</span> +44 (0) 20 1234 5678
-                </a>
-                <a
-                  href="mailto:info@rootwills.co.uk"
-                  className="text-xs text-white/90 hover:text-[#D4A86A] font-sans flex items-center gap-2"
-                >
-                  <span className="text-[#D4A86A]">✉️</span> info@rootwills.co.uk
-                </a>
+            {/* Mobile Direct Enquire Contact Card */}
+            <div className="pt-2">
+              <div className="p-3.5 rounded-xl bg-white/[0.04] border border-[#BA8E4E]/25 space-y-2 backdrop-blur-xs">
+                <span className="block text-[9px] font-serif uppercase tracking-[0.22em] text-[#D4A86A] font-semibold">
+                  Commercial Enquiries
+                </span>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="tel:+442012345678"
+                    className="text-xs text-[#EDE4D8] hover:text-[#D4A86A] font-sans flex items-center gap-2.5 transition-colors"
+                  >
+                    <span className="text-[#D4A86A] text-xs">📞</span> +44 (0) 20 1234 5678
+                  </a>
+                  <a
+                    href="mailto:info@rootwills.co.uk"
+                    className="text-xs text-[#EDE4D8] hover:text-[#D4A86A] font-sans flex items-center gap-2.5 transition-colors"
+                  >
+                    <span className="text-[#D4A86A] text-xs">✉️</span> info@rootwills.co.uk
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

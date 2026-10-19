@@ -28,15 +28,16 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-8 sm:py-16 lg:py-28 bg-[#420811] text-white relative overflow-hidden border-b border-[#BA8E4E]/20">
-      {/* ─── 1. Deep Burgundy Ornate Damask Engraving Watermark Texture ─── */}
+    <section id="services" className="py-8 sm:py-16 lg:py-28 bg-[#2A060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25">
+      {/* ─── 1. Subtle Ornate Damask Engraving Watermark ─── */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-overlay"
+        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-20 mix-blend-overlay"
         style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
       />
 
-      {/* ─── 2. Additional Soft Crimson Gradient Tint ─── */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#4A0A14]/70 via-transparent to-[#4A0A14]/70 pointer-events-none z-0" />
+      {/* ─── 2. Warm Ambient Radial Gold Glow & Vignette ─── */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(212,168,106,0.12),transparent_70%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2A060D] via-[#24050B] to-[#1F0409] pointer-events-none z-0 opacity-75" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -81,7 +82,7 @@ export function ServicesSection() {
               className="flex overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-3 gap-3.5 sm:gap-0 -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0 scroll-smooth touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {/* Column 1: Food Service Supply */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#31050C]/90 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4 sm:p-0 sm:pr-5 lg:pr-7 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
+              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#380912]/80 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4.5 sm:p-0 sm:pr-5 lg:pr-7 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-start mb-3 sm:mb-4">
                     <div className="p-2 rounded-full bg-white/5 ring-1 ring-[#BA8E4E]/30 sm:ring-white/10 group-hover:ring-[#D4A86A]/50 transition-colors">
@@ -113,7 +114,7 @@ export function ServicesSection() {
               </div>
 
               {/* Column 2: Wholesale Solutions */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#31050C]/90 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4 sm:p-0 sm:px-5 lg:px-7 sm:border-l sm:border-white/10 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
+              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#380912]/80 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4.5 sm:p-0 sm:px-5 lg:px-7 sm:border-l sm:border-white/10 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-start mb-3 sm:mb-4">
                     <div className="p-2 rounded-full bg-white/5 ring-1 ring-[#BA8E4E]/30 sm:ring-white/10 group-hover:ring-[#D4A86A]/50 transition-colors">
@@ -146,7 +147,7 @@ export function ServicesSection() {
               </div>
 
               {/* Column 3: Business Partnerships */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#31050C]/90 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4 sm:p-0 sm:pl-5 lg:pl-7 sm:border-l sm:border-white/10 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
+              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#380912]/80 sm:bg-transparent ring-1 ring-[#BA8E4E]/30 sm:ring-0 rounded-2xl sm:rounded-none p-4.5 sm:p-0 sm:pl-5 lg:pl-7 sm:border-l sm:border-white/10 group flex flex-col justify-between h-full hover:bg-white/[0.03] transition-all duration-300">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-start mb-3 sm:mb-4">
                     <div className="p-2 rounded-full bg-white/5 ring-1 ring-[#BA8E4E]/30 sm:ring-white/10 group-hover:ring-[#D4A86A]/50 transition-colors">

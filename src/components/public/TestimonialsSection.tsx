@@ -88,7 +88,7 @@ export function TestimonialsSection() {
               — WHAT OUR CLIENTS SAY —
             </span>
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#4E0D17] leading-[1.2]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#2E060D] leading-[1.2]">
             Trusted by<br className="sm:hidden" /> Food Businesses
           </h2>
         </div>

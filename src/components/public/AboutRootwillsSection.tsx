@@ -77,7 +77,7 @@ export function AboutRootwillsSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#4E0D17] leading-[1.15] mb-3 sm:mb-5">
+            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] leading-[1.15] mb-3 sm:mb-5">
               More Than Just<br />
               Food Supply
             </h2>
@@ -154,7 +154,7 @@ export function AboutRootwillsSection() {
                     EST. LONDON
                   </span>
                 </div>
-                <h3 className="text-base font-serif font-bold text-[#4E0D17] mb-2">
+                <h3 className="text-base font-serif font-bold text-[#2E060D] mb-2">
                   Rootwills Heritage
                 </h3>
                 <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3">
