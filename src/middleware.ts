@@ -37,15 +37,6 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  let user = null;
-  try {
-    const sessionRes = await updateSession(request);
-    response = sessionRes.response;
-    user = sessionRes.user;
-  } catch (e) {
-    // If Supabase session check throws, proceed to cookie verification
-  }
-
   // 2. Attach Standard Security & Compression Headers to Every Response
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('X-Frame-Options', 'DENY');
@@ -57,6 +48,36 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith('/api') && origin && ALLOWED_ORIGINS.includes(origin)) {
     response.headers.set('Access-Control-Allow-Origin', origin);
     response.headers.set('Vary', 'Origin, Accept-Encoding');
+  }
+
+  // 3. Determine if route requires authentication
+  const isAdminRoute = pathname.startsWith('/admin');
+  const isDriverRoute = pathname.startsWith('/driver');
+  const portalRoutes = [
+    '/dashboard',
+    '/quick-order',
+    '/orders',
+    '/invoices',
+    '/standing-orders',
+    '/account',
+    '/catalog',
+    '/price-list',
+  ];
+  const isPortalRoute = portalRoutes.some((route) => pathname.startsWith(route));
+
+  // If this is a public portfolio route, return immediately with zero network overhead!
+  if (!isAdminRoute && !isDriverRoute && !isPortalRoute) {
+    return response;
+  }
+
+  // 4. For Protected Routes: Verify User Session
+  let user = null;
+  try {
+    const sessionRes = await updateSession(request);
+    response = sessionRes.response;
+    user = sessionRes.user;
+  } catch (e) {
+    // If Supabase session check throws or times out, proceed
   }
 
   const verifiedRole = user
@@ -95,9 +116,6 @@ export async function middleware(request: NextRequest) {
   }
 
   // 5. Customer Portal Route Protection (/dashboard, /quick-order, etc.)
-  const portalRoutes = ['/dashboard', '/quick-order', '/orders', '/invoices', '/standing-orders', '/account', '/catalog', '/price-list'];
-  const isPortalRoute = portalRoutes.some((route) => pathname.startsWith(route));
-
   if (isPortalRoute) {
     if (!user) {
       const loginUrl = new URL('/login', request.url);

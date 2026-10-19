@@ -13,6 +13,13 @@ export async function updateSession(request: NextRequest) {
     return { response, user: null };
   }
 
+  const hasAuthCookie = request.cookies.getAll().some(
+    (c) => c.name.startsWith('sb-') || c.name.includes('auth-token')
+  );
+  if (!hasAuthCookie) {
+    return { response, user: null };
+  }
+
   try {
     const supabase = createServerClient(
       supabaseUrl,
@@ -36,7 +43,13 @@ export async function updateSession(request: NextRequest) {
       }
     );
 
-    const { data: { user } } = await supabase.auth.getUser();
+    const userPromise = supabase.auth.getUser();
+    const timeoutPromise = new Promise<{ data: { user: null } }>((resolve) =>
+      setTimeout(() => resolve({ data: { user: null } }), 800)
+    );
+
+    const result = await Promise.race([userPromise, timeoutPromise]);
+    const user = result?.data?.user ?? null;
     return { response, user };
   } catch {
     return { response, user: null };
