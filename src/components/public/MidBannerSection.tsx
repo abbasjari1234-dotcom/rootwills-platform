@@ -54,10 +54,10 @@ export function MidBannerSection() {
           {/* ─── Architectural Credential Ribbon (Replaces AI Slop Glass Boxes) ─── */}
           <div className="w-full max-w-4xl mx-auto mb-8 sm:mb-10 p-1 rounded-2xl bg-white/[0.04] ring-1 ring-[#BA8E4E]/35 backdrop-blur-md shadow-2xl">
             <div className="rounded-[calc(1rem-0.125rem)] bg-[#120104]/85 px-4 py-5 sm:px-6 sm:py-6 border border-white/[0.08]">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-[#BA8E4E]/25">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-4 md:gap-0 md:divide-x divide-[#BA8E4E]/25">
                 
                 {/* Stat 1: Fulfillment */}
-                <div className="px-3 sm:px-4 text-center flex flex-col justify-center">
+                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pb-1 md:pb-0">
                   <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
                     99.4%
                   </span>
@@ -70,7 +70,7 @@ export function MidBannerSection() {
                 </div>
 
                 {/* Stat 2: Cold-Chain */}
-                <div className="px-3 sm:px-4 text-center flex flex-col justify-center pt-3 md:pt-0">
+                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pb-1 md:pb-0">
                   <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
                     &lt; 4°C
                   </span>
@@ -83,7 +83,7 @@ export function MidBannerSection() {
                 </div>
 
                 {/* Stat 3: Dawn Drops */}
-                <div className="px-3 sm:px-4 text-center flex flex-col justify-center pt-3 md:pt-0">
+                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pt-4 md:pt-0 border-t border-[#BA8E4E]/25 md:border-t-0">
                   <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
                     6 Days
                   </span>
@@ -96,7 +96,7 @@ export function MidBannerSection() {
                 </div>
 
                 {/* Stat 4: SALSA */}
-                <div className="px-3 sm:px-4 text-center flex flex-col justify-center pt-3 md:pt-0">
+                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pt-4 md:pt-0 border-t border-[#BA8E4E]/25 md:border-t-0">
                   <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
                     100%
                   </span>
