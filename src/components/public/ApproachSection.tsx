@@ -107,7 +107,7 @@ export function ApproachSection() {
               </div>
 
               {/* Provenance Badge */}
-              <div className="absolute -bottom-2.5 sm:-bottom-3 left-4 sm:left-6 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/40 shadow-md text-[8px] sm:text-[9px] font-sans tracking-[0.18em] uppercase text-[#16201B] font-semibold flex items-center gap-1">
+              <div className="absolute -bottom-2.5 sm:-bottom-3 left-4 sm:left-6 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/40 shadow-md text-[8px] sm:text-[9px] font-sans tracking-[0.18em] uppercase text-[#4E0D17] font-semibold flex items-center gap-1">
                 <span className="text-[#BA8E4E]">✦</span> Direct Farm Provenance
               </div>
             </div>
@@ -121,7 +121,7 @@ export function ApproachSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[38px] font-serif font-bold text-[#16201B] leading-[1.18] mb-3 sm:mb-5">
+            <h2 className="text-2xl sm:text-4xl lg:text-[38px] font-serif font-bold text-[#5B141E] leading-[1.18] mb-3 sm:mb-5">
               Built on Trust,<br />
               Quality & Consistency
             </h2>
@@ -151,12 +151,12 @@ export function ApproachSection() {
                 >
                   <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shrink-0 shadow-2xs transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:ring-[#BA8E4E]/60">
                     <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
-                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#16201B] text-[#FAF7F0] text-[7px] font-serif font-bold flex items-center justify-center">
+                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#4E0D17] text-[#FAF7F0] text-[7px] font-serif font-bold flex items-center justify-center">
                       {romanNumerals[idx]}
                     </span>
                   </div>
                   <div>
-                    <h3 className="text-xs sm:text-sm font-serif font-bold text-stone-800 leading-snug group-hover:text-[#16201B] transition-colors">
+                    <h3 className="text-xs sm:text-sm font-serif font-bold text-stone-800 leading-snug group-hover:text-[#4E0D17] transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="text-[11px] sm:text-xs text-stone-500 font-sans mt-0.5">

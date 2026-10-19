@@ -73,7 +73,7 @@ export function MarketplaceProductQuickViewModal({
 
         {/* Top Header Category Pill */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-[11px] font-serif font-bold uppercase tracking-wider text-[#16201B] bg-[#FAF6EE] border border-[#BA8E4E]/40 px-2.5 py-0.5 rounded-full">
+          <span className="text-[11px] font-serif font-bold uppercase tracking-wider text-[#4E0D17] bg-[#FAF6EE] border border-[#BA8E4E]/40 px-2.5 py-0.5 rounded-full">
             {product.categoryLabel || product.category.replace('_', ' ')}
           </span>
           <span className="text-[11px] font-mono text-slate-400">
@@ -114,7 +114,7 @@ export function MarketplaceProductQuickViewModal({
           {/* Right Product Specs Column */}
           <div className="sm:col-span-7 space-y-3.5">
             <div>
-              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#16201B] tracking-tight leading-snug">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#4E0D17] tracking-tight leading-snug">
                 {product.name}
               </h2>
               <p className="text-xs font-mono font-semibold text-[#BA8E4E] mt-1">
@@ -140,7 +140,7 @@ export function MarketplaceProductQuickViewModal({
                 {product.dietary.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-mono font-semibold text-[#16201B] bg-[#FAF6EE] border border-[#BA8E4E]/30 px-2 py-0.5 rounded-md"
+                    className="text-[10px] font-mono font-semibold text-[#4E0D17] bg-[#FAF6EE] border border-[#BA8E4E]/30 px-2 py-0.5 rounded-md"
                   >
                     {tag}
                   </span>
@@ -150,7 +150,7 @@ export function MarketplaceProductQuickViewModal({
 
             {/* Supply Guarantee Notice */}
             <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E7DEC8] space-y-1 mt-2">
-              <span className="text-[11px] font-serif font-bold text-[#16201B] uppercase tracking-wider block">
+              <span className="text-[11px] font-serif font-bold text-[#4E0D17] uppercase tracking-wider block">
                 Wholesale Supply Terms
               </span>
               <p className="text-[11px] text-stone-600 leading-normal font-sans">

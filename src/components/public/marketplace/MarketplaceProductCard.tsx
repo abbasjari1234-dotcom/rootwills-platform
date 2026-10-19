@@ -19,7 +19,7 @@ export function MarketplaceProductCard({ product, onQuickView }: MarketplaceProd
     >
       {/* Featured / Special Line Badge */}
       {isFeatured && (
-        <span className="absolute top-3 left-3 z-10 px-2 py-0.5 rounded-md text-[10px] font-serif font-bold bg-[#FAF6EE] text-[#16201B] border border-[#BA8E4E]/40 shadow-2xs flex items-center gap-1">
+        <span className="absolute top-3 left-3 z-10 px-2 py-0.5 rounded-md text-[10px] font-serif font-bold bg-[#FAF6EE] text-[#4E0D17] border border-[#BA8E4E]/40 shadow-2xs flex items-center gap-1">
           <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
           <span>Prime Line</span>
         </span>
@@ -35,8 +35,8 @@ export function MarketplaceProductCard({ product, onQuickView }: MarketplaceProd
         />
 
         {/* Hover / Tap Quick Spec Pill */}
-        <div className="absolute inset-0 bg-[#0B110E]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-[#0E1512] text-[11px] font-serif font-bold tracking-wider uppercase shadow-md transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+        <div className="absolute inset-0 bg-[#2D060D]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-[#2D060D] text-[11px] font-serif font-bold tracking-wider uppercase shadow-md transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
             <Eye className="w-3.5 h-3.5 text-[#BA8E4E]" />
             <span>View Spec</span>
           </span>
@@ -46,7 +46,7 @@ export function MarketplaceProductCard({ product, onQuickView }: MarketplaceProd
       {/* Product Details */}
       <div className="space-y-1.5">
         {/* Product Title */}
-        <h4 className="text-xs sm:text-[13px] font-serif font-bold text-slate-900 group-hover:text-[#BA8E4E] transition-colors line-clamp-2 leading-snug">
+        <h4 className="text-xs sm:text-[13px] font-serif font-bold text-slate-900 group-hover:text-[#4E0D17] transition-colors line-clamp-2 leading-snug">
           {product.name}
         </h4>
 

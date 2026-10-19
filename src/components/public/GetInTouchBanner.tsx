@@ -13,7 +13,7 @@ export function GetInTouchBanner() {
       <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-[#FAF7F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#0B100E] via-[#0F1714] to-[#0A0F0D] border border-[#BA8E4E]/30 p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
+          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#3D0810] via-[#4E0D17] to-[#36060E] border border-[#BA8E4E]/40 p-8 sm:p-10 lg:p-12 shadow-2xl text-white">
             
             {/* Background Greek Engraving Watermark */}
             <div className="absolute inset-y-0 left-0 w-1/3 opacity-15 pointer-events-none mix-blend-screen overflow-hidden">

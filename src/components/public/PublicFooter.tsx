@@ -7,18 +7,18 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 export function PublicFooter() {
   return (
-    <footer id="contact" className="bg-[#0B100E] text-white relative overflow-hidden">
-      {/* ─── Deep Damask Engraving Texture Overlay ─── */}
+    <footer id="contact" className="bg-[#240409] text-white relative overflow-hidden">
+      {/* ─── Deep Burgundy Damask Engraving Texture Overlay ─── */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-20 mix-blend-overlay"
+        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
         style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
       />
       {/* Soft Gradient Depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0E1512] via-[#0B100E] to-[#070A09] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2D050B] via-[#240409] to-[#180205] pointer-events-none z-0" />
 
       {/* ─── Top Architectural Hairline with Center Gold Diamond Motif ─── */}
       <div className="relative z-10 w-full pt-3 sm:pt-4 pb-1 border-t border-[#BA8E4E]/25 flex items-center justify-center px-4">
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-[#0E1613]/90 border border-[#BA8E4E]/35 shadow-xs max-w-[94vw]">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-[#1A0307]/90 border border-[#BA8E4E]/35 shadow-xs max-w-[94vw]">
           <span className="text-[7px] sm:text-[8px] text-[#BA8E4E]">◆</span>
           <span className="text-[7.5px] sm:text-[9px] uppercase tracking-[0.12em] sm:tracking-[0.25em] font-serif text-[#D4A86A] font-semibold truncate">
             ROOTWILLS LONDON · COMMERCIAL PURVEYORS
@@ -238,7 +238,7 @@ export function PublicFooter() {
       </div>
 
       {/* ─── Bottom Sub-Bar ─── */}
-      <div className="relative z-10 border-t border-[#BA8E4E]/15 bg-[#070A09]/95 backdrop-blur-xs">
+      <div className="relative z-10 border-t border-[#BA8E4E]/15 bg-[#170205]/95 backdrop-blur-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-xs text-[#EDE4D8]/60 font-sans text-center sm:text-left">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2">
             <span>© {new Date().getFullYear()} Rootwills Ltd.</span>
