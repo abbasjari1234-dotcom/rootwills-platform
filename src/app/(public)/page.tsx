@@ -1,38 +1,37 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { CommercialB2BHero } from '@/components/public/CommercialB2BHero';
-import { CommercialTrustStrip } from '@/components/public/CommercialTrustStrip';
-import { ProductCategoryGrid } from '@/components/public/ProductCategoryGrid';
-import { SectorsGrid } from '@/components/public/SectorsGrid';
-import { WhyChooseUsBanner } from '@/components/public/WhyChooseUsBanner';
-import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
+import { AboutRootwillsSection } from '@/components/public/AboutRootwillsSection';
+import { ServicesSection } from '@/components/public/ServicesSection';
+import { ApproachSection } from '@/components/public/ApproachSection';
+import { MidBannerSection } from '@/components/public/MidBannerSection';
+import { TestimonialsSection } from '@/components/public/TestimonialsSection';
 
 export const metadata = {
-  title: 'Rootwills | B2B Wholesale Food & Fresh Produce Supplier UK',
+  title: 'Rootwills | A Trusted Partner in Food Services & Wholesale UK',
   description:
-    'Premier B2B foodservice supplier delivering fresh produce, dairy, meats, seafood and kitchen staples across the UK. Guaranteed 06:00 AM delivery, direct farm contracts, and 30-day trade credit accounts.',
+    'Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK. Quality. Consistency. Partnership.',
 };
 
 export default function PublicHomePage() {
   return (
-    <div className="w-full bg-white text-slate-900">
-      {/* ─── 1. Commercial B2B Hero ─── */}
+    <div className="w-full bg-[#FAF7F2] text-slate-900 overflow-x-hidden">
+      {/* ─── 1. Hero Section ─── */}
       <CommercialB2BHero />
 
-      {/* ─── 2. Emerald Value & Trust Strip ─── */}
-      <CommercialTrustStrip />
+      {/* ─── 2. About Rootwills: More Than Just Food Supply ─── */}
+      <AboutRootwillsSection />
 
-      {/* ─── 3. Our Products: 8-Category Responsive Grid ─── */}
-      <ProductCategoryGrid />
+      {/* ─── 3. Our Services: Tailored Solutions for Every Business ─── */}
+      <ServicesSection />
 
-      {/* ─── 4. Who We Supply: 6 Commercial Hospitality Sectors ─── */}
-      <SectorsGrid />
+      {/* ─── 4. Our Approach: Built on Trust, Quality & Consistency ─── */}
+      <ApproachSection />
 
-      {/* ─── 5. Why Choose Us: Feature Showcase ─── */}
-      <WhyChooseUsBanner />
+      {/* ─── 5. Mid Banner: Supporting the Food Industry Across the UK ─── */}
+      <MidBannerSection />
 
-      {/* ─── 6. Bottom Conversion Strip: Split CTA ─── */}
-      <CommercialBottomCTA />
+      {/* ─── 6. Testimonials: Trusted by Food Businesses ─── */}
+      <TestimonialsSection />
     </div>
   );
 }

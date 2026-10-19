@@ -19,7 +19,7 @@
 }
 
 :root {
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', var(--font-outfit), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Cormorant Garamond', serif;
   --font-mono: 'IBM Plex Mono', monospace;
 

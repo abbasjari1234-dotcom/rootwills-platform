@@ -10,7 +10,7 @@ export default function PublicLayout({
 }) {
   return (
     <SmoothScrollProvider>
-      <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-emerald-600 selection:text-white">
+      <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-slate-900 selection:bg-[#4E0D17] selection:text-[#FAF7F2]">
         <PublicHeader />
         <main className="flex-1">
           {children}

@@ -1,105 +1,91 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, FileText, Lock } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function CommercialB2BHero() {
   return (
-    <section className="relative min-h-[auto] sm:min-h-[80vh] lg:min-h-[88vh] flex items-center overflow-hidden bg-slate-950">
-      {/* 4K Background Image */}
+    <section id="home" className="relative h-[460px] sm:h-[580px] lg:h-[680px] flex items-center overflow-hidden bg-[#120305]">
+      {/* Background Image: Chef Plating Produce on Cutting Board */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/commercial/01_hero_chef_v2.jpg"
-          alt="Rootwills Commercial Foodservice Supplier"
+          src="/images/commercial/rootwills_hero_chef_plating.jpg"
+          alt="Rootwills - A Trusted Partner in Food Services & Wholesale"
           fill
           priority
-          quality={95}
-          sizes="100vw"
-          className="object-cover object-[72%_center] lg:object-center"
+          unoptimized
+          className="object-cover object-[75%_center] lg:object-center"
         />
-        {/* Subtle cinematic gradient overlay to ensure crisp headline readability without washing out the chef & produce */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent sm:from-black/85 sm:via-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 sm:from-black/70 sm:to-black/25" />
+        {/* Scrim: Dark fade on left side for text contrast, completely transparent on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#120305] via-[#120305]/80 via-45% to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 lg:py-24">
-        <div className="max-w-2xl">
-          {/* Green Eyebrow Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-2.5 sm:mb-4"
-          >
-            <span className="text-[11px] sm:text-sm font-sans font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] text-emerald-400">
-              B2B FOOD SERVICE SUPPLIER
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-14">
+        <div className="max-w-2xl lg:max-w-3xl">
+          
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2 mb-2 sm:mb-4">
+            <span className="text-[#D4A86A] text-[11px] sm:text-sm font-serif tracking-[0.25em] uppercase font-semibold">
+              — ROOTWILLS —
             </span>
-          </motion.div>
+          </div>
 
-          {/* Primary High-Impact Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-sans font-extrabold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-3 sm:mb-6"
-          >
-            Fresh Food.<br />
-            Reliable Supply.<br />
-            <span className="text-emerald-400">
-              Better Business.
-            </span>
-          </motion.h1>
+          {/* Primary Headline */}
+          <h1 className="text-2xl sm:text-4xl lg:text-[54px] font-serif font-bold text-white tracking-tight leading-[1.15] mb-3 sm:mb-5">
+            A Trusted Partner in<br />
+            <span className="text-[#D4A86A]">Food Services & Wholesale</span>
+          </h1>
 
           {/* Subtitle Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sm sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed mb-5 sm:mb-8 max-w-xl"
-          >
-            Professional food and fresh produce supply for restaurants, hotels, caterers, care homes and other businesses.
-          </motion.p>
+          <p className="text-xs sm:text-base text-[#EFE8DF]/90 font-sans leading-relaxed mb-5 sm:mb-8 max-w-xl">
+            Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK.
+          </p>
 
-          {/* 3 Action Pill Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-4"
-          >
-            {/* Primary Action Button: Open Account */}
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-white font-sans font-bold text-sm sm:text-base shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto text-center shrink-0"
+          {/* Buttons: Primary Gold Solid + Secondary Burgundy Outlined with Nested Arrow Pills */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <a
+              href="#services"
+              className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
             >
-              <span>Open a Business Account</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+              <span>Our Services</span>
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
+              </div>
+            </a>
 
-            {/* Mobile 2-column secondary actions / Desktop inline pills */}
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-4 w-full sm:w-auto">
-              {/* Secondary Action: Request Price List */}
-              <Link
-                href="/contact?subject=Price+List+Request"
-                className="inline-flex items-center justify-center px-3 sm:px-6 py-2.5 sm:py-3 rounded-full bg-black/50 hover:bg-black/70 border border-white/70 text-white font-sans font-semibold text-xs sm:text-base backdrop-blur-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto text-center"
-              >
-                <span>Request Price List</span>
-              </Link>
+            <a
+              href="#about"
+              className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#250409]/80 hover:bg-[#380710] ring-1 ring-[#BA8E4E]/40 hover:ring-[#BA8E4E] text-white text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
+            >
+              <span className="text-[#EDE4D8]">About Rootwills</span>
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                <ArrowRight className="w-3.5 h-3.5 text-[#D4A86A]" />
+              </div>
+            </a>
+          </div>
 
-              {/* Tertiary Action: Customer Portal Login */}
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2.5 sm:py-3 rounded-full bg-black/50 hover:bg-black/70 border border-white/70 text-white font-sans font-semibold text-xs sm:text-base backdrop-blur-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto text-center"
-              >
-                <Lock className="w-3.5 h-3.5 text-white shrink-0" />
-                <span className="truncate">Customer Login</span>
-              </Link>
-            </div>
-          </motion.div>
         </div>
+      </div>
+
+      {/* Center Bottom Scroll Indicator */}
+      <div
+        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 cursor-pointer text-cream-200/70 hover:text-white transition-colors"
+        onClick={() => {
+          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      >
+        <div className="w-5 h-7 rounded-full border border-[#BA8E4E]/50 flex items-start justify-center p-1 shadow-xs">
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-1 h-1 rounded-full bg-[#D4A86A]"
+          />
+        </div>
+        <span className="text-[9px] font-sans tracking-[0.25em] uppercase text-[#D4A86A]/85 font-semibold">
+          SCROLL DOWN
+        </span>
       </div>
     </section>
   );

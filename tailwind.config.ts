@@ -17,6 +17,9 @@ const config: Config = {
         cream: {
           DEFAULT: '#F7F5EE',
           light: '#FFFDF8',
+          100: '#FAF7F2',
+          200: '#EDE4D8',
+          300: '#DFD5C6',
           muted: '#E6DEC9',
           dim: '#B5AFA4',
         },

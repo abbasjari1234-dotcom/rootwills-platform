@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useId } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface RootwillsLogoProps {
   className?: string;
@@ -20,10 +21,6 @@ export function RootwillsLogo({
   href = '/',
   theme = 'dark',
 }: RootwillsLogoProps) {
-  const rawId = useId();
-  const safeId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
-  const goldGradId = `goldLuxury-${safeId}`;
-  const emeraldGradId = `emeraldInner-${safeId}`;
 
   const iconSizes = {
     sm: 'w-9 h-9',
@@ -39,65 +36,18 @@ export function RootwillsLogo({
 
   const logoGraphic = (
     <div className={`flex items-center gap-3 group select-none ${className}`}>
-      {/* Refined Pure Gold British Heraldic Monogram Crest */}
+      {/* Official Circular Seal Logo with Crisp Transparency */}
       <div
-        className={`relative ${iconSizes[size]} rounded-2xl bg-gradient-to-br from-emerald-950 via-obsidian-950 to-emerald-900 border border-champagne/60 p-1.5 shadow-[0_0_25px_rgba(228,199,103,0.35)] group-hover:shadow-[0_0_35px_rgba(228,199,103,0.6)] group-hover:border-champagne transition-all duration-500 shrink-0 flex items-center justify-center`}
+        className={`relative ${iconSizes[size]} rounded-full overflow-hidden shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105`}
       >
-        <svg
-          viewBox="0 0 100 100"
-          className="w-full h-full drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id={goldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFF9E6" />
-              <stop offset="35%" stopColor="#E4C767" />
-              <stop offset="70%" stopColor="#C9A227" />
-              <stop offset="100%" stopColor="#F5E498" />
-            </linearGradient>
-            <linearGradient id={emeraldGradId} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#10B981" />
-              <stop offset="100%" stopColor="#047857" />
-            </linearGradient>
-          </defs>
-
-          {/* Outer Geometric Luxury Shield */}
-          <polygon
-            points="50,6 88,22 94,64 68,94 32,94 6,64 12,22"
-            stroke={`url(#${goldGradId})`}
-            strokeWidth="3.5"
-            fill="none"
-            opacity="0.95"
-          />
-
-          {/* Inner Emerald Accent Shield */}
-          <polygon
-            points="50,14 80,26 86,60 64,86 36,86 14,60 20,26"
-            stroke={`url(#${emeraldGradId})`}
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.75"
-          />
-
-          {/* Original 'R' Stem & Loop */}
-          <path
-            d="M 30 32 L 30 72 M 30 32 L 48 32 C 58 32 58 48 48 48 L 30 48"
-            stroke={`url(#${goldGradId})`}
-            strokeWidth="6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-
-          {/* Original 'R' Leg Cleanly Joined into 'W' (Single Continuous Flow, Zero Overlap) */}
-          <path
-            d="M 44 48 L 54 72 L 66 52 L 78 72 L 86 48"
-            stroke={`url(#${goldGradId})`}
-            strokeWidth="5.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <Image
+          src="/images/branded/rootwills_logo_seal.png"
+          alt="Rootwills"
+          fill
+          sizes="96px"
+          className="object-contain"
+          priority
+        />
       </div>
 
       {/* Brand Wordmark & Subtitle */}

@@ -1,174 +1,193 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { Scale, FileText, Truck, Clock, CheckCircle2, AlertCircle } from 'lucide-react';
-import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
+import { Scale, Clock, Truck, ShieldCheck, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
   description:
-    'Read the official B2B wholesale terms, ordering cut-offs, credit rules, and delivery conditions for Rootwills customers. Review full account terms now.',
+    'Read the official B2B wholesale supply terms, delivery cut-offs, payment conditions, and service standards for Rootwills commercial trade partners.',
 };
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-slate-50/50 pb-20 space-y-12">
-      {/* Header */}
-      <section className="bg-slate-950 text-white relative overflow-hidden border-b border-slate-800 pt-16 sm:pt-24 pb-16">
+    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20">
+      {/* ─── Header Banner ─── */}
+      <section className="bg-[#2E060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-16 sm:pt-24 pb-16">
+        {/* Deep Damask Engraving Texture */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
+          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#380710] via-[#2E060D] to-[#1E0307] pointer-events-none z-0" />
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            <Scale className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Business-to-Business (B2B) Commercial Terms</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#BA8E4E]/15 border border-[#BA8E4E]/40 text-[#D4A86A] text-xs font-serif uppercase tracking-[0.2em] font-semibold">
+            <Scale className="w-3.5 h-3.5 text-[#D4A86A]" />
+            <span>Commercial Wholesale Terms (B2B)</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
             Wholesale Supply Terms &amp; Conditions
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Governing the supply of fresh produce, living herbs, dairy, butchery, and culinary ingredients by Rootwills Ltd to commercial hospitality operators in the United Kingdom.
+
+          <p className="text-xs sm:text-sm text-[#EDE4D8]/85 max-w-2xl mx-auto font-sans leading-relaxed">
+            Governing the commercial supply of fresh farm produce, living micro-herbs, specialty dairy, and fine culinary ingredients by Rootwills Ltd to commercial hospitality operators across the United Kingdom.
           </p>
         </div>
       </section>
 
-      {/* Content Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-10 text-slate-700 text-sm leading-relaxed">
+      {/* ─── Content Container ─── */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 space-y-8">
+        <div className="bg-[#FFFDF9] p-7 sm:p-12 rounded-2xl border border-[#E8DEC8] shadow-sm space-y-10 text-stone-700 text-xs sm:text-sm leading-relaxed">
+          
           {/* Section 1 */}
           <section className="space-y-3">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
               1. Scope &amp; Trade Account Provisioning
             </h2>
             <p>
-              These Terms and Conditions apply to all contracts for the wholesale supply of goods by Rootwills Ltd (&quot;the Supplier&quot;) to registered commercial buyers (&quot;the Customer&quot;). These terms strictly govern Business-to-Business (B2B) commercial transactions and exclude consumer statutory cooling-off rights.
+              These Terms and Conditions apply to all agreements for the commercial supply of goods by Rootwills Ltd (&quot;the Supplier&quot;) to registered trade buyers (&quot;the Customer&quot;). These conditions strictly govern Business-to-Business (B2B) commercial transactions and exclude consumer statutory cooling-off provisions.
             </p>
             <p>
-              Trade accounts are provisioned upon completion of our digital onboarding process and credit verification. Approved credit limits and settlement terms are confirmed in writing via the customer portal.
+              Trade accounts and credit facilities are provisioned upon formal commercial verification and approval by our commercial underwriting desk. Approved credit facilities and agreed billing terms are confirmed in writing.
             </p>
           </section>
 
           {/* Section 2 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              2. Orders, 11:00 PM Cut-off &amp; Fulfilment
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              2. Orders, 11:00 PM Cut-off &amp; Dawn Fulfilment
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-                <div className="font-bold text-slate-900 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-emerald-600" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+              <div className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] space-y-1.5">
+                <div className="font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#BA8E4E]" />
                   11:00 PM Order Cut-off
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Orders submitted via the Rootwills ordering portal before 23:00 GMT qualify for guaranteed next-day morning delivery drop.
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Orders submitted through authorized trade channels prior to 23:00 GMT qualify for guaranteed next-morning delivery drop across designated UK distribution routes.
                 </p>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-                <div className="font-bold text-slate-900 flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-emerald-600" />
-                  06:00 AM Delivery SLA
+              <div className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] space-y-1.5">
+                <div className="font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-[#BA8E4E]" />
+                  06:00 AM Delivery Service SLA
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Morning delivery drops are executed between 06:00 and 08:30 GMT to ensure kitchen prep readiness before morning service.
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Morning delivery drops are fulfilled between 06:00 and 08:30 GMT to ensure kitchen brigade readiness well before morning culinary preparations.
                 </p>
               </div>
             </div>
-            <p className="pt-2 text-xs text-slate-600">
-              <strong className="text-slate-900">Zero Unauthorised Substitutions:</strong> If a harvested item fails quality inspection at depot loading, our operations desk will contact the kitchen prior to departure. No unapproved product substitutions will be dispatched.
+            <p className="pt-2 text-xs text-stone-600">
+              <strong className="text-stone-900 font-semibold">Zero Unauthorized Substitutions:</strong> If a scheduled agricultural crop fails pre-departure quality checks at depot dispatch, our trade desk immediately alerts the executive chef or culinary manager. No substitute line will be dispatched without explicit written approval.
             </p>
           </section>
 
           {/* Section 3 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              3. Pricing, UK VAT &amp; Quotations
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              3. Commercial Pricing &amp; UK VAT Regulations
             </h2>
             <p>
-              Prices displayed on the customer portal reflect agreed contract tier rates. As fresh produce is subject to daily agricultural market availability, locked contract prices remain valid for agreed pricing cycle intervals.
+              Agreed commercial rate cards reflect confirmed partnership tier structures. As fresh agricultural harvest yields fluctuate with market and seasonal availability, contracted rates remain locked for agreed contract intervals.
             </p>
             <p>
-              All prices are quoted in GBP (£). In accordance with UK HMRC VAT regulations:
+              All prices are quoted in GBP (£). In accordance with UK HM Revenue &amp; Customs VAT guidelines:
             </p>
-            <ul className="list-disc pl-5 space-y-1 text-slate-600">
-              <li>Raw culinary vegetables, fruits, eggs, and unprepared dairy are zero-rated (0% VAT).</li>
-              <li>Confectionery, cleaning supplies, or specialty packaging are charged at standard rate (20% VAT).</li>
+            <ul className="list-disc pl-5 space-y-1 text-stone-600">
+              <li>Raw culinary vegetables, fruits, eggs, unadulterated dairy, and whole butchery are zero-rated (0% VAT).</li>
+              <li>Specialty dry goods, branded culinary sundries, and processing packaging carry the standard UK rate (20% VAT).</li>
             </ul>
           </section>
 
           {/* Section 4 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              4. Delivery, Acceptance &amp; Rejection of Perishables
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              4. Delivery Acceptance &amp; Perishables Inspection SLA
             </h2>
             <p>
-              Delivery takes place when produce is handed over to the Customer&apos;s kitchen premises or secured in an agreed secure keyholder lockbox.
+              Delivery is legally completed upon physical handover at the Customer&apos;s receiving kitchen premises or secured placement within an authorized keyholder cold store dropzone.
             </p>
-            <ul className="list-disc pl-5 space-y-2 text-slate-600">
-              <li><strong className="text-slate-900">Proof of Delivery (POD):</strong> Deliveries require a digital driver signature or time-stamped geo-tagged photographic proof of placement.</li>
-              <li><strong className="text-slate-900">Inspection &amp; Discrepancies:</strong> Due to the perishable nature of fresh agricultural produce, any quality concerns, shortages, or damaged crates must be reported via the customer portal within <strong className="text-slate-900">4 hours of delivery handover</strong> with photographic evidence.</li>
-              <li>Approved discrepancy claims result in an instant credit note applied to the customer ledger.</li>
+            <ul className="list-disc pl-5 space-y-2 text-stone-600">
+              <li>
+                <strong className="text-stone-900">Proof of Delivery (POD):</strong> All consignments require electronic receiver confirmation or time-stamped geo-tagged photographic placement records.
+              </li>
+              <li>
+                <strong className="text-stone-900">Inspection &amp; Quality Notice Window:</strong> Owing to the temperature-sensitive nature of fresh farm produce, any shortages, transit damages, or grading discrepancies must be registered with our operations desk within <strong className="text-stone-900 font-semibold">4 hours of delivery handover</strong> with photographic evidence.
+              </li>
+              <li>
+                Approved quality discrepancy notifications receive immediate commercial credit notes issued directly against the trade account ledger.
+              </li>
             </ul>
           </section>
 
           {/* Section 5 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              5. Payment Terms &amp; Trade Credit
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              5. Trade Settlement &amp; Commercial Credit
             </h2>
             <p>
-              Customers with approved trade credit facilities agree to settle invoices within <strong className="text-slate-900">30 days net from invoice date (EOM + 30)</strong> unless otherwise specified in their facility agreement.
+              Commercial clients with an active credit facility agree to remit payment within <strong className="text-stone-900">30 days net from invoice date (EOM + 30)</strong> unless alternative bespoke credit terms have been formally executed.
             </p>
             <p>
-              Settlement methods include automated BACS Direct Debit (via GoCardless), corporate debit/credit cards (via Stripe), or direct bank transfer.
+              Approved payment channels include automated BACS Direct Debit, corporate card settlement, and electronic bank transfer.
             </p>
-            <p className="text-xs text-slate-500">
-              Rootwills Ltd reserves the right to charge statutory late payment interest under the <em>Late Payment of Commercial Debts (Interest) Act 1998</em> on overdue balances.
+            <p className="text-xs text-stone-500">
+              Rootwills Ltd reserves statutory entitlement under the <em>Late Payment of Commercial Debts (Interest) Act 1998</em> on any overdue trade balances.
             </p>
           </section>
 
           {/* Section 6 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              6. Title &amp; Risk
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              6. Title &amp; Risk Transfer
             </h2>
             <p>
-              Risk in the goods passes to the Customer upon physical handover at the delivery location. Title in the goods remains with Rootwills Ltd until all outstanding invoices due from the Customer have been settled in full.
+              Risk of loss in all goods transfers to the Customer upon physical arrival and handover at the agreed receiving kitchen or dock premises. Title in goods remains with Rootwills Ltd until all outstanding invoiced amounts have been discharged in full.
             </p>
           </section>
 
           {/* Section 7 */}
-          <section className="space-y-3 pt-6 border-t border-slate-200">
-            <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
-              7. Governing Law &amp; Jurisdiction
+          <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+            <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+              <span className="text-[#BA8E4E] text-xs">✦</span>
+              7. Governing Law &amp; Commercial Contacts Desk
             </h2>
             <p>
-              These terms and any dispute arising from them shall be governed by and construed in accordance with the laws of <strong className="text-slate-900">England and Wales</strong>, subject to the exclusive jurisdiction of the English courts.
+              These Terms and Conditions and any non-contractual obligations arising from them shall be governed by and construed in accordance with the laws of <strong className="text-stone-900">England and Wales</strong>, subject to the exclusive jurisdiction of the English courts.
             </p>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 font-mono text-xs space-y-1.5 mt-3">
-              <div className="text-slate-900 font-bold">Rootwills Ltd: Commercial Contracts Desk</div>
-              <div>Enquiries: <span className="text-emerald-700 font-bold">sales@rootwills.co.uk</span></div>
-              <div>Phone: <span className="text-slate-900 font-bold">0121 790 8800</span></div>
+            
+            <div className="p-5 rounded-xl bg-[#240409] text-white border border-[#BA8E4E]/30 text-xs space-y-1.5 mt-4">
+              <div className="text-[#D4A86A] font-serif font-bold text-sm">Rootwills Ltd — Commercial Contracts &amp; Trade Desk</div>
+              <div className="text-[#EDE4D8]/90">Telephone: <span className="text-white font-medium">+44 (0) 20 1234 5678</span></div>
+              <div className="text-[#EDE4D8]/90">Commercial Enquiries: <span className="text-[#D4A86A] font-medium">info@rootwills.co.uk</span></div>
+              <div className="text-[#EDE4D8]/70">Registered: London, United Kingdom • England &amp; Wales</div>
             </div>
           </section>
+
         </div>
 
-        {/* Bottom Links */}
-        <div className="flex justify-between items-center text-xs font-mono text-slate-500 pt-2">
-          <Link href="/privacy" className="hover:text-emerald-700 transition-colors">
-            &larr; Privacy Policy
+        {/* ─── Bottom Navigation Links ─── */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-xs font-serif tracking-wider uppercase pt-2">
+          <Link href="/" className="text-stone-600 hover:text-[#4E0D17] flex items-center gap-1.5 transition-colors">
+            <ArrowLeft className="w-3.5 h-3.5 text-[#BA8E4E]" />
+            <span>Return to Home</span>
           </Link>
-          <Link href="/security" className="text-emerald-700 font-bold hover:underline">
-            Food Safety &amp; HACCP Standards &rarr;
+
+          <Link href="/privacy" className="text-[#4E0D17] font-bold hover:text-[#BA8E4E] flex items-center gap-1.5 transition-colors">
+            <span>Privacy &amp; Data Protection Policy</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#BA8E4E]" />
           </Link>
         </div>
+
       </div>
-
-      {/* Commercial Bottom CTA */}
-      <CommercialBottomCTA />
     </div>
   );
 }
