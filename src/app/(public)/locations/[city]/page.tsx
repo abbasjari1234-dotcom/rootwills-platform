@@ -66,7 +66,7 @@ const LOCATIONS_DATA: Record<string, {
     postcodes: ['B1', 'B2', 'B3', 'B4', 'B5', 'B15', 'B16', 'B18', 'B91', 'B92', 'B72', 'B73', 'B74'],
     cutoff: '11:00 PM',
     deliveryWindow: '05:30 - 08:00 AM',
-    description: 'Direct morning wholesale fruit, vegetable, dairy, and meat supply across Birmingham City Centre, Jewellery Quarter, Edgbaston, Solihull, Sutton Coldfield, and surrounding business districts.',
+    description: 'Direct morning wholesale produce, meat, and dairy supply across Birmingham City Centre, Jewellery Quarter, Edgbaston, Solihull, and Sutton Coldfield.',
   },
   coventry: {
     name: 'Coventry & Warwickshire',
@@ -80,13 +80,13 @@ const LOCATIONS_DATA: Record<string, {
   },
   leicester: {
     name: 'Leicester & East Midlands',
-    county: 'Leicestershire',
+    county: 'East Midlands',
     depotName: 'Leicester Commercial Depot',
     depotAddress: 'Thurmaston Commercial Centre, Leicester, LE4 8JF',
     postcodes: ['LE1', 'LE2', 'LE3', 'LE4', 'LE5', 'LE11', 'DE1', 'NG1'],
     cutoff: '10:30 PM',
     deliveryWindow: '06:00 - 08:30 AM',
-    description: 'Daily fresh produce and foodservice deliveries across Leicester, Loughborough, Derby, and Nottingham hospitality venues.',
+    description: 'Daily fresh produce and foodservice deliveries across Leicester, Loughborough, Derby, and Nottingham hospitality kitchens.',
   },
   london: {
     name: 'Greater London',
@@ -106,34 +106,45 @@ export default function LocationPage({ params }: { params: { city: string } }) {
   const seo = LOCATIONS_SEO[params.city.toLowerCase()];
 
   return (
-    <div className="min-h-screen bg-slate-50/50 pb-20 space-y-16 sm:space-y-24">
+    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20 space-y-12 sm:space-y-16">
       {/* Header */}
-      <section className="bg-slate-950 text-white relative overflow-hidden border-b border-slate-800 pt-12 sm:pt-20 pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            <MapPin className="w-3.5 h-3.5" />
+      <section className="bg-[#2E060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-16 sm:pt-24 pb-16">
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
+          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#380710] via-[#2E060D] to-[#1E0307] pointer-events-none z-0" />
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#BA8E4E]/15 border border-[#BA8E4E]/40 text-[#D4A86A] text-xs font-serif uppercase tracking-[0.2em] font-semibold">
+            <MapPin className="w-3.5 h-3.5 text-[#D4A86A]" />
             <span>Regional Wholesale Hub &bull; {loc.name}</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
             {seo?.h1 || `Wholesale Food Supply in ${loc.name}`}
           </h1>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+
+          <p className="text-xs sm:text-base text-[#EDE4D8]/85 max-w-2xl mx-auto font-sans leading-relaxed">
             {loc.description}
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/apply"
-              className="px-7 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-md text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
+              href="/#contact"
+              className="group inline-flex items-center justify-center gap-3 pl-7 pr-2.5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-xl active:scale-[0.98]"
             >
-              <span>Open a Local Business Account</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Partner With Rootwills</span>
+              <div className="w-7 h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
+              </div>
             </Link>
+
             <Link
-              href="/products"
-              className="px-6 py-4 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 font-semibold text-sm flex items-center justify-center gap-2 transition-all"
+              href="/delivery"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#1A0307]/80 hover:bg-[#2A050D] border border-[#BA8E4E]/40 text-[#EDE4D8] text-xs sm:text-[13px] font-serif font-semibold tracking-wider transition-all"
             >
-              <span>Browse Regional Wholesale Catalog</span>
+              <span>Check Delivery Postcodes</span>
             </Link>
           </div>
         </div>
@@ -142,33 +153,33 @@ export default function LocationPage({ params }: { params: { city: string } }) {
       {/* Logistics & SLA Specifications */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
-              <Clock className="w-6 h-6" />
+          <div className="bg-[#FFFDF9] p-6 sm:p-8 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-3 hover:border-[#BA8E4E] transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-[#2E060D] text-[#D4A86A] flex items-center justify-center border border-[#BA8E4E]/30">
+              <Clock className="w-6 h-6 stroke-[1.8]" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Order Cut-off: {loc.cutoff}</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <h3 className="text-xl font-serif font-bold text-[#2E060D]">Order Cut-off: {loc.cutoff}</h3>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
               Late night portal ordering so kitchen managers can finalize orders after evening dinner service closes.
             </p>
           </div>
 
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
-              <Truck className="w-6 h-6" />
+          <div className="bg-[#FFFDF9] p-6 sm:p-8 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-3 hover:border-[#BA8E4E] transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-[#2E060D] text-[#D4A86A] flex items-center justify-center border border-[#BA8E4E]/30">
+              <Truck className="w-6 h-6 stroke-[1.8]" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Delivery: {loc.deliveryWindow}</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <h3 className="text-xl font-serif font-bold text-[#2E060D]">Delivery: {loc.deliveryWindow}</h3>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
               Guaranteed early morning drop before head chefs and prep brigades arrive for morning mise-en-place.
             </p>
           </div>
 
-          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
-              <ShieldCheck className="w-6 h-6" />
+          <div className="bg-[#FFFDF9] p-6 sm:p-8 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-3 hover:border-[#BA8E4E] transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-[#2E060D] text-[#D4A86A] flex items-center justify-center border border-[#BA8E4E]/30">
+              <ShieldCheck className="w-6 h-6 stroke-[1.8]" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Regional Depot Fulfilment</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Dispatched directly from <strong className="text-slate-900">{loc.depotName}</strong> ({loc.depotAddress}).
+            <h3 className="text-xl font-serif font-bold text-[#2E060D]">Regional Depot Fulfilment</h3>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Dispatched directly from <strong className="text-[#2E060D] font-serif">{loc.depotName}</strong> ({loc.depotAddress}).
             </p>
           </div>
         </div>
@@ -176,19 +187,19 @@ export default function LocationPage({ params }: { params: { city: string } }) {
 
       {/* Postcode Coverage Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-[#FFFDF9] p-8 sm:p-10 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-5">
           <div className="space-y-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+            <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D]">
               Active Next-Day Postcode Coverage in {loc.name}
             </h3>
-            <p className="text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-stone-600 font-sans">
               Our temperature-controlled fleet runs regular morning routes across the following postal sectors daily:
             </p>
           </div>
 
           <div className="flex flex-wrap gap-2.5">
             {loc.postcodes.map((pc, idx) => (
-              <span key={idx} className="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono font-bold text-slate-800">
+              <span key={idx} className="px-4 py-2 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] text-xs font-serif font-bold text-[#2E060D]">
                 {pc}
               </span>
             ))}

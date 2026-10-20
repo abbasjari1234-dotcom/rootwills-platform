@@ -362,76 +362,84 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
   const IconComponent = sector.icon;
 
   return (
-    <div className="min-h-screen bg-slate-50/50 pb-20 space-y-16 sm:space-y-24">
-      {/* Hero Header */}
-      <section className="bg-slate-950 text-white relative overflow-hidden border-b border-slate-800 pt-12 sm:pt-20 pb-16 lg:pb-24">
+    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20 space-y-12 sm:space-y-16">
+      {/* ─── Hero Header ─── */}
+      <section className="bg-[#2E060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-14 sm:pt-20 pb-16 lg:pb-20">
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
+          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#380710] via-[#2E060D] to-[#1E0307] pointer-events-none z-0" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                <IconComponent className="w-4 h-4" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="space-y-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#BA8E4E]/15 border border-[#BA8E4E]/40 text-[#D4A86A] text-xs font-serif uppercase tracking-[0.2em] font-semibold">
+                <IconComponent className="w-3.5 h-3.5 text-[#D4A86A]" />
                 <span>{sector.badge}</span>
               </div>
               
-              <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
                 {seo?.h1 || sector.title}
               </h1>
               
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
+              <p className="text-xs sm:text-base text-[#EDE4D8]/85 leading-relaxed font-sans">
                 {sector.subtitle}
               </p>
 
               {/* Live Operational Metrics Strip */}
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-3">
-                  <TrendingUp className="w-5 h-5 text-emerald-400 shrink-0" />
+                <div className="p-3.5 rounded-xl bg-[#1A0307]/80 border border-[#BA8E4E]/30 flex items-center gap-3">
+                  <TrendingUp className="w-5 h-5 text-[#D4A86A] shrink-0" />
                   <div>
-                    <span className="text-white font-bold block text-sm">{sector.yieldIncrease}</span>
-                    <span className="text-xs text-slate-400">Crate Usability</span>
+                    <span className="text-[#D4A86A] font-serif font-bold block text-sm">{sector.yieldIncrease}</span>
+                    <span className="text-xs text-[#EDE4D8]/70 font-sans">Crate Usability</span>
                   </div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-emerald-400 shrink-0" />
+                <div className="p-3.5 rounded-xl bg-[#1A0307]/80 border border-[#BA8E4E]/30 flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-[#D4A86A] shrink-0" />
                   <div>
-                    <span className="text-white font-bold block text-sm">{sector.prepTimeSaved}</span>
-                    <span className="text-xs text-slate-400">Kitchen Efficiency</span>
+                    <span className="text-[#D4A86A] font-serif font-bold block text-sm">{sector.prepTimeSaved}</span>
+                    <span className="text-xs text-[#EDE4D8]/70 font-sans">Kitchen Efficiency</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row gap-4 text-xs font-semibold">
+              <div className="pt-2 flex flex-col sm:flex-row gap-3.5 text-xs">
                 <Link
-                  href="/apply"
-                  className="px-7 py-4 rounded-xl font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-md flex items-center justify-center gap-2 transition-all uppercase tracking-wider text-sm"
+                  href="/#contact"
+                  className="group inline-flex items-center justify-center gap-3 pl-7 pr-2.5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-xl active:scale-[0.98]"
                 >
-                  <span>Apply for Sector Trade Account</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Apply for Sector Facility</span>
+                  <div className="w-7 h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
+                  </div>
                 </Link>
                 <Link
                   href="#quote-section"
-                  className="px-6 py-4 rounded-xl font-semibold text-slate-200 bg-slate-900 border border-slate-700 hover:border-slate-500 flex items-center justify-center gap-2 transition-all text-sm"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#1A0307]/80 hover:bg-[#2A050D] border border-[#BA8E4E]/40 text-[#EDE4D8] text-xs sm:text-[13px] font-serif font-semibold tracking-wider transition-all"
                 >
                   <span>Estimate Kitchen Savings</span>
                 </Link>
               </div>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-[4/3] bg-slate-900">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#BA8E4E]/30 aspect-[4/3] bg-[#1A0307]">
               <Image
                 src={sector.heroImage}
                 alt={sector.title}
                 fill
-                quality={75}
+                quality={85}
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700 shadow-xl">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="font-bold text-slate-200 uppercase">Direct Kitchen Delivery SLA</span>
-                  <span className="text-emerald-400 font-bold">06:00 AM Guaranteed</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0307]/90 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#240409]/90 backdrop-blur-md border border-[#BA8E4E]/35 shadow-xl">
+                <div className="flex items-center justify-between text-xs font-serif">
+                  <span className="font-bold text-[#EDE4D8] uppercase tracking-wider">Direct Kitchen Delivery SLA</span>
+                  <span className="text-[#D4A86A] font-bold">06:00 AM Guaranteed</span>
                 </div>
-                <div className="text-xs text-slate-300 mt-1">Dual-temperature fleet arriving 6 mornings a week with zero thermal breaks.</div>
+                <div className="text-xs text-[#EDE4D8]/80 mt-1 font-sans">Dual-temperature fleet arriving 6 mornings a week with zero thermal breaks.</div>
               </div>
             </div>
           </div>
@@ -440,32 +448,32 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
 
       {/* 24-Hour Operation Timeline Schedule */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <div className="text-center max-w-xl mx-auto space-y-2">
-            <span className="text-xs font-mono uppercase text-emerald-700 font-bold tracking-wider">Guaranteed Delivery Cadence</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">How Your Daily Supply Operates</h2>
+        <div className="bg-[#FFFDF9] p-7 sm:p-10 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-6">
+          <div className="text-center max-w-xl mx-auto space-y-1.5">
+            <span className="text-xs font-serif uppercase text-[#BA8E4E] font-semibold tracking-[0.2em]">— GUARANTEED CADENCE —</span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">How Your Daily Supply Operates</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-mono text-emerald-700 font-bold">11:00 PM Tonight</span>
-              <h3 className="text-base font-bold text-slate-900">Service Close Cut-off</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Order on your phone right after evening dinner service finishes.</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-2">
+            <div className="p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] space-y-2">
+              <span className="text-xs font-serif text-[#BA8E4E] font-bold">11:00 PM Tonight</span>
+              <h3 className="text-base font-serif font-bold text-[#2E060D]">Service Close Cut-off</h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">Order on your phone right after evening dinner service finishes.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-mono text-emerald-700 font-bold">02:30 AM</span>
-              <h3 className="text-base font-bold text-slate-900">Optical Quality Grading</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Digbeth depot picks and grades every crate into chilled compartments.</p>
+            <div className="p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] space-y-2">
+              <span className="text-xs font-serif text-[#BA8E4E] font-bold">02:30 AM</span>
+              <h3 className="text-base font-serif font-bold text-[#2E060D]">Optical Quality Grading</h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">Depot team hand-grades and picks every crate into chilled compartments.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <span className="text-xs font-mono text-emerald-700 font-bold">05:15 AM</span>
-              <h3 className="text-base font-bold text-slate-900">Fleet Launch</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Dual-temp Mercedes Sprinter leaves depot with calibrated audit log.</p>
+            <div className="p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] space-y-2">
+              <span className="text-xs font-serif text-[#BA8E4E] font-bold">05:15 AM</span>
+              <h3 className="text-base font-serif font-bold text-[#2E060D]">Fleet Launch</h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">Dual-temp fleet departs depot with calibrated temperature audit telemetry.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
-              <span className="text-xs font-mono text-emerald-800 font-bold">06:00 - 07:30 AM</span>
-              <h3 className="text-base font-bold text-slate-900">Kitchen Cold-Room Drop</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Pristine crates placed inside your walk-in before prep chefs arrive.</p>
+            <div className="p-5 rounded-2xl bg-[#FAF6EE] border border-[#BA8E4E]/40 space-y-2">
+              <span className="text-xs font-serif text-[#8C6629] font-bold">06:00 - 07:30 AM</span>
+              <h3 className="text-base font-serif font-bold text-[#2E060D]">Kitchen Cold-Room Drop</h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">Pristine crates placed inside your walk-in before morning prep brigades arrive.</p>
             </div>
           </div>
         </div>
@@ -473,21 +481,21 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
 
       {/* Pain Points Resolved */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-mono uppercase text-emerald-700 font-bold tracking-wider">Solving Industry Bottlenecks</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+        <div className="text-center max-w-2xl mx-auto mb-8">
+          <span className="text-xs font-serif uppercase text-[#BA8E4E] font-semibold tracking-[0.2em]">— SOLVING INDUSTRY BOTTLENECKS —</span>
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D] mt-1">
             Why Standard Broadliners Fail Your Operation
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {sector.painPoints.map((point, idx) => (
-            <div key={idx} className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-              <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 font-mono font-bold text-sm flex items-center justify-center border border-emerald-200">
+            <div key={idx} className="bg-[#FFFDF9] p-6 sm:p-8 rounded-2xl border border-[#E8DEC8] shadow-sm space-y-3 hover:border-[#BA8E4E] transition-all">
+              <div className="w-9 h-9 rounded-xl bg-[#2E060D] text-[#D4A86A] font-serif font-bold text-sm flex items-center justify-center border border-[#BA8E4E]/30">
                 0{idx + 1}
               </div>
-              <h3 className="text-lg font-bold text-slate-900">{point.title}</h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{point.desc}</p>
+              <h3 className="text-base sm:text-lg font-serif font-bold text-[#2E060D]">{point.title}</h3>
+              <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">{point.desc}</p>
             </div>
           ))}
         </div>
@@ -497,26 +505,26 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Key Sector Lines */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-            <div className="flex items-center gap-2 text-emerald-700 font-mono text-xs uppercase tracking-wider font-bold">
-              <Sparkles className="w-4 h-4 text-emerald-600" />
+          <div className="bg-[#FFFDF9] p-8 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-5">
+            <div className="flex items-center gap-2 text-[#BA8E4E] font-serif text-xs uppercase tracking-[0.2em] font-semibold">
+              <Sparkles className="w-4 h-4 text-[#BA8E4E]" />
               <span>Core Sector Product Assortment</span>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900">
+            <h3 className="text-2xl font-serif font-bold text-[#2E060D]">
               High-Demand Commercial Lines
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-3.5 text-xs sm:text-sm">
               {sector.keyProducts.map((prod, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span className="font-medium">{prod}</span>
+                <li key={idx} className="flex items-center gap-3 text-stone-700">
+                  <CheckCircle2 className="w-4 h-4 text-[#BA8E4E] shrink-0" />
+                  <span className="font-sans font-medium">{prod}</span>
                 </li>
               ))}
             </ul>
-            <div className="pt-4 border-t border-slate-200">
+            <div className="pt-4 border-t border-[#E8DEC8]">
               <Link
-                href="/products"
-                className="text-xs font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 font-mono uppercase tracking-wider"
+                href="/#services"
+                className="text-xs font-serif font-bold text-[#BA8E4E] hover:text-[#8C6629] flex items-center gap-1 uppercase tracking-wider transition-colors"
               >
                 <span>View all products in our wholesale catalog &rarr;</span>
               </Link>
@@ -524,25 +532,25 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
           </div>
 
           {/* Operational Benefits */}
-          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-            <div className="flex items-center gap-2 text-emerald-700 font-mono text-xs uppercase tracking-wider font-bold">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <div className="bg-[#FFFDF9] p-8 rounded-3xl border border-[#E8DEC8] shadow-sm space-y-5">
+            <div className="flex items-center gap-2 text-[#BA8E4E] font-serif text-xs uppercase tracking-[0.2em] font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#BA8E4E]" />
               <span>Service Level Agreements</span>
             </div>
-            <h3 className="text-2xl font-extrabold text-slate-900">
+            <h3 className="text-2xl font-serif font-bold text-[#2E060D]">
               The Dedicated Operational Package
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-3.5 text-xs sm:text-sm">
               {sector.serviceBenefits.map((ben, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span className="font-medium">{ben}</span>
+                <li key={idx} className="flex items-center gap-3 text-stone-700">
+                  <CheckCircle2 className="w-4 h-4 text-[#BA8E4E] shrink-0" />
+                  <span className="font-sans font-medium">{ben}</span>
                 </li>
               ))}
             </ul>
-            <div className="pt-4 border-t border-slate-200">
-              <div className="text-xs text-slate-600">
-                Need specific bespoke sourcing? Contact our direct buyer desk: <span className="text-slate-900 font-bold">0121 790 8800</span>
+            <div className="pt-4 border-t border-[#E8DEC8]">
+              <div className="text-xs text-stone-600 font-sans">
+                Need bespoke sourcing or volume specs? Contact our buyer desk: <span className="text-[#2E060D] font-serif font-bold">+44 (0) 20 1234 5678</span>
               </div>
             </div>
           </div>
@@ -551,18 +559,18 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
 
       {/* Sector Testimonial */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-sm text-center space-y-4">
-          <div className="flex justify-center gap-1 text-amber-400">
+        <div className="bg-[#FFFDF9] p-8 sm:p-12 rounded-3xl border border-[#E8DEC8] shadow-sm text-center space-y-4">
+          <div className="flex justify-center gap-1 text-[#BA8E4E]">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 fill-current" />
             ))}
           </div>
-          <p className="text-lg sm:text-xl font-medium italic text-slate-800 leading-relaxed">
+          <p className="text-base sm:text-lg font-serif italic text-stone-800 leading-relaxed max-w-2xl mx-auto">
             &ldquo;{sector.testimonial.quote}&rdquo;
           </p>
-          <div>
-            <div className="font-bold text-slate-900 text-sm">{sector.testimonial.author}</div>
-            <div className="text-xs text-slate-500">{sector.testimonial.role} &bull; {sector.testimonial.org}</div>
+          <div className="pt-2">
+            <div className="font-serif font-bold text-[#2E060D] text-sm">{sector.testimonial.author}</div>
+            <div className="text-xs text-stone-500 font-sans">{sector.testimonial.role} &bull; {sector.testimonial.org}</div>
           </div>
         </div>
       </section>

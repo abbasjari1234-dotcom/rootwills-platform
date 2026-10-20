@@ -67,7 +67,7 @@ const SECTORS: SectorItem[] = [
   },
   {
     id: 'schools',
-    title: 'Schools & Institutions',
+    title: 'Institutions',
     description: 'Reliable food supply for institutional catering',
     image: '/images/commercial/15_schools_institutions.jpg',
     href: '/sectors/schools',
@@ -77,27 +77,27 @@ const SECTORS: SectorItem[] = [
 
 export function SectorsGrid() {
   return (
-    <section className="py-10 sm:py-16 lg:py-24 bg-white border-b border-slate-200">
+    <section className="py-10 sm:py-16 lg:py-20 bg-[#FAF7F2] border-b border-[#E8DEC8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 gap-3 sm:gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-3 sm:gap-6">
           <div>
-            <div className="mb-1.5 sm:mb-2">
-              <span className="text-xs sm:text-sm font-sans font-bold uppercase tracking-[0.2em] text-emerald-600">
-                WHO WE SUPPLY
+            <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <span className="text-[#BA8E4E] text-xs font-serif tracking-[0.25em] uppercase font-semibold">
+                — WHO WE SUPPLY —
               </span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-sans font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
               Trusted by Businesses Across Every Sector
             </h2>
           </div>
 
           <Link
             href="/sectors/restaurants"
-            className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-800 font-sans font-bold text-xs sm:text-base group shrink-0"
+            className="inline-flex items-center gap-2 text-[#BA8E4E] hover:text-[#9A7338] font-serif font-semibold text-xs sm:text-sm group shrink-0 transition-colors"
           >
-            <span>View All Sectors</span>
+            <span>Explore All Sectors</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -116,10 +116,10 @@ export function SectorsGrid() {
               >
                 <Link
                   href={sector.href}
-                  className="group flex flex-col h-full bg-white rounded-xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md hover:border-emerald-500/50 transition-all duration-300"
+                  className="group flex flex-col h-full bg-[#FFFDF9] rounded-xl border border-[#E8DEC8] overflow-hidden shadow-xs hover:shadow-lg hover:border-[#BA8E4E] transition-all duration-300"
                 >
                   {/* Image Container */}
-                  <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-100">
+                  <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-stone-100">
                     <Image
                       src={sector.image}
                       alt={sector.title}
@@ -131,20 +131,20 @@ export function SectorsGrid() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-3 flex flex-col flex-1">
+                  <div className="p-3.5 flex flex-col flex-1">
                     <div className="flex items-center justify-between gap-1 mb-1">
-                      <div className="flex items-center gap-1.5 min-w-0">
-                        <div className="w-5 h-5 rounded bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
-                          <Icon className="w-3 h-3" />
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="w-6 h-6 rounded-md bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center shrink-0">
+                          <Icon className="w-3.5 h-3.5" />
                         </div>
-                        <h3 className="font-sans font-bold text-xs sm:text-sm text-slate-900 group-hover:text-emerald-700 transition-colors truncate">
+                        <h3 className="font-serif font-bold text-xs sm:text-sm text-[#2E060D] group-hover:text-[#BA8E4E] transition-colors truncate">
                           {sector.title}
                         </h3>
                       </div>
-                      <ChevronRight className="w-3.5 h-3.5 text-emerald-600 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                      <ChevronRight className="w-3.5 h-3.5 text-[#BA8E4E] shrink-0 group-hover:translate-x-0.5 transition-transform" />
                     </div>
 
-                    <p className="text-[11px] sm:text-xs text-slate-500 leading-snug line-clamp-2 mt-0.5">
+                    <p className="text-[11px] sm:text-xs text-stone-600 leading-snug line-clamp-2 mt-1">
                       {sector.description}
                     </p>
                   </div>

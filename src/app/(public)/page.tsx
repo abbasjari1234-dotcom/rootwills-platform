@@ -1,5 +1,6 @@
 import React from 'react';
 import { CommercialB2BHero } from '@/components/public/CommercialB2BHero';
+import { CommercialTrustStrip } from '@/components/public/CommercialTrustStrip';
 import { AboutRootwillsSection } from '@/components/public/AboutRootwillsSection';
 import { ServicesSection } from '@/components/public/ServicesSection';
 import { ApproachSection } from '@/components/public/ApproachSection';
@@ -18,6 +19,9 @@ export default function PublicHomePage() {
     <div className="w-full bg-[#FAF7F2] text-slate-900 overflow-x-hidden">
       {/* ─── 1. Hero Section ─── */}
       <CommercialB2BHero />
+
+      {/* ─── 1b. Five Commercial Trust Pillars ─── */}
+      <CommercialTrustStrip />
 
       {/* ─── 2. About Rootwills: More Than Just Food Supply ─── */}
       <AboutRootwillsSection />

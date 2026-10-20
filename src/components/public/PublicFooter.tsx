@@ -246,13 +246,25 @@ export function PublicFooter() {
             <span className="text-[11px] text-[#D4A86A]/80">England & Wales</span>
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4 text-[11px] text-[#EDE4D8]/75">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2.5 sm:gap-4 text-[11px] text-[#EDE4D8]/75">
+            <Link href="/delivery" className="hover:text-[#D4A86A] transition-colors">
+              Delivery SLAs
+            </Link>
+            <span className="text-white/20">·</span>
+            <Link href="/locations" className="hover:text-[#D4A86A] transition-colors">
+              Hubs &amp; Coverage
+            </Link>
+            <span className="text-white/20">·</span>
+            <Link href="/security" className="hover:text-[#D4A86A] transition-colors">
+              Food Safety &amp; HACCP
+            </Link>
+            <span className="text-white/20">·</span>
             <Link href="/privacy" className="hover:text-[#D4A86A] transition-colors">
               Privacy Policy
             </Link>
             <span className="text-white/20">·</span>
             <Link href="/terms" className="hover:text-[#D4A86A] transition-colors">
-              Terms & Conditions
+              Terms &amp; Conditions
             </Link>
             <span className="text-white/20">·</span>
             <a href="#home" className="hover:text-[#D4A86A] transition-colors flex items-center gap-1 group">
