@@ -26,18 +26,17 @@ export function PublicHeader() {
             href="/#home" 
             className="flex items-center gap-3 sm:gap-4 px-2 sm:px-5 group focus:outline-none shrink-0 pointer-events-auto"
           >
-            {/* Prominent Heritage Seal Medallion with Gold-Leaf Halo */}
-            <div className="relative w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 shrink-0 rounded-full p-[2px] bg-gradient-to-b from-[#E4C767] via-[#C9A227] to-[#4A101A] shadow-[0_6px_28px_rgba(0,0,0,0.7),0_0_20px_rgba(228,199,103,0.35)] transition-transform duration-300 group-hover:scale-105">
-              <div className="relative w-full h-full rounded-full overflow-hidden bg-[#24050A]">
-                <Image
-                  src="/images/branded/rootwills_logo_seal.png"
-                  alt="Rootwills Logo Seal"
-                  fill
-                  sizes="(max-width: 640px) 48px, 80px"
-                  className="object-contain"
-                  priority
-                />
-              </div>
+            {/* Crystal-Clear Heritage Seal Medallion — Natural Border, Zero Artificial Ring */}
+            <div className="relative w-14 h-14 sm:w-18 sm:h-18 lg:w-22 lg:h-22 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.75)]">
+              <Image
+                src="/images/branded/rootwills_logo_seal_retina.png"
+                alt="Rootwills Logo Seal"
+                fill
+                unoptimized
+                sizes="(max-width: 640px) 56px, 88px"
+                className="object-contain"
+                priority
+              />
             </div>
 
             {/* Massive Brand Wordmark + Subtitle (Matching 'Sunbeam' typography) */}
