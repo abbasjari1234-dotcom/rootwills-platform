@@ -60,7 +60,7 @@ export function CommercialB2BHero() {
               <button
                 type="button"
                 onClick={() => setInquiryOpen(true)}
-                className="group relative p-[1.5px] rounded-2xl bg-[linear-gradient(90deg,#F13624_0%,#F65B32_20%,#FA7E3D_40%,#FBA45C_60%,#E6A896_78%,#CCA7BD_90%,#B79EBC_100%)] shadow-[0_12px_36px_rgba(241,54,36,0.38)] hover:shadow-[0_16px_48px_rgba(241,54,36,0.55)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                className="group relative p-[1.5px] rounded-2xl bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)] shadow-[0_12px_36px_rgba(244,56,38,0.38)] hover:shadow-[0_16px_48px_rgba(244,56,38,0.55)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <div className="flex items-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 rounded-[14px] bg-[#180306]/90 backdrop-blur-md text-white font-serif font-bold text-sm sm:text-base tracking-wider">
                   <span>Partner / Order</span>

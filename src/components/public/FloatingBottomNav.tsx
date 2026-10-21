@@ -49,20 +49,17 @@ export function FloatingBottomNav() {
               aria-label="Floating Navigation Dock"
               className="pointer-events-auto mx-auto max-w-[96vw] sm:max-w-fit flex justify-center"
             >
-              {/* Reference-Perfect Gradient Capsule Container */}
-              <div className="relative rounded-2xl sm:rounded-full p-[1px] shadow-[0_18px_50px_rgba(241,54,36,0.38),0_6px_22px_rgba(183,158,188,0.3)] ring-1 ring-white/35">
-                
-                {/* Ambient Soft Glow Behind the Pill */}
-                <div className="absolute -inset-1 rounded-2xl sm:rounded-full bg-[linear-gradient(90deg,#F13624_0%,#FA7E3D_35%,#FBA45C_65%,#B79EBC_100%)] blur-md opacity-70 pointer-events-none" />
+              {/* Clean, Crisp Capsule Container - No Fuzzy Smudged Glow Behind */}
+              <div className="relative rounded-full p-[1px] shadow-[0_14px_40px_rgba(0,0,0,0.38),0_3px_10px_rgba(0,0,0,0.2)] ring-1 ring-white/35">
 
-                {/* Main Dock Body with EXACT Matched Sunbeam Color Gradient */}
-                <div className="relative flex items-center overflow-x-auto no-scrollbar rounded-2xl sm:rounded-full bg-[linear-gradient(90deg,#F13624_0%,#F65B32_20%,#FA7E3D_40%,#FBA45C_60%,#E6A896_78%,#CCA7BD_90%,#B79EBC_100%)] px-4 sm:px-8 py-2.5 sm:py-3.5 text-white backdrop-blur-md">
+                {/* Main Dock Body with High-Luminosity Sunset Gradient (Zero Mud / Murkiness) */}
+                <div className="relative flex items-center overflow-x-auto no-scrollbar rounded-full bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)] px-5 sm:px-9 py-2.5 sm:py-3.5 text-white backdrop-blur-md">
                   
-                  {/* Subtle Top-Edge Specular Glass Line */}
-                  <div className="absolute inset-x-6 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/55 to-transparent pointer-events-none" />
+                  {/* Subtle Top-Edge Specular Glass Reflection */}
+                  <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/55 to-transparent pointer-events-none" />
 
-                  {/* Navigation Links in High-End Bold Capital Letters */}
-                  <div className="flex items-center gap-3.5 sm:gap-7 whitespace-nowrap font-sans text-[11px] sm:text-xs font-black tracking-[0.16em] uppercase">
+                  {/* Navigation Links in Clean Bold Capital Letters */}
+                  <div className="flex items-center gap-4 sm:gap-7 whitespace-nowrap font-sans text-[11px] sm:text-xs font-black tracking-[0.16em] uppercase">
                     {NAV_ITEMS.map((item) => (
                       <Link
                         key={item.label}
