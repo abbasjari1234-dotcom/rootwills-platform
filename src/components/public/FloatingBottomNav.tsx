@@ -39,34 +39,39 @@ export function FloatingBottomNav() {
     <>
       <AnimatePresence>
         {isVisible && (
-          /* Fixed Outer Screen-Width Wrapper that mathematically guarantees true center alignment across all devices */
+          /* Fixed Outer Screen-Width Wrapper: 100% horizontal viewport centering */
           <div className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6">
             <motion.nav
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 50, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-              aria-label="Floating Navigation Dock"
+              aria-label="Floating Glass Navigation Dock"
               className="pointer-events-auto mx-auto max-w-[96vw] sm:max-w-fit flex justify-center"
             >
-              {/* Clean, Crisp Capsule Container - No Fuzzy Smudged Glow Behind */}
-              <div className="relative rounded-full p-[1px] shadow-[0_14px_40px_rgba(0,0,0,0.38),0_3px_10px_rgba(0,0,0,0.2)] ring-1 ring-white/35">
-
-                {/* Main Dock Body with High-Luminosity Sunset Gradient (Zero Mud / Murkiness) */}
-                <div className="relative flex items-center overflow-x-auto no-scrollbar rounded-full bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)] px-5 sm:px-9 py-2.5 sm:py-3.5 text-white backdrop-blur-md">
+              {/* Premium Glassmorphic Capsule with Specular Border Rim */}
+              <div className="relative rounded-full p-[1px] bg-gradient-to-b from-white/35 via-white/10 to-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.55),0_4px_16px_rgba(0,0,0,0.3)]">
+                
+                {/* Frosted Translucent Glass Body with Real-Time Background Refraction */}
+                <div className="relative flex items-center overflow-x-auto no-scrollbar rounded-full bg-[#180306]/75 hover:bg-[#180306]/85 backdrop-blur-2xl backdrop-saturate-150 px-3 sm:px-6 py-1.5 sm:py-2 text-white transition-colors duration-300">
                   
-                  {/* Subtle Top-Edge Specular Glass Reflection */}
-                  <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/55 to-transparent pointer-events-none" />
+                  {/* Top Specular Glass Reflection Highlight */}
+                  <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
+                  
+                  {/* Subtle Inner Glass Sheen */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none" />
 
-                  {/* Navigation Links in Clean Bold Capital Letters */}
-                  <div className="flex items-center gap-4 sm:gap-7 whitespace-nowrap font-sans text-[11px] sm:text-xs font-black tracking-[0.16em] uppercase">
+                  {/* Navigation Links in Clean Bold Capital Letters with Interactive Frosted Glass Hover Highlights */}
+                  <div className="relative flex items-center gap-1 sm:gap-2 whitespace-nowrap font-sans text-[11px] sm:text-xs font-black tracking-[0.16em] uppercase">
                     {NAV_ITEMS.map((item) => (
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="relative py-1 text-white/95 hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:scale-95 drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]"
+                        className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/85 hover:text-white transition-all duration-200 hover:bg-white/12 active:scale-95"
                       >
-                        <span>{item.label}</span>
+                        <span className="relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+                          {item.label}
+                        </span>
                       </Link>
                     ))}
                   </div>
