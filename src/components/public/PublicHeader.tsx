@@ -29,7 +29,7 @@ export function PublicHeader() {
             {/* Crystal-Clear Heritage Seal Medallion — Large Visible Stature */}
             <div className="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
               <Image
-                src="/images/branded/rootwills_logo_seal_retina.png"
+                src="/images/branded/rootwills_logo_master.png"
                 alt="Rootwills Logo Seal"
                 fill
                 unoptimized
