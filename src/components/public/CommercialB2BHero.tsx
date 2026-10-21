@@ -54,7 +54,7 @@ export function CommercialB2BHero() {
         </div>
 
         {/* Bottom Left: Playful Hand-Drawn Annotation (Matching 'Drop a Bagel. Or 20 ⤶' reference) */}
-        <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 z-20 hidden md:flex items-center gap-3 pointer-events-none">
+        <div className="absolute bottom-16 sm:bottom-10 left-5 sm:left-12 z-20 flex items-center gap-2.5 sm:gap-3 pointer-events-none">
           <div className="flex flex-col">
             <span className="font-script text-2xl sm:text-3xl text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] -rotate-3">
               Drop a Crate. Or 200

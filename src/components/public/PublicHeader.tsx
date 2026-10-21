@@ -18,7 +18,8 @@ export function PublicHeader() {
       }
     >
       <div className="max-w-[1440px] mx-auto w-full">
-        <div className="w-full flex items-center justify-between relative">
+        {/* Desktop View: Full 3-Column Architectural Bar (sm and above) */}
+        <div className="hidden sm:flex items-center justify-between relative">
           
           {/* Left: Operational Dispatch Window (Matching 'Come On In: 7am - 3pm' reference) */}
           <div className="flex items-center gap-2 text-white/90 text-xs sm:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
@@ -80,6 +81,52 @@ export function PublicHeader() {
             <span>Commercial Purveyors &bull; London &amp; Midlands</span>
           </div>
 
+        </div>
+
+        {/* Mobile View: Sunbeam Mobile Header Architecture (Matching Image 1) */}
+        <div className="flex sm:hidden flex-col items-center w-full">
+          {/* Row 1: Left Dashed Line ---- Centered Logo ---- Right Dashed Line */}
+          <div className="flex items-center justify-between w-full">
+            <div className="flex-1 border-t border-dashed border-white/35 mr-2" />
+            
+            <Link 
+              href="/#home" 
+              className="flex items-center gap-2 px-1 group focus:outline-none shrink-0 pointer-events-auto"
+            >
+              {/* High-Res Master Seal */}
+              <div className="relative w-11 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
+                <Image
+                  src="/images/branded/rootwills_logo_master.png"
+                  alt="Rootwills Logo Seal"
+                  fill
+                  unoptimized
+                  sizes="44px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+
+              {/* Wordmark & Subtitle */}
+              <div className="flex flex-col text-left">
+                <span className="font-chunky text-3xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
+                  Rootwills
+                </span>
+                <span className="block text-[7.5px] font-sans font-black tracking-[0.26em] uppercase text-[#D4A86A] mt-1 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                  FOOD SERVICES &amp; WHOLESALE CO.
+                </span>
+              </div>
+            </Link>
+
+            <div className="flex-1 border-t border-dashed border-white/35 ml-2" />
+          </div>
+
+          {/* Row 2: Centered Operational Dispatch Window (Direct Sunbeam Mobile match: 'Come On In: 7am - 3pm') */}
+          <div className="flex items-center justify-center gap-1.5 text-white/90 text-[11px] font-mono tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mt-2 pointer-events-auto">
+            <span className="text-[#D4A86A] text-xs">✦</span>
+            <span>
+              Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
+            </span>
+          </div>
         </div>
       </div>
     </header>
