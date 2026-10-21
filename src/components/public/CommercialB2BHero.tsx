@@ -60,7 +60,7 @@ export function CommercialB2BHero() {
               <button
                 type="button"
                 onClick={() => setInquiryOpen(true)}
-                className="group relative p-[1.5px] rounded-2xl bg-gradient-to-r from-[#EB4632] via-[#C93856] to-[#AD7E9F] shadow-[0_12px_36px_rgba(235,70,50,0.4)] hover:shadow-[0_16px_48px_rgba(235,70,50,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                className="group relative p-[1.5px] rounded-2xl bg-[linear-gradient(90deg,#F13624_0%,#F65B32_20%,#FA7E3D_40%,#FBA45C_60%,#E6A896_78%,#CCA7BD_90%,#B79EBC_100%)] shadow-[0_12px_36px_rgba(241,54,36,0.38)] hover:shadow-[0_16px_48px_rgba(241,54,36,0.55)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <div className="flex items-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 rounded-[14px] bg-[#180306]/90 backdrop-blur-md text-white font-serif font-bold text-sm sm:text-base tracking-wider">
                   <span>Partner / Order</span>
@@ -84,7 +84,7 @@ export function CommercialB2BHero() {
             <span className="font-script text-2xl sm:text-3xl text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] -rotate-3">
               Drop a Crate. Or 200
             </span>
-            <div className="w-full h-[2px] bg-gradient-to-r from-[#EB4632] to-transparent rounded-full -mt-0.5" />
+            <div className="w-full h-[2px] bg-[linear-gradient(90deg,#F13624,#FA7E3D,transparent)] rounded-full -mt-0.5" />
           </div>
           
           {/* Hand-Drawn Doodle Arrow SVG */}
