@@ -26,25 +26,25 @@ export function PublicHeader() {
             href="/#home" 
             className="flex items-center gap-3 sm:gap-4 px-2 sm:px-5 group focus:outline-none shrink-0 pointer-events-auto"
           >
-            {/* Crystal-Clear Heritage Seal Medallion — Natural Border, Zero Artificial Ring */}
-            <div className="relative w-14 h-14 sm:w-18 sm:h-18 lg:w-22 lg:h-22 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.75)]">
+            {/* Crystal-Clear Heritage Seal Medallion — Large Visible Stature */}
+            <div className="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)]">
               <Image
                 src="/images/branded/rootwills_logo_seal_retina.png"
                 alt="Rootwills Logo Seal"
                 fill
                 unoptimized
-                sizes="(max-width: 640px) 56px, 88px"
+                sizes="(max-width: 640px) 80px, (max-width: 1024px) 112px, 144px"
                 className="object-contain"
                 priority
               />
             </div>
 
-            {/* Massive Brand Wordmark + Subtitle (Matching 'Sunbeam' typography) */}
+            {/* Massive Brand Wordmark + Subtitle */}
             <div className="flex flex-col text-left">
-              <span className="font-chunky text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
+              <span className="font-chunky text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
                 Rootwills
               </span>
-              <span className="block text-[8px] sm:text-[10px] lg:text-[11px] font-sans font-black tracking-[0.3em] uppercase text-[#D4A86A] mt-1 sm:mt-1.5 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              <span className="block text-[9.5px] sm:text-xs lg:text-[13px] font-sans font-black tracking-[0.32em] uppercase text-[#D4A86A] mt-2 sm:mt-2.5 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                 FOOD SERVICES &amp; WHOLESALE CO.
               </span>
             </div>
