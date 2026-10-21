@@ -1,6 +1,7 @@
 import React from 'react';
 import { PublicHeader } from '@/components/public/PublicHeader';
 import { PublicFooter } from '@/components/public/PublicFooter';
+import { FloatingBottomNav } from '@/components/public/FloatingBottomNav';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 
 export default function PublicLayout({
@@ -16,6 +17,7 @@ export default function PublicLayout({
           {children}
         </main>
         <PublicFooter />
+        <FloatingBottomNav />
       </div>
     </SmoothScrollProvider>
   );
