@@ -1,162 +1,62 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, Crown } from 'lucide-react';
 
 export function PublicHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState('home');
-
-  const navLinks = [
-    { label: 'HOME', href: '/#home', id: 'home' },
-    { label: 'ABOUT US', href: '/#about', id: 'about' },
-    { label: 'OUR SERVICES', href: '/#services', id: 'services' },
-    { label: 'OUR APPROACH', href: '/#approach', id: 'approach' },
-    { label: 'CONTACT', href: '/#contact', id: 'contact' },
-  ];
-
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#2E060D] border-b border-[#BA8E4E]/20 shadow-md">
+    <header className="sticky top-0 z-40 w-full bg-[#180306]/90 backdrop-blur-md border-b border-white/10 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full flex items-center justify-between h-14 sm:h-20 relative">
+        <div className="w-full flex items-center justify-between h-14 sm:h-16 relative">
           
-          {/* Left: Circular Logo Seal (Enlarged hanging medallion matching reference) */}
-          <div className="flex items-center">
+          {/* Top Left: Operational Dispatch Window (Matching 'Come On In: 7am - 3pm' reference) */}
+          <div className="flex items-center gap-2 text-white/85 text-[11px] sm:text-xs font-mono tracking-wider">
+            <span className="text-[#D4A86A] text-xs">✦</span>
+            <span className="font-medium whitespace-nowrap">
+              Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
+            </span>
+          </div>
+
+          {/* Symmetrical Center: Brand Logo flanked by dashed architectural lines */}
+          <div className="flex items-center justify-center flex-1 max-w-xs sm:max-w-md lg:max-w-lg mx-3 sm:mx-6">
+            <div className="hidden sm:block flex-1 border-t border-dashed border-white/25" />
+            
             <Link 
-              href="#home" 
-              onClick={() => setActiveNav('home')}
-              className="relative z-20 group -mb-4 sm:-mb-10 lg:-mb-16 focus:outline-none"
+              href="/#home" 
+              className="px-3 sm:px-5 flex flex-col items-center text-center group focus:outline-none"
             >
-              <div className="relative w-14 h-14 sm:w-24 sm:h-24 lg:w-36 lg:h-36 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_14px_28px_rgba(0,0,0,0.45)]">
-                <Image
-                  src="/images/branded/rootwills_logo_seal.png"
-                  alt="Rootwills Logo Seal"
-                  fill
-                  sizes="(max-width: 640px) 56px, (max-width: 1024px) 96px, 144px"
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </Link>
-          </div>
-
-          {/* Desktop Center: Navigation Links (Capital Letters & Gold Color) */}
-          <nav className="hidden md:flex items-center space-x-7 lg:space-x-10 pl-6 lg:pl-10">
-            {navLinks.map((item) => {
-              const isActive = activeNav === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  onClick={() => setActiveNav(item.id)}
-                  className={`relative py-2 text-xs sm:text-[13px] tracking-wider uppercase font-serif transition-colors whitespace-nowrap text-[#D4A86A] hover:text-[#F3E5D0] ${
-                    isActive 
-                      ? 'font-bold drop-shadow-[0_1px_4px_rgba(212,168,106,0.3)]' 
-                      : 'opacity-90 hover:opacity-100'
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4A86A] shadow-[0_0_8px_rgba(212,168,106,0.5)]" />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
-
-          {/* Desktop Right: Understated Typographic Motto */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="h-7 w-[1px] bg-white/20" />
-            <div className="text-left">
-              <span className="block text-[9px] tracking-[0.2em] uppercase font-serif text-white/90 leading-tight">
-                QUALITY FOOD
-              </span>
-              <span className="block text-[9px] tracking-[0.2em] uppercase font-serif text-white/80 leading-tight">
-                FOR A STRONGER
-              </span>
-              <span className="block text-[9px] tracking-[0.2em] uppercase font-serif text-[#D4A86A] leading-tight">
-                TOMORROW
-              </span>
-            </div>
-          </div>
-
-          {/* Mobile Right: Menu Toggle */}
-          <div className="flex md:hidden items-center z-20">
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-1.5 rounded-lg text-cream-200 hover:text-white hover:bg-white/5 transition-colors"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileOpen ? <X className="w-6 h-6 text-[#D4A86A]" /> : <Menu className="w-6 h-6 text-[#EDE4D8]" />}
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Decorative thin separator line with center diamond on mobile */}
-      <div className="relative w-full h-[1px] bg-[#BA8E4E]/25 flex items-center justify-center">
-        <div className="absolute bg-[#2E060D] px-1.5 text-[8px] text-[#D4A86A]">
-          ◆
-        </div>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-gradient-to-b from-[#2B060D] via-[#240409] to-[#1C0307] border-b border-[#BA8E4E]/30 px-4 pt-3 pb-6 space-y-4 shadow-2xl"
-          >
-            <nav className="flex flex-col space-y-1">
-              {navLinks.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  onClick={() => {
-                    setActiveNav(item.id);
-                    setMobileOpen(false);
-                  }}
-                  className="px-3.5 py-2.5 text-xs font-serif font-semibold text-[#F5EEDB] hover:text-[#D4A86A] hover:bg-white/[0.05] rounded-lg transition-all tracking-[0.18em] uppercase flex items-center justify-between group"
-                >
-                  <span>{item.label}</span>
-                  <span className="text-[10px] text-[#BA8E4E]/60 group-hover:text-[#D4A86A] transition-colors">
-                    →
-                  </span>
-                </a>
-              ))}
-            </nav>
-
-            {/* Mobile Direct Enquire Contact Card */}
-            <div className="pt-2">
-              <div className="p-3.5 rounded-xl bg-white/[0.04] border border-[#BA8E4E]/25 space-y-2 backdrop-blur-xs">
-                <span className="block text-[9px] font-serif uppercase tracking-[0.22em] text-[#D4A86A] font-semibold">
-                  Commercial Enquiries
-                </span>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href="tel:+442012345678"
-                    className="text-xs text-[#EDE4D8] hover:text-[#D4A86A] font-sans flex items-center gap-2.5 transition-colors"
-                  >
-                    <span className="text-[#D4A86A] text-xs">📞</span> +44 (0) 20 1234 5678
-                  </a>
-                  <a
-                    href="mailto:info@rootwills.co.uk"
-                    className="text-xs text-[#EDE4D8] hover:text-[#D4A86A] font-sans flex items-center gap-2.5 transition-colors"
-                  >
-                    <span className="text-[#D4A86A] text-xs">✉️</span> info@rootwills.co.uk
-                  </a>
+              <div className="flex items-center gap-2">
+                <div className="relative w-5 h-5 sm:w-6 sm:h-6 shrink-0 transition-transform duration-300 group-hover:scale-110">
+                  <Image
+                    src="/images/branded/rootwills_logo_seal.png"
+                    alt="Rootwills Logo"
+                    fill
+                    sizes="24px"
+                    className="object-contain"
+                    priority
+                  />
                 </div>
+                <span className="font-chunky text-lg sm:text-2xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A]">
+                  Rootwills
+                </span>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <span className="block text-[7.5px] sm:text-[9px] font-sans font-bold tracking-[0.28em] uppercase text-[#D4A86A] -mt-0.5">
+                FOOD SERVICES &amp; WHOLESALE CO.
+              </span>
+            </Link>
+
+            <div className="hidden sm:block flex-1 border-t border-dashed border-white/25" />
+          </div>
+
+          {/* Top Right: Tagline Location Note (Matching 'Start Your Day Right in Bryan, Tx' reference) */}
+          <div className="hidden md:flex items-center text-right text-white/80 text-[11px] sm:text-xs font-mono tracking-wider">
+            <span>Commercial Purveyors &bull; London &amp; Midlands</span>
+          </div>
+
+        </div>
+      </div>
     </header>
   );
 }

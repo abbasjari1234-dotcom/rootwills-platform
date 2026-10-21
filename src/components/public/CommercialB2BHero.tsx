@@ -1,92 +1,110 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { InquiryModal } from './InquiryModal';
 
 export function CommercialB2BHero() {
+  const [inquiryOpen, setInquiryOpen] = useState(false);
+
   return (
-    <section id="home" className="relative h-[460px] sm:h-[580px] lg:h-[680px] flex items-center overflow-hidden bg-[#120305]">
-      {/* Background Image: Chef Plating Produce on Cutting Board */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/commercial/rootwills_hero_chef_plating.jpg"
-          alt="Rootwills - A Trusted Partner in Food Services & Wholesale"
-          fill
-          priority
-          unoptimized
-          className="object-cover object-[75%_center] lg:object-center"
-        />
-        {/* Scrim: Dark fade on left side for text contrast, completely transparent on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#120305] via-[#120305]/80 via-45% to-transparent" />
-      </div>
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-14">
-        <div className="max-w-2xl lg:max-w-3xl">
-          
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2 mb-2 sm:mb-4">
-            <span className="text-[#D4A86A] text-[11px] sm:text-sm font-serif tracking-[0.25em] uppercase font-semibold">
-              — ROOTWILLS —
-            </span>
-          </div>
-
-          {/* Primary Headline */}
-          <h1 className="text-2xl sm:text-4xl lg:text-[54px] font-serif font-bold text-white tracking-tight leading-[1.15] mb-3 sm:mb-5">
-            A Trusted Partner in<br />
-            <span className="text-[#D4A86A]">Food Services & Wholesale</span>
-          </h1>
-
-          {/* Subtitle Description */}
-          <p className="text-xs sm:text-base text-[#EFE8DF]/90 font-sans leading-relaxed mb-5 sm:mb-8 max-w-xl">
-            Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK.
-          </p>
-
-          {/* Buttons: Primary Gold Solid + Secondary Burgundy Outlined with Nested Arrow Pills */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <a
-              href="/#services"
-              className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
-            >
-              <span>Our Services</span>
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
-                <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
-              </div>
-            </a>
-
-            <a
-              href="/#about"
-              className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#250409]/80 hover:bg-[#380710] ring-1 ring-[#BA8E4E]/40 hover:ring-[#BA8E4E] text-white text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-md hover:shadow-xl active:scale-[0.98] active:translate-y-[1px] cursor-pointer"
-            >
-              <span className="text-[#EDE4D8]">About Rootwills</span>
-              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
-                <ArrowRight className="w-3.5 h-3.5 text-[#D4A86A]" />
-              </div>
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Center Bottom Scroll Indicator */}
-      <div
-        className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 cursor-pointer text-cream-200/70 hover:text-white transition-colors"
-        onClick={() => {
-          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-        }}
+    <>
+      <section 
+        id="home" 
+        className="relative h-[calc(100vh-56px)] sm:h-[calc(100vh-64px)] min-h-[640px] flex items-center overflow-hidden bg-[#120305]"
       >
-        <div className="w-5 h-7 rounded-full border border-[#BA8E4E]/50 flex items-start justify-center p-1 shadow-xs">
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-1 h-1 rounded-full bg-[#D4A86A]"
+        {/* Background Image: High-End Chef Plating & Pass with Warm Cinematic Light */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/commercial/rootwills_hero_chef_plating.jpg"
+            alt="Rootwills - Commercial Food Services & Wholesale UK"
+            fill
+            priority
+            unoptimized
+            className="object-cover object-[75%_center] lg:object-center brightness-90"
           />
+          {/* Ambient Scrim: Deep dark gradient on left side for maximum text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#120305]/95 via-[#120305]/75 via-45% to-[#120305]/25 pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-at-c from-transparent via-transparent to-black/60 pointer-events-none" />
         </div>
-        <span className="text-[9px] font-sans tracking-[0.25em] uppercase text-[#D4A86A]/85 font-semibold">
-          SCROLL DOWN
-        </span>
-      </div>
-    </section>
+
+        {/* Hero Content Container */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 sm:gap-12">
+            
+            {/* Left Column: Massive Stacked Headline (Direct Sunbeam Style) */}
+            <div className="space-y-4 sm:space-y-6">
+              
+              <div className="flex items-center gap-2">
+                <span className="text-[#D4A86A] text-xs font-serif uppercase tracking-[0.25em] font-semibold">
+                  — COMMERCIAL PURVEYORS UK —
+                </span>
+              </div>
+
+              {/* The Signature 3-Line Punchy Stacked Title */}
+              <h1 className="font-chunky text-6xl sm:text-8xl lg:text-[108px] font-black text-white leading-[0.92] tracking-tight drop-shadow-[0_8px_32px_rgba(0,0,0,0.7)] select-none">
+                Produce.<br />
+                Dairy.<br />
+                Butchery.
+              </h1>
+
+              <p className="text-xs sm:text-base text-[#EDE4D8]/90 font-sans max-w-md leading-relaxed">
+                Hand-graded daily British farm produce, artisan dairy, and prime culinary wholesale lines delivered pre-dawn to the UK&apos;s finest kitchens.
+              </p>
+            </div>
+
+            {/* Right Column / Center Action: Glowing Gradient Pill Button */}
+            <div className="flex flex-col items-start lg:items-center justify-center lg:pr-12">
+              <button
+                type="button"
+                onClick={() => setInquiryOpen(true)}
+                className="group relative p-[1.5px] rounded-2xl bg-gradient-to-r from-[#EB4632] via-[#C93856] to-[#AD7E9F] shadow-[0_12px_36px_rgba(235,70,50,0.4)] hover:shadow-[0_16px_48px_rgba(235,70,50,0.6)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <div className="flex items-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 rounded-[14px] bg-[#180306]/90 backdrop-blur-md text-white font-serif font-bold text-sm sm:text-base tracking-wider">
+                  <span>Partner / Order</span>
+                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                    <ArrowUpRight className="w-4 h-4 text-[#D4A86A]" />
+                  </div>
+                </div>
+              </button>
+
+              <span className="text-[11px] font-mono text-[#EDE4D8]/70 mt-3 tracking-wider">
+                Pre-dawn 06:00 AM drop guarantee
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom Left: Playful Hand-Drawn Annotation (Matching 'Drop a Bagel. Or 20 ⤶' reference) */}
+        <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 z-20 hidden md:flex items-center gap-3 pointer-events-none">
+          <div className="flex flex-col">
+            <span className="font-script text-2xl sm:text-3xl text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] -rotate-3">
+              Drop a Crate. Or 200
+            </span>
+            <div className="w-full h-[2px] bg-gradient-to-r from-[#EB4632] to-transparent rounded-full -mt-0.5" />
+          </div>
+          
+          {/* Hand-Drawn Doodle Arrow SVG */}
+          <svg 
+            className="w-9 h-9 sm:w-11 sm:h-11 text-white/85 -rotate-12 stroke-current fill-none drop-shadow-sm" 
+            viewBox="0 0 40 40"
+          >
+            <path 
+              d="M 6 24 C 16 26, 26 22, 28 8 M 19 12 L 28 8 L 30 17" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+            />
+          </svg>
+        </div>
+
+      </section>
+
+      {/* Inquiry Modal */}
+      <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
+    </>
   );
 }
