@@ -13,7 +13,7 @@ export function CommercialB2BHero() {
     <>
       <section 
         id="home" 
-        className="relative h-[calc(100vh-80px)] sm:h-[calc(100vh-96px)] min-h-[620px] flex items-center overflow-hidden bg-[#120305]"
+        className="relative h-screen min-h-[680px] flex items-center overflow-hidden bg-[#120305] pt-16 sm:pt-24"
       >
         {/* Background Image: High-End Chef Plating & Pass with Warm Cinematic Light */}
         <div className="absolute inset-0 z-0">
