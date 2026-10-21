@@ -1,14 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { InquiryModal } from './InquiryModal';
 
 export function CommercialB2BHero() {
-  const [inquiryOpen, setInquiryOpen] = useState(false);
-
   return (
     <>
       <section 
@@ -32,7 +27,7 @@ export function CommercialB2BHero() {
 
         {/* Hero Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 sm:gap-12">
+          <div className="max-w-2xl">
             
             {/* Left Column: Massive Stacked Headline (Direct Sunbeam Style) */}
             <div className="space-y-4 sm:space-y-6">
@@ -53,26 +48,6 @@ export function CommercialB2BHero() {
               <p className="text-xs sm:text-base text-[#EDE4D8]/90 font-sans max-w-md leading-relaxed">
                 Hand-graded daily British farm produce, artisan dairy, and prime culinary wholesale lines delivered pre-dawn to the UK&apos;s finest kitchens.
               </p>
-            </div>
-
-            {/* Right Column / Center Action: Glowing Gradient Pill Button */}
-            <div className="flex flex-col items-start lg:items-center justify-center lg:pr-12">
-              <button
-                type="button"
-                onClick={() => setInquiryOpen(true)}
-                className="group relative p-[1.5px] rounded-2xl bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)] shadow-[0_12px_36px_rgba(244,56,38,0.38)] hover:shadow-[0_16px_48px_rgba(244,56,38,0.55)] transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <div className="flex items-center gap-3 px-7 sm:px-9 py-3.5 sm:py-4 rounded-[14px] bg-[#180306]/90 backdrop-blur-md text-white font-serif font-bold text-sm sm:text-base tracking-wider">
-                  <span>Partner / Order</span>
-                  <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                    <ArrowUpRight className="w-4 h-4 text-[#D4A86A]" />
-                  </div>
-                </div>
-              </button>
-
-              <span className="text-[11px] font-mono text-[#EDE4D8]/70 mt-3 tracking-wider">
-                Pre-dawn 06:00 AM drop guarantee
-              </span>
             </div>
 
           </div>
@@ -102,9 +77,6 @@ export function CommercialB2BHero() {
         </div>
 
       </section>
-
-      {/* Inquiry Modal */}
-      <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </>
   );
 }
