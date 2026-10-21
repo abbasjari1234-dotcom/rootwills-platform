@@ -120,14 +120,16 @@ export function FloatingBottomNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 sm:hidden bg-[#160307]/98 backdrop-blur-3xl overflow-y-auto flex flex-col justify-between items-center px-6 pt-10 pb-28 text-center"
+            className="fixed inset-0 z-50 sm:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-10 pb-28 text-center"
           >
-            {/* Watermark Damask & Ambient Warm Radial Glow */}
+            {/* Authentic Rich Dark Burgundy Damask Texture (Matching Image 3) */}
             <div 
-              className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay bg-cover bg-center"
+              className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-85"
               style={{ backgroundImage: "url('/images/textures/burgundy_damask_texture.jpg')" }}
             />
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top,rgba(212,168,106,0.16),transparent_70%)]" />
+            {/* Dark Vignette & Edge Shadowing (Matching Image 3) */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(16,2,4,0.45)_75%,rgba(8,1,2,0.85)_100%)]" />
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#180306]/70 via-transparent to-[#0d0103]/85" />
 
             {/* TOP BRAND IDENTITY (Matching Image 2 Top: Sunbeam BAGEL & COFFEE CO.) */}
             <motion.div
@@ -312,12 +314,16 @@ export function FloatingBottomNav() {
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className="group relative p-[1.5px] rounded-full bg-white/20 ring-1 ring-white/30 backdrop-blur-2xl shadow-[0_12px_32px_rgba(244,56,38,0.45)] active:scale-95 transition-all duration-300"
+            className={`group relative p-[1.5px] rounded-full transition-all duration-300 active:scale-95 ${
+              isMobileMenuOpen
+                ? 'bg-red-500/20 ring-1 ring-[#D4A86A]/40 shadow-[0_0_35px_rgba(220,38,38,0.55),0_8px_24px_rgba(0,0,0,0.8)]'
+                : 'bg-white/20 ring-1 ring-white/30 backdrop-blur-2xl shadow-[0_12px_32px_rgba(244,56,38,0.45)]'
+            }`}
           >
             {/* Inner Vibrant Pill with Sunset Gradient */}
             <div className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider shadow-inner transition-all duration-300 ${
               isMobileMenuOpen
-                ? 'bg-[#180306]/95 ring-1 ring-[#D4A86A]/50'
+                ? 'bg-[#180306] ring-1 ring-white/10'
                 : 'bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)]'
             }`}>
               <span>Menu</span>
