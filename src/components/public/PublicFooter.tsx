@@ -29,11 +29,20 @@ export function PublicFooter() {
   ];
 
   return (
-    <footer id="footer" className="bg-[#0a0102] text-white relative py-10 sm:py-14 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-5xl mx-auto space-y-4 sm:space-y-5">
+    <footer id="footer" className="bg-[#420811] text-white relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 overflow-hidden border-t border-[#BA8E4E]/30">
+      {/* ─── 1. Deep Burgundy Ornate Damask Engraving Watermark Texture ─── */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-overlay"
+        style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+      />
+
+      {/* ─── 2. Additional Soft Crimson Gradient Tint ─── */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#4A0A14]/75 via-transparent to-[#4A0A14]/75 pointer-events-none z-0" />
+
+      <div className="relative z-10 max-w-5xl mx-auto space-y-4 sm:space-y-5">
         
         {/* ═══════════════ CARD 1: MAIN FLOATING DOCK CARD (Inspired by slothUI) ═══════════════ */}
-        <div className="relative rounded-2xl sm:rounded-3xl bg-[#120205]/95 border border-[#BA8E4E]/25 shadow-[0_20px_50px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(212,168,106,0.15)] backdrop-blur-xl px-6 py-8 sm:px-10 sm:py-10 text-center flex flex-col items-center">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-[#1a0307]/85 border border-[#BA8E4E]/30 shadow-[0_20px_50px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(212,168,106,0.2)] backdrop-blur-xl px-6 py-8 sm:px-10 sm:py-10 text-center flex flex-col items-center">
           
           {/* 1. Centered Brand Identity */}
           <div className="flex flex-col items-center gap-2.5 mb-5 sm:mb-6">
@@ -143,7 +152,7 @@ export function PublicFooter() {
         </div>
 
         {/* ═══════════════ CARD 2: BOTTOM BAR / SUB-DOCK (Matching slothUI Bottom Strip) ═══════════════ */}
-        <div className="relative rounded-2xl bg-[#120205]/95 border border-[#BA8E4E]/25 shadow-[0_10px_30px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(212,168,106,0.15)] backdrop-blur-xl px-5 sm:px-8 py-3.5 sm:py-4">
+        <div className="relative rounded-2xl bg-[#1a0307]/85 border border-[#BA8E4E]/30 shadow-[0_10px_30px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(212,168,106,0.2)] backdrop-blur-xl px-5 sm:px-8 py-3.5 sm:py-4">
           
           {/* Top Hairline Accent (As shown in slothUI reference) */}
           <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#BA8E4E]/30 to-transparent mb-3 sm:mb-3.5" />
