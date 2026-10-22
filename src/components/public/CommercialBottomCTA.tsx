@@ -17,6 +17,12 @@ export function CommercialBottomCTA() {
           {/* Horizontal Split Banner Card in Signature Royal Burgundy & Gold */}
           <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#2E060D] via-[#240409] to-[#1A0307] border border-[#BA8E4E]/35 shadow-2xl grid grid-cols-1 md:grid-cols-12 items-stretch">
             
+            {/* Authentic Rich Damask Texture */}
+            <div 
+              className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-50"
+              style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+            />
+            
             {/* Greek Engraving Watermark Overlay */}
             <div className="absolute inset-y-0 left-0 w-1/3 opacity-15 pointer-events-none mix-blend-screen overflow-hidden">
               <Image

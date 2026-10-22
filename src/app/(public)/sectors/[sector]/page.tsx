@@ -364,12 +364,15 @@ export default function SectorPage({ params }: { params: { sector: string } }) {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20 space-y-12 sm:space-y-16">
       {/* ─── Hero Header ─── */}
-      <section className="bg-[#2E060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-14 sm:pt-20 pb-16 lg:pb-20">
+      <section className="bg-[#180306] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-14 sm:pt-20 pb-16 lg:pb-20">
+        {/* Authentic Rich Damask Texture */}
         <div 
-          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-85"
           style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#380710] via-[#2E060D] to-[#1E0307] pointer-events-none z-0" />
+        {/* Atmospheric Vignette & Contrast Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(16,2,4,0.45)_75%,rgba(8,1,2,0.85)_100%)] pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#180306]/70 via-transparent to-[#100204]/85 pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">

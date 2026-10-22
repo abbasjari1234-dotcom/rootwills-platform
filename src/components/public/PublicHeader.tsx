@@ -14,10 +14,16 @@ export function PublicHeader() {
       className={
         isHome
           ? "absolute top-0 inset-x-0 z-30 w-full bg-transparent pt-4 sm:pt-7 px-4 sm:px-8 pointer-events-none transition-all duration-300"
-          : "relative z-30 w-full bg-[#180306] border-b border-[#BA8E4E]/25 shadow-[0_4px_24px_rgba(0,0,0,0.5)] pt-4 sm:pt-6 pb-4 sm:pb-6 px-4 sm:px-8 transition-all duration-300"
+          : "relative z-30 w-full bg-[#180306] overflow-hidden border-b border-[#BA8E4E]/25 shadow-[0_4px_24px_rgba(0,0,0,0.5)] pt-4 sm:pt-6 pb-4 sm:pb-6 px-4 sm:px-8 transition-all duration-300"
       }
     >
-      <div className="max-w-[1440px] mx-auto w-full">
+      {!isHome && (
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-50"
+          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+        />
+      )}
+      <div className="relative z-10 max-w-[1440px] mx-auto w-full">
         {/* Desktop View: Full 3-Column Architectural Bar (sm and above) */}
         <div className="hidden sm:flex items-center justify-between relative">
           
