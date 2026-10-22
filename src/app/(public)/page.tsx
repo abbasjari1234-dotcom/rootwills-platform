@@ -20,36 +20,40 @@ export default function PublicHomePage() {
       {/* ─── 1. Hero Section ─── */}
       <CommercialB2BHero />
 
-      {/* ─── 1b. Five Commercial Trust Pillars ─── */}
-      <CommercialTrustStrip />
-
-      {/* ─── 2. About Rootwills: More Than Just Food Supply ─── */}
-      <AboutRootwillsSection />
-
-      {/* ─── 3. Our Services: Tailored Solutions for Every Business ─── */}
-      <ServicesSection />
-
-      {/* ─── 4. Our Approach: Built on Trust, Quality & Consistency ─── */}
-      <ApproachSection />
-
-      {/* ─── 5. Mid Banner: Supporting the Food Industry Across the UK ─── */}
-      <MidBannerSection />
-
-      {/* ─── 6 & 7. Testimonials & Direct Trade Enquiries (Unified Seamless Flow on Single Crest Canvas) ─── */}
-      <section className="bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-b border-[#E8DEC8]">
-        {/* Continuous Neoclassical Laurel Wreaths & Architectural Crest Watermark Texture */}
+      {/* ─── Continuous British Heritage Cream Canvas (Unified flow from top to bottom) ─── */}
+      <div className="relative bg-[#FAF7F2] text-slate-900 overflow-hidden">
+        {/* Seamless Botanical Etching Texture running continuously through all body sections */}
         <div
-          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
           style={{
-            backgroundImage: `url('/images/textures/texture_testimonials_crest.jpg')`,
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
           }}
         />
 
         <div className="relative z-10">
+          {/* 1b. Five Commercial Trust Pillars */}
+          <CommercialTrustStrip />
+
+          {/* 2. About Rootwills: More Than Just Food Supply */}
+          <AboutRootwillsSection />
+
+          {/* 3. Our Services: Tailored Solutions for Every Business */}
+          <ServicesSection />
+
+          {/* 4. Our Approach: Built on Trust, Quality & Consistency */}
+          <ApproachSection />
+
+          {/* 5. Standards Benchmarks */}
+          <MidBannerSection />
+
+          {/* 6. Testimonials */}
           <TestimonialsSection />
+
+          {/* 7. Direct Commercial Enquiries */}
           <GetInTouchBanner />
         </div>
-      </section>
+      </div>
     </div>
   );
 }

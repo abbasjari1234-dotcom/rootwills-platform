@@ -32,19 +32,8 @@ export function MidBannerSection() {
   ];
 
   return (
-    <section className="relative py-14 sm:py-20 lg:py-24 bg-[#F5EFEB] text-slate-900 overflow-hidden border-t border-b border-[#E8DEC8]">
-      {/* Background Architectural Crest Texture */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-multiply"
-        style={{ 
-          backgroundImage: `url('/images/textures/texture_testimonials_crest.jpg')`,
-        }}
-      />
-
-      {/* Atmospheric Soft Light Feather */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAF6EE]/50 via-transparent to-[#FAF6EE]/60 pointer-events-none z-0" />
-
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div id="standards" className="pt-14 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 text-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Single Refined Eyebrow */}
         <div className="inline-flex items-center gap-2 mb-3">
@@ -62,13 +51,13 @@ export function MidBannerSection() {
         </h2>
 
         {/* Narrative Lead Paragraph */}
-        <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans leading-relaxed mb-8 sm:mb-12 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
           From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness, locked wholesale margins, and pedigree.
         </p>
 
         {/* ─── Architectural Credential Ribbon: Prestige Heritage Glass Board ─── */}
         <div className="w-full mx-auto p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl bg-white/70 ring-1 ring-[#BA8E4E]/30 shadow-[0_16px_40px_rgba(78,13,23,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md mb-6 sm:mb-8">
-          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-b from-[#FAF7F0] to-[#F5EFEB] px-4 py-6 sm:px-6 sm:py-8 border border-white/60">
+          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-b from-[#FAF7F0] to-[#FAF6EE] px-4 py-6 sm:px-6 sm:py-8 border border-white/60">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-[#BA8E4E]/25">
               
               {benchmarks.map((item) => {
@@ -116,7 +105,10 @@ export function MidBannerSection() {
           <span className="text-[#BA8E4E]">✦</span>
         </div>
 
+        {/* Elegant Hairline Transition to Testimonials */}
+        <div className="w-full max-w-xl mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#BA8E4E]/25 to-transparent mt-12 sm:mt-16" />
+
       </div>
-    </section>
+    </div>
   );
 }

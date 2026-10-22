@@ -79,15 +79,7 @@ export function ApproachSection() {
   ];
 
   return (
-    <section ref={sectionRef} id="approach" className="py-10 sm:py-16 lg:py-28 bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-b border-[#E8DEC8]">
-      {/* ─── Antique Culinary Botanical Herbs Watermark Texture ─── */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
-        style={{ 
-          backgroundImage: `url('/images/textures/texture_approach_botanical.jpg')`,
-        }}
-      />
-
+    <section ref={sectionRef} id="approach" className="py-10 sm:py-16 lg:py-24 relative overflow-hidden border-b border-[#E8DEC8]/60">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-0 items-center">

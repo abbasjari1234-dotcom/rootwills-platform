@@ -33,7 +33,7 @@ const TRUST_PILLARS = [
 
 export function CommercialTrustStrip() {
   return (
-    <section className="bg-[#FAF6EE] border-y border-[#BA8E4E]/25 py-3.5 sm:py-5 relative z-20 overflow-hidden shadow-xs">
+    <section className="bg-transparent border-b border-[#BA8E4E]/25 py-3.5 sm:py-5 relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile: Smooth Horizontal Snap Rail / Desktop: Clean 5-col Grid */}
         <div className="flex sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 lg:gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory touch-pan-x overscroll-x-contain -mx-4 px-4 sm:mx-0 sm:px-0 py-1 items-center">

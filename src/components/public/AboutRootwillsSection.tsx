@@ -55,15 +55,7 @@ export function AboutRootwillsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-10 sm:py-16 lg:py-28 bg-[#FAF6EE] text-slate-900 relative overflow-hidden border-t border-b border-[#E8DEC8]">
-      {/* ─── Classical Agrarian Harvest Landscape Watermark Texture ─── */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-45 mix-blend-multiply"
-        style={{ 
-          backgroundImage: `url('/images/textures/texture_about_harvest.jpg')`,
-        }}
-      />
-
+    <section ref={sectionRef} id="about" className="py-10 sm:py-16 lg:py-24 relative overflow-hidden border-b border-[#E8DEC8]/60">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 3-Column Layout Matching Exact Mockup in media_1791673962373.png */}
