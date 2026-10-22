@@ -72,6 +72,20 @@ html, body {
   overflow-x: hidden;
 }
 
+@keyframes gentle-doodle-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(-12deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-9deg);
+  }
+}
+
+.doodle-float {
+  animation: gentle-doodle-float 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
 
 
 /* 3D Transform Utilities */

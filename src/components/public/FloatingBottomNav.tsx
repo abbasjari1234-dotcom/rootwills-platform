@@ -291,17 +291,17 @@ export function FloatingBottomNav() {
         {!isNearFooter && (
           <motion.div
             key="floating-bottom-controls"
-            initial={{ y: 60, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 60, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ transform: 'translateY(60px)', opacity: 0 }}
+            animate={{ transform: 'translateY(0px)', opacity: 1 }}
+            exit={{ transform: 'translateY(60px)', opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
             className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6"
           >
             {/* 1. DESKTOP VIEW: Complete Floating Glass Dock (Hidden on Mobile) */}
             <motion.nav
-          initial={{ y: 35, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ transform: 'translateY(24px)', opacity: 0 }}
+          animate={{ transform: 'translateY(0px)', opacity: 1 }}
+          transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
           aria-label="Floating Glass Navigation Dock"
           className="pointer-events-auto hidden sm:flex mx-auto max-w-fit justify-center"
         >

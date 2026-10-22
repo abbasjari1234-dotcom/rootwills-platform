@@ -62,9 +62,9 @@ export function CommercialB2BHero() {
             <div className="w-full h-[2px] bg-[linear-gradient(90deg,#F13624,#FA7E3D,transparent)] rounded-full -mt-0.5" />
           </div>
           
-          {/* Hand-Drawn Doodle Arrow SVG */}
+          {/* Hand-Drawn Doodle Arrow SVG with Organic Float Motion */}
           <svg 
-            className="w-9 h-9 sm:w-11 sm:h-11 text-white/85 -rotate-12 stroke-current fill-none drop-shadow-sm" 
+            className="w-9 h-9 sm:w-11 sm:h-11 text-white/85 stroke-current fill-none drop-shadow-sm doodle-float" 
             viewBox="0 0 40 40"
           >
             <path 

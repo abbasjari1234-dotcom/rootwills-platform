@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -87,21 +88,32 @@ export function TestimonialsSection() {
 
         {/* ─── MOBILE VIEW: 1 Clean Card at a time with Navigation ─── */}
         <div className="block md:hidden w-full max-w-md mx-auto">
-          <div className="bg-[#FAF7F2] rounded-xl p-4 sm:p-5 border border-[#E7DEC8] shadow-xs flex flex-col justify-between min-h-[160px] w-full">
-            <div>
-              <div className="flex items-center gap-1 text-[#BA8E4E] mb-2">
-                <span className="font-serif text-base leading-none select-none font-bold">“</span>
-                <span className="font-serif text-base leading-none select-none font-bold -ml-0.5">“</span>
-              </div>
-              <p className="text-xs text-stone-700 leading-relaxed font-sans mb-3">
-                &ldquo;{testimonials[mobileIndex].quote}&rdquo;
-              </p>
-            </div>
-            <div className="pt-2 border-t border-[#EAE1D1]">
-              <span className="text-xs font-sans text-stone-600 font-medium">
-                {testimonials[mobileIndex].author}, {testimonials[mobileIndex].location}
-              </span>
-            </div>
+          <div className="min-h-[160px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={mobileIndex}
+                initial={{ opacity: 0, transform: 'translateY(6px)' }}
+                animate={{ opacity: 1, transform: 'translateY(0px)' }}
+                exit={{ opacity: 0, transform: 'translateY(-6px)' }}
+                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                className="bg-[#FAF7F2] rounded-xl p-4 sm:p-5 border border-[#E7DEC8] shadow-xs flex flex-col justify-between min-h-[160px] w-full"
+              >
+                <div>
+                  <div className="flex items-center gap-1 text-[#BA8E4E] mb-2">
+                    <span className="font-serif text-base leading-none select-none font-bold">“</span>
+                    <span className="font-serif text-base leading-none select-none font-bold -ml-0.5">“</span>
+                  </div>
+                  <p className="text-xs text-stone-700 leading-relaxed font-sans mb-3">
+                    &ldquo;{testimonials[mobileIndex].quote}&rdquo;
+                  </p>
+                </div>
+                <div className="pt-2 border-t border-[#EAE1D1]">
+                  <span className="text-xs font-sans text-stone-600 font-medium">
+                    {testimonials[mobileIndex].author}, {testimonials[mobileIndex].location}
+                  </span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Mobile Arrows & Counter */}
@@ -141,32 +153,43 @@ export function TestimonialsSection() {
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          {/* 3 Review Cards Matching Reference Mockup */}
-          <div className="grid grid-cols-3 gap-5 lg:gap-6 w-full max-w-5xl">
-            {visibleTestimonials.map((item, index) => (
-              <div
-                key={`${currentPage}-${index}`}
-                className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-[box-shadow,border-color] duration-200 ease-out flex flex-col justify-between"
+          {/* 3 Review Cards Animated on Page Change */}
+          <div className="w-full max-w-5xl overflow-hidden min-h-[190px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0, transform: 'translateY(8px)' }}
+                animate={{ opacity: 1, transform: 'translateY(0px)' }}
+                exit={{ opacity: 0, transform: 'translateY(-8px)' }}
+                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                className="grid grid-cols-3 gap-5 lg:gap-6 w-full"
               >
-                <div>
-                  {/* Subtle Gold Quote Marks Icon */}
-                  <div className="flex items-center gap-1 text-[#BA8E4E] mb-3">
-                    <span className="font-serif text-lg leading-none select-none font-bold">“</span>
-                    <span className="font-serif text-lg leading-none select-none font-bold -ml-0.5">“</span>
+                {visibleTestimonials.map((item, index) => (
+                  <div
+                    key={`${currentPage}-${index}`}
+                    className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-[box-shadow,border-color] duration-200 ease-out flex flex-col justify-between"
+                  >
+                    <div>
+                      {/* Subtle Gold Quote Marks Icon */}
+                      <div className="flex items-center gap-1 text-[#BA8E4E] mb-3">
+                        <span className="font-serif text-lg leading-none select-none font-bold">“</span>
+                        <span className="font-serif text-lg leading-none select-none font-bold -ml-0.5">“</span>
+                      </div>
+
+                      <p className="text-xs sm:text-[13px] text-stone-700 leading-relaxed font-sans mb-6">
+                        &ldquo;{item.quote}&rdquo;
+                      </p>
+                    </div>
+
+                    <div className="pt-2">
+                      <span className="text-xs font-sans text-stone-600 font-medium">
+                        {item.author}, {item.location}
+                      </span>
+                    </div>
                   </div>
-
-                  <p className="text-xs sm:text-[13px] text-stone-700 leading-relaxed font-sans mb-6">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                </div>
-
-                <div className="pt-2">
-                  <span className="text-xs font-sans text-stone-600 font-medium">
-                    {item.author}, {item.location}
-                  </span>
-                </div>
-              </div>
-            ))}
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Right Arrow Button */}
