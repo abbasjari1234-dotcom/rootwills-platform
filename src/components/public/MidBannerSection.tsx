@@ -1,119 +1,122 @@
+'use client';
+
 import React from 'react';
-import Image from 'next/image';
+import { ShieldCheck, Truck, Snowflake, CheckCircle2 } from 'lucide-react';
 
 export function MidBannerSection() {
+  const benchmarks = [
+    {
+      metric: '99.4%',
+      title: 'Order Fulfillment',
+      subtitle: 'Direct Grower Lineage',
+      icon: CheckCircle2,
+    },
+    {
+      metric: '< 4°C',
+      title: 'Cold-Chain Verified',
+      subtitle: 'Monitored Farm to Kitchen',
+      icon: Snowflake,
+    },
+    {
+      metric: '6 Days',
+      title: 'Dawn Delivery',
+      subtitle: '04:00 – 07:30 Fleet Drops',
+      icon: Truck,
+    },
+    {
+      metric: '100%',
+      title: 'SALSA Assured',
+      subtitle: 'Full Batch Traceability',
+      icon: ShieldCheck,
+    },
+  ];
+
   return (
-    <>
-      <section className="relative py-16 sm:py-20 lg:py-28 overflow-hidden bg-[#160205] border-t border-b border-[#BA8E4E]/25">
-        {/* Full-Width Panoramic Background: The Kitchen Pass */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/commercial/rootwills_restaurant_pass_panoramic.jpg"
-            alt="Supporting the Food Industry Across the UK"
-            fill
-            unoptimized
-            sizes="100vw"
-            className="object-cover filter brightness-[0.42] contrast-105 saturate-[0.85]"
-          />
-          {/* Cinematic Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#160205] via-black/55 to-[#160205]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#160205]/85 via-transparent to-[#160205]/85" />
+    <section className="relative py-14 sm:py-20 lg:py-24 bg-[#F5EFEB] text-slate-900 overflow-hidden border-t border-b border-[#E8DEC8]">
+      {/* Background Architectural Crest Texture */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-multiply"
+        style={{ 
+          backgroundImage: `url('/images/textures/texture_testimonials_crest.jpg')`,
+        }}
+      />
+
+      {/* Atmospheric Soft Light Feather */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAF6EE]/50 via-transparent to-[#FAF6EE]/60 pointer-events-none z-0" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        {/* Single Refined Eyebrow */}
+        <div className="inline-flex items-center gap-2 mb-3">
+          <span className="h-[1px] w-6 bg-[#BA8E4E]/40" />
+          <span className="text-[10px] sm:text-xs font-serif tracking-[0.28em] uppercase text-[#BA8E4E] font-semibold">
+            THE ROOTWILLS STANDARD
+          </span>
+          <span className="h-[1px] w-6 bg-[#BA8E4E]/40" />
         </div>
 
-        {/* Top Architectural Diamond Accent */}
-        <div className="relative z-10 flex items-center justify-center mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 border border-[#BA8E4E]/40 rounded-full bg-[#160205]/90 text-[9px] text-[#D4A86A] font-serif tracking-widest shadow-md">
-            <span className="text-[8px] text-[#BA8E4E]">◆</span>
-            <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.25em] font-serif text-[#D4A86A] font-semibold">
-              PURVEYOR BENCHMARK
-            </span>
-            <span className="text-[8px] text-[#BA8E4E]">◆</span>
-          </div>
-        </div>
+        {/* Editorial Headline */}
+        <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] tracking-tight leading-[1.18] mb-3 sm:mb-4">
+          Supporting the Food Industry <br className="hidden sm:inline" />
+          Across the <span className="text-[#8B2635] italic font-normal">United Kingdom</span>
+        </h2>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          
-          {/* Eyebrow */}
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-[#D4A86A] text-[11px] sm:text-xs font-serif tracking-[0.28em] uppercase font-semibold">
-              — THE ROOTWILLS STANDARD —
-            </span>
-          </div>
+        {/* Narrative Lead Paragraph */}
+        <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans leading-relaxed mb-8 sm:mb-12 max-w-2xl mx-auto">
+          From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness, locked wholesale margins, and pedigree.
+        </p>
 
-          {/* Headline */}
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-serif font-bold text-white tracking-tight leading-[1.16] mb-4 sm:mb-5">
-            Supporting the Food Industry<br />
-            Across the <span className="text-[#D4A86A]">UK</span>
-          </h2>
+        {/* ─── Architectural Credential Ribbon: Prestige Heritage Glass Board ─── */}
+        <div className="w-full mx-auto p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl bg-white/70 ring-1 ring-[#BA8E4E]/30 shadow-[0_16px_40px_rgba(78,13,23,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md mb-6 sm:mb-8">
+          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-b from-[#FAF7F0] to-[#F5EFEB] px-4 py-6 sm:px-6 sm:py-8 border border-white/60">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-[#BA8E4E]/25">
+              
+              {benchmarks.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div 
+                    key={item.title}
+                    className="px-3 sm:px-6 text-center flex flex-col items-center justify-center group"
+                  >
+                    {/* Micro Gold Circular Badge */}
+                    <div className="w-8 h-8 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/35 flex items-center justify-center text-[#BA8E4E] mb-2.5 shadow-xs group-hover:scale-110 group-hover:ring-[#BA8E4E]/70 transition-all duration-300">
+                      <Icon className="w-4 h-4 stroke-[1.75]" />
+                    </div>
 
-          {/* Subtitle */}
-          <p className="text-xs sm:text-sm lg:text-[15px] text-[#EDE4D8]/90 font-sans leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto">
-            From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness and pedigree.
-          </p>
+                    {/* Metric Numeral */}
+                    <span className="font-serif text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#4E0D17] leading-none mb-1.5 tracking-tight group-hover:text-[#2E060D] transition-colors">
+                      {item.metric}
+                    </span>
 
-          {/* ─── Architectural Credential Ribbon (Replaces AI Slop Glass Boxes) ─── */}
-          <div className="w-full max-w-4xl mx-auto mb-8 sm:mb-10 p-1 rounded-2xl bg-white/[0.04] ring-1 ring-[#BA8E4E]/35 backdrop-blur-md shadow-2xl">
-            <div className="rounded-[calc(1rem-0.125rem)] bg-[#120104]/85 px-4 py-5 sm:px-6 sm:py-6 border border-white/[0.08]">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-4 md:gap-0 md:divide-x divide-[#BA8E4E]/25">
-                
-                {/* Stat 1: Fulfillment */}
-                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pb-1 md:pb-0">
-                  <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
-                    99.4%
-                  </span>
-                  <span className="block text-xs sm:text-[13px] font-serif font-semibold text-white tracking-wide">
-                    Order Fulfillment
-                  </span>
-                  <span className="block text-[10px] text-[#EDE4D8]/65 font-sans mt-0.5">
-                    Direct Grower Lineage
-                  </span>
-                </div>
+                    {/* Title */}
+                    <span className="font-serif text-xs sm:text-[13.5px] font-semibold text-[#2E060D] tracking-wide">
+                      {item.title}
+                    </span>
 
-                {/* Stat 2: Cold-Chain */}
-                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pb-1 md:pb-0">
-                  <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
-                    &lt; 4°C
-                  </span>
-                  <span className="block text-xs sm:text-[13px] font-serif font-semibold text-white tracking-wide">
-                    Cold-Chain Verified
-                  </span>
-                  <span className="block text-[10px] text-[#EDE4D8]/65 font-sans mt-0.5">
-                    Monitored Farm to Kitchen
-                  </span>
-                </div>
+                    {/* Subtitle */}
+                    <span className="text-[10.5px] sm:text-[11.5px] text-stone-500 font-sans mt-0.5">
+                      {item.subtitle}
+                    </span>
+                  </div>
+                );
+              })}
 
-                {/* Stat 3: Dawn Drops */}
-                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pt-4 md:pt-0 border-t border-[#BA8E4E]/25 md:border-t-0">
-                  <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
-                    6 Days
-                  </span>
-                  <span className="block text-xs sm:text-[13px] font-serif font-semibold text-white tracking-wide">
-                    Dawn Delivery
-                  </span>
-                  <span className="block text-[10px] text-[#EDE4D8]/65 font-sans mt-0.5">
-                    4:00 AM London Drops
-                  </span>
-                </div>
-
-                {/* Stat 4: SALSA */}
-                <div className="px-2 sm:px-4 text-center flex flex-col justify-center pt-4 md:pt-0 border-t border-[#BA8E4E]/25 md:border-t-0">
-                  <span className="block font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#D4A86A] leading-none mb-1.5">
-                    100%
-                  </span>
-                  <span className="block text-xs sm:text-[13px] font-serif font-semibold text-white tracking-wide">
-                    SALSA Assured
-                  </span>
-                  <span className="block text-[10px] text-[#EDE4D8]/65 font-sans mt-0.5">
-                    Full Batch Traceability
-                  </span>
-                </div>
-
-              </div>
             </div>
           </div>
-
         </div>
-      </section>
-    </>
+
+        {/* Lower Assurance Pill */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/60 border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.16em] uppercase text-[#4E0D17] font-semibold shadow-xs">
+          <span className="text-[#BA8E4E]">✦</span>
+          <span>Pre-Dawn Fleet Logistics</span>
+          <span className="text-[#BA8E4E]/40">•</span>
+          <span>Guaranteed Temperatures</span>
+          <span className="text-[#BA8E4E]/40">•</span>
+          <span>Locked Trade Margins</span>
+          <span className="text-[#BA8E4E]">✦</span>
+        </div>
+
+      </div>
+    </section>
   );
 }
