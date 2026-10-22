@@ -16,8 +16,7 @@ import {
   Mail, 
   MapPin, 
   Clock,
-  Truck,
-  ShieldCheck
+  Truck
 } from 'lucide-react';
 
 export function PublicFooter() {
@@ -291,15 +290,10 @@ export function PublicFooter() {
               </div>
             </div>
 
-            {/* B2B Onboarding Facility CTA */}
             <div className="pt-2 border-t border-[#BA8E4E]/15 mt-1.5">
-              <Link
-                href="/#contact"
-                className="w-full inline-flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg bg-gradient-to-r from-[#BA8E4E]/25 via-[#D4A86A]/30 to-[#BA8E4E]/25 hover:from-[#BA8E4E]/40 hover:to-[#D4A86A]/40 border border-[#BA8E4E]/50 text-[#EDE4D8] hover:text-white text-[11px] font-serif font-semibold tracking-wider transition-all shadow-sm active:scale-[0.99]"
-              >
-                <ShieldCheck className="w-3 h-3 text-[#D4A86A]" />
-                <span>Open 30-Day Trade Account</span>
-              </Link>
+              <span className="text-[9.5px] font-serif text-[#D4A86A]/85 tracking-wider block">
+                Dedicated Trade Support &bull; Mon–Sat 05:00–23:00
+              </span>
             </div>
           </div>
 
