@@ -76,10 +76,10 @@ export function GetInTouchBanner() {
               <div>
                 <button
                   onClick={() => setInquiryOpen(true)}
-                  className="group inline-flex items-center gap-2.5 sm:gap-3 pl-6 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-lg hover:shadow-2xl active:scale-[0.98] cursor-pointer"
+                  className="group inline-flex items-center gap-2.5 sm:gap-3 pl-6 pr-2 py-2 sm:pl-8 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-[transform,background-color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-lg hover:shadow-2xl active:scale-[0.97] cursor-pointer"
                 >
                   <span>Submit Trade Enquiry</span>
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
                     <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
                   </div>
                 </button>

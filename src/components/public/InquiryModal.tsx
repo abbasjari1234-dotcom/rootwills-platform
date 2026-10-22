@@ -56,12 +56,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             className="fixed inset-0 bg-black/75 backdrop-blur-sm"
           />
 
-          {/* Modal Container */}
+          {/* Modal Container with Asymmetric Enter/Exit Timing */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 16 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.22, ease: [0.23, 1, 0.32, 1] } }}
+            exit={{ opacity: 0, scale: 0.96, y: 12, transition: { duration: 0.15, ease: [0.32, 0.72, 0, 1] } }}
             className="relative w-full max-w-xl bg-[#FAF7F2] rounded-2xl shadow-2xl border border-[#BA8E4E]/30 overflow-hidden z-10"
           >
             {/* Header with royal burgundy bar */}
@@ -192,10 +191,10 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="group w-full py-3.5 px-6 rounded-xl bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] font-serif font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] cursor-pointer"
+                      className="group w-full py-3.5 px-6 rounded-xl bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] font-serif font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-xl transition-[transform,background-color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] cursor-pointer"
                     >
                       <span>Submit Partnership Enquiry</span>
-                      <div className="w-6 h-6 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                      <div className="w-6 h-6 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1">
                         <Send className="w-3.5 h-3.5 text-[#2D060D]" />
                       </div>
                     </button>

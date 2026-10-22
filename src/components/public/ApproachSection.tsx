@@ -139,9 +139,9 @@ export function ApproachSection() {
               return (
                 <div 
                   key={pillar.title} 
-                  className="group flex items-start gap-3 p-2 rounded-xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[#FAF7F0] ring-1 ring-transparent hover:ring-[#BA8E4E]/25 shadow-2xs"
+                  className="group flex items-start gap-3 p-2 rounded-xl transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[#FAF7F0] ring-1 ring-transparent hover:ring-[#BA8E4E]/25 shadow-2xs"
                 >
-                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shrink-0 shadow-2xs transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:ring-[#BA8E4E]/60">
+                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shrink-0 shadow-2xs transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105 group-hover:ring-[#BA8E4E]/60">
                     <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
                     <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#2E060D] text-[#FAF7F0] text-[7px] font-serif font-bold flex items-center justify-center">
                       {romanNumerals[idx]}

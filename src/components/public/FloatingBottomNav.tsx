@@ -323,7 +323,7 @@ export function FloatingBottomNav() {
                       key={item.id}
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item)}
-                      className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/80 hover:text-white transition-all duration-200 active:scale-[0.96]"
+                      className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/80 hover:text-white transition-[color,transform] duration-160 ease-out active:scale-[0.97]"
                     >
                       {isActive && (
                         <motion.div
@@ -336,8 +336,9 @@ export function FloatingBottomNav() {
                       <span className="relative z-10 flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
                         {isActive && (
                           <motion.span
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
+                            initial={{ scale: 0.7, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
                             className="w-1 h-1 rounded-full bg-[#E4C767] shadow-[0_0_6px_#E4C767]"
                           />
                         )}
@@ -360,10 +361,10 @@ export function FloatingBottomNav() {
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className="group relative p-[1.5px] rounded-full transition-all duration-300 active:scale-95 bg-[#E4C767]/25 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)]"
+            className="group relative p-[1.5px] rounded-full transition-[transform,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] bg-[#E4C767]/25 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)] cursor-pointer"
           >
             {/* Inner Velvet Capsule */}
-            <div className="flex items-center gap-2.5 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider bg-gradient-to-b from-[#26050B] via-[#1B0307] to-[#120205] shadow-inner transition-all duration-300">
+            <div className="flex items-center gap-2.5 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider bg-gradient-to-b from-[#26050B] via-[#1B0307] to-[#120205] shadow-inner transition-colors duration-200">
               {/* Animated Hamburger ☰ / Close ✕ Icon (Matching Image 2 Left Placement) */}
               <div className="w-4 h-4 flex items-center justify-center">
                 {isMobileMenuOpen ? (

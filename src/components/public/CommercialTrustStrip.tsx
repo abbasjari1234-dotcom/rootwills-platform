@@ -42,7 +42,7 @@ export function CommercialTrustStrip() {
             return (
               <div 
                 key={idx} 
-                className="shrink-0 snap-start flex items-center gap-3 bg-[#FFFDF9]/90 sm:bg-transparent border border-[#E8DEC8] sm:border-0 rounded-xl px-3.5 py-2.5 sm:p-0 transition-all shadow-xs sm:shadow-none min-w-[210px] sm:min-w-0"
+                className="shrink-0 snap-start flex items-center gap-3 bg-[#FFFDF9]/90 sm:bg-transparent border border-[#E8DEC8] sm:border-0 rounded-xl px-3.5 py-2.5 sm:p-0 transition-[box-shadow,border-color] duration-200 ease-out shadow-xs sm:shadow-none min-w-[210px] sm:min-w-0"
               >
                 <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#2E060D] border border-[#BA8E4E]/40 flex items-center justify-center text-[#D4A86A] shadow-xs">
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />

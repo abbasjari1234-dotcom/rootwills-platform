@@ -113,7 +113,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={handleMobilePrev}
-                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs active:scale-95 cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs transition-[transform,background-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] cursor-pointer"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -121,7 +121,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={handleMobileNext}
-                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs active:scale-95 cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs transition-[transform,background-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] cursor-pointer"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -135,7 +135,7 @@ export function TestimonialsSection() {
           {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-all shadow-xs active:scale-95 cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-[transform,background-color,color,border-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xs active:scale-[0.96] cursor-pointer"
             aria-label="Previous testimonials"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -146,7 +146,7 @@ export function TestimonialsSection() {
             {visibleTestimonials.map((item, index) => (
               <div
                 key={`${currentPage}-${index}`}
-                className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between"
+                className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-[box-shadow,border-color] duration-200 ease-out flex flex-col justify-between"
               >
                 <div>
                   {/* Subtle Gold Quote Marks Icon */}
@@ -172,7 +172,7 @@ export function TestimonialsSection() {
           {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-all shadow-xs active:scale-95 cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-[transform,background-color,color,border-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xs active:scale-[0.96] cursor-pointer"
             aria-label="Next testimonials"
           >
             <ChevronRight className="w-4 h-4" />

@@ -114,7 +114,7 @@ export function PublicFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Rootwills on Facebook"
-              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-all duration-200"
+              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.95]"
             >
               <Facebook className="w-4 h-4 fill-current" />
             </a>
@@ -123,7 +123,7 @@ export function PublicFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Rootwills on X"
-              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-all duration-200"
+              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.95]"
             >
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -134,7 +134,7 @@ export function PublicFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Rootwills on Instagram"
-              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-all duration-200"
+              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.95]"
             >
               <Instagram className="w-4 h-4" />
             </a>
@@ -143,7 +143,7 @@ export function PublicFooter() {
               target="_blank"
               rel="noreferrer"
               aria-label="Rootwills on LinkedIn"
-              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-all duration-200"
+              className="w-8 h-8 rounded-full bg-white/[0.04] ring-1 ring-[#D4A86A]/30 hover:ring-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.95]"
             >
               <Linkedin className="w-4 h-4 fill-current" />
             </a>
@@ -200,7 +200,7 @@ export function PublicFooter() {
               <button
                 type="button"
                 onClick={scrollToTop}
-                className="text-[11px] font-sans text-[#EDE4D8]/80 hover:text-[#D4A86A] flex items-center gap-1 transition-colors px-2.5 py-1 rounded-full bg-white/[0.03] ring-1 ring-[#BA8E4E]/25 hover:ring-[#D4A86A]/50 cursor-pointer"
+                className="text-[11px] font-sans text-[#EDE4D8]/80 hover:text-[#D4A86A] flex items-center gap-1 transition-[transform,color,background-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] px-2.5 py-1 rounded-full bg-white/[0.03] ring-1 ring-[#BA8E4E]/25 hover:ring-[#D4A86A]/50 cursor-pointer"
               >
                 <span>Top</span>
                 <ArrowUp className="w-3 h-3 text-[#D4A86A]" />
