@@ -204,8 +204,8 @@ export function PublicFooter() {
 
       </div>
 
-      {/* Extra bottom padding reserve so the fixed floating bottom nav (FloatingBottomNav.tsx) never obscures the cards */}
-      <div className="h-12 sm:h-16" />
+      {/* Subtle bottom breathing room */}
+      <div className="h-4 sm:h-6" />
     </footer>
   );
 }

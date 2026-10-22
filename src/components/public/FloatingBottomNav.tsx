@@ -30,6 +30,7 @@ export function FloatingBottomNav() {
   const [activeId, setActiveId] = useState<string>('about');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [slaAlertActive, setSlaAlertActive] = useState<boolean>(true);
+  const [isNearFooter, setIsNearFooter] = useState<boolean>(false);
 
   // Lock body scroll when mobile menu is active
   useEffect(() => {
@@ -89,6 +90,43 @@ export function FloatingBottomNav() {
       handleScrollSpy();
       return () => window.removeEventListener('scroll', handleScrollSpy);
     }
+  }, [pathname]);
+
+  // Smoothly hide floating nav when approaching footer, reveal when leaving
+  useEffect(() => {
+    const checkFooterIntersection = () => {
+      const footer = document.getElementById('footer');
+      if (!footer) {
+        setIsNearFooter(false);
+        return;
+      }
+
+      const rect = footer.getBoundingClientRect();
+      // Floating nav sits at bottom (approx 80px high).
+      // Disappear when footer top enters within 60px of viewport bottom.
+      // Reappear with hysteresis when footer leaves past 15px below viewport bottom.
+      const thresholdHide = window.innerHeight - 60;
+      const thresholdShow = window.innerHeight - 15;
+
+      setIsNearFooter((prev) => {
+        if (!prev && rect.top < thresholdHide) {
+          return true;
+        }
+        if (prev && rect.top > thresholdShow) {
+          return false;
+        }
+        return prev;
+      });
+    };
+
+    window.addEventListener('scroll', checkFooterIntersection, { passive: true });
+    window.addEventListener('resize', checkFooterIntersection, { passive: true });
+    checkFooterIntersection();
+
+    return () => {
+      window.removeEventListener('scroll', checkFooterIntersection);
+      window.removeEventListener('resize', checkFooterIntersection);
+    };
   }, [pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
@@ -249,10 +287,18 @@ export function FloatingBottomNav() {
       </AnimatePresence>
 
       {/* ─── FLOATING BOTTOM CONTROLS (DESKTOP DOCK + MOBILE MENU PILL) ─── */}
-      <div className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6">
-        
-        {/* 1. DESKTOP VIEW: Complete Floating Glass Dock (Hidden on Mobile) */}
-        <motion.nav
+      <AnimatePresence>
+        {!isNearFooter && (
+          <motion.div
+            key="floating-bottom-controls"
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 60, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6"
+          >
+            {/* 1. DESKTOP VIEW: Complete Floating Glass Dock (Hidden on Mobile) */}
+            <motion.nav
           initial={{ y: 35, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -335,8 +381,9 @@ export function FloatingBottomNav() {
             </div>
           </button>
         </div>
-
-      </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
 
       {/* Inquiry Modal */}
       <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
