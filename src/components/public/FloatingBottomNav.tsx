@@ -308,27 +308,17 @@ export function FloatingBottomNav() {
           </div>
         </motion.nav>
 
-        {/* 2. MOBILE VIEW: Sunset Gradient Menu Pill (Matching Image 1 & Image 2) */}
+        {/* 2. MOBILE VIEW: Velvet Dark Burgundy Menu Pill (Matching Image 2) */}
         <div className="pointer-events-auto sm:hidden flex justify-center">
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className={`group relative p-[1.5px] rounded-full transition-all duration-300 active:scale-95 ${
-              isMobileMenuOpen
-                ? 'bg-red-500/20 ring-1 ring-[#D4A86A]/40 shadow-[0_0_35px_rgba(220,38,38,0.55),0_8px_24px_rgba(0,0,0,0.8)]'
-                : 'bg-white/20 ring-1 ring-white/30 backdrop-blur-2xl shadow-[0_12px_32px_rgba(244,56,38,0.45)]'
-            }`}
+            className="group relative p-[1.5px] rounded-full transition-all duration-300 active:scale-95 bg-[#E4C767]/25 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)]"
           >
-            {/* Inner Vibrant Pill with Sunset Gradient */}
-            <div className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider shadow-inner transition-all duration-300 ${
-              isMobileMenuOpen
-                ? 'bg-[#180306] ring-1 ring-white/10'
-                : 'bg-[linear-gradient(90deg,#F43826_0%,#FA6438_28%,#EE4C70_58%,#C96EA0_82%,#B587BE_100%)]'
-            }`}>
-              <span>Menu</span>
-
-              {/* Animated Hamburger ☰ / Close ✕ Icon (Matching Image 1 & Image 2) */}
+            {/* Inner Velvet Capsule */}
+            <div className="flex items-center gap-2.5 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider bg-gradient-to-b from-[#26050B] via-[#1B0307] to-[#120205] shadow-inner transition-all duration-300">
+              {/* Animated Hamburger ☰ / Close ✕ Icon (Matching Image 2 Left Placement) */}
               <div className="w-4 h-4 flex items-center justify-center">
                 {isMobileMenuOpen ? (
                   <X className="w-4 h-4 text-white transition-transform duration-200 rotate-90 scale-110" />
@@ -340,6 +330,8 @@ export function FloatingBottomNav() {
                   </div>
                 )}
               </div>
+
+              <span>Menu</span>
             </div>
           </button>
         </div>
