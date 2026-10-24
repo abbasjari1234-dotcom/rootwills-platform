@@ -7,12 +7,12 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  ArrowUp,
-  Instagram,
-  Linkedin,
-  Facebook,
-  Clock,
-  ShieldCheck
+  ArrowUp, 
+  Instagram, 
+  Linkedin, 
+  Facebook, 
+  Clock, 
+  ShieldCheck 
 } from 'lucide-react';
 
 export function PublicFooter() {
@@ -22,67 +22,48 @@ export function PublicFooter() {
 
   const navLinks = [
     { label: 'Home', href: '/#home' },
-    { label: 'About Us', href: '/#about' },
+    { label: 'About Rootwills', href: '/#about' },
     { label: 'Services', href: '/#services' },
-    { label: 'Sectors', href: '/sectors' },
-    { label: 'Delivery', href: '/delivery' },
-    { label: 'Why Us', href: '/why-choose-us' },
+    { label: 'Delivery & Logistics', href: '/delivery' },
+    { label: 'Why Choose Us', href: '/why-choose-us' },
     { label: 'Contact Us', href: '/#contact' },
   ];
 
+  const sectorLinks = [
+    { label: 'Fresh Produce', href: '/sectors' },
+    { label: 'Artisan Dairy & Eggs', href: '/sectors' },
+    { label: 'Prime Butchery', href: '/sectors' },
+    { label: 'Coastal Seafood', href: '/sectors' },
+    { label: 'Dry Stores & Pantry', href: '/sectors' },
+  ];
+
   return (
-    <footer id="footer" className="relative bg-[#200409] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/40 z-20">
-      {/* ─── 1. Rich Visible Royal Damask Texture ─── */}
+    <footer id="footer" className="relative bg-[#1A0307] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/35 z-20">
+      
+      {/* ─── 1. Continuous Royal Damask Background Texture ─── */}
       <div 
-        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-45 mix-blend-overlay"
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-30 mix-blend-overlay"
         style={{ 
           backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')`,
-          backgroundSize: '460px auto'
+          backgroundSize: '380px auto'
         }}
       />
 
-      {/* ─── 2. Golden Ambient Radial Glow from Top ─── */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(186,142,78,0.22),transparent_75%)] pointer-events-none z-0" />
+      {/* ─── 2. Golden Ambient Top Glow & Depth Vignette ─── */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_40%_at_50%_0%,rgba(186,142,78,0.18),transparent_75%)] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1E0409]/70 via-[#180306]/85 to-[#120204]/98 pointer-events-none z-0" />
 
-      {/* ─── 3. Classical Greek Harvest Engraving Watermark ─── */}
-      <div className="absolute -bottom-6 right-0 lg:right-8 w-[380px] sm:w-[520px] h-[200px] sm:h-[260px] pointer-events-none opacity-[0.12] mix-blend-color-dodge z-0 select-none overflow-hidden">
-        <Image
-          src="/images/commercial/rootwills_harvest_figures_clean.png"
-          alt="Rootwills Harvest Heritage Engraving Motif"
-          fill
-          sizes="520px"
-          className="object-contain object-bottom-right filter contrast-125"
-        />
-      </div>
+      {/* ─── 3. Top Architectural Gold Hairline Accent ─── */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8C28A]/50 to-transparent relative z-10" />
 
-      {/* ─── 4. Subtle Monumental Heritage Wordmark Watermark ─── */}
-      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-center pointer-events-none z-0 select-none overflow-hidden w-full max-w-7xl">
-        <span className="font-serif text-[68px] sm:text-[105px] lg:text-[135px] font-bold tracking-[0.2em] text-[#D4A86A]/[0.035] uppercase leading-none block whitespace-nowrap">
-          ROOTWILLS
-        </span>
-      </div>
-
-      {/* ─── 5. Soft Vignette for Text Contrast & Depth ─── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#200409]/60 via-[#160205]/75 to-[#100103]/95 pointer-events-none z-0" />
-
-      {/* ─── 6. Top Gold Hairline with Centered Purveyors Medallion ─── */}
-      <div className="absolute top-0 inset-x-0 z-10 flex items-center justify-center">
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8C28A]/50 to-transparent" />
-        <div className="absolute -top-3 px-3.5 py-0.5 rounded-full bg-[#1A0307] border border-[#BA8E4E]/45 text-[#D4A86A] text-[8px] sm:text-[8.5px] font-serif tracking-[0.25em] uppercase flex items-center gap-1.5 shadow-sm">
-          <span className="text-[#BA8E4E] text-[9px]">✦</span>
-          <span>ROOTWILLS PURVEYORS</span>
-          <span className="text-[#BA8E4E] text-[9px]">✦</span>
-        </div>
-      </div>
-
-      {/* ─── 7. Main Architectural Container (Max 7xl for harmonious width) ─── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-11 sm:pt-14 pb-20 md:pb-8">
+      {/* ─── 4. Main Architectural Content Container ─── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-20 md:pb-8">
         
-        {/* Top Section: 3-Column Balanced Editorial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-[#BA8E4E]/20">
+        {/* Top Tier: Balanced 4-Column Editorial Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 sm:pb-12 border-b border-[#BA8E4E]/20">
           
-          {/* Column 1: Brand Seal, Wordmark & Purveyor Heritage (Col 1-5) */}
-          <div className="md:col-span-5 flex flex-col justify-between space-y-4">
+          {/* Column 1: Brand Seal, Wordmark & Purveyor Provenance (Col 1-5 on LG) */}
+          <div className="sm:col-span-2 lg:col-span-5 flex flex-col justify-between space-y-4">
             <div>
               <Link href="/#home" className="inline-flex items-center gap-3.5 group focus:outline-none">
                 <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] transition-transform duration-200 group-hover:scale-105">
@@ -123,31 +104,49 @@ export function PublicFooter() {
             </div>
           </div>
 
-          {/* Column 2: Quick Navigation (Col 6-8) */}
-          <div className="md:col-span-3">
+          {/* Column 2: Supply Sectors (Col 6-7 on LG) */}
+          <div className="lg:col-span-2">
             <span className="text-[10px] font-serif tracking-[0.25em] uppercase text-[#D4A86A] font-semibold block mb-3.5">
-              — NAVIGATION —
+              — SECTORS —
             </span>
-            <ul className="grid grid-cols-2 sm:grid-cols-1 gap-y-2 text-xs sm:text-[13px] font-serif">
-              {navLinks.map((item) => (
+            <ul className="space-y-2 text-xs sm:text-[13px] font-serif">
+              {sectorLinks.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-colors duration-150 inline-flex items-center gap-1.5 group"
+                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-colors duration-150 inline-block"
                   >
-                    <span className="text-[#BA8E4E]/40 group-hover:text-[#D4A86A] transition-colors text-[10px]">›</span>
-                    <span>{item.label}</span>
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Commercial Dispatch Desk & Socials (Col 9-12) */}
-          <div className="md:col-span-4 flex flex-col justify-between space-y-4">
+          {/* Column 3: Quick Navigation (Col 8-9 on LG) */}
+          <div className="lg:col-span-2">
+            <span className="text-[10px] font-serif tracking-[0.25em] uppercase text-[#D4A86A] font-semibold block mb-3.5">
+              — COMPANY —
+            </span>
+            <ul className="space-y-2 text-xs sm:text-[13px] font-serif">
+              {navLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-colors duration-150 inline-block"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Commercial Dispatch Desk & Socials (Col 10-12 on LG) */}
+          <div className="lg:col-span-3 flex flex-col justify-between space-y-4">
             <div>
               <span className="text-[10px] font-serif tracking-[0.25em] uppercase text-[#D4A86A] font-semibold block mb-3.5">
-                — TRADE ENQUIRIES —
+                — TRADE DESK —
               </span>
               
               <div className="space-y-2.5 text-xs sm:text-[13px] font-sans text-[#EDE4D8]/85">
@@ -181,8 +180,8 @@ export function PublicFooter() {
             </div>
 
             {/* Social Media Micro-Bar */}
-            <div className="pt-2">
-              <span className="text-[10px] font-sans tracking-[0.18em] uppercase text-[#D4A86A]/80 font-semibold block mb-2">
+            <div className="pt-1">
+              <span className="text-[9.5px] font-sans tracking-[0.18em] uppercase text-[#D4A86A]/80 font-semibold block mb-2">
                 CONNECT
               </span>
               <div className="flex items-center gap-2">
