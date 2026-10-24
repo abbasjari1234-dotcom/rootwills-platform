@@ -32,7 +32,7 @@ export function MidBannerSection() {
   ];
 
   return (
-    <div id="standards" className="pt-14 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 text-slate-900">
+    <div id="standards" className="pt-14 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 text-slate-900 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Single Refined Eyebrow */}
@@ -94,13 +94,13 @@ export function MidBannerSection() {
           </div>
         </div>
 
-        {/* Lower Assurance Pill */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/60 border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.16em] uppercase text-[#4E0D17] font-semibold shadow-xs">
+        {/* Lower Assurance Pill — Responsive & Wrap-Safe */}
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-2xl sm:rounded-full bg-white/70 border border-[#BA8E4E]/30 text-[9.5px] sm:text-[11px] font-sans tracking-[0.12em] sm:tracking-[0.16em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center">
           <span className="text-[#BA8E4E]">✦</span>
           <span>Pre-Dawn Fleet Logistics</span>
-          <span className="text-[#BA8E4E]/40">•</span>
+          <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
           <span>Guaranteed Temperatures</span>
-          <span className="text-[#BA8E4E]/40">•</span>
+          <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
           <span>Locked Trade Margins</span>
           <span className="text-[#BA8E4E]">✦</span>
         </div>

@@ -158,7 +158,7 @@ export function FloatingBottomNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 sm:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-10 pb-28 text-center"
+            className="fixed inset-0 z-50 md:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-10 pb-28 text-center"
           >
             {/* Authentic Rich Dark Burgundy Damask Texture (Matching Image 3) */}
             <div 
@@ -303,7 +303,7 @@ export function FloatingBottomNav() {
           animate={{ transform: 'translateY(0px)', opacity: 1 }}
           transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
           aria-label="Floating Glass Navigation Dock"
-          className="pointer-events-auto hidden sm:flex mx-auto max-w-fit justify-center"
+          className="pointer-events-auto hidden md:flex mx-auto max-w-fit justify-center"
         >
           {/* Double-Bezel Glass Frame */}
           <div className="relative rounded-full p-1 sm:p-1.5 bg-white/[0.04] ring-1 ring-white/15 backdrop-blur-3xl shadow-[0_24px_60px_-10px_rgba(0,0,0,0.65),0_8px_24px_rgba(0,0,0,0.4)]">
@@ -356,7 +356,7 @@ export function FloatingBottomNav() {
         </motion.nav>
 
         {/* 2. MOBILE VIEW: Velvet Dark Burgundy Menu Pill (Matching Image 2) */}
-        <div className="pointer-events-auto sm:hidden flex justify-center">
+        <div className="pointer-events-auto md:hidden flex justify-center">
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

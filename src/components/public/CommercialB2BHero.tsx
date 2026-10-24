@@ -39,7 +39,7 @@ export function CommercialB2BHero() {
               </div>
 
               {/* The Signature 3-Line Punchy Stacked Title */}
-              <h1 className="font-chunky text-6xl sm:text-8xl lg:text-[108px] font-black text-white leading-[0.92] tracking-tight drop-shadow-[0_8px_32px_rgba(0,0,0,0.7)] select-none">
+              <h1 className="font-chunky text-[48px] xs:text-6xl sm:text-7xl md:text-8xl lg:text-[108px] font-black text-white leading-[0.92] tracking-tight drop-shadow-[0_8px_32px_rgba(0,0,0,0.7)] select-none break-words max-w-full">
                 Produce.<br />
                 Dairy.<br />
                 Butchery.
@@ -54,9 +54,9 @@ export function CommercialB2BHero() {
         </div>
 
         {/* Bottom Left: Playful Hand-Drawn Annotation (Matching 'Drop a Bagel. Or 20 ⤶' reference) */}
-        <div className="absolute bottom-16 sm:bottom-10 left-5 sm:left-12 z-20 flex items-center gap-2.5 sm:gap-3 pointer-events-none">
+        <div className="absolute bottom-16 sm:bottom-10 left-4 sm:left-12 z-20 flex items-center gap-2 sm:gap-3 pointer-events-none max-w-[calc(100vw-2rem)]">
           <div className="flex flex-col">
-            <span className="font-script text-2xl sm:text-3xl text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] -rotate-3">
+            <span className="font-script text-xl sm:text-3xl text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] -rotate-3">
               Drop a Crate. Or 200
             </span>
             <div className="w-full h-[2px] bg-[linear-gradient(90deg,#F13624,#FA7E3D,transparent)] rounded-full -mt-0.5" />

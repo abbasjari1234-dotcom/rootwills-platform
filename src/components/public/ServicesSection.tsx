@@ -64,15 +64,15 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Right Column: Mobile Horizontal Snap Carousel (<sm) & Desktop 3-Column Grid (sm+) */}
+          {/* Right Column: Mobile Horizontal Snap Carousel (<md) & Desktop 3-Column Grid (md+) */}
           <div className="lg:col-span-8 w-full min-w-0">
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-3 gap-4 sm:gap-4 lg:gap-5 -mx-4 px-4 sm:mx-0 sm:px-0 pb-2 sm:pb-0 scroll-smooth touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-4 lg:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 scroll-smooth touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {/* Card 1: Food Service Supply */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 sm:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 group-hover:ring-[#BA8E4E]/70 group-hover:scale-105 flex items-center justify-center transition-all duration-200 mb-3.5 shadow-2xs">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -81,10 +81,10 @@ export function ServicesSection() {
                       <path d="M6 26h28" />
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug sm:min-h-[2.75rem] flex items-start">
+                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug md:min-h-[2.75rem] flex items-start">
                     Food Service Supply
                   </h3>
-                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 sm:min-h-[4rem]">
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 md:min-h-[4rem]">
                     Fresh, high-quality ingredients and essential food products for restaurants, caterers and hospitality businesses.
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export function ServicesSection() {
               </div>
 
               {/* Card 2: Wholesale Solutions */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 sm:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 group-hover:ring-[#BA8E4E]/70 group-hover:scale-105 flex items-center justify-center transition-all duration-200 mb-3.5 shadow-2xs">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -112,10 +112,10 @@ export function ServicesSection() {
                       <path d="M16 9.3l8 4.7" />
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug sm:min-h-[2.75rem] flex items-start">
+                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug md:min-h-[2.75rem] flex items-start">
                     Wholesale Solutions
                   </h3>
-                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 sm:min-h-[4rem]">
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 md:min-h-[4rem]">
                     Efficient, reliable wholesale supply for food businesses of all sizes, from independents to large operations.
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export function ServicesSection() {
               </div>
 
               {/* Card 3: Business Partnerships */}
-              <div className="w-[85vw] max-w-[320px] sm:w-auto sm:max-w-none shrink-0 sm:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 sm:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
                 <div className="flex flex-col flex-1">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 group-hover:ring-[#BA8E4E]/70 group-hover:scale-105 flex items-center justify-center transition-all mb-3.5 shadow-2xs">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -143,10 +143,10 @@ export function ServicesSection() {
                       <path d="M34 16a7 7 0 0 0-10.5-6l-1.5 1" />
                     </svg>
                   </div>
-                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors mb-1.5 leading-snug sm:min-h-[2.75rem] flex items-start">
+                  <h3 className="text-base sm:text-[17px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors mb-1.5 leading-snug md:min-h-[2.75rem] flex items-start">
                     Business Partnerships
                   </h3>
-                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 sm:min-h-[4rem]">
+                  <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 md:min-h-[4rem]">
                     We work closely with our clients to understand their needs and create supply solutions that support their growth.
                   </p>
                 </div>
@@ -165,7 +165,7 @@ export function ServicesSection() {
             </div>
 
             {/* Mobile Swipe Pagination Dots & Indicator */}
-            <div className="flex sm:hidden items-center justify-center gap-3.5 pt-3">
+            <div className="flex md:hidden items-center justify-center gap-3.5 pt-3">
               <div className="flex items-center gap-2">
                 {[0, 1, 2].map((idx) => (
                   <button

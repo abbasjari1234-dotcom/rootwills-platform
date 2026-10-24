@@ -13,8 +13,8 @@ export function PublicHeader() {
     <header 
       className={
         isHome
-          ? "absolute top-0 inset-x-0 z-30 w-full bg-transparent pt-4 sm:pt-7 px-4 sm:px-8 pointer-events-none transition-all duration-300"
-          : "relative z-30 w-full bg-[#180306] overflow-hidden border-b border-[#BA8E4E]/25 shadow-[0_4px_24px_rgba(0,0,0,0.5)] pt-4 sm:pt-6 pb-4 sm:pb-6 px-4 sm:px-8 transition-all duration-300"
+          ? "absolute top-0 inset-x-0 z-30 w-full bg-transparent pt-3 sm:pt-4 md:pt-7 px-3 sm:px-4 md:px-8 pointer-events-none transition-all duration-300"
+          : "relative z-30 w-full bg-[#180306] overflow-hidden border-b border-[#BA8E4E]/25 shadow-[0_4px_24px_rgba(0,0,0,0.5)] pt-3 sm:pt-4 md:pt-6 pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-8 transition-all duration-300"
       }
     >
       {!isHome && (
@@ -24,11 +24,11 @@ export function PublicHeader() {
         />
       )}
       <div className="relative z-10 max-w-[1440px] mx-auto w-full">
-        {/* Desktop View: Full 3-Column Architectural Bar (sm and above) */}
-        <div className="hidden sm:flex items-center justify-between relative">
+        {/* Desktop View: Full 3-Column Architectural Bar (md: 768px and above) */}
+        <div className="hidden md:flex items-center justify-between relative">
           
           {/* Left: Operational Dispatch Window (Matching 'Come On In: 7am - 3pm' reference) */}
-          <div className="flex items-center gap-2 text-white/90 text-xs sm:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          <div className="flex items-center gap-2 text-white/90 text-xs md:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             <span className="text-[#D4A86A] text-sm">✦</span>
             <span className="whitespace-nowrap">
               Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
@@ -36,25 +36,25 @@ export function PublicHeader() {
           </div>
 
           {/* Left Dashed Architectural Line */}
-          <div className="hidden md:block flex-1 border-t border-dashed border-white/35 mx-4 lg:mx-8" />
+          <div className="hidden lg:block flex-1 border-t border-dashed border-white/35 mx-3 lg:mx-8" />
 
           {/* Center: BIG ROOTWILLS LOGO (In Place of 'Sunbeam') */}
           <Link 
             href="/#home" 
-            className="flex items-center gap-3 sm:gap-4 px-2 sm:px-5 group focus:outline-none shrink-0 pointer-events-auto"
+            className="flex items-center gap-3 md:gap-4 px-2 md:px-5 group focus:outline-none shrink-0 pointer-events-auto"
           >
             {/* Crystal-Clear Heritage Seal Medallion — Large Visible Stature */}
             <div className={`relative shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)] ${
               isHome 
-                ? "w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36" 
-                : "w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
+                ? "w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32" 
+                : "w-14 h-14 md:w-18 md:h-18 lg:w-22 lg:h-22"
             }`}>
               <Image
                 src="/images/branded/rootwills_logo_master.png"
                 alt="Rootwills Logo Seal"
                 fill
                 unoptimized
-                sizes="(max-width: 640px) 80px, (max-width: 1024px) 112px, 144px"
+                sizes="(max-width: 768px) 64px, (max-width: 1024px) 96px, 128px"
                 className="object-contain"
                 priority
               />
@@ -64,15 +64,15 @@ export function PublicHeader() {
             <div className="flex flex-col text-left">
               <span className={`font-chunky font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] ${
                 isHome
-                  ? "text-4xl sm:text-5xl lg:text-6xl"
-                  : "text-3xl sm:text-4xl lg:text-5xl"
+                  ? "text-3xl md:text-5xl lg:text-6xl"
+                  : "text-2xl md:text-4xl lg:text-5xl"
               }`}>
                 Rootwills
               </span>
-              <span className={`block font-sans font-black tracking-[0.32em] uppercase text-[#D4A86A] leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] ${
+              <span className={`block font-sans font-black tracking-[0.28em] md:tracking-[0.32em] uppercase text-[#D4A86A] leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] ${
                 isHome
-                  ? "text-[9.5px] sm:text-xs lg:text-[13px] mt-2 sm:mt-2.5"
-                  : "text-[8.5px] sm:text-[10px] lg:text-[11.5px] mt-1.5 sm:mt-2"
+                  ? "text-[8.5px] md:text-xs lg:text-[13px] mt-1.5 md:mt-2.5"
+                  : "text-[7.5px] md:text-[10px] lg:text-[11.5px] mt-1 md:mt-2"
               }`}>
                 FOOD SERVICES &amp; WHOLESALE CO.
               </span>
@@ -80,17 +80,17 @@ export function PublicHeader() {
           </Link>
 
           {/* Right Dashed Architectural Line */}
-          <div className="hidden md:block flex-1 border-t border-dashed border-white/35 mx-4 lg:mx-8" />
+          <div className="hidden lg:block flex-1 border-t border-dashed border-white/35 mx-3 lg:mx-8" />
 
           {/* Right: Tagline Location Note (Matching 'Start Your Day Right in Bryan, Tx' reference) */}
-          <div className="hidden sm:flex items-center text-right text-white/90 text-xs sm:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          <div className="hidden md:flex items-center text-right text-white/90 text-xs md:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
             <span>Commercial Purveyors &bull; London &amp; Midlands</span>
           </div>
 
         </div>
 
-        {/* Mobile View: Sunbeam Mobile Header Architecture (Matching Image 1) */}
-        <div className="flex sm:hidden flex-col items-center w-full">
+        {/* Mobile View: Sunbeam Mobile Header Architecture (< md: 768px) */}
+        <div className="flex md:hidden flex-col items-center w-full">
           {/* Row 1: Left Dashed Line ---- Centered Logo ---- Right Dashed Line */}
           <div className="flex items-center justify-between w-full">
             <div className="flex-1 border-t border-dashed border-white/35 mr-2" />
@@ -100,7 +100,7 @@ export function PublicHeader() {
               className="flex items-center gap-2 px-1 group focus:outline-none shrink-0 pointer-events-auto"
             >
               {/* High-Res Master Seal */}
-              <div className="relative w-11 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
+              <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
                 <Image
                   src="/images/branded/rootwills_logo_master.png"
                   alt="Rootwills Logo Seal"
@@ -114,10 +114,10 @@ export function PublicHeader() {
 
               {/* Wordmark & Subtitle */}
               <div className="flex flex-col text-left">
-                <span className="font-chunky text-3xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
+                <span className="font-chunky text-2xl sm:text-3xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
                   Rootwills
                 </span>
-                <span className="block text-[7.5px] font-sans font-black tracking-[0.26em] uppercase text-[#D4A86A] mt-1 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                <span className="block text-[7px] sm:text-[7.5px] font-sans font-black tracking-[0.24em] uppercase text-[#D4A86A] mt-1 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                   FOOD SERVICES &amp; WHOLESALE CO.
                 </span>
               </div>
@@ -127,7 +127,7 @@ export function PublicHeader() {
           </div>
 
           {/* Row 2: Centered Operational Dispatch Window (Direct Sunbeam Mobile match: 'Come On In: 7am - 3pm') */}
-          <div className="flex items-center justify-center gap-1.5 text-white/90 text-[11px] font-mono tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mt-2 pointer-events-auto">
+          <div className="flex items-center justify-center gap-1.5 text-white/90 text-[10px] sm:text-[11px] font-mono tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mt-1.5 sm:mt-2 pointer-events-auto">
             <span className="text-[#D4A86A] text-xs">✦</span>
             <span>
               Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
