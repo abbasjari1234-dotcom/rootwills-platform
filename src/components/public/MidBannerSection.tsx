@@ -67,9 +67,11 @@ export function MidBannerSection() {
                     key={item.title}
                     className="px-3 sm:px-6 text-center flex flex-col items-center justify-center group"
                   >
-                    {/* Micro Gold Circular Badge */}
-                    <div className="w-8 h-8 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/35 flex items-center justify-center text-[#BA8E4E] mb-2.5 shadow-xs group-hover:scale-110 group-hover:ring-[#BA8E4E]/70 transition-all duration-300">
-                      <Icon className="w-4 h-4 stroke-[1.75]" />
+                    {/* Double-Bezel Concentric Jewel Badge */}
+                    <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/30 via-white to-[#BA8E4E]/10 mb-2.5 shadow-[0_2px_8px_rgba(46,6,13,0.06)] group-hover:scale-110 group-hover:shadow-[0_4px_14px_rgba(186,142,78,0.25)] transition-all duration-300">
+                      <div className="w-8 h-8 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center text-[#BA8E4E]">
+                        <Icon className="w-4 h-4 stroke-[1.8]" />
+                      </div>
                     </div>
 
                     {/* Metric Numeral */}
@@ -94,15 +96,22 @@ export function MidBannerSection() {
           </div>
         </div>
 
-        {/* Lower Assurance Pill — Responsive & Wrap-Safe */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-2xl sm:rounded-full bg-white/70 border border-[#BA8E4E]/30 text-[9.5px] sm:text-[11px] font-sans tracking-[0.12em] sm:tracking-[0.16em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center">
-          <span className="text-[#BA8E4E]">✦</span>
-          <span>Pre-Dawn Fleet Logistics</span>
+        {/* Lower Assurance Pill with Micro-Icons — Responsive & Wrap-Safe */}
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2 rounded-2xl sm:rounded-full bg-white/80 border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.1em] sm:tracking-[0.14em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center">
+          <div className="inline-flex items-center gap-1.5">
+            <Truck className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
+            <span>Pre-Dawn Fleet Logistics</span>
+          </div>
           <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
-          <span>Guaranteed Temperatures</span>
+          <div className="inline-flex items-center gap-1.5">
+            <Snowflake className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
+            <span>Guaranteed Temperatures</span>
+          </div>
           <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
-          <span>Locked Trade Margins</span>
-          <span className="text-[#BA8E4E]">✦</span>
+          <div className="inline-flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
+            <span>Locked Trade Margins</span>
+          </div>
         </div>
 
         {/* Elegant Hairline Transition to Testimonials */}

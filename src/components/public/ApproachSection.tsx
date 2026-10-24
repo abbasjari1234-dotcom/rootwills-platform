@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ShieldCheck, Truck, Users, Leaf } from 'lucide-react';
+import { ShieldCheck, Truck, Users, Leaf, Sparkles } from 'lucide-react';
 import { gsap, ScrollTrigger } from '@/lib/animations/gsap-core';
 
 export function ApproachSection() {
@@ -98,9 +98,12 @@ export function ApproachSection() {
                 />
               </div>
 
-              {/* Provenance Badge */}
-              <div className="absolute -bottom-2.5 sm:-bottom-3 left-4 sm:left-6 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/40 shadow-md text-[8px] sm:text-[9px] font-sans tracking-[0.18em] uppercase text-[#2E060D] font-semibold flex items-center gap-1">
-                <span className="text-[#BA8E4E]">✦</span> Direct Farm Provenance
+              {/* Provenance Badge with High Quality Leaf Micro-Medallion */}
+              <div className="absolute -bottom-2.5 sm:-bottom-3 left-4 sm:left-6 px-3 py-1 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/40 shadow-md text-[8.5px] sm:text-[9.5px] font-sans tracking-[0.16em] uppercase text-[#2E060D] font-semibold flex items-center gap-1.5">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#BA8E4E]/15 flex items-center justify-center">
+                  <Leaf className="w-2.5 h-2.5 text-[#BA8E4E]" strokeWidth={2.2} />
+                </div>
+                <span>Direct Farm Provenance</span>
               </div>
             </div>
           </div>
@@ -118,20 +121,27 @@ export function ApproachSection() {
               Quality & Consistency
             </h2>
 
-            <p className="text-xs sm:text-[13px] lg:text-sm text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4">
+            <p className="text-xs sm:text-[13px] lg:text-sm text-stone-600 leading-relaxed font-sans mb-4 sm:mb-5">
               We believe that long-term success comes from reliable supply, uncompromising quality and strong partnerships. Our approach is simple — we source the best, maintain the highest standards and support our clients at every step.
             </p>
 
-            <div className="flex items-center gap-2 pt-2 border-t border-stone-200/80 text-[9px] sm:text-[10px] font-sans tracking-[0.15em] text-[#BA8E4E] uppercase font-semibold">
-              <span>Integrity</span>
-              <span>·</span>
-              <span>Consistency</span>
-              <span>·</span>
-              <span>Precision</span>
+            <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-stone-200/80 text-[10px] font-sans text-stone-700">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+                <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
+                Integrity
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+                <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
+                Consistency
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+                <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
+                Precision
+              </span>
             </div>
           </div>
 
-          {/* Right Column: 4 Clean Feature Items with Micro-Bezel Medallions */}
+          {/* Right Column: 4 Clean Feature Items with Double-Bezel Concentric Medallions */}
           <div ref={pillarsRef} className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-2.5 pt-2 lg:pt-0 lg:pl-8 lg:border-l lg:border-stone-200/80">
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
@@ -141,9 +151,11 @@ export function ApproachSection() {
                   key={pillar.title} 
                   className="group flex items-start gap-3 p-2 rounded-xl transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[#FAF7F0] ring-1 ring-transparent hover:ring-[#BA8E4E]/25 shadow-2xs"
                 >
-                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shrink-0 shadow-2xs transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105 group-hover:ring-[#BA8E4E]/60">
-                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
-                    <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#2E060D] text-[#FAF7F0] text-[7px] font-serif font-bold flex items-center justify-center">
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-white to-[#BA8E4E]/10 shrink-0 shadow-2xs group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 flex items-center justify-center text-[#BA8E4E]">
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.6]" />
+                    </div>
+                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#2E060D] text-[#FAF7F0] text-[7.5px] font-serif font-bold flex items-center justify-center border border-[#BA8E4E]/40 shadow-xs">
                       {romanNumerals[idx]}
                     </span>
                   </div>

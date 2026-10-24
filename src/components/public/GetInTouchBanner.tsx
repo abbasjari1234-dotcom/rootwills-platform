@@ -42,31 +42,37 @@ export function GetInTouchBanner() {
                 Speak directly with our wholesale team to arrange tasting samples, tiered volume rates, or bespoke dawn delivery schedules for your kitchen.
               </p>
 
-              {/* Contact Icons Row */}
+              {/* Contact Icons Row with Double-Bezel Frosted Medallions */}
               <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-10 text-xs sm:text-sm text-[#EDE4D8] font-sans mb-7 sm:mb-9">
                 <a
                   href="tel:+442012345678"
-                  className="flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
+                  className="group flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
-                    <Phone className="w-4 h-4" />
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#BA8E4E]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-8 h-8 rounded-full bg-white/[0.08] backdrop-blur-md ring-1 ring-white/20 flex items-center justify-center text-[#D4A86A]">
+                      <Phone className="w-3.5 h-3.5 stroke-[1.8]" />
+                    </div>
                   </div>
                   <span className="font-medium">+44 (0) 20 1234 5678</span>
                 </a>
 
                 <a
                   href="mailto:info@rootwills.co.uk"
-                  className="flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
+                  className="group flex items-center gap-2.5 hover:text-[#D4A86A] transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
-                    <Mail className="w-4 h-4" />
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#BA8E4E]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-8 h-8 rounded-full bg-white/[0.08] backdrop-blur-md ring-1 ring-white/20 flex items-center justify-center text-[#D4A86A]">
+                      <Mail className="w-3.5 h-3.5 stroke-[1.8]" />
+                    </div>
                   </div>
                   <span className="font-medium">info@rootwills.co.uk</span>
                 </a>
 
                 <div className="flex items-center gap-2.5 text-[#EDE4D8]/80">
-                  <div className="w-8 h-8 rounded-full bg-white/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#D4A86A]">
-                    <MapPin className="w-4 h-4" />
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#BA8E4E]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+                    <div className="w-8 h-8 rounded-full bg-white/[0.08] backdrop-blur-md ring-1 ring-white/20 flex items-center justify-center text-[#D4A86A]">
+                      <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
+                    </div>
                   </div>
                   <span>London, United Kingdom</span>
                 </div>

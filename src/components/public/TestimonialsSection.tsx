@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Star, BadgeCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function TestimonialsSection() {
@@ -99,18 +99,28 @@ export function TestimonialsSection() {
                 className="bg-[#FAF7F2] rounded-xl p-4 sm:p-5 border border-[#E7DEC8] shadow-xs flex flex-col justify-between min-h-[160px] w-full"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-[#BA8E4E] mb-2">
-                    <span className="font-serif text-base leading-none select-none font-bold">“</span>
-                    <span className="font-serif text-base leading-none select-none font-bold -ml-0.5">“</span>
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="w-6 h-6 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E]">
+                      <Quote className="w-3 h-3 stroke-[1.8] fill-[#BA8E4E]/15" />
+                    </div>
+                    <div className="flex items-center gap-0.5 text-[#BA8E4E]">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-2.5 h-2.5 fill-[#BA8E4E] text-[#BA8E4E]" />
+                      ))}
+                    </div>
                   </div>
                   <p className="text-xs text-stone-700 leading-relaxed font-sans mb-3">
                     &ldquo;{testimonials[mobileIndex].quote}&rdquo;
                   </p>
                 </div>
-                <div className="pt-2 border-t border-[#EAE1D1]">
+                <div className="pt-2 border-t border-[#EAE1D1] flex items-center justify-between">
                   <span className="text-xs font-sans text-stone-600 font-medium">
                     {testimonials[mobileIndex].author}, {testimonials[mobileIndex].location}
                   </span>
+                  <div className="flex items-center gap-1 text-[9.5px] text-[#BA8E4E] font-sans font-medium">
+                    <BadgeCheck className="w-3 h-3 text-[#BA8E4E]" />
+                    <span>Verified</span>
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -170,10 +180,16 @@ export function TestimonialsSection() {
                     className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-[box-shadow,border-color] duration-200 ease-out flex flex-col justify-between"
                   >
                     <div>
-                      {/* Subtle Gold Quote Marks Icon */}
-                      <div className="flex items-center gap-1 text-[#BA8E4E] mb-3">
-                        <span className="font-serif text-lg leading-none select-none font-bold">“</span>
-                        <span className="font-serif text-lg leading-none select-none font-bold -ml-0.5">“</span>
+                      {/* Refined Gold Quote Medallion and 5-Star Rating */}
+                      <div className="flex items-center justify-between mb-3.5">
+                        <div className="w-7 h-7 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E]">
+                          <Quote className="w-3.5 h-3.5 stroke-[1.8] fill-[#BA8E4E]/15" />
+                        </div>
+                        <div className="flex items-center gap-0.5 text-[#BA8E4E]">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-[#BA8E4E] text-[#BA8E4E]" />
+                          ))}
+                        </div>
                       </div>
 
                       <p className="text-xs sm:text-[13px] text-stone-700 leading-relaxed font-sans mb-6">
@@ -181,10 +197,14 @@ export function TestimonialsSection() {
                       </p>
                     </div>
 
-                    <div className="pt-2">
-                      <span className="text-xs font-sans text-stone-600 font-medium">
-                        {item.author}, {item.location}
+                    <div className="pt-2.5 border-t border-[#EAE1D1] flex items-center justify-between">
+                      <span className="text-xs font-sans text-stone-700 font-medium">
+                        {item.author}, <span className="text-stone-500">{item.location}</span>
                       </span>
+                      <div className="flex items-center gap-1 text-[10px] text-[#BA8E4E] font-sans font-medium">
+                        <BadgeCheck className="w-3 h-3 text-[#BA8E4E]" />
+                        <span>Verified Client</span>
+                      </div>
                     </div>
                   </div>
                 ))}

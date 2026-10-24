@@ -44,8 +44,10 @@ export function CommercialTrustStrip() {
                 key={idx} 
                 className="shrink-0 snap-start flex items-center gap-3 bg-[#FFFDF9]/90 md:bg-transparent border border-[#E8DEC8] md:border-0 rounded-xl px-3.5 py-2.5 md:p-0 transition-[box-shadow,border-color] duration-200 ease-out shadow-xs md:shadow-none min-w-[210px] md:min-w-0"
               >
-                <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#2E060D] border border-[#BA8E4E]/40 flex items-center justify-center text-[#D4A86A] shadow-xs">
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.8]" />
+                <div className="shrink-0 relative p-0.5 sm:p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/40 via-[#BA8E4E]/15 to-transparent shadow-[0_2px_8px_rgba(46,6,13,0.15)]">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#3D0A12] to-[#200408] border border-[#BA8E4E]/40 flex items-center justify-center text-[#E8C28A] shadow-inner">
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]" />
+                  </div>
                 </div>
                 <div className="min-w-0">
                   <h4 className="font-serif font-bold text-xs sm:text-[13px] text-[#2E060D] leading-tight whitespace-nowrap md:whitespace-normal">

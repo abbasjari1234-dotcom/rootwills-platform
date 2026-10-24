@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { Clock, MapPin } from 'lucide-react';
 
 export function PublicHeader() {
   const pathname = usePathname();
@@ -27,9 +28,11 @@ export function PublicHeader() {
         {/* Desktop View: Full 3-Column Architectural Bar (md: 768px and above) */}
         <div className="hidden md:flex items-center justify-between relative">
           
-          {/* Left: Operational Dispatch Window (Matching 'Come On In: 7am - 3pm' reference) */}
+          {/* Left: Operational Dispatch Window with High-End Clock Micro-Badge */}
           <div className="flex items-center gap-2 text-white/90 text-xs md:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-            <span className="text-[#D4A86A] text-sm">✦</span>
+            <div className="w-5 h-5 rounded-full bg-[#D4A86A]/20 ring-1 ring-[#D4A86A]/40 flex items-center justify-center">
+              <Clock className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
+            </div>
             <span className="whitespace-nowrap">
               Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
             </span>
@@ -82,8 +85,11 @@ export function PublicHeader() {
           {/* Right Dashed Architectural Line */}
           <div className="hidden lg:block flex-1 border-t border-dashed border-white/35 mx-3 lg:mx-8" />
 
-          {/* Right: Tagline Location Note (Matching 'Start Your Day Right in Bryan, Tx' reference) */}
-          <div className="hidden md:flex items-center text-right text-white/90 text-xs md:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          {/* Right: Tagline Location Note with MapPin Micro-Badge */}
+          <div className="hidden md:flex items-center gap-2 text-right text-white/90 text-xs md:text-[13px] font-mono tracking-wider shrink-0 pointer-events-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <div className="w-5 h-5 rounded-full bg-[#D4A86A]/20 ring-1 ring-[#D4A86A]/40 flex items-center justify-center">
+              <MapPin className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
+            </div>
             <span>Commercial Purveyors &bull; London &amp; Midlands</span>
           </div>
 
@@ -126,9 +132,11 @@ export function PublicHeader() {
             <div className="flex-1 border-t border-dashed border-white/35 ml-2" />
           </div>
 
-          {/* Row 2: Centered Operational Dispatch Window (Direct Sunbeam Mobile match: 'Come On In: 7am - 3pm') */}
+          {/* Row 2: Centered Operational Dispatch Window with Clock Micro-Badge */}
           <div className="flex items-center justify-center gap-1.5 text-white/90 text-[10px] sm:text-[11px] font-mono tracking-wider drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] mt-1.5 sm:mt-2 pointer-events-auto">
-            <span className="text-[#D4A86A] text-xs">✦</span>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#D4A86A]/20 ring-1 ring-[#D4A86A]/40 flex items-center justify-center">
+              <Clock className="w-2 h-2 text-[#D4A86A]" strokeWidth={2.2} />
+            </div>
             <span>
               Pre-Dawn Drops: <strong className="text-white font-bold">05:30 – 07:30 AM</strong>
             </span>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { Sprout, Award, Sparkles } from 'lucide-react';
 import { gsap, ScrollTrigger } from '@/lib/animations/gsap-core';
 
 export function AboutRootwillsSection() {
@@ -113,9 +114,10 @@ export function AboutRootwillsSection() {
                   Good food builds great businesses.
                 </p>
                 <div className="flex items-center justify-between pt-2.5 mt-2.5 border-t border-stone-200/80">
-                  <span className="text-[9px] font-sans tracking-[0.15em] uppercase text-[#BA8E4E] font-semibold">
-                    Principle I
-                  </span>
+                  <div className="flex items-center gap-1.5 text-[9px] font-sans tracking-[0.15em] uppercase text-[#BA8E4E] font-semibold">
+                    <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
+                    <span>Principle I</span>
+                  </div>
                   <div className="w-4 h-[1.5px] bg-[#BA8E4E]" />
                 </div>
               </div>
@@ -152,10 +154,15 @@ export function AboutRootwillsSection() {
                 <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3">
                   Rootwills was built on a simple belief — that great food deserves great supply partners. Today, we continue to support businesses across the UK with trusted products, flexible solutions and a commitment to long-term growth.
                 </p>
-                <div className="flex items-center gap-2 text-[10px] font-sans tracking-[0.15em] text-[#BA8E4E] uppercase font-semibold">
-                  <span>Direct Farm Supply</span>
-                  <span>·</span>
-                  <span>Zero Compromise</span>
+                <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[10px] font-sans text-stone-700">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs">
+                    <Sprout className="w-3 h-3 text-[#BA8E4E]" strokeWidth={2} />
+                    <span className="font-medium tracking-wide">Direct Farm Supply</span>
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs">
+                    <Award className="w-3 h-3 text-[#BA8E4E]" strokeWidth={2} />
+                    <span className="font-medium tracking-wide">Zero Compromise</span>
+                  </div>
                 </div>
               </div>
 

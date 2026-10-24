@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { ShieldCheck, Sprout, Clock } from 'lucide-react';
 
 export function CommercialB2BHero() {
   return (
@@ -48,6 +49,28 @@ export function CommercialB2BHero() {
               <p className="text-xs sm:text-base text-[#EDE4D8]/90 font-sans max-w-md leading-relaxed">
                 Hand-graded daily British farm produce, artisan dairy, and prime culinary wholesale lines delivered pre-dawn to the UK&apos;s finest kitchens.
               </p>
+
+              {/* Luxury Commercial Accreditation & Feature Micro-Badges */}
+              <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-[#FAF7F0]/90">
+                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                  <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
+                    <ShieldCheck className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-medium tracking-wide">SALSA Accredited</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                  <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
+                    <Sprout className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-medium tracking-wide">Direct British Growers</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                  <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
+                    <Clock className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
+                  </div>
+                  <span className="font-medium tracking-wide">05:30 – 07:30 AM Drops</span>
+                </div>
+              </div>
             </div>
 
           </div>
