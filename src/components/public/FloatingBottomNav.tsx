@@ -1,96 +1,83 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, ArrowUpRight, ShieldCheck, Truck, UtensilsCrossed, Sparkles, Phone } from 'lucide-react';
 import { InquiryModal } from './InquiryModal';
 
-interface NavItem {
-  id: string;
+interface DropdownItem {
   label: string;
+  desc: string;
   href: string;
+  icon: React.ElementType;
   isHash?: boolean;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { id: 'about', label: 'ABOUT', href: '/#about', isHash: true },
-  { id: 'services', label: 'SERVICES', href: '/#services', isHash: true },
-  { id: 'sectors', label: 'SECTORS', href: '/sectors' },
-  { id: 'delivery', label: 'DELIVERY', href: '/delivery' },
-  { id: 'why-us', label: 'WHY US', href: '/why-choose-us' },
-  { id: 'contact', label: 'CONTACT', href: '/#contact', isHash: true },
+const LEARN_ITEMS: DropdownItem[] = [
+  {
+    label: 'Wholesale Services',
+    desc: 'Produce, dairy, and butchery culinary supply',
+    href: '/#services',
+    icon: Sparkles,
+    isHash: true,
+  },
+  {
+    label: 'Sectors We Supply',
+    desc: 'Restaurants, hotels, caterers & institutions',
+    href: '/sectors',
+    icon: UtensilsCrossed,
+  },
+  {
+    label: 'Delivery & Cold-Chain SLA',
+    desc: '05:30 – 07:30 AM pre-dawn fleet drops',
+    href: '/delivery',
+    icon: Truck,
+  },
+  {
+    label: 'Why Rootwills',
+    desc: 'Farm provenance, grower lineage & SALSA assurance',
+    href: '/why-choose-us',
+    icon: ShieldCheck,
+  },
+  {
+    label: 'Direct Trade Desk',
+    desc: 'Speak directly with our commercial wholesale desk',
+    href: '/#contact',
+    icon: Phone,
+    isHash: true,
+  },
 ];
 
 export function FloatingBottomNav() {
   const pathname = usePathname();
   const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [activeId, setActiveId] = useState<string>('about');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [slaAlertActive, setSlaAlertActive] = useState<boolean>(true);
-  const [isNearFooter, setIsNearFooter] = useState<boolean>(false);
+  const [isLearnOpen, setIsLearnOpen] = useState(false);
+  const [isNearFooter, setIsNearFooter] = useState(false);
+  const navContainerRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll when mobile menu is active
+  // Close dropdown on outside click
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navContainerRef.current && !navContainerRef.current.contains(e.target as Node)) {
+        setIsLearnOpen(false);
+      }
     };
-  }, [isMobileMenuOpen]);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-  // Handle escape key to close mobile menu
+  // Close dropdown on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
+      if (e.key === 'Escape') {
+        setIsLearnOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isMobileMenuOpen]);
-
-  // Determine active item based on current route and scroll position on homepage
-  useEffect(() => {
-    if (pathname.includes('/sectors')) {
-      setActiveId('sectors');
-      return;
-    }
-    if (pathname.includes('/delivery')) {
-      setActiveId('delivery');
-      return;
-    }
-    if (pathname.includes('/why-choose-us')) {
-      setActiveId('why-us');
-      return;
-    }
-
-    if (pathname === '/' || pathname === '') {
-      const handleScrollSpy = () => {
-        const scrollPosition = window.scrollY + window.innerHeight * 0.45;
-        const contactEl = document.getElementById('contact');
-        const servicesEl = document.getElementById('services');
-        const aboutEl = document.getElementById('about');
-
-        if (contactEl && contactEl.offsetTop <= scrollPosition) {
-          setActiveId('contact');
-        } else if (servicesEl && servicesEl.offsetTop <= scrollPosition) {
-          setActiveId('services');
-        } else if (aboutEl && aboutEl.offsetTop <= scrollPosition) {
-          setActiveId('about');
-        }
-      };
-
-      window.addEventListener('scroll', handleScrollSpy, { passive: true });
-      handleScrollSpy();
-      return () => window.removeEventListener('scroll', handleScrollSpy);
-    }
-  }, [pathname]);
+  }, []);
 
   // Smoothly hide floating nav when approaching footer, reveal when leaving
   useEffect(() => {
@@ -102,9 +89,6 @@ export function FloatingBottomNav() {
       }
 
       const rect = footer.getBoundingClientRect();
-      // Floating nav sits at bottom (approx 80px high).
-      // Disappear when footer top enters within 60px of viewport bottom.
-      // Reappear with hysteresis when footer leaves past 15px below viewport bottom.
       const thresholdHide = window.innerHeight - 60;
       const thresholdShow = window.innerHeight - 15;
 
@@ -129,264 +113,162 @@ export function FloatingBottomNav() {
     };
   }, [pathname]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
-    setIsMobileMenuOpen(false);
-
-    if (item.isHash && (pathname === '/' || pathname === '')) {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    setIsLearnOpen(false);
+    if (pathname === '/' || pathname === '') {
       e.preventDefault();
-      const targetId = item.id;
       const element = document.getElementById(targetId);
       if (element) {
         const headerOffset = 70;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-          top: elementPosition - headerOffset,
+          top: targetId === 'home' ? 0 : elementPosition - headerOffset,
           behavior: 'smooth',
         });
-        setActiveId(targetId);
       }
     }
   };
 
   return (
     <>
-      {/* ─── FULL-SCREEN MOBILE OVERLAY MENU (Matching Image 2 in Rootwills Luxury Theme) ─── */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+        {!isNearFooter && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 md:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-10 pb-28 text-center"
+            key="floating-capsule-nav"
+            initial={{ transform: 'translateY(70px)', opacity: 0 }}
+            animate={{ transform: 'translateY(0px)', opacity: 1 }}
+            exit={{ transform: 'translateY(70px)', opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
+            className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3"
           >
-            {/* Authentic Rich Dark Burgundy Damask Texture (Matching Image 3) */}
-            <div 
-              className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-85"
-              style={{ backgroundImage: "url('/images/textures/burgundy_damask_texture.jpg')" }}
-            />
-            {/* Dark Vignette & Edge Shadowing (Matching Image 3) */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(16,2,4,0.45)_75%,rgba(8,1,2,0.85)_100%)]" />
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#180306]/70 via-transparent to-[#0d0103]/85" />
-
-            {/* TOP BRAND IDENTITY (Matching Image 2 Top: Sunbeam BAGEL & COFFEE CO.) */}
-            <motion.div
-              initial={{ opacity: 0, y: -15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="relative z-10 flex flex-col items-center mt-2"
-            >
-              {/* High-Resolution Heritage Seal Medallion */}
-              <div className="relative w-14 h-14 shrink-0 transition-transform duration-300 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
-                <Image
-                  src="/images/branded/rootwills_logo_master.png"
-                  alt="Rootwills Logo Seal"
-                  fill
-                  unoptimized
-                  sizes="56px"
-                  className="object-contain"
-                  priority
-                />
-              </div>
-
-              {/* Massive Brand Wordmark & Subtitle */}
-              <span className="font-chunky text-3xl font-black text-white tracking-wide mt-2.5 leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
-                Rootwills
-              </span>
-              <span className="block text-[8.5px] font-sans font-black tracking-[0.3em] uppercase text-[#D4A86A] mt-1.5 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                FOOD SERVICES &amp; WHOLESALE CO.
-              </span>
-
-              {/* Subtle Gold Hairline Divider */}
-              <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#D4A86A]/45 to-transparent mt-3.5" />
-            </motion.div>
-
-            {/* CENTER NAVIGATION LINKS (Matching Image 2 Middle: Large Stacked Editorial Links) */}
-            <nav className="relative z-10 flex flex-col items-center space-y-3 my-auto py-4">
-              {NAV_ITEMS.map((item, index) => {
-                const isActive = activeId === item.id;
-                // Capitalize first letter to match Image 2 editorial style ('About', 'Catering', etc.)
-                const displayLabel = item.label.charAt(0).toUpperCase() + item.label.slice(1).toLowerCase();
-
-                return (
+            <div ref={navContainerRef} className="relative pointer-events-auto max-w-full">
+              
+              {/* ─── 'Learn' Interactive Dropdown Menu Card ─── */}
+              <AnimatePresence>
+                {isLearnOpen && (
                   <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.4, 
-                      delay: 0.1 + index * 0.045,
-                      ease: [0.16, 1, 0.3, 1] 
-                    }}
+                    initial={{ opacity: 0, transform: 'translateY(10px) scale(0.96)' }}
+                    animate={{ opacity: 1, transform: 'translateY(0px) scale(1)' }}
+                    exit={{ opacity: 0, transform: 'translateY(8px) scale(0.96)' }}
+                    transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                    className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-[90vw] max-w-[340px] z-50 pointer-events-auto"
                   >
-                    <Link
-                      href={item.href}
-                      onClick={(e) => handleNavClick(e, item)}
-                      className="group relative inline-flex items-center gap-2 px-6 py-1.5 text-3xl xs:text-4xl font-serif font-bold tracking-wide transition-all duration-200 active:scale-95"
-                    >
-                      {/* Active Diamond Jewel */}
-                      {isActive && (
-                        <motion.span
-                          layoutId="activeMobileDot"
-                          className="text-[#E4C767] text-base drop-shadow-[0_0_8px_#E4C767]"
-                        >
-                          ✦
-                        </motion.span>
-                      )}
-                      
-                      <span className={isActive ? 'text-[#E4C767] drop-shadow-[0_2px_12px_rgba(228,199,103,0.4)]' : 'text-white/95 group-hover:text-[#E4C767] group-active:text-[#E4C767]'}>
-                        {displayLabel}
-                      </span>
-                    </Link>
+                    {/* Concentric Double-Bezel Bevel Frame */}
+                    <div className="p-1 rounded-2xl bg-black/60 backdrop-blur-2xl border border-white/20 shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
+                      <div className="rounded-xl bg-[#121212] border border-white/10 p-2 text-left space-y-1">
+                        <div className="px-3 py-1.5 border-b border-white/10 mb-1 flex items-center justify-between">
+                          <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#D4A86A] font-semibold">
+                            Explore Rootwills
+                          </span>
+                          <span className="text-[10px] text-white/50 font-mono">B2B Wholesale</span>
+                        </div>
+
+                        {LEARN_ITEMS.map((item) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              onClick={(e) => {
+                                if (item.isHash) {
+                                  handleSmoothScroll(e, item.href.replace('/#', ''));
+                                } else {
+                                  setIsLearnOpen(false);
+                                }
+                              }}
+                              className="group flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/10 transition-colors text-white"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center shrink-0 text-[#D4A86A] group-hover:scale-105 transition-transform">
+                                <Icon className="w-4 h-4" />
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <span className="block text-xs font-semibold text-white/95 group-hover:text-[#D4A86A] transition-colors leading-tight">
+                                  {item.label}
+                                </span>
+                                <span className="block text-[11px] text-white/60 font-sans mt-0.5 leading-snug line-clamp-1">
+                                  {item.desc}
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </motion.div>
-                );
-              })}
-            </nav>
+                )}
+              </AnimatePresence>
 
-            {/* BOTTOM COMMERCIAL CONTROL (Matching Image 2: 'Listen for Mmms [toggle switch]') */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.38 }}
-              className="relative z-10 flex flex-col items-center gap-2 mb-2"
-            >
-              {/* Dispatch SLA Toggle Switch */}
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs tracking-wider text-[#EDE4D8]/90">
-                  Pre-Dawn Fleet Drops
-                </span>
-
-                {/* Interactive Toggle Switch with Gold Star Accent */}
-                <button
-                  type="button"
-                  role="switch"
-                  aria-checked={slaAlertActive}
-                  onClick={() => setSlaAlertActive(!slaAlertActive)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-300 focus:outline-none p-0.5 ${
-                    slaAlertActive ? 'bg-[#D4A86A]' : 'bg-white/20'
-                  }`}
+              {/* ─── The Iconic Concentric Double-Stroke Pill Navbar ─── */}
+              {/* Outer Bezel (Thin outer hairline contour + dark translucent spacing) */}
+              <div className="relative p-[3px] rounded-full bg-black/50 backdrop-blur-2xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_0_1px_rgba(0,0,0,0.85)] transition-all">
+                
+                {/* Inner Solid Black Capsule */}
+                <nav
+                  aria-label="Floating Navigation Bar"
+                  className="relative flex items-center rounded-full bg-[#121212] border border-white/10 pl-4 sm:pl-6 pr-1.5 sm:pr-2 py-1.5 sm:py-2 text-white shadow-inner"
                 >
-                  <span
-                    className={`inline-block h-5 w-5 transform rounded-full bg-[#180306] shadow-md transition-transform duration-300 flex items-center justify-center ${
-                      slaAlertActive ? 'translate-x-5' : 'translate-x-0'
-                    }`}
+                  
+                  {/* Navigation Links Group */}
+                  <div className="flex items-center gap-4 sm:gap-7 mr-3 sm:mr-5 text-[13px] sm:text-sm font-sans font-medium">
+                    
+                    {/* 1. Home */}
+                    <Link
+                      href="/#home"
+                      onClick={(e) => handleSmoothScroll(e, 'home')}
+                      className="text-white/85 hover:text-white transition-colors duration-160 cursor-pointer select-none active:scale-[0.96]"
+                    >
+                      Home
+                    </Link>
+
+                    {/* 2. About */}
+                    <Link
+                      href="/#about"
+                      onClick={(e) => handleSmoothScroll(e, 'about')}
+                      className="text-white/85 hover:text-white transition-colors duration-160 cursor-pointer select-none active:scale-[0.96]"
+                    >
+                      About
+                    </Link>
+
+                    {/* 3. Learn with Chevron Dropdown */}
+                    <button
+                      type="button"
+                      onClick={() => setIsLearnOpen(!isLearnOpen)}
+                      aria-expanded={isLearnOpen}
+                      className="flex items-center gap-1 text-white/85 hover:text-white transition-colors duration-160 cursor-pointer select-none active:scale-[0.96] focus:outline-none"
+                    >
+                      <span>Learn</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 text-white/70 transition-transform duration-200 ${
+                          isLearnOpen ? 'rotate-180 text-white' : ''
+                        }`}
+                      />
+                    </button>
+
+                  </div>
+
+                  {/* 4. White Capsule 'Visit ↗' Action Button (Matching Reference Image) */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsLearnOpen(false);
+                      setInquiryOpen(true);
+                    }}
+                    aria-label="Book a Visit or Submit Trade Enquiry"
+                    className="inline-flex items-center gap-1.5 px-3.5 sm:px-4.5 py-1.5 sm:py-2 rounded-full bg-white hover:bg-stone-100 text-black font-semibold text-xs sm:text-[13px] tracking-tight transition-all duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] shadow-sm cursor-pointer shrink-0"
                   >
-                    <span className="text-[9px] text-[#D4A86A] leading-none">✦</span>
-                  </span>
-                </button>
+                    <span>Visit</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-black stroke-[2.2]" />
+                  </button>
+
+                </nav>
               </div>
 
-              {/* Subtitle Guarantee Tagline */}
-              <span className="text-[10.5px] font-mono text-[#D4A86A]/80 tracking-wider">
-                05:30 – 07:30 AM SLA &bull; London &amp; Midlands
-              </span>
-            </motion.div>
-
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* ─── FLOATING BOTTOM CONTROLS (DESKTOP DOCK + MOBILE MENU PILL) ─── */}
-      <AnimatePresence>
-        {!isNearFooter && (
-          <motion.div
-            key="floating-bottom-controls"
-            initial={{ transform: 'translateY(60px)', opacity: 0 }}
-            animate={{ transform: 'translateY(0px)', opacity: 1 }}
-            exit={{ transform: 'translateY(60px)', opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6"
-          >
-            {/* 1. DESKTOP VIEW: Complete Floating Glass Dock (Hidden on Mobile) */}
-            <motion.nav
-          initial={{ transform: 'translateY(24px)', opacity: 0 }}
-          animate={{ transform: 'translateY(0px)', opacity: 1 }}
-          transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-          aria-label="Floating Glass Navigation Dock"
-          className="pointer-events-auto hidden md:flex mx-auto max-w-fit justify-center"
-        >
-          {/* Double-Bezel Glass Frame */}
-          <div className="relative rounded-full p-1 sm:p-1.5 bg-white/[0.04] ring-1 ring-white/15 backdrop-blur-3xl shadow-[0_24px_60px_-10px_rgba(0,0,0,0.65),0_8px_24px_rgba(0,0,0,0.4)]">
-            <div className="relative flex items-center overflow-x-auto no-scrollbar rounded-full bg-[#130306]/85 hover:bg-[#130306]/90 backdrop-blur-2xl backdrop-saturate-150 ring-1 ring-white/10 px-3 sm:px-4 py-1.5 sm:py-2 text-white transition-colors duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.22),inset_0_-1px_1px_rgba(0,0,0,0.4)]">
-              
-              {/* Specular Hairline Highlight */}
-              <div className="absolute inset-x-8 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#E4C767]/35 via-white/55 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.06] to-transparent pointer-events-none" />
-
-              {/* Navigation Links */}
-              <div className="relative flex items-center gap-0.5 sm:gap-1.5 whitespace-nowrap font-sans text-[10.5px] sm:text-xs font-black tracking-[0.18em] uppercase">
-                {NAV_ITEMS.map((item) => {
-                  const isActive = activeId === item.id;
-
-                  return (
-                    <Link
-                      key={item.id}
-                      href={item.href}
-                      onClick={(e) => handleNavClick(e, item)}
-                      className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/80 hover:text-white transition-[color,transform] duration-160 ease-out active:scale-[0.97]"
-                    >
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeDockPill"
-                          className="absolute inset-0 rounded-full bg-white/[0.14] ring-1 ring-white/25 shadow-xs"
-                          transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                        />
-                      )}
-
-                      <span className="relative z-10 flex items-center gap-1.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-                        {isActive && (
-                          <motion.span
-                            initial={{ scale: 0.7, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-                            className="w-1 h-1 rounded-full bg-[#E4C767] shadow-[0_0_6px_#E4C767]"
-                          />
-                        )}
-                        <span className={isActive ? 'text-white' : 'text-white/80 group-hover:text-white'}>
-                          {item.label}
-                        </span>
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-
-            </div>
-          </div>
-        </motion.nav>
-
-        {/* 2. MOBILE VIEW: Velvet Dark Burgundy Menu Pill (Matching Image 2) */}
-        <div className="pointer-events-auto md:hidden flex justify-center">
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-            className="group relative p-[1.5px] rounded-full transition-[transform,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] bg-[#E4C767]/25 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)] cursor-pointer"
-          >
-            {/* Inner Velvet Capsule */}
-            <div className="flex items-center gap-2.5 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider bg-gradient-to-b from-[#26050B] via-[#1B0307] to-[#120205] shadow-inner transition-colors duration-200">
-              {/* Animated Hamburger ☰ / Close ✕ Icon (Matching Image 2 Left Placement) */}
-              <div className="w-4 h-4 flex items-center justify-center">
-                {isMobileMenuOpen ? (
-                  <X className="w-4 h-4 text-white transition-transform duration-200 rotate-90 scale-110" />
-                ) : (
-                  <div className="flex flex-col justify-between w-3.5 h-2.5">
-                    <span className="w-full h-[1.5px] bg-white rounded-full" />
-                    <span className="w-full h-[1.5px] bg-white rounded-full" />
-                    <span className="w-full h-[1.5px] bg-white rounded-full" />
-                  </div>
-                )}
-              </div>
-
-              <span>Menu</span>
-            </div>
-          </button>
-        </div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-
-      {/* Inquiry Modal */}
+      {/* Trade Enquiry & Tasting Visit Modal */}
       <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </>
   );
