@@ -38,25 +38,27 @@ export function PublicFooter() {
   ];
 
   return (
-    <footer id="footer" className="relative bg-[#1A0307] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/35 z-20">
+    <footer id="footer" className="relative bg-[#2D060D] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/40 z-20">
       
-      {/* ─── 1. Continuous Royal Damask Background Texture ─── */}
-      <div 
-        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-30 mix-blend-overlay"
-        style={{ 
-          backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')`,
-          backgroundSize: '380px auto'
-        }}
-      />
+      {/* ─── 1. High-Resolution Royal Burgundy Damask Background (Clearly Visible) ─── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/textures/burgundy_damask_texture.jpg"
+          alt="Royal Burgundy Damask Background"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-center opacity-75"
+        />
+        {/* Soft Ambient Vignette for Depth & Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1F0409]/60 via-[#1A0307]/45 to-[#120204]/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_45%_at_50%_0%,rgba(212,168,106,0.18),transparent_75%)] pointer-events-none" />
+      </div>
 
-      {/* ─── 2. Golden Ambient Top Glow & Depth Vignette ─── */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_40%_at_50%_0%,rgba(186,142,78,0.18),transparent_75%)] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1E0409]/70 via-[#180306]/85 to-[#120204]/98 pointer-events-none z-0" />
+      {/* ─── 2. Top Architectural Gold Hairline Accent ─── */}
+      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8C28A]/60 to-transparent relative z-10" />
 
-      {/* ─── 3. Top Architectural Gold Hairline Accent ─── */}
-      <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8C28A]/50 to-transparent relative z-10" />
-
-      {/* ─── 4. Main Architectural Content Container ─── */}
+      {/* ─── 3. Main Architectural Content Container ─── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-20 md:pb-8">
         
         {/* Top Tier: Balanced 4-Column Editorial Grid */}
