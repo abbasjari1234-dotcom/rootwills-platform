@@ -31,16 +31,52 @@ export function PublicFooter() {
   ];
 
   return (
-    <footer id="footer" className="relative bg-[#160205] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/30 z-20">
-      {/* ─── 1. Deep Burgundy Damask & Ambient Vignette ─── */}
+    <footer id="footer" className="relative bg-[#200409] text-[#EDE4D8] overflow-hidden border-t border-[#BA8E4E]/40 z-20">
+      {/* ─── 1. Rich Visible Royal Damask Texture ─── */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-20 mix-blend-screen"
-        style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-45 mix-blend-overlay"
+        style={{ 
+          backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')`,
+          backgroundSize: '460px auto'
+        }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1C0307]/90 via-[#140204]/95 to-[#0E0103] pointer-events-none z-0" />
 
-      {/* ─── 2. Main Architectural Container (Max 7xl for harmonious width) ─── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-20 md:pb-8">
+      {/* ─── 2. Golden Ambient Radial Glow from Top ─── */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_50%_at_50%_0%,rgba(186,142,78,0.22),transparent_75%)] pointer-events-none z-0" />
+
+      {/* ─── 3. Classical Greek Harvest Engraving Watermark ─── */}
+      <div className="absolute -bottom-6 right-0 lg:right-8 w-[380px] sm:w-[520px] h-[200px] sm:h-[260px] pointer-events-none opacity-[0.12] mix-blend-color-dodge z-0 select-none overflow-hidden">
+        <Image
+          src="/images/commercial/rootwills_harvest_figures_clean.png"
+          alt="Rootwills Harvest Heritage Engraving Motif"
+          fill
+          sizes="520px"
+          className="object-contain object-bottom-right filter contrast-125"
+        />
+      </div>
+
+      {/* ─── 4. Subtle Monumental Heritage Wordmark Watermark ─── */}
+      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-center pointer-events-none z-0 select-none overflow-hidden w-full max-w-7xl">
+        <span className="font-serif text-[68px] sm:text-[105px] lg:text-[135px] font-bold tracking-[0.2em] text-[#D4A86A]/[0.035] uppercase leading-none block whitespace-nowrap">
+          ROOTWILLS
+        </span>
+      </div>
+
+      {/* ─── 5. Soft Vignette for Text Contrast & Depth ─── */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#200409]/60 via-[#160205]/75 to-[#100103]/95 pointer-events-none z-0" />
+
+      {/* ─── 6. Top Gold Hairline with Centered Purveyors Medallion ─── */}
+      <div className="absolute top-0 inset-x-0 z-10 flex items-center justify-center">
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#E8C28A]/50 to-transparent" />
+        <div className="absolute -top-3 px-3.5 py-0.5 rounded-full bg-[#1A0307] border border-[#BA8E4E]/45 text-[#D4A86A] text-[8px] sm:text-[8.5px] font-serif tracking-[0.25em] uppercase flex items-center gap-1.5 shadow-sm">
+          <span className="text-[#BA8E4E] text-[9px]">✦</span>
+          <span>ROOTWILLS PURVEYORS</span>
+          <span className="text-[#BA8E4E] text-[9px]">✦</span>
+        </div>
+      </div>
+
+      {/* ─── 7. Main Architectural Container (Max 7xl for harmonious width) ─── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-11 sm:pt-14 pb-20 md:pb-8">
         
         {/* Top Section: 3-Column Balanced Editorial Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-[#BA8E4E]/20">
