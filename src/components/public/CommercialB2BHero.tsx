@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShieldCheck, Sprout, Clock } from 'lucide-react';
+import { ShieldCheck, Sprout, Clock, ArrowRight } from 'lucide-react';
 
 export function CommercialB2BHero() {
   return (
@@ -39,37 +39,54 @@ export function CommercialB2BHero() {
                 </span>
               </div>
 
-              {/* The Signature 3-Line Punchy Stacked Title */}
-              <h1 className="font-chunky text-[48px] xs:text-6xl sm:text-7xl md:text-8xl lg:text-[108px] font-black text-white leading-[0.92] tracking-tight drop-shadow-[0_8px_32px_rgba(0,0,0,0.7)] select-none break-words max-w-full">
+              {/* The Signature 3-Line Punchy Stacked Title with Apple Optical Sizing */}
+              <h1 className="font-chunky text-[48px] xs:text-6xl sm:text-7xl md:text-8xl lg:text-[108px] font-black text-white leading-[0.92] tracking-[-0.035em] drop-shadow-[0_8px_32px_rgba(0,0,0,0.7)] select-none break-words max-w-full">
                 Produce.<br />
                 Dairy.<br />
                 Butchery.
               </h1>
 
-              <p className="text-xs sm:text-base text-[#EDE4D8]/90 font-sans max-w-md leading-relaxed">
+              <p className="text-xs sm:text-base text-[#EDE4D8]/95 font-sans max-w-md leading-relaxed">
                 Hand-graded daily British farm produce, artisan dairy, and prime culinary wholesale lines delivered pre-dawn to the UK&apos;s finest kitchens.
               </p>
 
-              {/* Luxury Commercial Accreditation & Feature Micro-Badges */}
+              {/* Luxury Commercial Accreditation & Feature Micro-Badges with Specular Light Rim */}
               <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-2.5 text-[11px] sm:text-xs text-[#FAF7F0]/90">
-                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.12] backdrop-blur-xl border-t border-white/40 border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] apple-tactile transition-transform duration-100 ease-out active:scale-95">
                   <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
                     <ShieldCheck className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
                   </div>
                   <span className="font-medium tracking-wide">SALSA Accredited</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.12] backdrop-blur-xl border-t border-white/40 border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] apple-tactile transition-transform duration-100 ease-out active:scale-95">
                   <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
                     <Sprout className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
                   </div>
                   <span className="font-medium tracking-wide">Direct British Growers</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.12] backdrop-blur-xl border-t border-white/40 border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] apple-tactile transition-transform duration-100 ease-out active:scale-95">
                   <div className="w-4 h-4 rounded-full bg-[#D4A86A]/20 flex items-center justify-center">
                     <Clock className="w-2.5 h-2.5 text-[#D4A86A]" strokeWidth={2.2} />
                   </div>
                   <span className="font-medium tracking-wide">05:30 – 07:30 AM Drops</span>
                 </div>
+              </div>
+
+              {/* Apple-Style Fluid Action Row */}
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <a
+                  href="/#services"
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-[#BA8E4E] hover:bg-[#D4A86A] text-[#120305] text-xs sm:text-[13px] font-sans font-bold tracking-wider uppercase transition-[transform,background-color,box-shadow] duration-100 ease-out active:scale-[0.97] shadow-lg hover:shadow-xl cursor-pointer"
+                >
+                  <span>Explore Services</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="/#contact"
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 rounded-full bg-white/[0.12] hover:bg-white/[0.18] text-white text-xs sm:text-[13px] font-sans font-semibold tracking-wide backdrop-blur-xl border-t border-white/35 border-b border-white/10 transition-[transform,background-color] duration-100 ease-out active:scale-[0.97] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)] cursor-pointer"
+                >
+                  <span>Trade Desk</span>
+                </a>
               </div>
             </div>
 

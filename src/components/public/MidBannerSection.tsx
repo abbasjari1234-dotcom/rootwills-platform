@@ -44,8 +44,8 @@ export function MidBannerSection() {
           <span className="h-[1px] w-6 bg-[#BA8E4E]/40" />
         </div>
 
-        {/* Editorial Headline */}
-        <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] tracking-tight leading-[1.18] mb-3 sm:mb-4">
+        {/* Editorial Headline with Apple Optical Sizing */}
+        <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] tracking-[-0.025em] leading-[1.14] mb-3 sm:mb-4">
           Supporting the Food Industry <br className="hidden sm:inline" />
           Across the <span className="text-[#8B2635] italic font-normal">United Kingdom</span>
         </h2>
@@ -55,9 +55,9 @@ export function MidBannerSection() {
           From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness, locked wholesale margins, and pedigree.
         </p>
 
-        {/* ─── Architectural Credential Ribbon: Prestige Heritage Glass Board ─── */}
-        <div className="w-full mx-auto p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl bg-white/70 ring-1 ring-[#BA8E4E]/30 shadow-[0_16px_40px_rgba(78,13,23,0.06),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md mb-6 sm:mb-8">
-          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-b from-[#FAF7F0] to-[#FAF6EE] px-4 py-6 sm:px-6 sm:py-8 border border-white/60">
+        {/* ─── Architectural Credential Ribbon: Apple Heritage Glass Board ─── */}
+        <div className="w-full mx-auto p-1.5 sm:p-2 rounded-2xl sm:rounded-3xl apple-glass-card shadow-[0_20px_50px_rgba(78,13,23,0.08)] mb-6 sm:mb-8">
+          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-[#FAF7F0]/85 px-4 py-6 sm:px-6 sm:py-8 border border-white/60">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-[#BA8E4E]/25">
               
               {benchmarks.map((item) => {
@@ -65,11 +65,11 @@ export function MidBannerSection() {
                 return (
                   <div 
                     key={item.title}
-                    className="px-3 sm:px-6 text-center flex flex-col items-center justify-center group"
+                    className="px-3 sm:px-6 text-center flex flex-col items-center justify-center group apple-tactile transition-transform duration-100 ease-out active:scale-95 cursor-default"
                   >
                     {/* Double-Bezel Concentric Jewel Badge */}
                     <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/30 via-white to-[#BA8E4E]/10 mb-2.5 shadow-[0_2px_8px_rgba(46,6,13,0.06)] group-hover:scale-110 group-hover:shadow-[0_4px_14px_rgba(186,142,78,0.25)] transition-all duration-300">
-                      <div className="w-8 h-8 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center text-[#BA8E4E]">
+                      <div className="w-8 h-8 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center text-[#BA8E4E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
                         <Icon className="w-4 h-4 stroke-[1.8]" />
                       </div>
                     </div>
@@ -96,8 +96,8 @@ export function MidBannerSection() {
           </div>
         </div>
 
-        {/* Lower Assurance Pill with Micro-Icons — Responsive & Wrap-Safe */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2 rounded-2xl sm:rounded-full bg-white/80 border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.1em] sm:tracking-[0.14em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center">
+        {/* Lower Assurance Pill with Apple Tactile Response */}
+        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2 rounded-2xl sm:rounded-full bg-white/80 border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.1em] sm:tracking-[0.14em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center apple-tactile active:scale-95 transition-transform duration-100 ease-out">
           <div className="inline-flex items-center gap-1.5">
             <Truck className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
             <span>Pre-Dawn Fleet Logistics</span>

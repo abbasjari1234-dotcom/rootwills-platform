@@ -70,7 +70,7 @@ export function AboutRootwillsSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] leading-[1.15] mb-3 sm:mb-5">
+            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] leading-[1.12] tracking-[-0.025em] mb-3 sm:mb-5">
               More Than Just<br />
               Food Supply
             </h2>
@@ -87,10 +87,10 @@ export function AboutRootwillsSection() {
             </div>
           </div>
 
-          {/* Center Column: Fresh Produce in Wooden Crate + Overlapping Quote Card */}
+          {/* Center Column: Fresh Produce in Wooden Crate + Overlapping Apple Glass Quote Card */}
           <div className="lg:col-span-4 relative flex justify-center py-2 sm:py-4">
             {/* Produce Photo in Clean Wooden Frame */}
-            <div ref={imageRef} className="group relative w-full max-w-[260px] sm:max-w-[310px] h-[230px] sm:h-[350px] lg:h-[410px] rounded-lg overflow-hidden shadow-lg border border-[#DDD3BC] bg-[#EFE8D8]">
+            <div ref={imageRef} className="group relative w-full max-w-[260px] sm:max-w-[310px] h-[230px] sm:h-[350px] lg:h-[410px] rounded-2xl overflow-hidden shadow-lg border border-[#DDD3BC] bg-[#EFE8D8]">
               <Image
                 src="/images/commercial/rootwills_portrait_produce.jpg"
                 alt="Rootwills Fresh Market Produce in Crates"
@@ -101,12 +101,12 @@ export function AboutRootwillsSection() {
               />
             </div>
 
-            {/* Overlapping Ivory Double-Bezel Quote Card */}
+            {/* Overlapping Apple Glass Quote Card */}
             <div 
               ref={quoteRef} 
-              className="absolute -bottom-2 sm:-bottom-3 right-1 sm:-right-4 p-1 rounded-lg bg-stone-200/60 ring-1 ring-[#BA8E4E]/35 shadow-2xl max-w-[170px] sm:max-w-[225px] z-20 backdrop-blur-xs"
+              className="absolute -bottom-2 sm:-bottom-3 right-1 sm:-right-4 p-1 rounded-2xl apple-glass-card shadow-2xl max-w-[170px] sm:max-w-[225px] z-20 apple-tactile transition-transform duration-100 ease-out active:scale-95 cursor-default"
             >
-              <div className="bg-[#FFFDF9] rounded-[calc(0.5rem-0.125rem)] p-4 sm:p-5 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)]">
+              <div className="bg-[#FFFDF9]/90 backdrop-blur-md rounded-xl p-4 sm:p-5 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)]">
                 <span className="block text-2xl font-serif text-[#D4A86A] leading-none mb-1 select-none font-bold">
                   “
                 </span>
@@ -129,8 +129,8 @@ export function AboutRootwillsSection() {
             <div className="flex flex-col space-y-4">
               
               {/* Classical Greek Line Engraving Card with Concentric Hairline */}
-              <div className="w-full rounded-lg p-1 bg-stone-200/40 ring-1 ring-[#BA8E4E]/25 shadow-xs">
-                <div className="w-full h-20 sm:h-28 lg:h-32 rounded-[calc(0.5rem-0.125rem)] overflow-hidden bg-[#FAF6EC] p-2 flex items-center justify-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.6)]">
+              <div className="w-full rounded-2xl p-1 bg-stone-200/40 ring-1 ring-[#BA8E4E]/25 shadow-xs">
+                <div className="w-full h-20 sm:h-28 lg:h-32 rounded-xl overflow-hidden bg-[#FAF6EC] p-2 flex items-center justify-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.6)]">
                   <Image
                     src="/images/commercial/rootwills_harvest_figures_clean.png"
                     alt="Classical Greek Harvest Engraving"
@@ -148,18 +148,18 @@ export function AboutRootwillsSection() {
                     EST. LONDON
                   </span>
                 </div>
-                <h3 className="text-base font-serif font-bold text-[#2E060D] mb-2">
+                <h3 className="text-base font-serif font-bold text-[#2E060D] mb-2 leading-tight tracking-[-0.015em]">
                   Rootwills Heritage
                 </h3>
                 <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3">
                   Rootwills was built on a simple belief — that great food deserves great supply partners. Today, we continue to support businesses across the UK with trusted products, flexible solutions and a commitment to long-term growth.
                 </p>
                 <div className="flex flex-wrap items-center gap-2 pt-0.5 text-[10px] font-sans text-stone-700">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs apple-tactile transition-transform duration-100 ease-out active:scale-95">
                     <Sprout className="w-3 h-3 text-[#BA8E4E]" strokeWidth={2} />
                     <span className="font-medium tracking-wide">Direct Farm Supply</span>
                   </div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 shadow-2xs apple-tactile transition-transform duration-100 ease-out active:scale-95">
                     <Award className="w-3 h-3 text-[#BA8E4E]" strokeWidth={2} />
                     <span className="font-medium tracking-wide">Zero Compromise</span>
                   </div>

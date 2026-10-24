@@ -52,22 +52,25 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/75 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/75 backdrop-blur-md"
           />
 
-          {/* Modal Container with Asymmetric Enter/Exit Timing */}
+          {/* Modal Container with Apple Critically Damped Spring */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.22, ease: [0.23, 1, 0.32, 1] } }}
-            exit={{ opacity: 0, scale: 0.96, y: 12, transition: { duration: 0.15, ease: [0.32, 0.72, 0, 1] } }}
-            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-2xl shadow-2xl border border-[#BA8E4E]/30 overflow-hidden z-10"
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: 16 }}
+            transition={{ type: 'spring', damping: 28, stiffness: 350 }}
+            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-2xl border-t border-white/80 border-b border-[#BA8E4E]/30 overflow-hidden z-10"
           >
-            {/* Header with royal burgundy bar */}
+            {/* Header with royal burgundy bar & Specular top highlight */}
             <div className="bg-[#2E060D] text-white p-6 sm:p-7 relative border-b border-[#BA8E4E]/25">
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
               <button
                 onClick={onClose}
-                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors"
+                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors apple-tactile active:scale-90"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
@@ -75,10 +78,10 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               <div className="text-[11px] uppercase tracking-[0.2em] text-[#D4A86A] font-medium mb-1">
                 — ROOTWILLS PARTNERSHIP —
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-[-0.02em] leading-tight">
                 Connect With Our Team
               </h3>
-              <p className="text-sm text-cream-200/80 mt-1.5 font-sans">
+              <p className="text-sm text-stone-300 mt-1.5 font-sans leading-relaxed">
                 Discuss wholesale supply, bespoke pricing, and delivery schedules tailored to your business.
               </p>
             </div>
@@ -191,10 +194,10 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="group w-full py-3.5 px-6 rounded-xl bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] font-serif font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-xl transition-[transform,background-color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] cursor-pointer"
+                      className="group w-full py-3.5 px-6 rounded-xl bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] font-serif font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 shadow-md hover:shadow-xl transition-all duration-100 ease-out apple-tactile active:scale-[0.98] cursor-pointer"
                     >
                       <span>Submit Partnership Enquiry</span>
-                      <div className="w-6 h-6 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1">
+                      <div className="w-6 h-6 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-200 ease-out group-hover:translate-x-1">
                         <Send className="w-3.5 h-3.5 text-[#2D060D]" />
                       </div>
                     </button>

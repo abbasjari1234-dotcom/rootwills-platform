@@ -92,15 +92,15 @@ export function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={mobileIndex}
-                initial={{ opacity: 0, transform: 'translateY(6px)' }}
-                animate={{ opacity: 1, transform: 'translateY(0px)' }}
-                exit={{ opacity: 0, transform: 'translateY(-6px)' }}
-                transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-                className="bg-[#FAF7F2] rounded-xl p-4 sm:p-5 border border-[#E7DEC8] shadow-xs flex flex-col justify-between min-h-[160px] w-full"
+                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 320 }}
+                className="apple-glass-card rounded-2xl p-4 sm:p-5 border border-[#E7DEC8] shadow-sm flex flex-col justify-between min-h-[160px] w-full"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2.5">
-                    <div className="w-6 h-6 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E]">
+                    <div className="w-6 h-6 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
                       <Quote className="w-3 h-3 stroke-[1.8] fill-[#BA8E4E]/15" />
                     </div>
                     <div className="flex items-center gap-0.5 text-[#BA8E4E]">
@@ -135,7 +135,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={handleMobilePrev}
-                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs transition-[transform,background-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs apple-tactile active:scale-90 transition-transform duration-100 ease-out cursor-pointer"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -143,7 +143,7 @@ export function TestimonialsSection() {
               <button
                 type="button"
                 onClick={handleMobileNext}
-                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs transition-[transform,background-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D5CABB] bg-white text-stone-600 flex items-center justify-center shadow-2xs apple-tactile active:scale-90 transition-transform duration-100 ease-out cursor-pointer"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -157,7 +157,7 @@ export function TestimonialsSection() {
           {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-[transform,background-color,color,border-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xs active:scale-[0.96] cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/70 hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
             aria-label="Previous testimonials"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -168,21 +168,21 @@ export function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPage}
-                initial={{ opacity: 0, transform: 'translateY(8px)' }}
-                animate={{ opacity: 1, transform: 'translateY(0px)' }}
-                exit={{ opacity: 0, transform: 'translateY(-8px)' }}
-                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                initial={{ opacity: 0, y: 12, scale: 0.99 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.99 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 320 }}
                 className="grid grid-cols-3 gap-5 lg:gap-6 w-full"
               >
                 {visibleTestimonials.map((item, index) => (
                   <div
                     key={`${currentPage}-${index}`}
-                    className="bg-[#FAF7F2] rounded-xl p-6 lg:p-7 border border-[#E7DEC8] shadow-xs hover:shadow-md transition-[box-shadow,border-color] duration-200 ease-out flex flex-col justify-between"
+                    className="apple-glass-card rounded-2xl p-6 lg:p-7 border border-[#E7DEC8] shadow-sm hover:shadow-lg transition-all duration-200 ease-out flex flex-col justify-between apple-card-interactive active:scale-[0.985]"
                   >
                     <div>
                       {/* Refined Gold Quote Medallion and 5-Star Rating */}
                       <div className="flex items-center justify-between mb-3.5">
-                        <div className="w-7 h-7 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E]">
+                        <div className="w-7 h-7 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 flex items-center justify-center text-[#BA8E4E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
                           <Quote className="w-3.5 h-3.5 stroke-[1.8] fill-[#BA8E4E]/15" />
                         </div>
                         <div className="flex items-center gap-0.5 text-[#BA8E4E]">
@@ -215,7 +215,7 @@ export function TestimonialsSection() {
           {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-transparent hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 transition-[transform,background-color,color,border-color] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-xs active:scale-[0.96] cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/70 hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
             aria-label="Next testimonials"
           >
             <ChevronRight className="w-4 h-4" />

@@ -144,12 +144,12 @@ export function DeliveryPageClient() {
 
       {/* ─── ACT II: INTERACTIVE POSTCODE SLA CHECKER ─── */}
       <section className="py-12 lg:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FFFDF9] rounded-3xl p-6 sm:p-10 border border-[#E8DEC8] shadow-sm space-y-6">
+        <div className="apple-glass-card rounded-3xl p-6 sm:p-10 border border-[#E8DEC8] shadow-md space-y-6">
           <div className="text-center space-y-1.5">
             <span className="text-xs font-serif uppercase tracking-[0.2em] text-[#BA8E4E] font-semibold">
               — LIVE KITCHEN COVERAGE CHECKER —
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D] tracking-[-0.02em] leading-tight">
               Check Your Postcode Delivery Window
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 font-sans max-w-lg mx-auto">
@@ -166,12 +166,12 @@ export function DeliveryPageClient() {
                 placeholder="e.g. B2 5BN, CV3 4FL, W1D 3PU..."
                 value={postcodeInput}
                 onChange={(e) => setPostcodeInput(e.target.value)}
-                className="w-full bg-[#FAF6EE] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-serif font-bold focus:outline-none focus:border-[#BA8E4E] focus:bg-white transition-all"
+                className="w-full bg-[#FAF6EE] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl pl-10 pr-4 py-3 text-xs uppercase font-serif font-bold focus:outline-none focus:border-[#BA8E4E] focus:bg-white transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]"
               />
             </div>
             <button
               type="submit"
-              className="px-5 py-3 rounded-xl bg-[#2E060D] hover:bg-[#380710] border border-[#BA8E4E]/40 text-[#D4A86A] font-serif font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all shrink-0 cursor-pointer active:scale-95"
+              className="px-5 py-3 rounded-xl bg-[#2E060D] hover:bg-[#380710] border border-[#BA8E4E]/40 text-[#D4A86A] font-serif font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all shrink-0 cursor-pointer apple-tactile active:scale-95"
             >
               <Search className="w-3.5 h-3.5 text-[#D4A86A]" />
               <span>Verify SLA</span>
@@ -180,7 +180,7 @@ export function DeliveryPageClient() {
 
           {/* SLA Result Card */}
           {slaResult && (
-            <div className="p-5 bg-[#FAF6EE] rounded-2xl border border-[#BA8E4E]/30 text-xs animate-fade-in space-y-4">
+            <div className="p-5 bg-[#FAF6EE]/90 rounded-2xl border border-[#BA8E4E]/30 text-xs shadow-xs space-y-4">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#E8DEC8] pb-3">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#BA8E4E] animate-pulse" />
@@ -218,7 +218,7 @@ export function DeliveryPageClient() {
                 </span>
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-1 text-xs font-serif font-bold text-[#BA8E4E] hover:text-[#8C6629]"
+                  className="inline-flex items-center gap-1 text-xs font-serif font-bold text-[#BA8E4E] hover:text-[#8C6629] apple-tactile active:scale-95"
                 >
                   <span>Request Trade Account for {slaResult.postcode}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -231,7 +231,7 @@ export function DeliveryPageClient() {
 
       {/* ─── ACT III: 6-DAY WEEKLY SCHEDULE TABLE ─── */}
       <section className="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FFFDF9] rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] shadow-sm space-y-4">
+        <div className="apple-glass-card rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h3 className="text-xl font-serif font-bold text-[#2E060D]">

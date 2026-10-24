@@ -52,7 +52,7 @@ export function ServicesSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#2E060D] leading-[1.18] mb-2.5 sm:mb-5">
+            <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#2E060D] leading-[1.12] tracking-[-0.022em] mb-2.5 sm:mb-5">
               Tailored Solutions<br className="hidden sm:inline" />{' '}
               for Every Business
             </h2>
@@ -61,14 +61,14 @@ export function ServicesSection() {
               We provide a complete range of food supply and wholesale services, designed to meet the unique needs of every client — from independent restaurants to large-scale hospitality groups.
             </p>
 
-            {/* Smooth-Scroll Button Linking to Approach Section */}
+            {/* Smooth-Scroll Button Linking to Approach Section with Apple Tactile Feedback */}
             <div>
               <a
                 href="/#approach"
-                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#2E060D] hover:bg-[#4E0D17] text-[#FAF7F0] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-[transform,background-color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-md hover:shadow-xl active:scale-[0.97] cursor-pointer"
+                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#2E060D] hover:bg-[#4E0D17] text-[#FAF7F0] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-100 ease-out shadow-md hover:shadow-xl apple-tactile active:scale-[0.97] cursor-pointer"
               >
                 <span>Discover More</span>
-                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#D4A86A]" />
                 </div>
               </a>
@@ -82,8 +82,8 @@ export function ServicesSection() {
               onScroll={handleScroll}
               className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-4 lg:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 scroll-smooth touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {/* Card 1: Food Service Supply */}
-              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              {/* Card 1: Food Service Supply (Apple Glass Material) */}
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start apple-glass-card rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_16px_40px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-all duration-200 ease-out apple-card-interactive active:scale-[0.985]">
                 <div className="flex flex-col flex-1">
                   <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-[#FAF7F0] to-[#BA8E4E]/10 mb-3.5 shadow-[0_2px_10px_rgba(46,6,13,0.06)] group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(186,142,78,0.2)] transition-all duration-300 w-fit">
                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center">
@@ -101,7 +101,7 @@ export function ServicesSection() {
                     Fresh, high-quality ingredients and essential food products for restaurants, caterers and hospitality businesses.
                   </p>
                 </div>
-                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8] text-[11px] text-stone-600 font-sans mt-auto">
+                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8]/80 text-[11px] text-stone-600 font-sans mt-auto">
                   <li className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-[#BA8E4E]/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center shrink-0">
                       <Clock className="w-2.5 h-2.5 text-[#BA8E4E]" strokeWidth={2.2} />
@@ -123,8 +123,8 @@ export function ServicesSection() {
                 </ul>
               </div>
 
-              {/* Card 2: Wholesale Solutions */}
-              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              {/* Card 2: Wholesale Solutions (Apple Glass Material) */}
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start apple-glass-card rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_16px_40px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-all duration-200 ease-out apple-card-interactive active:scale-[0.985]">
                 <div className="flex flex-col flex-1">
                   <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-[#FAF7F0] to-[#BA8E4E]/10 mb-3.5 shadow-[0_2px_10px_rgba(46,6,13,0.06)] group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(186,142,78,0.2)] transition-all duration-300 w-fit">
                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center">
@@ -143,7 +143,7 @@ export function ServicesSection() {
                     Efficient, reliable wholesale supply for food businesses of all sizes, from independents to large operations.
                   </p>
                 </div>
-                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8] text-[11px] text-stone-600 font-sans mt-auto">
+                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8]/80 text-[11px] text-stone-600 font-sans mt-auto">
                   <li className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-[#BA8E4E]/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center shrink-0">
                       <Coins className="w-2.5 h-2.5 text-[#BA8E4E]" strokeWidth={2.2} />
@@ -165,8 +165,8 @@ export function ServicesSection() {
                 </ul>
               </div>
 
-              {/* Card 3: Business Partnerships */}
-              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/95 rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_12px_32px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
+              {/* Card 3: Business Partnerships (Apple Glass Material) */}
+              <div className="w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start apple-glass-card rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/60 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_16px_40px_rgba(46,6,13,0.08)] group flex flex-col justify-between h-full transition-all duration-200 ease-out apple-card-interactive active:scale-[0.985]">
                 <div className="flex flex-col flex-1">
                   <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-[#FAF7F0] to-[#BA8E4E]/10 mb-3.5 shadow-[0_2px_10px_rgba(46,6,13,0.06)] group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(186,142,78,0.2)] transition-all duration-300 w-fit">
                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center">
@@ -185,7 +185,7 @@ export function ServicesSection() {
                     We work closely with our clients to understand their needs and create supply solutions that support their growth.
                   </p>
                 </div>
-                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8] text-[11px] text-stone-600 font-sans mt-auto">
+                <ul className="space-y-2 pt-3 border-t border-[#E8DEC8]/80 text-[11px] text-stone-600 font-sans mt-auto">
                   <li className="flex items-center gap-2">
                     <div className="w-4 h-4 rounded-full bg-[#BA8E4E]/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center shrink-0">
                       <UserCheck className="w-2.5 h-2.5 text-[#BA8E4E]" strokeWidth={2.2} />
@@ -208,7 +208,7 @@ export function ServicesSection() {
               </div>
             </div>
 
-            {/* Mobile Swipe Pagination Dots & Indicator */}
+            {/* Mobile Swipe Pagination Dots with Apple Springs */}
             <div className="flex md:hidden items-center justify-center gap-3.5 pt-3">
               <div className="flex items-center gap-2">
                 {[0, 1, 2].map((idx) => (
@@ -217,7 +217,7 @@ export function ServicesSection() {
                     type="button"
                     onClick={() => scrollToCard(idx)}
                     aria-label={`Go to service ${idx + 1}`}
-                    className="p-1 -m-1 flex items-center justify-center cursor-pointer bg-transparent border-0 outline-none"
+                    className="p-1 -m-1 flex items-center justify-center cursor-pointer bg-transparent border-0 outline-none apple-tactile active:scale-90"
                   >
                     <span
                       className={`block h-1.5 rounded-full transition-all duration-300 ${

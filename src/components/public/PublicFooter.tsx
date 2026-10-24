@@ -67,7 +67,7 @@ export function PublicFooter() {
           {/* Column 1: Brand Seal, Wordmark & Purveyor Provenance (Col 1-5 on LG) */}
           <div className="sm:col-span-2 lg:col-span-5 flex flex-col justify-between space-y-4">
             <div>
-              <Link href="/#home" className="inline-flex items-center gap-3.5 group focus:outline-none">
+              <Link href="/#home" className="inline-flex items-center gap-3.5 group focus:outline-none apple-tactile transition-transform duration-100 ease-out active:scale-95">
                 <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] transition-transform duration-200 group-hover:scale-105">
                   <Image
                     src="/images/branded/rootwills_logo_master.png"
@@ -79,7 +79,7 @@ export function PublicFooter() {
                   />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="font-chunky text-2xl sm:text-3xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none">
+                  <span className="font-chunky text-2xl sm:text-3xl font-black text-white tracking-[-0.02em] transition-colors group-hover:text-[#D4A86A] leading-[0.95]">
                     Rootwills
                   </span>
                   <span className="block text-[8px] sm:text-[9px] font-sans font-bold tracking-[0.26em] uppercase text-[#D4A86A] mt-1 leading-none">
@@ -88,18 +88,18 @@ export function PublicFooter() {
                 </div>
               </Link>
 
-              <p className="text-xs sm:text-[13px] text-[#EDE4D8]/75 font-sans leading-relaxed mt-3.5 max-w-sm">
+              <p className="text-xs sm:text-[13px] text-[#EDE4D8]/80 font-sans leading-relaxed mt-3.5 max-w-sm">
                 Purveyors of hand-graded British farm produce, artisan dairy, and culinary wholesale lines delivered pre-dawn to the UK&apos;s leading kitchens.
               </p>
             </div>
 
             {/* Operational Dispatch Badge Strip */}
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] text-[#EDE4D8]/80 font-mono">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-[#BA8E4E]/30">
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] text-[#EDE4D8]/85 font-mono">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.07] backdrop-blur-md border border-[#BA8E4E]/35 apple-tactile active:scale-95 transition-transform duration-100">
                 <Clock className="w-3 h-3 text-[#D4A86A]" />
                 <span>05:30 – 07:30 AM Drops</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.05] border border-[#BA8E4E]/30">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.07] backdrop-blur-md border border-[#BA8E4E]/35 apple-tactile active:scale-95 transition-transform duration-100">
                 <ShieldCheck className="w-3 h-3 text-[#D4A86A]" />
                 <span>SALSA Assured</span>
               </div>
@@ -116,7 +116,7 @@ export function PublicFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-colors duration-150 inline-block"
+                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-all duration-100 inline-block apple-tactile active:scale-95"
                   >
                     {item.label}
                   </Link>
@@ -135,7 +135,7 @@ export function PublicFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-colors duration-150 inline-block"
+                    className="text-[#EDE4D8]/75 hover:text-[#D4A86A] transition-all duration-100 inline-block apple-tactile active:scale-95"
                   >
                     {item.label}
                   </Link>
@@ -192,7 +192,7 @@ export function PublicFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Rootwills on Facebook"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,border-color] duration-160 ease-out active:scale-95"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] apple-tactile active:scale-90 transition-all duration-100 ease-out"
                 >
                   <Facebook className="w-3.5 h-3.5 fill-current" />
                 </a>
@@ -201,7 +201,7 @@ export function PublicFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Rootwills on X"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,border-color] duration-160 ease-out active:scale-95"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] apple-tactile active:scale-90 transition-all duration-100 ease-out"
                 >
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -212,7 +212,7 @@ export function PublicFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Rootwills on Instagram"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,border-color] duration-160 ease-out active:scale-95"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] apple-tactile active:scale-90 transition-all duration-100 ease-out"
                 >
                   <Instagram className="w-3.5 h-3.5" />
                 </a>
@@ -221,7 +221,7 @@ export function PublicFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Rootwills on LinkedIn"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,background-color,color,border-color] duration-160 ease-out active:scale-95"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-[#BA8E4E]/35 hover:border-[#D4A86A] hover:bg-[#D4A86A]/15 flex items-center justify-center text-[#EDE4D8]/80 hover:text-[#D4A86A] apple-tactile active:scale-90 transition-all duration-100 ease-out"
                 >
                   <Linkedin className="w-3.5 h-3.5 fill-current" />
                 </a>
@@ -238,15 +238,15 @@ export function PublicFooter() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <Link href="/delivery" className="hover:text-[#D4A86A] transition-colors">
+            <Link href="/delivery" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">
               Delivery SLAs
             </Link>
             <span className="text-[#BA8E4E]/30">•</span>
-            <Link href="/privacy" className="hover:text-[#D4A86A] transition-colors">
+            <Link href="/privacy" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">
               Privacy Policy
             </Link>
             <span className="text-[#BA8E4E]/30">•</span>
-            <Link href="/terms" className="hover:text-[#D4A86A] transition-colors">
+            <Link href="/terms" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">
               Terms of Supply
             </Link>
           </div>
@@ -255,7 +255,7 @@ export function PublicFooter() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-[#BA8E4E]/25 hover:border-[#D4A86A]/60 text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-[transform,color,border-color] duration-160 active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-[#BA8E4E]/25 hover:border-[#D4A86A]/60 text-[#EDE4D8]/80 hover:text-[#D4A86A] transition-all duration-100 apple-tactile active:scale-95 cursor-pointer"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-3 h-3 text-[#D4A86A]" />

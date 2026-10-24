@@ -46,8 +46,15 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Apple WWDC Fluid Interface System & Timing (Designing Fluid Interfaces) */
+  --apple-spring-default: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-spring-momentum: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --apple-duration-instant: 100ms;
+  --apple-duration-fluid: 350ms;
 }
 
+/* Apple Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
@@ -55,6 +62,103 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Apple Accessibility: Reduced Transparency (§14) */
+@media (prefers-reduced-transparency: reduce) {
+  .apple-glass-card,
+  .apple-glass-dark,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .apple-glass-card {
+    background: #FFFDF9 !important;
+  }
+  .apple-glass-dark {
+    background: #180306 !important;
+  }
+}
+
+/* Apple Accessibility: High Contrast (§14) */
+@media (prefers-contrast: more) {
+  .apple-glass-card {
+    border: 2px solid #2E060D !important;
+  }
+  .apple-glass-dark {
+    border: 2px solid #D4A86A !important;
+  }
+}
+
+/* Apple Tactile Pointer-Down Feedback (§1 & §10) */
+.apple-tactile,
+button.apple-tactile,
+a.apple-tactile,
+.apple-card-interactive {
+  transition: transform 100ms ease-out, filter 100ms ease-out, opacity 100ms ease-out;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.apple-tactile:active,
+button.apple-tactile:active,
+a.apple-tactile:active {
+  transform: scale(0.97) !important;
+}
+
+.apple-card-interactive:active {
+  transform: scale(0.985) !important;
+}
+
+/* Apple Materials & Depth: Translucency Conveys Hierarchy (§12) */
+.apple-glass-card {
+  background: rgba(255, 253, 249, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.8); /* Light catching the top edge */
+  border-bottom: 1px solid rgba(186, 142, 78, 0.2);
+  box-shadow: 0 12px 32px -8px rgba(46, 6, 13, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.apple-glass-dark {
+  background: rgba(20, 3, 7, 0.76);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-top: 1px solid rgba(255, 255, 255, 0.28); /* Specular highlight rim */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.22);
+}
+
+/* Apple Optical Typography System (§15) */
+.apple-display-hero {
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+}
+
+.apple-heading-section {
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+  font-optical-sizing: auto;
+}
+
+.apple-subheading {
+  line-height: 1.38;
+  letter-spacing: -0.012em;
+}
+
+.apple-body {
+  line-height: 1.62;
+  letter-spacing: -0.006em;
+}
+
+.apple-caption {
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
 html {

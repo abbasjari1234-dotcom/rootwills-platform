@@ -14,8 +14,10 @@ export function CommercialBottomCTA() {
       <section className="py-12 sm:py-16 lg:py-20 bg-[#FAF7F2]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Horizontal Split Banner Card in Signature Royal Burgundy & Gold */}
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#2E060D] via-[#240409] to-[#1A0307] border border-[#BA8E4E]/35 shadow-2xl grid grid-cols-1 md:grid-cols-12 items-stretch">
+          {/* Horizontal Split Banner Card in Signature Royal Burgundy & Gold with Specular Highlight */}
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#2E060D] via-[#240409] to-[#1A0307] border-t border-white/25 border-b border-black/40 shadow-2xl grid grid-cols-1 md:grid-cols-12 items-stretch">
+            {/* Top Specular Hairline */}
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none z-20" />
             
             {/* Authentic Rich Damask Texture */}
             <div 
@@ -55,11 +57,11 @@ export function CommercialBottomCTA() {
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-tight mb-2 sm:mb-3">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-[-0.025em] leading-tight mb-2 sm:mb-3">
                 Elevate Your Kitchen's Wholesale Supply
               </h2>
 
-              <p className="text-[#EDE4D8]/90 font-sans text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 max-w-xl">
+              <p className="text-[#EDE4D8]/95 font-sans text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8 max-w-xl">
                 Join UK restaurants, luxury hotel groups, and catering brigades already relying on our hand-graded market produce and locked contract trade pricing.
               </p>
 
@@ -67,17 +69,17 @@ export function CommercialBottomCTA() {
                 <button
                   type="button"
                   onClick={() => setInquiryOpen(true)}
-                  className="group inline-flex items-center justify-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-xl active:scale-[0.98] cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all duration-100 ease-out shadow-md hover:shadow-xl apple-tactile active:scale-[0.97] cursor-pointer"
                 >
                   <span>Partner With Rootwills</span>
-                  <div className="w-7 h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                  <div className="w-7 h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform duration-200 ease-out group-hover:translate-x-1">
                     <ArrowRight className="w-3.5 h-3.5 text-[#2D060D]" />
                   </div>
                 </button>
 
                 <a
                   href="tel:+442012345678"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#1A0307]/80 hover:bg-[#2A050D] ring-1 ring-[#BA8E4E]/40 hover:ring-[#BA8E4E] text-[#EDE4D8] text-xs sm:text-[13px] font-serif font-semibold tracking-wider transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#1A0307]/80 hover:bg-[#2A050D] ring-1 ring-[#BA8E4E]/40 hover:ring-[#BA8E4E] text-[#EDE4D8] text-xs sm:text-[13px] font-serif font-semibold tracking-wider transition-all duration-100 ease-out apple-tactile active:scale-95"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#D4A86A]" />
                   <span>+44 (0) 20 1234 5678</span>

@@ -15,14 +15,18 @@ export function PublicHeader() {
       className={
         isHome
           ? "absolute top-0 inset-x-0 z-30 w-full bg-transparent pt-3 sm:pt-4 md:pt-7 px-3 sm:px-4 md:px-8 pointer-events-none transition-all duration-300"
-          : "relative z-30 w-full bg-[#180306] overflow-hidden border-b border-[#BA8E4E]/25 shadow-[0_4px_24px_rgba(0,0,0,0.5)] pt-3 sm:pt-4 md:pt-6 pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-8 transition-all duration-300"
+          : "relative z-30 w-full bg-[#180306]/85 backdrop-blur-2xl backdrop-saturate-180 overflow-hidden border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6)] pt-3 sm:pt-4 md:pt-6 pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-8 transition-all duration-300"
       }
     >
       {!isHome && (
-        <div 
-          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-50"
-          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
-        />
+        <>
+          {/* Specular top rim where light catches the frosted glass edge */}
+          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+          <div 
+            className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-luminosity"
+            style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+          />
+        </>
       )}
       <div className="relative z-10 max-w-[1440px] mx-auto w-full">
         {/* Desktop View: Full 3-Column Architectural Bar (md: 768px and above) */}
@@ -41,10 +45,10 @@ export function PublicHeader() {
           {/* Left Dashed Architectural Line */}
           <div className="hidden lg:block flex-1 border-t border-dashed border-white/35 mx-3 lg:mx-8" />
 
-          {/* Center: BIG ROOTWILLS LOGO (In Place of 'Sunbeam') */}
+          {/* Center: BIG ROOTWILLS LOGO with Apple Tactile Response */}
           <Link 
             href="/#home" 
-            className="flex items-center gap-3 md:gap-4 px-2 md:px-5 group focus:outline-none shrink-0 pointer-events-auto"
+            className="flex items-center gap-3 md:gap-4 px-2 md:px-5 group focus:outline-none shrink-0 pointer-events-auto apple-tactile transition-transform duration-100 ease-out active:scale-[0.97]"
           >
             {/* Crystal-Clear Heritage Seal Medallion — Large Visible Stature */}
             <div className={`relative shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)] ${
@@ -63,9 +67,9 @@ export function PublicHeader() {
               />
             </div>
 
-            {/* Massive Brand Wordmark + Subtitle */}
+            {/* Massive Brand Wordmark + Subtitle with Optical Sizing */}
             <div className="flex flex-col text-left">
-              <span className={`font-chunky font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] ${
+              <span className={`font-chunky font-black text-white tracking-[-0.02em] transition-colors group-hover:text-[#D4A86A] leading-[0.95] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] ${
                 isHome
                   ? "text-3xl md:text-5xl lg:text-6xl"
                   : "text-2xl md:text-4xl lg:text-5xl"
@@ -103,7 +107,7 @@ export function PublicHeader() {
             
             <Link 
               href="/#home" 
-              className="flex items-center gap-2 px-1 group focus:outline-none shrink-0 pointer-events-auto"
+              className="flex items-center gap-2 px-1 group focus:outline-none shrink-0 pointer-events-auto apple-tactile transition-transform duration-100 ease-out active:scale-[0.97]"
             >
               {/* High-Res Master Seal */}
               <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
@@ -120,7 +124,7 @@ export function PublicHeader() {
 
               {/* Wordmark & Subtitle */}
               <div className="flex flex-col text-left">
-                <span className="font-chunky text-2xl sm:text-3xl font-black text-white tracking-wide transition-colors group-hover:text-[#D4A86A] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
+                <span className="font-chunky text-2xl sm:text-3xl font-black text-white tracking-[-0.02em] transition-colors group-hover:text-[#D4A86A] leading-[0.95] drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]">
                   Rootwills
                 </span>
                 <span className="block text-[7px] sm:text-[7.5px] font-sans font-black tracking-[0.24em] uppercase text-[#D4A86A] mt-1 leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">

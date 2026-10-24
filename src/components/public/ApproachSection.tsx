@@ -116,7 +116,7 @@ export function ApproachSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl lg:text-[38px] font-serif font-bold text-[#2E060D] leading-[1.18] mb-3 sm:mb-5">
+            <h2 className="text-2xl sm:text-4xl lg:text-[38px] font-serif font-bold text-[#2E060D] leading-[1.12] tracking-[-0.022em] mb-3 sm:mb-5">
               Built on Trust,<br />
               Quality & Consistency
             </h2>
@@ -126,22 +126,22 @@ export function ApproachSection() {
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-stone-200/80 text-[10px] font-sans text-stone-700">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635] apple-tactile active:scale-95 transition-transform duration-100 ease-out">
                 <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
                 Integrity
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635] apple-tactile active:scale-95 transition-transform duration-100 ease-out">
                 <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
                 Consistency
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635]">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF7F0] border border-[#BA8E4E]/30 tracking-wider uppercase font-semibold text-[#8B2635] apple-tactile active:scale-95 transition-transform duration-100 ease-out">
                 <Sparkles className="w-2.5 h-2.5 text-[#BA8E4E]" />
                 Precision
               </span>
             </div>
           </div>
 
-          {/* Right Column: 4 Clean Feature Items with Double-Bezel Concentric Medallions */}
+          {/* Right Column: 4 Clean Feature Items with Double-Bezel Concentric Medallions and Tactile Touch */}
           <div ref={pillarsRef} className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-2.5 pt-2 lg:pt-0 lg:pl-8 lg:border-l lg:border-stone-200/80">
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
@@ -149,10 +149,10 @@ export function ApproachSection() {
               return (
                 <div 
                   key={pillar.title} 
-                  className="group flex items-start gap-3 p-2 rounded-xl transition-[background-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[#FAF7F0] ring-1 ring-transparent hover:ring-[#BA8E4E]/25 shadow-2xs"
+                  className="group flex items-start gap-3 p-2.5 rounded-2xl transition-all duration-100 ease-out hover:bg-[#FAF7F0] ring-1 ring-transparent hover:ring-[#BA8E4E]/25 shadow-2xs apple-tactile active:scale-[0.98]"
                 >
                   <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-white to-[#BA8E4E]/10 shrink-0 shadow-2xs group-hover:scale-105 transition-transform duration-200">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 flex items-center justify-center text-[#BA8E4E]">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 flex items-center justify-center text-[#BA8E4E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
                       <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.6]" />
                     </div>
                     <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#2E060D] text-[#FAF7F0] text-[7.5px] font-serif font-bold flex items-center justify-center border border-[#BA8E4E]/40 shadow-xs">

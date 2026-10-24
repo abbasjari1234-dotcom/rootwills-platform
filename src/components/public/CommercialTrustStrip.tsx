@@ -42,10 +42,10 @@ export function CommercialTrustStrip() {
             return (
               <div 
                 key={idx} 
-                className="shrink-0 snap-start flex items-center gap-3 bg-[#FFFDF9]/90 md:bg-transparent border border-[#E8DEC8] md:border-0 rounded-xl px-3.5 py-2.5 md:p-0 transition-[box-shadow,border-color] duration-200 ease-out shadow-xs md:shadow-none min-w-[210px] md:min-w-0"
+                className="shrink-0 snap-start flex items-center gap-3 bg-[#FFFDF9]/90 md:bg-transparent border border-[#E8DEC8] md:border-0 rounded-xl px-3.5 py-2.5 md:p-0 transition-[box-shadow,border-color,transform] duration-100 ease-out shadow-xs md:shadow-none min-w-[210px] md:min-w-0 apple-tactile active:scale-[0.98]"
               >
                 <div className="shrink-0 relative p-0.5 sm:p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/40 via-[#BA8E4E]/15 to-transparent shadow-[0_2px_8px_rgba(46,6,13,0.15)]">
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#3D0A12] to-[#200408] border border-[#BA8E4E]/40 flex items-center justify-center text-[#E8C28A] shadow-inner">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#3D0A12] to-[#200408] border border-[#BA8E4E]/40 flex items-center justify-center text-[#E8C28A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]">
                     <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]" />
                   </div>
                 </div>
