@@ -43,42 +43,7 @@ const nextConfig = {
       'zustand',
     ],
   },
-  webpack: (config, { isServer, dev }) => {
-    if (!isServer && !dev) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          maxInitialRequests: 25,
-          minSize: 20000,
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            framework: {
-              chunks: 'all',
-              name: 'framework',
-              test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-              priority: 40,
-              enforce: true,
-            },
-            lib: {
-              test: /[\\/]node_modules[\\/](framer-motion|lucide-react|zustand)[\\/]/,
-              name: 'lib',
-              priority: 30,
-              minChunks: 1,
-              reuseExistingChunk: true,
-            },
-            commons: {
-              name: 'commons',
-              minChunks: 2,
-              priority: 20,
-            },
-          },
-        },
-      };
-    }
-    return config;
-  },
+
   async headers() {
     if (process.env.NODE_ENV !== 'production') {
       return [
@@ -169,12 +134,52 @@ const nextConfig = {
     return [
       {
         source: '/portal',
-        destination: '/dashboard',
+        destination: '/',
         permanent: false,
       },
       {
         source: '/portal/:path*',
-        destination: '/:path*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/dashboard/:path*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/admin/:path*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/driver/:path*',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/login',
+        destination: '/',
+        permanent: false,
+      },
+      {
+        source: '/apply',
+        destination: '/contact',
+        permanent: false,
+      },
+      {
+        source: '/products',
+        destination: '/#services',
+        permanent: false,
+      },
+      {
+        source: '/sectors',
+        destination: '/#services',
+        permanent: false,
+      },
+      {
+        source: '/delivery',
+        destination: '/#approach',
         permanent: false,
       },
     ];

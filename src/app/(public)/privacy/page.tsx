@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
               Rootwills Ltd acts as the Data Controller in respect of personal and commercial trade data collected through our wholesale communications, client consultations, trade enquiries, and delivery logistics operations across the United Kingdom.
             </p>
             <p className="text-xs text-stone-500 font-sans">
-              Headquarters: London, United Kingdom. Registered in England and Wales.
+              Headquarters: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom. Registered in England and Wales.
             </p>
           </section>
 
@@ -151,7 +151,7 @@ export default function PrivacyPolicyPage() {
               <div className="text-[#D4A86A] font-serif font-bold text-sm">Rootwills Ltd — Legal &amp; Governance Desk</div>
               <div className="text-[#EDE4D8]/90">Direct Phone: <span className="text-white font-medium">+44 (0) 20 1234 5678</span></div>
               <div className="text-[#EDE4D8]/90">Email: <span className="text-[#D4A86A] font-medium">info@rootwills.co.uk</span></div>
-              <div className="text-[#EDE4D8]/70">Location: London, United Kingdom</div>
+              <div className="text-[#EDE4D8]/70">Location: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom</div>
             </div>
           </section>
 

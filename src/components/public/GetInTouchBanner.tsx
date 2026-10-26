@@ -76,7 +76,7 @@ export function GetInTouchBanner() {
                       <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
                     </div>
                   </div>
-                  <span>London, United Kingdom</span>
+                  <span>The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom</span>
                 </div>
               </div>
 

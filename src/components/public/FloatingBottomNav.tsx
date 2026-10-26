@@ -18,10 +18,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: 'ABOUT', href: '/#about', isHash: true },
   { id: 'services', label: 'SERVICES', href: '/#services', isHash: true },
-  { id: 'sectors', label: 'SECTORS', href: '/sectors' },
-  { id: 'delivery', label: 'DELIVERY', href: '/delivery' },
-  { id: 'why-us', label: 'WHY US', href: '/why-choose-us' },
-  { id: 'contact', label: 'CONTACT', href: '/#contact', isHash: true },
+  { id: 'contact', label: 'CONTACT', href: '/contact' },
 ];
 
 export function FloatingBottomNav() {
@@ -57,16 +54,8 @@ export function FloatingBottomNav() {
 
   // Determine active item based on current route and scroll position on homepage
   useEffect(() => {
-    if (pathname.includes('/sectors')) {
-      setActiveId('sectors');
-      return;
-    }
-    if (pathname.includes('/delivery')) {
-      setActiveId('delivery');
-      return;
-    }
-    if (pathname.includes('/why-choose-us')) {
-      setActiveId('why-us');
+    if (pathname.includes('/contact')) {
+      setActiveId('contact');
       return;
     }
 

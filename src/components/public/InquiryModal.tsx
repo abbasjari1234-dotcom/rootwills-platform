@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Phone, Mail, MapPin, Send } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { X, CheckCircle2, Phone, Mail, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface InquiryModalProps {
@@ -10,6 +11,7 @@ interface InquiryModalProps {
 }
 
 export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -19,6 +21,10 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     sector: 'Restaurant / Hospitality',
     notes: '',
   });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,10 +49,12 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     }, 2800);
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -57,20 +65,20 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             className="fixed inset-0 bg-black/75 backdrop-blur-md"
           />
 
-          {/* Modal Container with Apple Critically Damped Spring */}
+          {/* Modal Container with Apple Critically Damped Spring & Viewport Safe Height */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 16 }}
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-2xl border-t border-white/80 border-b border-[#BA8E4E]/30 overflow-hidden z-10"
+            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-2xl border-t border-white/80 border-b border-[#BA8E4E]/30 overflow-hidden z-10 my-auto max-h-[calc(100vh-2rem)] flex flex-col"
           >
             {/* Header with royal burgundy bar & Specular top highlight */}
-            <div className="bg-[#2E060D] text-white p-6 sm:p-7 relative border-b border-[#BA8E4E]/25">
+            <div className="bg-[#2E060D] text-white p-5 sm:p-7 relative border-b border-[#BA8E4E]/25 shrink-0">
               <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
               <button
                 onClick={onClose}
-                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors apple-tactile active:scale-90"
+                className="absolute top-4 sm:top-5 right-4 sm:right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center transition-colors apple-tactile active:scale-90"
                 aria-label="Close dialog"
               >
                 <X className="w-5 h-5" />
@@ -81,13 +89,13 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-[-0.02em] leading-tight">
                 Connect With Our Team
               </h3>
-              <p className="text-sm text-stone-300 mt-1.5 font-sans leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-300 mt-1 font-sans leading-relaxed">
                 Discuss wholesale supply, bespoke pricing, and delivery schedules tailored to your business.
               </p>
             </div>
 
-            {/* Form Body */}
-            <div className="p-6 sm:p-8">
+            {/* Form Body - Scrollable internally so it never cuts off or gets hidden by footer */}
+            <div className="p-5 sm:p-8 overflow-y-auto flex-1 overscroll-contain">
               {submitted ? (
                 <div className="py-12 text-center flex flex-col items-center">
                   <div className="w-16 h-16 rounded-full bg-[#2E060D]/10 text-[#2E060D] flex items-center justify-center mb-4">
@@ -169,11 +177,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                     >
-                      <option value="Restaurant / Hospitality">Restaurant & Hospitality</option>
-                      <option value="Hotel & Boutique Resort">Hotel & Boutique Resort</option>
-                      <option value="Commercial Catering">Commercial & Event Catering</option>
-                      <option value="Pub & Gastro Bar">Pub & Gastro Bar</option>
-                      <option value="Institutional / Education">Education & Healthcare</option>
+                      <option value="Restaurant / Hospitality">Restaurant &amp; Hospitality</option>
+                      <option value="Hotel & Boutique Resort">Hotel &amp; Boutique Resort</option>
+                      <option value="Commercial Catering">Commercial &amp; Event Catering</option>
+                      <option value="Pub & Gastro Bar">Pub &amp; Gastro Bar</option>
+                      <option value="Institutional / Education">Education &amp; Healthcare</option>
                       <option value="Retailer / Other">Specialty Retailer / Other</option>
                     </select>
                   </div>
@@ -217,6 +225,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

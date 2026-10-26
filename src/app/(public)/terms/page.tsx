@@ -168,7 +168,7 @@ export default function TermsPage() {
               <div className="text-[#D4A86A] font-serif font-bold text-sm">Rootwills Ltd — Commercial Contracts &amp; Trade Desk</div>
               <div className="text-[#EDE4D8]/90">Telephone: <span className="text-white font-medium">+44 (0) 20 1234 5678</span></div>
               <div className="text-[#EDE4D8]/90">Commercial Enquiries: <span className="text-[#D4A86A] font-medium">info@rootwills.co.uk</span></div>
-              <div className="text-[#EDE4D8]/70">Registered: London, United Kingdom • England &amp; Wales</div>
+              <div className="text-[#EDE4D8]/70">Registered Office: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom • England &amp; Wales</div>
             </div>
           </section>
 

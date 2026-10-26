@@ -11,11 +11,8 @@ import {
   ShieldCheck,
   ArrowRight
 } from 'lucide-react';
-import { useAppStore } from '@/store/app-store';
-import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
 export function ContactFormView() {
-  const addLead = useAppStore((state) => state.addLead);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     companyName: '',
@@ -29,21 +26,6 @@ export function ContactFormView() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.companyName || !formData.email || !formData.phone) return;
-
-    addLead({
-      companyName: formData.companyName,
-      contactName: formData.contactName,
-      email: formData.email,
-      phone: formData.phone,
-      sector: 'fine_dining',
-      postcode: formData.postcode || 'B1 1AA',
-      city: 'Birmingham',
-      estimatedWeeklySpend: 2500,
-      source: 'website_form',
-      assignedSalesRep: 'Rootwills Commercial Desk',
-      notes: `Contact page message: ${formData.message}`,
-    });
-
     setSubmitted(true);
   };
 
@@ -102,7 +84,7 @@ export function ContactFormView() {
                   <div>
                     <strong className="block text-[#2E060D] text-sm font-serif font-bold">Midlands Fulfilment Hub</strong>
                     <span className="text-stone-600 block mt-0.5 font-sans">
-                      Digbeth Wholesale Quarter, Pershore Street, Birmingham, B5 5JR
+                      The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom
                     </span>
                   </div>
                 </div>
@@ -289,7 +271,7 @@ export function ContactFormView() {
 
                   <div className="text-center pt-1">
                     <p className="text-[11px] text-stone-500 font-sans">
-                      Need immediate trade terms? <Link href="/apply" className="text-[#BA8E4E] font-serif font-bold hover:underline">Apply for 30-Day Trade Credit directly &rarr;</Link>
+                      We typically respond to enquiries within one business day.
                     </p>
                   </div>
                 </form>
@@ -299,9 +281,6 @@ export function ContactFormView() {
 
         </div>
       </section>
-
-      {/* ─── ACT III: BOTTOM SPLIT CTA ─── */}
-      <CommercialBottomCTA />
 
     </div>
   );

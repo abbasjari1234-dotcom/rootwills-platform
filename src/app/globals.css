@@ -12,6 +12,14 @@
   font-family: 'Fraunces', serif;
 }
 
+.font-cormorant {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -19,6 +27,28 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  @keyframes marqueeGlide {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .animate-marquee-glide {
+    display: flex;
+    width: max-content;
+    animation: marqueeGlide 48s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-marquee-glide:hover,
+  .animate-marquee-glide:focus-within,
+  .animate-marquee-glide.is-paused {
+    animation-play-state: paused;
   }
 }
 

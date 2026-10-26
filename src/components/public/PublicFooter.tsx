@@ -176,7 +176,7 @@ export function PublicFooter() {
                   <div className="w-6 h-6 rounded-full bg-white/[0.06] border border-[#BA8E4E]/35 flex items-center justify-center shrink-0 text-[#D4A86A]">
                     <MapPin className="w-3 h-3" />
                   </div>
-                  <span>London &amp; Midlands, UK</span>
+                  <span>The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom</span>
                 </div>
               </div>
             </div>

@@ -12,7 +12,6 @@ import {
   Layers, 
   Clock
 } from 'lucide-react';
-import { CommercialBottomCTA } from '@/components/public/CommercialBottomCTA';
 
 export const metadata: Metadata = {
   title: 'About Rootwills | British Farm Provenance & Wholesale Operations',
@@ -118,8 +117,8 @@ export default function AboutPage() {
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/#contact"
-              className="group inline-flex items-center gap-3 pl-7 pr-2.5 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2D060D] text-xs sm:text-[13px] font-serif font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-xl active:scale-[0.98]"
+              href="/contact"
+              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#BA8E4E] hover:bg-[#D4A86A] text-[#120305] text-xs sm:text-[13px] font-sans font-bold tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer"
             >
               <span>Partner With Rootwills</span>
               <div className="w-7 h-7 rounded-full bg-[#2D060D]/10 flex items-center justify-center transition-transform group-hover:translate-x-1">
@@ -128,10 +127,10 @@ export default function AboutPage() {
             </Link>
 
             <Link
-              href="/delivery"
+              href="/#services"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1A0307]/80 hover:bg-[#2A050D] border border-[#BA8E4E]/40 text-[#EDE4D8] text-xs sm:text-[13px] font-serif font-semibold tracking-wider transition-all"
             >
-              <span>Check Delivery Coverage</span>
+              <span>Our Services</span>
             </Link>
           </div>
         </div>
@@ -233,9 +232,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── ACT V: BOTTOM SPLIT CTA ─── */}
-      <CommercialBottomCTA />
 
     </div>
   );

@@ -80,7 +80,7 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group"
             >
               <div className="w-8 h-8 rounded-lg bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
@@ -95,17 +95,17 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/delivery"
+              href="/about"
               className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group"
             >
               <div className="w-8 h-8 rounded-lg bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                 <FileText className="w-4 h-4" />
               </div>
               <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#BA8E4E] transition-colors">
-                Delivery Coverage
+                About Rootwills
               </h2>
               <p className="text-xs text-stone-600 mt-1 font-sans">
-                Check kitchen postcode delivery windows and cold-chain SLAs.
+                Learn about our heritage, accreditations, and supply chain.
               </p>
             </Link>
           </div>
@@ -118,7 +118,7 @@ export default function NotFound() {
               Back to Homepage
             </Link>
             <Link
-              href="/#contact"
+              href="/contact"
               className="px-6 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#380710] border border-[#BA8E4E]/40 text-[#D4A86A] font-serif font-semibold text-xs shadow-xs transition-colors"
             >
               Contact Commercial Team
