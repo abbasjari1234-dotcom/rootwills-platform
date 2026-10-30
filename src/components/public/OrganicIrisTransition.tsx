@@ -14,58 +14,55 @@ export function OrganicIrisTransition({
   inkColor = '#131313',
   accentColor = '#BA8E4E',
 }: OrganicIrisTransitionProps) {
-  const [phase, setPhase] = useState<'boot' | 'loading' | 'revealing' | 'idle'>('boot');
+  const [phase, setPhase] = useState<'boot' | 'revealing' | 'idle'>('boot');
   const containerRef = useRef<HTMLDivElement>(null);
+  const hasTriggeredRef = useRef(false);
   const rawId = useId();
   const maskId = rawId.replace(/:/g, '');
 
   useEffect(() => {
-    // Check reduced motion preference
+    // Respect reduced motion preference
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setPhase('idle');
       return;
     }
 
+    // Strictly ensure entrance animation only runs once per mount
+    if (hasTriggeredRef.current) return;
+
     const container = containerRef.current;
     if (!container) return;
 
-    // Grab both path cuts: [edge, ink]
     const cutPaths = Array.from(
       container.querySelectorAll<SVGPathElement>('[data-iris-cut]')
     );
     if (cutPaths.length === 0) return;
 
     const animState = { open: 0 };
-    let maxScale = 4.5;
+    let maxScale = 4.2;
 
-    // Accurate scale calculation ensuring the organic aperture expands completely off every corner of any screen
     const computeScale = () => {
       const w = window.innerWidth || 1920;
       const h = window.innerHeight || 1080;
-      // In preserveAspectRatio="xMidYMid slice", the 1000-unit viewBox fits the minimum screen dimension
+      // In preserveAspectRatio="xMidYMid slice", 1000 viewBox units fit the minimum screen dimension
       const cornerDistance = 500 * (Math.hypot(w, h) / Math.min(w, h));
-      // Path minimum radius is ~270 viewBox units with squash. Scale must exceed corner distance with clean margin
-      maxScale = Math.max(3.8, (cornerDistance / 260) * 1.18);
+      // Radius of the path is ~270 viewBox units with squash. Scale must exceed corner distance with clean margin
+      maxScale = Math.max(3.6, (cornerDistance / 260) * 1.15);
       updatePaths();
     };
 
-    // Update path transforms on every animation frame
     const updatePaths = () => {
       const open = animState.open;
-      // Slight organic twist from -16deg up to 0deg as aperture widens
       const rot = -16 * (1 - open);
-      // Subtle aspect squash that settles into proportion
       const aspectSquash = 0.86 + 0.14 * open;
 
       cutPaths.forEach((path, idx) => {
-        // Index 0 is "edge" (scale 0.978), Index 1 is "ink" (scale 1.0)
-        // This scale difference produces the signature organic accent rim
         const layerMultiplier = idx === 0 ? 0.978 : 1.0;
         const currentScale = maxScale * open * layerMultiplier;
 
         path.setAttribute(
           'transform',
-          `rotate(${rot.toFixed(3)}) scale(${(currentScale * aspectSquash).toFixed(5)} ${currentScale.toFixed(5)})`
+          `rotate(${rot.toFixed(2)}) scale(${(currentScale * aspectSquash).toFixed(4)} ${currentScale.toFixed(4)})`
         );
       });
     };
@@ -73,69 +70,48 @@ export function OrganicIrisTransition({
     computeScale();
     window.addEventListener('resize', computeScale, { passive: true });
 
-    // Begin entrance reveal
-    setPhase('loading');
-
-    let isDisposed = false;
+    let tween: gsap.core.Tween | null = null;
 
     const triggerReveal = () => {
-      if (isDisposed) return;
+      if (hasTriggeredRef.current) return;
+      hasTriggeredRef.current = true;
       setPhase('revealing');
 
-      const tl = gsap.timeline({
+      tween = gsap.to(animState, {
+        open: 1,
+        duration: 0.65,
+        ease: 'power2.inOut',
+        onUpdate: updatePaths,
         onComplete: () => {
           setPhase('idle');
           window.removeEventListener('resize', computeScale);
+          if (containerRef.current) {
+            containerRef.current.style.display = 'none';
+          }
         },
       });
-
-      tl.to(
-        animState,
-        {
-          open: 1,
-          duration: 0.82,
-          ease: 'power2.inOut',
-          onUpdate: updatePaths,
-        },
-        0.05
-      );
     };
 
-    // Brief cinematic initial pause (120ms) then reveal
-    const startTimer = window.setTimeout(() => {
-      if (document.fonts?.ready) {
-        document.fonts.ready.then(triggerReveal, triggerReveal);
-      } else {
-        triggerReveal();
-      }
-    }, 120);
-
-    // Fail-safe timeout to prevent overlay from ever staying stuck
-    const fallbackTimer = window.setTimeout(() => {
-      triggerReveal();
-    }, 1500);
+    // Fast, immediate kickoff (35ms) on client mount - eliminates sluggish font loading wait
+    const timer = window.setTimeout(triggerReveal, 35);
 
     return () => {
-      isDisposed = true;
-      window.clearTimeout(startTimer);
-      window.clearTimeout(fallbackTimer);
+      window.clearTimeout(timer);
       window.removeEventListener('resize', computeScale);
+      tween?.kill();
     };
   }, []);
-
-  // When animation finishes, unmount overlay so pointer events and GPU resources are fully freed
-  if (phase === 'idle') {
-    return null;
-  }
 
   return (
     <div
       ref={containerRef}
       data-phase={phase}
       aria-hidden="true"
-      className="fixed inset-0 z-[9999999] overflow-hidden pointer-events-none select-none touch-none"
+      className="fixed inset-0 z-[9999999] overflow-hidden pointer-events-none select-none touch-none [contain:strict] [isolation:isolate]"
       style={{
         backgroundColor: 'transparent',
+        display: phase === 'idle' ? 'none' : 'block',
+        visibility: phase === 'idle' ? 'hidden' : 'visible',
       }}
     >
       <svg
@@ -146,17 +122,17 @@ export function OrganicIrisTransition({
         focusable="false"
       >
         <defs>
-          {/* Edge Mask (Accent Rim): Black path cuts hole; white background keeps rect opaque */}
+          {/* Edge Mask (Accent Rim): Sized to 2400x2400 for 4x lighter GPU rasterization */}
           <mask
             id={`${maskId}-edge`}
             maskUnits="userSpaceOnUse"
-            x="-2500"
-            y="-2500"
-            width="5000"
-            height="5000"
+            x="-1200"
+            y="-1200"
+            width="2400"
+            height="2400"
             style={{ maskType: 'luminance' }}
           >
-            <rect x="-2500" y="-2500" width="5000" height="5000" fill="white" />
+            <rect x="-1200" y="-1200" width="2400" height="2400" fill="white" />
             <path
               data-iris-cut="edge"
               d="M-390-65 C-390-250-140-360 55-302 C244-246 366-156 380 38 C394 226 132 356-67 305 C-262 255-386 146-390-65Z"
@@ -165,17 +141,17 @@ export function OrganicIrisTransition({
             />
           </mask>
 
-          {/* Ink Mask (Main Dark Curtain): Black path cuts hole slightly larger than edge */}
+          {/* Ink Mask (Main Dark Curtain) */}
           <mask
             id={`${maskId}-ink`}
             maskUnits="userSpaceOnUse"
-            x="-2500"
-            y="-2500"
-            width="5000"
-            height="5000"
+            x="-1200"
+            y="-1200"
+            width="2400"
+            height="2400"
             style={{ maskType: 'luminance' }}
           >
-            <rect x="-2500" y="-2500" width="5000" height="5000" fill="white" />
+            <rect x="-1200" y="-1200" width="2400" height="2400" fill="white" />
             <path
               data-iris-cut="ink"
               d="M-390-65 C-390-250-140-360 55-302 C244-246 366-156 380 38 C394 226 132 356-67 305 C-262 255-386 146-390-65Z"
@@ -185,22 +161,22 @@ export function OrganicIrisTransition({
           </mask>
         </defs>
 
-        {/* Outer Accent Rim Layer (Revealed in the scale delta between edge cut and ink cut) */}
+        {/* Outer Accent Rim Layer */}
         <rect
-          x="-2500"
-          y="-2500"
-          width="5000"
-          height="5000"
+          x="-1200"
+          y="-1200"
+          width="2400"
+          height="2400"
           fill={accentColor}
           mask={`url(#${maskId}-edge)`}
         />
 
-        {/* Primary Dark Liquid Ink Curtain (Cut out by ink mask to reveal the live page underneath) */}
+        {/* Primary Dark Liquid Ink Curtain */}
         <rect
-          x="-2500"
-          y="-2500"
-          width="5000"
-          height="5000"
+          x="-1200"
+          y="-1200"
+          width="2400"
+          height="2400"
           fill={inkColor}
           mask={`url(#${maskId}-ink)`}
         />
