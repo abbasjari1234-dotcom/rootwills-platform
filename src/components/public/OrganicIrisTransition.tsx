@@ -21,13 +21,15 @@ export function OrganicIrisTransition({
   const maskId = rawId.replace(/:/g, '');
 
   useEffect(() => {
-    // Respect reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Exact Anubi behavior: bypass on mobile, touch screens, and reduced motion for instant performance
+    const isMobileOrReduced = window.matchMedia(
+      '(max-width: 779px), (pointer: coarse), (prefers-reduced-motion: reduce)'
+    ).matches;
+    if (isMobileOrReduced) {
       setPhase('idle');
       return;
     }
 
-    // Strictly ensure entrance animation only runs once per mount
     if (hasTriggeredRef.current) return;
 
     const container = containerRef.current;
@@ -39,18 +41,18 @@ export function OrganicIrisTransition({
     if (cutPaths.length === 0) return;
 
     const animState = { open: 0 };
-    let maxScale = 4.2;
+    let maxScale = 2.45;
 
+    // Exact Anubi scale equation calibrated for 1000x1000 slice viewBox
     const computeScale = () => {
       const w = window.innerWidth || 1920;
       const h = window.innerHeight || 1080;
-      // In preserveAspectRatio="xMidYMid slice", 1000 viewBox units fit the minimum screen dimension
-      const cornerDistance = 500 * (Math.hypot(w, h) / Math.min(w, h));
-      // Radius of the path is ~270 viewBox units with squash. Scale must exceed corner distance with clean margin
-      maxScale = Math.max(3.6, (cornerDistance / 260) * 1.15);
+      const maxDim = Math.max(w, h);
+      maxScale = 1.28 * Math.hypot((500 * w) / maxDim / 330, (500 * h) / maxDim / 270);
       updatePaths();
     };
 
+    // Exact Anubi path transform with organic rotation (-16deg to 0deg) and aspect squash
     const updatePaths = () => {
       const open = animState.open;
       const rot = -16 * (1 - open);
@@ -62,7 +64,7 @@ export function OrganicIrisTransition({
 
         path.setAttribute(
           'transform',
-          `rotate(${rot.toFixed(2)}) scale(${(currentScale * aspectSquash).toFixed(4)} ${currentScale.toFixed(4)})`
+          `rotate(${rot.toFixed(3)}) scale(${(currentScale * aspectSquash).toFixed(5)} ${currentScale.toFixed(5)})`
         );
       });
     };
@@ -70,33 +72,49 @@ export function OrganicIrisTransition({
     computeScale();
     window.addEventListener('resize', computeScale, { passive: true });
 
-    let tween: gsap.core.Tween | null = null;
+    let tween: gsap.core.Timeline | null = null;
 
     const triggerReveal = () => {
       if (hasTriggeredRef.current) return;
       hasTriggeredRef.current = true;
       setPhase('revealing');
 
-      tween = gsap.to(animState, {
-        open: 1,
-        duration: 0.65,
-        ease: 'power2.inOut',
-        onUpdate: updatePaths,
+      // Exact Anubi GSAP parameters: duration 0.68s, sine.inOut ease, 0.08s timeline delay
+      tween = gsap.timeline({
         onComplete: () => {
           setPhase('idle');
           window.removeEventListener('resize', computeScale);
           if (containerRef.current) {
             containerRef.current.style.display = 'none';
+            containerRef.current.style.visibility = 'hidden';
           }
         },
       });
+
+      tween.to(
+        animState,
+        {
+          open: 1,
+          duration: 0.68,
+          ease: 'sine.inOut',
+          onUpdate: updatePaths,
+        },
+        0.08
+      );
     };
 
-    // Fast, immediate kickoff (35ms) on client mount - eliminates sluggish font loading wait
-    const timer = window.setTimeout(triggerReveal, 35);
+    // Double requestAnimationFrame (exact Anubi technique) to prime compositor before GSAP starts
+    let raf1 = 0;
+    let raf2 = 0;
+    raf1 = window.requestAnimationFrame(() => {
+      raf2 = window.requestAnimationFrame(() => {
+        triggerReveal();
+      });
+    });
 
     return () => {
-      window.clearTimeout(timer);
+      window.cancelAnimationFrame(raf1);
+      window.cancelAnimationFrame(raf2);
       window.removeEventListener('resize', computeScale);
       tween?.kill();
     };
@@ -122,17 +140,17 @@ export function OrganicIrisTransition({
         focusable="false"
       >
         <defs>
-          {/* Edge Mask (Accent Rim): Sized to 2400x2400 for 4x lighter GPU rasterization */}
+          {/* Edge Mask (Accent Rim): Native 1000x1000 for ultra-fast GPU rasterization */}
           <mask
             id={`${maskId}-edge`}
             maskUnits="userSpaceOnUse"
-            x="-1200"
-            y="-1200"
-            width="2400"
-            height="2400"
+            x="-500"
+            y="-500"
+            width="1000"
+            height="1000"
             style={{ maskType: 'luminance' }}
           >
-            <rect x="-1200" y="-1200" width="2400" height="2400" fill="white" />
+            <rect x="-500" y="-500" width="1000" height="1000" fill="white" />
             <path
               data-iris-cut="edge"
               d="M-390-65 C-390-250-140-360 55-302 C244-246 366-156 380 38 C394 226 132 356-67 305 C-262 255-386 146-390-65Z"
@@ -145,13 +163,13 @@ export function OrganicIrisTransition({
           <mask
             id={`${maskId}-ink`}
             maskUnits="userSpaceOnUse"
-            x="-1200"
-            y="-1200"
-            width="2400"
-            height="2400"
+            x="-500"
+            y="-500"
+            width="1000"
+            height="1000"
             style={{ maskType: 'luminance' }}
           >
-            <rect x="-1200" y="-1200" width="2400" height="2400" fill="white" />
+            <rect x="-500" y="-500" width="1000" height="1000" fill="white" />
             <path
               data-iris-cut="ink"
               d="M-390-65 C-390-250-140-360 55-302 C244-246 366-156 380 38 C394 226 132 356-67 305 C-262 255-386 146-390-65Z"
@@ -163,20 +181,20 @@ export function OrganicIrisTransition({
 
         {/* Outer Accent Rim Layer */}
         <rect
-          x="-1200"
-          y="-1200"
-          width="2400"
-          height="2400"
+          x="-500"
+          y="-500"
+          width="1000"
+          height="1000"
           fill={accentColor}
           mask={`url(#${maskId}-edge)`}
         />
 
         {/* Primary Dark Liquid Ink Curtain */}
         <rect
-          x="-1200"
-          y="-1200"
-          width="2400"
-          height="2400"
+          x="-500"
+          y="-500"
+          width="1000"
+          height="1000"
           fill={inkColor}
           mask={`url(#${maskId}-ink)`}
         />
