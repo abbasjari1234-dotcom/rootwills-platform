@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 export function PublicHeader() {
   const pathname = usePathname();
   const isHome = pathname === '/' || pathname === '';
-  const [activeItem, setActiveItem] = useState<'home' | 'about' | 'services' | 'sectors' | 'approach' | 'contact'>('home');
+  const [activeItem, setActiveItem] = useState<'home' | 'about' | 'services' | 'approach' | 'contact'>('home');
 
   // Track active section on scroll when on homepage
   useEffect(() => {
@@ -22,18 +22,14 @@ export function PublicHeader() {
       const scrollY = window.scrollY;
       const aboutEl = document.getElementById('about');
       const servicesEl = document.getElementById('services');
-      const sectorsEl = document.getElementById('sectors');
       const approachEl = document.getElementById('approach');
 
       const aboutTop = aboutEl ? aboutEl.offsetTop - 140 : 800;
       const servicesTop = servicesEl ? servicesEl.offsetTop - 140 : 1600;
-      const sectorsTop = sectorsEl ? sectorsEl.offsetTop - 140 : 2200;
-      const approachTop = approachEl ? approachEl.offsetTop - 140 : 2800;
+      const approachTop = approachEl ? approachEl.offsetTop - 140 : 2400;
 
       if (scrollY >= approachTop) {
         setActiveItem('approach');
-      } else if (scrollY >= sectorsTop) {
-        setActiveItem('sectors');
       } else if (scrollY >= servicesTop) {
         setActiveItem('services');
       } else if (scrollY >= aboutTop) {
@@ -138,19 +134,6 @@ export function PublicHeader() {
             }`}
           >
             Services
-          </Link>
-
-          {/* Sectors */}
-          <Link
-            href="/#sectors"
-            onClick={(e) => scrollToHash(e, 'sectors')}
-            className={`hidden md:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
-              activeItem === 'sectors'
-                ? 'bg-[#EAEAEA] text-[#131313]'
-                : 'text-[#131313] hover:bg-[#F2F2F0]'
-            }`}
-          >
-            Sectors
           </Link>
 
           {/* Approach */}
