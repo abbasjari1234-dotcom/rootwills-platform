@@ -18,6 +18,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: 'about', label: 'ABOUT', href: '/#about', isHash: true },
   { id: 'services', label: 'SERVICES', href: '/#services', isHash: true },
+  { id: 'approach', label: 'APPROACH', href: '/#approach', isHash: true },
   { id: 'contact', label: 'CONTACT', href: '/contact' },
 ];
 
@@ -63,11 +64,14 @@ export function FloatingBottomNav() {
       const handleScrollSpy = () => {
         const scrollPosition = window.scrollY + window.innerHeight * 0.45;
         const contactEl = document.getElementById('contact');
+        const approachEl = document.getElementById('approach');
         const servicesEl = document.getElementById('services');
         const aboutEl = document.getElementById('about');
 
         if (contactEl && contactEl.offsetTop <= scrollPosition) {
           setActiveId('contact');
+        } else if (approachEl && approachEl.offsetTop <= scrollPosition) {
+          setActiveId('approach');
         } else if (servicesEl && servicesEl.offsetTop <= scrollPosition) {
           setActiveId('services');
         } else if (aboutEl && aboutEl.offsetTop <= scrollPosition) {

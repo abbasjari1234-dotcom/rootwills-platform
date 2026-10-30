@@ -708,12 +708,12 @@ export function FloatingAmbientHero() {
               href="/#services"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(19,19,19,0.2)]"
             >
-              <span>Explore Range</span>
+              <span>What We Do</span>
               <span className="text-stone-400 group-hover:text-white transition-colors">↗</span>
             </a>
 
             <a
-              href="/#contact"
+              href="/contact"
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm"
             >
               <span>Open Account</span>
