@@ -17,22 +17,30 @@ export const metadata = {
 export default function PublicHomePage() {
   return (
     <div className="w-full bg-[#FAF7F2] text-slate-900 overflow-x-hidden">
-      {/* ─── 1. Floating Ambient Motion Hero ─── */}
+      {/* ─── 1. Floating Ambient Motion Hero (Anubi-style Kinetic Eggshell Canvas) ─── */}
       <FloatingAmbientHero />
 
-      {/* ─── Continuous British Heritage Cream Canvas (Unified flow from top to bottom) ─── */}
+      {/* ─── 2. Continuous British Heritage Canvas with Soft Feathering into Hero ─── */}
       <div className="relative bg-[#FAF7F2] text-slate-900 overflow-hidden">
-        {/* Seamless Botanical Etching Texture running continuously through all body sections */}
+        {/* Top organic gradient feathering bridging the crisp #FCFCFA hero into the warm cream canvas */}
+        <div 
+          className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FCFCFA] via-[#FCFCFA]/75 to-transparent pointer-events-none z-1" 
+          aria-hidden="true" 
+        />
+
+        {/* Seamless Botanical Etching Texture running continuously with soft entry fade */}
         <div
-          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
           style={{
             backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
             backgroundSize: '1100px auto',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 140px, black 92%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 140px, black 92%, transparent 100%)',
           }}
         />
 
         <div className="relative z-10">
-          {/* 1b. Five Commercial Trust Pillars */}
+          {/* 1b. Commercial Trust & Wholesale Guarantees Marquee */}
           <CommercialTrustStrip />
 
           {/* 2. About Rootwills: More Than Just Food Supply */}
@@ -44,10 +52,10 @@ export default function PublicHomePage() {
           {/* 4. Our Approach: Built on Trust, Quality & Consistency */}
           <ApproachSection />
 
-          {/* 5. Standards Benchmarks */}
+          {/* 5. Standards & Industry Benchmarks */}
           <MidBannerSection />
 
-          {/* 6. Testimonials */}
+          {/* 6. Client Testimonials */}
           <TestimonialsSection />
 
           {/* 7. Direct Commercial Enquiries */}
