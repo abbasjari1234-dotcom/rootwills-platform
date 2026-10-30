@@ -147,7 +147,7 @@ export function FloatingBottomNav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.98 }}
             transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-            className="fixed inset-0 z-50 md:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-6 pb-28 text-center"
+            className="fixed inset-0 z-50 md:hidden bg-[#180306] overflow-y-auto flex flex-col justify-between items-center px-6 pt-[calc(1.5rem+env(safe-area-inset-top,0px))] pb-[calc(7rem+env(safe-area-inset-bottom,0px))] text-center"
           >
             {/* Apple Sheet Drag Handle Grab Bar */}
             <div className="w-10 h-1.5 rounded-full bg-white/25 mx-auto mb-2 relative z-20 shrink-0" />
@@ -168,15 +168,15 @@ export function FloatingBottomNav() {
               transition={{ type: 'spring', damping: 25, stiffness: 300, delay: 0.05 }}
               className="relative z-10 flex flex-col items-center mt-1"
             >
-              {/* High-Resolution Heritage Seal Medallion */}
-              <div className="relative w-14 h-14 shrink-0 transition-transform duration-300 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
+              {/* High-Resolution Heritage Seal Medallion with Gold Rim Halo */}
+              <div className="relative w-14 h-14 shrink-0 transition-transform duration-300 rounded-full ring-1 ring-[#D4A86A]/35 shadow-[0_8px_24px_rgba(0,0,0,0.85)]">
                 <Image
                   src="/images/branded/rootwills_logo_master.png"
                   alt="Rootwills Logo Seal"
                   fill
                   unoptimized
                   sizes="56px"
-                  className="object-contain"
+                  className="object-contain rounded-full"
                   priority
                 />
               </div>
@@ -288,15 +288,12 @@ export function FloatingBottomNav() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-            className="fixed bottom-4 sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6"
+            className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] sm:bottom-7 left-0 right-0 w-full z-50 flex items-center justify-center pointer-events-none px-3 sm:px-6"
           >
-            {/* 1. DESKTOP VIEW: Complete Floating Glass Dock (Hidden on Mobile) */}
+            {/* 1. DESKTOP VIEW: Hidden since desktop navigation is provided by the top floating Anubi navbar */}
             <motion.nav
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ type: 'spring', damping: 26, stiffness: 300 }}
               aria-label="Floating Glass Navigation Dock"
-              className="pointer-events-auto hidden md:flex mx-auto max-w-fit justify-center"
+              className="hidden"
             >
               {/* Double-Bezel Glass Frame with Specular Top Edge */}
               <div className="relative rounded-full p-1 sm:p-1.5 bg-white/[0.04] ring-1 ring-white/20 backdrop-blur-3xl shadow-[0_24px_60px_-10px_rgba(0,0,0,0.65),0_8px_24px_rgba(0,0,0,0.4)]">
@@ -316,7 +313,7 @@ export function FloatingBottomNav() {
                           key={item.id}
                           href={item.href}
                           onClick={(e) => handleNavClick(e, item)}
-                          className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/80 hover:text-white transition-[color,transform] duration-100 ease-out active:scale-[0.96]"
+                          className="group relative px-2.5 sm:px-4 py-1.5 rounded-full text-white/80 hover:text-white transition-[color,transform] duration-100 ease-out active:scale-[0.96] touch-manipulation"
                         >
                           {isActive && (
                             <motion.div
@@ -354,7 +351,7 @@ export function FloatingBottomNav() {
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
-                className="group relative p-[1.5px] rounded-full transition-[transform,box-shadow] duration-100 ease-out active:scale-[0.96] bg-[#E4C767]/30 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)] cursor-pointer"
+                className="group relative p-[1.5px] rounded-full transition-[transform,box-shadow] duration-100 ease-out active:scale-[0.96] bg-[#E4C767]/30 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)] cursor-pointer touch-manipulation"
               >
                 {/* Inner Velvet Capsule with Specular Top Highlight */}
                 <div className="relative flex items-center gap-2.5 px-6 py-2.5 rounded-full font-serif font-bold text-sm text-white tracking-wider bg-gradient-to-b from-[#26050B] via-[#1B0307] to-[#120205] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition-colors duration-200">

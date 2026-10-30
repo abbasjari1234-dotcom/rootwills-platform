@@ -1,5 +1,5 @@
 import React from 'react';
-import { CommercialB2BHero } from '@/components/public/CommercialB2BHero';
+import { FloatingAmbientHero } from '@/components/public/FloatingAmbientHero';
 import { CommercialTrustStrip } from '@/components/public/CommercialTrustStrip';
 import { AboutRootwillsSection } from '@/components/public/AboutRootwillsSection';
 import { ServicesSection } from '@/components/public/ServicesSection';
@@ -17,8 +17,8 @@ export const metadata = {
 export default function PublicHomePage() {
   return (
     <div className="w-full bg-[#FAF7F2] text-slate-900 overflow-x-hidden">
-      {/* ─── 1. Hero Section ─── */}
-      <CommercialB2BHero />
+      {/* ─── 1. Floating Ambient Motion Hero ─── */}
+      <FloatingAmbientHero />
 
       {/* ─── Continuous British Heritage Cream Canvas (Unified flow from top to bottom) ─── */}
       <div className="relative bg-[#FAF7F2] text-slate-900 overflow-hidden">

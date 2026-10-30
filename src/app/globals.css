@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,700;1,6..96,800&family=Caveat:wght@600;700&family=Cinzel:wght@700;800;900&family=Epilogue:wght@800;900&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,12 +12,46 @@
   font-family: 'Fraunces', serif;
 }
 
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-bodoni {
+  font-family: 'Bodoni Moda', serif;
+}
+
+.font-epilogue {
+  font-family: 'Epilogue', sans-serif;
+}
+
 .font-cormorant {
   font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
 }
 
 .font-playfair {
   font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+}
+
+/* Mobile-Native Performance & Tactile Response Foundations */
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+}
+
+@media (pointer: coarse) {
+  /* Prevent iOS Safari auto-zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Eliminate 300ms mobile tap delay */
+button, a, [role="button"], input[type="submit"] {
+  touch-action: manipulation;
 }
 
 @layer utilities {
