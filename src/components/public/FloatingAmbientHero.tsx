@@ -157,6 +157,7 @@ export function FloatingAmbientHero() {
   const mouseParallaxRef = useRef({ x: 0, y: 0 });
   const activeHoverCountRef = useRef(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // References for central identity layers & tactile effects
   const identityRef = useRef<HTMLDivElement>(null);
@@ -303,6 +304,7 @@ export function FloatingAmbientHero() {
       };
 
       renderOrbit();
+      setIsMounted(true);
     };
 
     // Render loop: purely reads from cached layout and applies direct GPU transforms
@@ -526,6 +528,9 @@ export function FloatingAmbientHero() {
               onPointerLeave={() => handleCardLeave(index)}
               onPointerMove={(e) => handleCardPointerMove(e, index)}
               style={{
+                position: 'absolute',
+                opacity: isMounted ? 1 : 0,
+                transition: 'opacity 0.4s ease-out',
                 backfaceVisibility: 'hidden',
                 WebkitBackfaceVisibility: 'hidden',
                 transformStyle: 'preserve-3d',
