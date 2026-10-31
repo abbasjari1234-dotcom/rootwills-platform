@@ -164,24 +164,15 @@ export function FloatingAmbientHero() {
   const backSketchRef = useRef<SVGSVGElement>(null);
   const frontSketchRef = useRef<SVGSVGElement>(null);
   const wordmarkRef = useRef<HTMLHeadingElement>(null);
-  const displacementRef = useRef<SVGFEDisplacementMapElement>(null);
 
   // Decorative doodle accent refs for continuous micro-motion
   const violetStarRef = useRef<SVGGElement>(null);
   const violetStarSmallRef = useRef<SVGGElement>(null);
   const orangeCurlRef = useRef<SVGGElement>(null);
 
-  // Periodic tactile risograph paper ripple on the wordmark
+  // Instant card mounting guard for zero-FOUC
   useEffect(() => {
-    const triggerRipple = () => {
-      if (!displacementRef.current) return;
-      gsap.timeline()
-        .to(displacementRef.current, { attr: { scale: 3.2 }, duration: 0.2, ease: 'power2.out' })
-        .to(displacementRef.current, { attr: { scale: 0 }, duration: 0.55, ease: 'power3.out' });
-    };
-
-    const timer = setInterval(triggerRipple, 7500);
-    return () => clearInterval(timer);
+    setIsMounted(true);
   }, []);
 
   // Initial marker stroke draw-in and ambient doodle rotation/float
@@ -596,12 +587,12 @@ export function FloatingAmbientHero() {
       {/* ─── CENTRAL IDENTITY LOCKUP (Exact Anubi proportions & multiplane layers) ─── */}
       <div 
         ref={identityRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-15 will-change-transform"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-20 will-change-transform"
       >
         {/* SKETCH LAYER: BACK (Passing behind the typography) */}
         <svg
           ref={backSketchRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-1 overflow-visible will-change-transform"
+          className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible will-change-transform"
           viewBox="0 0 1000 550"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -670,23 +661,10 @@ export function FloatingAmbientHero() {
           </g>
         </svg>
 
-        {/* SVG Filter for Tactile Organic Risograph Jitter Ripple */}
-        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-          <defs>
-            <filter id="wordmark-distortion" x="-5%" y="-10%" width="110%" height="120%" colorInterpolationFilters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="8" result="noise" />
-              <feDisplacementMap ref={displacementRef} in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-        </svg>
-
-        {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 2 - Locked to Epilogue) */}
-        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-2 pointer-events-auto">
+        {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 20 - Locked to Epilogue) */}
+        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-20 pointer-events-auto">
           <h1 
             ref={wordmarkRef}
-            style={{
-              filter: 'url(#wordmark-distortion)',
-            }}
             className="font-epilogue font-black text-[34px] xs:text-[46px] sm:text-[78px] md:text-[110px] lg:text-[148px] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default"
           >
             {WORDMARK_LETTERS.map((char, idx) => (
@@ -729,7 +707,7 @@ export function FloatingAmbientHero() {
         {/* SKETCH LAYER: FRONT (Passing in front of the typography) */}
         <svg
           ref={frontSketchRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-3 overflow-visible will-change-transform"
+          className="absolute inset-0 w-full h-full pointer-events-none z-30 overflow-visible will-change-transform"
           viewBox="0 0 1000 550"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
