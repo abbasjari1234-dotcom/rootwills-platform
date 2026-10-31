@@ -40,6 +40,18 @@
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Eliminate long-press text selection / callout on buttons & controls */
+button, [role="button"], .apple-tactile, .drag-handle {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 @media (pointer: coarse) {
@@ -234,7 +246,7 @@ html {
 
 /* Base background */
 html, body {
-  background-color: #FFFFFF;
+  background-color: #FAF7F2;
   color: #0F172A;
   font-family: var(--font-sans);
   overflow-x: hidden;

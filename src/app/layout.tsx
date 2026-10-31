@@ -33,10 +33,13 @@ const playfair = Playfair_Display({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#4E0D17',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF7F2' },
+    { media: '(prefers-color-scheme: dark)', color: '#131313' },
+  ],
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  viewportFit: 'cover',
 };
 
 export const metadata: Metadata = {

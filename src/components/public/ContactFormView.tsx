@@ -213,10 +213,12 @@ export function ContactFormView() {
                       <input
                         type="text"
                         required
+                        autoComplete="organization"
+                        enterKeyHint="next"
                         placeholder="e.g. The Grand Bistro Collection"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
+                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
                       />
                     </div>
 
@@ -227,10 +229,12 @@ export function ContactFormView() {
                       <input
                         type="text"
                         required
+                        autoComplete="name"
+                        enterKeyHint="next"
                         placeholder="e.g. Head Chef Marcus Vance"
                         value={formData.contactName}
                         onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
+                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
                       />
                     </div>
                   </div>
@@ -243,10 +247,13 @@ export function ContactFormView() {
                       <input
                         type="email"
                         required
+                        inputMode="email"
+                        autoComplete="email"
+                        enterKeyHint="next"
                         placeholder="e.g. chef@venue.co.uk"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
+                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
                       />
                     </div>
 
@@ -257,10 +264,13 @@ export function ContactFormView() {
                       <input
                         type="tel"
                         required
+                        inputMode="tel"
+                        autoComplete="tel"
+                        enterKeyHint="next"
                         placeholder="e.g. 07123 456789"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
+                        className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
                       />
                     </div>
                   </div>
@@ -271,10 +281,12 @@ export function ContactFormView() {
                     </label>
                     <input
                       type="text"
+                      autoComplete="postal-code"
+                      enterKeyHint="next"
                       placeholder="e.g. B2 5BN, W1D 3SG..."
                       value={formData.postcode}
                       onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-mono uppercase focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
+                      className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-mono uppercase focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
                     />
                   </div>
 
@@ -287,7 +299,7 @@ export function ContactFormView() {
                       placeholder="Tell us about your weekly produce volume, delivery timing requirements, or specific products..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all resize-none"
+                      className="w-full bg-[#FAF7F2] border border-[#E8DEC8] text-stone-900 placeholder:text-stone-400 rounded-xl px-4 py-3 text-base sm:text-sm font-sans focus:outline-none focus:border-[#BA8E4E] focus:bg-white focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all resize-none"
                     />
                   </div>
 

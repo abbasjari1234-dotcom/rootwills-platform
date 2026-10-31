@@ -71,7 +71,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 16 }}
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
-            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-2xl border-t border-white/80 border-b border-[#BA8E4E]/30 overflow-hidden z-10 my-auto max-h-[calc(100vh-2rem)] flex flex-col"
+            className="relative w-full max-w-xl bg-[#FAF7F2] rounded-3xl shadow-2xl border-t border-white/80 border-b border-[#BA8E4E]/30 overflow-hidden z-10 my-auto max-h-[calc(100dvh-2rem)] flex flex-col"
           >
             {/* Header with royal burgundy bar & Specular top highlight */}
             <div className="bg-[#2E060D] text-white p-5 sm:p-7 relative border-b border-[#BA8E4E]/25 shrink-0">
@@ -118,10 +118,12 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       <input
                         type="text"
                         required
+                        autoComplete="name"
+                        enterKeyHint="next"
                         placeholder="e.g. James Wilson"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                     <div>
@@ -131,10 +133,12 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       <input
                         type="text"
                         required
+                        autoComplete="organization"
+                        enterKeyHint="next"
                         placeholder="e.g. The Dorchester Bistro"
                         value={formData.business}
                         onChange={(e) => setFormData({ ...formData, business: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                   </div>
@@ -147,10 +151,13 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       <input
                         type="email"
                         required
+                        inputMode="email"
+                        autoComplete="email"
+                        enterKeyHint="next"
                         placeholder="james@restaurant.co.uk"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                     <div>
@@ -160,10 +167,13 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       <input
                         type="tel"
                         required
+                        inputMode="tel"
+                        autoComplete="tel"
+                        enterKeyHint="next"
                         placeholder="+44 7123 456789"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
+                        className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                       />
                     </div>
                   </div>
@@ -175,7 +185,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     <select
                       value={formData.sector}
                       onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
+                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
                     >
                       <option value="Restaurant / Hospitality">Restaurant &amp; Hospitality</option>
                       <option value="Hotel & Boutique Resort">Hotel &amp; Boutique Resort</option>
@@ -195,7 +205,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       placeholder="Tell us about your produce volume, delivery frequency, or specific supply needs..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D] resize-none"
+                      className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D] resize-none"
                     />
                   </div>
 

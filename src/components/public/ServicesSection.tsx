@@ -176,7 +176,7 @@ export function ServicesSection() {
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-4 lg:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 scroll-smooth touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-4 lg:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 scroll-smooth touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {SERVICES_DATA.map((service, idx) => (
                 <div
