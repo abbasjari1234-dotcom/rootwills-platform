@@ -22,19 +22,19 @@ export function PublicFooter() {
 
   const navLinks = [
     { label: 'Home', href: '/#home' },
-    { label: 'About Rootwills', href: '/#about' },
-    { label: 'Services', href: '/#services' },
-    { label: 'Delivery & Logistics', href: '/delivery' },
-    { label: 'Why Choose Us', href: '/why-choose-us' },
-    { label: 'Contact Us', href: '/#contact' },
+    { label: 'About Rootwills', href: '/about' },
+    { label: 'Wholesale Services', href: '/#services' },
+    { label: 'Our Approach', href: '/#approach' },
+    { label: 'Supply Terms & SLAs', href: '/terms' },
+    { label: 'Contact Us', href: '/contact' },
   ];
 
   const sectorLinks = [
-    { label: 'Fresh Produce', href: '/sectors' },
-    { label: 'Artisan Dairy & Eggs', href: '/sectors' },
-    { label: 'Prime Butchery', href: '/sectors' },
-    { label: 'Coastal Seafood', href: '/sectors' },
-    { label: 'Dry Stores & Pantry', href: '/sectors' },
+    { label: 'Class 1 Fresh Produce', href: '/#services' },
+    { label: 'Artisan Dairy & Eggs', href: '/#services' },
+    { label: 'Prime British Butchery', href: '/#services' },
+    { label: 'Day-Boat Coastal Catch', href: '/#services' },
+    { label: 'Larder & Bulk Dry Stores', href: '/#services' },
   ];
 
   return (
@@ -238,8 +238,8 @@ export function PublicFooter() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <Link href="/delivery" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">
-              Delivery SLAs
+            <Link href="/terms" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">
+              Delivery SLAs &amp; Terms
             </Link>
             <span className="text-[#BA8E4E]/30">•</span>
             <Link href="/privacy" className="hover:text-[#D4A86A] transition-colors apple-tactile active:scale-95">

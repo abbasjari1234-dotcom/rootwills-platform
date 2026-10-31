@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Scale, Clock, Truck, ShieldCheck, ArrowLeft, ArrowRight } from 'lucide-react';
+import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
   title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
@@ -11,27 +12,48 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20">
-      {/* ─── Header Banner ─── */}
-      <section className="bg-[#2E060D] text-white relative overflow-hidden border-b border-[#BA8E4E]/25 pt-16 sm:pt-24 pb-16">
-        {/* Deep Damask Engraving Texture */}
+    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 pb-20 overflow-x-hidden">
+      {/* ─── Editorial Header Banner (Eggshell Canvas) ─── */}
+      <section className="relative pt-24 sm:pt-32 pb-14 sm:pb-18 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Soft top gradient feathering */}
         <div 
-          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-overlay"
-          style={{ backgroundImage: `url('/images/textures/burgundy_damask_texture.jpg')` }}
+          className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FCFCFA] via-[#FCFCFA]/80 to-transparent pointer-events-none z-0" 
+          aria-hidden="true" 
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#380710] via-[#2E060D] to-[#1E0307] pointer-events-none z-0" />
+
+        {/* Botanical Parchment Texture Overlay */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.16] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#BA8E4E]/15 border border-[#BA8E4E]/40 text-[#D4A86A] text-xs font-serif uppercase tracking-[0.2em] font-semibold">
-            <Scale className="w-3.5 h-3.5 text-[#D4A86A]" />
-            <span>Commercial Wholesale Terms (B2B)</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#2E060D] font-semibold">
+              LEGAL // WHOLESALE SUPPLY TERMS (B2B)
+            </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
-            Wholesale Supply Terms &amp; Conditions
-          </h1>
+          <div className="relative">
+            <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#131313] tracking-tight leading-[1.12]">
+              Wholesale Supply Terms &amp; Conditions
+            </h1>
+            <div className="flex justify-center">
+              <DoodleFlourish 
+                variant="underline-wave" 
+                color="#BA8E4E" 
+                strokeWidth={3} 
+                className="w-52 sm:w-64 -mt-1 mb-2 text-[#BA8E4E]" 
+                delay={150}
+              />
+            </div>
+          </div>
 
-          <p className="text-xs sm:text-sm text-[#EDE4D8]/85 max-w-2xl mx-auto font-sans leading-relaxed">
+          <p className="text-xs sm:text-sm text-stone-600 max-w-2xl mx-auto font-sans leading-relaxed">
             Governing the commercial supply of fresh farm produce, living micro-herbs, specialty dairy, and fine culinary ingredients by Rootwills Ltd to commercial hospitality operators across the United Kingdom.
           </p>
         </div>

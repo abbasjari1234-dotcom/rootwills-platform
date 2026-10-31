@@ -50,13 +50,16 @@ export default function ErrorBoundary({
           </Link>
         </div>
 
-        <div className="bg-[#FFFDF9] border border-[#E8DEC8] rounded-3xl p-8 sm:p-10 shadow-sm text-center space-y-6">
-          <div className="w-12 h-12 rounded-full bg-[#2E060D]/10 text-[#2E060D] mx-auto flex items-center justify-center">
-            <AlertTriangle className="w-6 h-6 text-[#BA8E4E]" />
+        <div className="relative bg-[#FFFDF9]/95 backdrop-blur-md border border-[#E8DEC8] rounded-3xl p-8 sm:p-10 shadow-[0_4px_20px_rgba(46,6,13,0.03)] text-center space-y-6 overflow-hidden">
+          {/* Specular top rim */}
+          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
+          <div className="w-12 h-12 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] mx-auto flex items-center justify-center">
+            <AlertTriangle className="w-6 h-6 stroke-[1.8]" />
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#131313]">
               Something went wrong
             </h1>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-sm mx-auto font-sans">
@@ -74,16 +77,16 @@ export default function ErrorBoundary({
             <button
               type="button"
               onClick={() => reset()}
-              className="px-5 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#380710] text-[#D4A86A] font-serif font-semibold text-xs shadow-md flex items-center gap-2 transition-all cursor-pointer active:scale-95"
+              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-all cursor-pointer active:scale-95"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Try Again</span>
             </button>
             <Link
               href="/"
-              className="px-5 py-2.5 rounded-full bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] text-[#2E060D] font-serif font-semibold text-xs shadow-xs transition-colors"
+              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-stone-300 font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-colors active:scale-95"
             >
-              Go to Homepage
+              <span>Go to Homepage</span>
             </Link>
           </div>
         </div>

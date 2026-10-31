@@ -47,14 +47,18 @@ export default function NotFound() {
         </div>
 
         {/* 404 Main Callout */}
-        <div className="bg-[#FFFDF9] border border-[#E8DEC8] rounded-3xl p-8 sm:p-12 shadow-sm text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2E060D] text-[#D4A86A] text-xs font-serif uppercase tracking-[0.2em] font-semibold border border-[#BA8E4E]/40">
-            <HelpCircle className="w-3.5 h-3.5 text-[#D4A86A]" />
-            <span>HTTP 404 &bull; Missing Route</span>
+        {/* 404 Main Callout */}
+        <div className="relative bg-[#FFFDF9]/95 backdrop-blur-md border border-[#E8DEC8] rounded-3xl p-8 sm:p-12 shadow-[0_4px_20px_rgba(46,6,13,0.03)] text-center space-y-6 overflow-hidden">
+          {/* Specular top rim */}
+          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 text-[#2E060D] text-[10px] sm:text-[11px] font-mono uppercase tracking-widest font-semibold shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+            <span>404 // ROUTE NOT LOCATED</span>
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
               Page Not Located
             </h1>
             <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto font-sans leading-relaxed">
@@ -66,12 +70,12 @@ export default function NotFound() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
             <Link
               href="/#services"
-              className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group"
+              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <ShoppingBag className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <ShoppingBag className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#BA8E4E] transition-colors">
+              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
                 Wholesale Services
               </h2>
               <p className="text-xs text-stone-600 mt-1 font-sans">
@@ -81,12 +85,12 @@ export default function NotFound() {
 
             <Link
               href="/contact"
-              className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group"
+              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <Building2 className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Building2 className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#BA8E4E] transition-colors">
+              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
                 Partner With Rootwills
               </h2>
               <p className="text-xs text-stone-600 mt-1 font-sans">
@@ -96,12 +100,12 @@ export default function NotFound() {
 
             <Link
               href="/about"
-              className="p-4 rounded-xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group"
+              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#2E060D] text-[#D4A86A] border border-[#BA8E4E]/30 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <FileText className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <FileText className="w-4 h-4 stroke-[1.8]" />
               </div>
-              <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#BA8E4E] transition-colors">
+              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
                 About Rootwills
               </h2>
               <p className="text-xs text-stone-600 mt-1 font-sans">
@@ -113,15 +117,16 @@ export default function NotFound() {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/"
-              className="px-6 py-2.5 rounded-full bg-[#D4A86A] hover:bg-[#C59958] text-[#2E060D] font-serif font-bold text-xs shadow-md transition-all"
+              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] text-xs sm:text-[13px] font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] shadow-sm"
             >
-              Back to Homepage
+              <span>Back to Homepage</span>
+              <span className="text-stone-400 group-hover:text-white transition-colors">↗</span>
             </Link>
             <Link
               href="/contact"
-              className="px-6 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#380710] border border-[#BA8E4E]/40 text-[#D4A86A] font-serif font-semibold text-xs shadow-xs transition-colors"
+              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#131313] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] shadow-sm"
             >
-              Contact Commercial Team
+              <span>Contact Commercial Team</span>
             </Link>
           </div>
         </div>
