@@ -144,7 +144,7 @@ export function PointerInk({ containerRef, enabled = true, className = '' }: Poi
         inset: 0,
         width: '100%',
         height: '100%',
-        zIndex: 25,
+        zIndex: 1,
       }}
     >
       {Array.from({ length: PATH_COUNT }).map((_, i) => (

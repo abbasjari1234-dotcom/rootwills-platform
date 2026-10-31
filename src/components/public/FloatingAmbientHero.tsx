@@ -160,6 +160,7 @@ export function FloatingAmbientHero() {
   const [isMounted, setIsMounted] = useState(false);
 
   // References for central identity layers & tactile effects
+  const doodleContainerRef = useRef<HTMLDivElement>(null);
   const identityRef = useRef<HTMLDivElement>(null);
   const backSketchRef = useRef<SVGSVGElement>(null);
   const frontSketchRef = useRef<SVGSVGElement>(null);
@@ -354,7 +355,10 @@ export function FloatingAmbientHero() {
         }
       });
 
-      // Spatial depth displacement on central identity layers
+      // Spatial depth displacement on central identity and doodle backdrop layers
+      if (doodleContainerRef.current) {
+        doodleContainerRef.current.style.transform = `translate(-50%, -50%) translate3d(${-0.16 * mouse.x}px, ${-0.16 * mouse.y}px, 0)`;
+      }
       if (identityRef.current) {
         identityRef.current.style.transform = `translate(-50%, -50%) translate3d(${-0.16 * mouse.x}px, ${-0.16 * mouse.y}px, 0)`;
       }
@@ -497,10 +501,104 @@ export function FloatingAmbientHero() {
       {/* ─── DYNAMIC CURSOR DOODLE TRAIL (Anubi pointerInk) ─── */}
       <PointerInk containerRef={heroSectionRef} enabled={!isPaused} />
 
-      {/* ─── ANUBI-STYLE ORBITAL STAGE CONTAINER ─── */}
+      {/* ─── DOODLE ARTWORK BACKDROP (Z-Index 2: strictly behind orbital photo cards) ─── */}
+      <div 
+        ref={doodleContainerRef}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-[2] overflow-visible will-change-transform"
+      >
+        <svg
+          ref={backSketchRef}
+          className="absolute inset-0 w-full h-full pointer-events-none overflow-visible will-change-transform"
+          viewBox="0 0 1000 550"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <filter id="sketch-grain-back" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.27" numOctaves="2" seed="14" result="grain" />
+              <feDisplacementMap in="SourceGraphic" in2="grain" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+
+          {/* Blue Loop - Weaving in from left */}
+          <g filter="url(#sketch-grain-back)">
+            <path
+              data-marker-path
+              d="M 229 398 C 171 469 89 437 105 327 C 121 218 209 84 271 78 C 321 76 322 144 276 200"
+              stroke="#2878f0"
+              strokeWidth="14"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            {/* Blue Loop Continuation */}
+            <path
+              data-marker-path
+              d="M 105 327 C 110 288 126 240 153 191"
+              stroke="#2878f0"
+              strokeWidth="13"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+
+          {/* Yellow Sweep - Flowing underneath and out to right */}
+          <g filter="url(#sketch-grain-back)">
+            <path
+              data-marker-path
+              d="M -105 434 C 56 408 224 373 405 359"
+              stroke="#ffda25"
+              strokeWidth="13"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              data-marker-path
+              d="M -85 448 C -21 430 37 416 78 403"
+              stroke="#ffda25"
+              strokeWidth="13"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              data-marker-path
+              d="M 807 366 C 879 374 974 371 1042 362"
+              stroke="#ffda25"
+              strokeWidth="12"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </g>
+
+          {/* Violet Star - Ambient floating rotation */}
+          <g ref={violetStarRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="17" strokeLinecap="butt" strokeLinejoin="round">
+            <path data-marker-path d="M 543 73 L 532 160" />
+            <path data-marker-path d="M 496 96 L 569 147" />
+            <path data-marker-path d="M 490 137 L 579 107" />
+            <path data-marker-path d="M 512 159 L 555 81" />
+          </g>
+
+          {/* Orange Curl - Playful doodle flourish */}
+          <g ref={orangeCurlRef} filter="url(#sketch-grain-back)" stroke="#ff7415" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
+            <path
+              data-marker-path
+              d="M 660 415 C 689 435 746 421 767 393 C 792 361 779 333 758 346 C 736 360 766 397 804 379 C 845 360 885 315 896 283 C 909 248 886 230 872 250 C 856 272 898 300 937 247 C 973 199 994 153 986 108"
+            />
+          </g>
+
+          {/* Violet Star Small - Rhythmic twinkle */}
+          <g ref={violetStarSmallRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="12" strokeLinecap="butt" strokeLinejoin="round">
+            <path data-marker-path d="M 305 417 L 293 477" />
+            <path data-marker-path d="M 273 429 L 324 462" />
+            <path data-marker-path d="M 269 460 L 331 437" />
+            <path data-marker-path d="M 280 473 L 317 420" />
+          </g>
+        </svg>
+      </div>
+
+      {/* ─── ANUBI-STYLE ORBITAL STAGE CONTAINER (Z-Index 10: In front of doodles) ─── */}
       <div 
         ref={stageRef}
-        className="absolute inset-0 top-[56px] sm:top-[70px] bottom-[30px] sm:bottom-[40px] pointer-events-none flex items-center justify-center touch-pan-y"
+        className="absolute inset-0 top-[56px] sm:top-[70px] bottom-[30px] sm:bottom-[40px] pointer-events-none flex items-center justify-center touch-pan-y z-10"
         style={{
           perspective: '1100px',
           transformStyle: 'preserve-3d',
@@ -584,83 +682,11 @@ export function FloatingAmbientHero() {
         })}
       </div>
 
-      {/* ─── CENTRAL IDENTITY LOCKUP (Exact Anubi proportions & multiplane layers) ─── */}
+      {/* ─── CENTRAL IDENTITY LOCKUP (Z-Index 20: Wordmark and CTA buttons) ─── */}
       <div 
         ref={identityRef}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-20 will-change-transform"
       >
-        {/* SKETCH LAYER: BACK (Passing behind the typography) */}
-        <svg
-          ref={backSketchRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible will-change-transform"
-          viewBox="0 0 1000 550"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <filter id="sketch-grain-back" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.27" numOctaves="2" seed="14" result="grain" />
-              <feDisplacementMap in="SourceGraphic" in2="grain" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-
-          {/* Blue Loop - Weaving in from left */}
-          <g filter="url(#sketch-grain-back)">
-            <path
-              data-marker-path
-              d="M 229 398 C 171 469 89 437 105 327 C 121 218 209 84 271 78 C 321 76 322 144 276 200"
-              stroke="#2878f0"
-              strokeWidth="14"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-
-          {/* Yellow Sweep - Flowing underneath */}
-          <g filter="url(#sketch-grain-back)">
-            <path
-              data-marker-path
-              d="M -105 434 C 56 408 224 373 405 359"
-              stroke="#ffda25"
-              strokeWidth="13"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              data-marker-path
-              d="M -85 448 C -21 430 37 416 78 403"
-              stroke="#ffda25"
-              strokeWidth="13"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-
-          {/* Violet Star - Ambient floating rotation */}
-          <g ref={violetStarRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="17" strokeLinecap="butt" strokeLinejoin="round">
-            <path data-marker-path d="M 543 73 L 532 160" />
-            <path data-marker-path d="M 496 96 L 569 147" />
-            <path data-marker-path d="M 490 137 L 579 107" />
-            <path data-marker-path d="M 512 159 L 555 81" />
-          </g>
-
-          {/* Orange Curl - Playful doodle flourish */}
-          <g ref={orangeCurlRef} filter="url(#sketch-grain-back)" stroke="#ff7415" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
-            <path
-              data-marker-path
-              d="M 660 415 C 689 435 746 421 767 393 C 792 361 779 333 758 346 C 736 360 766 397 804 379 C 845 360 885 315 896 283 C 909 248 886 230 872 250 C 856 272 898 300 937 247 C 973 199 994 153 986 108"
-            />
-          </g>
-
-          {/* Violet Star Small - Rhythmic twinkle */}
-          <g ref={violetStarSmallRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="12" strokeLinecap="butt" strokeLinejoin="round">
-            <path data-marker-path d="M 305 417 L 293 477" />
-            <path data-marker-path d="M 273 429 L 324 462" />
-            <path data-marker-path d="M 269 460 L 331 437" />
-            <path data-marker-path d="M 280 473 L 317 420" />
-          </g>
-        </svg>
-
         {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 20 - Locked to Epilogue) */}
         <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-20 pointer-events-auto">
           <h1 
@@ -703,46 +729,6 @@ export function FloatingAmbientHero() {
             </a>
           </div>
         </div>
-
-        {/* SKETCH LAYER: FRONT (Passing in front of the typography) */}
-        <svg
-          ref={frontSketchRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-30 overflow-visible will-change-transform"
-          viewBox="0 0 1000 550"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <filter id="sketch-grain-front" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.27" numOctaves="2" seed="14" result="grain" />
-              <feDisplacementMap in="SourceGraphic" in2="grain" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-
-          {/* Blue Overprint passing in front of typography */}
-          <g filter="url(#sketch-grain-front)">
-            <path
-              data-marker-path
-              d="M 105 327 C 110 288 126 240 153 191"
-              stroke="#2878f0"
-              strokeWidth="13"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-
-          {/* Yellow Underline passing in front of the right letters */}
-          <g filter="url(#sketch-grain-front)">
-            <path
-              data-marker-path
-              d="M 807 366 C 879 374 974 371 1042 362"
-              stroke="#ffda25"
-              strokeWidth="12"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </g>
-        </svg>
       </div>
 
       {/* Floating Bottom Control Dock with 3D Orbit Controls */}
