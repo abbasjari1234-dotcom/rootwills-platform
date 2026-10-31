@@ -156,14 +156,14 @@ export function FloatingBottomNav() {
             {/* Apple Sheet Drag Handle Grab Bar */}
             <div className="w-10 h-1.5 rounded-full bg-white/25 mx-auto mb-2 relative z-20 shrink-0" />
 
-            {/* Authentic Rich Dark Burgundy Damask Texture */}
+            {/* Authentic Rich Royal Burgundy Velvet Damask Texture */}
             <div 
-              className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-85"
+              className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-95 contrast-125 saturate-160"
               style={{ backgroundImage: "url('/images/textures/burgundy_damask_texture.jpg')" }}
             />
-            {/* Dark Vignette & Edge Shadowing */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(16,2,4,0.45)_75%,rgba(8,1,2,0.85)_100%)]" />
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#180306]/70 via-transparent to-[#0d0103]/85" />
+            {/* Luminous Crimson Depth & Ambient Vignette */}
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#28040C]/40 via-transparent to-[#140104]/80" />
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(16,2,4,0.65)_100%)]" />
 
             {/* TOP BRAND IDENTITY */}
             <motion.div
