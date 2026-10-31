@@ -99,7 +99,7 @@ export function ContactFormView() {
                 <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#131313] tracking-tight">
                   Fulfilment &amp; Logistics Hub
                 </h2>
-                <p className="text-xs text-stone-500 font-sans mt-1">
+                <p className="text-xs text-stone-600 font-sans mt-1">
                   Serving Midlands and London commercial hospitality kitchens daily.
                 </p>
               </div>
@@ -200,17 +200,18 @@ export function ContactFormView() {
                     <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#131313] tracking-tight">
                       Send a Message to the Commercial Desk
                     </h2>
-                    <p className="text-xs text-stone-500 font-sans mt-0.5">
+                    <p className="text-xs text-stone-600 font-sans mt-0.5">
                       Fill out your details below and an account manager will get back to you today.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-serif font-bold text-stone-700">
+                      <label htmlFor="contact-company-name" className="block text-xs font-serif font-bold text-stone-700">
                         Company or Venue Name <span className="text-[#BA8E4E]">*</span>
                       </label>
                       <input
+                        id="contact-company-name"
                         type="text"
                         required
                         autoComplete="organization"
@@ -223,10 +224,11 @@ export function ContactFormView() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-serif font-bold text-stone-700">
+                      <label htmlFor="contact-contact-name" className="block text-xs font-serif font-bold text-stone-700">
                         Contact Name / Role <span className="text-[#BA8E4E]">*</span>
                       </label>
                       <input
+                        id="contact-contact-name"
                         type="text"
                         required
                         autoComplete="name"
@@ -241,10 +243,11 @@ export function ContactFormView() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-serif font-bold text-stone-700">
+                      <label htmlFor="contact-email" className="block text-xs font-serif font-bold text-stone-700">
                         Business Email <span className="text-[#BA8E4E]">*</span>
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         inputMode="email"
@@ -258,10 +261,11 @@ export function ContactFormView() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="block text-xs font-serif font-bold text-stone-700">
+                      <label htmlFor="contact-phone" className="block text-xs font-serif font-bold text-stone-700">
                         Phone Number <span className="text-[#BA8E4E]">*</span>
                       </label>
                       <input
+                        id="contact-phone"
                         type="tel"
                         required
                         inputMode="tel"
@@ -276,10 +280,11 @@ export function ContactFormView() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-serif font-bold text-stone-700">
+                    <label htmlFor="contact-postcode" className="block text-xs font-serif font-bold text-stone-700">
                       Kitchen Delivery Postcode
                     </label>
                     <input
+                      id="contact-postcode"
                       type="text"
                       autoComplete="postal-code"
                       enterKeyHint="next"
@@ -291,10 +296,11 @@ export function ContactFormView() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-serif font-bold text-stone-700">
+                    <label htmlFor="contact-message" className="block text-xs font-serif font-bold text-stone-700">
                       Enquiry Details / Menu Requirements
                     </label>
                     <textarea
+                      id="contact-message"
                       rows={4}
                       placeholder="Tell us about your weekly produce volume, delivery timing requirements, or specific products..."
                       value={formData.message}
@@ -314,7 +320,7 @@ export function ContactFormView() {
                   </div>
 
                   <div className="text-center pt-1">
-                    <p className="text-[11px] text-stone-500 font-sans">
+                    <p className="text-[11px] text-stone-600 font-sans">
                       We typically respond to commercial enquiries within 45 minutes during business hours.
                     </p>
                   </div>

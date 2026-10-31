@@ -67,6 +67,9 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
           {/* Modal Container with Apple Critically Damped Spring & Viewport Safe Height */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="inquiry-modal-title"
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 16 }}
@@ -86,7 +89,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
               <div className="text-[11px] uppercase tracking-[0.2em] text-[#D4A86A] font-medium mb-1">
                 — ROOTWILLS PARTNERSHIP —
               </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-[-0.02em] leading-tight">
+              <h3 id="inquiry-modal-title" className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-[-0.02em] leading-tight">
                 Connect With Our Team
               </h3>
               <p className="text-xs sm:text-sm text-stone-300 mt-1 font-sans leading-relaxed">
@@ -112,10 +115,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label htmlFor="inquiry-name" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                         Your Name *
                       </label>
                       <input
+                        id="inquiry-name"
                         type="text"
                         required
                         autoComplete="name"
@@ -127,10 +131,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label htmlFor="inquiry-business" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                         Business Name *
                       </label>
                       <input
+                        id="inquiry-business"
                         type="text"
                         required
                         autoComplete="organization"
@@ -145,10 +150,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label htmlFor="inquiry-email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                         Work Email *
                       </label>
                       <input
+                        id="inquiry-email"
                         type="email"
                         required
                         inputMode="email"
@@ -161,10 +167,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                      <label htmlFor="inquiry-phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                         Phone Number *
                       </label>
                       <input
+                        id="inquiry-phone"
                         type="tel"
                         required
                         inputMode="tel"
@@ -179,10 +186,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                    <label htmlFor="inquiry-sector" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                       Business Sector
                     </label>
                     <select
+                      id="inquiry-sector"
                       value={formData.sector}
                       onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
                       className="w-full px-3.5 py-2.5 bg-white border border-[#BA8E4E]/30 rounded-lg text-base sm:text-sm text-slate-900 focus:outline-none focus:border-[#2E060D] focus:ring-1 focus:ring-[#2E060D]"
@@ -197,10 +205,11 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
+                    <label htmlFor="inquiry-notes" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
                       Your Requirements or Message
                     </label>
                     <textarea
+                      id="inquiry-notes"
                       rows={3}
                       placeholder="Tell us about your produce volume, delivery frequency, or specific supply needs..."
                       value={formData.notes}

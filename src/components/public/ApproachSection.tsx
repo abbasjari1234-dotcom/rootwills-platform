@@ -200,7 +200,7 @@ export function ApproachSection() {
                         {pillar.badge}
                       </span>
                     </div>
-                    <p className="text-[11px] sm:text-xs text-stone-500 font-sans leading-relaxed">
+                    <p className="text-[11px] sm:text-xs text-stone-600 font-sans leading-relaxed">
                       {pillar.subtitle}
                     </p>
                   </div>

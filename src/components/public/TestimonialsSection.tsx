@@ -143,7 +143,7 @@ export function TestimonialsSection() {
                     <span className="text-xs font-serif font-bold text-stone-800 block">
                       {testimonials[mobileIndex].author}
                     </span>
-                    <span className="text-[10px] font-sans text-stone-500">
+                    <span className="text-[10px] font-sans text-stone-600">
                       {testimonials[mobileIndex].role} · {testimonials[mobileIndex].location}
                     </span>
                   </div>
@@ -187,7 +187,7 @@ export function TestimonialsSection() {
           {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/80 hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/80 hover:bg-white text-stone-600 hover:text-stone-900 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
             aria-label="Previous testimonials"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -235,7 +235,7 @@ export function TestimonialsSection() {
                         <span className="text-xs font-serif font-bold text-stone-800 block">
                           {item.author}
                         </span>
-                        <span className="text-[10px] font-sans text-stone-500">
+                        <span className="text-[10px] font-sans text-stone-600">
                           {item.role} · {item.location}
                         </span>
                       </div>
@@ -253,7 +253,7 @@ export function TestimonialsSection() {
           {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/80 hover:bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
+            className="w-9 h-9 lg:w-10 lg:h-10 rounded-full border border-[#D5CABB] bg-white/80 hover:bg-white text-stone-600 hover:text-stone-900 flex items-center justify-center shrink-0 shadow-xs apple-tactile active:scale-90 transition-all duration-100 ease-out cursor-pointer"
             aria-label="Next testimonials"
           >
             <ChevronRight className="w-4 h-4" />

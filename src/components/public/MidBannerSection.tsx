@@ -107,7 +107,7 @@ export function MidBannerSection() {
                     </span>
 
                     {/* Subtitle */}
-                    <span className="text-[10.5px] sm:text-[11.5px] text-stone-500 font-sans mt-0.5">
+                    <span className="text-[10.5px] sm:text-[11.5px] text-stone-600 font-sans mt-0.5">
                       {item.subtitle}
                     </span>
                   </div>

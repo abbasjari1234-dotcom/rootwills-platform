@@ -1,5 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Outfit, Cormorant_Garamond, Playfair_Display } from 'next/font/google';
+import { 
+  Inter, 
+  Outfit, 
+  Cormorant_Garamond, 
+  Playfair_Display,
+  Epilogue,
+  Fraunces,
+  Caveat,
+  Plus_Jakarta_Sans,
+} from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -29,6 +38,34 @@ const playfair = Playfair_Display({
   weight: ['400', '600', '700', '800'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
+  display: 'swap',
+});
+
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  weight: ['800', '900'],
+  variable: '--font-epilogue',
+  display: 'swap',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  weight: ['700', '800', '900'],
+  variable: '--font-fraunces',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-caveat',
+  display: 'swap',
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
@@ -89,7 +126,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} ${cormorant.variable} ${playfair.variable} scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${epilogue.variable} ${fraunces.variable} ${caveat.variable} ${jakarta.variable} scroll-smooth`}>
       <head>
         <link rel="icon" href="/images/branded/rootwills_logo_seal.png" type="image/png" />
       </head>

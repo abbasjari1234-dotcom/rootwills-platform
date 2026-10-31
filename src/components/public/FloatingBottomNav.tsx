@@ -147,6 +147,10 @@ export function FloatingBottomNav() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-navigation-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Menu"
             initial={{ opacity: 0, y: 40, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.98 }}
@@ -257,6 +261,7 @@ export function FloatingBottomNav() {
                 <button
                   type="button"
                   role="switch"
+                  aria-label="Toggle 05:30 to 07:30 AM SLA pre-dawn dispatch alert"
                   aria-checked={slaAlertActive}
                   onClick={() => setSlaAlertActive(!slaAlertActive)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 focus:outline-none p-0.5 active:scale-95 ${
@@ -355,6 +360,8 @@ export function FloatingBottomNav() {
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label={isMobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation-menu"
                 className="group relative p-[1.5px] rounded-full transition-[transform,box-shadow] duration-100 ease-out active:scale-[0.96] bg-[#E4C767]/30 ring-1 ring-[#D4A86A]/50 shadow-[0_0_30px_rgba(200,30,45,0.6),0_8px_24px_rgba(0,0,0,0.85)] cursor-pointer touch-manipulation"
               >
                 {/* Inner Velvet Capsule with Specular Top Highlight */}
