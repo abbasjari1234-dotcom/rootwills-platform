@@ -328,11 +328,9 @@ select:focus-visible,
   outline-offset: 2px;
 }
 
-/* Touch Target Minimum Sizing (WCAG 2.5.5 / 2.5.8 Level AAA Usability) */
-button,
+/* Touch Target Usability */
 input[type="button"],
-input[type="submit"],
-[role="button"] {
+input[type="submit"] {
   min-height: 38px;
 }
 

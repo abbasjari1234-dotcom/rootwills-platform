@@ -190,116 +190,134 @@ export function TestimonialsSection() {
             </AnimatePresence>
           </div>
 
-          {/* Mobile Arrows & Counter */}
-          <div className="flex items-center justify-between mt-2.5 px-1 w-full">
-            <span className="text-[10.5px] font-mono text-stone-500 tracking-wider tabular-nums">
-              0{mobileIndex + 1} / 0{testimonials.length}
-            </span>
-            <div className="flex items-center gap-2">
+          {/* Modern Sleek Capsule Slider Bar (Mobile) */}
+          <div className="flex items-center justify-center mt-3.5">
+            <div className="inline-flex items-center gap-3 p-1 rounded-full bg-[#FFFDF9] border border-[#DCD2C0] shadow-[0_4px_16px_rgba(46,6,13,0.05)]">
               <button
                 type="button"
                 onClick={handleMobilePrev}
-                className="w-8 h-8 rounded-full border border-[#DCD2C0] bg-[#FFFDF9] text-stone-700 flex items-center justify-center active:scale-90 transition-transform cursor-pointer"
+                className="w-7 h-7 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#E8DEC8] flex items-center justify-center active:scale-90 transition-all duration-200 cursor-pointer"
                 aria-label="Previous testimonial"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3.5 h-3.5" />
               </button>
+
+              <div className="flex items-center gap-2 px-1">
+                <span className="font-mono text-[10px] font-semibold text-[#2E060D] tabular-nums">
+                  0{mobileIndex + 1}
+                </span>
+                <div className="w-16 h-[2px] bg-[#E8DEC8] rounded-full overflow-hidden relative">
+                  <div
+                    className="h-full bg-[#8B2635] rounded-full transition-all duration-300 ease-out"
+                    style={{
+                      width: `${((mobileIndex + 1) / testimonials.length) * 100}%`,
+                    }}
+                  />
+                </div>
+                <span className="font-mono text-[10px] text-stone-400 tabular-nums">
+                  0{testimonials.length}
+                </span>
+              </div>
+
               <button
                 type="button"
                 onClick={handleMobileNext}
-                className="w-8 h-8 rounded-full border border-[#DCD2C0] bg-[#FFFDF9] text-stone-700 flex items-center justify-center active:scale-90 transition-transform cursor-pointer"
+                className="w-7 h-7 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#E8DEC8] flex items-center justify-center active:scale-90 transition-all duration-200 cursor-pointer"
                 aria-label="Next testimonial"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
         </div>
 
-        {/* ─── DESKTOP VIEW: Architectural 3-Column Hairline Press Ledger ─── */}
-        <div className="hidden md:flex flex-col items-center gap-6">
-          <div className="flex items-center justify-center gap-4 lg:gap-6 w-full">
-            {/* Left Arrow Button */}
+        {/* ─── DESKTOP VIEW: Architectural 3-Column Hairline Press Ledger + Modern Slider Bar ─── */}
+        <div className="hidden md:flex flex-col items-center gap-7">
+          {/* Unified 3-Column Hairline Board */}
+          <div className="w-full max-w-5xl overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-3 divide-x divide-[#DCD2C0] rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] shadow-[0_12px_36px_-12px_rgba(46,6,13,0.06)] overflow-hidden"
+              >
+                {visibleTestimonials.map((item, index) => (
+                  <div
+                    key={`${currentPage}-${index}`}
+                    className="p-6 lg:p-8 flex flex-col justify-between hover:bg-[#FAF7F2]/60 transition-colors duration-200"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-5">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#8B2635] font-semibold">
+                          {item.location}
+                        </span>
+                        <div className="flex items-center gap-0.5 text-[#BA8E4E]">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-[#BA8E4E] text-[#BA8E4E]" />
+                          ))}
+                        </div>
+                      </div>
+
+                      <p className="text-[14px] lg:text-[15px] font-serif italic text-[#2E060D] leading-[1.68] mb-6">
+                        &ldquo;{item.quote}&rdquo;
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-[#E8DEC8] flex items-center justify-between gap-2">
+                      <div className="min-w-0">
+                        <span className="text-xs sm:text-[13px] font-serif font-bold text-[#2E060D] block truncate">
+                          {item.author}
+                        </span>
+                        <span className="text-[11px] font-sans text-stone-500 block truncate mt-0.5">
+                          {item.role}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Modern Unified Slider Control Capsule */}
+          <div className="inline-flex items-center gap-4 p-1.5 rounded-full bg-[#FFFDF9] border border-[#DCD2C0] shadow-[0_6px_20px_rgba(46,6,13,0.05)]">
             <button
+              type="button"
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full border border-[#DCD2C0] bg-[#FFFDF9] hover:bg-[#2E060D] text-stone-700 hover:text-[#FAF7F2] hover:border-[#2E060D] flex items-center justify-center shrink-0 transition-all duration-200 cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#E8DEC8] hover:border-[#2E060D] flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
               aria-label="Previous testimonials"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            {/* Unified 3-Column Hairline Board */}
-            <div className="w-full max-w-5xl overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentPage}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                  className="grid grid-cols-3 divide-x divide-[#DCD2C0] rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] shadow-[0_12px_36px_-12px_rgba(46,6,13,0.06)] overflow-hidden"
-                >
-                  {visibleTestimonials.map((item, index) => (
-                    <div
-                      key={`${currentPage}-${index}`}
-                      className="p-6 lg:p-8 flex flex-col justify-between hover:bg-[#FAF7F2]/60 transition-colors duration-200"
-                    >
-                      <div>
-                        <div className="flex items-center justify-between mb-5">
-                          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#8B2635] font-semibold">
-                            {item.location}
-                          </span>
-                          <div className="flex items-center gap-0.5 text-[#BA8E4E]">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="w-3 h-3 fill-[#BA8E4E] text-[#BA8E4E]" />
-                            ))}
-                          </div>
-                        </div>
-
-                        <p className="text-[14px] lg:text-[15px] font-serif italic text-[#2E060D] leading-[1.68] mb-6">
-                          &ldquo;{item.quote}&rdquo;
-                        </p>
-                      </div>
-
-                      <div className="pt-4 border-t border-[#E8DEC8] flex items-center justify-between gap-2">
-                        <div className="min-w-0">
-                          <span className="text-xs sm:text-[13px] font-serif font-bold text-[#2E060D] block truncate">
-                            {item.author}
-                          </span>
-                          <span className="text-[11px] font-sans text-stone-500 block truncate mt-0.5">
-                            {item.role}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+            <div className="flex items-center gap-2.5 px-1">
+              <span className="font-mono text-[11px] font-semibold text-[#2E060D] tabular-nums">
+                0{currentPage + 1}
+              </span>
+              <div className="w-24 h-[2px] bg-[#E8DEC8] rounded-full overflow-hidden relative">
+                <div
+                  className="h-full bg-[#8B2635] rounded-full transition-all duration-300 ease-out"
+                  style={{
+                    width: `${((currentPage + 1) / totalPages) * 100}%`,
+                  }}
+                />
+              </div>
+              <span className="font-mono text-[11px] text-stone-400 tabular-nums">
+                0{totalPages}
+              </span>
             </div>
 
-            {/* Right Arrow Button */}
             <button
+              type="button"
               onClick={handleNext}
-              className="w-10 h-10 rounded-full border border-[#DCD2C0] bg-[#FFFDF9] hover:bg-[#2E060D] text-stone-700 hover:text-[#FAF7F2] hover:border-[#2E060D] flex items-center justify-center shrink-0 transition-all duration-200 cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#E8DEC8] hover:border-[#2E060D] flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
               aria-label="Next testimonials"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
-          </div>
-
-          {/* Desktop Pagination Pill Indicator */}
-          <div className="flex items-center gap-2">
-            {[...Array(totalPages)].map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setCurrentPage(idx)}
-                aria-label={`View testimonials page ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  currentPage === idx ? 'w-7 bg-[#2E060D]' : 'w-2 bg-[#BA8E4E]/35 hover:bg-[#BA8E4E]/70'
-                }`}
-              />
-            ))}
           </div>
         </div>
 
