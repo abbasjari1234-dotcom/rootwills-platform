@@ -101,7 +101,7 @@ export default function ErrorBoundary({
         <div className="p-4 bg-[#FFFDF9] border border-[#E8DEC8] rounded-2xl flex items-center justify-between text-xs shadow-xs">
           <div className="flex items-center gap-2.5 text-stone-600 font-sans">
             <Phone className="w-4 h-4 text-[#BA8E4E]" />
-            <span>Commercial Support Desk: <strong>+44 (0) 20 1234 5678</strong></span>
+            <span>Commercial Support Desk: <strong>+44 16164 12803</strong></span>
           </div>
           <Link href="/contact" className="text-[#BA8E4E] font-serif font-bold hover:underline">
             Contact Team &rarr;

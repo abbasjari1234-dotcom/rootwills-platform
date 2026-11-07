@@ -166,8 +166,9 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="p-5 rounded-2xl bg-[#260309] text-white border border-[#F3D08A]/35 text-xs space-y-1.5">
                 <div className="text-[#F3D08A] font-serif font-bold text-sm">Rootwills Ltd — Legal &amp; Governance Desk</div>
-                <div className="text-[#EDE4D8]/90">Direct Phone: <span className="text-white font-medium tabular-nums">+44 (0) 20 1234 5678</span></div>
-                <div className="text-[#EDE4D8]/90">Email: <span className="text-[#F3D08A] font-medium">info@rootwills.co.uk</span></div>
+                <div className="text-[#EDE4D8]/90">Landline No: <span className="text-white font-medium tabular-nums">+44 16164 12803</span></div>
+                <div className="text-[#EDE4D8]/90">WhatsApp No: <span className="text-white font-medium tabular-nums">+44 7984 709478</span></div>
+                <div className="text-[#EDE4D8]/90">Email: <span className="text-[#F3D08A] font-medium">sales@rootwills.co.uk</span></div>
                 <div className="text-[#EDE4D8]/70">Location: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom</div>
               </div>
             </section>

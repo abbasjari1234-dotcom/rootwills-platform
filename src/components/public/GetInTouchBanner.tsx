@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin } from 'lucide-react';
 import { DoodleFlourish } from './DoodleFlourish';
 
 export function GetInTouchBanner() {
@@ -75,9 +75,9 @@ export function GetInTouchBanner() {
               </p>
 
               {/* Contact Icons Row with Double-Bezel Frosted Medallions and Tactile Response */}
-              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-10 text-xs sm:text-sm text-white font-sans">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-7 text-xs sm:text-sm text-white font-sans">
                 <a
-                  href="tel:+442012345678"
+                  href="tel:+441616412803"
                   className="group flex items-center gap-2.5 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95"
                 >
                   <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
@@ -85,11 +85,31 @@ export function GetInTouchBanner() {
                       <Phone className="w-3.5 h-3.5 stroke-[1.8]" />
                     </div>
                   </div>
-                  <span className="font-mono text-xs sm:text-sm font-semibold tracking-wide tabular-nums">+44 (0) 20 1234 5678</span>
+                  <div className="text-left">
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[#F3D08A]/80 leading-none mb-0.5">Landline</span>
+                    <span className="font-mono text-xs sm:text-sm font-semibold tracking-wide tabular-nums">+44 16164 12803</span>
+                  </div>
                 </a>
 
                 <a
-                  href="mailto:info@rootwills.co.uk"
+                  href="https://wa.me/447984709478"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2.5 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95"
+                >
+                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
+                    <div className="w-8 h-8 rounded-full bg-[#180205]/85 backdrop-blur-md ring-1 ring-[#F3D08A]/40 flex items-center justify-center text-[#F3D08A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                      <MessageCircle className="w-3.5 h-3.5 stroke-[1.8]" />
+                    </div>
+                  </div>
+                  <div className="text-left">
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[#F3D08A]/80 leading-none mb-0.5">WhatsApp</span>
+                    <span className="font-mono text-xs sm:text-sm font-semibold tracking-wide tabular-nums">+44 7984 709478</span>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:sales@rootwills.co.uk"
                   className="group flex items-center gap-2.5 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95"
                 >
                   <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
@@ -97,7 +117,10 @@ export function GetInTouchBanner() {
                       <Mail className="w-3.5 h-3.5 stroke-[1.8]" />
                     </div>
                   </div>
-                  <span className="font-mono text-xs sm:text-sm font-semibold tracking-wide">info@rootwills.co.uk</span>
+                  <div className="text-left">
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[#F3D08A]/80 leading-none mb-0.5">Email</span>
+                    <span className="font-mono text-xs sm:text-sm font-semibold tracking-wide">sales@rootwills.co.uk</span>
+                  </div>
                 </a>
 
                 <div className="flex items-center gap-2.5 text-white/95 apple-tactile active:scale-95 cursor-default">

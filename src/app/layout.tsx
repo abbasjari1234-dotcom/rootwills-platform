@@ -95,8 +95,8 @@ const jsonLdSchema = {
       image: 'https://www.rootwills.co.uk/images/commercial/rootwills_hero_chef_plating.jpg',
       description:
         'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens.',
-      telephone: '+44-20-1234-5678',
-      email: 'info@rootwills.co.uk',
+      telephone: '+44-16164-12803',
+      email: 'sales@rootwills.co.uk',
       priceRange: '££',
       address: {
         '@type': 'PostalAddress',

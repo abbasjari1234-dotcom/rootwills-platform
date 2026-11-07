@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 
 export function ContactFormView() {
   const [submitted, setSubmitted] = useState(false);
@@ -61,22 +61,37 @@ export function ContactFormView() {
             </div>
 
             {/* Middle Contact Details List */}
-            <div className="relative z-10 space-y-3.5 sm:space-y-7 my-4 sm:my-auto py-1 sm:py-4">
-              {/* Phone Numbers */}
+            <div className="relative z-10 space-y-3.5 sm:space-y-6 my-4 sm:my-auto py-1 sm:py-4">
+              {/* Landline Number */}
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 flex flex-wrap gap-x-4 gap-y-0.5 sm:block sm:space-y-1 tabular-nums">
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Landline No
+                  </span>
                   <a
-                    href="tel:+442012345678"
-                    className="block hover:text-[#F3D08A] transition-colors"
+                    href="tel:+441616412803"
+                    className="block font-medium hover:text-[#F3D08A] transition-colors"
                   >
-                    +44 (0) 20 1234 5678
+                    +44 16164 12803
                   </a>
+                </div>
+              </div>
+
+              {/* WhatsApp Number */}
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    WhatsApp No
+                  </span>
                   <a
-                    href="tel:+441217908801"
-                    className="block hover:text-[#F3D08A] transition-colors"
+                    href="https://wa.me/447984709478"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block font-medium hover:text-[#F3D08A] transition-colors"
                   >
-                    +44 (0) 121 790 8801
+                    +44 7984 709478
                   </a>
                 </div>
               </div>
@@ -84,12 +99,17 @@ export function ContactFormView() {
               {/* Email */}
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <a
-                  href="mailto:info@rootwills.co.uk"
-                  className="text-xs sm:text-[13.5px] font-sans text-white/95 hover:text-[#F3D08A] transition-colors"
-                >
-                  info@rootwills.co.uk
-                </a>
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Email
+                  </span>
+                  <a
+                    href="mailto:sales@rootwills.co.uk"
+                    className="block font-medium hover:text-[#F3D08A] transition-colors"
+                  >
+                    sales@rootwills.co.uk
+                  </a>
+                </div>
               </div>
 
               {/* Location */}

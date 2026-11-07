@@ -166,8 +166,9 @@ export default function TermsPage() {
               
               <div className="p-5 rounded-2xl bg-[#260309] text-white border border-[#F3D08A]/35 text-xs space-y-1.5 mt-4">
                 <div className="text-[#F3D08A] font-serif font-bold text-sm">Rootwills Ltd — Commercial Contracts &amp; Trade Desk</div>
-                <div className="text-[#EDE4D8]/90">Telephone: <span className="text-white font-medium tabular-nums">+44 (0) 20 1234 5678</span></div>
-                <div className="text-[#EDE4D8]/90">Commercial Enquiries: <span className="text-[#F3D08A] font-medium">info@rootwills.co.uk</span></div>
+                <div className="text-[#EDE4D8]/90">Landline No: <span className="text-white font-medium tabular-nums">+44 16164 12803</span></div>
+                <div className="text-[#EDE4D8]/90">WhatsApp No: <span className="text-white font-medium tabular-nums">+44 7984 709478</span></div>
+                <div className="text-[#EDE4D8]/90">Commercial Enquiries: <span className="text-[#F3D08A] font-medium">sales@rootwills.co.uk</span></div>
                 <div className="text-[#EDE4D8]/70">Registered Office: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom • England &amp; Wales</div>
               </div>
             </section>

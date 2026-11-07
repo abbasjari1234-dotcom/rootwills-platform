@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, CheckCircle2, Phone, Mail, Send } from 'lucide-react';
+import { X, CheckCircle2, Phone, MessageCircle, Mail, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface InquiryModalProps {
@@ -184,7 +184,7 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                           inputMode="tel"
                           autoComplete="tel"
                           enterKeyHint="next"
-                          placeholder="+44 7123 456789"
+                          placeholder="+44 7984 709478"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           className="w-full px-3.5 py-2.5 bg-[#FFFDF9] border border-[#E8DEC8] rounded-xl text-base sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#BA8E4E] focus:ring-2 focus:ring-[#BA8E4E]/20 transition-all"
@@ -238,12 +238,15 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     </div>
 
                     <div className="flex flex-wrap items-center justify-center gap-4 pt-2 text-xs text-stone-600 font-mono">
-                      <span className="flex items-center gap-1.5 tabular-nums">
-                        <Phone className="w-3.5 h-3.5 text-[#BA8E4E]" /> +44 (0) 20 1234 5678
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <Mail className="w-3.5 h-3.5 text-[#BA8E4E]" /> info@rootwills.co.uk
-                      </span>
+                      <a href="tel:+441616412803" className="flex items-center gap-1.5 tabular-nums hover:text-[#4E0D17] transition-colors">
+                        <Phone className="w-3.5 h-3.5 text-[#BA8E4E]" /> +44 16164 12803
+                      </a>
+                      <a href="https://wa.me/447984709478" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 tabular-nums hover:text-[#4E0D17] transition-colors">
+                        <MessageCircle className="w-3.5 h-3.5 text-[#BA8E4E]" /> +44 7984 709478
+                      </a>
+                      <a href="mailto:sales@rootwills.co.uk" className="flex items-center gap-1.5 hover:text-[#4E0D17] transition-colors">
+                        <Mail className="w-3.5 h-3.5 text-[#BA8E4E]" /> sales@rootwills.co.uk
+                      </a>
                     </div>
                   </form>
                 )}

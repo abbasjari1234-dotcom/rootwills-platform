@@ -147,12 +147,12 @@ export default function NotFound() {
                 Need Immediate Kitchen Depot Support?
               </span>
               <span className="text-stone-500 font-sans">
-                London &amp; Midlands Logistics Desk: +44 (0) 20 1234 5678 (Live 02:00 – 16:00 GMT)
+                Landline: +44 16164 12803 &bull; WhatsApp: +44 7984 709478
               </span>
             </div>
           </div>
           <a
-            href="tel:+442012345678"
+            href="tel:+441616412803"
             className="px-4 py-2 rounded-full bg-[#FAF6EE] hover:bg-[#F3EAD8] text-[#2E060D] border border-[#BA8E4E]/40 font-serif font-semibold text-xs transition-colors shrink-0"
           >
             Call Dispatch Desk
