@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { InquiryModal } from './InquiryModal';
 
 interface NavItem {
   id: string;
@@ -16,16 +15,16 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { id: 'home', label: 'HOME', href: '/#home', isHash: true },
   { id: 'about', label: 'ABOUT', href: '/#about', isHash: true },
   { id: 'services', label: 'SERVICES', href: '/#services', isHash: true },
   { id: 'approach', label: 'APPROACH', href: '/#approach', isHash: true },
-  { id: 'contact', label: 'CONTACT', href: '/contact' },
+  { id: 'contact', label: 'INQUIRE', href: '/contact' },
 ];
 
 export function FloatingBottomNav() {
   const pathname = usePathname();
-  const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [activeId, setActiveId] = useState<string>('about');
+  const [activeId, setActiveId] = useState<string>('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [slaAlertActive, setSlaAlertActive] = useState<boolean>(true);
   const [isNearFooter, setIsNearFooter] = useState<boolean>(false);
@@ -123,21 +122,29 @@ export function FloatingBottomNav() {
   }, [pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+    // Unlock body scroll synchronously before smooth scrolling
+    document.body.style.overflow = '';
     setIsMobileMenuOpen(false);
 
     if (item.isHash && (pathname === '/' || pathname === '')) {
       e.preventDefault();
       const targetId = item.id;
-      const element = document.getElementById(targetId);
-      if (element) {
-        const headerOffset = 70;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - headerOffset,
-          behavior: 'smooth',
-        });
-        setActiveId(targetId);
-      }
+      setActiveId(targetId);
+      requestAnimationFrame(() => {
+        if (targetId === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        const element = document.getElementById(targetId);
+        if (element) {
+          const headerOffset = 70;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'smooth',
+          });
+        }
+      });
     }
   };
 
@@ -389,9 +396,6 @@ export function FloatingBottomNav() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Inquiry Modal */}
-      <InquiryModal isOpen={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import gsap from 'gsap';
 import { Pause, Play } from 'lucide-react';
 
@@ -275,14 +276,23 @@ export function FloatingAmbientHero() {
       const isMobile = w < 780;
       const frontBoost = isMobile ? 0 : 0.24;
 
-      // Card width based on viewport
-      const cardWidth = isMobile ? Math.min(180, w * 0.38) : Math.min(220, w * 0.16);
-      const halfCard = (cardWidth * (1.2 + frontBoost)) / 2;
-      const tilt = isMobile ? -0.06 : Math.tan((CONFIG.orbit.angle * Math.PI) / 180);
-      const radiusX = isMobile ? w * 0.52 : Math.min(w * CONFIG.orbit.radiusX, w / 2 - halfCard - 28);
-      const maxVertical = Math.max(40, h / 2 - halfCard / 1.6 - 16);
+      // Card width based on viewport (scales fluidly across 320px -> 2560px)
+      const cardWidth = isMobile ? Math.max(92, Math.min(126, w * 0.28)) : Math.min(220, w * 0.16);
+      const cardHeight = cardWidth / 1.6;
+      const halfCard = (cardWidth * (1.15 + frontBoost)) / 2;
+      const tilt = isMobile ? -0.05 : Math.tan((CONFIG.orbit.angle * Math.PI) / 180);
+      const radiusX = isMobile ? w * 0.44 : Math.min(w * CONFIG.orbit.radiusX, w / 2 - halfCard - 28);
+      const maxVertical = Math.max(40, h / 2 - halfCard / 1.6 - 10);
       const clearanceY = Math.sqrt(Math.max(1600, Math.pow(maxVertical, 2) - Math.pow(radiusX * tilt, 2)));
-      const radiusY = Math.max(40, Math.min(h * (isMobile ? 0.33 : CONFIG.orbit.radiusY), clearanceY));
+
+      // Measure actual central text + buttons height so orbiting cards NEVER collide on any device
+      const centerContentEl = identityRef.current?.firstElementChild as HTMLElement | null;
+      const centerHalfHeight = centerContentEl ? centerContentEl.offsetHeight / 2 : (isMobile ? 76 : 120);
+      const minSafeRadiusY = centerHalfHeight + cardHeight * 0.55 + (isMobile ? 12 : 24);
+
+      const radiusY = isMobile
+        ? Math.max(minSafeRadiusY, Math.min(h * 0.39, clearanceY))
+        : Math.max(minSafeRadiusY, Math.min(h * CONFIG.orbit.radiusY, clearanceY));
 
       layout = {
         width: w,
@@ -303,22 +313,23 @@ export function FloatingAmbientHero() {
     const renderOrbit = () => {
       const { width, height, radiusX, radiusY, tilt, frontBoost, isMobile } = layout;
       const cardCount = CARDS.length;
+      const activeCount = isMobile ? 8 : cardCount;
       const mouse = mouseParallaxRef.current;
 
       cardNodesRef.current.forEach((node, i) => {
         if (!node) return;
         const card = CARDS[i];
 
-        // Mobile optimization: hide cards beyond index 9 for clean breathing room
-        if (isMobile && i >= 10) {
+        // Mobile optimization: 8 evenly-spaced cards around 360° for clean breathing room on iPhone SE
+        if (isMobile && i >= activeCount) {
           node.style.display = 'none';
           return;
         } else {
           node.style.display = 'block';
         }
 
-        // Exact clustered orbit angle
-        const angle = getClusteredAngle(orbit.phase + i / cardCount, CONFIG.orbit.clusterStrength, CONFIG.orbit.clusterAngle, isMobile);
+        // Exact clustered orbit angle evenly divided across activeCount
+        const angle = getClusteredAngle(orbit.phase + i / activeCount, CONFIG.orbit.clusterStrength, CONFIG.orbit.clusterAngle, isMobile);
         const depth = getDepth(angle, CONFIG.depth.focalAngle);
 
         const cosA = Math.cos(angle);
@@ -496,8 +507,27 @@ export function FloatingAmbientHero() {
     <section 
       id="home"
       ref={heroSectionRef}
-      className="relative min-h-[580px] xs:min-h-[640px] sm:min-h-[760px] h-[100svh] max-h-[940px] w-full flex items-center justify-center overflow-hidden bg-[#FCFCFA] select-none text-[#131313] touch-pan-y"
+      className="relative min-h-[510px] sm:min-h-[760px] h-[76svh] sm:h-[100svh] max-h-[940px] w-full flex items-center justify-center overflow-hidden bg-[#FAF7F2] select-none text-[#131313] touch-pan-y"
     >
+      {/* ─── ART-DIRECTED BOTANICAL PERIMETER CANVAS (Open Warm Paper Center + Corner Herb Etchings) ─── */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-[0.42] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/texture_approach_botanical.jpg')`,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Soft Luminous Studio Center Vignette keeping ROOTWILLS, Doodles & Orbiting Photos Ultra-Clean */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 56% 50% at 50% 50%, rgba(252, 252, 250, 0.88) 0%, rgba(250, 247, 242, 0.45) 58%, rgba(250, 247, 242, 0) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
       {/* ─── DYNAMIC CURSOR DOODLE TRAIL (Anubi pointerInk) ─── */}
       <PointerInk containerRef={heroSectionRef} enabled={!isPaused} />
 
@@ -612,7 +642,7 @@ export function FloatingAmbientHero() {
                 cardNodesRef.current[index] = el;
               }}
               data-tilt={card.tilt}
-              className="absolute left-0 top-0 pointer-events-auto cursor-pointer will-change-transform aspect-[1.6] w-[140px] sm:w-[170px] md:w-[195px] lg:w-[215px]"
+              className="absolute left-0 top-0 pointer-events-none sm:pointer-events-auto cursor-pointer will-change-transform aspect-[1.6] w-[clamp(92px,27vw,124px)] sm:w-[170px] md:w-[195px] lg:w-[215px]"
               onPointerEnter={() => handleCardEnter(index)}
               onPointerLeave={() => handleCardLeave(index)}
               onPointerMove={(e) => handleCardPointerMove(e, index)}
@@ -682,20 +712,25 @@ export function FloatingAmbientHero() {
         })}
       </div>
 
-      {/* ─── CENTRAL IDENTITY LOCKUP (Z-Index 20: Wordmark and CTA buttons) ─── */}
+      {/* ─── CENTRAL IDENTITY LOCKUP (Z-Index 30: Wordmark and CTA buttons) ─── */}
       <div 
         ref={identityRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-20 will-change-transform"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-30 will-change-transform"
       >
-        {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 20 - Locked to Epilogue) */}
-        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-20 pointer-events-auto">
+        {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 30 - Locked to Epilogue) */}
+        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-30 pointer-events-auto">
           <h1 
             ref={wordmarkRef}
-            className="font-epilogue font-black text-[34px] xs:text-[46px] sm:text-[78px] md:text-[110px] lg:text-[148px] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default"
+            aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
+            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default"
           >
+            <span className="sr-only">
+              Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
+            </span>
             {WORDMARK_LETTERS.map((char, idx) => (
               <span
                 key={idx}
+                aria-hidden="true"
                 className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#BA8E4E] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
                 style={{
                   transitionDelay: `${idx * 12}ms`,
@@ -712,21 +747,29 @@ export function FloatingAmbientHero() {
           </p>
 
           {/* Minimalist Tactile Action Buttons */}
-          <div className="mt-3.5 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-3">
+          <div className="relative z-40 mt-3.5 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-3">
             <a
-              href="/#services"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(19,19,19,0.2)]"
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('services');
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.scrollY - 70;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                }
+              }}
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(19,19,19,0.2)] cursor-pointer"
             >
               <span>What We Do</span>
               <span className="text-stone-400 group-hover:text-white transition-colors">↗</span>
             </a>
 
-            <a
+            <Link
               href="/contact"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
             >
               <span>Open Account</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

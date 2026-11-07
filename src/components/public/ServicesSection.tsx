@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   Clock, 
@@ -11,9 +12,13 @@ import {
   CheckCircle2, 
   UserCheck, 
   CreditCard, 
-  Calendar 
+  Calendar,
+  UtensilsCrossed,
+  Building2,
+  ChefHat,
+  Landmark
 } from 'lucide-react';
-import { DoodleFlourish } from './DoodleFlourish';
+import { gsap } from '@/lib/animations/gsap-core';
 
 interface ServiceCardData {
   index: string;
@@ -21,6 +26,8 @@ interface ServiceCardData {
   badge: string;
   title: string;
   description: string;
+  image: string;
+  imageAlt: string;
   icon: React.ReactNode;
   highlights: {
     icon: React.ElementType;
@@ -35,8 +42,10 @@ const SERVICES_DATA: ServiceCardData[] = [
     badge: 'MICHELIN & BISTRO',
     title: 'Food Service Supply',
     description: 'Fresh, hand-graded ingredients and chef-specified kitchen essentials delivered pre-dawn across London and the Midlands.',
+    image: '/images/commercial/chef_inspect_produce.jpg',
+    imageAlt: 'Head chef inspecting fresh morning harvest produce crate',
     icon: (
-      <svg className="w-5 h-5 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-4 h-4 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="20" cy="11" r="1.5" />
         <path d="M9 26a11 11 0 0 1 22 0" />
         <path d="M6 26h28" />
@@ -50,12 +59,14 @@ const SERVICES_DATA: ServiceCardData[] = [
   },
   {
     index: '02',
-    tag: 'COMMERCIAL COMMERCE',
+    tag: 'COMMERCIAL DISTRIBUTION',
     badge: 'VOLUME CONTRACTS',
     title: 'Wholesale Solutions',
-    description: 'Reliable, margin-locked wholesale supply for hospitality businesses of all sizes, from single venues to multi-site groups.',
+    description: 'Reliable, margin-locked wholesale supply for hospitality businesses of all sizes, from independent venues to multi-site groups.',
+    image: '/images/commercial/cold_depot_logistics.jpg',
+    imageAlt: 'Temperature-controlled wholesale distribution hub',
     icon: (
-      <svg className="w-5 h-5 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-4 h-4 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 7l12 7-12 7-12-7 12-7z" />
         <path d="M8 14v13l12 7 12-7V14" />
         <path d="M20 21v13" />
@@ -74,8 +85,10 @@ const SERVICES_DATA: ServiceCardData[] = [
     badge: 'DEDICATED DESK',
     title: 'Business Partnerships',
     description: 'We collaborate directly with head chefs and culinary directors to engineer bespoke supply schedules and seasonal menu forecasts.',
+    image: '/images/commercial/rootwills_hero_chef_plating.jpg',
+    imageAlt: 'Executive chef plating fine dining dish with fresh micro-herbs',
     icon: (
-      <svg className="w-5 h-5 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="w-4 h-4 stroke-[#BA8E4E] fill-none" viewBox="0 0 40 40" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
         <path d="m18 22 2 2a1.5 1.5 0 0 0 2.1 0l4-4a2 2 0 0 0 0-2.8l-1.5-1.5a2 2 0 0 0-2.8 0L20 17" />
         <path d="m8 15 5-5a2 2 0 0 1 2.8 0l1.5 1.5a2 2 0 0 1 0 2.8L15 16" />
         <path d="M6 18a7 7 0 0 0 10.5 6l1.5-1" />
@@ -84,15 +97,114 @@ const SERVICES_DATA: ServiceCardData[] = [
     ),
     highlights: [
       { icon: UserCheck, text: 'Assigned Senior Depot Account Lead' },
-      { icon: CreditCard, text: '30-Day Commercial B2B Credit' },
+      { icon: CreditCard, text: '30-Day Commercial Trade Terms' },
       { icon: Calendar, text: 'Seasonal Menu Yield Forecasts' },
     ],
   },
 ];
 
+const SECTORS_WE_SERVE = [
+  {
+    title: 'Restaurants & Fine Dining',
+    subtitle: 'Hand-graded heritage produce, coastal catch & living microgreens',
+    image: '/images/commercial/10_restaurant.jpg',
+    icon: UtensilsCrossed,
+    tag: 'CULINARY',
+  },
+  {
+    title: 'Hotels & Boutique Resorts',
+    subtitle: 'Multi-outlet breakfast dairy, artisan bakery & banqueting supply',
+    image: '/images/commercial/11_hotels.jpg',
+    icon: Building2,
+    tag: 'HOSPITALITY',
+  },
+  {
+    title: 'Event & Contract Caterers',
+    subtitle: 'Precision-timed volume drops & bespoke menu spec grading',
+    image: '/images/commercial/13_caterers.jpg',
+    icon: ChefHat,
+    tag: 'CATERING',
+  },
+  {
+    title: 'Gastro Pubs & Institutions',
+    subtitle: 'Dependable British farm staples, prime butchery & dry larder',
+    image: '/images/commercial/14_pubs_bars.jpg',
+    icon: Landmark,
+    tag: 'COMMERCIAL',
+  },
+];
+
 export function ServicesSection() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectorsGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current.children,
+          { y: 16, opacity: 0.85 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      if (scrollContainerRef.current) {
+        gsap.fromTo(
+          scrollContainerRef.current.children,
+          { y: 20, opacity: 0.85 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.09,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      if (sectorsGridRef.current) {
+        gsap.fromTo(
+          sectorsGridRef.current.children,
+          { y: 16, opacity: 0.85 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.07,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectorsGridRef.current,
+              start: 'top 96%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -123,132 +235,141 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services" className="py-12 sm:py-20 lg:py-28 relative overflow-hidden border-b border-[#E8DEC8]/60">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="services" className="py-9 sm:py-24 lg:py-32 bg-[#FAF7F2] relative overflow-hidden border-b border-[#E8DEC8]/70">
+      {/* Seamless Botanical Parchment Texture */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-20">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* ─── PART 1: CORE SERVICE PILLARS (EDITORIAL SPLIT + UNOBSTRUCTED PHOTOGRAPHY) ─── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 items-start">
           
           {/* Left Header Column */}
-          <div className="lg:col-span-4 max-w-lg pr-0 lg:pr-4">
-            {/* Monospace Anubi-style Eyebrow Capsule */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 mb-3 sm:mb-4 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
-              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#2E060D] font-semibold">
-                02 // SERVICE ARCHITECTURE
+          <div ref={headerRef} className="lg:col-span-4 max-w-lg pr-0 lg:pr-4 lg:sticky lg:top-28">
+            {/* Clean Editorial Hairline Kicker */}
+            <div className="flex items-center gap-3 mb-3 sm:mb-5">
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold">
+                02
+              </span>
+              <span className="w-6 sm:w-8 h-[1px] bg-[#8B2635]/40" />
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-stone-500 font-medium">
+                Service Architecture
               </span>
             </div>
 
-            <div className="relative">
-              <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-[#2E060D] leading-[1.12] tracking-[-0.025em] mb-1 sm:mb-1.5">
-                Tailored Solutions<br className="hidden sm:inline" />{' '}
-                for Every Business
-              </h2>
-              {/* Hand-Drawn Doodle Underline echoing Hero Aesthetic */}
-              <DoodleFlourish 
-                variant="underline-loop" 
-                color="#BA8E4E" 
-                strokeWidth={3.2} 
-                className="w-56 sm:w-68 -mt-1 sm:-mt-1.5 mb-3 text-[#BA8E4E]" 
-                delay={180}
-              />
-            </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-serif font-bold text-[#2E060D] leading-[1.08] tracking-[-0.025em] mb-3 sm:mb-5 [text-wrap:balance]">
+              Tailored Solutions<br className="hidden sm:inline" />{' '}
+              for <span className="text-[#8B2635] italic font-normal">Every Kitchen.</span>
+            </h2>
 
-            <p className="text-xs sm:text-[13px] lg:text-sm text-stone-600 leading-relaxed font-sans mb-6 sm:mb-8 max-w-md">
-              We provide a complete range of food supply and wholesale services, engineered to meet the exact operational demands of independent restaurants, fine dining rooms, and large-scale hospitality groups.
+            <p className="text-xs sm:text-[14px] lg:text-[15px] text-stone-600 leading-[1.65] sm:leading-[1.7] font-sans mb-4 sm:mb-8 max-w-[48ch]">
+              We provide an end-to-end range of foodservice supply and wholesale capabilities, engineered around the daily operational rhythm of independent restaurants, fine dining rooms, and multi-site hospitality groups.
             </p>
 
-            {/* Tactile Action Button */}
+            {/* Clean Editorial CTA Button */}
             <div>
               <a
                 href="#approach"
-                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-2 py-2 sm:pl-7 sm:pr-2.5 sm:py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FAF7F0] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all duration-200 ease-out shadow-md hover:shadow-xl apple-tactile active:scale-[0.97] cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('approach');
+                  if (el) {
+                    const top = el.getBoundingClientRect().top + window.scrollY - 70;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }}
+                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-1.5 py-2 sm:pl-6 sm:pr-2 sm:py-2.5 rounded-full bg-[#131313] hover:bg-[#2E060D] text-[#FAF7F0] text-[11px] sm:text-xs font-sans font-medium tracking-wider uppercase transition-all duration-200 active:scale-[0.97] cursor-pointer touch-manipulation"
               >
                 <span>Discover Our Approach</span>
-                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-[1px] group-hover:scale-105">
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#BA8E4E]" />
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/12 flex items-center justify-center transition-all duration-200 group-hover:translate-x-0.5 group-hover:bg-[#F3D08A]">
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F3D08A] group-hover:text-[#131313] transition-colors" />
                 </div>
               </a>
             </div>
           </div>
 
-          {/* Right Column: Interactive Apple Tactile Cards with Cursor Spotlight */}
+          {/* Right Column: Clean Editorial Service Cards with Edge-to-Edge Unobstructed Photography */}
           <div className="lg:col-span-8 w-full min-w-0">
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 md:gap-4 lg:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0 scroll-smooth touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-3.5 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-1.5 md:pb-0 scroll-smooth touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {SERVICES_DATA.map((service, idx) => (
+              {SERVICES_DATA.map((service) => (
                 <div
                   key={service.index}
                   onMouseMove={handleMouseMove}
-                  className="relative w-[85vw] max-w-[320px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start bg-[#FFFDF9]/90 backdrop-blur-md rounded-2xl p-5 md:p-5 lg:p-6 border border-[#E8DEC8] hover:border-[#BA8E4E]/80 shadow-[0_4px_20px_rgba(46,6,13,0.03)] hover:shadow-[0_16px_40px_rgba(46,6,13,0.09)] group flex flex-col justify-between h-full transition-all duration-200 ease-out apple-card-interactive active:scale-[0.985] overflow-hidden"
+                  className="group relative w-[78vw] max-w-[295px] md:w-auto md:max-w-none shrink-0 md:shrink min-w-0 snap-start rounded-xl sm:rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] shadow-[0_6px_24px_rgba(46,6,13,0.04)] hover:shadow-[0_16px_36px_rgba(46,6,13,0.09)] flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 >
-                  {/* Desktop Interactive Mouse Spotlight */}
-                  <div
-                    className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block"
-                    style={{
-                      background: 'radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(186, 142, 78, 0.12), transparent 45%)',
-                    }}
-                    aria-hidden="true"
-                  />
-
-                  {/* Specular Top Rim Highlight */}
-                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-
-                  <div className="flex flex-col flex-1 relative z-10">
-                    {/* Header Row: Index + Icon Medallion */}
-                    <div className="flex items-center justify-between mb-3.5">
-                      <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/35 via-[#FAF7F0] to-[#BA8E4E]/10 shadow-[0_2px_10px_rgba(46,6,13,0.06)] group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(186,142,78,0.25)] transition-all duration-300 w-fit">
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center">
-                          {service.icon}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col items-end">
-                        <span className="font-mono text-xs font-bold text-[#BA8E4E] tracking-wider">
-                          {service.index}
-                        </span>
-                        <span className="text-[9px] font-mono tracking-widest text-stone-500 uppercase">
-                          {service.badge}
-                        </span>
-                      </div>
+                  {/* Edge-to-Edge Unobstructed Editorial Photograph with Rootwills Seal */}
+                  <div className="relative w-full h-36 sm:h-48 overflow-hidden bg-[#2E060D] border-b border-[#E8DEC8]">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 80vw, 28vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[#2E060D]/[0.05] mix-blend-multiply pointer-events-none" />
+                    <div className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-[#FAF7F2]/95 ring-1 ring-[#BA8E4E]/65 shadow-sm overflow-hidden pointer-events-none">
+                      <Image
+                        src="/images/logo.png"
+                        alt="Rootwills Seal"
+                        fill
+                        unoptimized
+                        sizes="28px"
+                        className="object-contain p-0.5 rounded-full"
+                      />
                     </div>
-
-                    {/* Micro-label */}
-                    <span className="font-mono text-[9px] font-semibold text-[#BA8E4E] tracking-wider uppercase mb-1">
-                      {service.tag}
-                    </span>
-
-                    <h3 className="text-base sm:text-[18px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug md:min-h-[2.75rem] flex items-start">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-xs text-stone-600 leading-relaxed font-sans mb-3 sm:mb-4 md:min-h-[4.5rem]">
-                      {service.description}
-                    </p>
                   </div>
 
-                  {/* Operational Highlights with Apple Tactile Rings */}
-                  <ul className="space-y-2 pt-3 border-t border-[#E8DEC8]/80 text-[11px] text-stone-600 font-sans mt-auto relative z-10">
-                    {service.highlights.map((item, hIdx) => {
-                      const Icon = item.icon;
-                      return (
-                        <li key={hIdx} className="flex items-center gap-2">
-                          <div className="w-4 h-4 rounded-full bg-[#BA8E4E]/10 ring-1 ring-[#BA8E4E]/30 flex items-center justify-center shrink-0">
-                            <Icon className="w-2.5 h-2.5 text-[#BA8E4E]" strokeWidth={2.2} />
-                          </div>
-                          <span className="font-medium text-stone-700">{item.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  {/* Editorial Content Body */}
+                  <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
+                    <div>
+                      {/* Clean Index & Category Kicker */}
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#8B2635] font-semibold">
+                          {service.badge}
+                        </span>
+                        <span className="font-mono text-[10px] text-stone-400 tabular-nums">
+                          /{service.index}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base sm:text-[19px] font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1.5 leading-snug">
+                        {service.title}
+                      </h3>
+
+                      <p className="text-[11.5px] sm:text-xs text-stone-600 leading-relaxed font-sans mb-3.5 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* Clean Hairline Spec List */}
+                    <ul className="space-y-1.5 pt-3 border-t border-[#E8DEC8] text-[10.5px] sm:text-[11px] text-stone-700 font-sans mt-auto">
+                      {service.highlights.map((item, hIdx) => {
+                        const Icon = item.icon;
+                        return (
+                          <li key={hIdx} className="flex items-center gap-2">
+                            <Icon className="w-3 h-3 text-[#8B2635] shrink-0" strokeWidth={2} />
+                            <span className="font-medium truncate">{item.text}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Mobile Swipe Pagination Dots with Apple Springs */}
-            <div className="flex md:hidden items-center justify-center gap-3.5 pt-3">
+            {/* Mobile Swipe Pagination Dots */}
+            <div className="flex md:hidden items-center justify-center gap-3 pt-2.5">
               <div className="flex items-center gap-2">
                 {SERVICES_DATA.map((_, idx) => (
                   <button
@@ -256,22 +377,75 @@ export function ServicesSection() {
                     type="button"
                     onClick={() => scrollToCard(idx)}
                     aria-label={`Go to service ${idx + 1}`}
-                    className="p-1 -m-1 flex items-center justify-center cursor-pointer bg-transparent border-0 outline-none apple-tactile active:scale-90"
+                    className="p-1 -m-1 flex items-center justify-center cursor-pointer bg-transparent border-0 outline-none"
                   >
                     <span
                       className={`block h-1.5 rounded-full transition-all duration-300 ${
-                        activeIdx === idx ? 'w-6 bg-[#2E060D]' : 'w-2 bg-[#BA8E4E]/30 hover:bg-[#BA8E4E]/60'
+                        activeIdx === idx ? 'w-6 bg-[#2E060D]' : 'w-2 bg-[#BA8E4E]/35'
                       }`}
                     />
                   </button>
                 ))}
               </div>
-              <span className="text-[9.5px] font-mono uppercase tracking-[0.16em] text-[#BA8E4E] font-medium">
-                Swipe to explore →
+              <span className="text-[9.5px] font-mono uppercase tracking-[0.16em] text-stone-500 font-medium">
+                Swipe →
               </span>
             </div>
           </div>
 
+        </div>
+
+        {/* ─── PART 2: HOSPITALITY SECTORS WE SUPPLY (MAGAZINE-GRADE PHOTOGRAPHIC GRID) ─── */}
+        <div className="pt-6 sm:pt-14 border-t border-[#DCD2C0]">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1.5 sm:gap-4 mb-4 sm:mb-8">
+            <div>
+              <span className="font-mono text-[9.5px] sm:text-[10px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold block mb-1">
+                HOSPITALITY SECTORS WE SUPPLY
+              </span>
+              <h3 className="text-lg sm:text-2xl font-serif font-bold text-[#2E060D] tracking-tight">
+                Engineered for Britain&apos;s Culinary Leaders
+              </h3>
+            </div>
+            <p className="hidden sm:block text-xs text-stone-600 font-sans max-w-md">
+              Every sector has distinct prep hours, menu tolerances, and volume rhythms. Our supply lines adapt to your brigade.
+            </p>
+          </div>
+
+          <div ref={sectorsGridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+            {SECTORS_WE_SERVE.map((sector) => (
+              <div
+                key={sector.title}
+                className="group rounded-xl sm:rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] overflow-hidden shadow-[0_4px_16px_rgba(46,6,13,0.03)] hover:shadow-[0_14px_30px_rgba(46,6,13,0.08)] transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
+              >
+                {/* Uncropped Editorial Sector Image */}
+                <div className="relative w-full h-24 sm:h-40 overflow-hidden bg-[#2E060D] border-b border-[#E8DEC8]">
+                  <Image
+                    src={sector.image}
+                    alt={sector.title}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 48vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Clean Typography Below Photo */}
+                <div className="p-3 sm:p-4 flex flex-col flex-1 justify-between">
+                  <div>
+                    <span className="block font-mono text-[8.5px] sm:text-[9px] uppercase tracking-[0.18em] text-[#8B2635] font-semibold mb-1">
+                      {sector.tag}
+                    </span>
+                    <h4 className="font-serif font-bold text-xs sm:text-[15px] text-[#2E060D] group-hover:text-[#8B2635] transition-colors leading-snug">
+                      {sector.title}
+                    </h4>
+                  </div>
+                  <p className="hidden sm:block text-[11.5px] text-stone-600 font-sans leading-relaxed mt-2 pt-2 border-t border-[#E8DEC8]/70">
+                    {sector.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>

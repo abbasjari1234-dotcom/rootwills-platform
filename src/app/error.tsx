@@ -17,8 +17,16 @@ export default function ErrorBoundary({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-xl mx-auto w-full space-y-6">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-stone-900 flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Seamless Botanical Parchment Texture Overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+      <div className="relative z-10 max-w-xl mx-auto w-full space-y-6">
         <div className="flex justify-between items-center pb-6 border-b border-[#E8DEC8]">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 shrink-0 drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
@@ -50,44 +58,43 @@ export default function ErrorBoundary({
           </Link>
         </div>
 
-        <div className="relative bg-[#FFFDF9]/95 backdrop-blur-md border border-[#E8DEC8] rounded-3xl p-8 sm:p-10 shadow-[0_4px_20px_rgba(46,6,13,0.03)] text-center space-y-6 overflow-hidden">
-          {/* Specular top rim */}
-          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-
-          <div className="w-12 h-12 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] mx-auto flex items-center justify-center">
-            <AlertTriangle className="w-6 h-6 stroke-[1.8]" />
-          </div>
-
-          <div className="space-y-2">
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#131313]">
-              Something went wrong
-            </h1>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-sm mx-auto font-sans">
-              An unexpected error occurred while loading this page. Please try refreshing or return to the homepage.
-            </p>
-          </div>
-
-          {error?.digest && (
-            <div className="p-2.5 rounded-lg bg-[#FAF6EE] border border-[#E8DEC8] text-[11px] font-mono text-stone-500">
-              Incident Ref: {error.digest}
+        <div className="p-1.5 sm:p-2 rounded-[2rem] bg-[#EFE8D8]/85 ring-1 ring-[#BA8E4E]/35 shadow-[0_16px_44px_rgba(46,6,13,0.06)]">
+          <div className="relative bg-[#FFFDF9] rounded-[calc(2rem-0.5rem)] p-8 sm:p-10 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)] text-center space-y-6 overflow-hidden">
+            <div className="w-12 h-12 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] mx-auto flex items-center justify-center">
+              <AlertTriangle className="w-6 h-6 stroke-[1.8]" />
             </div>
-          )}
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <button
-              type="button"
-              onClick={() => reset()}
-              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-all cursor-pointer active:scale-95"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Try Again</span>
-            </button>
-            <Link
-              href="/"
-              className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-stone-300 font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-colors active:scale-95"
-            >
-              <span>Go to Homepage</span>
-            </Link>
+            <div className="space-y-2">
+              <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">
+                Something went wrong
+              </h1>
+              <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-sm mx-auto font-sans">
+                An unexpected error occurred while loading this page. Please try refreshing or return to the homepage.
+              </p>
+            </div>
+
+            {error?.digest && (
+              <div className="p-2.5 rounded-lg bg-[#FAF6EE] border border-[#E8DEC8] text-[11px] font-mono text-stone-500">
+                Incident Ref: {error.digest}
+              </div>
+            )}
+
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => reset()}
+                className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-all cursor-pointer active:scale-95"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Try Again</span>
+              </button>
+              <Link
+                href="/"
+                className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-stone-300 font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-colors active:scale-95"
+              >
+                <span>Go to Homepage</span>
+              </Link>
+            </div>
           </div>
         </div>
 

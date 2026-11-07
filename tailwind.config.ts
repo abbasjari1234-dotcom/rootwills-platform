@@ -7,6 +7,15 @@ const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      screens: {
+        xs: '380px',
+      },
+      spacing: {
+        '4.5': '1.125rem',
+        '13': '3.25rem',
+        '22': '5.5rem',
+        '68': '17rem',
+      },
       colors: {
         obsidian: {
           DEFAULT: '#021710',
@@ -51,6 +60,8 @@ const config: Config = {
         mono: ['var(--font-mono)', 'IBM Plex Mono', 'monospace'],
       },
       boxShadow: {
+        '2xs': '0 1px 2px 0 rgba(46, 6, 13, 0.04)',
+        'xs': '0 1px 3px 0 rgba(46, 6, 13, 0.06), 0 1px 2px -1px rgba(46, 6, 13, 0.04)',
         'gold-glow': '0 0 35px -5px rgba(228, 199, 103, 0.4)',
         'emerald-glow': '0 0 35px -5px rgba(52, 211, 153, 0.4)',
         'royal-depth': '0 25px 60px -10px rgba(2, 23, 16, 0.9), 0 0 35px rgba(16, 185, 129, 0.25)',

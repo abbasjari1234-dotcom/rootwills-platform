@@ -6,39 +6,24 @@ import { ServicesSection } from '@/components/public/ServicesSection';
 import { ApproachSection } from '@/components/public/ApproachSection';
 import { MidBannerSection } from '@/components/public/MidBannerSection';
 import { TestimonialsSection } from '@/components/public/TestimonialsSection';
-import { GetInTouchBanner } from '@/components/public/GetInTouchBanner';
 
 export const metadata = {
-  title: 'Rootwills | A Trusted Partner in Food Services & Wholesale UK',
+  title: 'Rootwills | UK Food Services, Fresh Produce & Hospitality Wholesale Supplier',
   description:
-    'Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK. Quality. Consistency. Partnership.',
+    'Rootwills supplies restaurants, hotels, caterers, and hospitality kitchens across Birmingham, the Midlands, and London with hand-graded British farm produce, artisan dairy, prime butchery, and pre-dawn wholesale delivery.',
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function PublicHomePage() {
   return (
-    <div className="w-full bg-[#FAF7F2] text-slate-900 overflow-x-hidden">
+    <div className="w-full bg-[#FAF7F2] text-[#131313] overflow-x-hidden">
       {/* ─── 1. Floating Ambient Motion Hero (Anubi-style Kinetic Eggshell Canvas) ─── */}
       <FloatingAmbientHero />
 
-      {/* ─── 2. Continuous British Heritage Canvas with Soft Feathering into Hero ─── */}
-      <div className="relative bg-[#FAF7F2] text-slate-900 overflow-hidden">
-        {/* Top organic gradient feathering bridging the crisp #FCFCFA hero into the warm cream canvas */}
-        <div 
-          className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FCFCFA] via-[#FCFCFA]/75 to-transparent pointer-events-none z-1" 
-          aria-hidden="true" 
-        />
-
-        {/* Seamless Botanical Etching Texture running continuously with soft entry fade */}
-        <div
-          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
-          style={{
-            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
-            backgroundSize: '1100px auto',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 140px, black 92%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 140px, black 92%, transparent 100%)',
-          }}
-        />
-
+      {/* ─── 2. Continuous British Heritage Canvas ─── */}
+      <div className="relative bg-[#FAF7F2] text-[#131313] overflow-hidden">
         <div className="relative z-10">
           {/* 1b. Commercial Trust & Wholesale Guarantees Marquee */}
           <CommercialTrustStrip />
@@ -57,9 +42,6 @@ export default function PublicHomePage() {
 
           {/* 6. Client Testimonials */}
           <TestimonialsSection />
-
-          {/* 7. Direct Commercial Enquiries */}
-          <GetInTouchBanner />
         </div>
       </div>
     </div>

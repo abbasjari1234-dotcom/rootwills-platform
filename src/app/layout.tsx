@@ -82,15 +82,45 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.uk'),
   title: {
-    default: 'Rootwills | A Trusted Partner in Food Services & Wholesale UK',
-    template: '%s | Rootwills',
+    default: 'Rootwills | UK Food Services, Fresh Produce & Hospitality Wholesale Supplier',
+    template: '%s | Rootwills UK Wholesale',
   },
   description:
-    'Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK. Quality. Consistency. Partnership.',
+    'Rootwills is a premier UK commercial foodservice and wholesale supplier. Hand-graded British farm produce, artisan dairy, prime butchery, and pre-dawn kitchen delivery across Birmingham, the Midlands, and London.',
+  keywords: [
+    'Rootwills',
+    'food wholesale UK',
+    'commercial food services UK',
+    'restaurant food suppliers UK',
+    'wholesale fruit and veg supplier Birmingham',
+    'hospitality food distributors London',
+    'fresh produce wholesale UK',
+    'catering butcher and dairy wholesale',
+    'pre-dawn restaurant delivery UK',
+    'wholesale kitchen supply Midlands',
+  ],
+  authors: [{ name: 'Rootwills Ltd', url: 'https://www.rootwills.co.uk' }],
+  creator: 'Rootwills Ltd',
+  publisher: 'Rootwills Ltd',
+  category: 'Food Services & Wholesale Distribution',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: 'Rootwills | Food Services & Wholesale Purveyors UK',
+    title: 'Rootwills | UK Food Services, Fresh Produce & Hospitality Wholesale Supplier',
     description:
-      'Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK. Quality. Consistency. Partnership.',
+      'Reliable wholesale supply solutions for restaurants, hotels, caterers, and hospitality kitchens across the UK. Hand-graded British produce & pre-dawn delivery.',
     url: 'https://www.rootwills.co.uk',
     siteName: 'Rootwills',
     locale: 'en_GB',
@@ -100,15 +130,15 @@ export const metadata: Metadata = {
         url: '/images/commercial/rootwills_hero_chef_plating.jpg',
         width: 1200,
         height: 630,
-        alt: 'Rootwills - Food Services & Wholesale Purveyors UK',
+        alt: 'Rootwills - UK Commercial Food Services & Wholesale Purveyors',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rootwills | Food Services & Wholesale Purveyors UK',
+    title: 'Rootwills | UK Food Services & Hospitality Wholesale Supplier',
     description:
-      'Reliable supply solutions for restaurants, caterers, hospitality businesses and food professionals across the UK.',
+      'Hand-graded British farm produce, artisan dairy & commercial wholesale delivered pre-dawn to UK hospitality kitchens.',
     images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
   icons: {
@@ -120,15 +150,99 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLdSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['Organization', 'LocalBusiness'],
+      '@id': 'https://www.rootwills.co.uk/#organization',
+      name: 'Rootwills',
+      legalName: 'Rootwills Ltd',
+      url: 'https://www.rootwills.co.uk',
+      logo: 'https://www.rootwills.co.uk/images/logo.png',
+      image: 'https://www.rootwills.co.uk/images/commercial/rootwills_hero_chef_plating.jpg',
+      description:
+        'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens.',
+      telephone: '+44-20-1234-5678',
+      email: 'info@rootwills.co.uk',
+      priceRange: '££',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'The Hub, Nobel Way',
+        addressLocality: 'Birmingham',
+        addressRegion: 'West Midlands',
+        postalCode: 'B6 7EU',
+        addressCountry: 'GB',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 52.5086,
+        longitude: -1.8842,
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'City', name: 'Birmingham' },
+        { '@type': 'City', name: 'London' },
+        { '@type': 'AdministrativeArea', name: 'West Midlands' },
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Rootwills Commercial Food Service & Wholesale Solutions',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Food Service Supply & Class 1 Fresh Produce',
+              description:
+                'Hand-graded British farm produce, seasonal vegetables, and chef-specified ingredients delivered pre-dawn.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Hospitality Wholesale Distribution',
+              description:
+                'Artisan dairy, prime British butchery, coastal catch, and ambient larder wholesale for restaurants, hotels, and caterers.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Bespoke Culinary & Multi-Site Supply Partnerships',
+              description:
+                'Dedicated account management, cold-chain logistics, and tailored delivery schedules for independent and group hospitality venues.',
+            },
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.rootwills.co.uk/#website',
+      url: 'https://www.rootwills.co.uk',
+      name: 'Rootwills',
+      publisher: { '@id': 'https://www.rootwills.co.uk/#organization' },
+      inLanguage: 'en-GB',
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${epilogue.variable} ${fraunces.variable} ${caveat.variable} ${jakarta.variable} scroll-smooth`}>
+    <html lang="en-GB" className={`${inter.variable} ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${epilogue.variable} ${fraunces.variable} ${caveat.variable} ${jakarta.variable} scroll-smooth`}>
       <head>
         <link rel="icon" href="/images/branded/rootwills_logo_seal.png" type="image/png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        />
       </head>
       <body className="bg-[#FAF7F2] text-slate-900 antialiased min-h-screen selection:bg-[#4E0D17] selection:text-[#FAF7F2] flex flex-col font-sans relative">
 

@@ -1,10 +1,60 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ShieldCheck, Truck, Snowflake, CheckCircle2 } from 'lucide-react';
-import { DoodleFlourish } from './DoodleFlourish';
+import { gsap } from '@/lib/animations/gsap-core';
 
 export function MidBannerSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const ribbonRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current.children,
+          { y: 16, opacity: 0.85 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+
+      if (ribbonRef.current) {
+        gsap.fromTo(
+          ribbonRef.current,
+          { y: 20, opacity: 0.85, scale: 0.99 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.85,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: ribbonRef.current,
+              start: 'top 95%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const benchmarks = [
     {
       metric: '99.4%',
@@ -37,107 +87,83 @@ export function MidBannerSection() {
   ];
 
   return (
-    <div id="standards" className="pt-16 sm:pt-24 lg:pt-28 pb-10 sm:pb-16 text-slate-900 overflow-hidden relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <div ref={sectionRef} id="standards" className="pt-9 sm:pt-24 lg:pt-32 pb-6 sm:pb-16 bg-[#FAF7F2] text-[#2E060D] overflow-hidden relative">
+      {/* Seamless Botanical Parchment Texture */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
-        {/* Monospace Eyebrow Capsule */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 mb-3 sm:mb-4 shadow-2xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
-          <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#2E060D] font-semibold">
-            04 // THE ROOTWILLS STANDARD
-          </span>
-        </div>
-
-        {/* Editorial Headline with Hand-Drawn Flourish */}
-        <div className="relative inline-block max-w-3xl">
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-serif font-bold text-[#2E060D] tracking-[-0.025em] leading-[1.14] mb-1 sm:mb-2">
-            Supporting the Food Industry <br className="hidden sm:inline" />
-            Across the <span className="text-[#8B2635] italic font-normal">United Kingdom</span>
-          </h2>
-          <div className="flex justify-center">
-            <DoodleFlourish 
-              variant="underline-wave" 
-              color="#BA8E4E" 
-              strokeWidth={3} 
-              className="w-48 sm:w-64 -mt-1 sm:-mt-1.5 mb-3 text-[#BA8E4E]" 
-              delay={200}
-            />
+        <div ref={headerRef}>
+          {/* Clean Centered Editorial Hairline Kicker */}
+          <div className="inline-flex items-center gap-3 mb-3 sm:mb-5">
+            <span className="w-6 sm:w-8 h-[1px] bg-[#8B2635]/40" />
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold">
+              04 — The Rootwills Standard
+            </span>
+            <span className="w-6 sm:w-8 h-[1px] bg-[#8B2635]/40" />
           </div>
+
+          <h2 className="text-2xl sm:text-4xl lg:text-[46px] font-serif font-bold text-[#2E060D] tracking-[-0.025em] leading-[1.08] mb-3 sm:mb-5 max-w-3xl mx-auto [text-wrap:balance]">
+            Supporting the Food Industry <br className="hidden sm:inline" />
+            Across the <span className="text-[#8B2635] italic font-normal">United Kingdom.</span>
+          </h2>
+
+          {/* Narrative Lead Paragraph */}
+          <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans leading-[1.65] sm:leading-[1.7] mb-6 sm:mb-12 max-w-[58ch] mx-auto">
+            From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness, locked wholesale terms, and farm-direct pedigree.
+          </p>
         </div>
 
-        {/* Narrative Lead Paragraph */}
-        <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans leading-relaxed mb-8 sm:mb-12 max-w-2xl mx-auto">
-          From independent Michelin-caliber dining rooms to high-volume hospitality groups, our dawn supply chain powers Britain’s most demanding kitchens with uncompromising freshness, locked wholesale margins, and pedigree.
-        </p>
-
-        {/* ─── Architectural Credential Ribbon: Apple Heritage Glass Board ─── */}
-        <div className="w-full mx-auto p-2 sm:p-2.5 rounded-2xl sm:rounded-3xl apple-glass-card shadow-[0_20px_50px_rgba(78,13,23,0.08)] mb-6 sm:mb-8 relative overflow-hidden">
-          {/* Specular Top Rim */}
-          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-
-          <div className="rounded-[calc(1rem-0.125rem)] sm:rounded-[calc(1.5rem-0.25rem)] bg-[#FAF7F0]/90 px-4 py-6 sm:px-6 sm:py-9 border border-white/70">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x divide-[#BA8E4E]/25">
-              
-              {benchmarks.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div 
-                    key={item.title}
-                    className="px-3 sm:px-6 text-center flex flex-col items-center justify-center group apple-tactile transition-all duration-200 ease-out active:scale-95 cursor-default hover:-translate-y-1"
-                  >
-                    {/* Double-Bezel Concentric Jewel Badge */}
-                    <div className="relative p-1 rounded-full bg-gradient-to-br from-[#BA8E4E]/30 via-white to-[#BA8E4E]/10 mb-2.5 shadow-[0_2px_8px_rgba(46,6,13,0.06)] group-hover:scale-110 group-hover:shadow-[0_4px_14px_rgba(186,142,78,0.25)] transition-all duration-300">
-                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center text-[#BA8E4E] shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)]">
-                        <Icon className="w-4 h-4 stroke-[1.8]" />
-                      </div>
-                    </div>
-
-                    <span className="font-mono text-[8.5px] uppercase tracking-wider text-[#BA8E4E] font-semibold mb-1">
+        {/* ─── Architectural Specification Ledger (Exposed 1px Hairline Grid) ─── */}
+        <div 
+          ref={ribbonRef}
+          className="w-full mx-auto rounded-xl sm:rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] shadow-[0_12px_36px_-12px_rgba(46,6,13,0.07)] overflow-hidden"
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-[#DCD2C0]">
+            {benchmarks.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={item.title}
+                  className="p-4 sm:p-7 lg:p-8 text-left flex flex-col justify-between group hover:bg-[#FAF7F2]/80 transition-colors duration-200"
+                >
+                  <div className="flex items-center justify-between mb-3 sm:mb-6">
+                    <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#8B2635] font-semibold tabular-nums">
                       {item.badge}
                     </span>
+                    <Icon className="w-4 h-4 text-stone-400 group-hover:text-[#8B2635] transition-colors stroke-[1.75]" />
+                  </div>
 
-                    {/* Metric Numeral */}
-                    <span className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#4E0D17] leading-none mb-1.5 tracking-tight group-hover:text-[#2E060D] transition-colors">
+                  <div>
+                    <span className="block font-serif text-2xl sm:text-4xl lg:text-[44px] font-bold text-[#2E060D] leading-none mb-1.5 sm:mb-2 tracking-tight tabular-nums">
                       {item.metric}
                     </span>
-
-                    {/* Title */}
-                    <span className="font-serif text-xs sm:text-[14px] font-semibold text-[#2E060D] tracking-wide">
+                    <span className="block font-serif text-xs sm:text-[15px] font-bold text-[#2E060D]">
                       {item.title}
                     </span>
-
-                    {/* Subtitle */}
-                    <span className="text-[10.5px] sm:text-[11.5px] text-stone-600 font-sans mt-0.5">
+                    <span className="block text-[10.5px] sm:text-xs text-stone-500 font-sans mt-0.5">
                       {item.subtitle}
                     </span>
                   </div>
-                );
-              })}
-
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Lower Assurance Pill with Apple Tactile Response */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2 rounded-2xl sm:rounded-full bg-white/85 backdrop-blur-sm border border-[#BA8E4E]/30 text-[10px] sm:text-[11px] font-sans tracking-[0.1em] sm:tracking-[0.14em] uppercase text-[#4E0D17] font-semibold shadow-xs max-w-full text-center apple-tactile active:scale-95 transition-transform duration-100 ease-out">
-          <div className="inline-flex items-center gap-1.5">
-            <Truck className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
-            <span>Pre-Dawn Fleet Logistics</span>
-          </div>
-          <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
-          <div className="inline-flex items-center gap-1.5">
-            <Snowflake className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
-            <span>Guaranteed Cold-Chain</span>
-          </div>
-          <span className="text-[#BA8E4E]/40 hidden xs:inline">•</span>
-          <div className="inline-flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" strokeWidth={2} />
-            <span>Locked Trade Margins</span>
-          </div>
+        {/* Minimalist Architectural Provenance Footer Line */}
+        <div className="hidden sm:flex items-center justify-center gap-6 pt-6 text-[10.5px] font-mono uppercase tracking-[0.18em] text-stone-500">
+          <span>Pre-Dawn Fleet Logistics</span>
+          <span className="text-[#8B2635]">•</span>
+          <span>Guaranteed Cold-Chain</span>
+          <span className="text-[#8B2635]">•</span>
+          <span>Direct Farm Provenance</span>
         </div>
-
-        {/* Elegant Hairline Transition */}
-        <div className="w-full max-w-xl mx-auto h-[1px] bg-gradient-to-r from-transparent via-[#BA8E4E]/25 to-transparent mt-12 sm:mt-16" />
 
       </div>
     </div>

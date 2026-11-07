@@ -3,9 +3,12 @@ import type { Metadata } from 'next';
 import { ContactFormView } from '@/components/public/ContactFormView';
 
 export const metadata: Metadata = {
-  title: 'Contact Our Wholesale Sales & Support Team | Rootwills',
+  title: 'Inquire | Wholesale Food & Hospitality Supply Partnerships',
   description:
-    'Get in touch with our commercial sales desk in Birmingham for custom wholesale quotes, samples, and account support. Call or message our team today.',
+    'Get in touch with the Rootwills wholesale partnerships desk in Birmingham and London for seasonal British produce supply, bespoke trade terms, and pre-dawn restaurant delivery.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {

@@ -2,18 +2,25 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
-  ShoppingBag, 
+  Sprout, 
   ArrowLeft, 
   Phone, 
   Building2, 
-  HelpCircle,
   FileText
 } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-stone-900 flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto w-full space-y-8">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-stone-900 flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Seamless Botanical Parchment Texture Overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+      <div className="relative z-10 max-w-3xl mx-auto w-full space-y-8">
         {/* Brand Header */}
         <div className="flex justify-between items-center pb-6 border-b border-[#E8DEC8]">
           <Link href="/" className="flex items-center gap-3">
@@ -46,73 +53,70 @@ export default function NotFound() {
           </Link>
         </div>
 
-        {/* 404 Main Callout */}
-        {/* 404 Main Callout */}
-        <div className="relative bg-[#FFFDF9]/95 backdrop-blur-md border border-[#E8DEC8] rounded-3xl p-8 sm:p-12 shadow-[0_4px_20px_rgba(46,6,13,0.03)] text-center space-y-6 overflow-hidden">
-          {/* Specular top rim */}
-          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+        {/* 404 Main Callout (Double-Bezel Architecture) */}
+        <div className="p-1.5 sm:p-2 rounded-[2rem] bg-[#EFE8D8]/85 ring-1 ring-[#BA8E4E]/35 shadow-[0_16px_44px_rgba(46,6,13,0.06)]">
+          <div className="relative bg-[#FFFDF9] rounded-[calc(2rem-0.5rem)] p-8 sm:p-12 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)] text-center space-y-6 overflow-hidden">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 text-[#2E060D] text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] font-semibold shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+              <span>404 // ROUTE NOT LOCATED</span>
+            </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 text-[#2E060D] text-[10px] sm:text-[11px] font-mono uppercase tracking-widest font-semibold shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
-            <span>404 // ROUTE NOT LOCATED</span>
-          </div>
-
-          <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
-              Page Not Located
-            </h1>
-            <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto font-sans leading-relaxed">
-              The requested commercial showcase page, product category, or trade resource could not be found. It may have moved or been updated.
-            </p>
-          </div>
-
-          {/* Quick Navigation Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
-            <Link
-              href="/#services"
-              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
-            >
-              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <ShoppingBag className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
-                Wholesale Services
-              </h2>
-              <p className="text-xs text-stone-600 mt-1 font-sans">
-                Explore hand-graded British produce, dairy, and culinary lines.
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+                Page Not Located
+              </h1>
+              <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto font-sans leading-relaxed">
+                The requested page could not be found. Explore our wholesale services, learn about our British farm provenance, or connect with our team below.
               </p>
-            </Link>
+            </div>
 
-            <Link
-              href="/contact"
-              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
-            >
-              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <Building2 className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
-                Partner With Rootwills
-              </h2>
-              <p className="text-xs text-stone-600 mt-1 font-sans">
-                Arrange bespoke samples, locked rates, or pre-dawn drops.
-              </p>
-            </Link>
+            {/* Quick Navigation Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
+              <Link
+                href="/#services"
+                className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                  <Sprout className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                  Our Services
+                </h2>
+                <p className="text-xs text-stone-600 mt-1 font-sans">
+                  Discover how we supply restaurants, hotels, and caterers.
+                </p>
+              </Link>
 
-            <Link
-              href="/about"
-              className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
-            >
-              <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/30 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <FileText className="w-4 h-4 stroke-[1.8]" />
-              </div>
-              <h2 className="text-sm font-serif font-bold text-[#131313] group-hover:text-[#8B2635] transition-colors">
-                About Rootwills
-              </h2>
-              <p className="text-xs text-stone-600 mt-1 font-sans">
-                Learn about our heritage, accreditations, and supply chain.
-              </p>
-            </Link>
-          </div>
+              <Link
+                href="/contact"
+                className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                  <Building2 className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                  Partner With Rootwills
+                </h2>
+                <p className="text-xs text-stone-600 mt-1 font-sans">
+                  Arrange bespoke samples, seasonal rates, or pre-dawn drops.
+                </p>
+              </Link>
+
+              <Link
+                href="/about"
+                className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                  <FileText className="w-4 h-4 stroke-[1.8]" />
+                </div>
+                <h2 className="text-sm font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                  About Rootwills
+                </h2>
+                <p className="text-xs text-stone-600 mt-1 font-sans">
+                  Learn about our heritage, accreditations, and supply chain.
+                </p>
+              </Link>
+            </div>
 
           <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <Link
@@ -128,6 +132,7 @@ export default function NotFound() {
             >
               <span>Contact Commercial Team</span>
             </Link>
+          </div>
           </div>
         </div>
 

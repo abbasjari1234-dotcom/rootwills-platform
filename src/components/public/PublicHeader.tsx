@@ -10,10 +10,11 @@ export function PublicHeader() {
   const isHome = pathname === '/' || pathname === '';
   const [activeItem, setActiveItem] = useState<'home' | 'about' | 'services' | 'approach' | 'contact'>('home');
 
-  // Track active section on scroll when on homepage
+  // Track active section on scroll when on homepage, or active route on subpages
   useEffect(() => {
     if (!isHome) {
       if (pathname.includes('/contact')) setActiveItem('contact');
+      else if (pathname.includes('/about')) setActiveItem('about');
       else setActiveItem('home');
       return;
     }
@@ -152,11 +153,15 @@ export function PublicHeader() {
           {/* Accent CTA Button: Matching Anubi "Contattaci ↗" with circular disc */}
           <Link
             href="/contact"
-            className="group ml-1 sm:ml-2 pl-3 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full bg-[#E5E5E5] hover:bg-[#DCDCDC] text-[#131313] text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation"
+            className={`group ml-1 sm:ml-2 pl-3.5 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation ${
+              activeItem === 'contact'
+                ? 'bg-[#131313] text-[#FAF7F2] shadow-[0_4px_14px_rgba(19,19,19,0.18)]'
+                : 'bg-[#131313] hover:bg-[#260309] text-[#FAF7F2] shadow-[0_2px_10px_rgba(19,19,19,0.12)]'
+            }`}
           >
-            <span className="hidden xs:inline">Open Account</span>
-            <span className="xs:hidden font-semibold text-[12px]">Account</span>
-            <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white flex items-center justify-center text-[10px] sm:text-[12px] font-bold text-[#131313] shadow-[0_1px_2px_rgba(0,0,0,0.06)] group-hover:scale-105 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
+            <span className="hidden xs:inline">Get in Touch</span>
+            <span className="xs:hidden font-semibold text-[12px]">Inquire</span>
+            <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white/15 ring-1 ring-white/20 flex items-center justify-center text-[10px] sm:text-[12px] font-bold text-[#F3D08A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)] group-hover:scale-105 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[#F3D08A] group-hover:text-[#131313] transition-[transform,background-color,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
               ↗
             </span>
           </Link>
