@@ -97,6 +97,14 @@ button, a, [role="button"], input[type="submit"] {
 }
 
 :root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-epilogue: 'Epilogue', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --font-caveat: 'Caveat', cursive;
+  --font-jakarta: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: var(--font-jakarta), var(--font-outfit), var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Cormorant Garamond', serif;
   --font-mono: 'IBM Plex Mono', monospace;
