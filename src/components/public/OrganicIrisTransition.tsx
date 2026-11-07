@@ -125,10 +125,10 @@ export function OrganicIrisTransition({
       ref={containerRef}
       data-phase={phase}
       aria-hidden="true"
-      className="fixed inset-0 z-[9999999] overflow-hidden pointer-events-none select-none touch-none [contain:strict] [isolation:isolate]"
+      className="hidden md:block fixed inset-0 z-[9999999] overflow-hidden pointer-events-none select-none [contain:strict] [isolation:isolate]"
       style={{
         backgroundColor: 'transparent',
-        display: phase === 'idle' ? 'none' : 'block',
+        display: phase === 'idle' ? 'none' : undefined,
         visibility: phase === 'idle' ? 'hidden' : 'visible',
       }}
     >

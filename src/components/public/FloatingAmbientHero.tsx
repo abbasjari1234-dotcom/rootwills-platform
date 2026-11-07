@@ -718,11 +718,11 @@ export function FloatingAmbientHero() {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center justify-center w-[min(94vw,960px)] aspect-[1000/550] text-center z-30 will-change-transform"
       >
         {/* THE MASSIVE CENTRAL LOGO WORDMARK & CONTENT (Z-Index 30 - Locked to Epilogue) */}
-        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-30 pointer-events-auto">
+        <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-30 pointer-events-none">
           <h1 
             ref={wordmarkRef}
             aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
-            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default"
+            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default pointer-events-none sm:pointer-events-auto"
           >
             <span className="sr-only">
               Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
@@ -742,12 +742,12 @@ export function FloatingAmbientHero() {
           </h1>
 
           {/* Anubi-style Quiet Subtitle Caption */}
-          <p className="mt-2.5 sm:mt-3 text-[11.5px] xs:text-xs sm:text-sm md:text-base text-[#4D4D49] font-sans font-medium tracking-tight text-balance max-w-[300px] xs:max-w-md mx-auto leading-snug sm:leading-normal">
+          <p className="mt-2.5 sm:mt-3 text-[11.5px] xs:text-xs sm:text-sm md:text-base text-[#4D4D49] font-sans font-medium tracking-tight text-balance max-w-[300px] xs:max-w-md mx-auto leading-snug sm:leading-normal pointer-events-none">
             Commercial food services, hand-graded British farm produce &amp; artisan wholesale.
           </p>
 
           {/* Minimalist Tactile Action Buttons */}
-          <div className="relative z-40 mt-3.5 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-3">
+          <div className="relative z-40 mt-3.5 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-3 pointer-events-auto">
             <a
               href="#services"
               onClick={(e) => {

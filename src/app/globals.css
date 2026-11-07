@@ -38,11 +38,6 @@
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
-  overscroll-behavior-y: none;
-}
-
-body {
-  overscroll-behavior-y: none;
 }
 
 /* Eliminate long-press text selection / callout on buttons & controls */
@@ -251,16 +246,29 @@ html {
 }
 
 /* Base background */
-html, body {
+html {
   background-color: #FAF7F2;
   color: #0F172A;
   font-family: var(--font-sans);
-  overflow-x: hidden;
-  max-width: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   -webkit-text-size-adjust: 100%;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+body {
+  background-color: #FAF7F2;
+  color: #0F172A;
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes gentle-doodle-float {

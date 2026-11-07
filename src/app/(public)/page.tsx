@@ -18,12 +18,12 @@ export const metadata = {
 
 export default function PublicHomePage() {
   return (
-    <div className="w-full bg-[#FAF7F2] text-[#131313] overflow-x-hidden">
+    <div className="w-full bg-[#FAF7F2] text-[#131313] overflow-x-clip">
       {/* ─── 1. Floating Ambient Motion Hero (Anubi-style Kinetic Eggshell Canvas) ─── */}
       <FloatingAmbientHero />
 
       {/* ─── 2. Continuous British Heritage Canvas ─── */}
-      <div className="relative bg-[#FAF7F2] text-[#131313] overflow-hidden">
+      <div className="relative bg-[#FAF7F2] text-[#131313] overflow-x-clip">
         <div className="relative z-10">
           {/* 1b. Commercial Trust & Wholesale Guarantees Marquee */}
           <CommercialTrustStrip />
