@@ -75,12 +75,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/images/branded/rootwills_logo_seal.png', type: 'image/png' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/images/logo.png?v=2', type: 'image/png' },
+      { url: '/favicon-96x96.png?v=2', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-48x48.png?v=2', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon.ico?v=2', sizes: 'any' },
     ],
+    shortcut: ['/favicon.ico?v=2'],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png?v=2', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -195,7 +197,8 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/images/branded/rootwills_logo_seal.png" type="image/png" />
+        <link rel="icon" href="/images/logo.png?v=2" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico?v=2" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
