@@ -9,6 +9,7 @@ export function FloatingBrandWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
 
   // Close on Escape key
@@ -22,10 +23,33 @@ export function FloatingBrandWidget() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !email.includes('@')) return;
-    setIsSubmitted(true);
+    if (!email.trim() || !email.includes('@') || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          Email: email.trim(),
+          Source: 'Rootwills Floating Trade Mailing List Widget',
+          _replyto: email.trim(),
+          _subject: `New Trade Mailing List Signup: ${email.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+      setIsSubmitted(true);
+    } catch {
+      setIsSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

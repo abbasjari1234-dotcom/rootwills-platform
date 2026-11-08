@@ -5,6 +5,8 @@ import { Phone, MessageCircle, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 
 export function ContactFormView() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,10 +14,45 @@ export function ContactFormView() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) return;
-    setSubmitted(true);
+    if (!formData.name.trim() || !formData.email.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          Name: formData.name.trim(),
+          Email: formData.email.trim(),
+          Subject: formData.subject.trim() || 'Wholesale & Produce Supply Enquiry',
+          Message: formData.message.trim(),
+          Source: 'Rootwills Contact Page (/contact)',
+          _replyto: formData.email.trim(),
+          _subject: `New Rootwills Enquiry: ${formData.subject.trim() || formData.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setSubmitted(true);
+    } catch {
+      setErrorMsg(
+        'Could not send message right now. Please email us directly at sales@rootwills.co.uk or WhatsApp +44 7984 709478.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -245,13 +282,21 @@ export function ContactFormView() {
                   />
                 </div>
 
+                {/* Error Message if any */}
+                {errorMsg && (
+                  <p className="text-xs font-sans text-red-700 bg-red-50 border border-red-200 rounded-lg px-3.5 py-2.5">
+                    {errorMsg}
+                  </p>
+                )}
+
                 {/* Submit Button */}
                 <div className="pt-1">
                   <button
                     type="submit"
-                    className="px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg bg-[#4E0D17] hover:bg-[#2B040A] text-white font-sans font-semibold text-xs sm:text-[13px] tracking-wide shadow-[0_10px_24px_rgba(78,13,23,0.22)] hover:shadow-[0_14px_30px_rgba(43,4,10,0.32)] transition-all cursor-pointer active:scale-95"
+                    disabled={isSubmitting}
+                    className="px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg bg-[#4E0D17] hover:bg-[#2B040A] disabled:opacity-60 text-white font-sans font-semibold text-xs sm:text-[13px] tracking-wide shadow-[0_10px_24px_rgba(78,13,23,0.22)] hover:shadow-[0_14px_30px_rgba(43,4,10,0.32)] transition-all cursor-pointer active:scale-95"
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending Enquiry...' : 'Send Message'}
                   </button>
                 </div>
               </form>

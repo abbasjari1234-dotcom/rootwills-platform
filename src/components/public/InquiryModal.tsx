@@ -13,6 +13,8 @@ interface InquiryModalProps {
 export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
   const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     business: '',
@@ -40,13 +42,57 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     };
   }, [isOpen, onClose]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 2800);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          Name: formData.name.trim(),
+          Business: formData.business.trim(),
+          Email: formData.email.trim(),
+          Phone: formData.phone.trim(),
+          Sector: formData.sector,
+          Notes: formData.notes.trim(),
+          Source: 'Rootwills Partnership Enquiry Modal',
+          _replyto: formData.email.trim(),
+          _subject: `New Partnership Enquiry: ${formData.business.trim() || formData.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit enquiry');
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: '',
+          business: '',
+          email: '',
+          phone: '',
+          sector: 'Restaurant / Hospitality',
+          notes: '',
+        });
+        onClose();
+      }, 2800);
+    } catch {
+      setErrorMsg('Unable to send right now. Please email sales@rootwills.co.uk directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!mounted) return null;
@@ -225,12 +271,21 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       />
                     </div>
 
+                    {errorMsg && (
+                      <p className="text-xs font-sans text-red-700 bg-red-50 border border-red-200 rounded-xl px-3.5 py-2">
+                        {errorMsg}
+                      </p>
+                    )}
+
                     <div className="pt-2">
                       <button
                         type="submit"
-                        className="group w-full py-3 pl-6 pr-2.5 rounded-full bg-[#131313] hover:bg-[#260309] text-[#FAF7F2] font-sans font-semibold text-xs sm:text-[13px] tracking-wider uppercase flex items-center justify-between shadow-[0_8px_24px_rgba(19,19,19,0.18)] hover:shadow-[0_12px_32px_rgba(38,3,9,0.28)] transition-[background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] apple-tactile active:scale-[0.98] cursor-pointer"
+                        disabled={isSubmitting}
+                        className="group w-full py-3 pl-6 pr-2.5 rounded-full bg-[#131313] hover:bg-[#260309] disabled:opacity-60 text-[#FAF7F2] font-sans font-semibold text-xs sm:text-[13px] tracking-wider uppercase flex items-center justify-between shadow-[0_8px_24px_rgba(19,19,19,0.18)] hover:shadow-[0_12px_32px_rgba(38,3,9,0.28)] transition-[background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] apple-tactile active:scale-[0.98] cursor-pointer"
                       >
-                        <span className="mx-auto pl-6">Submit Partnership Enquiry</span>
+                        <span className="mx-auto pl-6">
+                          {isSubmitting ? 'Sending Enquiry...' : 'Submit Partnership Enquiry'}
+                        </span>
                         <div className="w-8 h-8 rounded-full bg-white/12 ring-1 ring-white/20 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-[#F3D08A]">
                           <Send className="w-3.5 h-3.5 text-[#F3D08A] group-hover:text-[#131313] transition-colors" />
                         </div>
