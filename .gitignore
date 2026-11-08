@@ -48,3 +48,6 @@ next-env.d.ts
 .gemini
 scratch/
 public/page_*.png
+
+.vercel
+.env*
