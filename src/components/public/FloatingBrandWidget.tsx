@@ -28,22 +28,35 @@ export function FloatingBrandWidget() {
     if (!email.trim() || !email.includes('@') || isSubmitting) return;
 
     setIsSubmitting(true);
+    const payload = {
+      Email: email.trim(),
+      Source: 'Rootwills Floating Trade Mailing List Widget',
+      _replyto: email.trim(),
+      _subject: `New Trade Mailing List Signup: ${email.trim()}`,
+      _template: 'table',
+      _captcha: 'false',
+    };
+
     try {
-      await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+      const res = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          Email: email.trim(),
-          Source: 'Rootwills Floating Trade Mailing List Widget',
-          _replyto: email.trim(),
-          _subject: `New Trade Mailing List Signup: ${email.trim()}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      });
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+
+      if (!res || !res.ok) {
+        await fetch('/api/enquiry', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+      }
       setIsSubmitted(true);
     } catch {
       setIsSubmitted(true);

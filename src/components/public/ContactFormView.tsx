@@ -21,25 +21,38 @@ export function ContactFormView() {
     setIsSubmitting(true);
     setErrorMsg(null);
 
+    const payload = {
+      Name: formData.name.trim(),
+      Email: formData.email.trim(),
+      Subject: formData.subject.trim() || 'Wholesale & Produce Supply Enquiry',
+      Message: formData.message.trim(),
+      Source: 'Rootwills Contact Page (/contact)',
+      _replyto: formData.email.trim(),
+      _subject: `New Rootwills Enquiry: ${formData.subject.trim() || formData.name.trim()}`,
+      _template: 'table',
+      _captcha: 'false',
+    };
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+      let response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          Name: formData.name.trim(),
-          Email: formData.email.trim(),
-          Subject: formData.subject.trim() || 'Wholesale & Produce Supply Enquiry',
-          Message: formData.message.trim(),
-          Source: 'Rootwills Contact Page (/contact)',
-          _replyto: formData.email.trim(),
-          _subject: `New Rootwills Enquiry: ${formData.subject.trim() || formData.name.trim()}`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
-      });
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+
+      if (!response || !response.ok) {
+        response = await fetch('/api/enquiry', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+      }
 
       if (!response.ok) {
         throw new Error('Failed to send message');
