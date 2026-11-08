@@ -76,9 +76,16 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/images/branded/rootwills_logo_seal.png', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
     ],
-    apple: '/images/branded/rootwills_logo_seal.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  verification: {
+    google: 'da4AvSks5_Lgzy4--BsHwVGBgU6W9kY4tbxhO0CdFew',
   },
 };
 
@@ -97,6 +104,24 @@ const jsonLdSchema = {
         'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens.',
       telephone: '+44-16164-12803',
       email: 'sales@rootwills.co.uk',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+44-16164-12803',
+          contactType: 'sales',
+          email: 'sales@rootwills.co.uk',
+          areaServed: 'GB',
+          availableLanguage: ['English'],
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+44-7984-709478',
+          contactType: 'customer support',
+          email: 'sales@rootwills.co.uk',
+          areaServed: 'GB',
+          availableLanguage: ['English'],
+        },
+      ],
       priceRange: '££',
       address: {
         '@type': 'PostalAddress',
