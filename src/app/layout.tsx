@@ -21,15 +21,19 @@ export const metadata: Metadata = {
     'Rootwills is a premier UK commercial foodservice and wholesale supplier. Hand-graded British farm produce, artisan dairy, prime butchery, and pre-dawn kitchen delivery across Birmingham, the Midlands, and London.',
   keywords: [
     'Rootwills',
+    'Rootwills Ltd',
     'food wholesale UK',
     'commercial food services UK',
     'restaurant food suppliers UK',
     'wholesale fruit and veg supplier Birmingham',
+    'wholesale food suppliers West Midlands',
     'hospitality food distributors London',
     'fresh produce wholesale UK',
+    'hotel and catering food suppliers UK',
     'catering butcher and dairy wholesale',
     'pre-dawn restaurant delivery UK',
     'wholesale kitchen supply Midlands',
+    'British farm produce wholesale',
   ],
   authors: [{ name: 'Rootwills Ltd', url: 'https://www.rootwills.co.uk' }],
   creator: 'Rootwills Ltd',
@@ -185,6 +189,60 @@ const jsonLdSchema = {
       name: 'Rootwills',
       publisher: { '@id': 'https://www.rootwills.co.uk/#organization' },
       inLanguage: 'en-GB',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.rootwills.co.uk/#breadcrumbs',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://www.rootwills.co.uk/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'About Rootwills',
+          item: 'https://www.rootwills.co.uk/about',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Wholesale Enquiries & Contact',
+          item: 'https://www.rootwills.co.uk/contact',
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.rootwills.co.uk/#faq',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What areas of the UK does Rootwills supply?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Rootwills operates from our central Birmingham hub (The Hub, Nobel Way, B6 7EU) and London distribution network, delivering pre-dawn across Birmingham, the West Midlands, Greater London, Manchester, and surrounding UK hospitality corridors.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What hospitality sectors does Rootwills work with?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'We partner with independent and multi-site restaurants, luxury hotels, gastro pubs, contract and event caterers, and institutional kitchens requiring Class 1 British farm produce, artisan dairy, prime butchery, and dry larder wholesale.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How can a restaurant or hotel open a trade partnership with Rootwills?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Kitchens and procurement buyers can contact our wholesale partnerships desk at sales@rootwills.co.uk, call our landline on +44 16164 12803, or message our WhatsApp trade desk on +44 7984 709478.',
+          },
+        },
+      ],
     },
   ],
 };
