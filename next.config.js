@@ -159,7 +159,7 @@ const nextConfig = {
       },
       {
         source: '/login',
-        destination: '/',
+        destination: '/direct',
         permanent: false,
       },
       {
