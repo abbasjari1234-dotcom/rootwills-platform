@@ -160,11 +160,6 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/admin/:path*',
-        destination: '/',
-        permanent: false,
-      },
-      {
         source: '/driver/:path*',
         destination: '/',
         permanent: false,
