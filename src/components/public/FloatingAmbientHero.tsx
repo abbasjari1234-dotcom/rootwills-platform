@@ -667,38 +667,49 @@ export function FloatingAmbientHero() {
                   WebkitBackfaceVisibility: 'hidden',
                 }}
               >
-                {/* Photo Layer with Shadow Layering */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-[#E8E8E4] border border-black/[0.06] shadow-[0_4px_16px_rgba(26,26,24,0.08),0_calc(9px+var(--card-depth,0.5)*15px)_calc(18px+var(--card-depth,0.5)*20px)_-12px_rgba(26,26,24,0.18)] group-hover:shadow-[0_12px_32px_rgba(26,26,24,0.14),0_28px_40px_-16px_rgba(26,26,24,0.28)] transition-shadow duration-300">
-                  <Image
-                    src={card.src}
-                    alt={card.title}
-                    fill
-                    unoptimized
-                    priority={index < 4}
-                    sizes="(max-width: 779px) 180px, (max-width: 1200px) 280px, 360px"
-                    className="object-cover transition-transform duration-500 ease-out [translate:var(--image-x,0px)_var(--image-y,0px)] group-hover:scale-[1.07]"
-                    style={{
-                      backfaceVisibility: 'hidden',
-                      WebkitBackfaceVisibility: 'hidden',
-                    }}
-                  />
+                {/* Photo Layer with Frosted Glass Outer Frame & Specular Highlight */}
+                <div className="relative w-full h-full rounded-2xl p-1 bg-white/55 backdrop-blur-md border border-white/85 shadow-[0_6px_20px_rgba(46,6,13,0.09),0_calc(9px+var(--card-depth,0.5)*15px)_calc(18px+var(--card-depth,0.5)*20px)_-12px_rgba(46,6,13,0.20),inset_0_1px_1.5px_rgba(255,255,255,0.95)] group-hover:bg-white/75 group-hover:border-[#F3D08A]/70 group-hover:shadow-[0_14px_34px_rgba(46,6,13,0.16),0_28px_42px_-16px_rgba(46,6,13,0.28),inset_0_1px_2px_rgba(255,255,255,1)] transition-all duration-300">
+                  <div className="relative w-full h-full rounded-[11px] overflow-hidden bg-[#E8E8E4]">
+                    <Image
+                      src={card.src}
+                      alt={card.title}
+                      fill
+                      unoptimized
+                      priority={index < 4}
+                      sizes="(max-width: 779px) 180px, (max-width: 1200px) 280px, 360px"
+                      className="object-cover transition-transform duration-500 ease-out [translate:var(--image-x,0px)_var(--image-y,0px)] group-hover:scale-[1.07]"
+                      style={{
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                      }}
+                    />
 
-                  {/* Specular Light Glide across the surface */}
-                  <div 
-                    className="absolute -inset-[50%] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 [transform:translateX(var(--light-x,0%))]"
-                    style={{
-                      background: 'linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.35) 49%, transparent 65%)',
-                    }}
-                  />
+                    {/* Subtle Permanent Glass Specular Top Edge */}
+                    <div
+                      className="absolute inset-0 pointer-events-none rounded-[11px] ring-1 ring-inset ring-white/30"
+                      style={{
+                        background:
+                          'linear-gradient(165deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.04) 32%, transparent 60%)',
+                      }}
+                    />
+
+                    {/* Specular Light Glide across the surface on hover */}
+                    <div 
+                      className="absolute -inset-[50%] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 [transform:translateX(var(--light-x,0%))]"
+                      style={{
+                        background: 'linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.42) 49%, transparent 65%)',
+                      }}
+                    />
+                  </div>
                 </div>
 
                 {/* Reveal Caption on Hover */}
                 <div className="absolute left-0 right-0 top-full pt-1.5 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-200 pointer-events-none flex items-center justify-between text-left">
-                  <div className="truncate bg-[#FCFCFA]/95 backdrop-blur-md px-2.5 py-1 rounded-md shadow-sm border border-stone-200/80">
-                    <p className="text-[11px] font-bold text-[#131313] leading-tight truncate">
+                  <div className="truncate bg-white/80 backdrop-blur-xl px-2.5 py-1 rounded-lg shadow-[0_8px_20px_rgba(46,6,13,0.12),inset_0_1px_1px_rgba(255,255,255,0.9)] border border-white/85 ring-1 ring-[#BA8E4E]/25">
+                    <p className="text-[11px] font-bold text-[#2E060D] leading-tight truncate">
                       {card.title}
                     </p>
-                    <p className="text-[9px] text-[#62625C] font-mono leading-tight truncate">
+                    <p className="text-[9px] text-[#6E5A4F] font-mono leading-tight truncate">
                       {card.category}
                     </p>
                   </div>
@@ -722,7 +733,7 @@ export function FloatingAmbientHero() {
           <h1 
             ref={wordmarkRef}
             aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
-            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#3D0812] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(46,6,13,0.12)] cursor-default pointer-events-none sm:pointer-events-auto"
+            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_10px_28px_rgba(61,8,18,0.20)] [filter:drop-shadow(0_1px_0_rgba(255,255,255,0.65))] cursor-default pointer-events-none sm:pointer-events-auto"
           >
             <span className="sr-only">
               Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
@@ -731,9 +742,10 @@ export function FloatingAmbientHero() {
               <span
                 key={idx}
                 aria-hidden="true"
-                className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#BA8E4E] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
+                className="inline-block bg-gradient-to-b from-[#6E1426] via-[#3D0812] to-[#220308] bg-clip-text text-transparent transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:from-[#F3D08A] hover:via-[#BA8E4E] hover:to-[#8C6528] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
                 style={{
                   transitionDelay: `${idx * 12}ms`,
+                  WebkitTextStroke: '1px rgba(243, 208, 138, 0.28)',
                 }}
               >
                 {char}
@@ -746,7 +758,7 @@ export function FloatingAmbientHero() {
             Commercial food services, hand-graded British farm produce &amp; artisan wholesale.
           </p>
 
-          {/* Minimalist Tactile Action Buttons */}
+          {/* Frosted Luxury Glass Tactile Action Buttons */}
           <div className="relative z-40 mt-3.5 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-3 pointer-events-auto">
             <a
               href="#services"
@@ -758,7 +770,7 @@ export function FloatingAmbientHero() {
                   window.scrollTo({ top, behavior: 'smooth' });
                 }
               }}
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#3D0812] hover:bg-[#260309] text-[#FAF7F2] ring-1 ring-[#BA8E4E]/45 text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_6px_20px_rgba(46,6,13,0.24)] cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#3D0812]/85 hover:bg-[#260309]/92 backdrop-blur-xl text-[#FAF7F2] border border-[#F3D08A]/50 text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_10px_28px_-4px_rgba(46,6,13,0.34),inset_0_1px_1.5px_rgba(255,255,255,0.38),inset_0_-1px_1px_rgba(186,142,78,0.35)] cursor-pointer"
             >
               <span>What We Do</span>
               <span className="text-[#F3D08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
@@ -766,7 +778,7 @@ export function FloatingAmbientHero() {
 
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#FFFDF9] hover:bg-[#FAF6EE] text-[#3D0812] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-[#BA8E4E]/55 hover:border-[#BA8E4E] transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white/65 hover:bg-white/85 backdrop-blur-xl text-[#3D0812] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-white/90 ring-1 ring-[#BA8E4E]/45 hover:ring-[#BA8E4E] transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_8px_24px_-4px_rgba(46,6,13,0.12),inset_0_1px_1.5px_rgba(255,255,255,0.95)] cursor-pointer"
             >
               <span>Open Account</span>
             </Link>
