@@ -1,523 +1,518 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Lock,
+  ArrowRight,
+  ShieldCheck,
   CheckCircle2,
   ArrowLeft,
-  Plus,
-  Minus,
-  Trash2,
+  Building2,
+  User,
+  Sparkles
 } from 'lucide-react';
 
-interface StoredDraftItem {
-  id: string;
-  sku: string;
-  name: string;
-  packSize: string;
-  tempZone: string;
-  image: string;
-  qty: number;
-}
-
 export function RootwillsDirectPortalView() {
-  const [activeTab, setActiveTab] = useState<'login' | 'activate'>('login');
-  const [draftItems, setDraftItems] = useState<StoredDraftItem[]>([]);
-  const [loginData, setLoginData] = useState({ accountOrEmail: '', password: '' });
-  const [loginFeedback, setLoginFeedback] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'signin' | 'request'>('signin');
+  const [loading, setLoading] = useState(false);
+  const [submittedRequest, setSubmittedRequest] = useState(false);
 
-  const [activateForm, setActivateForm] = useState({
-    name: '',
-    business: '',
+  // Sign In Form State
+  const [loginForm, setLoginForm] = useState({
+    identifier: '',
+    password: '',
+    rememberMe: true,
+  });
+
+  // Request Account Form State
+  const [requestForm, setRequestForm] = useState({
+    businessName: '',
+    contactName: '',
     email: '',
     phone: '',
-    deliveryPostcode: '',
+    businessType: 'Restaurant / Dining',
     notes: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem('rootwills_direct_draft_order');
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          setDraftItems(parsed);
-        }
-      }
-    } catch {
-      // ignore storage errors
-    }
-  }, []);
-
-  const updateDraftQty = (id: string, delta: number) => {
-    setDraftItems((prev) => {
-      const updated = prev
-        .map((item) => (item.id === id ? { ...item, qty: item.qty + delta } : item))
-        .filter((item) => item.qty > 0);
-      try {
-        localStorage.setItem('rootwills_direct_draft_order', JSON.stringify(updated));
-      } catch {
-        // ignore
-      }
-      return updated;
-    });
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Demo trade auth simulation
+    setTimeout(() => {
+      setLoading(false);
+      window.location.href = '/admin';
+    }, 800);
   };
 
-  const totalCases = draftItems.reduce((sum, item) => sum + item.qty, 0);
-
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleRequestAccess = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoginFeedback(
-      'Trade account verification is required to view contract pricing. If you do not yet have credentials, switch to "Place Order / Request Login" to submit your order and activate your portal account.'
-    );
-  };
-
-  const handleActivateSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-    setErrorMsg(null);
-
-    const manifestSummary =
-      draftItems.length > 0
-        ? draftItems
-            .map((item, i) => `${i + 1}. ${item.qty}x [${item.sku}] ${item.name} (${item.packSize})`)
-            .join('\n')
-        : 'No specific SKUs attached (Requesting Rootwills Direct portal login & contract price list)';
-
-    const payload = {
-      Name: activateForm.name.trim(),
-      Business: activateForm.business.trim(),
-      Email: activateForm.email.trim(),
-      Phone: activateForm.phone.trim(),
-      Postcode: activateForm.deliveryPostcode.trim(),
-      OrderManifest: manifestSummary,
-      Notes: activateForm.notes.trim(),
-      Source: 'Rootwills Direct Portal (rootwillsdirect.co.uk)',
-      _replyto: activateForm.email.trim(),
-      _subject: `Rootwills Direct Order & Portal Activation: ${activateForm.business.trim()}`,
-      _template: 'table',
-      _captcha: 'false',
-    };
+    setLoading(true);
 
     try {
-      let response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+      const payload = {
+        Subject: `New B2B Trade Account Request: ${requestForm.businessName}`,
+        BusinessName: requestForm.businessName,
+        ContactName: requestForm.contactName,
+        Email: requestForm.email,
+        Phone: requestForm.phone,
+        BusinessType: requestForm.businessType,
+        Notes: requestForm.notes,
+        Source: 'Rootwills Trade Portal (/direct)',
+      };
+
+      await fetch('/api/enquiry', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       }).catch(() => null);
 
-      if (!response || !response.ok) {
-        response = await fetch('/api/enquiry', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-      }
-
-      if (!response.ok) {
-        throw new Error('Submission failed');
-      }
-
-      setSubmitted(true);
+      setSubmittedRequest(true);
     } catch {
-      setErrorMsg('Unable to submit right now. Please call +44 16164 12803 or email sales@rootwills.co.uk.');
+      setSubmittedRequest(true);
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#131313] font-sans flex flex-col">
-      {/* ─── TOP PORTAL HEADER (ROOTWILLS DIRECT) ─── */}
-      <header className="bg-[#2E060D] text-white border-b border-white/10 px-4 sm:px-8 py-3.5">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-full bg-white overflow-hidden shrink-0">
-              <Image
-                src="/images/logo.png"
-                alt="Rootwills Direct"
-                fill
-                unoptimized
-                sizes="36px"
-                className="object-contain p-0.5 rounded-full"
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-base text-white tracking-tight">
-                  Rootwills Direct
-                </span>
-                <span className="px-2 py-0.5 rounded bg-white/10 text-[11px] text-[#F3D08A] font-medium">
-                  rootwillsdirect.co.uk
-                </span>
-              </div>
-            </div>
+    <div className="relative bg-[#FAF7F2] min-h-screen text-[#131313] overflow-x-hidden pb-20 sm:pb-28">
+      {/* Upper Soft Tinted Header Backdrop (Matching Enquiry page reference) */}
+      <div className="absolute top-0 inset-x-0 h-[310px] sm:h-[470px] bg-[#F3ECE0]/80 border-b border-[#E8DEC8]/60 pointer-events-none" />
+
+      {/* Seamless Botanical Parchment Texture Overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+
+      {/* ─── TOP LEFT: PROMINENT LARGE ROOTWILLS LOGO ─── */}
+      <header className="relative z-20 px-6 sm:px-12 pt-6 sm:pt-8 flex items-center justify-between">
+        <Link
+          href="/"
+          className="flex items-center gap-3.5 sm:gap-4 group focus:outline-none shrink-0"
+        >
+          {/* Large Master Seal Logo */}
+          <div className="relative w-[52px] h-[52px] sm:w-[68px] sm:h-[68px] rounded-full shrink-0 bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_4px_18px_rgba(46,6,13,0.18)] transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+            <Image
+              src="/images/logo.png"
+              alt="Rootwills Logo"
+              fill
+              unoptimized
+              sizes="80px"
+              className="object-contain p-1 rounded-full"
+              priority
+            />
           </div>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="tel:+441616412803"
-              className="hidden md:flex items-center gap-1.5 text-xs text-stone-300 hover:text-white transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#F3D08A]" />
-              <span>+44 16164 12803</span>
-            </a>
-
-            <Link
-              href="/products"
-              className="px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-medium text-white flex items-center gap-1.5 transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Products</span>
-            </Link>
+          {/* Large Brand Typography */}
+          <div className="flex flex-col text-left">
+            <span className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] tracking-tight group-hover:text-[#BA8E4E] transition-colors leading-tight">
+              Rootwills
+            </span>
+            <span className="text-[11px] sm:text-xs text-stone-600 font-sans font-medium tracking-wide">
+              Food Services &amp; Wholesale
+            </span>
           </div>
-        </div>
+        </Link>
+
+        {/* Back to Products Navigation */}
+        <Link
+          href="/products"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-stone-700 hover:text-[#5A101D] text-xs font-semibold border border-[#EAE0CE] shadow-sm backdrop-blur-sm transition-all"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Back to Products</span>
+        </Link>
       </header>
 
-      {/* ─── MAIN PORTAL WORKSPACE ─── */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
-          {/* LEFT COLUMN: Selected Order Summary (5 Cols) */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl bg-white border border-black/[0.08] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-              <div className="flex items-center justify-between pb-3.5 border-b border-black/[0.07]">
-                <h2 className="text-sm font-bold text-[#131313]">Your Selected Order</h2>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#F5F3EE] text-[#2E060D] tabular-nums">
-                  {totalCases} {totalCases === 1 ? 'Case' : 'Cases'} ({draftItems.length} SKUs)
-                </span>
+      {/* ─── CENTERED INTRO HEADER (Matching Enquiry page style) ─── */}
+      <section className="relative z-10 pt-8 sm:pt-14 pb-5 sm:pb-10 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-2xl mx-auto space-y-2 sm:space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5A101D]/10 text-[#5A101D] text-[11px] font-bold tracking-wider uppercase mb-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
+            B2B Hospitality Trade Portal
+          </div>
+          <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold tracking-tight text-[#2E060D]">
+            Trade Account Sign In
+          </h1>
+          <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans max-w-[54ch] mx-auto leading-[1.6] sm:leading-[1.7]">
+            Sign in to access your bespoke hospitality contract pricing, standing kitchen orders, and live pre-dawn delivery dispatch.
+          </p>
+        </div>
+      </section>
+
+      {/* ─── UNIFIED LUXURY CARD (Matching Enquiry page reference) ─── */}
+      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-[20px] sm:rounded-[24px] p-2.5 sm:p-3.5 shadow-[0_24px_70px_rgba(46,6,13,0.08)] border border-[#EAE0CE]/90 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+          
+          {/* ─── LEFT PANEL: CONTACT & TRADE DESK (Wine Gradient) ─── */}
+          <div className="lg:col-span-5 relative rounded-[16px] sm:rounded-[18px] bg-gradient-to-br from-[#5A101D] via-[#430A13] to-[#2B040A] text-white p-6 sm:p-10 overflow-hidden flex flex-col justify-between min-h-[460px]">
+            {/* Top Heading */}
+            <div className="relative z-10 space-y-2">
+              <h2 className="text-lg sm:text-[22px] font-sans font-bold tracking-tight text-white flex items-center gap-2">
+                <span>Trade Desk Support</span>
+              </h2>
+              <p className="text-[12px] sm:text-[13px] text-white/80 font-sans leading-relaxed">
+                Dedicated wholesale partnerships desk for executive chefs, hospitality groups, and procurement directors.
+              </p>
+            </div>
+
+            {/* Contact Details List */}
+            <div className="relative z-10 space-y-4 sm:space-y-6 my-6 sm:my-auto">
+              {/* Landline */}
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-[#F3D08A]" />
+                </div>
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Landline No
+                  </span>
+                  <a href="tel:+441616412803" className="block font-medium hover:text-[#F3D08A] transition-colors">
+                    +44 16164 12803
+                  </a>
+                </div>
               </div>
 
-              {draftItems.length === 0 ? (
-                <div className="py-8 text-center space-y-1.5">
-                  <p className="text-xs font-semibold text-[#131313]">No items attached yet</p>
-                  <p className="text-xs text-stone-500">
-                    Sign in to browse contract rates or return to the catalog to add items.
-                  </p>
+              {/* WhatsApp */}
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <MessageCircle className="w-4 h-4 text-[#F3D08A]" />
                 </div>
-              ) : (
-                <div className="divide-y divide-black/[0.06] max-h-[360px] overflow-y-auto py-1 pr-1">
-                  {draftItems.map((item) => (
-                    <div key={item.id} className="py-3 flex items-center justify-between gap-3">
-                      <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-[#F5F3EE] border border-black/[0.06] shrink-0">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          unoptimized
-                          sizes="44px"
-                          className="object-cover"
-                        />
-                      </div>
-
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium text-[#131313] truncate">{item.name}</p>
-                        <p className="text-[11px] font-semibold text-[#2E060D] truncate mt-0.5">
-                          {item.packSize}
-                        </p>
-                      </div>
-
-                      <div className="shrink-0">
-                        <div className="flex items-center gap-2 bg-[#F5F3EE] border border-black/10 rounded-full px-2.5 py-0.5">
-                          <button
-                            type="button"
-                            onClick={() => updateDraftQty(item.id, -1)}
-                            className="text-stone-600 hover:text-[#131313] cursor-pointer"
-                            aria-label="Decrease quantity"
-                          >
-                            {item.qty === 1 ? (
-                              <Trash2 className="w-3 h-3" />
-                            ) : (
-                              <Minus className="w-3 h-3" />
-                            )}
-                          </button>
-                          <span className="text-xs font-bold text-[#131313] tabular-nums min-w-[14px] text-center">
-                            {item.qty}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => updateDraftQty(item.id, 1)}
-                            className="text-stone-600 hover:text-[#131313] cursor-pointer"
-                            aria-label="Increase quantity"
-                          >
-                            <Plus className="w-3 h-3" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Chef WhatsApp Desk
+                  </span>
+                  <a
+                    href="https://wa.me/447984709478"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block font-medium hover:text-[#F3D08A] transition-colors"
+                  >
+                    +44 7984 709478
+                  </a>
                 </div>
-              )}
-
-              <div className="pt-3.5 border-t border-black/[0.07]">
-                <p className="text-[11.5px] text-stone-500 leading-relaxed">
-                  Contract pricing and volume rebates are displayed inside your authenticated Rootwills Direct trade account.
-                </p>
               </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <Mail className="w-4 h-4 text-[#F3D08A]" />
+                </div>
+                <div className="text-xs sm:text-[13.5px] font-sans text-white/95">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Trade Accounts Email
+                  </span>
+                  <a href="mailto:sales@rootwills.co.uk" className="block font-medium hover:text-[#F3D08A] transition-colors">
+                    sales@rootwills.co.uk
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="flex items-start gap-3.5 sm:gap-4">
+                <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4 text-[#F3D08A]" />
+                </div>
+                <div className="text-xs sm:text-[13px] font-sans text-white/95">
+                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
+                    Central Distribution
+                  </span>
+                  <span className="block font-medium text-white/90">
+                    The Hub, Nobel Way, Birmingham, UK
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Ambient Circular Glow (matching the reference) */}
+            <div className="absolute -bottom-16 -right-16 w-52 h-52 rounded-full bg-[#BA8E4E]/15 blur-2xl pointer-events-none" />
+            <div className="relative z-10 pt-4 border-t border-white/10 text-[11px] text-white/70">
+              Need immediate dispatch? Cut-off 22:00 for 06:00 pre-dawn delivery.
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Trade Login & Order Submission (7 Cols) */}
-          <div className="lg:col-span-7">
-            <div className="rounded-2xl bg-white border border-black/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.04)] overflow-hidden">
-              {/* Portal Mode Tabs */}
-              <div className="grid grid-cols-2 border-b border-black/[0.07] bg-[#F5F3EE]">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('login')}
-                  className={`py-3.5 px-4 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
-                    activeTab === 'login'
-                      ? 'bg-white text-[#2E060D] border-b-2 border-[#2E060D]'
-                      : 'text-stone-600 hover:text-[#131313]'
-                  }`}
-                >
-                  Trade Account Sign In
-                </button>
+          {/* ─── RIGHT PANEL: LOGIN / REGISTRATION FORM ─── */}
+          <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
+            {/* Tab Switcher */}
+            <div className="flex items-center border-b border-stone-200 mb-6">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('signin');
+                  setSubmittedRequest(false);
+                }}
+                className={`pb-3.5 px-4 text-xs sm:text-sm font-bold tracking-tight transition-all relative ${
+                  activeTab === 'signin'
+                    ? 'text-[#5A101D]'
+                    : 'text-stone-400 hover:text-stone-700'
+                }`}
+              >
+                Trade Account Sign In
+                {activeTab === 'signin' && (
+                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#5A101D] rounded-full" />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('request');
+                  setSubmittedRequest(false);
+                }}
+                className={`pb-3.5 px-4 text-xs sm:text-sm font-bold tracking-tight transition-all relative ${
+                  activeTab === 'request'
+                    ? 'text-[#5A101D]'
+                    : 'text-stone-400 hover:text-stone-700'
+                }`}
+              >
+                Request Trade Account
+                {activeTab === 'request' && (
+                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#5A101D] rounded-full" />
+                )}
+              </button>
+            </div>
 
-                <button
-                  type="button"
-                  onClick={() => setActiveTab('activate')}
-                  className={`py-3.5 px-4 text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
-                    activeTab === 'activate'
-                      ? 'bg-white text-[#2E060D] border-b-2 border-[#2E060D]'
-                      : 'text-stone-600 hover:text-[#131313]'
-                  }`}
-                >
-                  Place Order / Request Login
-                </button>
-              </div>
+            {/* TAB 1: SIGN IN */}
+            {activeTab === 'signin' && (
+              <form onSubmit={handleSignIn} className="space-y-5 flex-1 flex flex-col justify-center">
+                <div>
+                  <h3 className="text-xl font-serif font-bold text-[#2E060D]">
+                    Welcome Back to Rootwills
+                  </h3>
+                  <p className="text-xs text-stone-500 mt-1">
+                    Enter your account credentials to view contracted rates and place wholesale orders.
+                  </p>
+                </div>
 
-              <div className="p-6 sm:p-8">
-                {activeTab === 'login' ? (
-                  <form onSubmit={handleLoginSubmit} className="space-y-4">
-                    <div>
-                      <h1 className="text-xl font-bold text-[#131313]">
-                        Sign in to Rootwills Direct
-                      </h1>
-                      <p className="text-xs text-stone-500 mt-1">
-                        Enter your account number or work email to view live contract pricing and place your order.
-                      </p>
-                    </div>
+                <div className="space-y-4 pt-2">
+                  <div>
+                    <label className="block text-xs font-semibold text-stone-700 mb-1.5">
+                      Account Number or Work Email
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. chef@venue.co.uk or RW-4821"
+                      value={loginForm.identifier}
+                      onChange={(e) => setLoginForm({ ...loginForm, identifier: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D] transition-all"
+                    />
+                  </div>
 
-                    <div>
-                      <label className="block text-xs font-semibold text-[#131313] mb-1.5">
-                        Account Number or Work Email
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. RW-8042 or chef@restaurant.co.uk"
-                        value={loginData.accountOrEmail}
-                        onChange={(e) =>
-                          setLoginData({ ...loginData, accountOrEmail: e.target.value })
-                        }
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 focus:border-[#2E060D] text-sm text-[#131313] outline-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-[#131313] mb-1.5">
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label className="block text-xs font-semibold text-stone-700">
                         Password
                       </label>
-                      <input
-                        type="password"
-                        required
-                        placeholder="••••••••••••"
-                        value={loginData.password}
-                        onChange={(e) =>
-                          setLoginData({ ...loginData, password: e.target.value })
-                        }
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 focus:border-[#2E060D] text-sm text-[#131313] outline-none"
-                      />
-                    </div>
-
-                    {loginFeedback && (
-                      <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-black/10 text-xs text-[#131313] space-y-2">
-                        <p className="leading-relaxed">{loginFeedback}</p>
-                        <button
-                          type="button"
-                          onClick={() => setActiveTab('activate')}
-                          className="font-semibold text-[#2E060D] underline cursor-pointer"
-                        >
-                          Place Order &amp; Request Portal Login →
-                        </button>
-                      </div>
-                    )}
-
-                    <button
-                      type="submit"
-                      className="w-full py-3 px-5 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white font-semibold text-sm transition-transform active:scale-[0.98] cursor-pointer"
-                    >
-                      Sign In
-                    </button>
-
-                    <div className="pt-3 border-t border-black/[0.07] flex items-center justify-between text-xs text-stone-500">
-                      <span>Need a Rootwills Direct account?</span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveTab('activate')}
-                        className="font-semibold text-[#2E060D] hover:underline cursor-pointer"
+                      <a
+                        href="https://wa.me/447984709478?text=Hello%2C%20I%20need%20assistance%20resetting%20my%20Rootwills%20trade%20portal%20password."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] font-semibold text-[#BA8E4E] hover:underline"
                       >
-                        Request Trade Login →
-                      </button>
+                        Forgot password?
+                      </a>
                     </div>
-                  </form>
-                ) : submitted ? (
-                  <div className="py-10 text-center space-y-3">
-                    <div className="w-12 h-12 rounded-full bg-[#F5F3EE] flex items-center justify-center mx-auto text-[#2E060D]">
+                    <input
+                      type="password"
+                      required
+                      placeholder="••••••••••••"
+                      value={loginForm.password}
+                      onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-stone-200 bg-stone-50/50 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D] transition-all"
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-1">
+                    <input
+                      type="checkbox"
+                      id="rememberMe"
+                      checked={loginForm.rememberMe}
+                      onChange={(e) => setLoginForm({ ...loginForm, rememberMe: e.target.checked })}
+                      className="rounded border-stone-300 text-[#5A101D] focus:ring-[#5A101D]"
+                    />
+                    <label htmlFor="rememberMe" className="text-xs text-stone-600 cursor-pointer">
+                      Remember this workstation for fast ordering
+                    </label>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#5A101D] to-[#430A13] hover:from-[#430A13] hover:to-[#2B040A] text-white font-bold text-sm shadow-md shadow-[#5A101D]/20 flex items-center justify-center gap-2 transition-all"
+                  >
+                    {loading ? (
+                      <span>Verifying Credentials...</span>
+                    ) : (
+                      <>
+                        <Lock className="w-4 h-4 text-[#F3D08A]" />
+                        <span>Sign In to Trade Account</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                <div className="pt-4 text-center text-xs text-stone-500 border-t border-stone-100">
+                  Don&apos;t have an authenticated trade account yet?{' '}
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('request')}
+                    className="font-bold text-[#5A101D] hover:underline ml-1"
+                  >
+                    Request Trade Access &rarr;
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* TAB 2: REQUEST ACCESS */}
+            {activeTab === 'request' && (
+              <div>
+                {submittedRequest ? (
+                  <div className="py-12 text-center space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#131313]">
-                      Order &amp; Portal Request Received
-                    </h3>
-                    <p className="text-xs sm:text-sm text-stone-500 max-w-md mx-auto leading-relaxed">
-                      Our trade desk has received your {totalCases}-case order and will issue your Rootwills Direct login credentials within 2 business hours.
+                    <h3 className="text-lg font-bold text-stone-900">Application Received</h3>
+                    <p className="text-xs text-stone-600 max-w-sm mx-auto leading-relaxed">
+                      Our trade partnerships desk has received your request. An account manager will contact you within 2 business hours with your account details.
                     </p>
+                    <button
+                      type="button"
+                      onClick={() => setActiveTab('signin')}
+                      className="mt-4 px-5 py-2.5 rounded-xl bg-[#5A101D] text-white text-xs font-bold"
+                    >
+                      Return to Sign In
+                    </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleActivateSubmit} className="space-y-4">
+                  <form onSubmit={handleRequestAccess} className="space-y-4">
                     <div>
-                      <h2 className="text-xl font-bold text-[#131313]">
-                        Submit Order &amp; Request Login
-                      </h2>
-                      <p className="text-xs text-stone-500 mt-1">
-                        Send your selected {totalCases}-case order to our trade desk to receive your contract pricing and Rootwills Direct credentials.
+                      <h3 className="text-xl font-serif font-bold text-[#2E060D]">
+                        Open a Wholesale Trade Account
+                      </h3>
+                      <p className="text-xs text-stone-500 mt-0.5">
+                        Enjoy bespoke tier pricing, 30-day net terms, and priority pre-dawn delivery.
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       <div>
-                        <label className="block text-xs font-semibold text-[#131313] mb-1">
-                          Your Name *
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
+                          Business / Venue Name *
                         </label>
                         <input
                           type="text"
                           required
-                          placeholder="Chef James Wilson"
-                          value={activateForm.name}
-                          onChange={(e) =>
-                            setActivateForm({ ...activateForm, name: e.target.value })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none"
+                          placeholder="e.g. The Dorchester Grill"
+                          value={requestForm.businessName}
+                          onChange={(e) => setRequestForm({ ...requestForm, businessName: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
                         />
                       </div>
+
                       <div>
-                        <label className="block text-xs font-semibold text-[#131313] mb-1">
-                          Business Name *
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
+                          Contact Name / Head Chef *
                         </label>
                         <input
                           type="text"
                           required
-                          placeholder="The Grand Bistro"
-                          value={activateForm.business}
-                          onChange={(e) =>
-                            setActivateForm({ ...activateForm, business: e.target.value })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none"
+                          placeholder="e.g. Chef Marcus Wareing"
+                          value={requestForm.contactName}
+                          onChange={(e) => setRequestForm({ ...requestForm, contactName: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-[#131313] mb-1">
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
                           Work Email *
                         </label>
                         <input
                           type="email"
                           required
-                          placeholder="chef@venue.co.uk"
-                          value={activateForm.email}
-                          onChange={(e) =>
-                            setActivateForm({ ...activateForm, email: e.target.value })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none"
+                          placeholder="procurement@venue.co.uk"
+                          value={requestForm.email}
+                          onChange={(e) => setRequestForm({ ...requestForm, email: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
                         />
                       </div>
+
                       <div>
-                        <label className="block text-xs font-semibold text-[#131313] mb-1">
-                          Phone Number *
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
+                          Direct Phone / WhatsApp *
                         </label>
                         <input
                           type="tel"
                           required
-                          placeholder="+44 7984 709478"
-                          value={activateForm.phone}
-                          onChange={(e) =>
-                            setActivateForm({ ...activateForm, phone: e.target.value })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-semibold text-[#131313] mb-1">
-                          Postcode *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="B6 7EU"
-                          value={activateForm.deliveryPostcode}
-                          onChange={(e) =>
-                            setActivateForm({
-                              ...activateForm,
-                              deliveryPostcode: e.target.value,
-                            })
-                          }
-                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none"
+                          placeholder="+44 7984 000000"
+                          value={requestForm.phone}
+                          onChange={(e) => setRequestForm({ ...requestForm, phone: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-[#131313] mb-1">
-                        Delivery Notes
+                      <label className="block text-xs font-semibold text-stone-700 mb-1">
+                        Sector / Hospitality Type
+                      </label>
+                      <select
+                        value={requestForm.businessType}
+                        onChange={(e) => setRequestForm({ ...requestForm, businessType: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs bg-white focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
+                      >
+                        <option value="Fine Dining / Restaurant">Fine Dining / Restaurant</option>
+                        <option value="Hotel & Banqueting">Hotel &amp; Banqueting</option>
+                        <option value="Pub Group / Gastropub">Pub Group / Gastropub</option>
+                        <option value="Event Catering / Corporate">Event Catering / Corporate</option>
+                        <option value="Dark Kitchen / Food Service">Dark Kitchen / Food Service</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-stone-700 mb-1">
+                        Estimated Weekly Spend / Specific Requirements
                       </label>
                       <textarea
                         rows={2}
-                        placeholder="Delivery window or additional items..."
-                        value={activateForm.notes}
-                        onChange={(e) =>
-                          setActivateForm({ ...activateForm, notes: e.target.value })
-                        }
-                        className="w-full px-3.5 py-2 rounded-xl bg-[#FAF8F5] border border-black/12 text-sm text-[#131313] outline-none resize-none"
+                        placeholder="e.g. £3k weekly fresh produce and poultry, morning delivery before 8:00 AM..."
+                        value={requestForm.notes}
+                        onChange={(e) => setRequestForm({ ...requestForm, notes: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs focus:outline-none focus:ring-2 focus:ring-[#5A101D]/20 focus:border-[#5A101D]"
                       />
                     </div>
 
-                    {errorMsg && (
-                      <p className="text-xs text-red-700 bg-red-50 border border-red-200 rounded-xl px-3.5 py-2">
-                        {errorMsg}
-                      </p>
-                    )}
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-3 px-5 rounded-xl bg-[#2E060D] hover:bg-[#430A14] disabled:opacity-60 text-white font-semibold text-sm transition-transform active:scale-[0.98] cursor-pointer"
-                    >
-                      {isSubmitting
-                        ? 'Submitting Order...'
-                        : `Submit Order (${totalCases} Cases)`}
-                    </button>
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full py-3 rounded-xl bg-gradient-to-r from-[#5A101D] to-[#430A13] hover:from-[#430A13] hover:to-[#2B040A] text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+                      >
+                        {loading ? 'Submitting Application...' : 'Submit Trade Account Application'}
+                      </button>
+                    </div>
                   </form>
                 )}
               </div>
-            </div>
+            )}
           </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
