@@ -7,8 +7,8 @@ import { GetInTouchBanner } from './GetInTouchBanner';
 export function PublicFooter() {
   const pathname = usePathname();
 
-  // Do not render footer on the Enquiry / Contact page
-  if (pathname?.startsWith('/contact')) {
+  // Do not render footer on the Enquiry / Contact or Products catalog page
+  if (pathname?.startsWith('/contact') || pathname?.startsWith('/products')) {
     return null;
   }
 
