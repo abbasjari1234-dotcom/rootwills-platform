@@ -154,11 +154,25 @@ export default function TermsPage() {
               </p>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 6: Trademarks & Nominative Use */}
             <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
               <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
                 <span className="text-[#BA8E4E] text-xs">✦</span>
-                6. Governing Law &amp; Commercial Contacts Desk
+                6. Intellectual Property, Trademarks &amp; Nominative Fair Use
+              </h2>
+              <p className="max-w-[68ch]">
+                All product trademarks, registered logos, brand names, and trade pack imagery displayed across the Rootwills wholesale platform remain the exclusive intellectual property of their respective manufacturers and brand owners.
+              </p>
+              <p className="max-w-[68ch]">
+                Their display on this platform constitutes <strong>nominative fair use</strong> under United Kingdom intellectual property and trademark law, solely for the accurate commercial identification, description, and supply of genuine catering goods to hospitality and foodservice trade operators. Rootwills Ltd claims no ownership of third-party trademarks, nor endorsement by proprietary brand holders beyond the commercial supply of genuine products.
+              </p>
+            </section>
+
+            {/* Section 7 */}
+            <section className="space-y-3 pt-6 border-t border-[#E8DEC8]">
+              <h2 className="text-lg sm:text-xl font-serif font-bold text-[#4E0D17] flex items-center gap-2">
+                <span className="text-[#BA8E4E] text-xs">✦</span>
+                7. Governing Law &amp; Commercial Contacts Desk
               </h2>
               <p className="max-w-[68ch]">
                 These Terms and Conditions and any non-contractual obligations arising from them shall be governed by and construed in accordance with the laws of <strong className="text-stone-900">England and Wales</strong>.

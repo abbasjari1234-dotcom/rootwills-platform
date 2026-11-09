@@ -168,6 +168,7 @@ export function PublicProductsView() {
             alt={product.name}
             fill
             unoptimized
+            referrerPolicy="no-referrer"
             sizes="180px"
             className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
           />
@@ -265,6 +266,7 @@ export function PublicProductsView() {
                   alt={product.name}
                   fill
                   unoptimized
+                  referrerPolicy="no-referrer"
                   sizes="44px"
                   className="object-cover"
                 />
@@ -345,6 +347,7 @@ export function PublicProductsView() {
                     alt={addon.name}
                     fill
                     unoptimized
+                    referrerPolicy="no-referrer"
                     sizes="96px"
                     className="object-cover"
                   />
@@ -877,6 +880,7 @@ export function PublicProductsView() {
                   alt={quickViewProduct.name}
                   fill
                   unoptimized
+                  referrerPolicy="no-referrer"
                   sizes="112px"
                   className="object-cover"
                 />
