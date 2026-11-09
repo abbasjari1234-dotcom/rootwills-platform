@@ -132,7 +132,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
     shortName: 'Beverages',
     tempBadge: 'Ambient',
     image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80',
-    subcategories: ['Espresso Coffee Beans', 'Hospitality Teas', 'Table Waters & Juices'],
+    subcategories: ['Artisan Coffee & Espresso', 'Hospitality Teas & Infusions', 'Carbonated & Soft Drinks', 'Fruit Juices & Smoothies', 'Mineral Waters & Tonics', 'Hot Chocolate & Barista Syrups'],
   },
   {
     slug: 'desserts-icecream',
@@ -155,11 +155,13 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
 import bakeryCatalog from './products/bakery.json';
 import meatCatalog from './products/meat.json';
 import dairyCatalog from './products/dairy.json';
+import drinksCatalog from './products/drinks.json';
 
 export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   ...(bakeryCatalog as WholesaleProduct[]),
   ...(meatCatalog as WholesaleProduct[]),
   ...(dairyCatalog as WholesaleProduct[]),
+  ...(drinksCatalog as WholesaleProduct[]),
 
   // ════════════════════════════════════════════════════════════════
   // 4. FRESH PRODUCE (Class 1 British & Continental Harvesters)
@@ -484,22 +486,6 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     origin: 'British Professional Kitchens',
     tempZone: 'Ambient',
     description: 'MSG-free reduced meat and vegetable stock pastes that dissolve instantly for jus and braises.',
-  },
-
-  // ════════════════════════════════════════════════════════════════
-  // 11. COFFEE, TEA & SOFT DRINKS
-  // ════════════════════════════════════════════════════════════════
-  {
-    id: 'tc-1',
-    sku: 'RW-BV-513',
-    name: 'Single-Origin Roasted Arabica Espresso Beans',
-    packSize: '6 × 1kg Valve Bags',
-    categorySlug: 'tea-coffee',
-    subcategory: 'Espresso Coffee Beans',
-    image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80',
-    origin: 'Colombia, Brazil & Assam',
-    tempZone: 'Ambient',
-    description: 'Medium-dark roast specialty espresso coffee beans and English breakfast pyramid teas.',
   },
 
   // ════════════════════════════════════════════════════════════════
