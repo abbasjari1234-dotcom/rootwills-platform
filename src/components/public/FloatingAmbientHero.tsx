@@ -722,7 +722,7 @@ export function FloatingAmbientHero() {
           <h1 
             ref={wordmarkRef}
             aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
-            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#131313] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(19,19,19,0.08)] cursor-default pointer-events-none sm:pointer-events-auto"
+            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#BA8E4E] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(186,142,78,0.22)] cursor-default pointer-events-none sm:pointer-events-auto"
           >
             <span className="sr-only">
               Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
@@ -731,7 +731,7 @@ export function FloatingAmbientHero() {
               <span
                 key={idx}
                 aria-hidden="true"
-                className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#BA8E4E] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
+                className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#966F33] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
                 style={{
                   transitionDelay: `${idx * 12}ms`,
                 }}
@@ -758,15 +758,15 @@ export function FloatingAmbientHero() {
                   window.scrollTo({ top, behavior: 'smooth' });
                 }
               }}
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(19,19,19,0.2)] cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#BA8E4E] hover:bg-[#9E763B] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(186,142,78,0.32)] cursor-pointer"
             >
               <span>What We Do</span>
-              <span className="text-stone-400 group-hover:text-white transition-colors">↗</span>
+              <span className="text-[#FFF4D0] group-hover:text-white transition-colors">↗</span>
             </a>
 
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-[#FAF6EE] text-[#8C6528] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-[#BA8E4E]/45 hover:border-[#BA8E4E] transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
             >
               <span>Open Account</span>
             </Link>
