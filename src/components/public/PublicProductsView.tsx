@@ -538,7 +538,7 @@ export function PublicProductsView() {
                     Fresh Produce &amp; Prime Butchery
                   </h2>
                   <p className="text-xs text-stone-200 leading-snug">
-                    Daily market harvests &amp; 100% pork-free British meats
+                    Daily market harvests &amp; prime British butchery cuts
                   </p>
                   <span className="inline-block px-3 py-1 rounded-full bg-white text-[#2E060D] text-[11px] font-bold">
                     Explore Fresh
@@ -960,7 +960,7 @@ export function PublicProductsView() {
               </div>
               <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
                 <strong className="text-[#131313] block mb-0.5">Multi-Temperature Fleet</strong>
-                Chilled (1–4°C), prime butchery (0–2°C), frozen (-18°C), and ambient grocery lines delivered in a strictly 100% pork-free environment.
+                Chilled (1–4°C), prime butchery (0–2°C), frozen (-18°C), and ambient grocery lines delivered in dedicated multi-temperature logistics.
               </div>
             </div>
 

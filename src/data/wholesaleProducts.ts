@@ -56,7 +56,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
   },
   {
     slug: 'meat-poultry',
-    name: 'Prime Butchery & Poultry (Pork-Free)',
+    name: 'Prime Butchery & Poultry',
     shortName: 'Meat & Poultry',
     tempBadge: 'Butchery 0–2°C',
     image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&auto=format&fit=crop&q=80',
@@ -5185,7 +5185,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   },
 
   // ════════════════════════════════════════════════════════════════
-  // 2. PRIME BUTCHERY & POULTRY (100% PORK-FREE)
+  // 2. PRIME BUTCHERY & POULTRY
   // ════════════════════════════════════════════════════════════════
   {
     id: 'mp-1',
@@ -5401,7 +5401,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
     origin: 'Mediterranean & UK',
     tempZone: 'Chilled 1–4°C',
-    description: '100% pork-free chilled delicatessen range: smoked turkey breast, beef pastrami, olives, and mezze dips.',
+    description: 'Chilled delicatessen range: smoked turkey breast, beef pastrami, olives, and mezze dips.',
   },
 
   // ════════════════════════════════════════════════════════════════
