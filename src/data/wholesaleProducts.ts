@@ -42,7 +42,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
     slug: 'bakery-breakfast',
     name: 'Bakery, Bread & Sweet Morning Goods',
     shortName: 'Bakery & Bread',
-    tempBadge: 'Frozen Bake-Off',
+    tempBadge: 'Fresh Daily',
     image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
     subcategories: [
       'Loaves & Bloomers',

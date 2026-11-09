@@ -207,13 +207,6 @@ export function PublicProductsView() {
               sizes="180px"
               className="object-contain p-2 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
             />
-
-            {/* Subtle Temperature Zone Pill */}
-            {product.tempZone && product.tempZone !== 'Ambient' && (
-              <span className="absolute top-1.5 left-1.5 px-2 py-0.5 rounded-md bg-[#FAF7F2]/90 backdrop-blur-xs text-[9.5px] font-mono font-semibold text-stone-600 border border-[#E8DEC8]/60">
-                {product.tempZone.split(' ')[0]}
-              </span>
-            )}
           </div>
 
           {/* Line 1: Bold Pack Size */}
