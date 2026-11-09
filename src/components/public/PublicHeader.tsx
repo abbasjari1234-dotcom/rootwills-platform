@@ -9,6 +9,7 @@ export function PublicHeader() {
   const pathname = usePathname();
   const isHome = pathname === '/' || pathname === '';
   const [activeItem, setActiveItem] = useState<'home' | 'products' | 'about' | 'services' | 'approach' | 'contact'>('home');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Track active section on scroll when on homepage, or active route on subpages
   useEffect(() => {
@@ -17,11 +18,14 @@ export function PublicHeader() {
       else if (pathname.includes('/contact')) setActiveItem('contact');
       else if (pathname.includes('/about')) setActiveItem('about');
       else setActiveItem('home');
-      return;
     }
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 20);
+
+      if (!isHome) return;
+
       const aboutEl = document.getElementById('about');
       const servicesEl = document.getElementById('services');
       const approachEl = document.getElementById('approach');
@@ -62,9 +66,34 @@ export function PublicHeader() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-2.5 xs:px-4 sm:px-5 md:px-8 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] sm:pt-4 pointer-events-none transition-all duration-300">
+    <header className="fixed top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
+      {/* ─── TOP BACKDROP CURTAIN ───
+          Guarantees content scrolling up dissolves and disappears cleanly
+          instead of passing under and popping out above the floating navbar */}
+      <div
+        className={`absolute inset-x-0 top-0 pointer-events-none transition-opacity duration-300 ${
+          !isHome || isScrolled ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        {/* Solid parchment barrier covering from top of window down to navbar bottom */}
+        <div className="relative h-[66px] sm:h-[82px] w-full bg-[#FAF7F2] border-b border-[#E8DEC8]/90 shadow-[0_4px_24px_rgba(46,6,13,0.04)]">
+          {/* Subtle Botanical Parchment Texture Overlay */}
+          <div
+            className="absolute inset-0 bg-repeat opacity-[0.20] mix-blend-multiply pointer-events-none"
+            style={{
+              backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+              backgroundSize: '1100px auto',
+            }}
+          />
+        </div>
+
+        {/* Soft feathered gradient fade right below the solid barrier so items vanish smoothly */}
+        <div className="h-5 sm:h-7 w-full bg-gradient-to-b from-[#FAF7F2] to-transparent pointer-events-none" />
+      </div>
+
       {/* ─── ANUBI-STYLE FLOATING CAPSULE NAVBAR SURFACE ─── */}
-      <div className="pointer-events-auto w-full max-w-[1320px] h-[52px] sm:h-[62px] px-2.5 xs:px-3 sm:px-4 md:px-5 flex items-center justify-between rounded-full bg-[#FFFFFF]/92 backdrop-blur-xl border border-black/[0.06] shadow-[0_2px_4px_rgba(35,30,24,0.03),0_8px_28px_-8px_rgba(35,30,24,0.12),inset_0_0_0_1px_rgba(35,30,24,0.04)]">
+      <div className="relative z-10 flex justify-center px-2.5 xs:px-4 sm:px-5 md:px-8 pt-[calc(0.4rem+env(safe-area-inset-top,0px))] sm:pt-3.5">
+        <div className="pointer-events-auto w-full max-w-[1320px] h-[52px] sm:h-[62px] px-2.5 xs:px-3 sm:px-4 md:px-5 flex items-center justify-between rounded-full bg-[#FFFFFF] border border-black/[0.08] shadow-[0_2px_4px_rgba(35,30,24,0.03),0_8px_28px_-8px_rgba(35,30,24,0.12),inset_0_0_0_1px_rgba(35,30,24,0.04)]">
         
         {/* LEFT: Brand Lockup with High-Visibility Master Seal & Editorial Typography */}
         <Link 
@@ -181,6 +210,7 @@ export function PublicHeader() {
 
         </nav>
 
+        </div>
       </div>
     </header>
   );

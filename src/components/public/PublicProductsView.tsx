@@ -442,7 +442,7 @@ export function PublicProductsView() {
   );
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#131313] font-sans pt-[68px] sm:pt-[82px] pb-16">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[68px] sm:pt-[82px] pb-16">
       {/* ─── 3-COLUMN PANDAMART STOREFRONT ARCHITECTURE ─── */}
       <div className="max-w-[1480px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="flex items-start gap-5 lg:gap-6">
