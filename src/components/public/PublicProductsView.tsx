@@ -14,10 +14,12 @@ import {
   ShoppingBag,
   Phone,
   ArrowUpRight,
+  ArrowRight,
   ShieldCheck,
   CheckCircle2,
 } from 'lucide-react';
 import { InquiryModal } from '@/components/public/InquiryModal';
+import { WholesaleCheckoutModal } from '@/components/public/WholesaleCheckoutModal';
 import {
   WHOLESALE_CATEGORIES,
   WHOLESALE_PRODUCTS,
@@ -39,6 +41,7 @@ export function PublicProductsView() {
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [quickViewProduct, setQuickViewProduct] = useState<WholesaleProduct | null>(null);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState<boolean>(false);
   const [hubInfoModalOpen, setHubInfoModalOpen] = useState<boolean>(false);
   const [isInquiryOpen, setIsInquiryOpen] = useState<boolean>(false);
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
@@ -437,13 +440,19 @@ export function PublicProductsView() {
           </span>
         </div>
 
-        <a
-          href="/login"
-          className="w-full py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+        <button
+          type="button"
+          onClick={() => {
+            if (orderList.length === 0) return;
+            setMobileCartDrawerOpen(false);
+            setIsCheckoutModalOpen(true);
+          }}
+          disabled={orderList.length === 0}
+          className="w-full py-3.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] disabled:opacity-50 text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
         >
-          <span>Sign In to Order</span>
-          <ArrowUpRight className="w-4 h-4 text-[#F3D08A]" />
-        </a>
+          <span>Review &amp; Place Pre-Dawn Order</span>
+          <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+        </button>
       </div>
     </div>
   );
@@ -733,7 +742,7 @@ export function PublicProductsView() {
               </span>
             </div>
             <span className="text-xs font-semibold text-[#F3D08A]">
-              Sign In to Order ↗
+              Place Order ↗
             </span>
           </button>
         </div>
@@ -885,13 +894,17 @@ export function PublicProductsView() {
                         </div>
                       )}
 
-                      <a
-                        href="/login"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setQuickViewProduct(null);
+                          setIsCheckoutModalOpen(true);
+                        }}
                         className="py-3 px-4 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                       >
-                        <span>Sign In to Order</span>
-                        <ArrowUpRight className="w-4 h-4 text-[#BA8E4E]" />
-                      </a>
+                        <span>Review Order</span>
+                        <ArrowRight className="w-4 h-4 text-[#BA8E4E]" />
+                      </button>
                     </div>
 
                     <button
@@ -918,6 +931,21 @@ export function PublicProductsView() {
         isOpen={isInquiryOpen}
         onClose={() => setIsInquiryOpen(false)}
         initialNotes={customInquiryNotes}
+      />
+
+      {/* Pre-Dawn Wholesale Order Checkout Modal */}
+      <WholesaleCheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+        orderItems={orderList}
+        onOrderSuccess={() => {
+          setOrderList([]);
+          try {
+            localStorage.removeItem('rootwills_direct_draft_order');
+          } catch {
+            // ignore
+          }
+        }}
       />
     </div>
   );

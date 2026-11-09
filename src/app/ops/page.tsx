@@ -34,6 +34,13 @@ export default function OpsOverviewDashboard() {
           </p>
           <div className="flex flex-wrap items-center gap-3 mt-6">
             <Link
+              href="/ops/orders"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-md transition-all"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              Wholesale Order Desk
+            </Link>
+            <Link
               href="/ops/products"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-md transition-all"
             >
@@ -52,7 +59,25 @@ export default function OpsOverviewDashboard() {
       </div>
 
       {/* Quick Navigation Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <Link
+          href="/ops/orders"
+          className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:border-amber-500/50 hover:shadow-md transition-all group"
+        >
+          <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <ShoppingBag className="w-6 h-6" />
+          </div>
+          <h3 className="text-lg font-black text-slate-900 group-hover:text-amber-700 transition-colors">
+            Wholesale Order Desk
+          </h3>
+          <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+            Monitor incoming restaurant orders, print night picking slips, update multi-temp loading statuses, and dispatch drivers.
+          </p>
+          <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 text-xs font-bold text-amber-600">
+            <span>Launch Order Desk</span>
+            <ChevronRight className="w-4 h-4" />
+          </div>
+        </Link>
         <Link
           href="/ops/products"
           className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:border-emerald-500/50 hover:shadow-md transition-all group"
