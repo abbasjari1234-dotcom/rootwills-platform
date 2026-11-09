@@ -9,7 +9,7 @@ interface PointerInkProps {
   className?: string;
 }
 
-const INK_COLORS = ['#2878f0', '#8060f5', '#ff7415', '#e7bd00'];
+const INK_COLORS = ['#7A1828', '#BA8E4E', '#3A6B4C', '#D4A853'];
 const PATH_COUNT = 36;
 
 export function PointerInk({ containerRef, enabled = true, className = '' }: PointerInkProps) {

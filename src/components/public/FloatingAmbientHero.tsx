@@ -550,33 +550,33 @@ export function FloatingAmbientHero() {
             </filter>
           </defs>
 
-          {/* Blue Loop - Weaving in from left */}
+          {/* Botanical Estate Sage Loop - Weaving in from left */}
           <g filter="url(#sketch-grain-back)">
             <path
               data-marker-path
               d="M 229 398 C 171 469 89 437 105 327 C 121 218 209 84 271 78 C 321 76 322 144 276 200"
-              stroke="#2878f0"
+              stroke="#3A6B4C"
               strokeWidth="14"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* Blue Loop Continuation */}
+            {/* Sage Loop Continuation */}
             <path
               data-marker-path
               d="M 105 327 C 110 288 126 240 153 191"
-              stroke="#2878f0"
+              stroke="#3A6B4C"
               strokeWidth="13"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </g>
 
-          {/* Yellow Sweep - Flowing underneath and out to right */}
+          {/* Champagne Harvest Gold Sweep - Flowing underneath and out to right */}
           <g filter="url(#sketch-grain-back)">
             <path
               data-marker-path
               d="M -105 434 C 56 408 224 373 405 359"
-              stroke="#ffda25"
+              stroke="#D4A853"
               strokeWidth="13"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -584,7 +584,7 @@ export function FloatingAmbientHero() {
             <path
               data-marker-path
               d="M -85 448 C -21 430 37 416 78 403"
-              stroke="#ffda25"
+              stroke="#D4A853"
               strokeWidth="13"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -592,31 +592,31 @@ export function FloatingAmbientHero() {
             <path
               data-marker-path
               d="M 807 366 C 879 374 974 371 1042 362"
-              stroke="#ffda25"
+              stroke="#D4A853"
               strokeWidth="12"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </g>
 
-          {/* Violet Star - Ambient floating rotation */}
-          <g ref={violetStarRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="17" strokeLinecap="butt" strokeLinejoin="round">
+          {/* Crimson Burgundy Star - Ambient floating rotation */}
+          <g ref={violetStarRef} filter="url(#sketch-grain-back)" stroke="#7A1828" strokeWidth="17" strokeLinecap="butt" strokeLinejoin="round">
             <path data-marker-path d="M 543 73 L 532 160" />
             <path data-marker-path d="M 496 96 L 569 147" />
             <path data-marker-path d="M 490 137 L 579 107" />
             <path data-marker-path d="M 512 159 L 555 81" />
           </g>
 
-          {/* Orange Curl - Playful doodle flourish */}
-          <g ref={orangeCurlRef} filter="url(#sketch-grain-back)" stroke="#ff7415" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
+          {/* Burnished Copper-Gold Curl - Playful doodle flourish */}
+          <g ref={orangeCurlRef} filter="url(#sketch-grain-back)" stroke="#BA8E4E" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
             <path
               data-marker-path
               d="M 660 415 C 689 435 746 421 767 393 C 792 361 779 333 758 346 C 736 360 766 397 804 379 C 845 360 885 315 896 283 C 909 248 886 230 872 250 C 856 272 898 300 937 247 C 973 199 994 153 986 108"
             />
           </g>
 
-          {/* Violet Star Small - Rhythmic twinkle */}
-          <g ref={violetStarSmallRef} filter="url(#sketch-grain-back)" stroke="#8060f5" strokeWidth="12" strokeLinecap="butt" strokeLinejoin="round">
+          {/* Crimson Burgundy Star Small - Rhythmic twinkle */}
+          <g ref={violetStarSmallRef} filter="url(#sketch-grain-back)" stroke="#7A1828" strokeWidth="12" strokeLinecap="butt" strokeLinejoin="round">
             <path data-marker-path d="M 305 417 L 293 477" />
             <path data-marker-path d="M 273 429 L 324 462" />
             <path data-marker-path d="M 269 460 L 331 437" />
@@ -722,7 +722,7 @@ export function FloatingAmbientHero() {
           <h1 
             ref={wordmarkRef}
             aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
-            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#BA8E4E] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(186,142,78,0.22)] cursor-default pointer-events-none sm:pointer-events-auto"
+            className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#3D0812] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(46,6,13,0.12)] cursor-default pointer-events-none sm:pointer-events-auto"
           >
             <span className="sr-only">
               Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
@@ -731,7 +731,7 @@ export function FloatingAmbientHero() {
               <span
                 key={idx}
                 aria-hidden="true"
-                className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#966F33] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
+                className="inline-block transition-all duration-200 ease-out hover:-translate-y-3 sm:hover:-translate-y-4 hover:scale-105 hover:text-[#BA8E4E] hover:rotate-[-2deg] active:scale-95 will-change-transform cursor-pointer"
                 style={{
                   transitionDelay: `${idx * 12}ms`,
                 }}
@@ -742,7 +742,7 @@ export function FloatingAmbientHero() {
           </h1>
 
           {/* Anubi-style Quiet Subtitle Caption */}
-          <p className="mt-2.5 sm:mt-3 text-[11.5px] xs:text-xs sm:text-sm md:text-base text-[#4D4D49] font-sans font-medium tracking-tight text-balance max-w-[300px] xs:max-w-md mx-auto leading-snug sm:leading-normal pointer-events-none">
+          <p className="mt-2.5 sm:mt-3 text-[11.5px] xs:text-xs sm:text-sm md:text-base text-[#4A3B3E] font-sans font-medium tracking-tight text-balance max-w-[300px] xs:max-w-md mx-auto leading-snug sm:leading-normal pointer-events-none">
             Commercial food services, hand-graded British farm produce &amp; artisan wholesale.
           </p>
 
@@ -758,15 +758,15 @@ export function FloatingAmbientHero() {
                   window.scrollTo({ top, behavior: 'smooth' });
                 }
               }}
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#BA8E4E] hover:bg-[#9E763B] text-[#FCFCFA] text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_4px_16px_rgba(186,142,78,0.32)] cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#3D0812] hover:bg-[#260309] text-[#FAF7F2] ring-1 ring-[#BA8E4E]/45 text-xs sm:text-sm font-sans font-semibold tracking-wide transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-[0_6px_20px_rgba(46,6,13,0.24)] cursor-pointer"
             >
               <span>What We Do</span>
-              <span className="text-[#FFF4D0] group-hover:text-white transition-colors">↗</span>
+              <span className="text-[#F3D08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
             </a>
 
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-[#FAF6EE] text-[#8C6528] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-[#BA8E4E]/45 hover:border-[#BA8E4E] transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
+              className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-[#FFFDF9] hover:bg-[#FAF6EE] text-[#3D0812] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-[#BA8E4E]/55 hover:border-[#BA8E4E] transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
             >
               <span>Open Account</span>
             </Link>

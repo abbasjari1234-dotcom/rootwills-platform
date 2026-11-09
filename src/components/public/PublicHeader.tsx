@@ -150,13 +150,13 @@ export function PublicHeader() {
             Approach
           </Link>
 
-          {/* Accent CTA Button: Matching Anubi "Contattaci ↗" with circular disc */}
+          {/* Accent CTA Button: Matching Rootwills Royal Burgundy + Champagne Gold */}
           <Link
             href="/contact"
-            className={`group ml-1 sm:ml-2 pl-3.5 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation ${
+            className={`group ml-1 sm:ml-2 pl-3.5 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation ring-1 ring-[#BA8E4E]/40 ${
               activeItem === 'contact'
-                ? 'bg-[#131313] text-[#FAF7F2] shadow-[0_4px_14px_rgba(19,19,19,0.18)]'
-                : 'bg-[#131313] hover:bg-[#260309] text-[#FAF7F2] shadow-[0_2px_10px_rgba(19,19,19,0.12)]'
+                ? 'bg-[#260309] text-[#FAF7F2] shadow-[0_4px_14px_rgba(46,6,13,0.22)]'
+                : 'bg-[#3D0812] hover:bg-[#260309] text-[#FAF7F2] shadow-[0_2px_10px_rgba(46,6,13,0.16)]'
             }`}
           >
             <span className="hidden xs:inline">Get in Touch</span>
