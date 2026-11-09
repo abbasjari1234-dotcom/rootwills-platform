@@ -13,9 +13,7 @@ import {
   Truck,
   ShoppingBag,
   Phone,
-  ExternalLink,
-  Lock,
-  Layers,
+  ArrowUpRight,
 } from 'lucide-react';
 import { InquiryModal } from '@/components/public/InquiryModal';
 
@@ -74,7 +72,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
   {
     slug: 'chilled-dairy',
     name: 'Chilled Dairy, Cheese & Eggs',
-    shortName: 'Chilled & Dairy',
+    shortName: 'Dairy & Eggs',
     tempBadge: 'Chilled 1–4°C',
     image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80',
   },
@@ -102,7 +100,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
   {
     slug: 'everyday-grocery',
     name: 'Grocery, Tinned & Flour',
-    shortName: 'Store Cupboard',
+    shortName: 'Everyday Grocery',
     tempBadge: 'Ambient',
     image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80',
   },
@@ -150,14 +148,14 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
   },
 ];
 
-// Creed Foodservice Equivalent Product Range — 100% Pork-Free, Clean Verified Product Photography, Zero Exposed Prices
+// Creed Foodservice Equivalent Wholesale Catalog — 100% Pork-Free, Clean Verified Photography, Zero Public Pricing
 export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   // ─── 1. FRESH PRODUCE ───
   {
     id: 'fp-1',
     sku: 'RW-FP-101',
     name: 'San Marzano & Heritage Vine Tomatoes',
-    packSize: 'Tray • 5kg Class 1',
+    packSize: '5kg Tray',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80',
     origin: 'Isle of Wight / Italy',
@@ -170,7 +168,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'fp-2',
     sku: 'RW-FP-102',
     name: 'Lincolnshire Maris Piper Washed Potatoes',
-    packSize: 'Sack • 25kg Brushed',
+    packSize: '25kg Sack',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop&q=80',
     origin: 'Lincolnshire, UK',
@@ -182,8 +180,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fp-3',
     sku: 'RW-FP-103',
-    name: 'Unwaxed Amalfi & Sorrento Catering Lemons',
-    packSize: 'Crate • 10kg (85–100 Count)',
+    name: 'Unwaxed Amalfi & Sorrento Lemons',
+    packSize: '10kg Crate (85–100s)',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1590502593747-42a996133562?w=600&auto=format&fit=crop&q=80',
     origin: 'Italy / Spain',
@@ -194,8 +192,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fp-4',
     sku: 'RW-FP-104',
-    name: 'British Tenderstem Broccoli & Calabrese Florets',
-    packSize: 'Crate • 5kg Field-Iced',
+    name: 'British Tenderstem Broccoli & Calabrese',
+    packSize: '5kg Field-Iced Crate',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=600&auto=format&fit=crop&q=80',
     origin: 'Cornwall & Kent, UK',
@@ -206,7 +204,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'fp-5',
     sku: 'RW-FP-105',
     name: 'Ready-to-Eat Hass Avocados (Calibrated 16s)',
-    packSize: 'Box • 4kg (16 Count)',
+    packSize: '4kg Box (16 Count)',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&auto=format&fit=crop&q=80',
     origin: 'Peru / Mexico',
@@ -216,8 +214,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fp-6',
     sku: 'RW-FP-106',
-    name: 'Triple-Washed Baby Spinach & Wild Rocket Leaves',
-    packSize: 'Case • 4 x 500g Pillow Bags',
+    name: 'Triple-Washed Baby Spinach & Wild Rocket',
+    packSize: '4 × 500g Pillow Bags',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=600&auto=format&fit=crop&q=80',
     origin: 'Evesham Valley, UK',
@@ -228,8 +226,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fp-7',
     sku: 'RW-FP-107',
-    name: 'Chef’s Wild Forest & Chestnut Mushroom Basket',
-    packSize: 'Basket • 3kg Dry-Brushed',
+    name: 'Wild Forest & Chestnut Mushrooms',
+    packSize: '3kg Basket',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=600&auto=format&fit=crop&q=80',
     origin: 'UK & European Growers',
@@ -240,7 +238,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'fp-8',
     sku: 'RW-FP-108',
     name: 'Kentish Orchard Pink Lady & Braeburn Apples',
-    packSize: 'Case • 12kg Calibrated (70–75mm)',
+    packSize: '12kg Case (70–75mm)',
     categorySlug: 'fresh-produce',
     image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600&auto=format&fit=crop&q=80',
     origin: 'Kent, UK',
@@ -253,7 +251,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'mp-1',
     sku: 'RW-MP-201',
     name: '28-Day Dry-Aged British Beef Ribeye Steaks',
-    packSize: 'Case • 10 x 284g (10oz) Vac-Pack',
+    packSize: '10 × 284g Vac-Pack',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=600&auto=format&fit=crop&q=80',
     origin: 'Herefordshire, UK',
@@ -265,7 +263,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'mp-2',
     sku: 'RW-MP-202',
     name: 'Fresh Red Tractor Chicken Breast Fillets',
-    packSize: 'Tray • 5kg Calibrated (200–230g)',
+    packSize: '5kg Calibrated Tray',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=600&auto=format&fit=crop&q=80',
     origin: 'Herefordshire, UK',
@@ -277,8 +275,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'mp-3',
     sku: 'RW-MP-203',
-    name: 'French-Trimmed Welsh Rack of Lamb & Cutlets',
-    packSize: 'Case • 6 x 7-Bone Racks (Approx 450g)',
+    name: 'French-Trimmed Welsh Rack of Lamb',
+    packSize: '6 × 7-Bone Racks',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600&auto=format&fit=crop&q=80',
     origin: 'Wales, UK',
@@ -289,8 +287,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'mp-4',
     sku: 'RW-MP-204',
-    name: 'British Chuck & Brisket Beef Burgers (80/20)',
-    packSize: 'Box • 24 x 170g (6oz) Patties',
+    name: 'British Chuck & Brisket Beef Burgers (6oz)',
+    packSize: '24 × 170g Box',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
     origin: 'Yorkshire, UK',
@@ -300,8 +298,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'mp-5',
     sku: 'RW-MP-205',
-    name: 'Boneless Skinless Chicken Thighs & Whole Birds',
-    packSize: 'Case • 10kg (2 x 5kg Vacuum Packs)',
+    name: 'Boneless Skinless Chicken Thighs',
+    packSize: '2 × 5kg Vac-Pack',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=600&auto=format&fit=crop&q=80',
     origin: 'British Poultry Farms',
@@ -311,8 +309,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'mp-6',
     sku: 'RW-MP-206',
-    name: 'Rolled British Beef Topside & Braising Lamb Shanks',
-    packSize: 'Joint • 4.5kg Tied / 12 x 400g Shanks',
+    name: 'Rolled British Beef Topside & Lamb Shanks',
+    packSize: '4.5kg Tied Joint',
     categorySlug: 'meat-poultry',
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80',
     origin: 'West Country & Midlands, UK',
@@ -325,7 +323,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'cd-1',
     sku: 'RW-CD-301',
     name: 'British Lion Code Free-Range Large Eggs',
-    packSize: 'Outer • 15 Dozen (180 Eggs)',
+    packSize: '15 Dozen Outer (180s)',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=600&auto=format&fit=crop&q=80',
     origin: 'Staffordshire & Cotswolds, UK',
@@ -337,8 +335,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'cd-2',
     sku: 'RW-CD-302',
-    name: 'West Country Pasteurised Double & Whipping Cream',
-    packSize: 'Case • 4 x 2 Litre Poly Bottles',
+    name: 'West Country Pasteurised Double Cream',
+    packSize: '4 × 2L Case',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format&fit=crop&q=80',
     origin: 'Somerset & Gloucestershire, UK',
@@ -348,8 +346,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'cd-3',
     sku: 'RW-CD-303',
-    name: 'West Country Mature Cheddar & Grated Mozzarella',
-    packSize: 'Block • 5kg Catering Block / 2kg Grated',
+    name: 'West Country Mature Cheddar & Mozzarella',
+    packSize: '5kg Catering Block',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600&auto=format&fit=crop&q=80',
     origin: 'Somerset, UK & Italy',
@@ -360,8 +358,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'cd-4',
     sku: 'RW-CD-304',
-    name: 'Unsalted Culinary Block Butter (82% Butterfat)',
-    packSize: 'Case • 40 x 250g Foil Blocks (10kg)',
+    name: 'Unsalted Culinary Block Butter (82% Fat)',
+    packSize: '40 × 250g Case',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=600&auto=format&fit=crop&q=80',
     origin: 'Devon & Cornwall, UK',
@@ -371,8 +369,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'cd-5',
     sku: 'RW-CD-305',
-    name: 'Fresh Whole Milk, Semi-Skimmed & Barista Oat Milk',
-    packSize: 'Crate • 6 x 2L Dairy / 12 x 1L Barista Oat',
+    name: 'Fresh Whole Dairy Milk & Barista Oat Milk',
+    packSize: '6 × 2L / 12 × 1L Case',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=600&auto=format&fit=crop&q=80',
     origin: 'British Dairies',
@@ -383,8 +381,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'cd-6',
     sku: 'RW-CD-306',
-    name: 'Marinated Nocellara Olives, Hummus & Pork-Free Deli',
-    packSize: 'Tub • 2.5kg Drained Olives / 1kg Sliced Turkey',
+    name: 'Marinated Nocellara Olives & Mezze Deli',
+    packSize: '2.5kg Drained Tub',
     categorySlug: 'chilled-dairy',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
     origin: 'Mediterranean & UK',
@@ -396,8 +394,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'sf-1',
     sku: 'RW-FS-401',
-    name: 'Scottish Loch-Reared Salmon Centre-Cut Portions',
-    packSize: 'Box • 10 x 200g Skin-On Pin-Boned',
+    name: 'Scottish Salmon Centre-Cut Portions',
+    packSize: '10 × 200g Skin-On',
     categorySlug: 'seafood-fish',
     image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80',
     origin: 'Scottish Highlands',
@@ -408,8 +406,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'sf-2',
     sku: 'RW-FS-402',
-    name: 'MSC Atlantic Cod & Haddock Skinless Loins (IQF)',
-    packSize: 'Case • 4.54kg (10lb) Shatterpack (170–230g)',
+    name: 'MSC Atlantic Cod & Haddock Skinless Loins',
+    packSize: '4.54kg Shatterpack',
     categorySlug: 'seafood-fish',
     image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop&q=80',
     origin: 'North East Atlantic (FAO 27)',
@@ -419,8 +417,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'sf-3',
     sku: 'RW-FS-403',
-    name: 'Raw Peeled Black Tiger King Prawns (16/20) & Calamari',
-    packSize: 'Case • 5 x 1kg IQF Bags',
+    name: 'Raw Peeled Black Tiger King Prawns (16/20)',
+    packSize: '5 × 1kg IQF Case',
     categorySlug: 'seafood-fish',
     image: 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=600&auto=format&fit=crop&q=80',
     origin: 'BAP 4-Star Certified',
@@ -432,8 +430,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fc-1',
     sku: 'RW-FZ-404',
-    name: 'Gourmet Skin-On Stealth Bistro Fries (9x9mm)',
-    packSize: 'Case • 4 x 2.5kg (10kg Total)',
+    name: 'Gourmet Skin-On Stealth Bistro Fries (9mm)',
+    packSize: '4 × 2.5kg Case',
     categorySlug: 'frozen-chips',
     image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?w=600&auto=format&fit=crop&q=80',
     origin: 'British & Belgian Growers',
@@ -445,8 +443,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'fc-2',
     sku: 'RW-FZ-405',
-    name: 'Chunky Triple-Cooked Gastro Pub Chips & Wedges',
-    packSize: 'Case • 4 x 2.5kg (10kg Total)',
+    name: 'Chunky Triple-Cooked Gastro Pub Chips',
+    packSize: '4 × 2.5kg Case',
     categorySlug: 'frozen-chips',
     image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600&auto=format&fit=crop&q=80',
     origin: 'Lincolnshire Potatoes, UK',
@@ -457,7 +455,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'fc-3',
     sku: 'RW-FZ-406',
     name: 'IQF Baby Petits Pois, Edamame & Sweetcorn',
-    packSize: 'Case • 10 x 1kg Catering Bags',
+    packSize: '10 × 1kg Case',
     categorySlug: 'frozen-chips',
     image: 'https://images.unsplash.com/photo-1592394533824-9440e5d68530?w=600&auto=format&fit=crop&q=80',
     origin: 'Yorkshire & Lincolnshire, UK',
@@ -469,8 +467,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'bb-1',
     sku: 'RW-BK-407',
-    name: 'Stone-Baked Wild Ferment Sourdough Boules & Ciabatta',
-    packSize: 'Case • 8 x 800g Loaves / 40 Ciabatta Rolls',
+    name: 'Stone-Baked Wild Ferment Sourdough Boules',
+    packSize: '8 × 800g Case',
     categorySlug: 'bakery-breakfast',
     image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80',
     origin: 'Craft Bakery, UK',
@@ -480,8 +478,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'bb-2',
     sku: 'RW-BK-408',
-    name: 'Pre-Sliced Glazed Gourmet Burger Brioche Buns',
-    packSize: 'Case • 48 x 85g (4.5 Inch) Buns',
+    name: 'Pre-Sliced Glazed Gourmet Brioche Buns',
+    packSize: '48 × 85g Case',
     categorySlug: 'bakery-breakfast',
     image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&auto=format&fit=crop&q=80',
     origin: 'Artisan Bakery, UK',
@@ -491,8 +489,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'bb-3',
     sku: 'RW-BK-409',
-    name: 'All-Butter French Croissants & Pain au Chocolat',
-    packSize: 'Case • 60 x 70g Ready-to-Bake Units',
+    name: 'All-Butter French Croissants & Pastries',
+    packSize: '60 × 70g Case',
     categorySlug: 'bakery-breakfast',
     image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&auto=format&fit=crop&q=80',
     origin: 'Charentes-Poitou Butter',
@@ -504,8 +502,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'eg-1',
     sku: 'RW-AG-501',
-    name: 'Italian San Marzano Peeled Plum Tomatoes & Passata',
-    packSize: 'Case • 6 x 2.55kg (A10 Catering Tins)',
+    name: 'Italian San Marzano Peeled Plum Tomatoes',
+    packSize: '6 × 2.55kg Case',
     categorySlug: 'everyday-grocery',
     image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80',
     origin: 'Campania, Italy',
@@ -516,8 +514,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'eg-2',
     sku: 'RW-AG-502',
-    name: 'Neapolitan Tipo 00 Pizza Flour, Strong Bread & Sugar',
-    packSize: 'Sack • 16kg / 25kg Mill Sacks',
+    name: 'Neapolitan Tipo 00 Pizza & Strong Bread Flour',
+    packSize: '16kg / 25kg Sack',
     categorySlug: 'everyday-grocery',
     image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80',
     origin: 'Italian & British Heritage Mills',
@@ -530,7 +528,7 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
     id: 'of-1',
     sku: 'RW-AG-503',
     name: 'Cold-Pressed Mediterranean Extra Virgin Olive Oil',
-    packSize: 'Case • 4 x 5 Litre Tins',
+    packSize: '4 × 5L Tins',
     categorySlug: 'oil-fats',
     image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80',
     origin: 'Spain & Italy',
@@ -541,8 +539,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'of-2',
     sku: 'RW-AG-504',
-    name: 'Extended-Life Commercial Rapeseed & Sunflower Frying Oil',
-    packSize: 'Drum • 20 Litre Box-in-Bag',
+    name: 'Extended-Life Commercial Rapeseed Frying Oil',
+    packSize: '20L Box-in-Bag Drum',
     categorySlug: 'oil-fats',
     image: 'https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=600&auto=format&fit=crop&q=80',
     origin: 'UK Cold-Press',
@@ -554,8 +552,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'rp-1',
     sku: 'RW-AG-505',
-    name: '24-Month Aged Extra-Long Himalayan Basmati Rice',
-    packSize: 'Sack • 20kg Catering Sack',
+    name: '24-Month Aged Extra-Long Basmati Rice',
+    packSize: '20kg Sack',
     categorySlug: 'rice-pasta',
     image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80',
     origin: 'Himalayan Foothills',
@@ -565,8 +563,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'rp-2',
     sku: 'RW-AG-506',
-    name: 'Gragnano Bronze-Die Durum Wheat Penne, Linguine & Rigatoni',
-    packSize: 'Case • 4 x 3kg Catering Bags',
+    name: 'Gragnano Bronze-Die Durum Wheat Pasta',
+    packSize: '4 × 3kg Case',
     categorySlug: 'rice-pasta',
     image: 'https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=600&auto=format&fit=crop&q=80',
     origin: 'Naples, Italy',
@@ -578,8 +576,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'ss-1',
     sku: 'RW-AG-507',
-    name: 'Whole & Ground Culinary Spices, Peppercorns & Sea Salt',
-    packSize: 'Pack • 6 x 500g Chef Shakers + 1.5kg Maldon Tub',
+    name: 'Culinary Spices, Peppercorns & Maldon Sea Salt',
+    packSize: '6 × 500g Chef Pack',
     categorySlug: 'spices-sauces',
     image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80',
     origin: 'Single-Estate Origins & Maldon, UK',
@@ -591,8 +589,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'tc-1',
     sku: 'RW-BV-508',
-    name: 'Single-Origin Roasted Arabica Espresso Beans & Hospitality Tea',
-    packSize: 'Case • 6 x 1kg Valve Bags / 1,100 Tea Bags',
+    name: 'Single-Origin Roasted Arabica Espresso Beans',
+    packSize: '6 × 1kg Case',
     categorySlug: 'tea-coffee',
     image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80',
     origin: 'Colombia, Brazil & Assam',
@@ -602,8 +600,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'tc-2',
     sku: 'RW-BV-509',
-    name: 'Still & Sparkling Spring Water Dining Table Glass Bottles',
-    packSize: 'Case • 12 x 750ml Glass / 24 x 330ml',
+    name: 'Still & Sparkling Spring Water Table Bottles',
+    packSize: '12 × 750ml Glass Case',
     categorySlug: 'tea-coffee',
     image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=600&auto=format&fit=crop&q=80',
     origin: 'British Natural Springs',
@@ -615,8 +613,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'di-1',
     sku: 'RW-DS-410',
-    name: 'Belgian Dark Chocolate Fondants, Cheesecakes & Tartlets',
-    packSize: 'Box • 16 Pre-Portioned Patisserie Units',
+    name: 'Belgian Dark Chocolate Fondants & Cheesecakes',
+    packSize: '16 Pre-Portioned Units',
     categorySlug: 'desserts-icecream',
     image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&auto=format&fit=crop&q=80',
     origin: 'British & Continental Patisserie',
@@ -626,8 +624,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'di-2',
     sku: 'RW-DS-411',
-    name: 'Cornish Madagascan Vanilla & Pistachio Dairy Napoli Gelato',
-    packSize: 'Tub • 4.75 Litre Stainless-Fit Napoli Tub',
+    name: 'Cornish Madagascan Vanilla & Pistachio Gelato',
+    packSize: '4.75L Napoli Tub',
     categorySlug: 'desserts-icecream',
     image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
     origin: 'Cornwall & Italy',
@@ -639,8 +637,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'ph-1',
     sku: 'RW-NF-601',
-    name: 'Eco Kraft Takeaway Boxes, Burger Clamshells & Coffee Cups',
-    packSize: 'Case • 300 Compostable Units',
+    name: 'Eco Kraft Takeaway Boxes & Burger Clamshells',
+    packSize: '300 Units Case',
     categorySlug: 'packaging-hygiene',
     image: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=600&auto=format&fit=crop&q=80',
     origin: 'FSC Sustainable UK',
@@ -650,8 +648,8 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   {
     id: 'ph-2',
     sku: 'RW-NF-602',
-    name: '450mm Catering Aluminium Foil, Cling Film, Blue Roll & Sanitiser',
-    packSize: 'Case • Cutterbox Rolls / 2x5L BS EN 1276 Sanitiser',
+    name: '450mm Catering Foil, Cling Film & Blue Roll',
+    packSize: '6-Pack Cutterbox Case',
     categorySlug: 'packaging-hygiene',
     image: 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&auto=format&fit=crop&q=80',
     origin: 'Professional Kitchen Grade',
@@ -674,11 +672,11 @@ export function PublicProductsView() {
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
 
-  // Pre-seeded with 3 core wholesale lines so the right order manifest sidebar is immediately functional
+  // Pre-seeded with 3 core wholesale lines so the right sidebar is immediately populated
   const [orderList, setOrderList] = useState<DraftOrderLine[]>([
-    { product: WHOLESALE_PRODUCTS[0], qty: 2 }, // San Marzano & Heritage Vine Tomatoes
-    { product: WHOLESALE_PRODUCTS[9], qty: 1 }, // Fresh Red Tractor Chicken Breast Fillets
-    { product: WHOLESALE_PRODUCTS[1], qty: 2 }, // Lincolnshire Maris Piper Washed Potatoes
+    { product: WHOLESALE_PRODUCTS[0], qty: 2 },
+    { product: WHOLESALE_PRODUCTS[9], qty: 1 },
+    { product: WHOLESALE_PRODUCTS[1], qty: 2 },
   ]);
 
   const categoryRailRef = useRef<HTMLDivElement>(null);
@@ -706,7 +704,7 @@ export function PublicProductsView() {
   const scrollContainer = (
     ref: React.RefObject<HTMLDivElement>,
     direction: 'left' | 'right',
-    distance = 320
+    distance = 340
   ) => {
     if (ref.current) {
       ref.current.scrollBy({
@@ -770,7 +768,7 @@ export function PublicProductsView() {
 
   const isBrowsingAll = selectedCategory === 'all' && searchQuery.trim() === '';
 
-  // Clean Pandamart Product Card — Zero Prices Exposed, Authentic Food Photography
+  // Clean Pandamart Product Tile — Zero Badge Clutter, Zero Public Prices, Crisp 2-Line Hierarchy
   const renderProductCard = (product: WholesaleProduct, compact = false) => {
     const qty = getQty(product.id);
 
@@ -778,129 +776,109 @@ export function PublicProductsView() {
       <div
         key={product.id}
         onClick={() => setQuickViewProduct(product)}
-        className={`group bg-[#FFFDF9] rounded-xl border border-[#E8DEC8] hover:border-[#BA8E4E] p-2.5 transition-all duration-200 flex flex-col justify-between cursor-pointer shadow-[0_2px_10px_rgba(46,6,13,0.03)] hover:shadow-[0_10px_24px_rgba(46,6,13,0.08)] ${
-          compact ? 'w-[154px] sm:w-[168px] shrink-0' : 'w-full'
+        className={`group flex flex-col cursor-pointer select-none ${
+          compact ? 'w-[142px] sm:w-[154px] shrink-0' : 'w-full'
         }`}
       >
-        <div>
-          {/* Square Product Image Container with Bottom-Right + / [ 🗑 1 + ] Stepper */}
-          <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-[#FAF7F2] mb-2 border border-[#EFE7D6]">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              unoptimized
-              sizes="200px"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+        {/* Clean Square Image Container */}
+        <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[#F3F0EA] mb-2 border border-black/[0.06]">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            unoptimized
+            sizes="180px"
+            className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+          />
 
-            {/* Top-Left Temperature Regime Tag */}
-            <span className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-[#131313]/80 backdrop-blur-xs font-mono text-[8.5px] uppercase tracking-wider text-[#FAF7F2] font-medium">
-              {product.tempZone}
-            </span>
-
-            {/* Floating Bottom-Right + / [ 🗑 1 + ] Stepper Pill */}
-            <div
-              className="absolute bottom-1.5 right-1.5 left-1.5 flex justify-end z-10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {qty === 0 ? (
+          {/* Bottom-Right Floating + Button or [ 🗑 1 + ] Pill */}
+          <div
+            className="absolute bottom-2 right-2 left-2 flex justify-end z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {qty === 0 ? (
+              <button
+                type="button"
+                onClick={() => updateOrderQty(product, 1)}
+                aria-label={`Add ${product.name}`}
+                className="w-8 h-8 rounded-full bg-white hover:bg-[#2E060D] text-[#131313] hover:text-white border border-black/10 shadow-[0_2px_8px_rgba(0,0,0,0.12)] flex items-center justify-center transition-[transform,background-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] cursor-pointer"
+              >
+                <Plus className="w-4 h-4 stroke-[2.25]" />
+              </button>
+            ) : (
+              <div className="w-full flex items-center justify-between bg-white border border-black/12 rounded-full px-2 py-1 shadow-[0_4px_12px_rgba(0,0,0,0.14)]">
+                <button
+                  type="button"
+                  onClick={() => updateOrderQty(product, -1)}
+                  aria-label="Decrease quantity"
+                  className="w-6 h-6 rounded-full hover:bg-black/5 text-[#131313] flex items-center justify-center transition-transform duration-150 active:scale-[0.9] cursor-pointer"
+                >
+                  {qty === 1 ? (
+                    <Trash2 className="w-3.5 h-3.5 text-stone-600" />
+                  ) : (
+                    <Minus className="w-3.5 h-3.5 stroke-[2.25]" />
+                  )}
+                </button>
+                <span className="font-sans text-xs font-bold text-[#131313] tabular-nums">
+                  {qty}
+                </span>
                 <button
                   type="button"
                   onClick={() => updateOrderQty(product, 1)}
-                  aria-label={`Add ${product.name}`}
-                  className="w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#DCD2C0] shadow-[0_3px_10px_rgba(0,0,0,0.16)] flex items-center justify-center transition-all active:scale-90 cursor-pointer"
+                  aria-label="Increase quantity"
+                  className="w-6 h-6 rounded-full hover:bg-black/5 text-[#131313] flex items-center justify-center transition-transform duration-150 active:scale-[0.9] cursor-pointer"
                 >
-                  <Plus className="w-4 h-4 stroke-[2.5]" />
+                  <Plus className="w-3.5 h-3.5 stroke-[2.25]" />
                 </button>
-              ) : (
-                <div className="w-full flex items-center justify-between bg-[#FFFDF9] border border-[#BA8E4E] rounded-full px-2 py-1 shadow-[0_4px_12px_rgba(46,6,13,0.18)]">
-                  <button
-                    type="button"
-                    onClick={() => updateOrderQty(product, -1)}
-                    aria-label="Decrease quantity"
-                    className="w-6 h-6 rounded-full hover:bg-[#2E060D]/10 text-[#2E060D] flex items-center justify-center transition-colors cursor-pointer"
-                  >
-                    {qty === 1 ? (
-                      <Trash2 className="w-3.5 h-3.5 text-[#8B2635]" />
-                    ) : (
-                      <Minus className="w-3.5 h-3.5 stroke-[2.5]" />
-                    )}
-                  </button>
-                  <span className="font-mono text-xs font-bold text-[#2E060D] tabular-nums">
-                    {qty}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => updateOrderQty(product, 1)}
-                    aria-label="Increase quantity"
-                    className="w-6 h-6 rounded-full hover:bg-[#2E060D]/10 text-[#2E060D] flex items-center justify-center transition-colors cursor-pointer"
-                  >
-                    <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </button>
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-
-          {/* SKU & Pack Specification Row (Replaces Public Price) */}
-          <div className="flex items-center justify-between gap-1 mb-1">
-            <span className="font-mono text-[9.5px] font-bold text-[#8B2635] uppercase tracking-wider">
-              {product.sku}
-            </span>
-            <span className="font-mono text-[9px] text-stone-400 truncate">
-              {product.origin}
-            </span>
-          </div>
-
-          {/* Product Name */}
-          <h4 className="text-[12px] font-sans font-semibold text-[#131313] group-hover:text-[#2E060D] leading-snug line-clamp-2">
-            {product.name}
-          </h4>
         </div>
 
-        <div className="pt-1.5 mt-1.5 border-t border-[#EFE7D6]">
-          <p className="text-[10.5px] font-mono font-semibold text-[#2E060D] truncate">
-            {product.packSize}
-          </p>
+        {/* Line 1: Bold Pack Size (Replaces Price Position Cleanly) */}
+        <div className="text-[13px] font-sans font-bold text-[#2E060D] leading-tight truncate">
+          {product.packSize}
         </div>
+
+        {/* Line 2: Clean Product Name */}
+        <h4 className="text-[12.5px] font-sans font-normal text-stone-700 group-hover:text-[#131313] leading-snug line-clamp-2 mt-0.5">
+          {product.name}
+        </h4>
       </div>
     );
   };
 
-  // Right-Hand Wholesale Order Manifest Panel (No Public Prices — Routes to Rootwills Direct Portal in New Tab)
+  // Right-Hand Order Sidebar (Pandamart Layout — Routes to Rootwills Direct in New Tab)
   const renderRightOrderPanel = () => (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full font-sans">
       {/* Top Delivery Standard Header */}
-      <div className="text-center pb-3.5 border-b border-[#E8DEC8]">
-        <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DCD2C0] text-[#2E060D] mb-1">
-          <Truck className="w-4 h-4 text-[#8B2635]" />
+      <div className="text-center pb-3.5 border-b border-black/[0.07]">
+        <div className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#F5F3EE] text-[#2E060D] mb-1">
+          <Truck className="w-3.5 h-3.5" />
         </div>
-        <div className="text-[11px] font-mono text-stone-600 font-medium">
-          Multi-Temperature Fleet (04:00 – 07:30 AM)
+        <div className="text-[11.5px] text-stone-500 font-medium">
+          Pre-Dawn Delivery (04:00 – 07:30 AM)
         </div>
-        <h3 className="text-[14px] font-serif font-bold text-[#2E060D] mt-1 leading-snug">
-          Your order from Rootwills – Midlands &amp; London Hub
+        <h3 className="text-[14px] font-bold text-[#131313] mt-0.5 leading-snug">
+          Your order from Rootwills – Wholesale Hub
         </h3>
       </div>
 
-      {/* Selected Product Lines List (No Prices Shown) */}
-      <div className="flex-1 overflow-y-auto divide-y divide-[#EFE7D6] py-2 max-h-[290px] pr-1">
+      {/* Selected Product Lines List */}
+      <div className="flex-1 overflow-y-auto divide-y divide-black/[0.06] py-1.5 max-h-[300px] pr-1">
         {orderList.length === 0 ? (
-          <div className="py-10 text-center space-y-2">
-            <ShoppingBag className="w-7 h-7 text-stone-400 mx-auto stroke-[1.5]" />
-            <p className="text-xs font-serif font-bold text-[#2E060D]">
-              Your order list is empty
-            </p>
-            <p className="text-[11px] text-stone-500 max-w-[200px] mx-auto">
-              Click the + button on any product to build your order list for Rootwills Direct.
+          <div className="py-10 text-center space-y-1.5">
+            <ShoppingBag className="w-6 h-6 text-stone-400 mx-auto stroke-[1.5]" />
+            <p className="text-xs font-semibold text-[#131313]">Your order list is empty</p>
+            <p className="text-[11.5px] text-stone-500 max-w-[200px] mx-auto">
+              Tap + on any item to build your wholesale order for Rootwills Direct.
             </p>
           </div>
         ) : (
           orderList.map(({ product, qty }) => (
-            <div key={product.id} className="py-2.5 flex items-center justify-between gap-2.5">
+            <div key={product.id} className="py-3 flex items-center justify-between gap-2.5">
               {/* Left Thumbnail */}
-              <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-[#FAF7F2] border border-[#E8DEC8] shrink-0">
+              <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-[#F5F3EE] border border-black/[0.06] shrink-0">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -911,44 +889,41 @@ export function PublicProductsView() {
                 />
               </div>
 
-              {/* Middle Name & Pack Spec */}
+              {/* Middle Name & Pack Size */}
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-sans font-semibold text-[#131313] leading-snug line-clamp-2">
+                <p className="text-[12.5px] font-medium text-[#131313] leading-snug line-clamp-2">
                   {product.name}
                 </p>
-                <p className="text-[10px] font-mono text-stone-500 mt-0.5 truncate">
-                  {product.sku} • {product.packSize}
+                <p className="text-[11px] font-semibold text-[#2E060D] mt-0.5 truncate">
+                  {product.packSize}
                 </p>
               </div>
 
-              {/* Right Quantity Stepper Pill */}
-              <div className="flex flex-col items-end shrink-0">
-                <span className="font-mono text-[9.5px] text-[#8B2635] font-semibold mb-1">
-                  {qty} {qty === 1 ? 'case' : 'cases'}
-                </span>
-                <div className="flex items-center gap-2 bg-[#FFFDF9] border border-[#DCD2C0] rounded-full px-2 py-0.5 shadow-2xs">
+              {/* Right Quantity Pill Stepper */}
+              <div className="shrink-0">
+                <div className="flex items-center gap-2.5 bg-white border border-black/12 rounded-full px-2.5 py-1 shadow-2xs">
                   <button
                     type="button"
                     onClick={() => updateOrderQty(product, -1)}
                     aria-label="Decrease item"
-                    className="text-stone-600 hover:text-[#8B2635] cursor-pointer"
+                    className="text-stone-600 hover:text-[#131313] transition-transform duration-150 active:scale-[0.9] cursor-pointer"
                   >
                     {qty === 1 ? (
-                      <Trash2 className="w-3 h-3 text-stone-500" />
+                      <Trash2 className="w-3.5 h-3.5 text-stone-500" />
                     ) : (
-                      <Minus className="w-3 h-3" />
+                      <Minus className="w-3.5 h-3.5" />
                     )}
                   </button>
-                  <span className="font-mono text-[11px] font-bold text-[#2E060D] tabular-nums min-w-[14px] text-center">
+                  <span className="text-xs font-bold text-[#131313] tabular-nums min-w-[14px] text-center">
                     {qty}
                   </span>
                   <button
                     type="button"
                     onClick={() => updateOrderQty(product, 1)}
                     aria-label="Increase item"
-                    className="text-stone-600 hover:text-[#2E060D] cursor-pointer"
+                    className="text-stone-600 hover:text-[#131313] transition-transform duration-150 active:scale-[0.9] cursor-pointer"
                   >
-                    <Plus className="w-3 h-3" />
+                    <Plus className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
@@ -957,17 +932,15 @@ export function PublicProductsView() {
         )}
       </div>
 
-      {/* "Popular with your order" Mini-Carousel (No Prices Shown) */}
-      <div className="pt-3 pb-3 border-t border-[#E8DEC8]">
+      {/* "Popular with your order" Mini-Carousel */}
+      <div className="pt-3 pb-3 border-t border-black/[0.07]">
         <div className="flex items-center justify-between mb-2">
-          <h4 className="text-xs font-serif font-bold text-[#2E060D]">
-            Popular with your order
-          </h4>
+          <h4 className="text-[12.5px] font-bold text-[#131313]">Popular with your order</h4>
           <button
             type="button"
             onClick={() => scrollContainer(popularAddonRef, 'right', 180)}
             aria-label="Scroll popular items"
-            className="w-6 h-6 rounded-full bg-[#FAF7F2] border border-[#DCD2C0] flex items-center justify-center text-[#2E060D] hover:border-[#BA8E4E] cursor-pointer"
+            className="w-6 h-6 rounded-full bg-white border border-black/10 flex items-center justify-center text-[#131313] hover:bg-[#F5F3EE] cursor-pointer"
           >
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
@@ -975,7 +948,7 @@ export function PublicProductsView() {
 
         <div
           ref={popularAddonRef}
-          className="flex items-stretch gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-1"
+          className="flex items-start gap-2.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-1"
         >
           {popularAddons.map((addon) => {
             const addonQty = getQty(addon.id);
@@ -983,41 +956,38 @@ export function PublicProductsView() {
               <div
                 key={addon.id}
                 onClick={() => setQuickViewProduct(addon)}
-                className="w-[106px] shrink-0 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8] p-1.5 flex flex-col justify-between cursor-pointer hover:border-[#BA8E4E] transition-colors"
+                className="w-[96px] shrink-0 flex flex-col cursor-pointer group"
               >
-                <div>
-                  <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-white mb-1.5 border border-[#EFE7D6]">
-                    <Image
-                      src={addon.image}
-                      alt={addon.name}
-                      fill
-                      unoptimized
-                      sizes="96px"
-                      className="object-cover"
-                    />
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        updateOrderQty(addon, 1);
-                      }}
-                      aria-label={`Add ${addon.name}`}
-                      className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-[#FFFDF9] hover:bg-[#2E060D] text-[#2E060D] hover:text-[#FAF7F2] border border-[#DCD2C0] shadow-xs flex items-center justify-center cursor-pointer"
-                    >
-                      {addonQty > 0 ? (
-                        <span className="font-mono text-[10px] font-bold">{addonQty}</span>
-                      ) : (
-                        <Plus className="w-3 h-3 stroke-[2.5]" />
-                      )}
-                    </button>
-                  </div>
-
-                  <div className="font-mono text-[9px] font-bold text-[#8B2635] truncate">
-                    {addon.sku}
-                  </div>
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-[#F5F3EE] mb-1.5 border border-black/[0.06]">
+                  <Image
+                    src={addon.image}
+                    alt={addon.name}
+                    fill
+                    unoptimized
+                    sizes="96px"
+                    className="object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      updateOrderQty(addon, 1);
+                    }}
+                    aria-label={`Add ${addon.name}`}
+                    className="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-white hover:bg-[#2E060D] text-[#131313] hover:text-white border border-black/10 shadow-xs flex items-center justify-center transition-transform duration-150 active:scale-[0.9] cursor-pointer"
+                  >
+                    {addonQty > 0 ? (
+                      <span className="text-[10px] font-bold tabular-nums">{addonQty}</span>
+                    ) : (
+                      <Plus className="w-3.5 h-3.5 stroke-[2.25]" />
+                    )}
+                  </button>
                 </div>
 
-                <p className="text-[10px] font-sans font-medium text-[#131313] line-clamp-2 leading-tight mt-0.5">
+                <div className="text-[11px] font-bold text-[#2E060D] truncate">
+                  {addon.packSize}
+                </div>
+                <p className="text-[11px] text-stone-600 line-clamp-2 leading-tight mt-0.5">
                   {addon.name}
                 </p>
               </div>
@@ -1026,93 +996,66 @@ export function PublicProductsView() {
         </div>
       </div>
 
-      {/* Bottom Summary & Direct Portal Launch Button (Opens New Tab -> Rootwills Direct) */}
-      <div className="pt-2.5 border-t border-[#DCD2C0] space-y-2.5">
-        <div className="flex items-center justify-between text-xs">
+      {/* Bottom Total & Single-Line Rootwills Direct CTA (Opens New Tab) */}
+      <div className="pt-3 border-t border-black/[0.07] space-y-3">
+        <div className="flex items-baseline justify-between">
           <div>
-            <span className="font-serif font-bold text-[#131313]">Order Manifest</span>
-            <span className="block text-[10.5px] text-stone-500 font-sans">
-              Trade pricing protected via portal login
+            <span className="text-sm font-bold text-[#131313]">Total</span>
+            <span className="text-[11px] text-stone-500 ml-1.5">
+              ({orderList.length} {orderList.length === 1 ? 'SKU' : 'SKUs'})
             </span>
           </div>
-          <div className="text-right font-mono">
-            <span className="text-sm font-bold text-[#2E060D] tabular-nums">
-              {totalCases} {totalCases === 1 ? 'Case' : 'Cases'}
-            </span>
-            <span className="block text-[10px] text-[#8B2635]">
-              {orderList.length} {orderList.length === 1 ? 'SKU' : 'SKUs'}
-            </span>
-          </div>
+          <span className="text-sm font-bold text-[#2E060D] tabular-nums">
+            {totalCases} {totalCases === 1 ? 'Case' : 'Cases'}
+          </span>
         </div>
 
-        {/* Opens Rootwills Direct Ordering Portal in a New Tab */}
         <a
           href="/direct"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#4E0D17] text-[#FAF7F2] font-sans font-bold text-xs sm:text-[13px] tracking-wide shadow-[0_8px_24px_rgba(46,6,13,0.24)] transition-all active:scale-[0.98] cursor-pointer flex items-center justify-between"
+          className="w-full py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
         >
-          <div className="text-left">
-            <span className="block leading-tight">Order on Rootwills Direct</span>
-            <span className="block font-mono text-[9.5px] text-[#F3D08A] font-normal">
-              rootwillsdirect.co.uk • Trade Login
-            </span>
-          </div>
-          <ExternalLink className="w-4 h-4 text-[#F3D08A] shrink-0" />
+          <span>Continue to Rootwills Direct</span>
+          <ArrowUpRight className="w-4 h-4 text-[#F3D08A]" />
         </a>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] pt-[66px] sm:pt-[82px] pb-20 relative">
-      {/* Subtle Botanical Parchment Texture */}
-      <div
-        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.14] mix-blend-multiply"
-        style={{
-          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
-          backgroundSize: '1100px auto',
-        }}
-      />
-
-      {/* ─── FULL-WIDTH 3-COLUMN PANDAMART WHOLESALE INTERFACE ─── */}
-      <div className="relative z-10 max-w-[1480px] mx-auto px-3 sm:px-5 lg:px-6">
+    <div className="min-h-screen bg-[#FAF8F5] text-[#131313] font-sans pt-[68px] sm:pt-[82px] pb-16">
+      {/* ─── 3-COLUMN PANDAMART STOREFRONT ARCHITECTURE ─── */}
+      <div className="max-w-[1480px] mx-auto px-3 sm:px-5 lg:px-6">
         <div className="flex items-start gap-5 lg:gap-6">
           {/* ════════════════════════════════════════════════════════════════
-              1. LEFT SIDEBAR: Depot Info & Categories
+              1. LEFT SIDEBAR: Store Info & Categories
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block w-[220px] xl:w-[245px] shrink-0 sticky top-[82px] max-h-[calc(100vh-92px)] overflow-y-auto pr-3 border-r border-[#DCD2C0] [scrollbar-width:thin]">
-            {/* Depot Title & Delivery SLA Block */}
-            <div className="pb-4 border-b border-[#E8DEC8] space-y-1.5">
-              <h1 className="text-[15px] font-serif font-bold text-[#2E060D] leading-snug">
-                Rootwills – Midlands &amp; London Hub
+          <aside className="hidden lg:block w-[215px] xl:w-[235px] shrink-0 sticky top-[82px] max-h-[calc(100vh-92px)] overflow-y-auto pr-3 border-r border-black/[0.07] [scrollbar-width:thin]">
+            {/* Store Info Block */}
+            <div className="pb-4 border-b border-black/[0.07] space-y-1">
+              <h1 className="text-[15px] font-bold text-[#131313] leading-snug">
+                Rootwills – Wholesale Hub
               </h1>
-              <p className="text-[11.5px] font-sans font-semibold text-[#8B2635]">
-                Multi-temperature wholesale supply
+              <p className="text-[12px] font-semibold text-[#2E060D]">
+                Next-day pre-dawn delivery
               </p>
-              <p className="text-[11px] font-mono text-stone-600">
-                Chilled • Butchery • Frozen • Ambient
-              </p>
-              <p className="text-[11px] font-mono text-stone-600">
-                Pre-dawn drop: 04:00 – 07:30 AM
-              </p>
+              <p className="text-[12px] text-stone-600">Window: 04:00 – 07:30 AM</p>
 
-              <div className="pt-1.5">
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setHubInfoModalOpen(true)}
-                  className="w-full py-1.5 px-3 rounded-lg bg-[#FFFDF9] hover:bg-[#2E060D] text-[#131313] hover:text-[#FAF7F2] border border-[#131313]/30 hover:border-[#2E060D] text-[11.5px] font-sans font-semibold transition-colors cursor-pointer"
+                  className="w-full py-1.5 px-3 rounded-lg bg-white hover:bg-[#F3F0EA] text-[#131313] border border-black/20 text-[12px] font-semibold transition-colors cursor-pointer"
                 >
-                  Depot &amp; delivery specification
+                  Shop and delivery info
                 </button>
               </div>
             </div>
 
-            {/* Categories Navigation List */}
+            {/* Categories List */}
             <div className="pt-3.5">
-              <h2 className="text-[13px] font-serif font-bold text-[#131313] mb-2">
-                Categories
-              </h2>
+              <h2 className="text-[13px] font-bold text-[#131313] mb-2">Categories</h2>
 
               <nav className="space-y-0.5">
                 <button
@@ -1121,13 +1064,13 @@ export function PublicProductsView() {
                     setSelectedCategory('all');
                     setSearchQuery('');
                   }}
-                  className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] font-sans transition-colors cursor-pointer ${
+                  className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] transition-colors cursor-pointer ${
                     selectedCategory === 'all'
-                      ? 'bg-[#2E060D]/10 text-[#2E060D] font-bold'
-                      : 'text-stone-700 hover:bg-[#EFE7D6]/60'
+                      ? 'bg-[#2E060D]/[0.08] text-[#2E060D] font-semibold'
+                      : 'text-stone-700 hover:bg-black/[0.04]'
                   }`}
                 >
-                  <span>All Product Ranges</span>
+                  <span>All Products</span>
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
                 </button>
 
@@ -1141,15 +1084,15 @@ export function PublicProductsView() {
                         setSelectedCategory(cat.slug);
                         setSearchQuery('');
                       }}
-                      className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] font-sans transition-colors cursor-pointer group ${
+                      className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] transition-colors cursor-pointer group ${
                         active
-                          ? 'bg-[#2E060D]/10 text-[#2E060D] font-bold'
-                          : 'text-stone-700 hover:bg-[#EFE7D6]/60'
+                          ? 'bg-[#2E060D]/[0.08] text-[#2E060D] font-semibold'
+                          : 'text-stone-700 hover:bg-black/[0.04]'
                       }`}
                     >
                       <span className="truncate">{cat.shortName}</span>
                       <ChevronRight
-                        className={`w-3.5 h-3.5 shrink-0 transition-transform ${
+                        className={`w-3.5 h-3.5 shrink-0 transition-transform duration-150 ${
                           active
                             ? 'text-[#2E060D] translate-x-0.5'
                             : 'text-stone-400 group-hover:translate-x-0.5'
@@ -1163,18 +1106,18 @@ export function PublicProductsView() {
           </aside>
 
           {/* ════════════════════════════════════════════════════════════════
-              2. CENTER COLUMN: Search + Dual Range Banners + Category Tiles + Aisles
+              2. CENTER COLUMN: Search + Dual Banners + Category Rail + Aisles
              ════════════════════════════════════════════════════════════════ */}
           <main className="flex-1 min-w-0 py-1">
-            {/* Top Rounded Pill Search Bar */}
+            {/* Rounded Pill Search Bar */}
             <div className="relative mb-4">
               <Search className="w-4 h-4 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products, SKUs or pack sizes (e.g. Ribeye, Maris Piper, Cod, Extra Virgin Olive Oil)..."
-                className="w-full pl-11 pr-10 py-2.5 sm:py-3 rounded-full bg-[#EFECE6] focus:bg-[#FFFDF9] border border-[#DCD2C0] focus:border-[#BA8E4E] text-xs sm:text-sm text-[#131313] placeholder:text-stone-500 font-sans outline-none transition-all"
+                placeholder="Search products"
+                className="w-full pl-11 pr-10 py-2.5 sm:py-3 rounded-full bg-[#EFECE6] focus:bg-white border border-transparent focus:border-black/15 text-sm text-[#131313] placeholder:text-stone-500 outline-none transition-colors"
               />
               {searchQuery && (
                 <button
@@ -1188,83 +1131,83 @@ export function PublicProductsView() {
               )}
             </div>
 
-            {/* 2-Card Clean Wholesale Range Banners (Creed-Style Multi-Temperature Showcase) */}
+            {/* Dual Promotional Hero Banners (Pandamart Proportion) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 mb-5">
-              {/* Left Banner: Fresh Produce, Butchery & Chilled Dairy */}
+              {/* Left Banner */}
               <div
                 onClick={() => setSelectedCategory('fresh-produce')}
-                className="relative rounded-2xl overflow-hidden min-h-[164px] sm:min-h-[184px] p-5 sm:p-6 flex items-center bg-[#2E060D] text-[#FAF7F2] border border-[#BA8E4E]/45 cursor-pointer group shadow-sm"
+                className="relative rounded-2xl overflow-hidden min-h-[168px] sm:min-h-[188px] p-5 sm:p-6 flex items-center bg-[#2E060D] text-white cursor-pointer group"
               >
-                <div className="absolute right-0 inset-y-0 w-[52%] overflow-hidden pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#2E060D] via-[#2E060D]/45 to-transparent z-10" />
+                <div className="absolute right-0 inset-y-0 w-[54%] overflow-hidden pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#2E060D] via-[#2E060D]/40 to-transparent z-10" />
                   <Image
                     src="https://images.unsplash.com/photo-1518843875459-f738682238a6?w=800&auto=format&fit=crop&q=80"
-                    alt="Fresh Produce & Chilled Supply"
+                    alt="Fresh Produce & Prime Butchery"
                     fill
                     unoptimized
                     sizes="400px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                   />
                 </div>
 
-                <div className="relative z-20 max-w-[64%] space-y-1.5">
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#F3D08A] font-semibold block">
-                    CHILLED &amp; BUTCHERY (0°C – 4°C)
-                  </span>
-                  <h2 className="text-lg sm:text-2xl font-serif font-bold text-white leading-tight">
-                    Fresh Produce, Beef, Lamb &amp; Dairy
+                <div className="relative z-20 max-w-[62%] space-y-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight tracking-tight">
+                    Fresh Produce &amp; Prime Butchery
                   </h2>
-                  <p className="text-[11px] text-stone-300 font-sans leading-snug">
-                    Hand-selected market harvests, 100% pork-free British butchery, and West Country creamery lines.
+                  <p className="text-xs text-stone-200 leading-snug">
+                    Daily market harvests &amp; 100% pork-free British meats
                   </p>
+                  <span className="inline-block px-3 py-1 rounded-full bg-white text-[#2E060D] text-[11px] font-bold">
+                    Explore Fresh
+                  </span>
                 </div>
               </div>
 
-              {/* Right Banner: Frozen, Grocery & Rootwills Direct Portal */}
+              {/* Right Banner */}
               <div
                 onClick={() => setSelectedCategory('everyday-grocery')}
-                className="relative rounded-2xl overflow-hidden min-h-[164px] sm:min-h-[184px] p-5 sm:p-6 flex items-center bg-[#1F3327] text-[#FAF7F2] border border-[#BA8E4E]/45 cursor-pointer group shadow-sm"
+                className="relative rounded-2xl overflow-hidden min-h-[168px] sm:min-h-[188px] p-5 sm:p-6 flex items-center bg-[#1B2E22] text-white cursor-pointer group"
               >
-                <div className="absolute right-0 inset-y-0 w-[52%] overflow-hidden pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#1F3327] via-[#1F3327]/45 to-transparent z-10" />
+                <div className="absolute right-0 inset-y-0 w-[54%] overflow-hidden pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#1B2E22] via-[#1B2E22]/40 to-transparent z-10" />
                   <Image
                     src="https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=800&auto=format&fit=crop&q=80"
-                    alt="Ambient Grocery & Frozen Wholesale"
+                    alt="Chilled, Frozen & Ambient Larder"
                     fill
                     unoptimized
                     sizes="400px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                   />
                 </div>
 
-                <div className="relative z-20 max-w-[65%] space-y-1.5">
-                  <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#F3D08A] font-semibold block">
-                    FROZEN, GROCERY &amp; HYGIENE
-                  </span>
-                  <h2 className="text-lg sm:text-2xl font-serif font-bold text-white leading-tight">
-                    Complete Store Cupboard &amp; Coastal Catch
+                <div className="relative z-20 max-w-[62%] space-y-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight tracking-tight">
+                    Chilled, Frozen &amp; Kitchen Larder
                   </h2>
-                  <p className="text-[11px] text-stone-200 font-sans leading-snug">
-                    Consolidated on a single delivery vehicle. Trade pricing available via Rootwills Direct.
+                  <p className="text-xs text-stone-200 leading-snug">
+                    Single-vehicle delivery across 13 wholesale ranges
                   </p>
+                  <span className="inline-block px-3 py-1 rounded-full bg-[#F3D08A] text-[#131313] text-[11px] font-bold">
+                    Browse Larder
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Horizontal Square Category Thumbnail Rail */}
-            <div className="relative mb-6">
+            {/* Horizontal Square Category Tile Strip */}
+            <div className="relative mb-7">
               <button
                 type="button"
                 onClick={() => scrollContainer(categoryRailRef, 'left', 280)}
                 aria-label="Scroll categories left"
-                className="hidden sm:flex absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-[#FFFDF9] border border-[#DCD2C0] shadow-md items-center justify-center text-[#2E060D] hover:border-[#BA8E4E] cursor-pointer"
+                className="hidden sm:flex absolute -left-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-white border border-black/10 shadow-sm items-center justify-center text-[#131313] hover:bg-[#F5F3EE] cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
               <div
                 ref={categoryRailRef}
-                className="flex items-stretch gap-2.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-1 px-0.5"
+                className="flex items-start gap-2.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-1 px-0.5"
               >
                 {WHOLESALE_CATEGORIES.map((cat) => {
                   const active = selectedCategory === cat.slug;
@@ -1273,13 +1216,13 @@ export function PublicProductsView() {
                       key={cat.slug}
                       type="button"
                       onClick={() => setSelectedCategory(active ? 'all' : cat.slug)}
-                      className="group w-[78px] sm:w-[86px] shrink-0 flex flex-col items-center text-center cursor-pointer transition-all"
+                      className="group w-[76px] sm:w-[82px] shrink-0 flex flex-col items-center text-center cursor-pointer"
                     >
                       <div
-                        className={`relative w-[68px] h-[68px] sm:w-[74px] sm:h-[74px] rounded-xl overflow-hidden mb-1.5 border transition-all flex items-center justify-center ${
+                        className={`relative w-[68px] h-[68px] sm:w-[74px] sm:h-[74px] rounded-xl overflow-hidden mb-1.5 border transition-colors ${
                           active
-                            ? 'bg-[#2E060D]/10 border-[#2E060D] ring-2 ring-[#2E060D]/20 shadow-xs'
-                            : 'bg-[#FFFDF9] border-[#E8DEC8] hover:border-[#BA8E4E]'
+                            ? 'border-[#2E060D] ring-2 ring-[#2E060D]/15'
+                            : 'bg-[#F3F0EA] border-black/[0.06] group-hover:border-black/20'
                         }`}
                       >
                         <Image
@@ -1292,10 +1235,10 @@ export function PublicProductsView() {
                         />
                       </div>
                       <span
-                        className={`text-[11px] font-sans leading-tight line-clamp-2 ${
+                        className={`text-[11px] leading-tight line-clamp-2 ${
                           active
                             ? 'font-bold text-[#2E060D]'
-                            : 'font-medium text-stone-700 group-hover:text-[#2E060D]'
+                            : 'font-medium text-stone-700 group-hover:text-[#131313]'
                         }`}
                       >
                         {cat.shortName}
@@ -1309,36 +1252,34 @@ export function PublicProductsView() {
                 type="button"
                 onClick={() => scrollContainer(categoryRailRef, 'right', 280)}
                 aria-label="Scroll categories right"
-                className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-[#FFFDF9] border border-[#DCD2C0] shadow-md items-center justify-center text-[#2E060D] hover:border-[#BA8E4E] cursor-pointer"
+                className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-white border border-black/10 shadow-sm items-center justify-center text-[#131313] hover:bg-[#F5F3EE] cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
-            {/* ─── MAIN PRODUCT ROWS (DEFAULT MULTI-AISLE VIEW OR FILTERED GRID) ─── */}
+            {/* ─── PRODUCT SECTIONS ─── */}
             {isBrowsingAll ? (
               <div className="space-y-8">
-                {/* 1. Core Kitchen Staples Carousel Row */}
+                {/* 1. Horizontal Featured Row (Matches Pandamart "SALE" Row) */}
                 <section className="relative">
                   <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-base sm:text-lg font-serif font-extrabold text-[#2E060D] uppercase tracking-tight">
-                      CORE KITCHEN STAPLES
+                    <h2 className="text-lg font-extrabold text-[#131313] tracking-tight uppercase">
+                      Popular Wholesale Lines
                     </h2>
-                    <a
-                      href="/direct"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-sans font-bold text-[#8B2635] hover:text-[#2E060D] flex items-center gap-1 cursor-pointer"
+                    <button
+                      type="button"
+                      onClick={() => scrollContainer(featuredRowRef, 'right', 360)}
+                      className="text-xs font-semibold text-stone-700 hover:text-[#131313] cursor-pointer"
                     >
-                      <Lock className="w-3 h-3" />
-                      <span>Login for Live Pricing</span>
-                    </a>
+                      View All
+                    </button>
                   </div>
 
                   <div className="relative">
                     <div
                       ref={featuredRowRef}
-                      className="flex items-stretch gap-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-2"
+                      className="flex items-start gap-3.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-1"
                     >
                       {coreFeaturedProducts.map((prod) => renderProductCard(prod, true))}
                     </div>
@@ -1346,15 +1287,15 @@ export function PublicProductsView() {
                     <button
                       type="button"
                       onClick={() => scrollContainer(featuredRowRef, 'right', 360)}
-                      aria-label="Scroll core products right"
-                      className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-[#FFFDF9] border border-[#DCD2C0] shadow-md items-center justify-center text-[#2E060D] hover:bg-[#2E060D] hover:text-[#FAF7F2] transition-colors cursor-pointer"
+                      aria-label="Scroll featured products right"
+                      className="hidden sm:flex absolute -right-3 top-1/3 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-black/10 shadow-md items-center justify-center text-[#131313] hover:bg-[#F5F3EE] cursor-pointer"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </section>
 
-                {/* 2. All Category Aisle Sections */}
+                {/* 2. Category Aisle Sections */}
                 {WHOLESALE_CATEGORIES.map((aisle) => {
                   const items = WHOLESALE_PRODUCTS.filter(
                     (p) => p.categorySlug === aisle.slug
@@ -1362,26 +1303,21 @@ export function PublicProductsView() {
                   if (items.length === 0) return null;
 
                   return (
-                    <section key={aisle.slug} className="pt-3 border-t border-[#E8DEC8]">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2.5">
-                          <h2 className="text-base sm:text-lg font-serif font-bold text-[#2E060D]">
-                            {aisle.name}
-                          </h2>
-                          <span className="hidden sm:inline-block font-mono text-[9.5px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#EFECE6] text-stone-600 border border-[#DCD2C0]">
-                            {aisle.tempBadge}
-                          </span>
-                        </div>
+                    <section key={aisle.slug} className="pt-4 border-t border-black/[0.06]">
+                      <div className="flex items-center justify-between mb-3.5">
+                        <h2 className="text-base sm:text-lg font-bold text-[#131313] tracking-tight">
+                          {aisle.name}
+                        </h2>
                         <button
                           type="button"
                           onClick={() => setSelectedCategory(aisle.slug)}
-                          className="text-xs font-sans font-bold text-[#2E060D] hover:text-[#8B2635] underline cursor-pointer"
+                          className="text-xs font-semibold text-stone-600 hover:text-[#131313] cursor-pointer"
                         >
-                          View All ({items.length})
+                          View All
                         </button>
                       </div>
 
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3.5">
                         {items.map((prod) => renderProductCard(prod, false))}
                       </div>
                     </section>
@@ -1391,14 +1327,14 @@ export function PublicProductsView() {
             ) : (
               /* Filtered Category or Search Results Grid */
               <div>
-                <div className="flex items-center justify-between mb-4 pb-2 border-b border-[#DCD2C0]">
+                <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-black/[0.07]">
                   <div>
-                    <h2 className="text-lg font-serif font-bold text-[#2E060D]">
+                    <h2 className="text-lg font-bold text-[#131313]">
                       {WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory)?.name ||
-                        'Product Search Results'}
+                        'Search Results'}
                     </h2>
-                    <p className="text-xs text-stone-500 font-sans">
-                      Showing {filteredProducts.length} wholesale lines
+                    <p className="text-xs text-stone-500">
+                      {filteredProducts.length} items
                       {searchQuery ? ` matching "${searchQuery}"` : ''}
                     </p>
                   </div>
@@ -1409,18 +1345,18 @@ export function PublicProductsView() {
                       setSelectedCategory('all');
                       setSearchQuery('');
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#2E060D] text-xs font-sans font-semibold text-[#2E060D] cursor-pointer"
+                    className="px-3 py-1.5 rounded-lg bg-white border border-black/12 hover:bg-[#F5F3EE] text-xs font-semibold text-[#131313] cursor-pointer"
                   >
-                    ← Back to All Ranges
+                    ← All Categories
                   </button>
                 </div>
 
                 {filteredProducts.length === 0 ? (
-                  <div className="rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] p-10 text-center space-y-3">
-                    <p className="text-base font-serif font-bold text-[#2E060D]">
+                  <div className="rounded-2xl bg-white border border-black/[0.07] p-10 text-center space-y-3">
+                    <p className="text-base font-bold text-[#131313]">
                       No products matched &ldquo;{searchQuery}&rdquo;
                     </p>
-                    <p className="text-xs text-stone-600 max-w-md mx-auto">
+                    <p className="text-xs text-stone-500 max-w-md mx-auto">
                       Our procurement team sources 1,200+ commercial lines daily. Ask our trade desk to source this item for your kitchen.
                     </p>
                     <button
@@ -1429,13 +1365,13 @@ export function PublicProductsView() {
                         setCustomInquiryNotes(`Custom product sourcing enquiry: ${searchQuery}`);
                         setIsInquiryOpen(true);
                       }}
-                      className="px-4 py-2 rounded-xl bg-[#2E060D] text-[#FAF7F2] text-xs font-sans font-bold cursor-pointer"
+                      className="px-4 py-2 rounded-xl bg-[#2E060D] text-white text-xs font-semibold cursor-pointer"
                     >
                       Ask Trade Desk to Source
                     </button>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3.5">
                     {filteredProducts.map((prod) => renderProductCard(prod, false))}
                   </div>
                 )}
@@ -1444,33 +1380,33 @@ export function PublicProductsView() {
           </main>
 
           {/* ════════════════════════════════════════════════════════════════
-              3. RIGHT SIDEBAR: Live Order Manifest + Rootwills Direct Portal Link
+              3. RIGHT SIDEBAR: Live Order List + Rootwills Direct CTA
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden xl:block w-[310px] 2xl:w-[335px] shrink-0 sticky top-[82px]">
-            <div className="rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] p-4 shadow-[0_8px_28px_rgba(46,6,13,0.05)] max-h-[calc(100vh-96px)] flex flex-col">
+          <aside className="hidden xl:block w-[305px] 2xl:w-[325px] shrink-0 sticky top-[82px]">
+            <div className="rounded-2xl bg-white border border-black/[0.08] p-4 shadow-[0_4px_20px_rgba(0,0,0,0.04)] max-h-[calc(100vh-96px)] flex flex-col">
               {renderRightOrderPanel()}
             </div>
           </aside>
         </div>
       </div>
 
-      {/* ─── MOBILE / TABLET FLOATING BOTTOM ORDER MANIFEST BAR (< xl) ─── */}
+      {/* ─── MOBILE / TABLET FLOATING ORDER BAR (< xl) ─── */}
       {totalCases > 0 && (
         <div className="fixed bottom-4 inset-x-3.5 z-40 xl:hidden">
           <button
             type="button"
             onClick={() => setMobileCartDrawerOpen(true)}
-            className="w-full py-3 px-4 rounded-2xl bg-[#2E060D] text-[#FAF7F2] shadow-[0_14px_34px_rgba(0,0,0,0.38)] border border-[#BA8E4E]/50 flex items-center justify-between cursor-pointer"
+            className="w-full py-3 px-4 rounded-xl bg-[#2E060D] text-white shadow-lg flex items-center justify-between cursor-pointer"
           >
             <div className="flex items-center gap-2.5">
-              <span className="w-6 h-6 rounded-full bg-[#F3D08A] text-[#131313] font-mono text-xs font-extrabold flex items-center justify-center">
+              <span className="w-6 h-6 rounded-full bg-white text-[#2E060D] text-xs font-bold flex items-center justify-center tabular-nums">
                 {totalCases}
               </span>
-              <span className="text-xs sm:text-sm font-sans font-bold">
-                View Order Manifest ({orderList.length} SKUs)
+              <span className="text-xs sm:text-sm font-semibold">
+                View Order ({orderList.length} SKUs)
               </span>
             </div>
-            <span className="font-mono text-xs font-bold text-[#F3D08A]">
+            <span className="text-xs font-semibold text-[#F3D08A]">
               Rootwills Direct ↗
             </span>
           </button>
@@ -1479,13 +1415,13 @@ export function PublicProductsView() {
 
       {/* ─── MOBILE / TABLET ORDER DRAWER (< xl) ─── */}
       {mobileCartDrawerOpen && (
-        <div className="fixed inset-0 z-50 xl:hidden flex justify-end bg-black/65 backdrop-blur-xs">
-          <div className="w-full max-w-md bg-[#FFFDF9] h-full p-4 sm:p-5 flex flex-col relative shadow-2xl">
+        <div className="fixed inset-0 z-50 xl:hidden flex justify-end bg-black/50 backdrop-blur-xs">
+          <div className="w-full max-w-md bg-white h-full p-4 sm:p-5 flex flex-col relative shadow-2xl">
             <button
               type="button"
               onClick={() => setMobileCartDrawerOpen(false)}
               aria-label="Close order list"
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DCD2C0] flex items-center justify-center text-[#2E060D]"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F3EE] flex items-center justify-center text-[#131313]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1494,147 +1430,127 @@ export function PublicProductsView() {
         </div>
       )}
 
-      {/* ─── PRODUCT SPECIFICATION QUICK VIEW MODAL (NO PRICES EXPOSED) ─── */}
+      {/* ─── PRODUCT DETAIL MODAL (CLEAN, NO PUBLIC PRICES) ─── */}
       {quickViewProduct && (
         <div
           onClick={() => setQuickViewProduct(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#FFFDF9] rounded-3xl max-w-lg w-full p-5 sm:p-6 border border-[#DCD2C0] shadow-2xl relative space-y-4"
+            className="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 border border-black/10 shadow-xl relative space-y-4 font-sans"
           >
             <button
               type="button"
               onClick={() => setQuickViewProduct(null)}
               aria-label="Close product details"
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DCD2C0] flex items-center justify-center text-[#2E060D] cursor-pointer"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F3EE] flex items-center justify-center text-[#131313] cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
             <div className="flex gap-4 items-start">
-              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-[#FAF7F2] border border-[#E8DEC8] shrink-0">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-[#F5F3EE] border border-black/[0.06] shrink-0">
                 <Image
                   src={quickViewProduct.image}
                   alt={quickViewProduct.name}
                   fill
                   unoptimized
-                  sizes="128px"
+                  sizes="112px"
                   className="object-cover"
                 />
               </div>
 
-              <div className="space-y-1.5 pr-6">
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-[#2E060D]/10 text-[#2E060D] font-bold">
-                    {quickViewProduct.sku}
-                  </span>
-                  <span className="font-mono text-[10px] text-stone-500">
-                    {quickViewProduct.tempZone}
-                  </span>
-                </div>
-                <h3 className="text-lg font-serif font-bold text-[#2E060D] leading-snug">
+              <div className="space-y-1 pr-6">
+                <span className="text-[11px] font-semibold text-stone-500">
+                  {quickViewProduct.sku} • {quickViewProduct.tempZone}
+                </span>
+                <h3 className="text-base font-bold text-[#131313] leading-snug">
                   {quickViewProduct.name}
                 </h3>
-                <p className="text-xs font-mono font-semibold text-[#8B2635]">
+                <p className="text-xs font-bold text-[#2E060D]">
                   {quickViewProduct.packSize}
                 </p>
-                <p className="text-[11px] font-mono text-stone-500">
+                <p className="text-[11px] text-stone-500">
                   Origin: {quickViewProduct.origin}
                 </p>
               </div>
             </div>
 
-            <p className="text-xs text-stone-600 font-sans leading-relaxed bg-[#FAF7F2] p-3.5 rounded-xl border border-[#E8DEC8]">
+            <p className="text-xs text-stone-600 leading-relaxed bg-[#FAF8F5] p-3.5 rounded-xl border border-black/[0.06]">
               {quickViewProduct.description}
             </p>
 
-            <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#DCD2C0] flex items-center justify-between text-xs">
-              <span className="flex items-center gap-1.5 text-stone-600 font-sans">
-                <Lock className="w-3.5 h-3.5 text-[#8B2635]" />
-                Contract Trade Pricing
-              </span>
-              <a
-                href="/direct"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[11px] font-bold text-[#2E060D] underline hover:text-[#8B2635]"
-              >
-                Login on Rootwills Direct ↗
-              </a>
-            </div>
-
-            <div className="flex items-center gap-3 pt-1">
+            <div className="flex items-center gap-2.5 pt-1">
               <button
                 type="button"
                 onClick={() => {
                   updateOrderQty(quickViewProduct, 1);
                   setQuickViewProduct(null);
                 }}
-                className="flex-1 py-2.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#4E0D17] text-[#FAF7F2] text-xs font-sans font-bold cursor-pointer"
+                className="flex-1 py-2.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white text-xs font-semibold cursor-pointer transition-transform active:scale-[0.98]"
               >
-                + Add Case to Order List
+                Add to Order
               </button>
               <a
                 href="/direct"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl bg-[#FAF7F2] border border-[#DCD2C0] hover:border-[#2E060D] text-[#2E060D] text-xs font-sans font-semibold flex items-center gap-1.5"
+                className="py-2.5 px-4 rounded-xl bg-[#F5F3EE] hover:bg-[#EAE5DC] text-[#131313] text-xs font-semibold flex items-center gap-1.5"
               >
                 <span>Rootwills Direct</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* ─── DEPOT & DELIVERY SPECIFICATION MODAL ─── */}
+      {/* ─── SHOP & DELIVERY INFO MODAL ─── */}
       {hubInfoModalOpen && (
         <div
           onClick={() => setHubInfoModalOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#FFFDF9] rounded-3xl max-w-md w-full p-6 border border-[#DCD2C0] shadow-2xl relative space-y-4"
+            className="bg-white rounded-2xl max-w-md w-full p-6 border border-black/10 shadow-xl relative space-y-4 font-sans"
           >
             <button
               type="button"
               onClick={() => setHubInfoModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#FAF7F2] border border-[#DCD2C0] flex items-center justify-center text-[#2E060D] cursor-pointer"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F3EE] flex items-center justify-center text-[#131313] cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
-            <h3 className="text-lg font-serif font-bold text-[#2E060D]">
-              Rootwills Depot &amp; Delivery Specification
+            <h3 className="text-base font-bold text-[#131313]">
+              Hub &amp; Delivery Information
             </h3>
 
-            <div className="space-y-2.5 text-xs text-stone-700 font-sans">
-              <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]">
-                <strong className="text-[#2E060D] block mb-0.5">Central Distribution Hub</strong>
+            <div className="space-y-2.5 text-xs text-stone-600">
+              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
+                <strong className="text-[#131313] block mb-0.5">Distribution Hub</strong>
                 The Hub, Nobel Way, Birmingham, B6 7EU &amp; Greater London Trunk Network.
               </div>
-              <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]">
-                <strong className="text-[#2E060D] block mb-0.5">Delivery Windows &amp; Cutoff</strong>
-                11:00 PM night cutoff for guaranteed 04:00 AM – 07:30 AM pre-dawn kitchen drops.
+              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
+                <strong className="text-[#131313] block mb-0.5">Delivery Window &amp; Cutoff</strong>
+                11:00 PM night cutoff for 04:00 AM – 07:30 AM pre-dawn kitchen drops.
               </div>
-              <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]">
-                <strong className="text-[#2E060D] block mb-0.5">100% Pork-Free Multi-Temp Fleet</strong>
-                All chilled (1–4°C), prime butchery (0–2°C), frozen (-18°C), and ambient lines are stored and transported in a strictly 100% pork-free environment.
+              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
+                <strong className="text-[#131313] block mb-0.5">Multi-Temperature Fleet</strong>
+                Chilled (1–4°C), prime butchery (0–2°C), frozen (-18°C), and ambient grocery lines delivered in a strictly 100% pork-free environment.
               </div>
             </div>
 
-            <div className="pt-1 flex items-center justify-between text-xs font-mono text-[#2E060D]">
+            <div className="pt-1 flex items-center justify-between text-xs font-semibold text-[#131313]">
               <a href="tel:+441616412803" className="flex items-center gap-1.5 hover:underline">
-                <Phone className="w-3.5 h-3.5 text-[#BA8E4E]" /> +44 16164 12803
+                <Phone className="w-3.5 h-3.5 text-[#2E060D]" /> +44 16164 12803
               </a>
               <button
                 type="button"
                 onClick={() => setHubInfoModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-[#2E060D] text-[#FAF7F2] font-sans font-bold cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#2E060D] text-white font-semibold cursor-pointer"
               >
                 Close
               </button>
