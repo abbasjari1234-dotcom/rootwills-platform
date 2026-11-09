@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Sparkles, ArrowRight } from 'lucide-react';
@@ -15,13 +15,13 @@ interface BrandItem {
 const BRANDS: BrandItem[] = [
   {
     name: "Kellogg's",
-    category: 'Catering Breakfast & Cereals',
+    category: 'Breakfast Cereals & Morning Goods',
     logo: '/images/brands/kelloggs.png',
     searchQuery: 'Kellogg',
   },
   {
     name: 'Country Range',
-    category: 'Commercial Foodservice Essentials',
+    category: 'Commercial Catering Essentials',
     logo: '/images/brands/country-range.png',
     searchQuery: 'Country Range',
   },
@@ -64,118 +64,127 @@ const BRANDS: BrandItem[] = [
 ];
 
 export function PartnerBrandsSlider() {
-  const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Smooth scroll handler
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const distance = 320;
-    scrollRef.current.scrollBy({
-      left: direction === 'left' ? -distance : distance,
+  // Smooth scroll handler for manual arrow clicks
+  const handleManualScroll = (direction: 'left' | 'right') => {
+    if (!trackRef.current) return;
+    const scrollAmount = 300;
+    trackRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth',
     });
   };
 
-  // Continuous auto-sliding effect
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      if (scrollRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        // Loop back to start if reached the end
-        if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          scrollRef.current.scrollBy({ left: 180, behavior: 'smooth' });
-        }
-      }
-    }, 2800);
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  // Duplicate list to give seamless infinite feel
-  const displayBrands = [...BRANDS, ...BRANDS];
+  // Duplicate 4 times to ensure seamless infinite continuous marquee loop
+  const marqueeBrands = [...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS];
 
   return (
-    <section className="relative py-12 sm:py-16 bg-white border-y border-[#EAE0CE]/80 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header with Title & Left/Right Controls */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <section 
+      aria-label="Foodservice Brands We Supply"
+      className="relative z-10 py-14 sm:py-20 bg-[#FAF7F2] border-t border-[#E8DEC8]/90 overflow-hidden select-none"
+    >
+      {/* Seamless Botanical Parchment Texture matching Rootwills Theme */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+
+      {/* Top golden hairline accent */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#BA8E4E]/40 to-transparent pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-[#BA8E4E] mb-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFE8D8] border border-[#BA8E4E]/30 text-[#BA8E4E] text-[11px] font-bold uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Leading Wholesale Manufacturers</span>
+              <span>Commercial Foodservice Brands</span>
             </div>
-            <h2 className="text-xl sm:text-3xl font-serif font-bold text-[#2E060D] tracking-tight">
-              Foodservice Brands We Supply
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+              Leading Brands We Supply
             </h2>
-            <p className="text-xs sm:text-sm text-stone-500 font-sans mt-1">
-              Direct commercial distribution lines available for restaurants, hotels, schools, and caterers.
+            <p className="text-xs sm:text-sm text-stone-600 font-sans mt-1.5 max-w-2xl leading-relaxed">
+              We distribute authentic products from the UK&apos;s most reputable foodservice manufacturers directly to restaurants, hotels, and commercial kitchens.
             </p>
           </div>
 
-          {/* Left / Right Navigation Controls */}
+          {/* Left / Right Arrow Controls */}
           <div className="flex items-center gap-2 self-end sm:self-auto">
             <button
-              onClick={() => scroll('left')}
-              className="w-9 h-9 rounded-xl border border-stone-200 bg-white text-stone-600 hover:text-[#5A101D] hover:border-[#5A101D] flex items-center justify-center transition-all shadow-sm active:scale-95"
-              aria-label="Scroll left"
+              onClick={() => handleManualScroll('left')}
+              className="w-10 h-10 rounded-full border border-[#E8DEC8] bg-[#FFFDF9] text-[#2E060D] hover:bg-[#5A101D] hover:text-white hover:border-[#5A101D] flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+              aria-label="Scroll brands left"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
-              onClick={() => scroll('right')}
-              className="w-9 h-9 rounded-xl border border-stone-200 bg-white text-stone-600 hover:text-[#5A101D] hover:border-[#5A101D] flex items-center justify-center transition-all shadow-sm active:scale-95"
-              aria-label="Scroll right"
+              onClick={() => handleManualScroll('right')}
+              className="w-10 h-10 rounded-full border border-[#E8DEC8] bg-[#FFFDF9] text-[#2E060D] hover:bg-[#5A101D] hover:text-white hover:border-[#5A101D] flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+              aria-label="Scroll brands right"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Scrollable Track */}
+        {/* Continuous Active Marquee Ribbon with Feathered Edge Fade */}
         <div
-          ref={scrollRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-          className="flex items-center gap-6 overflow-x-auto scrollbar-none py-3 scroll-smooth"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          ref={trackRef}
+          className="relative w-full overflow-hidden"
+          style={{
+            maskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)',
+          }}
         >
-          {displayBrands.map((brand, idx) => (
-            <Link
-              key={`${brand.name}-${idx}`}
-              href={`/products?search=${encodeURIComponent(brand.searchQuery)}`}
-              className="flex-shrink-0 w-44 sm:w-52 h-24 sm:h-28 rounded-2xl bg-stone-50/70 hover:bg-white border border-stone-200/80 hover:border-[#BA8E4E]/60 p-4 flex flex-col items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-stone-200/50 hover:-translate-y-0.5 group"
-            >
-              <div className="relative w-32 sm:w-36 h-12 sm:h-14 flex items-center justify-center">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} Wholesale Products`}
-                  fill
-                  sizes="150px"
-                  className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105"
-                />
-              </div>
-              <span className="text-[10px] text-stone-400 group-hover:text-[#5A101D] font-medium tracking-tight mt-1 truncate max-w-[170px] transition-colors">
-                {brand.category}
-              </span>
-            </Link>
-          ))}
+          <div
+            className={`animate-marquee-glide items-center gap-5 sm:gap-6 py-2 ${isPaused ? 'is-paused' : ''}`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
+            {marqueeBrands.map((brand, idx) => (
+              <Link
+                key={`${brand.name}-${idx}`}
+                href={`/products?search=${encodeURIComponent(brand.searchQuery)}`}
+                className="shrink-0 group block"
+              >
+                {/* Brand Tile matching Rootwills Theme */}
+                <div className="w-48 sm:w-56 h-24 sm:h-28 rounded-2xl bg-[#FFFDF9] border border-[#E8DEC8] hover:border-[#BA8E4E] p-4 flex flex-col items-center justify-center transition-all duration-300 shadow-[0_2px_12px_rgba(46,6,13,0.04)] hover:shadow-[0_8px_24px_rgba(46,6,13,0.09)] group-hover:-translate-y-1">
+                  {/* Full Vibrant Color Logo (NO grayscale) */}
+                  <div className="relative w-36 sm:w-44 h-12 sm:h-14 flex items-center justify-center">
+                    <Image
+                      src={brand.logo}
+                      alt={`${brand.name} Wholesale Products`}
+                      fill
+                      sizes="180px"
+                      className="object-contain transition-transform duration-300 group-hover:scale-105"
+                      unoptimized
+                    />
+                  </div>
+                  {/* Category Subtext */}
+                  <span className="text-[10px] text-stone-500 group-hover:text-[#5A101D] font-medium tracking-tight mt-1 truncate max-w-[190px] transition-colors">
+                    {brand.category}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
-        {/* Bottom Explorer Link */}
-        <div className="mt-6 flex items-center justify-between text-xs text-stone-500 pt-4 border-t border-stone-100">
-          <span>Explore all 5,480+ wholesale catalog lines</span>
+        {/* Bottom Catalog Discovery Banner */}
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-600 pt-5 border-t border-[#E8DEC8]/80 font-sans">
+          <span>Supplying 5,480+ wholesale catering lines with daily pre-dawn drops.</span>
           <Link
             href="/products"
-            className="font-bold text-[#5A101D] hover:text-[#BA8E4E] inline-flex items-center gap-1 transition-colors"
+            className="font-bold text-[#5A101D] hover:text-[#BA8E4E] inline-flex items-center gap-1.5 transition-colors"
           >
-            <span>Browse Full Catalog</span>
+            <span>Explore All Wholesale Lines</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

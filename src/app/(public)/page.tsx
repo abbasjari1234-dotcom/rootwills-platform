@@ -29,9 +29,6 @@ export default function PublicHomePage() {
           {/* 1b. Commercial Trust & Wholesale Guarantees Marquee */}
           <CommercialTrustStrip />
 
-          {/* 1c. Automated Foodservice Brands Slider */}
-          <PartnerBrandsSlider />
-
           {/* 2. About Rootwills: More Than Just Food Supply */}
           <AboutRootwillsSection />
 
@@ -46,6 +43,9 @@ export default function PublicHomePage() {
 
           {/* 6. Client Testimonials */}
           <TestimonialsSection />
+
+          {/* 7. Automated Leading Foodservice Brands Slider (Above Footer) */}
+          <PartnerBrandsSlider />
         </div>
       </div>
     </div>
