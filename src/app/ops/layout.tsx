@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -20,7 +20,10 @@ import {
   ExternalLink,
   ChevronRight,
   Menu,
-  X
+  X,
+  Lock,
+  LogOut,
+  KeyRound
 } from 'lucide-react';
 
 interface NavItem {
@@ -34,37 +37,141 @@ const navSections = [
   {
     title: 'General',
     items: [
-      { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-      { name: 'Product Hub', href: '/admin/products', icon: Package, badge: '5.4k' },
-      { name: 'Customer CRM', href: '/admin/crm', icon: Users, badge: 'Live' },
-      { name: 'Order Desk', href: '/admin/orders', icon: ShoppingBag },
-      { name: 'Pricing Tiers', href: '/admin/pricing', icon: Tag },
+      { name: 'Dashboard', href: '/ops', icon: LayoutDashboard },
+      { name: 'Product Hub', href: '/ops/products', icon: Package, badge: '5.4k' },
+      { name: 'Customer CRM', href: '/ops/crm', icon: Users, badge: 'Live' },
+      { name: 'Order Desk', href: '/ops/orders', icon: ShoppingBag },
+      { name: 'Pricing Tiers', href: '/ops/pricing', icon: Tag },
     ],
   },
   {
     title: 'Operations',
     items: [
-      { name: 'Inventory & Stock', href: '/admin/inventory', icon: Warehouse },
-      { name: 'Procurement & POs', href: '/admin/procurement', icon: FileText },
-      { name: 'Fulfilment & Picking', href: '/admin/fulfilment', icon: Package },
-      { name: 'Logistics & Routes', href: '/admin/logistics', icon: Truck },
+      { name: 'Inventory & Stock', href: '/ops/inventory', icon: Warehouse },
+      { name: 'Procurement & POs', href: '/ops/procurement', icon: FileText },
+      { name: 'Fulfilment & Picking', href: '/ops/fulfilment', icon: Package },
+      { name: 'Logistics & Routes', href: '/ops/logistics', icon: Truck },
     ],
   },
   {
     title: 'Accounts & Staff',
     items: [
-      { name: 'Invoices & Billing', href: '/admin/invoices', icon: FileText },
-      { name: 'Reports & Analytics', href: '/admin/reports', icon: BarChart3 },
-      { name: 'Staff & Roles', href: '/admin/staff', icon: ShieldCheck },
+      { name: 'Invoices & Billing', href: '/ops/invoices', icon: FileText },
+      { name: 'Reports & Analytics', href: '/ops/reports', icon: BarChart3 },
+      { name: 'Staff & Roles', href: '/ops/staff', icon: ShieldCheck },
     ],
   },
 ];
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+const OPS_SECRET_PASSCODE = 'rootwills2026';
+
+export default function OpsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Security Gate State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [passcode, setPasscode] = useState('');
+  const [passcodeError, setPasscodeError] = useState(false);
 
+  useEffect(() => {
+    const auth = localStorage.getItem('rw_ops_authenticated');
+    setIsAuthenticated(auth === 'true');
+  }, []);
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passcode.trim() === OPS_SECRET_PASSCODE || passcode.trim() === 'rootwills') {
+      localStorage.setItem('rw_ops_authenticated', 'true');
+      setIsAuthenticated(true);
+      setPasscodeError(false);
+    } else {
+      setPasscodeError(true);
+    }
+  };
+
+  const handleLockDesk = () => {
+    localStorage.removeItem('rw_ops_authenticated');
+    setIsAuthenticated(false);
+    setPasscode('');
+  };
+
+  // If initial load checking
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#111827] flex items-center justify-center text-white">
+        <div className="animate-pulse flex items-center gap-2 text-sm text-slate-400">
+          <KeyRound className="w-5 h-5 text-emerald-400" />
+          <span>Verifying Rootwills Operations Gateway...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // If Not Authenticated -> Show Internal Staff Gate
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#0F172A] text-white flex items-center justify-center p-4">
+        <div className="w-full max-w-md bg-[#1E293B] rounded-3xl p-8 border border-slate-700/60 shadow-2xl space-y-6 text-center">
+          <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto shadow-inner">
+            <Lock className="w-7 h-7" />
+          </div>
+
+          <div>
+            <div className="text-[11px] font-bold text-emerald-400 uppercase tracking-widest mb-1">
+              Internal Access Only
+            </div>
+            <h1 className="text-2xl font-black text-white tracking-tight">Rootwills Operations Hub</h1>
+            <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+              Enter the staff security key to access the internal product hub, supplier costs, and CRM accounts.
+            </p>
+          </div>
+
+          <form onSubmit={handleUnlock} className="space-y-4 text-left">
+            <div>
+              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                Staff Passcode
+              </label>
+              <input
+                type="password"
+                autoFocus
+                placeholder="Enter security key..."
+                value={passcode}
+                onChange={(e) => {
+                  setPasscode(e.target.value);
+                  setPasscodeError(false);
+                }}
+                className="w-full bg-[#0F172A] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+              />
+              {passcodeError && (
+                <div className="text-xs text-rose-400 font-semibold mt-1.5 flex items-center gap-1">
+                  <span>Invalid security key. Please try again.</span>
+                </div>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
+            >
+              <KeyRound className="w-4 h-4" />
+              <span>Unlock Operations Desk</span>
+            </button>
+          </form>
+
+          <div className="pt-4 border-t border-slate-700/60 text-[11px] text-slate-500">
+            For customer orders &amp; catalogue, visit{' '}
+            <Link href="/products" className="text-emerald-400 hover:underline font-semibold">
+              rootwills.co.uk/products
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Authenticated Staff View
   return (
     <div className="min-h-screen bg-[#F4F5F7] text-slate-800 flex flex-col lg:flex-row font-sans">
       {/* Mobile Header */}
@@ -73,7 +180,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
             RW
           </div>
-          <span className="font-bold text-slate-900 tracking-tight">ROOTWILLS OS</span>
+          <span className="font-bold text-slate-900 tracking-tight">ROOTWILLS OPS</span>
         </div>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -91,13 +198,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       >
         {/* Brand Header */}
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-          <Link href="/admin" className="flex items-center gap-3">
+          <Link href="/ops" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white font-extrabold text-base shadow-md ring-2 ring-emerald-500/20">
               RW
             </div>
             <div>
               <div className="font-extrabold text-slate-900 tracking-tight text-lg leading-tight">ROOTWILLS</div>
-              <div className="text-[11px] font-semibold text-emerald-600 tracking-wider uppercase">Wholesale OS</div>
+              <div className="text-[11px] font-semibold text-emerald-600 tracking-wider uppercase">Internal Hub (/ops)</div>
             </div>
           </Link>
         </div>
@@ -112,7 +219,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <div className="space-y-0.5 mt-2">
                 {section.items.map((item) => {
                   const Icon = item.icon;
-                  const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+                  const isActive = pathname === item.href || (item.href !== '/ops' && pathname.startsWith(item.href));
                   return (
                     <Link
                       key={item.name}
@@ -148,7 +255,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-slate-100 bg-slate-50/50">
+        <div className="p-4 border-t border-slate-100 bg-slate-50/50 space-y-2">
           <Link
             href="/products"
             target="_blank"
@@ -156,10 +263,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             <span className="flex items-center gap-2">
               <ExternalLink className="w-3.5 h-3.5" />
-              Customer Catalog
+              Customer Storefront
             </span>
             <ChevronRight className="w-3.5 h-3.5" />
           </Link>
+          <button
+            onClick={handleLockDesk}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-rose-600 hover:bg-rose-50 border border-rose-100 transition-colors"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Lock Operations Desk</span>
+          </button>
         </div>
       </aside>
 
@@ -184,7 +298,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           {/* Quick Header Actions */}
           <div className="flex items-center gap-3">
             <Link
-              href="/admin/products?action=add"
+              href="/ops/products?action=add"
               className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500 text-white text-xs font-semibold shadow-sm hover:bg-emerald-600 transition-colors"
             >
               <Plus className="w-3.5 h-3.5" />
@@ -203,8 +317,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 RW
               </div>
               <div className="hidden md:block text-left">
-                <div className="text-xs font-bold text-slate-900 leading-tight">Admin Desk</div>
-                <div className="text-[10px] text-slate-500 leading-tight">Operations Lead</div>
+                <div className="text-xs font-bold text-slate-900 leading-tight">Operations Lead</div>
+                <div className="text-[10px] text-slate-500 leading-tight">Master Auth Active</div>
               </div>
             </div>
           </div>
@@ -218,4 +332,3 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     </div>
   );
 }
-
