@@ -62,8 +62,8 @@ export function PublicHeader() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-2.5 xs:px-4 sm:px-5 md:px-8 pt-[calc(0.5rem+env(safe-area-inset-top,0px))] sm:pt-4 pointer-events-none transition-all duration-300">
-      {/* ─── FLOATING CRYSTAL GLASS CAPSULE NAVBAR SURFACE ─── */}
-      <div className="pointer-events-auto w-full max-w-[1320px] h-[52px] sm:h-[62px] px-2.5 xs:px-3 sm:px-4 md:px-5 flex items-center justify-between rounded-full bg-white/75 backdrop-blur-2xl border border-white/90 ring-1 ring-[#BA8E4E]/25 shadow-[0_4px_12px_rgba(46,6,13,0.05),0_12px_32px_-8px_rgba(46,6,13,0.12),inset_0_1px_1.5px_rgba(255,255,255,0.95)]">
+      {/* ─── ANUBI-STYLE FLOATING CAPSULE NAVBAR SURFACE ─── */}
+      <div className="pointer-events-auto w-full max-w-[1320px] h-[52px] sm:h-[62px] px-2.5 xs:px-3 sm:px-4 md:px-5 flex items-center justify-between rounded-full bg-[#FFFFFF]/92 backdrop-blur-xl border border-black/[0.06] shadow-[0_2px_4px_rgba(35,30,24,0.03),0_8px_28px_-8px_rgba(35,30,24,0.12),inset_0_0_0_1px_rgba(35,30,24,0.04)]">
         
         {/* LEFT: Brand Lockup with High-Visibility Master Seal & Editorial Typography */}
         <Link 
@@ -86,7 +86,7 @@ export function PublicHeader() {
 
           {/* Brand Titles */}
           <div className="flex flex-col text-left">
-            <strong className="text-[14px] xs:text-[15px] sm:text-[16px] font-bold text-[#2E060D] tracking-[-0.03em] leading-tight group-hover:text-[#BA8E4E] transition-colors">
+            <strong className="text-[14px] xs:text-[15px] sm:text-[16px] font-bold text-[#131313] tracking-[-0.03em] leading-tight group-hover:text-[#BA8E4E] transition-colors">
               Rootwills
             </strong>
             <small className="hidden xs:block text-[10px] sm:text-[11px] text-[#706C65] font-sans font-medium leading-tight truncate max-w-[150px] sm:max-w-none">
@@ -104,8 +104,8 @@ export function PublicHeader() {
             onClick={(e) => scrollToHash(e, 'home')}
             className={`hidden xs:inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'home'
-                ? 'bg-[#3D0812]/10 text-[#2E060D] ring-1 ring-[#BA8E4E]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]'
-                : 'text-[#2E060D] hover:bg-white/60'
+                ? 'bg-[#EAEAEA] text-[#131313]'
+                : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
             Home
@@ -117,8 +117,8 @@ export function PublicHeader() {
             onClick={(e) => scrollToHash(e, 'about')}
             className={`hidden sm:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'about'
-                ? 'bg-[#3D0812]/10 text-[#2E060D] ring-1 ring-[#BA8E4E]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]'
-                : 'text-[#2E060D] hover:bg-white/60'
+                ? 'bg-[#EAEAEA] text-[#131313]'
+                : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
             About
@@ -130,8 +130,8 @@ export function PublicHeader() {
             onClick={(e) => scrollToHash(e, 'services')}
             className={`hidden md:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'services'
-                ? 'bg-[#3D0812]/10 text-[#2E060D] ring-1 ring-[#BA8E4E]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]'
-                : 'text-[#2E060D] hover:bg-white/60'
+                ? 'bg-[#EAEAEA] text-[#131313]'
+                : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
             Services
@@ -143,20 +143,20 @@ export function PublicHeader() {
             onClick={(e) => scrollToHash(e, 'approach')}
             className={`hidden lg:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'approach'
-                ? 'bg-[#3D0812]/10 text-[#2E060D] ring-1 ring-[#BA8E4E]/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]'
-                : 'text-[#2E060D] hover:bg-white/60'
+                ? 'bg-[#EAEAEA] text-[#131313]'
+                : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
             Approach
           </Link>
 
-          {/* Accent CTA Button: Frosted Ruby-Burgundy Glass + Champagne Gold */}
+          {/* Accent CTA Button: Solid Royal Burgundy + Champagne Gold */}
           <Link
             href="/contact"
-            className={`group ml-1 sm:ml-2 pl-3.5 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation backdrop-blur-xl border border-[#F3D08A]/45 ${
+            className={`group ml-1 sm:ml-2 pl-3.5 sm:pl-4 pr-1 sm:pr-1.5 py-1 sm:py-1.5 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-1.5 sm:gap-2.5 shrink-0 active:scale-[0.96] touch-manipulation ${
               activeItem === 'contact'
-                ? 'bg-[#260309]/90 text-[#FAF7F2] shadow-[0_6px_18px_rgba(46,6,13,0.26),inset_0_1px_1px_rgba(255,255,255,0.35)]'
-                : 'bg-[#3D0812]/88 hover:bg-[#260309]/95 text-[#FAF7F2] shadow-[0_4px_14px_rgba(46,6,13,0.20),inset_0_1px_1px_rgba(255,255,255,0.35)]'
+                ? 'bg-[#2E060D] text-[#FAF7F2] shadow-[0_4px_14px_rgba(46,6,13,0.22)]'
+                : 'bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] shadow-[0_2px_10px_rgba(46,6,13,0.16)]'
             }`}
           >
             <span className="hidden xs:inline">Get in Touch</span>
