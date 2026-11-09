@@ -12,16 +12,9 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    if (!body.items || !Array.isArray(body.items) || body.items.length === 0) {
+    if (!body.name || !body.email || !body.phone || !body.company || !body.postcode) {
       return NextResponse.json(
-        { error: 'Order must contain at least one wholesale product line.' },
-        { status: 400 }
-      );
-    }
-
-    if (!body.venueName || !body.contactName || !body.phone) {
-      return NextResponse.json(
-        { error: 'Venue name, chef contact name, and telephone are required.' },
+        { error: 'Name, email, phone, company, and postcode are required.' },
         { status: 400 }
       );
     }
@@ -32,20 +25,22 @@ export async function POST(req: NextRequest) {
       id: orderId,
       status: 'Received',
       createdAt: new Date().toISOString(),
-      deliveryDate: body.deliveryDate || new Date(Date.now() + 86400000).toISOString().split('T')[0],
-      deliveryWindow: body.deliveryWindow || '04:00 – 07:30 AM (Pre-Dawn)',
-      venueName: String(body.venueName).trim(),
-      contactName: String(body.contactName).trim(),
+      name: String(body.name).trim(),
+      email: String(body.email).trim(),
       phone: String(body.phone).trim(),
-      email: String(body.email || '').trim(),
-      address: String(body.address || '').trim(),
-      postcode: String(body.postcode || '').trim().toUpperCase(),
-      dropoffNotes: String(body.dropoffNotes || '').trim(),
-      poNumber: body.poNumber ? String(body.poNumber).trim() : undefined,
-      paymentMethod: body.paymentMethod || '30-Day Credit Account',
-      items: body.items,
-      totalCases: body.totalCases || body.items.reduce((acc: number, it: any) => acc + (it.qty || 0), 0),
-      totalLines: body.items.length,
+      jobTitle: String(body.jobTitle || 'Chef / Buyer').trim(),
+      company: String(body.company).trim(),
+      numberOfSites: String(body.numberOfSites || '1').trim(),
+      postcode: String(body.postcode).trim().toUpperCase(),
+      currentSupplier: body.currentSupplier ? String(body.currentSupplier).trim() : undefined,
+      approxWeeklyDeliveries: body.approxWeeklyDeliveries ? String(body.approxWeeklyDeliveries).trim() : undefined,
+      approxWeeklySpend: body.approxWeeklySpend ? String(body.approxWeeklySpend).trim() : undefined,
+      message: body.message ? String(body.message).trim() : undefined,
+      marketingEmail: Boolean(body.marketingEmail),
+      marketingSms: Boolean(body.marketingSms),
+      items: Array.isArray(body.items) ? body.items : [],
+      totalCases: body.totalCases || (Array.isArray(body.items) ? body.items.reduce((acc: number, it: any) => acc + (it.qty || 0), 0) : 0),
+      totalLines: Array.isArray(body.items) ? body.items.length : 0,
     };
 
     // Prepend to runtime store
@@ -53,23 +48,28 @@ export async function POST(req: NextRequest) {
 
     // Send dispatch notification email to Rootwills night logistics desk
     try {
-      const itemsListFormatted = newOrder.items
-        .map((it, idx) => `${idx + 1}. [${it.sku}] ${it.name} (${it.packSize}) — ${it.qty} case(s)`)
-        .join('\n');
+      const itemsListFormatted = newOrder.items.length > 0
+        ? newOrder.items
+            .map((it, idx) => `${idx + 1}. [${it.sku}] ${it.name} (${it.packSize}) — ${it.qty} case(s)`)
+            .join('\n')
+        : 'Customer registration / onboarding without pre-selected items';
 
       const emailPayload = {
-        _subject: `New Rootwills Wholesale Order: ${newOrder.id} - ${newOrder.venueName}`,
+        _subject: `New Rootwills Customer Order / Application: ${newOrder.id} - ${newOrder.company}`,
         OrderID: newOrder.id,
-        VenueName: newOrder.venueName,
-        ChefContact: newOrder.contactName,
-        Phone: newOrder.phone,
+        Name: newOrder.name,
         Email: newOrder.email,
-        DeliveryAddress: `${newOrder.address}, ${newOrder.postcode}`,
-        DeliveryDate: newOrder.deliveryDate,
-        DeliveryWindow: newOrder.deliveryWindow,
-        KeycodeInstructions: newOrder.dropoffNotes || 'None specified',
-        PONumber: newOrder.poNumber || 'None',
-        PaymentTerms: newOrder.paymentMethod,
+        Phone: newOrder.phone,
+        JobTitle: newOrder.jobTitle,
+        Company: newOrder.company,
+        NumberOfSites: newOrder.numberOfSites,
+        Postcode: newOrder.postcode,
+        CurrentSupplier: newOrder.currentSupplier || 'Not specified',
+        ApproxWeeklyDeliveries: newOrder.approxWeeklyDeliveries || 'Not specified',
+        ApproxWeeklySpend: newOrder.approxWeeklySpend || 'Not specified',
+        Message: newOrder.message || 'None',
+        MarketingEmail: newOrder.marketingEmail ? 'Yes' : 'No',
+        MarketingSMS: newOrder.marketingSms ? 'Yes' : 'No',
         TotalCases: newOrder.totalCases,
         TotalLines: newOrder.totalLines,
         ItemsManifest: itemsListFormatted,
@@ -91,13 +91,13 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Wholesale order submitted successfully.',
+      message: 'Wholesale customer application and order received.',
       order: newOrder,
     });
   } catch (error: any) {
-    console.error('Order submission error:', error);
+    console.error('Customer submission error:', error);
     return NextResponse.json(
-      { error: 'Failed to process wholesale order. Please try again.' },
+      { error: 'Failed to process application. Please try again.' },
       { status: 500 }
     );
   }

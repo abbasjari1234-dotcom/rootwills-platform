@@ -6,12 +6,7 @@ import Image from 'next/image';
 import {
   ArrowLeft,
   ShoppingBag,
-  ShieldCheck,
   CheckCircle2,
-  Truck,
-  Building2,
-  Calendar,
-  CreditCard,
   MessageCircle,
   Printer,
   ArrowRight,
@@ -25,6 +20,24 @@ export default function CheckoutPage() {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<WholesaleOrder | null>(null);
+
+  // Exact Form State matching user screenshot
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    countryCode: 'UK +44',
+    phone: '',
+    jobTitle: '',
+    company: '',
+    numberOfSites: '',
+    postcode: '',
+    currentSupplier: '',
+    approxWeeklyDeliveries: '',
+    approxWeeklySpend: '',
+    message: '',
+    marketingEmail: false,
+    marketingSms: false,
+  });
 
   // Load items from localStorage
   useEffect(() => {
@@ -40,20 +53,6 @@ export default function CheckoutPage() {
       // ignore
     }
   }, []);
-
-  const tomorrowStr = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-  const [form, setForm] = useState({
-    venueName: '',
-    contactName: '',
-    phone: '',
-    email: '',
-    address: '',
-    postcode: '',
-    deliveryDate: tomorrowStr,
-    dropoffNotes: '',
-    poNumber: '',
-    paymentMethod: '30-Day Credit Account' as WholesaleOrder['paymentMethod'],
-  });
 
   const totalCases = orderItems.reduce((acc, it) => acc + (it.qty || 0), 0);
 
@@ -76,26 +75,28 @@ export default function CheckoutPage() {
     }
   };
 
-  const removeItem = (id: string) => {
-    const updated = orderItems.filter((it) => it.id !== id);
-    setOrderItems(updated);
-    try {
-      localStorage.setItem('rootwills_direct_draft_order', JSON.stringify(updated));
-    } catch {
-      // ignore
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.venueName || !form.contactName || !form.phone || orderItems.length === 0) {
+    if (
+      !form.name.trim() ||
+      !form.email.trim() ||
+      !form.phone.trim() ||
+      !form.jobTitle.trim() ||
+      !form.company.trim() ||
+      !form.numberOfSites.trim() ||
+      !form.postcode.trim()
+    ) {
+      alert('Please fill in all required fields (*)');
       return;
     }
 
     setSubmitting(true);
 
+    const fullPhone = form.phone.startsWith('+') ? form.phone : `${form.countryCode.replace('UK ', '')} ${form.phone}`;
+
     const payload = {
       ...form,
+      phone: fullPhone,
       items: orderItems,
       totalCases,
     };
@@ -118,10 +119,10 @@ export default function CheckoutPage() {
           // ignore
         }
       } else {
-        alert(data.error || 'Failed to submit order. Please try again.');
+        alert(data.error || 'Failed to submit application. Please try again.');
       }
     } catch {
-      alert('Network error submitting order. Please contact dispatch directly on WhatsApp.');
+      alert('Network error. Please contact dispatch directly on WhatsApp.');
     } finally {
       setSubmitting(false);
     }
@@ -133,19 +134,20 @@ export default function CheckoutPage() {
       .join('\n');
 
     const message = 
-`📋 *ROOTWILLS WHOLESALE ORDER: ${order.id}*
-🏢 *Venue:* ${order.venueName}
-👤 *Chef Contact:* ${order.contactName} (${order.phone})
-📍 *Delivery Address:* ${order.address}, ${order.postcode}
-🚚 *Delivery Date:* ${order.deliveryDate} (04:00 – 07:30 AM Pre-Dawn)
-🔑 *Keycode / Drop Notes:* ${order.dropoffNotes || 'Standard kitchen delivery door'}
-🏷️ *PO / Ref:* ${order.poNumber || 'N/A'}
-💳 *Terms:* ${order.paymentMethod}
+`📋 *ROOTWILLS CUSTOMER APPLICATION & ORDER: ${order.id}*
+🏢 *Company:* ${order.company}
+👤 *Name:* ${order.name} (${order.jobTitle})
+📞 *Phone:* ${order.phone}
+✉️ *Email:* ${order.email}
+📍 *Postcode:* ${order.postcode}
+🏬 *Sites:* ${order.numberOfSites}
+🚚 *Current Supplier:* ${order.currentSupplier || 'N/A'}
+📦 *Weekly Deliveries:* ${order.approxWeeklyDeliveries || 'N/A'}
+💷 *Weekly Spend:* ${order.approxWeeklySpend || 'N/A'}
+📝 *Message:* ${order.message || 'None'}
 
-*ORDER MANIFEST (${order.totalCases} cases / ${order.totalLines} lines):*
-${linesText}
-
-_Please confirm truck loading and pre-dawn dispatch window._`;
+*ORDER MANIFEST (${order.totalCases} cases):*
+${linesText}`;
 
     return `https://wa.me/447984709478?text=${encodeURIComponent(message)}`;
   };
@@ -161,57 +163,59 @@ _Please confirm truck loading and pre-dawn dispatch window._`;
           </Link>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-mono font-semibold text-stone-600">Pre-Dawn Logistics Desk Active</span>
+            <span className="text-xs font-mono font-semibold text-stone-600">Rootwills Trade Onboarding Active</span>
           </div>
         </header>
 
         {confirmedOrder ? (
-          /* ─── CONFIRMED ORDER SCREEN ─── */
+          /* ─── CONFIRMED SCREEN ─── */
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E8DEC8] shadow-lg space-y-6">
             <div className="text-center space-y-3">
               <div className="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">
-                ORDER REFERENCE: {confirmedOrder.id}
+                APPLICATION REF: {confirmedOrder.id}
               </span>
               <h1 className="text-2xl sm:text-3xl font-bold text-emerald-950">
-                Pre-Dawn Order Confirmed &amp; Queued
+                Customer Application &amp; Order Received
               </h1>
               <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto leading-relaxed">
-                Thank you, <strong>{confirmedOrder.contactName}</strong>. Your wholesale catering order for <strong>{confirmedOrder.venueName}</strong> has been logged for delivery on <strong>{confirmedOrder.deliveryDate}</strong> (04:00 – 07:30 AM).
+                Thank you, <strong>{confirmedOrder.name}</strong>. Your customer application for <strong>{confirmedOrder.company}</strong> has been transmitted for immediate trade account approval.
               </p>
             </div>
 
             {/* Manifest */}
-            <div className="rounded-2xl border border-[#E8DEC8] overflow-hidden">
-              <div className="px-4 py-3 bg-[#FAF7F2] border-b border-[#E8DEC8] flex items-center justify-between">
-                <span className="text-xs font-bold text-[#2E060D]">
-                  Order Summary ({confirmedOrder.totalLines} lines • {confirmedOrder.totalCases} cases)
-                </span>
-                <span className="text-[11px] font-mono text-stone-500">
-                  {confirmedOrder.address}, {confirmedOrder.postcode}
-                </span>
-              </div>
-              <div className="divide-y divide-[#E8DEC8]/50 p-2 max-h-60 overflow-y-auto">
-                {confirmedOrder.items.map((it) => (
-                  <div key={it.id} className="p-2.5 flex items-center justify-between gap-3 text-xs">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative w-11 h-11 rounded-lg bg-white border border-[#E8DEC8] shrink-0 overflow-hidden flex items-center justify-center p-1">
-                        <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
+            {confirmedOrder.items.length > 0 && (
+              <div className="rounded-2xl border border-[#E8DEC8] overflow-hidden">
+                <div className="px-4 py-3 bg-[#FAF7F2] border-b border-[#E8DEC8] flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#2E060D]">
+                    Order Summary ({confirmedOrder.totalLines} lines • {confirmedOrder.totalCases} cases)
+                  </span>
+                  <span className="text-[11px] font-mono text-stone-500">
+                    {confirmedOrder.postcode}
+                  </span>
+                </div>
+                <div className="divide-y divide-[#E8DEC8]/50 p-2 max-h-60 overflow-y-auto">
+                  {confirmedOrder.items.map((it) => (
+                    <div key={it.id} className="p-2.5 flex items-center justify-between gap-3 text-xs">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="relative w-11 h-11 rounded-lg bg-white border border-[#E8DEC8] shrink-0 overflow-hidden flex items-center justify-center p-1">
+                          <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-semibold text-stone-800 truncate text-[13px]">{it.name}</div>
+                          <div className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</div>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <div className="font-semibold text-stone-800 truncate text-[13px]">{it.name}</div>
-                        <div className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</div>
-                      </div>
+                      <span className="font-bold text-[#2E060D] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#E8DEC8] shrink-0">
+                        {it.qty} {it.qty === 1 ? 'case' : 'cases'}
+                      </span>
                     </div>
-                    <span className="font-bold text-[#2E060D] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#E8DEC8] shrink-0">
-                      {it.qty} {it.qty === 1 ? 'case' : 'cases'}
-                    </span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Transmit Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
@@ -222,7 +226,7 @@ _Please confirm truck loading and pre-dawn dispatch window._`;
                 className="w-full sm:flex-1 py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BA5A] text-white text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95"
               >
                 <MessageCircle className="w-5 h-5 fill-white" />
-                <span>Transmit Manifest to WhatsApp Logistics</span>
+                <span>Instant WhatsApp Trade Approval</span>
               </a>
 
               <button
@@ -231,7 +235,7 @@ _Please confirm truck loading and pre-dawn dispatch window._`;
                 className="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-sm font-bold flex items-center justify-center gap-2 shadow-2xs"
               >
                 <Printer className="w-4 h-4 text-[#BA8E4E]" />
-                <span>Print Delivery Slip</span>
+                <span>Print Application</span>
               </button>
 
               <Link
@@ -242,185 +246,221 @@ _Please confirm truck loading and pre-dawn dispatch window._`;
               </Link>
             </div>
           </div>
-        ) : orderItems.length === 0 ? (
-          /* Empty Order Screen */
-          <div className="bg-white rounded-3xl p-10 sm:p-16 border border-[#E8DEC8] text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-[#FAF7F2] border border-[#E8DEC8] flex items-center justify-center mx-auto text-stone-400">
-              <ShoppingBag className="w-8 h-8" />
-            </div>
-            <h2 className="text-xl font-bold text-[#131313]">Your Wholesale Order is Empty</h2>
-            <p className="text-xs sm:text-sm text-stone-500 max-w-sm mx-auto">
-              Please browse our 5,487 commercial lines across bakery, butchery, dairy, produce, and dry larder to add cases.
-            </p>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#2E060D] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-md"
-            >
-              <span>Explore Wholesale Catalog</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
         ) : (
-          /* Active Checkout Layout */
+          /* Active Form Layout */
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Left Column: Form */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-7 border border-[#E8DEC8] shadow-sm space-y-6">
+            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-4">
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold text-[#2E060D]">
-                  Commercial Kitchen Checkout
+                <span className="block text-xs sm:text-[13px] font-bold text-[#E66E19] uppercase tracking-wider mb-1">
+                  Serve Your Customers Only The Best
+                </span>
+                <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight uppercase">
+                  BECOME A CUSTOMER
                 </h1>
-                <p className="text-xs text-stone-500 mt-1">
-                  Enter your venue credentials for contracted pre-dawn dispatch (04:00 – 07:30 AM).
-                </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* 1. Venue Details */}
-                <div className="space-y-3">
-                  <h3 className="text-xs font-bold text-[#2E060D] uppercase tracking-wider pb-1 border-b border-[#E8DEC8]">
-                    1. Venue &amp; Contact
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Venue / Business Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. The Grand Hotel / San Carlo"
-                        value={form.venueName}
-                        onChange={(e) => setForm({ ...form, venueName: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Chef / Contact Person *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Head Chef Marcus"
-                        value={form.contactName}
-                        onChange={(e) => setForm({ ...form, contactName: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Phone / WhatsApp (Driver ETA) *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="e.g. +44 7984 123456"
-                        value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Work Email (for Invoice)
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="e.g. accounts@venue.co.uk"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Name * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Email * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Email <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Phone * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Phone <span className="text-red-500">*</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      value={form.countryCode}
+                      onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
+                      className="px-2.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 text-stone-700 outline-none shrink-0"
+                    >
+                      <option value="UK +44">UK +44</option>
+                      <option value="IE +353">IE +353</option>
+                      <option value="US +1">US +1</option>
+                    </select>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="7123 456789"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    />
                   </div>
                 </div>
 
-                {/* 2. Delivery Logistics */}
-                <div className="space-y-3">
-                  <h3 className="text-xs font-bold text-[#2E060D] uppercase tracking-wider pb-1 border-b border-[#E8DEC8]">
-                    2. Delivery Address &amp; Key Access
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div className="sm:col-span-2">
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Street Address *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. 67-71 Temple Row"
-                        value={form.address}
-                        onChange={(e) => setForm({ ...form, address: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Postcode *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. B2 5LS"
-                        value={form.postcode}
-                        onChange={(e) => setForm({ ...form, postcode: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none uppercase"
-                      />
-                    </div>
-                  </div>
+                {/* Job Title * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Job Title <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.jobTitle}
+                    onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        Delivery Date
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        value={form.deliveryDate}
-                        onChange={(e) => setForm({ ...form, deliveryDate: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                        PO / Kitchen Reference
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. PO-NOV-11 (optional)"
-                        value={form.poNumber}
-                        onChange={(e) => setForm({ ...form, poNumber: e.target.value })}
-                        className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none"
-                      />
-                    </div>
-                  </div>
+                {/* Company * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Company <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.company}
+                    onChange={(e) => setForm({ ...form, company: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
 
-                  <div>
-                    <label className="block text-[11px] font-semibold text-stone-700 mb-1">
-                      Keybox / Delivery Instructions
-                    </label>
-                    <textarea
-                      rows={2}
-                      placeholder="e.g. Service door keycode 4910. Stack bakery crates on table by prep room."
-                      value={form.dropoffNotes}
-                      onChange={(e) => setForm({ ...form, dropoffNotes: e.target.value })}
-                      className="w-full px-3 py-2 text-xs rounded-xl bg-white border border-[#E8DEC8] focus:border-[#2E060D] outline-none resize-none"
+                {/* Number of Sites * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Number of Sites <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.numberOfSites}
+                    onChange={(e) => setForm({ ...form, numberOfSites: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Postcode * */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Postcode <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={form.postcode}
+                    onChange={(e) => setForm({ ...form, postcode: e.target.value.toUpperCase() })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none uppercase"
+                  />
+                </div>
+
+                {/* Current Supplier */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Current Supplier
+                  </label>
+                  <input
+                    type="text"
+                    value={form.currentSupplier}
+                    onChange={(e) => setForm({ ...form, currentSupplier: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Approx Weekly Deliveries */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Approx Weekly Deliveries
+                  </label>
+                  <input
+                    type="text"
+                    value={form.approxWeeklyDeliveries}
+                    onChange={(e) => setForm({ ...form, approxWeeklyDeliveries: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Approx Weekly Spend */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Approx Weekly Spend
+                  </label>
+                  <input
+                    type="text"
+                    value={form.approxWeeklySpend}
+                    onChange={(e) => setForm({ ...form, approxWeeklySpend: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Please provide any other details that may help your application."
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none resize-none"
+                  />
+                </div>
+
+                {/* Marketing preferences */}
+                <div className="rounded-xl bg-stone-50 border border-stone-200 p-4 space-y-2">
+                  <span className="block text-xs font-semibold text-stone-800">
+                    Marketing preferences
+                  </span>
+                  <label className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={form.marketingEmail}
+                      onChange={(e) => setForm({ ...form, marketingEmail: e.target.checked })}
+                      className="rounded border-stone-300 text-stone-900 w-4 h-4"
                     />
-                  </div>
+                    <span>Yes, send me offers and news by email</span>
+                  </label>
+                  <label className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={form.marketingSms}
+                      onChange={(e) => setForm({ ...form, marketingSms: e.target.checked })}
+                      className="rounded border-stone-300 text-stone-900 w-4 h-4"
+                    />
+                    <span>Yes, send me offers and news by SMS</span>
+                  </label>
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 px-6 rounded-xl bg-[#2E060D] hover:bg-black text-white text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="w-full py-3.5 px-6 rounded-xl bg-[#2E060D] hover:bg-black text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   {submitting ? (
-                    <span>Submitting Order...</span>
+                    <span>Submitting Application...</span>
                   ) : (
                     <>
-                      <span>Place Wholesale Order ({totalCases} Cases)</span>
+                      <span>Submit Customer Application</span>
                       <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
                     </>
                   )}
@@ -428,52 +468,58 @@ _Please confirm truck loading and pre-dawn dispatch window._`;
               </form>
             </div>
 
-            {/* Right Column: Order Manifest & Stepper */}
-            <div className="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 border border-[#E8DEC8] shadow-sm space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-[#E8DEC8]">
+            {/* Right Column: Order Manifest */}
+            <div className="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 border border-stone-200 shadow-sm space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-stone-200">
                 <h3 className="text-sm font-bold text-[#2E060D]">
-                  Order Manifest ({orderItems.length} lines • {totalCases} cases)
+                  Order Lines ({orderItems.length} lines • {totalCases} cases)
                 </h3>
                 <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                  Pre-Dawn Active
+                  Pre-Dawn Manifest
                 </span>
               </div>
 
-              <div className="divide-y divide-[#E8DEC8]/50 max-h-[380px] overflow-y-auto pr-1">
-                {orderItems.map((it) => (
-                  <div key={it.id} className="py-3 first:pt-0 flex items-center justify-between gap-3 text-xs">
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className="relative w-11 h-11 rounded-lg bg-white border border-[#E8DEC8] shrink-0 overflow-hidden flex items-center justify-center p-1">
-                        <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
+              {orderItems.length === 0 ? (
+                <div className="py-8 text-center text-xs text-stone-500">
+                  No items currently in your basket. You can submit your customer application directly.
+                </div>
+              ) : (
+                <div className="divide-y divide-stone-100 max-h-[380px] overflow-y-auto pr-1">
+                  {orderItems.map((it) => (
+                    <div key={it.id} className="py-3 first:pt-0 flex items-center justify-between gap-3 text-xs">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="relative w-11 h-11 rounded-lg bg-white border border-stone-200 shrink-0 overflow-hidden flex items-center justify-center p-1">
+                          <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-stone-800 truncate text-[12.5px]">{it.name}</p>
+                          <p className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-stone-800 truncate text-[12.5px]">{it.name}</p>
-                        <p className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</p>
+
+                      <div className="flex items-center gap-1.5 shrink-0 bg-[#FAF7F2] border border-[#E8DEC8] rounded-lg p-1">
+                        <button
+                          type="button"
+                          onClick={() => updateQty(it.id, -1)}
+                          className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
+                        >
+                          {it.qty === 1 ? <Trash2 className="w-3 h-3 text-red-600" /> : <Minus className="w-3 h-3" />}
+                        </button>
+                        <span className="font-bold text-xs min-w-[14px] text-center">{it.qty}</span>
+                        <button
+                          type="button"
+                          onClick={() => updateQty(it.id, 1)}
+                          className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
                       </div>
                     </div>
+                  ))}
+                </div>
+              )}
 
-                    <div className="flex items-center gap-1.5 shrink-0 bg-[#FAF7F2] border border-[#E8DEC8] rounded-lg p-1">
-                      <button
-                        type="button"
-                        onClick={() => updateQty(it.id, -1)}
-                        className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
-                      >
-                        {it.qty === 1 ? <Trash2 className="w-3 h-3 text-red-600" /> : <Minus className="w-3 h-3" />}
-                      </button>
-                      <span className="font-bold text-xs min-w-[14px] text-center">{it.qty}</span>
-                      <button
-                        type="button"
-                        onClick={() => updateQty(it.id, 1)}
-                        className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
-                      >
-                        <Plus className="w-3 h-3" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-3 border-t border-[#E8DEC8] text-center">
+              <div className="pt-3 border-t border-stone-200 text-center">
                 <Link href="/products" className="text-xs font-semibold text-[#8B2635] hover:underline">
                   + Add more lines from catalog
                 </Link>

@@ -12,17 +12,21 @@ export interface WholesaleOrder {
   id: string; // e.g. RW-2026-89412
   status: 'Received' | 'Picking' | 'Loaded' | 'Out for Delivery' | 'Delivered';
   createdAt: string;
-  deliveryDate: string; // YYYY-MM-DD
-  deliveryWindow: string; // e.g. "04:00 – 07:30 AM (Pre-Dawn)"
-  venueName: string;
-  contactName: string;
-  phone: string;
+  // Exact form fields requested by user
+  name: string;
   email: string;
-  address: string;
+  phone: string;
+  jobTitle: string;
+  company: string;
+  numberOfSites: string;
   postcode: string;
-  dropoffNotes: string;
-  poNumber?: string;
-  paymentMethod: '30-Day Credit Account' | 'Trade BACS' | 'Card on Delivery';
+  currentSupplier?: string;
+  approxWeeklyDeliveries?: string;
+  approxWeeklySpend?: string;
+  message?: string;
+  marketingEmail?: boolean;
+  marketingSms?: boolean;
+  // Order items
   items: OrderItem[];
   totalCases: number;
   totalLines: number;
@@ -34,17 +38,19 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     id: 'RW-2026-94810',
     status: 'Picking',
     createdAt: '2026-11-10T01:15:00Z',
-    deliveryDate: '2026-11-11',
-    deliveryWindow: '04:00 – 07:30 AM (Pre-Dawn)',
-    venueName: 'The Savoy London (Fairmont)',
-    contactName: 'Thierry M. (Exec Chef)',
-    phone: '+44 20 7836 4343',
+    name: 'Thierry M.',
     email: 'purchasing@savoy.london',
-    address: 'Strand, London',
+    phone: '+44 20 7836 4343',
+    jobTitle: 'Executive Head Chef',
+    company: 'The Savoy London (Fairmont)',
+    numberOfSites: '1',
     postcode: 'WC2R 0EZ',
-    dropoffNotes: 'Goods entrance via Carting Lane. Keybox 5921. Stack bakery in pastry walk-in.',
-    poNumber: 'PO-SAVOY-8812',
-    paymentMethod: '30-Day Credit Account',
+    currentSupplier: 'Brakes',
+    approxWeeklyDeliveries: '5-6',
+    approxWeeklySpend: '£8,500',
+    message: 'Daily fresh bakery, prime butchery & larder line deliveries.',
+    marketingEmail: true,
+    marketingSms: false,
     items: [
       {
         id: 'rw-bk-796010',
@@ -72,17 +78,19 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     id: 'RW-2026-94809',
     status: 'Received',
     createdAt: '2026-11-10T00:45:00Z',
-    deliveryDate: '2026-11-11',
-    deliveryWindow: '04:00 – 07:30 AM (Pre-Dawn)',
-    venueName: 'The Ivy Birmingham',
-    contactName: 'Marcus Hall (Head Chef)',
-    phone: '+44 121 725 9510',
+    name: 'Marcus Hall',
     email: 'birmingham@theivy-collection.com',
-    address: '67-71 Temple Row, Birmingham',
+    phone: '+44 121 725 9510',
+    jobTitle: 'Head Chef',
+    company: 'The Ivy Birmingham',
+    numberOfSites: '3-5',
     postcode: 'B2 5LS',
-    dropoffNotes: 'Back lane delivery bay. Keycode 8402. Chilled items to meat prep chiller.',
-    poNumber: 'IVY-BHM-491',
-    paymentMethod: '30-Day Credit Account',
+    currentSupplier: 'Creed Foodservice',
+    approxWeeklyDeliveries: '4',
+    approxWeeklySpend: '£4,200',
+    message: 'Pre-dawn drop requested before 06:30 AM.',
+    marketingEmail: true,
+    marketingSms: true,
     items: [
       {
         id: 'rw-bk-724530',
@@ -101,17 +109,19 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     id: 'RW-2026-94795',
     status: 'Delivered',
     createdAt: '2026-11-09T22:30:00Z',
-    deliveryDate: '2026-11-10',
-    deliveryWindow: '04:00 – 07:30 AM (Pre-Dawn)',
-    venueName: 'San Carlo Italian Restaurant',
-    contactName: 'Matteo R. (Kitchen GM)',
-    phone: '+44 121 633 0251',
+    name: 'Matteo Rossi',
     email: 'orders@sancarlo.co.uk',
-    address: '4 Temple St, Birmingham',
+    phone: '+44 121 633 0251',
+    jobTitle: 'Kitchen General Manager',
+    company: 'San Carlo Italian Restaurant',
+    numberOfSites: '6-10',
     postcode: 'B2 5BN',
-    dropoffNotes: 'Delivered via driver key drop 05:15 AM. Chilled crates signed and placed in walk-in.',
-    poNumber: 'SC-88194',
-    paymentMethod: '30-Day Credit Account',
+    currentSupplier: 'Sysco / Brakes',
+    approxWeeklyDeliveries: '6',
+    approxWeeklySpend: '£6,000',
+    message: 'Pre-dawn delivery via key drop.',
+    marketingEmail: false,
+    marketingSms: false,
     items: [
       {
         id: 'rw-bk-858770',
