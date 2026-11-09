@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export function CommercialB2BHero() {
@@ -77,23 +78,23 @@ export function CommercialB2BHero() {
                 </div>
               </div>
 
-              {/* Luxury Tactile CTA Row with Nested Button Architecture */}
+              {/* Luxury Tactile CTA Row with Direct Links */}
               <div className="pt-2 flex flex-wrap items-center gap-3.5 sm:gap-4">
-                <a
-                  href="/#services"
+                <Link
+                  href="/products"
                   className="group inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 sm:pl-7 sm:pr-3 sm:py-3 rounded-full bg-gradient-to-r from-[#C99A45] via-[#E2B96F] to-[#BA8E4E] hover:from-[#D4A86A] hover:to-[#C9A227] text-[#1A0307] text-xs sm:text-[13px] font-sans font-bold tracking-wider uppercase transition-all duration-200 ease-out shadow-[0_8px_24px_rgba(186,142,78,0.4),inset_0_1px_1px_rgba(255,255,255,0.7)] hover:shadow-[0_12px_32px_rgba(186,142,78,0.55)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <span>Explore Wholesale Range</span>
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1A0307]/15 flex items-center justify-center transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:scale-105">
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1A0307]" strokeWidth={2.2} />
                   </div>
-                </a>
-                <a
-                  href="/#contact"
+                </Link>
+                <Link
+                  href="/contact"
                   className="group inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-[#FAF7F2] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase backdrop-blur-xl border border-white/25 hover:border-[#BA8E4E]/60 transition-all duration-200 ease-out shadow-[inset_0_1px_1px_rgba(255,255,255,0.35)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] active:scale-[0.98] cursor-pointer"
                 >
                   <span>Open Trade Account</span>
-                </a>
+                </Link>
               </div>
 
               {/* Social Proof Line: Executive Kitchen Trust */}

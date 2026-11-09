@@ -42,12 +42,46 @@ export function PublicProductsView() {
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
 
-  // Pre-seeded with 3 core wholesale lines so the right sidebar is immediately populated
-  const [orderList, setOrderList] = useState<DraftOrderLine[]>([
-    { product: WHOLESALE_PRODUCTS[0], qty: 2 },
-    { product: WHOLESALE_PRODUCTS[2], qty: 1 },
-    { product: WHOLESALE_PRODUCTS[18], qty: 2 },
-  ]);
+  // Initialize draft order list from localStorage if available, or pre-seed initial sample
+  const [orderList, setOrderList] = useState<DraftOrderLine[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('rootwills_direct_draft_order');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed
+              .map((item: any) => {
+                const found = WHOLESALE_PRODUCTS.find((p) => p.id === item.id);
+                if (found) {
+                  return { product: found, qty: item.qty || 1 };
+                }
+                const fallback: WholesaleProduct = {
+                  id: item.id,
+                  sku: item.sku || 'RW-ITEM',
+                  name: item.name || 'Wholesale Line',
+                  packSize: item.packSize || 'Case',
+                  categorySlug: 'chilled-dairy',
+                  image: item.image || '/images/products/placeholder.webp',
+                  origin: 'UK',
+                  tempZone: 'Ambient',
+                  description: item.name || 'Wholesale Catering Item',
+                };
+                return { product: fallback, qty: item.qty || 1 };
+              })
+              .filter(Boolean) as DraftOrderLine[];
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+    return [
+      { product: WHOLESALE_PRODUCTS[0], qty: 2 },
+      { product: WHOLESALE_PRODUCTS[2], qty: 1 },
+      { product: WHOLESALE_PRODUCTS[18], qty: 2 },
+    ];
+  });
 
   const categoryRailRef = useRef<HTMLDivElement>(null);
   const featuredRowRef = useRef<HTMLDivElement>(null);
