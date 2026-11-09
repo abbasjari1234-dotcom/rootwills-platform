@@ -3,9 +3,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { X, ChevronDown, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 export function FloatingBrandWidget() {
+  const pathname = usePathname();
+  const isProductsPage = pathname?.startsWith('/products');
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -68,7 +71,9 @@ export function FloatingBrandWidget() {
   return (
     <div
       ref={widgetRef}
-      className="fixed bottom-3.5 left-3.5 sm:bottom-5 sm:left-5 z-50 flex flex-col items-start select-none pointer-events-none"
+      className={`fixed bottom-3.5 left-3.5 sm:bottom-5 sm:left-5 z-50 flex-col items-start select-none pointer-events-none ${
+        isProductsPage ? 'hidden lg:flex' : 'flex'
+      }`}
     >
       {/* ─── FLOATING POPOVER CARD (OPEN STATE) ─── */}
       <div
