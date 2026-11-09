@@ -1,6 +1,7 @@
 import React from 'react';
 import { FloatingAmbientHero } from '@/components/public/FloatingAmbientHero';
 import { CommercialTrustStrip } from '@/components/public/CommercialTrustStrip';
+import { PartnerBrandsSlider } from '@/components/public/PartnerBrandsSlider';
 import { AboutRootwillsSection } from '@/components/public/AboutRootwillsSection';
 import { ServicesSection } from '@/components/public/ServicesSection';
 import { ApproachSection } from '@/components/public/ApproachSection';
@@ -27,6 +28,9 @@ export default function PublicHomePage() {
         <div className="relative z-10">
           {/* 1b. Commercial Trust & Wholesale Guarantees Marquee */}
           <CommercialTrustStrip />
+
+          {/* 1c. Automated Foodservice Brands Slider */}
+          <PartnerBrandsSlider />
 
           {/* 2. About Rootwills: More Than Just Food Supply */}
           <AboutRootwillsSection />
