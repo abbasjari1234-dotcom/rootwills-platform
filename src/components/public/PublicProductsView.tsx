@@ -34,6 +34,7 @@ export interface DraftOrderLine {
 
 export function PublicProductsView() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [quickViewProduct, setQuickViewProduct] = useState<WholesaleProduct | null>(null);
   const [hubInfoModalOpen, setHubInfoModalOpen] = useState<boolean>(false);
@@ -44,8 +45,8 @@ export function PublicProductsView() {
   // Pre-seeded with 3 core wholesale lines so the right sidebar is immediately populated
   const [orderList, setOrderList] = useState<DraftOrderLine[]>([
     { product: WHOLESALE_PRODUCTS[0], qty: 2 },
-    { product: WHOLESALE_PRODUCTS[9], qty: 1 },
-    { product: WHOLESALE_PRODUCTS[1], qty: 2 },
+    { product: WHOLESALE_PRODUCTS[2], qty: 1 },
+    { product: WHOLESALE_PRODUCTS[18], qty: 2 },
   ]);
 
   const categoryRailRef = useRef<HTMLDivElement>(null);
@@ -117,6 +118,10 @@ export function PublicProductsView() {
     []
   );
 
+  const activeCategoryObject = useMemo(() => {
+    return WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory);
+  }, [selectedCategory]);
+
   const filteredProducts = useMemo(() => {
     return WHOLESALE_PRODUCTS.filter((p) => {
       if (searchQuery.trim() !== '') {
@@ -126,14 +131,21 @@ export function PublicProductsView() {
           p.packSize.toLowerCase().includes(q) ||
           p.sku.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q) ||
-          p.origin.toLowerCase().includes(q);
+          p.origin.toLowerCase().includes(q) ||
+          (p.subcategory && p.subcategory.toLowerCase().includes(q));
         if (!match) return false;
       }
 
-      if (selectedCategory === 'all') return true;
-      return p.categorySlug === selectedCategory;
+      if (selectedCategory !== 'all') {
+        if (p.categorySlug !== selectedCategory) return false;
+        if (selectedSubcategory !== 'all' && p.subcategory !== selectedSubcategory) {
+          return false;
+        }
+      }
+
+      return true;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, selectedSubcategory, searchQuery]);
 
   const isBrowsingAll = selectedCategory === 'all' && searchQuery.trim() === '';
 
@@ -431,6 +443,7 @@ export function PublicProductsView() {
                   type="button"
                   onClick={() => {
                     setSelectedCategory('all');
+                    setSelectedSubcategory('all');
                     setSearchQuery('');
                   }}
                   className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] transition-colors cursor-pointer ${
@@ -451,6 +464,7 @@ export function PublicProductsView() {
                       type="button"
                       onClick={() => {
                         setSelectedCategory(cat.slug);
+                        setSelectedSubcategory('all');
                         setSearchQuery('');
                       }}
                       className={`w-full flex items-center justify-between py-2 px-2 rounded-lg text-[12.5px] transition-colors cursor-pointer group ${
@@ -584,7 +598,10 @@ export function PublicProductsView() {
                     <button
                       key={cat.slug}
                       type="button"
-                      onClick={() => setSelectedCategory(active ? 'all' : cat.slug)}
+                      onClick={() => {
+                        setSelectedCategory(active ? 'all' : cat.slug);
+                        setSelectedSubcategory('all');
+                      }}
                       className="group w-[76px] sm:w-[82px] shrink-0 flex flex-col items-center text-center cursor-pointer"
                     >
                       <div
@@ -712,6 +729,7 @@ export function PublicProductsView() {
                     type="button"
                     onClick={() => {
                       setSelectedCategory('all');
+                      setSelectedSubcategory('all');
                       setSearchQuery('');
                     }}
                     className="px-3 py-1.5 rounded-lg bg-white border border-black/12 hover:bg-[#F5F3EE] text-xs font-semibold text-[#131313] cursor-pointer"
@@ -719,6 +737,40 @@ export function PublicProductsView() {
                     ← All Categories
                   </button>
                 </div>
+
+                {/* Subcategory Filter Pills when inside a department */}
+                {activeCategoryObject && activeCategoryObject.subcategories.length > 0 && (
+                  <div className="flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-3 mb-3 border-b border-black/[0.05]">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedSubcategory('all')}
+                      className={`px-3 py-1 rounded-full text-xs font-semibold shrink-0 transition-colors cursor-pointer ${
+                        selectedSubcategory === 'all'
+                          ? 'bg-[#2E060D] text-white'
+                          : 'bg-white border border-black/10 text-stone-700 hover:bg-[#F5F3EE]'
+                      }`}
+                    >
+                      All {activeCategoryObject.shortName}
+                    </button>
+                    {activeCategoryObject.subcategories.map((sub) => {
+                      const active = selectedSubcategory === sub;
+                      return (
+                        <button
+                          key={sub}
+                          type="button"
+                          onClick={() => setSelectedSubcategory(sub)}
+                          className={`px-3 py-1 rounded-full text-xs font-semibold shrink-0 transition-colors cursor-pointer ${
+                            active
+                              ? 'bg-[#2E060D] text-white'
+                              : 'bg-white border border-black/10 text-stone-700 hover:bg-[#F5F3EE]'
+                          }`}
+                        >
+                          {sub}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
 
                 {filteredProducts.length === 0 ? (
                   <div className="rounded-2xl bg-white border border-black/[0.07] p-10 text-center space-y-3">
