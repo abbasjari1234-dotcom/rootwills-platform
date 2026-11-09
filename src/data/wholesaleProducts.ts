@@ -108,7 +108,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
     shortName: 'Oils & Fats',
     tempBadge: 'Ambient',
     image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80',
-    subcategories: ['Olive Oils', 'Commercial Frying Oils', 'Specialty Dressing Oils'],
+    subcategories: ['Olive & Infused Oils', 'Commercial Frying & Vegetable Oils', 'Vinegars & Glazes'],
   },
   {
     slug: 'rice-pasta',
@@ -116,7 +116,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
     shortName: 'Rice & Pasta',
     tempBadge: 'Ambient',
     image: 'https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=600&auto=format&fit=crop&q=80',
-    subcategories: ['Basmati & Risotto Rice', 'Bronze-Die Italian Pasta', 'Couscous & Grains'],
+    subcategories: ['Basmati & Specialty Rice', 'Bronze-Die & Commercial Pasta', 'Noodles & Asian Grains', 'Couscous, Grains & Pulses'],
   },
   {
     slug: 'spices-sauces',
@@ -124,7 +124,7 @@ export const WHOLESALE_CATEGORIES: WholesaleCategory[] = [
     shortName: 'Spices & Sauces',
     tempBadge: 'Ambient',
     image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80',
-    subcategories: ['Chef Spices & Seasonings', 'Stock Pastes & Jus', 'Mayonnaise & Table Sauces'],
+    subcategories: ['Chef Spices & Seasonings', 'Stock Pastes, Gravy & Jus', 'Table Sauces & Condiments', 'Ready Cooking Sauces & Pastes'],
   },
   {
     slug: 'tea-coffee',
@@ -160,6 +160,10 @@ import produceCatalog from './products/produce.json';
 import seafoodCatalog from './products/seafood.json';
 import frozenCatalog from './products/frozen.json';
 import dessertsCatalog from './products/desserts.json';
+import oilsCatalog from './products/oils.json';
+import ricePastaCatalog from './products/ricepasta.json';
+import spicesCatalog from './products/spices.json';
+import groceryCatalog from './products/grocery.json';
 
 export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   ...(bakeryCatalog as WholesaleProduct[]),
@@ -170,120 +174,10 @@ export const WHOLESALE_PRODUCTS: WholesaleProduct[] = [
   ...(seafoodCatalog as WholesaleProduct[]),
   ...(frozenCatalog as WholesaleProduct[]),
   ...(dessertsCatalog as WholesaleProduct[]),
-
-  // ════════════════════════════════════════════════════════════════
-  // 7. GROCERY, TINNED & FLOUR
-  // ════════════════════════════════════════════════════════════════
-  {
-    id: 'eg-1',
-    sku: 'RW-AG-501',
-    name: 'Italian San Marzano Peeled Plum Tomatoes (A10)',
-    packSize: '6 × 2.55kg Case',
-    categorySlug: 'everyday-grocery',
-    subcategory: 'Tinned Tomatoes & Beans',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=600&auto=format&fit=crop&q=80',
-    origin: 'Campania, Italy',
-    tempZone: 'Ambient',
-    description: 'Sun-ripened whole peeled plum tomatoes in thick juice alongside pre-cooked chickpeas and pulses.',
-    featuredCore: true,
-  },
-  {
-    id: 'eg-2',
-    sku: 'RW-AG-502',
-    name: 'Neapolitan Tipo 00 Pizza & Strong Bread Flour',
-    packSize: '16kg / 25kg Sack',
-    categorySlug: 'everyday-grocery',
-    subcategory: 'Catering Flours & Sugars',
-    image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80',
-    origin: 'Italian & British Heritage Mills',
-    tempZone: 'Ambient',
-    description: 'Finely milled W300–W320 pizza flour, culinary plain/self-raising flours, and pure cane caster sugar.',
-  },
-
-  // ════════════════════════════════════════════════════════════════
-  // 8. COOKING OILS, OLIVE OIL & FATS
-  // ════════════════════════════════════════════════════════════════
-  {
-    id: 'of-1',
-    sku: 'RW-AG-504',
-    name: 'Cold-Pressed Mediterranean Extra Virgin Olive Oil',
-    packSize: '4 × 5L Tins',
-    categorySlug: 'oil-fats',
-    subcategory: 'Olive Oils',
-    image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&auto=format&fit=crop&q=80',
-    origin: 'Spain & Italy',
-    tempZone: 'Ambient',
-    description: 'First cold-press extra virgin olive oil for dressings, bread service, and pass finishing.',
-    featuredCore: true,
-  },
-  {
-    id: 'of-2',
-    sku: 'RW-AG-505',
-    name: 'Extended-Life Commercial Rapeseed Frying Oil (230°C)',
-    packSize: '20L Box-in-Bag Drum',
-    categorySlug: 'oil-fats',
-    subcategory: 'Commercial Frying Oils',
-    image: 'https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?w=600&auto=format&fit=crop&q=80',
-    origin: 'UK Cold-Press',
-    tempZone: 'Ambient',
-    description: 'High smoke-point (230°C) anti-foaming commercial frying oil engineered for heavy-duty fryers.',
-  },
-
-  // ════════════════════════════════════════════════════════════════
-  // 9. RICE, PASTA, GRAINS & PULSES
-  // ════════════════════════════════════════════════════════════════
-  {
-    id: 'rp-1',
-    sku: 'RW-AG-507',
-    name: '24-Month Aged Extra-Long Himalayan Basmati Rice',
-    packSize: '20kg Sack',
-    categorySlug: 'rice-pasta',
-    subcategory: 'Basmati & Risotto Rice',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80',
-    origin: 'Himalayan Foothills',
-    tempZone: 'Ambient',
-    description: 'Aromatic extra-long basmati rice alongside Italian Carnaroli and Arborio risotto rice.',
-  },
-  {
-    id: 'rp-2',
-    sku: 'RW-AG-508',
-    name: 'Gragnano Bronze-Die Durum Wheat Penne & Rigatoni',
-    packSize: '4 × 3kg Case',
-    categorySlug: 'rice-pasta',
-    subcategory: 'Bronze-Die Italian Pasta',
-    image: 'https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=600&auto=format&fit=crop&q=80',
-    origin: 'Naples, Italy',
-    tempZone: 'Ambient',
-    description: 'Slow-dried bronze-extruded Italian pasta engineered to hold al-dente texture during service.',
-  },
-
-  // ════════════════════════════════════════════════════════════════
-  // 10. SPICES, STOCKS & CONDIMENTS
-  // ════════════════════════════════════════════════════════════════
-  {
-    id: 'ss-1',
-    sku: 'RW-AG-510',
-    name: 'Chef Spices, Tellicherry Peppercorns & Maldon Salt',
-    packSize: '6 × 500g Chef Pack',
-    categorySlug: 'spices-sauces',
-    subcategory: 'Chef Spices & Seasonings',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80',
-    origin: 'Single-Estate Origins & Maldon, UK',
-    tempZone: 'Ambient',
-    description: 'Steam-sterilised Tellicherry black peppercorns, smoked paprika, cumin, saffron, and sea salt flakes.',
-  },
-  {
-    id: 'ss-2',
-    sku: 'RW-AG-511',
-    name: 'Gluten-Free Concentrated Beef, Chicken & Veg Stock Paste',
-    packSize: '2 × 1kg Tubs',
-    categorySlug: 'spices-sauces',
-    subcategory: 'Stock Pastes & Jus',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop&q=80',
-    origin: 'British Professional Kitchens',
-    tempZone: 'Ambient',
-    description: 'MSG-free reduced meat and vegetable stock pastes that dissolve instantly for jus and braises.',
-  },
+  ...(oilsCatalog as WholesaleProduct[]),
+  ...(ricePastaCatalog as WholesaleProduct[]),
+  ...(spicesCatalog as WholesaleProduct[]),
+  ...(groceryCatalog as WholesaleProduct[]),
 
   // ════════════════════════════════════════════════════════════════
   // 13. NON-FOOD, DISPOSABLES & HYGIENE
