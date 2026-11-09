@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
           '/ops/',
           '/ops',
           '/direct',
+          '/login',
           '/admin/',
           '/driver/',
           '/dashboard/',

@@ -16,18 +16,8 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-interface DraftOrderItem {
-  id: string;
-  sku: string;
-  name: string;
-  packSize: string;
-  image: string;
-  qty: number;
-}
-
 export function RootwillsDirectPortalView() {
   const [loading, setLoading] = useState(false);
-  const [orderItems, setOrderItems] = useState<DraftOrderItem[]>([]);
   const [signedInSuccess, setSignedInSuccess] = useState(false);
 
   // Sign In Form State
@@ -37,24 +27,6 @@ export function RootwillsDirectPortalView() {
     rememberMe: true,
   });
 
-  // Read saved cart items from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('rootwills_direct_draft_order');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed)) {
-          setOrderItems(parsed);
-        }
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
-
-  const cartCount = orderItems.length;
-  const totalCases = orderItems.reduce((acc, it) => acc + (it.qty || 0), 0);
-
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -63,7 +35,7 @@ export function RootwillsDirectPortalView() {
     setTimeout(() => {
       setLoading(false);
       setSignedInSuccess(true);
-      // If user came from cart, return to products or order review
+      // Return to products after successful authentication
       setTimeout(() => {
         window.location.href = '/products';
       }, 1200);
@@ -127,17 +99,10 @@ export function RootwillsDirectPortalView() {
       {/* ─── CENTERED INTRO HEADER ─── */}
       <section className="relative z-10 pt-8 sm:pt-14 pb-5 sm:pb-10 px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-2xl mx-auto space-y-2 sm:space-y-3">
-          {cartCount > 0 ? (
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#5A101D]/10 text-[#5A101D] text-xs font-bold tracking-wide mb-1">
-              <ShoppingCart className="w-3.5 h-3.5 text-[#BA8E4E]" />
-              <span>{cartCount} item{cartCount > 1 ? 's' : ''} saved in your basket</span>
-            </div>
-          ) : (
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#5A101D]/10 text-[#5A101D] text-[11px] font-bold tracking-wider uppercase mb-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
-              Secure Customer Portal
-            </div>
-          )}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#5A101D]/10 text-[#5A101D] text-[11px] font-bold tracking-wider uppercase mb-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
+            Secure Customer Portal
+          </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold tracking-tight text-[#2E060D]">
             Sign In to Continue
@@ -147,65 +112,6 @@ export function RootwillsDirectPortalView() {
           </p>
         </div>
       </section>
-
-      {/* ─── OPTIONAL WHOLESALE DRAFT ORDER PREVIEW (When coming from catalog) ─── */}
-      {orderItems.length > 0 && (
-        <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
-          <div className="bg-white/95 rounded-2xl p-4 sm:p-5 border border-[#E8DEC8] shadow-[0_8px_30px_rgba(46,6,13,0.04)] font-sans">
-            <div className="flex items-center justify-between pb-3 border-b border-[#E8DEC8]/70">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-8 rounded-lg bg-[#5A101D]/10 text-[#5A101D] flex items-center justify-center">
-                  <ShoppingCart className="w-4 h-4 text-[#BA8E4E]" />
-                </span>
-                <div>
-                  <h3 className="text-sm sm:text-base font-bold text-[#2E060D]">
-                    Your Draft Wholesale Order ({orderItems.length} {orderItems.length === 1 ? 'line' : 'lines'} • {totalCases} {totalCases === 1 ? 'case' : 'cases'})
-                  </h3>
-                  <p className="text-[11px] text-stone-500">
-                    Dispatched in standard pre-dawn window (04:00 – 07:30 AM)
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[#8B2635] hover:text-[#2E060D] transition-colors"
-              >
-                <span>Modify Lines</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-
-            {/* Scrollable grid/list of draft items */}
-            <div className="mt-3.5 max-h-[220px] overflow-y-auto space-y-2 pr-1 divide-y divide-[#E8DEC8]/40">
-              {orderItems.map((item) => (
-                <div key={item.id} className="pt-2.5 first:pt-0 flex items-center justify-between gap-3 text-xs">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="relative w-11 h-11 rounded-lg bg-white border border-[#E8DEC8] shrink-0 overflow-hidden flex items-center justify-center p-1">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        sizes="44px"
-                        className="object-contain"
-                        unoptimized
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-semibold text-stone-800 truncate text-[12.5px]">{item.name}</p>
-                      <p className="text-[11px] font-mono text-stone-500">{item.packSize} • SKU: {item.sku}</p>
-                    </div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <span className="font-bold text-[#2E060D] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#E8DEC8] text-xs">
-                      {item.qty} {item.qty === 1 ? 'case' : 'cases'}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ─── UNIFIED LUXURY CARD (Matching Enquiry page reference) ─── */}
       <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

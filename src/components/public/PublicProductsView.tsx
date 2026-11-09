@@ -296,7 +296,7 @@ export function PublicProductsView() {
             <ShoppingBag className="w-6 h-6 text-stone-400 mx-auto stroke-[1.5]" />
             <p className="text-xs font-semibold text-[#131313]">Your order list is empty</p>
             <p className="text-[11.5px] text-stone-500 max-w-[200px] mx-auto">
-              Tap + on any item to build your wholesale order for Rootwills Direct.
+              Tap + on any item to build your wholesale order for pre-dawn delivery.
             </p>
           </div>
         ) : (
@@ -438,12 +438,10 @@ export function PublicProductsView() {
         </div>
 
         <a
-          href="/direct"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/login"
           className="w-full py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
         >
-          <span>Continue to Rootwills Direct</span>
+          <span>Sign In to Order</span>
           <ArrowUpRight className="w-4 h-4 text-[#F3D08A]" />
         </a>
       </div>
@@ -735,7 +733,7 @@ export function PublicProductsView() {
               </span>
             </div>
             <span className="text-xs font-semibold text-[#F3D08A]">
-              Rootwills Direct ↗
+              Sign In to Order ↗
             </span>
           </button>
         </div>
@@ -888,12 +886,10 @@ export function PublicProductsView() {
                       )}
 
                       <a
-                        href="/direct"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/login"
                         className="py-3 px-4 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                       >
-                        <span>Rootwills Direct</span>
+                        <span>Sign In to Order</span>
                         <ArrowUpRight className="w-4 h-4 text-[#BA8E4E]" />
                       </a>
                     </div>
