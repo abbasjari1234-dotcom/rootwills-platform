@@ -30,6 +30,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: '**.creedfoodservice.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.creedfoodservice.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'data.creedfoodservice.co.uk',
+      },
     ],
   },
   experimental: {
