@@ -26,6 +26,8 @@ export function FloatingBrandWidget() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  if (isProductsPage) return null;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !email.includes('@') || isSubmitting) return;
