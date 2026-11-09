@@ -8,7 +8,7 @@ import { X, ChevronDown, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 export function FloatingBrandWidget() {
   const pathname = usePathname();
-  const isProductsPage = pathname?.startsWith('/products');
+  const isSuppressed = !pathname || pathname.startsWith('/products') || pathname.startsWith('/direct') || pathname.startsWith('/ops');
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -26,7 +26,7 @@ export function FloatingBrandWidget() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
-  if (isProductsPage) return null;
+  if (isSuppressed) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,9 +73,7 @@ export function FloatingBrandWidget() {
   return (
     <div
       ref={widgetRef}
-      className={`fixed bottom-3.5 left-3.5 sm:bottom-5 sm:left-5 z-50 flex-col items-start select-none pointer-events-none ${
-        isProductsPage ? 'hidden lg:flex' : 'flex'
-      }`}
+      className="fixed bottom-3.5 left-3.5 sm:bottom-5 sm:left-5 z-50 flex flex-col items-start select-none pointer-events-none"
     >
       {/* ─── FLOATING POPOVER CARD (OPEN STATE) ─── */}
       <div

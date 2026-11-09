@@ -41,7 +41,7 @@ const BRANDS: BrandItem[] = [
   },
   {
     name: 'Radnor',
-    logo: '/images/brands/radnor.svg',
+    logo: '/images/brands/radnor.png',
     searchQuery: 'Radnor',
     width: 1014,
     height: 380,

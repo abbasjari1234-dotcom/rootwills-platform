@@ -14,6 +14,8 @@ import {
   ShoppingBag,
   Phone,
   ArrowUpRight,
+  ShieldCheck,
+  CheckCircle2,
 } from 'lucide-react';
 import { InquiryModal } from '@/components/public/InquiryModal';
 import {
@@ -756,135 +758,164 @@ export function PublicProductsView() {
         </div>
       )}
 
-      {/* ─── PRODUCT DETAIL MODAL (CLEAN, NO PUBLIC PRICES) ─── */}
-      {quickViewProduct && (
-        <div
-          onClick={() => setQuickViewProduct(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
-        >
+      {/* ─── LUXURY PRODUCT DETAIL QUICK-VIEW MODAL ─── */}
+      {quickViewProduct && (() => {
+        const productQty = getQty(quickViewProduct.id);
+        const categoryObj = WHOLESALE_CATEGORIES.find((c) => c.slug === quickViewProduct.categorySlug);
+
+        return (
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-md w-full p-5 sm:p-6 border border-black/10 shadow-xl relative space-y-4 font-sans"
+            onClick={() => setQuickViewProduct(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-3.5 sm:p-5 bg-black/60 backdrop-blur-xs"
           >
-            <button
-              type="button"
-              onClick={() => setQuickViewProduct(null)}
-              aria-label="Close product details"
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F3EE] flex items-center justify-center text-[#131313] cursor-pointer"
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-3xl max-w-2xl w-full p-5 sm:p-7 border border-[#E8DEC8] shadow-[0_25px_70px_rgba(46,6,13,0.22)] relative space-y-5 font-sans overflow-hidden"
             >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="flex gap-4 items-start">
-              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-[#F5F3EE] border border-black/[0.06] shrink-0">
-                <Image
-                  src={quickViewProduct.image}
-                  alt={quickViewProduct.name}
-                  fill
-                  unoptimized
-                  referrerPolicy="no-referrer"
-                  sizes="112px"
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="space-y-1 pr-6">
-                <span className="text-[11px] font-semibold text-stone-500">
-                  {quickViewProduct.sku} • {quickViewProduct.tempZone}
-                </span>
-                <h3 className="text-base font-bold text-[#131313] leading-snug">
-                  {quickViewProduct.name}
-                </h3>
-                <p className="text-xs font-bold text-[#2E060D]">
-                  {quickViewProduct.packSize}
-                </p>
-                <p className="text-[11px] text-stone-500">
-                  Origin: {quickViewProduct.origin}
-                </p>
-              </div>
-            </div>
-
-            <p className="text-xs text-stone-600 leading-relaxed bg-[#FAF8F5] p-3.5 rounded-xl border border-black/[0.06]">
-              {quickViewProduct.description}
-            </p>
-
-            <div className="flex items-center gap-2.5 pt-1">
+              {/* Close Button */}
               <button
                 type="button"
-                onClick={() => {
-                  updateOrderQty(quickViewProduct, 1);
-                  setQuickViewProduct(null);
-                }}
-                className="flex-1 py-2.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white text-xs font-semibold cursor-pointer transition-transform active:scale-[0.98]"
+                onClick={() => setQuickViewProduct(null)}
+                aria-label="Close product details"
+                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-stone-600 hover:text-white border border-[#E8DEC8] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-90"
               >
-                Add to Order
+                <X className="w-4 h-4" />
               </button>
-              <a
-                href="/direct"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl bg-[#F5F3EE] hover:bg-[#EAE5DC] text-[#131313] text-xs font-semibold flex items-center gap-1.5"
-              >
-                <span>Rootwills Direct</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-start">
+                {/* Left: Product Image on Pure White Canvas */}
+                <div className="sm:col-span-5 flex flex-col items-center">
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-white border border-[#EFE8D8] shadow-inner flex items-center justify-center p-4">
+                    <Image
+                      src={quickViewProduct.image}
+                      alt={quickViewProduct.name}
+                      fill
+                      unoptimized
+                      referrerPolicy="no-referrer"
+                      sizes="280px"
+                      className="object-contain p-3"
+                    />
+                  </div>
+
+                  {/* Quality & Halal / Pork-Free Trust Badges */}
+                  <div className="w-full mt-3 flex items-center justify-center gap-2">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FAF7F2] border border-[#E8DEC8] text-[10px] font-mono font-semibold text-[#2E060D]">
+                      <ShieldCheck className="w-3 h-3 text-[#BA8E4E]" />
+                      Trade Assured
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#FAF7F2] border border-[#E8DEC8] text-[10px] font-mono font-semibold text-[#2E060D]">
+                      <CheckCircle2 className="w-3 h-3 text-[#2E8540]" />
+                      100% Pork-Free
+                    </span>
+                  </div>
+                </div>
+
+                {/* Right: Commercial Specifications & Actions */}
+                <div className="sm:col-span-7 space-y-3">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="px-2 py-0.5 rounded-md bg-[#2E060D]/5 border border-[#2E060D]/10 text-[10.5px] font-mono font-bold text-[#2E060D]">
+                        SKU: {quickViewProduct.sku}
+                      </span>
+                      {categoryObj && (
+                        <span className="text-[11px] font-sans font-medium text-stone-500">
+                          {categoryObj.shortName} {quickViewProduct.subcategory ? `• ${quickViewProduct.subcategory}` : ''}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="text-lg sm:text-xl font-bold text-[#131313] leading-snug pt-1">
+                      {quickViewProduct.name}
+                    </h3>
+
+                    {/* Bold Pack Size */}
+                    <div className="inline-block text-sm sm:text-base font-bold text-[#2E060D] bg-[#FAF7F2] px-2.5 py-0.5 rounded-lg border border-[#E8DEC8]">
+                      Pack Size: {quickViewProduct.packSize}
+                    </div>
+                  </div>
+
+                  {/* Commercial Kitchen Description */}
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E8DEC8]/80 text-xs text-stone-600 leading-relaxed space-y-1.5">
+                    <p>{quickViewProduct.description}</p>
+                    <div className="pt-1.5 border-t border-[#E8DEC8]/50 flex items-center justify-between text-[11px] font-mono text-stone-500">
+                      <span>Dispatch: 04:00 – 07:30 AM</span>
+                      <span>Origin: {quickViewProduct.origin}</span>
+                    </div>
+                  </div>
+
+                  {/* Quantity Stepper & Add Action */}
+                  <div className="pt-2 space-y-2.5">
+                    <div className="flex items-center gap-3">
+                      {productQty === 0 ? (
+                        <button
+                          type="button"
+                          onClick={() => updateOrderQty(quickViewProduct, 1)}
+                          className="flex-1 py-3 px-5 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all active:scale-98 shadow-sm cursor-pointer"
+                        >
+                          <Plus className="w-4 h-4 stroke-[2.5]" />
+                          <span>Add to Order</span>
+                        </button>
+                      ) : (
+                        <div className="flex-1 flex items-center justify-between bg-[#FAF7F2] border border-[#BA8E4E] rounded-xl px-3 py-2 shadow-2xs">
+                          <span className="text-xs font-semibold text-[#2E060D] flex items-center gap-1.5">
+                            <CheckCircle2 className="w-4 h-4 text-[#2E8540]" />
+                            <span>In Order:</span>
+                          </span>
+                          <div className="flex items-center gap-2.5">
+                            <button
+                              type="button"
+                              onClick={() => updateOrderQty(quickViewProduct, -1)}
+                              className="w-7 h-7 rounded-lg bg-white border border-[#E8DEC8] hover:bg-stone-100 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
+                            >
+                              {productQty === 1 ? (
+                                <Trash2 className="w-3.5 h-3.5 text-[#8B2635]" />
+                              ) : (
+                                <Minus className="w-3.5 h-3.5 text-[#2E060D]" />
+                              )}
+                            </button>
+                            <span className="font-mono text-sm font-bold text-[#2E060D] tabular-nums min-w-[20px] text-center">
+                              {productQty}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => updateOrderQty(quickViewProduct, 1)}
+                              className="w-7 h-7 rounded-lg bg-white border border-[#E8DEC8] hover:bg-stone-100 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
+                            >
+                              <Plus className="w-3.5 h-3.5 text-[#2E060D]" />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      <a
+                        href="/direct"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="py-3 px-4 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
+                      >
+                        <span>Rootwills Direct</span>
+                        <ArrowUpRight className="w-4 h-4 text-[#BA8E4E]" />
+                      </a>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCustomInquiryNotes(`Special inquiry for ${quickViewProduct.name} (${quickViewProduct.sku}, ${quickViewProduct.packSize}):`);
+                        setIsInquiryOpen(true);
+                        setQuickViewProduct(null);
+                      }}
+                      className="w-full text-center text-[11.5px] font-medium text-stone-500 hover:text-[#2E060D] py-1 cursor-pointer transition-colors"
+                    >
+                      Need custom pallet split or bespoke contract pricing? <span className="underline font-semibold">Contact Trade Desk</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* ─── SHOP & DELIVERY INFO MODAL ─── */}
-      {hubInfoModalOpen && (
-        <div
-          onClick={() => setHubInfoModalOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-md w-full p-6 border border-black/10 shadow-xl relative space-y-4 font-sans"
-          >
-            <button
-              type="button"
-              onClick={() => setHubInfoModalOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F5F3EE] flex items-center justify-center text-[#131313] cursor-pointer"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <h3 className="text-base font-bold text-[#131313]">
-              Hub &amp; Delivery Information
-            </h3>
-
-            <div className="space-y-2.5 text-xs text-stone-600">
-              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
-                <strong className="text-[#131313] block mb-0.5">Distribution Hub</strong>
-                The Hub, Nobel Way, Birmingham, B6 7EU &amp; Greater London Trunk Network.
-              </div>
-              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
-                <strong className="text-[#131313] block mb-0.5">Delivery Window &amp; Cutoff</strong>
-                11:00 PM night cutoff for 04:00 AM – 07:30 AM pre-dawn kitchen drops.
-              </div>
-              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-black/[0.06]">
-                <strong className="text-[#131313] block mb-0.5">Multi-Temperature Fleet</strong>
-                Chilled (1–4°C), prime butchery (0–2°C), frozen (-18°C), and ambient grocery lines delivered in dedicated multi-temperature logistics.
-              </div>
-            </div>
-
-            <div className="pt-1 flex items-center justify-between text-xs font-semibold text-[#131313]">
-              <a href="tel:+441616412803" className="flex items-center gap-1.5 hover:underline">
-                <Phone className="w-3.5 h-3.5 text-[#2E060D]" /> +44 16164 12803
-              </a>
-              <button
-                type="button"
-                onClick={() => setHubInfoModalOpen(false)}
-                className="px-4 py-2 rounded-xl bg-[#2E060D] text-white font-semibold cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Custom Sourcing Enquiry Modal */}
       <InquiryModal

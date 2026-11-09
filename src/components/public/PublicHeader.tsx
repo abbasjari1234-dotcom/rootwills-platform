@@ -75,11 +75,11 @@ export function PublicHeader() {
           !isHome || isScrolled ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        {/* Solid parchment barrier covering from top of window down to navbar bottom */}
-        <div className="relative h-[66px] sm:h-[82px] w-full bg-[#FAF7F2] border-b border-[#E8DEC8]/90 shadow-[0_4px_24px_rgba(46,6,13,0.04)]">
+        {/* Solid parchment barrier covering from top of window down past navbar bottom */}
+        <div className="relative h-[74px] sm:h-[90px] w-full bg-[#FAF7F2] border-b border-[#E8DEC8] shadow-[0_4px_20px_rgba(46,6,13,0.05)]">
           {/* Subtle Botanical Parchment Texture Overlay */}
           <div
-            className="absolute inset-0 bg-repeat opacity-[0.20] mix-blend-multiply pointer-events-none"
+            className="absolute inset-0 bg-repeat opacity-[0.25] mix-blend-multiply pointer-events-none"
             style={{
               backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
               backgroundSize: '1100px auto',
@@ -88,7 +88,7 @@ export function PublicHeader() {
         </div>
 
         {/* Soft feathered gradient fade right below the solid barrier so items vanish smoothly */}
-        <div className="h-5 sm:h-7 w-full bg-gradient-to-b from-[#FAF7F2] to-transparent pointer-events-none" />
+        <div className="h-6 sm:h-8 w-full bg-gradient-to-b from-[#FAF7F2] to-transparent pointer-events-none" />
       </div>
 
       {/* ─── ANUBI-STYLE FLOATING CAPSULE NAVBAR SURFACE ─── */}
