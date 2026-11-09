@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface InquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialNotes?: string;
 }
 
-export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
+export function InquiryModal({ isOpen, onClose, initialNotes }: InquiryModalProps) {
   const [mounted, setMounted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,12 +36,15 @@ export function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
+      if (initialNotes) {
+        setFormData((prev) => ({ ...prev, notes: initialNotes }));
+      }
     }
     return () => {
       document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, initialNotes]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

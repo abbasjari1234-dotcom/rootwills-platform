@@ -8,12 +8,13 @@ import { usePathname } from 'next/navigation';
 export function PublicHeader() {
   const pathname = usePathname();
   const isHome = pathname === '/' || pathname === '';
-  const [activeItem, setActiveItem] = useState<'home' | 'about' | 'services' | 'approach' | 'contact'>('home');
+  const [activeItem, setActiveItem] = useState<'home' | 'products' | 'about' | 'services' | 'approach' | 'contact'>('home');
 
   // Track active section on scroll when on homepage, or active route on subpages
   useEffect(() => {
     if (!isHome) {
-      if (pathname.includes('/contact')) setActiveItem('contact');
+      if (pathname.includes('/products')) setActiveItem('products');
+      else if (pathname.includes('/contact')) setActiveItem('contact');
       else if (pathname.includes('/about')) setActiveItem('about');
       else setActiveItem('home');
       return;
@@ -102,13 +103,25 @@ export function PublicHeader() {
           <Link
             href="/#home"
             onClick={(e) => scrollToHash(e, 'home')}
-            className={`hidden xs:inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
+            className={`hidden sm:inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'home'
                 ? 'bg-[#EAEAEA] text-[#131313]'
                 : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
             Home
+          </Link>
+
+          {/* Products (Visible on all viewports for direct catalog access) */}
+          <Link
+            href="/products"
+            className={`inline-flex px-2.5 xs:px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
+              activeItem === 'products'
+                ? 'bg-[#2E060D]/10 text-[#2E060D] font-semibold ring-1 ring-[#BA8E4E]/45'
+                : 'text-[#131313] hover:bg-[#F2F2F0]'
+            }`}
+          >
+            Products
           </Link>
 
           {/* About (Visible on sm and up) */}

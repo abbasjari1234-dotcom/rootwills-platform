@@ -3,7 +3,6 @@ import { FloatingAmbientHero } from '@/components/public/FloatingAmbientHero';
 import { CommercialTrustStrip } from '@/components/public/CommercialTrustStrip';
 import { AboutRootwillsSection } from '@/components/public/AboutRootwillsSection';
 import { ServicesSection } from '@/components/public/ServicesSection';
-import { ProductRangeSection } from '@/components/public/ProductRangeSection';
 import { ApproachSection } from '@/components/public/ApproachSection';
 import { MidBannerSection } from '@/components/public/MidBannerSection';
 import { TestimonialsSection } from '@/components/public/TestimonialsSection';
@@ -34,9 +33,6 @@ export default function PublicHomePage() {
 
           {/* 3. Our Services: Tailored Solutions for Every Business */}
           <ServicesSection />
-
-          {/* 3b. Multi-Temperature Wholesale Product Range (6 Core Categories) */}
-          <ProductRangeSection />
 
           {/* 4. Our Approach: Built on Trust, Quality & Consistency */}
           <ApproachSection />

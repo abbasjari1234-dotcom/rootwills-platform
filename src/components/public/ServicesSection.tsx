@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   ArrowRight, 
   Clock, 
@@ -272,24 +273,16 @@ export function ServicesSection() {
             </p>
 
             {/* Clean Editorial CTA Button */}
-            <div>
-              <a
-                href="#approach"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById('approach');
-                  if (el) {
-                    const top = el.getBoundingClientRect().top + window.scrollY - 70;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                  }
-                }}
-                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-1.5 py-2 sm:pl-6 sm:pr-2 sm:py-2.5 rounded-full bg-[#131313] hover:bg-[#2E060D] text-[#FAF7F0] text-[11px] sm:text-xs font-sans font-medium tracking-wider uppercase transition-all duration-200 active:scale-[0.97] cursor-pointer touch-manipulation"
+            <div className="flex flex-wrap items-center gap-2.5">
+              <Link
+                href="/products"
+                className="group inline-flex items-center gap-2.5 sm:gap-3 pl-5 pr-1.5 py-2 sm:pl-6 sm:pr-2 sm:py-2.5 rounded-full bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F0] text-[11px] sm:text-xs font-sans font-medium tracking-wider uppercase transition-all duration-200 active:scale-[0.97] cursor-pointer touch-manipulation shadow-[0_6px_18px_rgba(46,6,13,0.18)]"
               >
-                <span>Discover Our Approach</span>
+                <span>Browse Product Catalog</span>
                 <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/12 flex items-center justify-center transition-all duration-200 group-hover:translate-x-0.5 group-hover:bg-[#F3D08A]">
                   <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F3D08A] group-hover:text-[#131313] transition-colors" />
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
 

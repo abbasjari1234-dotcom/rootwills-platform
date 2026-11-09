@@ -168,11 +168,6 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/products',
-        destination: '/#services',
-        permanent: false,
-      },
-      {
         source: '/sectors',
         destination: '/#services',
         permanent: false,

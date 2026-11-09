@@ -5,6 +5,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.u
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
+    '/products',
     '/about',
     '/contact',
     '/terms',
@@ -16,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: now,
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1.0 : route === '/about' ? 0.9 : 0.7,
+    changeFrequency: route === '' || route === '/products' ? 'weekly' : 'monthly',
+    priority: route === '' ? 1.0 : route === '/products' ? 0.95 : route === '/about' ? 0.9 : 0.7,
   }));
 }

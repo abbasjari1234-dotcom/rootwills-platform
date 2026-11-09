@@ -203,12 +203,18 @@ const jsonLdSchema = {
         {
           '@type': 'ListItem',
           position: 2,
+          name: 'Wholesale Product Catalog',
+          item: 'https://www.rootwills.co.uk/products',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
           name: 'About Rootwills',
           item: 'https://www.rootwills.co.uk/about',
         },
         {
           '@type': 'ListItem',
-          position: 3,
+          position: 4,
           name: 'Wholesale Enquiries & Contact',
           item: 'https://www.rootwills.co.uk/contact',
         },
