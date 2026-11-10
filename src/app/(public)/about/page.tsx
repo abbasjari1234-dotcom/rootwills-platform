@@ -159,7 +159,7 @@ export default function AboutPage() {
             </Link>
 
             <Link
-              href="/#services"
+              href="/services"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#EFE8D8]/70 text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-[#E8DEC8] hover:border-[#BA8E4E]/60 transition-all duration-200 active:scale-[0.96] shadow-2xs"
             >
               <span>Explore Our Services</span>

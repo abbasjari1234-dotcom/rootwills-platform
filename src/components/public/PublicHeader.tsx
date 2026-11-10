@@ -11,59 +11,23 @@ export function PublicHeader() {
   const [activeItem, setActiveItem] = useState<'home' | 'products' | 'about' | 'services' | 'approach' | 'contact'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Track active section on scroll when on homepage, or active route on subpages
+  // Track active canonical route for SEO & browser navigation
   useEffect(() => {
-    if (!isHome) {
-      if (pathname.includes('/products')) setActiveItem('products');
-      else if (pathname.includes('/contact')) setActiveItem('contact');
-      else if (pathname.includes('/about')) setActiveItem('about');
-      else setActiveItem('home');
-    }
+    if (pathname.startsWith('/products')) setActiveItem('products');
+    else if (pathname.startsWith('/about')) setActiveItem('about');
+    else if (pathname.startsWith('/services')) setActiveItem('services');
+    else if (pathname.startsWith('/approach')) setActiveItem('approach');
+    else if (pathname.startsWith('/contact')) setActiveItem('contact');
+    else setActiveItem('home');
 
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 20);
-
-      if (!isHome) return;
-
-      const aboutEl = document.getElementById('about');
-      const servicesEl = document.getElementById('services');
-      const approachEl = document.getElementById('approach');
-
-      const aboutTop = aboutEl ? aboutEl.offsetTop - 140 : 800;
-      const servicesTop = servicesEl ? servicesEl.offsetTop - 140 : 1600;
-      const approachTop = approachEl ? approachEl.offsetTop - 140 : 2400;
-
-      if (scrollY >= approachTop) {
-        setActiveItem('approach');
-      } else if (scrollY >= servicesTop) {
-        setActiveItem('services');
-      } else if (scrollY >= aboutTop) {
-        setActiveItem('about');
-      } else {
-        setActiveItem('home');
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHome, pathname]);
-
-  const scrollToHash = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    if (isHome) {
-      e.preventDefault();
-      const el = document.getElementById(targetId);
-      if (el) {
-        const offset = 80;
-        const elPos = el.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elPos - offset,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
+  }, [pathname]);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
@@ -82,8 +46,7 @@ export function PublicHeader() {
         
         {/* LEFT: Brand Lockup with High-Visibility Master Seal & Editorial Typography */}
         <Link 
-          href="/#home" 
-          onClick={(e) => scrollToHash(e, 'home')}
+          href="/" 
           className="flex items-center gap-2 xs:gap-2.5 sm:gap-3.5 group focus:outline-none shrink-0"
         >
           {/* Heritage Master Seal with Warm Gold Halo Rim & Tactile Elevation */}
@@ -140,11 +103,10 @@ export function PublicHeader() {
 
           {/* About (Visible on sm and up) */}
           <Link
-            href="/#about"
-            onClick={(e) => scrollToHash(e, 'about')}
+            href="/about"
             className={`hidden sm:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'about'
-                ? 'bg-[#EAEAEA] text-[#131313]'
+                ? 'bg-[#2E060D]/10 text-[#2E060D] font-semibold ring-1 ring-[#BA8E4E]/45'
                 : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
@@ -153,11 +115,10 @@ export function PublicHeader() {
 
           {/* Services */}
           <Link
-            href="/#services"
-            onClick={(e) => scrollToHash(e, 'services')}
+            href="/services"
             className={`hidden md:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'services'
-                ? 'bg-[#EAEAEA] text-[#131313]'
+                ? 'bg-[#2E060D]/10 text-[#2E060D] font-semibold ring-1 ring-[#BA8E4E]/45'
                 : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >
@@ -166,11 +127,10 @@ export function PublicHeader() {
 
           {/* Approach */}
           <Link
-            href="/#approach"
-            onClick={(e) => scrollToHash(e, 'approach')}
+            href="/approach"
             className={`hidden lg:inline-flex px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-[14px] font-medium tracking-tight transition-all duration-200 ${
               activeItem === 'approach'
-                ? 'bg-[#EAEAEA] text-[#131313]'
+                ? 'bg-[#2E060D]/10 text-[#2E060D] font-semibold ring-1 ring-[#BA8E4E]/45'
                 : 'text-[#131313] hover:bg-[#F2F2F0]'
             }`}
           >

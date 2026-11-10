@@ -89,7 +89,7 @@ export function ContactFormView() {
             Get In Touch
           </h1>
           <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans max-w-[54ch] mx-auto leading-[1.6] sm:leading-[1.7]">
-            We supply hand-graded British farm produce and artisan wholesale lines to leading kitchens, paving the way for reliable pre-dawn delivery and seasonal excellence.
+            We supply hand-graded British farm produce, prime butchery, and catering larder lines to professional kitchens, with guaranteed pre-dawn deliveries across Birmingham, the Midlands, and London.
           </p>
         </div>
       </section>

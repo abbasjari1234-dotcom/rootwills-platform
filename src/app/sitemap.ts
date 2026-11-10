@@ -6,6 +6,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/products',
+    '/services',
+    '/approach',
     '/about',
     '/contact',
     '/terms',
@@ -18,6 +20,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}${route}`,
     lastModified: now,
     changeFrequency: route === '' || route === '/products' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1.0 : route === '/products' ? 0.95 : route === '/about' ? 0.9 : 0.7,
+    priority: 
+      route === '' ? 1.0 : 
+      route === '/products' ? 0.95 : 
+      route === '/services' || route === '/approach' || route === '/about' ? 0.9 : 
+      0.7,
   }));
 }

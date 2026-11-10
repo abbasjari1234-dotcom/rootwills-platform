@@ -73,7 +73,7 @@ export default function NotFound() {
             {/* Quick Navigation Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
               <Link
-                href="/#services"
+                href="/services"
                 className="relative p-5 rounded-2xl bg-[#FAF6EE] border border-[#E8DEC8] hover:border-[#BA8E4E] hover:shadow-md transition-all group overflow-hidden"
               >
                 <div className="w-9 h-9 rounded-xl bg-[#FFFDF9] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">

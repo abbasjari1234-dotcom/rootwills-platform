@@ -11,15 +11,14 @@ interface NavItem {
   id: string;
   label: string;
   href: string;
-  isHash?: boolean;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { id: 'home', label: 'HOME', href: '/#home', isHash: true },
+  { id: 'home', label: 'HOME', href: '/' },
   { id: 'products', label: 'PRODUCTS', href: '/products' },
-  { id: 'about', label: 'ABOUT', href: '/#about', isHash: true },
-  { id: 'services', label: 'SERVICES', href: '/#services', isHash: true },
-  { id: 'approach', label: 'APPROACH', href: '/#approach', isHash: true },
+  { id: 'about', label: 'ABOUT', href: '/about' },
+  { id: 'services', label: 'SERVICES', href: '/services' },
+  { id: 'approach', label: 'APPROACH', href: '/approach' },
   { id: 'contact', label: 'INQUIRE', href: '/contact' },
 ];
 
@@ -53,36 +52,14 @@ export function FloatingBottomNav() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMobileMenuOpen]);
 
-  // Determine active item based on current route and scroll position on homepage
+  // Determine active item based on canonical indexable route
   useEffect(() => {
-    if (pathname.includes('/contact')) {
-      setActiveId('contact');
-      return;
-    }
-
-    if (pathname === '/' || pathname === '') {
-      const handleScrollSpy = () => {
-        const scrollPosition = window.scrollY + window.innerHeight * 0.45;
-        const contactEl = document.getElementById('contact');
-        const approachEl = document.getElementById('approach');
-        const servicesEl = document.getElementById('services');
-        const aboutEl = document.getElementById('about');
-
-        if (contactEl && contactEl.offsetTop <= scrollPosition) {
-          setActiveId('contact');
-        } else if (approachEl && approachEl.offsetTop <= scrollPosition) {
-          setActiveId('approach');
-        } else if (servicesEl && servicesEl.offsetTop <= scrollPosition) {
-          setActiveId('services');
-        } else if (aboutEl && aboutEl.offsetTop <= scrollPosition) {
-          setActiveId('about');
-        }
-      };
-
-      window.addEventListener('scroll', handleScrollSpy, { passive: true });
-      handleScrollSpy();
-      return () => window.removeEventListener('scroll', handleScrollSpy);
-    }
+    if (pathname.startsWith('/products')) setActiveId('products');
+    else if (pathname.startsWith('/about')) setActiveId('about');
+    else if (pathname.startsWith('/services')) setActiveId('services');
+    else if (pathname.startsWith('/approach')) setActiveId('approach');
+    else if (pathname.startsWith('/contact')) setActiveId('contact');
+    else setActiveId('home');
   }, [pathname]);
 
   // Smoothly hide floating nav when approaching footer, reveal when leaving
@@ -122,31 +99,11 @@ export function FloatingBottomNav() {
     };
   }, [pathname]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
-    // Unlock body scroll synchronously before smooth scrolling
+  const handleNavClick = (_e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+    // Unlock body scroll synchronously
     document.body.style.overflow = '';
     setIsMobileMenuOpen(false);
-
-    if (item.isHash && (pathname === '/' || pathname === '')) {
-      e.preventDefault();
-      const targetId = item.id;
-      setActiveId(targetId);
-      requestAnimationFrame(() => {
-        if (targetId === 'home') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          return;
-        }
-        const element = document.getElementById(targetId);
-        if (element) {
-          const headerOffset = 70;
-          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({
-            top: elementPosition - headerOffset,
-            behavior: 'smooth',
-          });
-        }
-      });
-    }
+    setActiveId(item.id);
   };
 
   return (
