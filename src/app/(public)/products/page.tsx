@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { PublicProductsView } from '@/components/public/PublicProductsView';
 
@@ -30,6 +30,10 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() {
-  return <PublicProductsView />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FAF7F2]" />}>
+      <PublicProductsView />
+    </Suspense>
+  );
 }
 

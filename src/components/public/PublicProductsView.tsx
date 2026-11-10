@@ -58,6 +58,51 @@ export function PublicProductsView() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string; tier?: string } | null>(null);
 
+  // Dynamic category URL router helper
+  const handleSelectCategory = (slug: string) => {
+    setSelectedCategory(slug);
+    setSelectedSubcategory('all');
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (slug === 'all') {
+        url.searchParams.delete('dept');
+      } else {
+        url.searchParams.set('dept', slug);
+      }
+      window.history.pushState({}, '', url.pathname + url.search);
+    }
+  };
+
+  // Sync selectedCategory from URL search parameter (?dept=...) on mount & popstate
+  useEffect(() => {
+    const syncFromURL = () => {
+      if (typeof window === 'undefined') return;
+      const params = new URLSearchParams(window.location.search);
+      const dept = params.get('dept') || params.get('category');
+      if (dept) {
+        if (dept === 'repeat-pad') {
+          setSelectedCategory('repeat-pad');
+        } else {
+          const matched = WHOLESALE_CATEGORIES.find(
+            (c) =>
+              c.slug === dept ||
+              c.shortName.toLowerCase().replace(/[^a-z0-9]+/g, '-') === dept ||
+              c.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') === dept
+          );
+          if (matched) {
+            setSelectedCategory(matched.slug);
+          }
+        }
+      } else {
+        setSelectedCategory('all');
+      }
+    };
+
+    syncFromURL();
+    window.addEventListener('popstate', syncFromURL);
+    return () => window.removeEventListener('popstate', syncFromURL);
+  }, []);
+
   // Check trade auth state on mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -812,8 +857,7 @@ export function PublicProductsView() {
               <button
                 type="button"
                 onClick={() => {
-                  setSelectedCategory('repeat-pad');
-                  setSelectedSubcategory('all');
+                  handleSelectCategory('repeat-pad');
                   setSearchQuery('');
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-all cursor-pointer ${
@@ -848,8 +892,7 @@ export function PublicProductsView() {
                 <button
                   type="button"
                   onClick={() => {
-                    setSelectedCategory('all');
-                    setSelectedSubcategory('all');
+                    handleSelectCategory('all');
                     setSearchQuery('');
                   }}
                   className={`w-full flex items-center justify-between py-2.5 px-3 rounded-xl text-[13px] transition-all cursor-pointer ${
@@ -880,8 +923,7 @@ export function PublicProductsView() {
                       key={cat.slug}
                       type="button"
                       onClick={() => {
-                        setSelectedCategory(cat.slug);
-                        setSelectedSubcategory('all');
+                        handleSelectCategory(cat.slug);
                         setSearchQuery('');
                       }}
                       className={`w-full flex items-center justify-between py-2.5 px-3 rounded-xl text-[13px] transition-all cursor-pointer group ${
@@ -916,8 +958,7 @@ export function PublicProductsView() {
               <button
                 type="button"
                 onClick={() => {
-                  setSelectedCategory('all');
-                  setSelectedSubcategory('all');
+                  handleSelectCategory('all');
                   setSearchQuery('');
                 }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
@@ -935,8 +976,7 @@ export function PublicProductsView() {
                     key={cat.slug}
                     type="button"
                     onClick={() => {
-                      setSelectedCategory(cat.slug);
-                      setSelectedSubcategory('all');
+                      handleSelectCategory(cat.slug);
                       setSearchQuery('');
                     }}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
@@ -1063,8 +1103,7 @@ export function PublicProductsView() {
                         <button
                           type="button"
                           onClick={() => {
-                            setSelectedCategory(aisle.slug);
-                            setSelectedSubcategory('all');
+                            handleSelectCategory(aisle.slug);
                             window.scrollTo({ top: 120, behavior: 'smooth' });
                           }}
                           className="text-xs font-semibold text-[#8B2635] hover:text-[#2E060D] flex items-center gap-1 group cursor-pointer"
@@ -1107,8 +1146,7 @@ export function PublicProductsView() {
                   <button
                     type="button"
                     onClick={() => {
-                      setSelectedCategory('all');
-                      setSelectedSubcategory('all');
+                      handleSelectCategory('all');
                       setSelectedTempFilter('all');
                       setSearchQuery('');
                     }}
