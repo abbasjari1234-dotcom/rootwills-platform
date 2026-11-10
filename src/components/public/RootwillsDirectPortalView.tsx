@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -13,6 +13,7 @@ import {
   X,
   Phone,
   MessageCircle,
+  AlertCircle,
 } from 'lucide-react';
 import { WholesaleCheckoutModal } from './WholesaleCheckoutModal';
 
@@ -22,6 +23,8 @@ export function RootwillsDirectPortalView() {
   const [showPassword, setShowPassword] = useState(false);
   const [isCustomerModalOpen, setIsCustomerModalOpen] = useState(false);
   const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [isAuthRequired, setIsAuthRequired] = useState(false);
+  const [redirectTarget, setRedirectTarget] = useState('/products');
 
   // Form State
   const [form, setForm] = useState({
@@ -29,6 +32,20 @@ export function RootwillsDirectPortalView() {
     password: '',
     staySignedIn: true,
   });
+
+  // Read URL params safely on client mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('auth_required') === '1') {
+        setIsAuthRequired(true);
+      }
+      const r = params.get('redirect');
+      if (r) {
+        setRedirectTarget(r);
+      }
+    }
+  }, []);
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,63 +60,108 @@ export function RootwillsDirectPortalView() {
       setLoading(false);
       setSignedInSuccess(true);
       try {
+        // Set persistent authentication cookie so Next.js middleware grants access
+        document.cookie = 'rootwills_auth=true; path=/; max-age=2592000; SameSite=Lax';
         localStorage.setItem('rootwills_user_logged_in', 'true');
         localStorage.setItem(
           'rootwills_user_account',
           JSON.stringify({
             identifier: form.identifier,
-            accountName: 'The Savoy London (Fairmont)',
+            accountName: 'Wholesale Trade Account',
             accountNo: 'RW-2026-89412',
             tier: 'Tier 1 Wholesale Direct',
           })
         );
       } catch {
-        // ignore
+        // ignore storage errors
       }
 
       setTimeout(() => {
-        window.location.href = '/products';
+        window.location.href = redirectTarget;
       }, 700);
     }, 600);
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col justify-between font-sans selection:bg-[#4E0D17] selection:text-white relative overflow-hidden">
-      {/* Subtle Warm Radial Ambient Depth */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[360px] bg-gradient-to-b from-[#F3ECE0]/70 to-transparent pointer-events-none blur-3xl -z-10" />
+    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] flex flex-col justify-between font-sans selection:bg-[#4E0D17] selection:text-[#FAF7F2] relative overflow-hidden">
+      {/* ─── British Heritage Botanical Parchment Canvas (Exact Main Web Match) ─── */}
+      <div
+        className="absolute inset-0 bg-repeat opacity-[0.38] mix-blend-multiply pointer-events-none -z-10"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+        aria-hidden="true"
+      />
 
-      {/* Top Subtle Brand Micro-Bar (No Clunky Nav, Just Elegant Status) */}
-      <header className="relative z-10 max-w-5xl mx-auto w-full px-6 py-6 flex items-center justify-between">
-        <Link href="/" className="inline-flex items-center gap-2.5 group">
-          <div className="relative w-8 h-8 rounded-full bg-white ring-1 ring-stone-200/90 shadow-xs overflow-hidden flex items-center justify-center p-0.5">
+      {/* Soft Luminous Center Vignette keeping text & card pristine */}
+      <div
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          background:
+            'radial-gradient(ellipse 65% 55% at 50% 45%, rgba(255, 255, 255, 0.72) 0%, rgba(250, 247, 242, 0.35) 60%, rgba(250, 247, 242, 0) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ─── TOP BRAND BAR (High-Visibility Master Seal & Exact Font Match) ─── */}
+      <header className="relative z-10 max-w-6xl mx-auto w-full px-5 sm:px-8 py-6 sm:py-8 flex items-center justify-between">
+        <Link href="/" className="inline-flex items-center gap-3 sm:gap-4 group focus:outline-none shrink-0">
+          {/* Heritage Master Seal with Warm Gold Halo Rim from Main Web */}
+          <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-full shrink-0 bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_4px_16px_rgba(26,26,24,0.18)] transition-all duration-200 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(186,142,78,0.32)] overflow-hidden p-1">
             <Image
               src="/images/logo.png"
-              alt="Rootwills"
+              alt="Rootwills Master Seal"
               fill
-              sizes="32px"
-              className="object-contain"
+              sizes="64px"
+              className="object-contain p-0.5 rounded-full"
               priority
               unoptimized
             />
           </div>
-          <span className="font-serif font-bold text-base text-[#2E060D] tracking-tight group-hover:text-[#BA8E4E] transition-colors">
-            Rootwills
-          </span>
-          <span className="font-serif italic text-sm text-[#A2441D]">Direct</span>
+
+          {/* Exact Brand Font & Typography from Main Web */}
+          <div className="flex flex-col text-left">
+            <div className="flex items-baseline gap-1.5 sm:gap-2">
+              <span className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#131313] tracking-[-0.03em] leading-tight group-hover:text-[#BA8E4E] transition-colors">
+                Rootwills
+              </span>
+              <span className="text-lg sm:text-xl md:text-2xl font-serif italic text-[#A2441D] tracking-tight">
+                Direct
+              </span>
+            </div>
+            <span className="text-[11px] sm:text-xs text-[#706C65] font-sans font-medium tracking-normal leading-tight">
+              Food Services &amp; Wholesale
+            </span>
+          </div>
         </Link>
 
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[11px] font-mono text-stone-500 tracking-wider uppercase">
+        {/* Live Operational Status Pill */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-stone-200/80 shadow-2xs backdrop-blur-xs">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[11px] font-mono text-stone-600 tracking-wider uppercase font-semibold">
             B2B Trade Portal Active
           </span>
         </div>
       </header>
 
       {/* ─── MAIN CENTER MINIMALIST LOGIN ─── */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12 w-full max-w-md mx-auto">
-        {/* Brand Lockup */}
-        <div className="text-center mb-8">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-6 sm:py-10 w-full max-w-md mx-auto">
+        {/* Brand Crest & Lockup */}
+        <div className="text-center mb-6 sm:mb-8 flex flex-col items-center">
+          {/* Prominent Center Master Seal Medallion */}
+          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_8px_24px_rgba(46,6,13,0.12)] p-2 mb-4">
+            <Image
+              src="/images/logo.png"
+              alt="Rootwills Master Seal"
+              fill
+              sizes="96px"
+              className="object-contain p-1 rounded-full"
+              priority
+              unoptimized
+            />
+          </div>
+
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF3EA] border border-[#E8DEC8] text-[10.5px] font-mono uppercase tracking-[0.2em] text-[#8C6E12] font-semibold mb-3">
             <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
             <span>Pre-Dawn Ordering Hub</span>
@@ -108,13 +170,13 @@ export function RootwillsDirectPortalView() {
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight leading-tight">
             Sign In to Direct
           </h1>
-          <p className="mt-2 text-xs sm:text-[13px] text-stone-500 font-sans max-w-sm mx-auto leading-relaxed">
+          <p className="mt-2 text-xs sm:text-[13px] text-stone-600 font-sans max-w-sm mx-auto leading-relaxed">
             Enter your wholesale credentials to access contracted venue pricing and place order drops.
           </p>
         </div>
 
         {/* Minimalist Architectural Card */}
-        <div className="w-full bg-white rounded-[22px] border border-stone-200/80 shadow-[0_15px_45px_-12px_rgba(46,6,13,0.06)] p-7 sm:p-9">
+        <div className="w-full bg-white/95 backdrop-blur-xs rounded-[24px] border border-stone-200/90 shadow-[0_18px_50px_-12px_rgba(46,6,13,0.08)] p-7 sm:p-9">
           {signedInSuccess ? (
             <div className="py-8 text-center space-y-3">
               <div className="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-xs">
@@ -129,6 +191,16 @@ export function RootwillsDirectPortalView() {
             </div>
           ) : (
             <form onSubmit={handleSignIn} className="space-y-4">
+              {/* Restricted Catalog Access Notice */}
+              {isAuthRequired && (
+                <div className="p-3.5 rounded-xl bg-[#FAF3EA] border border-[#E8DEC8] flex items-start gap-2.5 text-left">
+                  <AlertCircle className="w-4 h-4 text-[#A2441D] shrink-0 mt-0.5" />
+                  <p className="text-xs text-[#5C4524] font-sans leading-relaxed">
+                    <strong className="font-semibold text-[#2E060D]">Trade Sign-In Required:</strong> Catalog lines, wholesale pack sizes, and contract pricing are strictly reserved for verified hospitality businesses.
+                  </p>
+                </div>
+              )}
+
               {/* Account ID / Email */}
               <div className="space-y-1.5">
                 <label className="text-[11.5px] font-sans font-medium text-stone-700 block uppercase tracking-wider">
@@ -224,16 +296,6 @@ export function RootwillsDirectPortalView() {
               </div>
             </form>
           )}
-        </div>
-
-        {/* Guest Catalog Link */}
-        <div className="mt-5 text-center">
-          <Link
-            href="/products"
-            className="text-xs text-stone-500 hover:text-stone-800 transition-colors underline font-sans"
-          >
-            Browse public wholesale catalog as guest
-          </Link>
         </div>
       </main>
 

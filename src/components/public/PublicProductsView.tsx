@@ -37,6 +37,7 @@ export interface DraftOrderLine {
 }
 
 export function PublicProductsView() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -46,6 +47,30 @@ export function PublicProductsView() {
   const [isInquiryOpen, setIsInquiryOpen] = useState<boolean>(false);
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
+
+  // Security guard: Ensure unauthenticated users cannot browse catalogue
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isLogged =
+        localStorage.getItem('rootwills_user_logged_in') === 'true' ||
+        document.cookie.includes('rootwills_auth=true');
+
+      if (!isLogged) {
+        window.location.href = '/direct?redirect=/products&auth_required=1';
+      } else {
+        setIsAuthenticated(true);
+      }
+    }
+  }, []);
+
+  const handleSignOut = () => {
+    try {
+      localStorage.removeItem('rootwills_user_logged_in');
+      localStorage.removeItem('rootwills_user_account');
+      document.cookie = 'rootwills_auth=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    } catch {}
+    window.location.href = '/direct';
+  };
 
   // Initialize draft order list from localStorage if available, or pre-seed initial sample
   const [orderList, setOrderList] = useState<DraftOrderLine[]>(() => {
@@ -457,6 +482,19 @@ export function PublicProductsView() {
     </div>
   );
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-6 text-center">
+        <div className="space-y-3">
+          <div className="w-10 h-10 rounded-full border-2 border-[#4E0D17] border-t-transparent animate-spin mx-auto" />
+          <p className="text-xs font-mono uppercase tracking-widest text-[#706C65]">
+            Verifying Trade Access...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[68px] sm:pt-[82px] pb-16">
       {/* Seamless Botanical Parchment Texture Overlay matching Rootwills Theme */}
@@ -491,8 +529,26 @@ export function PublicProductsView() {
               </div>
             </div>
 
+            {/* Verified Trade Account Status */}
+            <div className="py-2.5 px-3 bg-emerald-50/90 rounded-xl border border-emerald-200/90 my-3 text-left shadow-2xs">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-emerald-900 text-[11px] font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Trade Verified</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="text-[10px] font-mono text-stone-500 hover:text-red-700 underline cursor-pointer"
+                >
+                  Sign out
+                </button>
+              </div>
+              <p className="text-[10px] text-stone-600 font-mono mt-1">Tier 1 Direct Wholesale</p>
+            </div>
+
             {/* Categories List */}
-            <div className="pt-3.5">
+            <div className="pt-2">
               <div className="flex items-center justify-between mb-2 px-1">
                 <h2 className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-bold">
                   Departments

@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get('host')?.toLowerCase() || '';
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
 
   // Detect if accessing via Rootwills Direct domain or subdomain
   const isDirectDomain =
@@ -16,6 +16,18 @@ export function middleware(request: NextRequest) {
       const url = request.nextUrl.clone();
       url.pathname = '/direct';
       return NextResponse.rewrite(url);
+    }
+  }
+
+  // Gate wholesale product catalogue and checkout behind verified trade login
+  if (pathname.startsWith('/products') || pathname.startsWith('/checkout')) {
+    const isAuthedCookie = request.cookies.get('rootwills_auth')?.value === 'true';
+    if (!isAuthedCookie) {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = '/direct';
+      loginUrl.searchParams.set('redirect', pathname + (search || ''));
+      loginUrl.searchParams.set('auth_required', '1');
+      return NextResponse.redirect(loginUrl);
     }
   }
 
