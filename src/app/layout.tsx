@@ -260,6 +260,18 @@ const jsonLdSchema = {
         {
           '@type': 'ListItem',
           position: 4,
+          name: 'Hospitality Solutions & Services',
+          item: 'https://www.rootwills.co.uk/services',
+        },
+        {
+          '@type': 'ListItem',
+          position: 5,
+          name: 'Operational Approach & Standards',
+          item: 'https://www.rootwills.co.uk/approach',
+        },
+        {
+          '@type': 'ListItem',
+          position: 6,
           name: 'Wholesale Enquiries & Contact',
           item: 'https://www.rootwills.co.uk/contact',
         },

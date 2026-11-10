@@ -1,0 +1,28 @@
+# Rootwills UK Commercial Food Services & Wholesale robots.txt
+User-agent: *
+Allow: /
+Allow: /products
+Allow: /about
+Allow: /services
+Allow: /approach
+Allow: /contact
+Allow: /terms
+Allow: /privacy
+
+# Disallow internal operational and authenticated corridors
+Disallow: /ops/
+Disallow: /ops
+Disallow: /direct
+Disallow: /login
+Disallow: /admin/
+Disallow: /driver/
+Disallow: /dashboard/
+Disallow: /quick-order/
+Disallow: /orders/
+Disallow: /invoices/
+Disallow: /standing-orders/
+Disallow: /account/
+Disallow: /api/
+
+# Canonical Sitemap Index
+Sitemap: https://www.rootwills.co.uk/sitemap.xml
