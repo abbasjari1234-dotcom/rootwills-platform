@@ -125,20 +125,22 @@ export default function AboutPage() {
             </span>
           </div>
 
-          <div className="relative">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
-              Connecting British Growers Directly to <br className="hidden sm:inline" />
-              <span className="text-[#8B2635] italic font-normal">the UK’s Premier Kitchens</span>
+          <div className="relative inline-block">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.12] [text-wrap:balance]">
+              Connecting British Growers to <br className="hidden sm:inline" />
+              <span className="relative inline-block text-[#8B2635] italic font-normal pb-2 sm:pb-3">
+                The UK’s Premier Kitchens
+                <span className="absolute -bottom-1 sm:-bottom-1.5 left-1/2 -translate-x-1/2 w-[90%] sm:w-[94%] pointer-events-none">
+                  <DoodleFlourish 
+                    variant="underline-loop" 
+                    color="#BA8E4E" 
+                    strokeWidth={2.5} 
+                    className="w-full text-[#BA8E4E]" 
+                    delay={150}
+                  />
+                </span>
+              </span>
             </h1>
-            <div className="flex justify-center">
-              <DoodleFlourish 
-                variant="underline-loop" 
-                color="#BA8E4E" 
-                strokeWidth={3} 
-                className="w-52 sm:w-72 -mt-1 sm:-mt-1.5 mb-2 text-[#BA8E4E]" 
-                delay={150}
-              />
-            </div>
           </div>
 
           <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[64ch] mx-auto leading-[1.68]">

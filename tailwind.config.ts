@@ -55,6 +55,9 @@ const config: Config = {
         },
       },
       fontFamily: {
+        serif: ['var(--font-playfair)', 'Playfair Display', 'Cormorant Garamond', 'Georgia', 'serif'],
+        playfair: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
+        cormorant: ['var(--font-cormorant)', 'Cormorant Garamond', 'Georgia', 'serif'],
         display: ['var(--font-display)', 'Cormorant Garamond', 'Fraunces', 'Playfair Display', 'serif'],
         sans: ['var(--font-sans)', 'Inter', 'General Sans', 'system-ui', 'sans-serif'],
         mono: ['var(--font-mono)', 'IBM Plex Mono', 'monospace'],
