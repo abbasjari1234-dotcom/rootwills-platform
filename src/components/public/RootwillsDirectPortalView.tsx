@@ -83,23 +83,13 @@ export function RootwillsDirectPortalView() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] flex flex-col justify-between font-sans selection:bg-[#4E0D17] selection:text-[#FAF7F2] relative overflow-hidden">
-      {/* ─── British Heritage Botanical Parchment Canvas (Exact Main Web Match) ─── */}
+    <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] flex flex-col justify-between font-sans selection:bg-[#4E0D17] selection:text-[#FAF7F2] overflow-hidden">
+      {/* ─── Seamless Botanical Parchment Texture Canvas (Matches Main Web Exactly) ─── */}
       <div
-        className="absolute inset-0 bg-repeat opacity-[0.38] mix-blend-multiply pointer-events-none -z-10"
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.45] mix-blend-multiply"
         style={{
           backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
-          backgroundSize: '1100px auto',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Soft Luminous Center Vignette keeping text & card pristine */}
-      <div
-        className="absolute inset-0 pointer-events-none -z-10"
-        style={{
-          background:
-            'radial-gradient(ellipse 65% 55% at 50% 45%, rgba(255, 255, 255, 0.72) 0%, rgba(250, 247, 242, 0.35) 60%, rgba(250, 247, 242, 0) 100%)',
+          backgroundSize: '1000px auto',
         }}
         aria-hidden="true"
       />
@@ -137,7 +127,7 @@ export function RootwillsDirectPortalView() {
         </Link>
 
         {/* Live Operational Status Pill */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-stone-200/80 shadow-2xs backdrop-blur-xs">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 border border-stone-200/80 shadow-2xs backdrop-blur-xs">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-[11px] font-mono text-stone-600 tracking-wider uppercase font-semibold">
             B2B Trade Portal Active
@@ -147,21 +137,8 @@ export function RootwillsDirectPortalView() {
 
       {/* ─── MAIN CENTER MINIMALIST LOGIN ─── */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-6 sm:py-10 w-full max-w-md mx-auto">
-        {/* Brand Crest & Lockup */}
+        {/* Brand Lockup */}
         <div className="text-center mb-6 sm:mb-8 flex flex-col items-center">
-          {/* Prominent Center Master Seal Medallion */}
-          <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_8px_24px_rgba(46,6,13,0.12)] p-2 mb-4">
-            <Image
-              src="/images/logo.png"
-              alt="Rootwills Master Seal"
-              fill
-              sizes="96px"
-              className="object-contain p-1 rounded-full"
-              priority
-              unoptimized
-            />
-          </div>
-
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF3EA] border border-[#E8DEC8] text-[10.5px] font-mono uppercase tracking-[0.2em] text-[#8C6E12] font-semibold mb-3">
             <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
             <span>Pre-Dawn Ordering Hub</span>
