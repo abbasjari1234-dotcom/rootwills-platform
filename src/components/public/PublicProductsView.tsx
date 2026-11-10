@@ -649,9 +649,9 @@ export function PublicProductsView() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[72px] sm:pt-[86px] pb-20">
-      {/* Restrained Botanical Parchment Texture Overlay (Reduced Visual Intensity) */}
+      {/* Seamless Botanical Parchment Texture Overlay matching Rootwills Theme */}
       <div
-        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.09] mix-blend-multiply"
+        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
         style={{
           backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
           backgroundSize: '1100px auto',
