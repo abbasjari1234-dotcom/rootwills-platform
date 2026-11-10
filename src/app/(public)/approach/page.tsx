@@ -9,12 +9,15 @@ import {
   Clock, 
   CheckCircle2, 
   ArrowRight, 
+  ArrowUpRight,
   Phone, 
   Award,
   Layers,
   Thermometer,
-  Scale
+  Scale,
+  Leaf
 } from 'lucide-react';
+import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
   title: 'Our Quality Standards & Cold Chain Logistics | Rootwills UK',
@@ -23,58 +26,55 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/approach',
   },
-  openGraph: {
-    title: 'Rootwills Approach: Quality Standards & Cold-Chain Logistics',
-    description:
-      'Daily 02:00 AM market grading, dual-evaporator temperature control, and complete British farm traceability for commercial hospitality kitchens.',
-    url: 'https://www.rootwills.co.uk/approach',
-    type: 'website',
-  },
 };
 
 const QUALITY_PILLARS = [
   {
-    icon: Clock,
-    step: 'STAGE 01',
-    title: 'Daily 02:00 AM Market Inspection',
-    desc: 'Before cities wake, our senior produce buyers physically inspect arriving grower consignments. Every crate is evaluated for skin firmness, sugar calibration (Brix), and transit resilience before it is accepted into stock.',
+    icon: ShieldCheck,
+    roman: 'I',
+    title: 'Grade-A Produce Standards',
+    subtitle: 'Daily 02:00 AM physical inspection, firmness checks, and strict calibration before dispatch.',
+    badge: '02:00 AM Walk',
     points: [
-      'Reject rate under 0.6% due to direct farm relationships',
-      'Daily Class 1 specification verification across all seasonal produce',
+      'Reject rate under 0.6% due to direct grower lineage',
+      'Daily Class 1 specification across all seasonal produce',
       'Morning harvest tagging with field lot numbers',
     ],
   },
   {
-    icon: Thermometer,
-    step: 'STAGE 02',
-    title: 'Continuous Cold-Chain Integrity',
-    desc: 'Temperature fluctuations compromise shelf life and flavor. From the farm cooling tunnel to our depot chill stores and dual-evaporator multi-drop vans, temperature telemetry is recorded every 90 seconds.',
+    icon: Truck,
+    roman: 'II',
+    title: 'Pre-Dawn Refrigerated Fleet',
+    subtitle: 'Dual-evaporator Mercedes Sprinter fleet delivering between 04:00 AM and 07:30 AM.',
+    badge: '99.4% On-Time',
     points: [
-      'Chilled produce maintained at 1°C to 4°C',
-      'Fresh butchery and coastal fish kept at 0°C to 2°C',
-      'Deep-frozen lines held strictly at -18°C or below',
+      'Independent chill (1–4°C), butchery (0–2°C) and frozen (-18°C) compartments',
+      'Live temperature telemetry logged every 90 seconds',
+      'Secure kitchen key-drop access with photo-verified ePOD',
     ],
   },
   {
     icon: Sprout,
-    step: 'STAGE 03',
-    title: 'Direct British Farm Lineage',
-    desc: 'We bypass unnecessary trading intermediaries by dealing directly with generational farms across Worcestershire, Warwickshire, Lincolnshire, Kent, and the Scottish coast.',
+    roman: 'III',
+    title: 'Direct Farm Provenance',
+    subtitle: 'Full batch traceability to vetted generational British farms and coastal day-boats.',
+    badge: '100% Traceable',
     points: [
-      'Red Tractor assured British livestock and poultry',
-      'Full batch provenance printable on commercial delivery slips',
-      'Fair grower pricing contracts that safeguard farming continuity',
+      'Red Tractor assured British livestock and free-range poultry',
+      'Full batch provenance printable on delivery advice notes',
+      'Transparent fair grower pricing contracts',
     ],
   },
   {
-    icon: Truck,
-    step: 'STAGE 04',
-    title: 'Pre-Dawn Dispatch Execution',
-    desc: 'Timing is critical for kitchen brigades. Our multi-drop fleet departs our Birmingham hub between 04:00 and 05:00 AM, arriving before head chefs begin morning stock preparation.',
+    icon: Leaf,
+    roman: 'IV',
+    title: 'Sustainable British Sourcing',
+    subtitle: 'Prioritising local British farms, Kentish orchards, and reduced food-mile distribution.',
+    badge: 'Kent & Evesham',
     points: [
-      '99.4% on-time delivery record across the Midlands and London',
-      'Secure key-drop facility with photo-verified electronic POD',
-      'Emergency morning top-up service for priority accounts',
+      'Regional farm sourcing within 80 miles of our hubs',
+      'Zero single-use plastic in transport crate systems',
+      'Seasonal crop booking to eliminate field food waste',
     ],
   },
 ];
@@ -83,7 +83,7 @@ const COMPLIANCE_STANDARDS = [
   {
     name: 'BRCGS Storage & Distribution',
     standard: 'Audited Facility Standards',
-    detail: 'Our depots adhere to the global standard for food safety, warehouse sanitation, and operational process control.',
+    detail: 'Our depots adhere to the global standard for food safety, warehouse sanitation, and cold-chain temperature control.',
   },
   {
     name: 'Red Tractor Assured',
@@ -117,169 +117,231 @@ export default function ApproachPage() {
   };
 
   return (
-    <div className="w-full bg-[#FAF7F2] text-[#131313] min-h-screen pt-24 sm:pt-28 pb-16">
+    <div className="relative bg-[#FAF7F2] min-h-screen text-[#131313] overflow-x-hidden">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(approachJsonLd) }}
       />
 
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
-        
-        {/* Header Hero Section */}
-        <section className="text-center max-w-3xl mx-auto space-y-4 pt-4 sm:pt-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#2E060D]/5 border border-[#2E060D]/10 text-xs font-mono font-semibold uppercase tracking-widest text-[#2E060D]">
-            <span>Operational Excellence</span>
+      {/* ─── ACT I: EDITORIAL HERO HEADER (Rootwills Parchment & Burgundy Identity) ─── */}
+      <section className="relative z-10 pt-28 sm:pt-36 pb-14 sm:pb-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          {/* Monospace Eyebrow Capsule */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#2E060D] font-semibold">
+              03 // OPERATIONAL RIGOR &amp; LOGISTICS
+            </span>
           </div>
-          
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#131313] tracking-tight leading-[1.15]">
-            Our Standards, Farm Lineage &amp; Cold-Chain Logistics
-          </h1>
-          
-          <p className="text-base sm:text-lg text-stone-600 font-sans leading-relaxed">
-            Every crate delivered to your kitchen is backed by strict 02:00 AM depot intake grading, continuous refrigeration monitoring, and genuine British farm provenance.
+
+          <div className="relative">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
+              Built on Trust, <br className="hidden sm:inline" />
+              <span className="text-[#8B2635] italic font-normal">Quality &amp; Consistency.</span>
+            </h1>
+            <div className="flex justify-center">
+              <DoodleFlourish 
+                variant="underline-loop" 
+                color="#BA8E4E" 
+                strokeWidth={3} 
+                className="w-52 sm:w-72 -mt-1 sm:-mt-1.5 mb-2 text-[#BA8E4E]" 
+                delay={150}
+              />
+            </div>
+          </div>
+
+          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[62ch] mx-auto leading-[1.68]">
+            Every crate delivered to your kitchen is backed by strict 02:00 AM depot intake grading, continuous refrigeration telemetry, and genuine British farm provenance.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href="/products"
-              className="px-6 py-3 rounded-full bg-[#2E060D] hover:bg-[#430A14] text-white text-sm font-semibold transition-all duration-150 shadow-md flex items-center gap-2 cursor-pointer"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all duration-200 active:scale-[0.96] shadow-[0_8px_24px_rgba(46,6,13,0.18)] cursor-pointer"
             >
-              <span>View Product Catalogue</span>
-              <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+              <span>Browse Catalog</span>
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/12 ring-1 ring-white/20 flex items-center justify-center text-[#F3D08A] group-hover:bg-[#F3D08A] group-hover:text-[#131313] transition-all duration-200 group-hover:translate-x-0.5">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
-            
+
             <Link
               href="/services"
-              className="px-6 py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-[#E8DEC8] text-sm font-semibold transition-all duration-150 shadow-xs cursor-pointer"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#EFE8D8]/70 text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-[#E8DEC8] hover:border-[#BA8E4E]/60 transition-all duration-200 active:scale-[0.96] shadow-2xs cursor-pointer"
             >
               <span>Explore Supply Services</span>
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 4-Stage Operational Rigor */}
-        <section className="space-y-10 sm:space-y-14">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313]">
-              The 4-Stage Quality Pipeline
-            </h2>
-            <p className="text-sm sm:text-base text-stone-600 mt-2 font-sans">
-              How we ensure kitchen ingredients arrive fresh, calibrated, and ready for service every single morning.
-            </p>
-          </div>
+      {/* ─── ACT II: THE 4 OPERATIONAL PILLARS (Clean Provenance Diptych + Architectural Narrative) ─── */}
+      <section className="relative z-10 py-12 sm:py-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {QUALITY_PILLARS.map((pillar) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.step}
-                  className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8DEC8] shadow-[0_4px_20px_rgba(46,6,13,0.03)] space-y-4 flex flex-col justify-between"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <div className="w-11 h-11 rounded-xl bg-[#FAF5EB] border border-[#BA8E4E]/30 flex items-center justify-center text-[#2E060D]">
-                        <Icon className="w-5 h-5 stroke-[2]" />
-                      </div>
-                      <span className="text-xs font-mono font-bold text-[#BA8E4E] tracking-wider px-2.5 py-0.5 rounded bg-[#FAF7F2] border border-[#E8DEC8]">
-                        {pillar.step}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#131313]">
-                      {pillar.title}
-                    </h3>
-
-                    <p className="text-sm text-stone-600 leading-relaxed font-sans">
-                      {pillar.desc}
-                    </p>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column: Clean Unobstructed Provenance Diptych */}
+            <div className="lg:col-span-4 relative flex flex-col items-center justify-center">
+              <div className="relative w-full sm:max-w-[360px]">
+                {/* Clean Gallery Frame with Rootwills Seal */}
+                <div className="group relative w-full h-[220px] sm:h-[320px] lg:h-[380px] rounded-2xl overflow-hidden border border-[#DCD2C0] bg-[#2E060D] shadow-[0_16px_40px_-12px_rgba(46,6,13,0.12)]">
+                  <Image
+                    src="/images/commercial/rootwills_spices.jpg"
+                    alt="Rootwills Direct Farm Lineage Sourcing"
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[#2E060D]/[0.06] mix-blend-multiply pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#180205]/65 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FAF7F2]/95 ring-1 ring-[#BA8E4E]/70 shadow-md overflow-hidden pointer-events-none">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Rootwills Seal"
+                      fill
+                      unoptimized
+                      sizes="32px"
+                      className="object-contain p-0.5 rounded-full"
+                    />
                   </div>
-
-                  <div className="pt-3 border-t border-[#F2ECE1] space-y-2">
-                    {pillar.points.map((pt, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-stone-700 font-sans">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{pt}</span>
-                      </div>
-                    ))}
+                  <div className="absolute bottom-3 left-3.5 flex items-center gap-2 text-[#FAF7F2]">
+                    <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-[#F3D08A]">
+                      Direct Farm Lineage
+                    </span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </section>
 
-        {/* Visual Inspection Spotlight */}
-        <section className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E8DEC8] shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-6 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#BA8E4E] font-bold">
-              Depot Intake Verification
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">
-              Physical Grading, Calibration &amp; Lot Control
-            </h2>
-            <p className="text-sm text-stone-600 leading-relaxed font-sans">
-              Unlike automated logistics hubs that process sealed pallets without opening them, our depot staff unboxes sample crates from every arriving lorry. We check internal temperature with calibrated probes, verify uniform fruit and vegetable sizing, and reject any product that fails our Class 1 foodservice benchmark.
-            </p>
-            <p className="text-sm text-stone-600 leading-relaxed font-sans">
-              This hands-on inspection eliminates split-case defects and ensures that when your chefs slice into a box of morning produce, there are no surprises.
-            </p>
-
-            <div className="pt-2 flex items-center gap-6">
-              <div>
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">99.4%</span>
-                <span className="text-xs text-stone-500 block">Fulfillment Accuracy</span>
-              </div>
-              <div className="border-l border-stone-200 pl-6">
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">&lt; 0.6%</span>
-                <span className="text-xs text-stone-500 block">Depot Return Rate</span>
-              </div>
-              <div className="border-l border-stone-200 pl-6">
-                <span className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D]">6 Days</span>
-                <span className="text-xs text-stone-500 block">Weekly Operations</span>
+                {/* Clean Architectural Telemetry Note */}
+                <div className="absolute -bottom-3 right-3 sm:-bottom-4 sm:-right-3 bg-[#FFFDF9] border border-[#DCD2C0] rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 flex items-center gap-2.5 shadow-[0_12px_28px_rgba(46,6,13,0.09)] z-20">
+                  <div className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-lg overflow-hidden shrink-0 border border-[#E2D8C3]">
+                    <Image
+                      src="/images/commercial/van_dawn_delivery.jpg"
+                      alt="Pre-dawn refrigerated delivery van"
+                      fill
+                      unoptimized
+                      sizes="40px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <span className="block font-mono text-[8px] uppercase tracking-[0.16em] text-[#8B2635] font-semibold">
+                      Cold-Chain Telemetry
+                    </span>
+                    <span className="block font-serif font-bold text-[11px] sm:text-xs text-[#2E060D] tabular-nums">
+                      0.5°C – 3.8°C Verified
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="lg:col-span-6">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100 border border-[#E8DEC8] shadow-inner">
-              <Image
-                src="/images/commercial/chef_inspect_produce.jpg"
-                alt="Depot staff inspecting crates of British farm harvest"
-                fill
-                sizes="(max-width: 1024px) 100vw, 560px"
-                className="object-cover"
-              />
+            {/* Right Column: 4 Strategic Pillars */}
+            <div className="lg:col-span-8 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                {QUALITY_PILLARS.map((pillar) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <div
+                      key={pillar.roman}
+                      className="group p-5 sm:p-6 rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-3"
+                    >
+                      <div className="space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <div className="w-9 h-9 rounded-xl bg-[#FAF5EB] border border-[#BA8E4E]/30 flex items-center justify-center text-[#2E060D]">
+                            <Icon className="w-4 h-4 stroke-[2]" />
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="px-2 py-0.5 rounded bg-[#FAF7F2] border border-[#E8DEC8] text-[9.5px] font-mono font-bold text-[#8B2635]">
+                              {pillar.badge}
+                            </span>
+                            <span className="text-xs font-serif font-bold text-stone-400">
+                              {pillar.roman}
+                            </span>
+                          </div>
+                        </div>
+
+                        <h3 className="text-base sm:text-lg font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                          {pillar.title}
+                        </h3>
+
+                        <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                          {pillar.subtitle}
+                        </p>
+                      </div>
+
+                      <div className="pt-2 border-t border-[#F2ECE1] space-y-1.5">
+                        {pillar.points.map((pt, i) => (
+                          <div key={i} className="flex items-start gap-2 text-[11px] text-stone-700 font-sans">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <span>{pt}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </section>
 
-        {/* Accreditations & Compliance Grid */}
-        <section className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#BA8E4E] font-bold">
-              Food Safety Standards
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ACT III: THIRD-PARTY AUDITED QUALITY FRAMEWORKS ─── */}
+      <section className="relative z-10 py-12 sm:py-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-mono uppercase tracking-[0.22em] text-[#8B2635] font-bold">
+              FOOD SAFETY STANDARDS
             </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#131313] mt-1">
-              Third-Party Audited Quality Frameworks
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+              Third-Party Audited Quality Accreditations
             </h2>
-            <p className="text-sm text-stone-600 mt-2 font-sans">
-              Independent oversight that gives catering managers, hygiene inspectors, and head chefs complete peace of mind.
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Complete regulatory compliance and cold-chain traceability for peace of mind in high-volume catering.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {COMPLIANCE_STANDARDS.map((std, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-white border border-[#E8DEC8] shadow-xs space-y-2.5">
+              <div key={i} className="p-5 rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] shadow-2xs space-y-2.5">
                 <div className="w-8 h-8 rounded-lg bg-[#FAF5EB] border border-[#BA8E4E]/30 flex items-center justify-center text-[#2E060D]">
                   <Award className="w-4 h-4 text-[#BA8E4E]" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-[#131313] leading-snug">
+                  <h3 className="text-sm font-bold text-[#2E060D] leading-snug font-serif">
                     {std.name}
                   </h3>
-                  <span className="text-[11px] font-mono text-[#8B1A28] font-semibold block mt-0.5">
+                  <span className="text-[11px] font-mono text-[#8B2635] font-semibold block mt-0.5">
                     {std.standard}
                   </span>
                 </div>
@@ -289,39 +351,47 @@ export default function ApproachPage() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Bottom CTA Banner */}
-        <section className="rounded-3xl bg-[#2E060D] text-white p-8 sm:p-12 text-center space-y-6 shadow-xl">
-          <div className="max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
-              Experience the Rootwills Quality Standard
-            </h2>
-            <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
-              Let us arrange a trial delivery for your kitchen brigade. Experience prompt pre-dawn arrivals and hand-graded produce freshness firsthand.
-            </p>
+      {/* ─── ACT IV: BOTTOM CTA BANNER (Royal Burgundy Velvet with Gold Accents) ─── */}
+      <section className="relative z-10 py-14 sm:py-20 bg-gradient-to-br from-[#430A13] via-[#2E060D] to-[#150205] text-[#FAF7F2] overflow-hidden">
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-20 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/textures/burgundy_damask_texture.jpg')" }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10.5px] font-mono uppercase tracking-[0.2em] text-[#F3D08A]">
+            <span>Experience the Standard</span>
           </div>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap pt-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-white tracking-tight">
+            Arrange a Trial Kitchen Delivery
+          </h2>
+
+          <p className="text-xs sm:text-sm text-white/80 font-sans max-w-2xl mx-auto leading-relaxed">
+            Experience our 04:00 AM pre-dawn arrival and hand-graded produce quality firsthand with a scheduled trial crate drop for your brigade.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/contact"
-              className="px-7 py-3.5 rounded-full bg-[#FAF7F2] text-[#2E060D] text-sm font-semibold hover:bg-white transition-all shadow-md active:scale-95 cursor-pointer"
+              className="px-7 py-3.5 rounded-full bg-[#FAF7F2] hover:bg-white text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer"
             >
-              Request a Trial Kitchen Delivery
+              Request a Trial Drop
             </Link>
-            
+
             <Link
               href="/products"
-              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs sm:text-[13px] font-sans font-semibold transition-all flex items-center gap-2 cursor-pointer"
             >
-              <span>Browse 5,480+ Lines</span>
+              <span>Explore 5,480+ Products</span>
               <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </div>
     </div>
   );
 }
-

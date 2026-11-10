@@ -3,22 +3,25 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { 
-  Truck, 
+  ArrowRight, 
+  ArrowUpRight,
   Clock, 
-  ShieldCheck, 
-  Coins, 
   Sparkles, 
   Snowflake, 
+  Coins, 
   Sprout, 
   CheckCircle2, 
-  ArrowRight, 
-  Phone, 
-  Mail, 
-  FileText,
+  UserCheck, 
+  CreditCard, 
+  Calendar,
   UtensilsCrossed,
-  Layers,
-  CalendarCheck
+  Building2,
+  ChefHat,
+  Landmark,
+  ShieldCheck,
+  Phone
 } from 'lucide-react';
+import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
   title: 'Wholesale Foodservice Solutions & Pre-Dawn Multi-Drop | Rootwills UK',
@@ -27,86 +30,84 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/services',
   },
-  openGraph: {
-    title: 'Rootwills Food Services & Wholesale Distribution UK',
-    description:
-      'Contract wholesale supply for restaurants, hotels, schools, and commercial caterers. Pre-dawn refrigerated delivery from 04:00 AM.',
-    url: 'https://www.rootwills.co.uk/services',
-    type: 'website',
-  },
 };
 
-const WHOLESALE_SERVICES = [
+const SERVICES_DATA = [
   {
-    step: '01',
-    badge: 'HOSPITALITY DIRECT',
-    title: 'Daily Food Service Supply',
+    index: '01',
+    tag: 'LOGISTICS & FRESH PRODUCE',
+    badge: 'MICHELIN & BISTRO',
+    title: 'Food Service Supply',
     subtitle: 'From Field to Kitchen Before Morning Prep Begins',
-    description:
-      'We supply independent bistros, fine dining restaurants, and hotel kitchens with daily fresh produce, artisan dairy, and prime meats. Every order is inspected at our 02:00 AM market depot intake and delivered between 04:00 and 07:30 AM so your brigade can start service without waiting for supplies.',
-    highlights: [
-      'Guaranteed pre-dawn drop windows (04:00 – 07:30 AM)',
-      'Class 1 hand-selected fruit, vegetables, and living micro-herbs',
-      'Red Tractor British beef, poultry, and day-boat coastal seafood',
-      'Zero split-case surcharges for bespoke menu testing',
-    ],
+    description: 'Fresh, hand-graded ingredients and chef-specified kitchen essentials delivered pre-dawn across London and the Midlands.',
     image: '/images/commercial/chef_inspect_produce.jpg',
-    imageAlt: 'Head chef inspecting fresh morning wholesale produce crate',
+    imageAlt: 'Head chef inspecting fresh morning harvest produce crate',
+    highlights: [
+      { icon: Clock, text: '04:00 AM Dawn London Drops' },
+      { icon: Sparkles, text: 'Chef-Curated Farm Produce' },
+      { icon: Snowflake, text: 'Continuous Cold-Chain Telemetry' },
+    ],
   },
   {
-    step: '02',
-    badge: 'VOLUME & CONTRACTS',
-    title: 'Commercial Wholesale Distribution',
-    subtitle: 'Locked Margins & Volume Parity for Multi-Site Groups',
-    description:
-      'For restaurant groups, contract caterers, and institutional dining facilities, Rootwills provides predictable case pricing and scheduled regional drops. We eliminate supplier volatility through forward-contracted grower agreements, ensuring consistent food costs throughout your quarterly menu cycles.',
-    highlights: [
-      'Tiered volume pricing matrix with index-linked price protection',
-      'Consolidated multi-site invoicing with 30-day commercial credit terms',
-      'Comprehensive allergen and nutritional data integration',
-      'Electronic Proof of Delivery (ePOD) with time-stamped temperature logs',
-    ],
+    index: '02',
+    tag: 'COMMERCIAL DISTRIBUTION',
+    badge: 'VOLUME CONTRACTS',
+    title: 'Wholesale Solutions',
+    subtitle: 'Margin-Locked Supply for Multi-Site Venues',
+    description: 'Reliable, margin-locked wholesale supply for hospitality businesses of all sizes, from independent venues to multi-site groups.',
     image: '/images/commercial/cold_depot_logistics.jpg',
-    imageAlt: 'Temperature-controlled multi-temperature wholesale logistics depot',
+    imageAlt: 'Temperature-controlled wholesale distribution hub',
+    highlights: [
+      { icon: Coins, text: 'Tiered Volume Rates & Locked Terms' },
+      { icon: Sprout, text: 'Direct Grower & Farm Lineage' },
+      { icon: CheckCircle2, text: 'Zero Split-Case Surcharges' },
+    ],
   },
   {
-    step: '03',
-    badge: 'MENU FORECASTING',
-    title: 'Bespoke Sourcing & Seasonal Planning',
-    subtitle: 'Dedicated Account Management for Executive Chefs',
-    description:
-      'Our senior buyers work directly with culinary directors to forecast seasonal yields, reserve small-batch harvest parcels, and secure specialty imports from European markets. Whether you need forced Yorkshire rhubarb in January or heritage Amalfi lemons in spring, our supply desk coordinates directly with generational growers.',
-    highlights: [
-      'Dedicated wholesale account manager accessible via phone and direct WhatsApp',
-      'Early access to seasonal British farm flushes and specialty imports',
-      'Standing order automation with standing case quantity parity',
-      'Next-day sample crate requests for seasonal menu development',
-    ],
+    index: '03',
+    tag: 'STRATEGIC ACCOUNTS',
+    badge: 'DEDICATED DESK',
+    title: 'Business Partnerships',
+    subtitle: 'Direct Collaboration with Culinary Directors',
+    description: 'We collaborate directly with head chefs and culinary directors to engineer bespoke supply schedules and seasonal menu forecasts.',
     image: '/images/commercial/rootwills_hero_chef_plating.jpg',
-    imageAlt: 'Executive chef garnishing fine dining plate with fresh microgreens',
+    imageAlt: 'Executive chef plating fine dining dish with fresh micro-herbs',
+    highlights: [
+      { icon: UserCheck, text: 'Assigned Senior Depot Account Lead' },
+      { icon: CreditCard, text: '30-Day Commercial Trade Terms' },
+      { icon: Calendar, text: 'Seasonal Menu Yield Forecasts' },
+    ],
   },
 ];
 
-const LOGISTICS_SPECIFICATIONS = [
+const SECTORS_WE_SERVE = [
   {
-    icon: Snowflake,
-    title: 'Dual-Evaporator Multi-Zone Fleet',
-    desc: 'Our refrigerated vehicles maintain independent temperature zones: chilled produce at 1–4°C, fresh butchery at 0–2°C, frozen goods at -18°C, and ambient dry larder goods.',
+    title: 'Restaurants & Fine Dining',
+    subtitle: 'Hand-graded heritage produce, coastal catch & living microgreens',
+    image: '/images/commercial/10_restaurant.jpg',
+    icon: UtensilsCrossed,
+    tag: 'CULINARY',
   },
   {
-    icon: Clock,
-    title: 'Strict Pre-Dawn Dispatch',
-    desc: 'Routes run between 04:00 and 07:30 AM to bypass urban congestion and ensure all fresh deliveries are safely inside your kitchen or secure key-drop area before front-of-house opens.',
+    title: 'Hotels & Boutique Resorts',
+    subtitle: 'Multi-outlet breakfast dairy, artisan bakery & banqueting supply',
+    image: '/images/commercial/11_hotels.jpg',
+    icon: Building2,
+    tag: 'HOSPITALITY',
   },
   {
-    icon: ShieldCheck,
-    title: 'Full Farm Traceability',
-    desc: 'Every crate carries farm lineage, harvest dates, and depot grading timestamps. We operate under rigorous food hygiene standards benchmarked to BRCGS and SALSA guidelines.',
+    title: 'Event & Contract Caterers',
+    subtitle: 'Precision-timed volume drops & bespoke menu spec grading',
+    image: '/images/commercial/13_caterers.jpg',
+    icon: ChefHat,
+    tag: 'CATERING',
   },
   {
-    icon: Coins,
-    title: 'Transparent B2B Billing',
-    desc: 'Consolidated weekly or monthly electronic statements with itemised VAT breakdown (0% Zero-Rated UK food vs 20% Standard Rate consumables) simplify accounting reconciliation.',
+    title: 'Gastro Pubs & Institutions',
+    subtitle: 'Dependable British farm staples, prime butchery & dry larder',
+    image: '/images/commercial/14_pubs_bars.jpg',
+    icon: Landmark,
+    tag: 'COMMERCIAL',
   },
 ];
 
@@ -120,230 +121,281 @@ export default function ServicesPage() {
       name: 'Rootwills Food Services & Wholesale',
       url: 'https://www.rootwills.co.uk',
       telephone: '+44 16164 12803',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Digbeth Wholesale Logistics Corridor',
-        addressLocality: 'Birmingham',
-        postalCode: 'B5 4RB',
-        addressCountry: 'GB',
-      },
     },
-    areaServed: ['Birmingham', 'London', 'West Midlands', 'Warwickshire', 'Coventry'],
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Wholesale Hospitality Food Supply',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Daily Restaurant Food Supply',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Volume Commercial Wholesale Distribution',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Temperature-Controlled Pre-Dawn Multi-Drop Delivery',
-          },
-        },
-      ],
-    },
+    areaServed: ['Birmingham', 'London', 'West Midlands', 'Warwickshire'],
   };
 
   return (
-    <div className="w-full bg-[#FAF7F2] text-[#131313] min-h-screen pt-24 sm:pt-28 pb-16">
+    <div className="relative bg-[#FAF7F2] min-h-screen text-[#131313] overflow-x-hidden">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
 
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
-        
-        {/* Header Hero Section */}
-        <section className="text-center max-w-3xl mx-auto space-y-4 pt-4 sm:pt-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#2E060D]/5 border border-[#2E060D]/10 text-xs font-mono font-semibold uppercase tracking-widest text-[#2E060D]">
-            <span>Commercial Wholesale Solutions</span>
+      {/* ─── ACT I: EDITORIAL HERO HEADER (Rootwills Parchment & Burgundy Identity) ─── */}
+      <section className="relative z-10 pt-28 sm:pt-36 pb-14 sm:pb-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+          {/* Monospace Eyebrow Capsule */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#2E060D] font-semibold">
+              02 // HOSPITALITY SOLUTIONS &amp; WHOLESALE
+            </span>
           </div>
-          
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#131313] tracking-tight leading-[1.15]">
-            Wholesale Foodservice &amp; Pre-Dawn Multi-Drop Supply
-          </h1>
-          
-          <p className="text-base sm:text-lg text-stone-600 font-sans leading-relaxed">
-            Delivering hand-graded British produce, butcher cuts, dairy, and pantry lines directly to professional hospitality kitchens across Birmingham, the Midlands, and London.
+
+          <div className="relative">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
+              Tailored Solutions For <br className="hidden sm:inline" />
+              <span className="text-[#8B2635] italic font-normal">Every Food Business.</span>
+            </h1>
+            <div className="flex justify-center">
+              <DoodleFlourish 
+                variant="underline-loop" 
+                color="#BA8E4E" 
+                strokeWidth={3} 
+                className="w-52 sm:w-72 -mt-1 sm:-mt-1.5 mb-2 text-[#BA8E4E]" 
+                delay={150}
+              />
+            </div>
+          </div>
+
+          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[62ch] mx-auto leading-[1.68]">
+            We provide an end-to-end range of foodservice supply and wholesale capabilities, engineered around the daily operational rhythm of independent restaurants, luxury hotels, and commercial catering groups.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-3 sm:gap-4 flex-wrap">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href="/products"
-              className="px-6 py-3 rounded-full bg-[#2E060D] hover:bg-[#430A14] text-white text-sm font-semibold transition-all duration-150 shadow-md flex items-center gap-2 cursor-pointer"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all duration-200 active:scale-[0.96] shadow-[0_8px_24px_rgba(46,6,13,0.18)] cursor-pointer"
             >
               <span>Explore 5,480+ Products</span>
-              <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/12 ring-1 ring-white/20 flex items-center justify-center text-[#F3D08A] group-hover:bg-[#F3D08A] group-hover:text-[#131313] transition-all duration-200 group-hover:translate-x-0.5">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
-            
+
             <Link
               href="/contact"
-              className="px-6 py-3 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-[#E8DEC8] text-sm font-semibold transition-all duration-150 shadow-xs cursor-pointer"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#EFE8D8]/70 text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-[#E8DEC8] hover:border-[#BA8E4E]/60 transition-all duration-200 active:scale-[0.96] shadow-2xs cursor-pointer"
             >
               <span>Open Commercial Account</span>
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Core Services Breakdown */}
-        <section className="space-y-12 sm:space-y-16">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313]">
-              Tailored Supply Programs for Food Businesses
-            </h2>
-            <p className="text-sm sm:text-base text-stone-600 mt-2 font-sans">
-              From independent neighbourhood restaurants to multi-site hospitality groups, we structure our supply to match your kitchen workflow.
-            </p>
-          </div>
+      {/* ─── ACT II: CORE SERVICE PILLARS (Original Triple-Card Architecture) ─── */}
+      <section className="relative z-10 py-12 sm:py-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
 
-          <div className="space-y-8 sm:space-y-12">
-            {WHOLESALE_SERVICES.map((srv, idx) => (
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
+            {SERVICES_DATA.map((service) => (
               <div
-                key={srv.step}
-                className={`bg-white rounded-3xl p-6 sm:p-10 border border-[#E8DEC8] shadow-[0_4px_24px_rgba(46,6,13,0.04)] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
-                  idx % 2 === 1 ? 'lg:grid-flow-dense' : ''
-                }`}
+                key={service.index}
+                className="group relative rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] shadow-[0_6px_24px_rgba(46,6,13,0.04)] hover:shadow-[0_16px_36px_rgba(46,6,13,0.09)] flex flex-col justify-between overflow-hidden transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Content Column */}
-                <div className={`space-y-4 lg:col-span-7 ${idx % 2 === 1 ? 'lg:col-start-6' : ''}`}>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-[#BA8E4E] px-2.5 py-0.5 rounded bg-[#FAF5EB] border border-[#BA8E4E]/30">
-                      {srv.badge}
-                    </span>
-                    <span className="text-xs font-mono text-stone-400">
-                      SERVICE {srv.step}
-                    </span>
+                {/* Unobstructed Photography with Rootwills Seal */}
+                <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-[#2E060D] border-b border-[#E8DEC8]">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[#2E060D]/[0.05] mix-blend-multiply pointer-events-none" />
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#FAF7F2]/95 ring-1 ring-[#BA8E4E]/65 shadow-sm overflow-hidden pointer-events-none">
+                    <Image
+                      src="/images/logo.png"
+                      alt="Rootwills Seal"
+                      fill
+                      unoptimized
+                      sizes="32px"
+                      className="object-contain p-0.5 rounded-full"
+                    />
                   </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#2E060D] leading-snug">
-                    {srv.title}
-                  </h3>
-
-                  <p className="text-sm font-semibold text-stone-700">
-                    {srv.subtitle}
-                  </p>
-
-                  <p className="text-sm text-stone-600 leading-relaxed font-sans">
-                    {srv.description}
-                  </p>
-
-                  <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {srv.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-stone-700">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-4">
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#2E060D] hover:text-[#8B1A28] transition-colors"
-                    >
-                      <span>Inquire About {srv.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                  <div className="absolute bottom-2.5 left-3 px-2.5 py-0.5 rounded bg-[#131313]/70 backdrop-blur-xs text-[10px] font-mono text-[#F3D08A] uppercase tracking-wider">
+                    {service.tag}
                   </div>
                 </div>
 
-                {/* Visual Column */}
-                <div className={`lg:col-span-5 ${idx % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-stone-100 border border-[#E8DEC8] shadow-inner">
-                    <Image
-                      src={srv.image}
-                      alt={srv.imageAlt}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 480px"
-                      className="object-cover"
-                    />
+                {/* Body */}
+                <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8B2635] font-semibold">
+                        {service.badge}
+                      </span>
+                      <span className="font-mono text-xs text-stone-400 tabular-nums">
+                        /{service.index}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1 leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-stone-700 mb-2 font-sans">
+                      {service.subtitle}
+                    </p>
+                    <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed font-sans">
+                      {service.description}
+                    </p>
                   </div>
+
+                  {/* Highlights List */}
+                  <ul className="space-y-2 pt-3.5 border-t border-[#E8DEC8] text-xs text-stone-700 font-sans">
+                    {service.highlights.map((item, hIdx) => {
+                      const Icon = item.icon;
+                      return (
+                        <li key={hIdx} className="flex items-center gap-2.5">
+                          <Icon className="w-3.5 h-3.5 text-[#8B2635] shrink-0" strokeWidth={2} />
+                          <span className="font-medium">{item.text}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Cold-Chain Logistics Standards */}
-        <section className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E8DEC8] shadow-sm space-y-8">
-          <div className="max-w-2xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#BA8E4E] font-bold">
-              Operational Rigor
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#131313] mt-1">
-              Cold-Chain Temperature Telemetry &amp; Compliance
+      {/* ─── ACT III: SECTORS WE SERVE (Hospitality Grid with Editorial Typography) ─── */}
+      <section className="relative z-10 py-12 sm:py-20 border-b border-[#E8DEC8]/70 overflow-hidden">
+        {/* Seamless Unified Parchment Texture */}
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold">
+              <span>HOSPITALITY PORTFOLIO</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+              Sectors We Proudly Supply
             </h2>
-            <p className="text-sm text-stone-600 mt-2 font-sans leading-relaxed">
-              Food safety is non-negotiable. Our logistical processes protect ingredient vitality from the moment harvests leave the soil to final kitchen check-in.
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Tailored supply agreements structured around your service timings, brigade size, and storage constraints.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LOGISTICS_SPECIFICATIONS.map((spec, i) => {
-              const Icon = spec.icon;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {SECTORS_WE_SERVE.map((sector, sIdx) => {
+              const Icon = sector.icon;
               return (
-                <div key={i} className="p-5 rounded-2xl bg-[#FAF8F5] border border-[#E8DEC8] space-y-3">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-[#E8DEC8] flex items-center justify-center text-[#2E060D] shadow-2xs">
-                    <Icon className="w-5 h-5 stroke-[1.75]" />
+                <div
+                  key={sIdx}
+                  className="group relative rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div className="relative w-full h-36 overflow-hidden bg-stone-900 border-b border-[#E8DEC8]">
+                    <Image
+                      src={sector.image}
+                      alt={sector.title}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-[#2E060D]/20 mix-blend-multiply pointer-events-none" />
+                    <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#FAF7F2]/90 text-[9px] font-mono font-bold text-[#8B2635] uppercase tracking-wider">
+                      {sector.tag}
+                    </span>
                   </div>
-                  <h3 className="text-base font-bold text-[#131313]">
-                    {spec.title}
-                  </h3>
-                  <p className="text-xs text-stone-600 leading-relaxed font-sans">
-                    {spec.desc}
-                  </p>
+
+                  <div className="p-4 sm:p-5 space-y-2 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-2 text-[#2E060D] mb-1">
+                        <Icon className="w-4 h-4 text-[#BA8E4E]" />
+                        <h3 className="text-sm sm:text-base font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                          {sector.title}
+                        </h3>
+                      </div>
+                      <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                        {sector.subtitle}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-[#E8DEC8]/60">
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#8B2635] hover:text-[#2E060D] transition-colors"
+                      >
+                        <span>Discuss Venue Supply</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Commercial CTA Strip */}
-        <section className="rounded-3xl bg-[#2E060D] text-white p-8 sm:p-12 text-center space-y-6 shadow-xl">
-          <div className="max-w-2xl mx-auto space-y-2">
-            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
-              Ready to Upgrade Your Kitchen Wholesale Supply?
-            </h2>
-            <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
-              Open a direct trade account today. Our Birmingham dispatch team will review your menu requirements and configure contracted volume rates within 24 hours.
-            </p>
+      {/* ─── ACT IV: BOTTOM CTA BANNER (Royal Burgundy Velvet with Gold Accents) ─── */}
+      <section className="relative z-10 py-14 sm:py-20 bg-gradient-to-br from-[#430A13] via-[#2E060D] to-[#150205] text-[#FAF7F2] overflow-hidden">
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-20 bg-cover bg-center"
+          style={{ backgroundImage: "url('/images/textures/burgundy_damask_texture.jpg')" }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10.5px] font-mono uppercase tracking-[0.2em] text-[#F3D08A]">
+            <span>Commercial Accounts Desk</span>
           </div>
 
-          <div className="flex items-center justify-center gap-4 flex-wrap pt-2">
+          <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold text-white tracking-tight">
+            Ready to Streamline Your Kitchen Wholesale Supply?
+          </h2>
+
+          <p className="text-xs sm:text-sm text-white/80 font-sans max-w-2xl mx-auto leading-relaxed">
+            Open a direct commercial wholesale account today. Our Birmingham dispatch desk will configure contracted rates, standing orders, and pre-dawn delivery slots tailored to your menu.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/contact"
-              className="px-7 py-3.5 rounded-full bg-[#FAF7F2] text-[#2E060D] text-sm font-semibold hover:bg-white transition-all shadow-md active:scale-95 cursor-pointer"
+              className="px-7 py-3.5 rounded-full bg-[#FAF7F2] hover:bg-white text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all shadow-md active:scale-95 cursor-pointer"
             >
               Request Trade Account Setup
             </Link>
-            
+
             <a
               href="tel:+441616412803"
-              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs sm:text-[13px] font-sans font-semibold transition-all flex items-center gap-2 cursor-pointer"
             >
               <Phone className="w-4 h-4 text-[#F3D08A]" />
               <span>Direct Depot: +44 16164 12803</span>
             </a>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </div>
     </div>
   );
 }
-
