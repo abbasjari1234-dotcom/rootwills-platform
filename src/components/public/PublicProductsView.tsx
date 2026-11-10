@@ -15,12 +15,9 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
-  LogOut,
   Clock,
   Sparkles,
-  Layers,
   SlidersHorizontal,
-  Check,
   PackageCheck,
   ArrowUpRight,
 } from 'lucide-react';
@@ -54,7 +51,6 @@ export function PublicProductsView() {
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string } | null>(null);
-  const [recentlyAddedId, setRecentlyAddedId] = useState<string | null>(null);
 
   // Check trade auth state on mount
   useEffect(() => {
@@ -134,7 +130,6 @@ export function PublicProductsView() {
     ];
   });
 
-  const categoryRailRef = useRef<HTMLDivElement>(null);
   const popularAddonRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -214,13 +209,6 @@ export function PublicProductsView() {
   };
 
   const updateOrderQty = (product: WholesaleProduct, delta = 1) => {
-    if (delta > 0) {
-      setRecentlyAddedId(product.id);
-      setTimeout(() => {
-        setRecentlyAddedId((curr) => (curr === product.id ? null : curr));
-      }, 1200);
-    }
-
     setOrderList((prev) => {
       const existing = prev.find((c) => c.product.id === product.id);
       if (existing) {
@@ -331,136 +319,104 @@ export function PublicProductsView() {
     searchQuery.trim() === '' &&
     selectedTempFilter === 'all';
 
-  // Format temperature zone badge color
-  const getTempZoneBadge = (tempZone: string) => {
-    if (tempZone.includes('Chilled')) {
-      return { dot: 'bg-emerald-500', text: 'Chilled', style: 'text-emerald-800 bg-emerald-50/90 border-emerald-200' };
-    }
-    if (tempZone.includes('Butchery')) {
-      return { dot: 'bg-rose-500', text: 'Butchery', style: 'text-rose-900 bg-rose-50/90 border-rose-200' };
-    }
-    if (tempZone.includes('Frozen')) {
-      return { dot: 'bg-cyan-500', text: 'Frozen', style: 'text-cyan-900 bg-cyan-50/90 border-cyan-200' };
-    }
-    return { dot: 'bg-amber-500', text: 'Ambient', style: 'text-amber-900 bg-amber-50/90 border-amber-200' };
-  };
-
   // ════════════════════════════════════════════════════════════════
-  // ELEVATED PRODUCT CARD — International Wholesale Standard
+  // ELEVATED PRODUCT CARD — Clean, Spacious, Refined B2B Hierarchy
   // ════════════════════════════════════════════════════════════════
   const renderProductCard = (product: WholesaleProduct, compact = false) => {
     const qty = getQty(product.id);
-    const isRecentlyAdded = recentlyAddedId === product.id;
-    const tempBadge = getTempZoneBadge(product.tempZone);
 
     return (
       <div
         key={product.id}
         onClick={() => setQuickViewProduct(product)}
-        className={`group relative flex flex-col justify-between bg-white rounded-2xl p-3 border transition-all duration-200 cursor-pointer select-none ${
+        className={`group relative flex flex-col justify-between bg-white rounded-2xl p-4 sm:p-4.5 border transition-all duration-200 cursor-pointer select-none ${
           qty > 0
             ? 'border-[#BA8E4E] ring-1 ring-[#BA8E4E]/50 shadow-[0_4px_16px_rgba(186,142,78,0.12)]'
-            : 'border-[#E8DEC8]/90 hover:border-[#BA8E4E]/80 hover:shadow-[0_8px_24px_rgba(46,6,13,0.08)] shadow-[0_1px_3px_rgba(46,6,13,0.03)]'
-        } ${compact ? 'w-[155px] sm:w-[170px] shrink-0' : 'w-full'} ${
-          isRecentlyAdded ? 'ring-2 ring-emerald-500/80 scale-[1.01]' : ''
-        }`}
+            : 'border-[#E8DEC8]/90 hover:border-[#BA8E4E]/80 hover:shadow-[0_8px_24px_rgba(46,6,13,0.07)] shadow-[0_1px_3px_rgba(46,6,13,0.02)]'
+        } ${compact ? 'w-[160px] sm:w-[175px] shrink-0' : 'w-full'}`}
       >
         <div>
-          {/* Top Stage: Crisp White Canvas & Photography */}
-          <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-[#EFE8D8] flex items-center justify-center p-2 mb-2.5">
+          {/* Uncluttered Product Stage: Pure White Background, Prominent Photography */}
+          <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-[#F2ECE1] flex items-center justify-center p-3 mb-3">
             <Image
               src={product.image}
               alt={product.name}
               fill
               unoptimized
               referrerPolicy="no-referrer"
-              sizes="200px"
-              className="object-contain p-2 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+              sizes="240px"
+              className="object-contain p-2 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
             />
-
-            {/* Top-Left Temperature Zone Badge */}
-            <div className="absolute top-2 left-2 flex items-center gap-1">
-              <span
-                className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[9.5px] font-mono font-medium border ${tempBadge.style} backdrop-blur-xs`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${tempBadge.dot}`} />
-                <span>{tempBadge.text}</span>
-              </span>
-            </div>
-
-            {/* Top-Right: In-Basket Notification Tag if Added */}
-            {qty > 0 && (
-              <div className="absolute top-2 right-2 flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#2E060D] text-white text-[10px] font-mono font-bold shadow-xs">
-                <Check className="w-2.5 h-2.5 text-[#F3D08A]" />
-                <span>{qty} In Order</span>
-              </div>
-            )}
           </div>
 
-          {/* Line 1: High-Contrast Commercial Pack Size Pill */}
-          <div className="mb-1.5 flex items-center justify-between gap-1.5">
-            <span className="inline-block text-[11px] sm:text-[11.5px] font-sans font-bold text-[#2E060D] bg-[#FAF5EB] px-2 py-0.5 rounded-md border border-[#E8DEC8] truncate max-w-full">
+          {/* Line 1: Clear, High-Contrast Commercial Pack Size */}
+          <div className="mb-1">
+            <span className="text-[12px] font-semibold text-[#8B2635] tracking-tight">
               {product.packSize}
             </span>
-            <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider shrink-0">
-              {product.origin || 'UK'}
-            </span>
           </div>
 
-          {/* Line 2: Product Title */}
+          {/* Line 2: Product Name with Generous Readability */}
           <h4
             title={product.name}
-            className="text-[12.5px] sm:text-[13px] font-medium text-[#1A1817] group-hover:text-[#2E060D] leading-snug line-clamp-2 min-h-[34px] transition-colors"
+            className="text-[13.5px] sm:text-[14px] font-medium text-stone-900 group-hover:text-[#2E060D] leading-[1.35] line-clamp-2 min-h-[38px] transition-colors"
           >
             {product.name}
           </h4>
+
+          {/* Line 3: Subtle Secondary Metadata (Clean SKU & Zone) */}
+          <div className="text-[11px] font-mono text-stone-400 mt-1.5 flex items-center justify-between">
+            <span>{product.sku}</span>
+            <span className="text-stone-500 font-sans text-[11px]">
+              {product.tempZone.replace(' 1–4°C', '').replace(' 0–2°C', '').replace(' -18°C', '')}
+            </span>
+          </div>
         </div>
 
-        {/* Bottom Commercial Action Bar */}
+        {/* Bottom Action Bar */}
         <div
-          className="mt-3 pt-2.5 border-t border-[#F0EAE1] flex items-center justify-between gap-2"
+          className="mt-3.5 pt-2.5 border-t border-[#F2ECE1] flex items-center justify-between gap-2"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Monospace SKU Code */}
-          <span className="text-[10px] font-mono font-semibold text-stone-500 tracking-wider truncate">
-            {product.sku}
-          </span>
-
-          {/* Stepper or Add Button */}
           {qty === 0 ? (
             <button
               type="button"
               onClick={() => updateOrderQty(product, 1)}
               aria-label={`Add ${product.name}`}
-              className="px-3 py-1 rounded-lg bg-[#FAF8F5] hover:bg-[#2E060D] text-[#2E060D] hover:text-white border border-[#E8DEC8] hover:border-[#2E060D] text-[11.5px] font-semibold flex items-center gap-1.5 transition-all duration-150 active:scale-95 cursor-pointer shadow-2xs group/btn"
+              className="w-full py-1.5 px-3 rounded-lg bg-[#FAF8F5] hover:bg-[#2E060D] text-[#2E060D] hover:text-white border border-[#E8DEC8] hover:border-[#2E060D] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-150 active:scale-95 cursor-pointer shadow-2xs group/btn"
             >
               <Plus className="w-3.5 h-3.5 stroke-[2.5] text-[#BA8E4E] group-hover/btn:text-white transition-colors" />
-              <span>Add</span>
+              <span>Add to Order</span>
             </button>
           ) : (
-            <div className="flex items-center gap-1.5 bg-[#2E060D] text-white border border-[#2E060D] rounded-lg px-2 py-0.5 shadow-2xs">
+            <div className="w-full flex items-center justify-between bg-[#2E060D] text-white rounded-lg px-2 py-1 shadow-xs">
               <button
                 type="button"
                 onClick={() => updateOrderQty(product, -1)}
                 aria-label="Decrease quantity"
-                className="w-5 h-5 rounded-md hover:bg-white/10 text-white/90 hover:text-white flex items-center justify-center transition-transform duration-150 active:scale-90 cursor-pointer"
+                className="w-6 h-6 rounded hover:bg-white/10 text-white/90 hover:text-white flex items-center justify-center transition-transform duration-150 active:scale-90 cursor-pointer"
               >
                 {qty === 1 ? (
-                  <Trash2 className="w-3 h-3 text-rose-300" />
+                  <Trash2 className="w-3.5 h-3.5 text-rose-300" />
                 ) : (
-                  <Minus className="w-3 h-3 stroke-[2.5]" />
+                  <Minus className="w-3.5 h-3.5 stroke-[2.5]" />
                 )}
               </button>
-              <span className="font-mono text-xs font-bold text-white tabular-nums min-w-[16px] text-center">
-                {qty}
-              </span>
+              <div className="flex items-center gap-1">
+                <span className="font-mono text-xs font-bold text-white tabular-nums">
+                  {qty}
+                </span>
+                <span className="text-[10px] text-[#F3D08A] uppercase font-mono">
+                  {qty === 1 ? 'case' : 'cases'}
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={() => updateOrderQty(product, 1)}
                 aria-label="Increase quantity"
-                className="w-5 h-5 rounded-md hover:bg-white/10 text-white/90 hover:text-white flex items-center justify-center transition-transform duration-150 active:scale-90 cursor-pointer"
+                className="w-6 h-6 rounded hover:bg-white/10 text-white/90 hover:text-white flex items-center justify-center transition-transform duration-150 active:scale-90 cursor-pointer"
               >
-                <Plus className="w-3 h-3 stroke-[2.5]" />
+                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
               </button>
             </div>
           )}
@@ -479,20 +435,19 @@ export function PublicProductsView() {
         <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#FAF5EB] text-[#2E060D] border border-[#E8DEC8] mb-1.5">
           <Truck className="w-4 h-4 text-[#BA8E4E]" />
         </div>
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[10.5px] font-mono text-emerald-800 font-semibold mb-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <div className="text-[11px] font-mono text-emerald-800 font-semibold mb-0.5">
           Pre-Dawn Dispatch (04:00 – 07:30 AM)
         </div>
-        <h3 className="text-[13.5px] font-bold text-[#2E060D] leading-snug">
-          Rootwills Commercial Order Pad
+        <h3 className="text-sm font-bold text-[#2E060D]">
+          Commercial Order Manifest
         </h3>
         <p className="text-[11px] text-stone-500">
-          Temperature-Controlled Logistics
+          Temperature-Controlled Multi-Drop
         </p>
       </div>
 
       {/* Selected Items Scroll Area */}
-      <div className="flex-1 overflow-y-auto divide-y divide-[#F0EAE1] py-2 max-h-[310px] pr-1 [scrollbar-width:thin]">
+      <div className="flex-1 overflow-y-auto divide-y divide-[#F2ECE1] py-2 max-h-[320px] pr-1 [scrollbar-width:thin]">
         {orderList.length === 0 ? (
           <div className="py-12 text-center space-y-2">
             <div className="w-10 h-10 rounded-full bg-[#FAF7F2] border border-[#E8DEC8] flex items-center justify-center mx-auto text-stone-400">
@@ -500,7 +455,7 @@ export function PublicProductsView() {
             </div>
             <p className="text-xs font-bold text-[#131313]">Order list is currently empty</p>
             <p className="text-[11px] text-stone-500 max-w-[210px] mx-auto leading-relaxed">
-              Tap &ldquo;+ Add&rdquo; on any wholesale line to prepare your morning kitchen drop.
+              Tap &ldquo;Add to Order&rdquo; on any line to prepare your morning kitchen drop.
             </p>
           </div>
         ) : (
@@ -521,11 +476,11 @@ export function PublicProductsView() {
 
               {/* Title & Pack Size */}
               <div className="flex-1 min-w-0">
-                <p className="text-[12px] font-medium text-[#1A1817] leading-snug line-clamp-1 group-hover:text-[#2E060D] transition-colors">
+                <p className="text-[12.5px] font-medium text-stone-900 leading-snug line-clamp-1 group-hover:text-[#2E060D] transition-colors">
                   {product.name}
                 </p>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="text-[10.5px] font-bold text-[#2E060D] bg-[#FAF5EB] px-1.5 py-0.2 rounded border border-[#E8DEC8]/80">
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="text-[11px] font-semibold text-[#8B2635]">
                     {product.packSize}
                   </span>
                   <span className="text-[10px] font-mono text-stone-400 truncate">
@@ -544,9 +499,9 @@ export function PublicProductsView() {
                     className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
                   >
                     {qty === 1 ? (
-                      <Trash2 className="w-3 h-3 text-rose-700" />
+                      <Trash2 className="w-3.5 h-3.5 text-rose-700" />
                     ) : (
-                      <Minus className="w-3 h-3 stroke-[2.25]" />
+                      <Minus className="w-3.5 h-3.5 stroke-[2.25]" />
                     )}
                   </button>
                   <span className="text-xs font-mono font-bold text-[#2E060D] tabular-nums min-w-[14px] text-center">
@@ -558,7 +513,7 @@ export function PublicProductsView() {
                     aria-label="Increase item"
                     className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
                   >
-                    <Plus className="w-3 h-3 stroke-[2.25]" />
+                    <Plus className="w-3.5 h-3.5 stroke-[2.25]" />
                   </button>
                 </div>
               </div>
@@ -567,12 +522,12 @@ export function PublicProductsView() {
         )}
       </div>
 
-      {/* "Frequently Paired Lines" Mini Carousel */}
+      {/* Frequently Paired Lines Mini Carousel */}
       <div className="pt-3 pb-2.5 border-t border-[#E8DEC8]">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-1">
             <Sparkles className="w-3 h-3 text-[#BA8E4E]" />
-            <h4 className="text-[11.5px] font-bold text-[#2E060D] uppercase tracking-wider">
+            <h4 className="text-[11px] font-semibold text-[#2E060D]">
               Frequently Paired
             </h4>
           </div>
@@ -634,10 +589,10 @@ export function PublicProductsView() {
                     )}
                   </button>
                 </div>
-                <div className="text-[10px] font-bold text-[#2E060D] truncate">
+                <div className="text-[10px] font-semibold text-[#8B2635] truncate">
                   {addon.packSize}
                 </div>
-                <p className="text-[10px] text-stone-600 line-clamp-1 leading-tight">
+                <p className="text-[10.5px] text-stone-600 line-clamp-1 leading-tight">
                   {addon.name}
                 </p>
               </div>
@@ -650,12 +605,12 @@ export function PublicProductsView() {
       <div className="pt-3 border-t border-[#E8DEC8] space-y-2.5">
         <div className="flex items-baseline justify-between text-xs">
           <div className="text-stone-600">
-            <span>Requisition Total:</span>
-            <span className="font-semibold text-[#131313] ml-1">
+            <span>Lines Selected:</span>
+            <span className="font-semibold text-stone-900 ml-1">
               {orderList.length} {orderList.length === 1 ? 'SKU' : 'SKUs'}
             </span>
           </div>
-          <span className="text-sm font-bold text-[#2E060D] tabular-nums font-mono">
+          <span className="text-base font-bold text-[#2E060D] tabular-nums font-mono">
             {totalCases} {totalCases === 1 ? 'Case' : 'Cases'}
           </span>
         </div>
@@ -694,9 +649,9 @@ export function PublicProductsView() {
 
   return (
     <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[72px] sm:pt-[86px] pb-20">
-      {/* Seamless Botanical Parchment Texture Overlay */}
+      {/* Restrained Botanical Parchment Texture Overlay (Reduced Visual Intensity) */}
       <div
-        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.09] mix-blend-multiply"
         style={{
           backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
           backgroundSize: '1100px auto',
@@ -709,10 +664,10 @@ export function PublicProductsView() {
           {/* ════════════════════════════════════════════════════════════════
               1. LEFT SIDEBAR: Executive B2B Department Navigation
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block w-[230px] xl:w-[255px] shrink-0 sticky top-[92px] max-h-[calc(100vh-104px)] overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin]">
+          <aside className="hidden lg:block w-[235px] xl:w-[255px] shrink-0 sticky top-[92px] max-h-[calc(100vh-104px)] overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin]">
             {/* Store Identity & Dispatch Information */}
-            <div className="pb-3.5 border-b border-[#E8DEC8] space-y-1">
-              <div className="flex items-center gap-2">
+            <div className="pb-3.5 border-b border-[#E8DEC8] space-y-1.5">
+              <div className="flex items-center gap-2.5">
                 <div className="relative w-7 h-7 rounded-full overflow-hidden ring-1 ring-[#BA8E4E]/80 shadow-2xs shrink-0">
                   <Image
                     src="/images/logo.png"
@@ -723,22 +678,22 @@ export function PublicProductsView() {
                   />
                 </div>
                 <div>
-                  <span className="text-[9.5px] font-mono uppercase tracking-widest text-[#BA8E4E] font-bold block">
-                    Commercial Purveyor
-                  </span>
-                  <h1 className="text-[14px] font-bold text-[#2E060D] leading-none">
+                  <h1 className="text-[14.5px] font-bold text-[#2E060D] leading-none">
                     Rootwills Larder
                   </h1>
+                  <span className="text-[11px] text-stone-500 block mt-0.5">
+                    UK Hospitality Purveyor
+                  </span>
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-stone-600">
+              <div className="pt-1 flex items-center justify-between text-[11px] font-mono text-stone-600">
                 <span className="flex items-center gap-1.5">
                   <Truck className="w-3.5 h-3.5 text-[#BA8E4E]" />
                   <span>Fleet 04:00–07:30</span>
                 </span>
-                <span className="px-1.5 py-0.2 rounded bg-[#FAF5EB] border border-[#E8DEC8] text-[10px] font-bold text-[#8C6E12]">
-                  UK B2B
+                <span className="px-1.5 py-0.2 rounded bg-[#FAF5EB] border border-[#E8DEC8] text-[10px] font-semibold text-[#8C6E12]">
+                  Daily
                 </span>
               </div>
             </div>
@@ -747,7 +702,7 @@ export function PublicProductsView() {
             {isAuthenticated ? (
               <div className="mt-3 p-2.5 rounded-xl bg-white border border-[#BA8E4E]/40 shadow-2xs space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-800 font-bold flex items-center gap-1">
+                  <span className="text-[10px] font-mono text-emerald-800 font-bold flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     Verified Partner
                   </span>
@@ -806,10 +761,10 @@ export function PublicProductsView() {
             {/* Departments Navigation List */}
             <div className="pt-3">
               <div className="mb-2 px-1 flex items-center justify-between">
-                <h2 className="text-[10.5px] font-mono uppercase tracking-wider text-stone-500 font-bold">
+                <h2 className="text-[11px] font-mono text-stone-500 font-semibold uppercase tracking-wider">
                   Departments
                 </h2>
-                <span className="text-[10px] font-mono text-stone-400">
+                <span className="text-[10.5px] font-mono text-stone-400">
                   {WHOLESALE_PRODUCTS.length} Lines
                 </span>
               </div>
@@ -823,18 +778,18 @@ export function PublicProductsView() {
                     setSelectedSubcategory('all');
                     setSearchQuery('');
                   }}
-                  className={`w-full flex items-center justify-between py-2 px-3 rounded-xl text-[12.5px] transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between py-2.5 px-3 rounded-xl text-[13px] transition-all cursor-pointer ${
                     selectedCategory === 'all'
-                      ? 'bg-[#2E060D] text-white font-semibold shadow-xs border-l-4 border-[#BA8E4E]'
-                      : 'text-stone-700 hover:bg-black/[0.04]'
+                      ? 'bg-[#2E060D] text-white font-medium shadow-xs border-l-4 border-[#BA8E4E]'
+                      : 'text-stone-700 hover:text-stone-900 hover:bg-black/[0.03]'
                   }`}
                 >
-                  <span className="font-medium">All Departments</span>
+                  <span>All Departments</span>
                   <span
                     className={`text-[10.5px] font-mono px-1.5 py-0.2 rounded-md ${
                       selectedCategory === 'all'
-                        ? 'bg-white/20 text-white'
-                        : 'bg-[#FAF5EB] text-stone-500 border border-[#E8DEC8]'
+                        ? 'bg-white/20 text-white font-semibold'
+                        : 'text-stone-500'
                     }`}
                   >
                     {WHOLESALE_PRODUCTS.length}
@@ -855,18 +810,18 @@ export function PublicProductsView() {
                         setSelectedSubcategory('all');
                         setSearchQuery('');
                       }}
-                      className={`w-full flex items-center justify-between py-2 px-3 rounded-xl text-[12px] transition-all cursor-pointer group ${
+                      className={`w-full flex items-center justify-between py-2.5 px-3 rounded-xl text-[13px] transition-all cursor-pointer group ${
                         active
-                          ? 'bg-[#2E060D] text-white font-semibold shadow-xs border-l-4 border-[#BA8E4E]'
-                          : 'text-stone-700 hover:bg-black/[0.04]'
+                          ? 'bg-[#2E060D] text-white font-medium shadow-xs border-l-4 border-[#BA8E4E]'
+                          : 'text-stone-700 hover:text-stone-900 hover:bg-black/[0.03]'
                       }`}
                     >
                       <span className="truncate">{cat.shortName}</span>
                       <span
-                        className={`text-[10px] font-mono px-1.5 py-0.2 rounded-md shrink-0 ml-1.5 ${
+                        className={`text-[10.5px] font-mono px-1.5 py-0.2 rounded-md shrink-0 ml-1.5 ${
                           active
                             ? 'bg-white/20 text-[#F3D08A] font-bold'
-                            : 'bg-[#FAF5EB] text-stone-500 border border-[#E8DEC8]'
+                            : 'text-stone-500'
                         }`}
                       >
                         {count}
@@ -932,7 +887,7 @@ export function PublicProductsView() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search 5,480+ lines by name, pack size, cut, or SKU (e.g. RW-796010)..."
-                  className="w-full pl-11 pr-24 py-3.5 rounded-2xl bg-white/95 focus:bg-white border border-[#E8DEC8] focus:border-[#BA8E4E] focus:ring-2 focus:ring-[#BA8E4E]/20 text-sm text-[#131313] placeholder:text-stone-400 outline-none shadow-[0_2px_12px_rgba(46,6,13,0.04)] transition-all font-sans"
+                  className="w-full pl-11 pr-24 py-3.5 rounded-2xl bg-white focus:bg-white border border-[#E8DEC8] focus:border-[#BA8E4E] focus:ring-2 focus:ring-[#BA8E4E]/20 text-sm text-stone-900 placeholder:text-stone-400 outline-none shadow-[0_2px_12px_rgba(46,6,13,0.03)] transition-all font-sans"
                 />
                 <div className="absolute right-3 flex items-center gap-1.5">
                   {searchQuery && (
@@ -952,7 +907,7 @@ export function PublicProductsView() {
               </div>
             </div>
 
-            {/* Quick Temperature Zone Filters */}
+            {/* Quick Storage Zone Filter Strip */}
             <div className="flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden mb-5 pb-1">
               <span className="text-[11px] font-mono text-stone-500 uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
                 <SlidersHorizontal className="w-3 h-3 text-[#BA8E4E]" />
@@ -960,10 +915,10 @@ export function PublicProductsView() {
               </span>
               {[
                 { id: 'all', label: 'All Storage Zones' },
-                { id: 'chilled', label: 'Chilled (1–4°C)' },
-                { id: 'butchery', label: 'Butchery (0–2°C)' },
-                { id: 'frozen', label: 'Frozen (-18°C)' },
-                { id: 'ambient', label: 'Ambient Larder' },
+                { id: 'chilled', label: 'Chilled' },
+                { id: 'butchery', label: 'Butchery' },
+                { id: 'frozen', label: 'Frozen' },
+                { id: 'ambient', label: 'Ambient' },
               ].map((filter) => {
                 const active = selectedTempFilter === filter.id;
                 return (
@@ -971,10 +926,10 @@ export function PublicProductsView() {
                     key={filter.id}
                     type="button"
                     onClick={() => setSelectedTempFilter(filter.id)}
-                    className={`px-2.5 py-1 rounded-lg text-[11px] font-medium shrink-0 transition-all cursor-pointer ${
+                    className={`px-3 py-1 rounded-lg text-xs font-medium shrink-0 transition-all cursor-pointer ${
                       active
                         ? 'bg-[#2E060D] text-white shadow-2xs font-semibold'
-                        : 'bg-white/80 hover:bg-white text-stone-600 border border-[#E8DEC8]/80'
+                        : 'bg-white hover:bg-stone-50 text-stone-700 border border-[#E8DEC8]'
                     }`}
                   >
                     {filter.label}
@@ -983,33 +938,34 @@ export function PublicProductsView() {
               })}
             </div>
 
-            {/* Standing Repeat Order Pad Banner */}
+            {/* Compact Standing Order Pad Banner */}
             {selectedCategory === 'repeat-pad' && (
-              <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-white border border-[#BA8E4E]/50 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF5EB] border border-[#E8DEC8] text-[10.5px] font-mono text-[#8C6E12] font-bold uppercase tracking-wider">
-                    <Clock className="w-3 h-3 text-[#BA8E4E]" />
-                    <span>Kitchen Repeat Reorder Pad</span>
+              <div className="mb-5 p-3 sm:py-3 sm:px-4 rounded-xl bg-white border border-[#BA8E4E]/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-lg bg-[#FAF5EB] border border-[#E8DEC8] flex items-center justify-center shrink-0">
+                    <Clock className="w-3.5 h-3.5 text-[#BA8E4E]" />
                   </div>
-                  <h2 className="text-base sm:text-lg font-bold text-[#2E060D]">
-                    Daily Standing Order Pad
-                  </h2>
-                  <p className="text-xs text-stone-600 max-w-xl leading-relaxed">
-                    Pre-set daily kitchen staples (Bread, Milk, Butter, Prime Cuts) for next-morning pre-dawn drop (04:00 – 07:30 AM).
-                  </p>
+                  <div>
+                    <h2 className="text-[13.5px] font-bold text-[#2E060D] leading-none">
+                      Standing Order Pad
+                    </h2>
+                    <p className="text-[11px] text-stone-500 mt-0.5">
+                      8 essential daily kitchen lines for pre-dawn drop (04:00 – 07:30 AM).
+                    </p>
+                  </div>
                 </div>
                 <button
                   type="button"
                   onClick={handleLoadStandingOrder}
-                  className="py-2.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white font-bold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer shrink-0"
+                  className="py-1.5 px-3.5 rounded-lg bg-[#2E060D] hover:bg-[#430A14] text-white font-semibold text-xs flex items-center gap-1.5 shadow-xs transition-all cursor-pointer shrink-0"
                 >
-                  <PackageCheck className="w-4 h-4 text-[#F3D08A]" />
+                  <PackageCheck className="w-3.5 h-3.5 text-[#F3D08A]" />
                   <span>Load Standard Drop (8 Cases)</span>
                 </button>
               </div>
             )}
 
-            {/* ─── PRODUCT CATALOG CONTENT ─── */}
+            {/* ─── PRODUCT CATALOG CONTENT (SPACIOUS 3-4 COLUMN GRID) ─── */}
             {isBrowsingAll ? (
               <div className="space-y-10">
                 {WHOLESALE_CATEGORIES.map((aisle) => {
@@ -1044,9 +1000,9 @@ export function PublicProductsView() {
                         </button>
                       </div>
 
-                      {/* Clean 4-5 Column Grid */}
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-3.5">
-                        {items.slice(0, 10).map((prod) => renderProductCard(prod, false))}
+                      {/* Spacious 3-4 Column Grid */}
+                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-4.5">
+                        {items.slice(0, 8).map((prod) => renderProductCard(prod, false))}
                       </div>
                     </section>
                   );
@@ -1082,7 +1038,7 @@ export function PublicProductsView() {
                       setSelectedTempFilter('all');
                       setSearchQuery('');
                     }}
-                    className="px-3 py-1.5 rounded-xl bg-white border border-[#E8DEC8] hover:border-[#BA8E4E] hover:bg-[#FAF7F2] text-xs font-semibold text-[#2E060D] transition-all cursor-pointer shadow-2xs"
+                    className="px-3.5 py-1.5 rounded-xl bg-white border border-[#E8DEC8] hover:border-[#BA8E4E] hover:bg-[#FAF7F2] text-xs font-semibold text-[#2E060D] transition-all cursor-pointer shadow-2xs"
                   >
                     ← All Departments
                   </button>
@@ -1146,7 +1102,7 @@ export function PublicProductsView() {
                     </button>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-3.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-4.5">
                     {filteredProducts.map((prod) => renderProductCard(prod, false))}
                   </div>
                 )}
@@ -1210,7 +1166,6 @@ export function PublicProductsView() {
       {quickViewProduct && (() => {
         const productQty = getQty(quickViewProduct.id);
         const categoryObj = WHOLESALE_CATEGORIES.find((c) => c.slug === quickViewProduct.categorySlug);
-        const tempBadge = getTempZoneBadge(quickViewProduct.tempZone);
 
         return (
           <div
@@ -1266,9 +1221,8 @@ export function PublicProductsView() {
                       <span className="px-2 py-0.5 rounded-md bg-[#2E060D]/5 border border-[#2E060D]/10 text-[10.5px] font-mono font-bold text-[#2E060D]">
                         SKU: {quickViewProduct.sku}
                       </span>
-                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-mono border ${tempBadge.style}`}>
-                        <span className={`w-1.5 h-1.5 rounded-full ${tempBadge.dot}`} />
-                        <span>{quickViewProduct.tempZone}</span>
+                      <span className="text-[11px] font-mono text-stone-500">
+                        {quickViewProduct.tempZone}
                       </span>
                       {categoryObj && (
                         <span className="text-[11px] font-sans font-medium text-stone-500">
@@ -1281,7 +1235,7 @@ export function PublicProductsView() {
                       {quickViewProduct.name}
                     </h3>
 
-                    <div className="inline-block text-sm font-bold text-[#2E060D] bg-[#FAF5EB] px-3 py-1 rounded-lg border border-[#E8DEC8]">
+                    <div className="inline-block text-sm font-semibold text-[#8B2635]">
                       Pack Size: {quickViewProduct.packSize}
                     </div>
                   </div>
