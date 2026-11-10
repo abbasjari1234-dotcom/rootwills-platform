@@ -11,10 +11,10 @@ export function middleware(request: NextRequest) {
     host.startsWith('direct.');
 
   if (isDirectDomain) {
-    // When landing on root of rootwillsdirect.co.uk, seamlessly rewrite to /products (Wholesale Ordering Catalog)
+    // When landing on root of rootwillsdirect.co.uk, seamlessly rewrite to /direct (Dedicated B2B Trade Login Portal)
     if (pathname === '/' || pathname === '') {
       const url = request.nextUrl.clone();
-      url.pathname = '/products';
+      url.pathname = '/direct';
       return NextResponse.rewrite(url);
     }
   }
@@ -29,7 +29,7 @@ export const config = {
      * - api routes
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - images, favicon, and static files
+     * - images, favicon, textures, and static files
      */
     '/((?!api|_next/static|_next/image|favicon.ico|images|textures|manifest.webmanifest|robots.txt|sitemap.xml).*)',
   ],

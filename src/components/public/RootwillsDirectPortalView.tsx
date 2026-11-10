@@ -1,52 +1,74 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Phone,
-  MessageCircle,
-  Mail,
-  MapPin,
+  User,
   Lock,
-  ArrowLeft,
-  ShoppingCart,
+  Eye,
+  EyeOff,
   CheckCircle2,
+  ArrowRight,
   ShieldCheck,
-  ArrowRight
+  Sparkles,
+  HelpCircle,
+  X,
+  Smartphone,
 } from 'lucide-react';
+import { WholesaleCheckoutModal } from './WholesaleCheckoutModal';
 
 export function RootwillsDirectPortalView() {
   const [loading, setLoading] = useState(false);
   const [signedInSuccess, setSignedInSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showNotice, setShowNotice] = useState(true);
+  const [isCustomerModalOpen, setIsCustomerModalOpen] = useState(false);
+  const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
 
-  // Sign In Form State
+  // Form State
   const [loginForm, setLoginForm] = useState({
     identifier: '',
     password: '',
-    rememberMe: true,
+    staySignedIn: true,
   });
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!loginForm.identifier.trim() || !loginForm.password.trim()) {
+      alert('Please enter your Account Number/Email and Password.');
+      return;
+    }
+
     setLoading(true);
 
     // Simulate authentication
     setTimeout(() => {
       setLoading(false);
       setSignedInSuccess(true);
-      // Return to products after successful authentication
+      try {
+        localStorage.setItem('rootwills_user_logged_in', 'true');
+        localStorage.setItem(
+          'rootwills_user_account',
+          JSON.stringify({
+            identifier: loginForm.identifier,
+            accountName: 'The Savoy London (Fairmont)',
+            accountNo: 'RW-2026-89412',
+            tier: 'Tier 1 Wholesale Direct',
+          })
+        );
+      } catch {
+        // ignore
+      }
+
       setTimeout(() => {
         window.location.href = '/products';
-      }, 1200);
-    }, 800);
+      }, 1000);
+    }, 700);
   };
 
   return (
-    <div className="relative bg-[#FAF7F2] min-h-screen text-[#131313] overflow-x-hidden pb-20 sm:pb-28">
-      {/* Upper Soft Tinted Header Backdrop */}
-      <div className="absolute top-0 inset-x-0 h-[310px] sm:h-[470px] bg-[#F3ECE0]/80 border-b border-[#E8DEC8]/60 pointer-events-none" />
-
+    <div className="relative bg-[#FAF7F2] min-h-screen text-[#131313] flex flex-col justify-between font-sans selection:bg-[#4E0D17] selection:text-white">
       {/* Seamless Botanical Parchment Texture Overlay */}
       <div
         className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
@@ -56,239 +78,166 @@ export function RootwillsDirectPortalView() {
         }}
       />
 
-      {/* ─── TOP LEFT: PROMINENT LARGE ROOTWILLS LOGO ─── */}
-      <header className="relative z-20 px-6 sm:px-12 pt-6 sm:pt-8 flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-3.5 sm:gap-4 group focus:outline-none shrink-0"
-        >
-          {/* Large Master Seal Logo */}
-          <div className="relative w-[54px] h-[54px] sm:w-[70px] sm:h-[70px] rounded-full shrink-0 bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_4px_18px_rgba(46,6,13,0.18)] transition-transform duration-300 group-hover:scale-105 overflow-hidden">
-            <Image
-              src="/images/logo.png"
-              alt="Rootwills Logo"
-              fill
-              unoptimized
-              sizes="80px"
-              className="object-contain p-1 rounded-full"
-              priority
-            />
-          </div>
-
-          {/* Large Brand Typography */}
-          <div className="flex flex-col text-left">
-            <span className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] tracking-tight group-hover:text-[#BA8E4E] transition-colors leading-tight">
-              Rootwills
+      {/* Top Banner Notice (Bidfood Direct-style compliance / SLA notice) */}
+      {showNotice && (
+        <div className="relative z-30 bg-[#260309] text-white/90 text-[11px] sm:text-xs py-2 px-4 flex items-center justify-between border-b border-[#BA8E4E]/30">
+          <div className="max-w-4xl mx-auto flex items-center gap-2 text-center justify-center flex-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F3D08A] animate-pulse" />
+            <span className="font-mono uppercase tracking-wider text-[#F3D08A] font-semibold">
+              Rootwills Direct Trade Portal:
             </span>
-            <span className="text-[11px] sm:text-xs text-stone-600 font-sans font-medium tracking-wide">
-              Food Services &amp; Wholesale
-            </span>
+            <span>Pre-dawn kitchen delivery cutoff is 23:00 GMT for tomorrow morning drops.</span>
           </div>
-        </Link>
-
-        {/* Back to Products Navigation */}
-        <Link
-          href="/products"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 hover:bg-white text-stone-700 hover:text-[#5A101D] text-xs font-semibold border border-[#EAE0CE] shadow-sm backdrop-blur-sm transition-all"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Products</span>
-        </Link>
-      </header>
-
-      {/* ─── CENTERED INTRO HEADER ─── */}
-      <section className="relative z-10 pt-8 sm:pt-14 pb-5 sm:pb-10 px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-2xl mx-auto space-y-2 sm:space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#5A101D]/10 text-[#5A101D] text-[11px] font-bold tracking-wider uppercase mb-1">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
-            Secure Customer Portal
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl lg:text-[42px] font-serif font-bold tracking-tight text-[#2E060D]">
-            Sign In to Continue
-          </h1>
-          <p className="text-xs sm:text-sm lg:text-[15px] text-stone-600 font-sans max-w-[50ch] mx-auto leading-[1.6] sm:leading-[1.7]">
-            Please log in with your email or account number to apply contracted trade rates and proceed with your order.
-          </p>
+          <button
+            type="button"
+            onClick={() => setShowNotice(false)}
+            className="text-white/60 hover:text-white p-1 transition-colors"
+            aria-label="Dismiss banner"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
         </div>
-      </section>
+      )}
 
-      {/* ─── UNIFIED LUXURY CARD (Matching Enquiry page reference) ─── */}
-      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-[20px] sm:rounded-[24px] p-2.5 sm:p-3.5 shadow-[0_24px_70px_rgba(46,6,13,0.08)] border border-[#EAE0CE]/90 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
-          
-          {/* ─── LEFT PANEL: CONTACT INFORMATION CARD (Exact match to Enquiry Page) ─── */}
-          <div className="lg:col-span-5 relative rounded-[14px] sm:rounded-[16px] bg-gradient-to-br from-[#5A101D] via-[#430A13] to-[#2B040A] text-white p-5 sm:p-10 overflow-hidden flex flex-col justify-between min-h-0 sm:min-h-[450px]">
-            {/* Top Heading & Intro */}
-            <div className="relative z-10 space-y-1.5 sm:space-y-2.5">
-              <h2 className="text-lg sm:text-[22px] font-sans font-bold tracking-tight text-white">
-                Contact Information
-              </h2>
-              <p className="text-[11.5px] sm:text-[13px] text-white/80 font-sans leading-relaxed max-w-[34ch] sm:max-w-[30ch]">
-                Reach our wholesale partnerships desk and pre-dawn logistics team directly for bespoke kitchen supply.
+      {/* Main Center Content */}
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 py-8 sm:py-12 max-w-xl mx-auto w-full">
+        {/* ─── 1. LARGE PROMINENT BRAND HEADER (Rootwills Direct) ─── */}
+        <div className="text-center mb-6 sm:mb-8 flex flex-col items-center">
+          <Link href="/" className="inline-flex flex-col items-center group">
+            {/* Master Seal Medallion with Gold Ring */}
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_4px_24px_rgba(46,6,13,0.18)] transition-transform duration-300 group-hover:scale-105 overflow-hidden p-1.5 mb-3">
+              <Image
+                src="/images/logo.png"
+                alt="Rootwills Master Logo"
+                fill
+                sizes="80px"
+                className="object-contain p-1 rounded-full"
+                priority
+                unoptimized
+              />
+            </div>
+
+            {/* Wordmark with "Direct" Emphasis */}
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <span className="font-serif font-black text-3xl sm:text-4xl text-[#2E060D] tracking-tight leading-none">
+                Rootwills
+              </span>
+              <span className="font-serif italic font-normal text-3xl sm:text-4xl text-[#A2441D] leading-none">
+                Direct
+              </span>
+            </div>
+            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-[#8C6E12] font-semibold mt-1.5">
+              Commercial Food Services &bull; Wholesale Portal
+            </span>
+          </Link>
+        </div>
+
+        {/* ─── 2. THE SIGNATURE RED & WHITE LUXURY LOGIN CARD ─── */}
+        <div className="w-full bg-[#FFFDF9] rounded-[24px] sm:rounded-[28px] shadow-[0_25px_70px_-15px_rgba(46,6,13,0.30)] border border-stone-200/90 overflow-hidden ring-1 ring-black/5">
+          {/* Top Oxblood Red Banner with Geometric Watermark Arcs */}
+          <div className="relative bg-gradient-to-br from-[#5A101D] via-[#430A13] to-[#2B040A] text-white px-6 sm:px-8 pt-7 pb-6 overflow-hidden">
+            {/* Geometric Watermark Arcs */}
+            <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-white/[0.04] pointer-events-none" />
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full border border-white/[0.07] pointer-events-none" />
+            <div className="absolute -top-16 -left-16 w-44 h-44 rounded-full bg-[#F3D08A]/[0.06] pointer-events-none blur-xl" />
+
+            <div className="relative z-10 text-center">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 border border-white/15 text-[10.5px] font-mono uppercase tracking-wider text-[#F3D08A] font-semibold mb-2">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Trade Account Sign In</span>
+              </div>
+              <h1 className="text-2xl sm:text-[26px] font-serif font-bold text-white tracking-tight">
+                Wholesale Portal Login
+              </h1>
+              <p className="text-xs text-white/75 font-sans mt-1">
+                Enter your contracted credentials to access bespoke kitchen pricing.
               </p>
             </div>
-
-            {/* Middle Contact Details List */}
-            <div className="relative z-10 space-y-3.5 sm:space-y-6 my-4 sm:my-auto py-1 sm:py-4">
-              {/* Landline Number */}
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
-                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
-                    Landline No
-                  </span>
-                  <a
-                    href="tel:+441616412803"
-                    className="block font-medium hover:text-[#F3D08A] transition-colors"
-                  >
-                    +44 16164 12803
-                  </a>
-                </div>
-              </div>
-
-              {/* WhatsApp Number */}
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <div className="text-xs sm:text-[13.5px] font-sans text-white/95 tabular-nums">
-                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
-                    WhatsApp No
-                  </span>
-                  <a
-                    href="https://wa.me/447984709478"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-medium hover:text-[#F3D08A] transition-colors"
-                  >
-                    +44 7984 709478
-                  </a>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <div className="text-xs sm:text-[13.5px] font-sans text-white/95">
-                  <span className="block font-mono text-[9.5px] uppercase tracking-[0.16em] text-[#F3D08A]/85 mb-0.5">
-                    Email
-                  </span>
-                  <a
-                    href="mailto:sales@rootwills.co.uk"
-                    className="block font-medium hover:text-[#F3D08A] transition-colors"
-                  >
-                    sales@rootwills.co.uk
-                  </a>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-center gap-3.5 sm:gap-4">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
-                <span className="text-xs sm:text-[13.5px] font-sans text-white/95 leading-snug">
-                  The Hub, Nobel Wy, Birmingham, UK
-                </span>
-              </div>
-            </div>
-
-            {/* Bottom spacer for balance */}
-            <div className="hidden sm:block relative z-10 h-2" />
-
-            {/* Decorative Translucent Corner Circle (matches reference design exactly) */}
-            <div
-              className="
-                absolute -bottom-10 -right-10 w-32 h-32 sm:w-52 sm:h-52 rounded-full pointer-events-none
-                bg-gradient-to-tl from-[#F3D08A]/25 via-[#BA8E4E]/20 to-white/5
-              "
-            />
           </div>
 
-          {/* ─── RIGHT PANEL: CLEAN UNDERLINE FORM (Matching Enquiry Page) ─── */}
-          <div className="lg:col-span-7 px-4 py-5 sm:px-12 sm:py-11 flex flex-col justify-center bg-white rounded-r-[16px]">
+          {/* Form Area */}
+          <div className="p-6 sm:p-8">
             {signedInSuccess ? (
-              <div className="py-8 sm:py-12 text-center space-y-3 sm:space-y-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FAF7F0] text-[#4E0D17] ring-1 ring-[#BA8E4E]/40 flex items-center justify-center mx-auto shadow-sm">
-                  <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
+              <div className="py-6 text-center space-y-3">
+                <div className="w-14 h-14 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-700 flex items-center justify-center mx-auto shadow-md">
+                  <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D]">
+                <h3 className="text-xl font-serif font-bold text-stone-900">
                   Signed In Successfully
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-600 font-sans max-w-md mx-auto leading-relaxed">
-                  Loading your contracted wholesale pricing and proceeding with your order...
+                <p className="text-xs text-stone-600 font-sans max-w-sm mx-auto">
+                  Applying contracted wholesale pricing and redirecting to the kitchen order pad...
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSignIn} className="space-y-4 sm:space-y-7">
-                <div className="space-y-1">
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D]">
-                    Sign In to Rootwills
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-stone-500 font-sans">
-                    Enter your account number or work email to view live contract pricing and place your order.
-                  </p>
-                </div>
-
-                {/* Input 1: Account Number or Work Email */}
-                <div className="group pt-2">
-                  <label
-                    htmlFor="login-identifier"
-                    className="block text-[11px] sm:text-xs font-sans font-medium text-stone-500 group-focus-within:text-[#4E0D17] transition-colors"
-                  >
-                    Account Number or Work Email
+              <form onSubmit={handleSignIn} className="space-y-4 sm:space-y-5">
+                {/* Field 1: Login ID / Account Number */}
+                <div className="space-y-1.5">
+                  <label className="text-[11.5px] font-sans font-semibold text-stone-700 block uppercase tracking-wider">
+                    Login ID / Account Number
                   </label>
-                  <input
-                    id="login-identifier"
-                    type="text"
-                    required
-                    autoComplete="username"
-                    placeholder="e.g. chef@venue.co.uk or account ID"
-                    value={loginForm.identifier}
-                    onChange={(e) => setLoginForm({ ...loginForm, identifier: e.target.value })}
-                    className="w-full pt-1.5 pb-2 sm:pt-2 sm:pb-2.5 text-xs sm:text-[15px] font-sans font-medium text-[#180205] bg-transparent border-b border-stone-200 focus:border-[#4E0D17] focus:outline-none transition-colors placeholder:text-stone-400"
-                  />
-                </div>
-
-                {/* Input 2: Password */}
-                <div className="group">
-                  <div className="flex items-center justify-between">
-                    <label
-                      htmlFor="login-password"
-                      className="block text-[11px] sm:text-xs font-sans font-medium text-stone-500 group-focus-within:text-[#4E0D17] transition-colors"
-                    >
-                      Password
-                    </label>
-                    <a
-                      href="https://wa.me/447984709478?text=Hello%2C%20I%20need%20assistance%20resetting%20my%20Rootwills%20password."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[11px] font-sans font-medium text-[#BA8E4E] hover:underline"
-                    >
-                      Forgot password?
-                    </a>
+                  <div className="relative flex items-center rounded-xl bg-white border border-stone-200/90 shadow-sm focus-within:ring-2 focus-within:ring-[#BA8E4E] focus-within:border-transparent transition-all">
+                    <span className="pl-3.5 text-stone-400">
+                      <User className="w-4 h-4" />
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      value={loginForm.identifier}
+                      onChange={(e) => setLoginForm({ ...loginForm, identifier: e.target.value })}
+                      placeholder="e.g. RW-2026-89412 or chef@venue.co.uk"
+                      className="w-full bg-transparent text-stone-900 px-3 py-2.5 text-xs sm:text-[13.5px] outline-none placeholder:text-stone-400 font-sans"
+                    />
                   </div>
-                  <input
-                    id="login-password"
-                    type="password"
-                    required
-                    autoComplete="current-password"
-                    placeholder="••••••••••••"
-                    value={loginForm.password}
-                    onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                    className="w-full pt-1.5 pb-2 sm:pt-2 sm:pb-2.5 text-xs sm:text-[15px] font-sans font-medium text-[#180205] bg-transparent border-b border-stone-200 focus:border-[#4E0D17] focus:outline-none transition-colors placeholder:text-stone-400"
-                  />
                 </div>
 
-                {/* Checkbox */}
-                <div className="flex items-center gap-2 pt-1">
-                  <input
-                    type="checkbox"
-                    id="rememberMe"
-                    checked={loginForm.rememberMe}
-                    onChange={(e) => setLoginForm({ ...loginForm, rememberMe: e.target.checked })}
-                    className="rounded border-stone-300 text-[#4E0D17] focus:ring-[#4E0D17]"
-                  />
-                  <label htmlFor="rememberMe" className="text-xs text-stone-600 font-sans cursor-pointer select-none">
-                    Remember this workstation for quick ordering
+                {/* Field 2: Password */}
+                <div className="space-y-1.5">
+                  <label className="text-[11.5px] font-sans font-semibold text-stone-700 block uppercase tracking-wider">
+                    Password
                   </label>
+                  <div className="relative flex items-center rounded-xl bg-white border border-stone-200/90 shadow-sm focus-within:ring-2 focus-within:ring-[#BA8E4E] focus-within:border-transparent transition-all">
+                    <span className="pl-3.5 text-stone-400">
+                      <Lock className="w-4 h-4" />
+                    </span>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      value={loginForm.password}
+                      onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                      placeholder="••••••••••••"
+                      className="w-full bg-transparent text-stone-900 px-3 py-2.5 text-xs sm:text-[13.5px] outline-none placeholder:text-stone-400 font-sans"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="pr-3 text-stone-400 hover:text-stone-600 transition-colors"
+                      aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    >
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Checkbox: Stay Signed In + Forgotten Password */}
+                <div className="flex items-center justify-between text-xs pt-1">
+                  <label className="flex items-center gap-2 text-stone-600 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={loginForm.staySignedIn}
+                      onChange={(e) => setLoginForm({ ...loginForm, staySignedIn: e.target.checked })}
+                      className="rounded border-stone-300 text-[#4E0D17] focus:ring-[#4E0D17] w-3.5 h-3.5"
+                    />
+                    <span className="font-sans text-[12px]">Stay Signed In</span>
+                  </label>
+
+                  <button
+                    type="button"
+                    onClick={() => setForgotPasswordOpen(true)}
+                    className="text-[#4E0D17] hover:text-[#2B040A] font-semibold text-[12px] underline transition-colors cursor-pointer"
+                  >
+                    Forgotten Password?
+                  </button>
                 </div>
 
                 {/* Submit Button */}
@@ -296,36 +245,185 @@ export function RootwillsDirectPortalView() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-8 py-3 rounded-lg bg-[#4E0D17] hover:bg-[#2B040A] text-white text-xs sm:text-sm font-sans font-semibold transition-all cursor-pointer active:scale-95 shadow-md flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-xl bg-[#4E0D17] hover:bg-[#34070F] text-white text-xs sm:text-sm font-sans font-bold transition-all duration-200 cursor-pointer active:scale-95 shadow-md flex items-center justify-center gap-2 disabled:opacity-50 group"
                   >
                     {loading ? (
-                      <span>Verifying...</span>
+                      <span>Verifying Trade Account...</span>
                     ) : (
                       <>
-                        <Lock className="w-4 h-4 text-[#F3D08A]" />
-                        <span>Sign In &amp; Proceed to Order</span>
+                        <span>Log In to Rootwills Direct</span>
+                        <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+                          <ArrowRight className="w-3 h-3 text-[#F3D08A]" />
+                        </span>
                       </>
                     )}
                   </button>
                 </div>
 
-                <div className="pt-4 text-xs text-stone-500 font-sans border-t border-stone-100 flex items-center justify-between">
-                  <span>New hospitality client?</span>
-                  <a
-                    href="https://wa.me/447984709478?text=Hello%2C%20I%20would%20like%20to%20set%20up%20a%20new%20Rootwills%20wholesale%20account."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-[#4E0D17] hover:underline flex items-center gap-1"
+                {/* Quick Test Demo Hint */}
+                <div className="text-center pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setLoginForm({
+                        identifier: 'chef@savoy.london',
+                        password: 'demo-password-2026',
+                        staySignedIn: true,
+                      });
+                    }}
+                    className="text-[11px] font-mono text-stone-400 hover:text-stone-700 underline"
                   >
-                    <span>Instant WhatsApp Setup</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                    Auto-fill demo chef credentials
+                  </button>
+                </div>
+
+                {/* Divider Line */}
+                <div className="relative py-2 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-stone-200" />
+                  </div>
+                  <span className="relative bg-[#FFFDF9] px-3 text-[11px] font-mono text-stone-400 uppercase">
+                    New Hospitality Account?
+                  </span>
+                </div>
+
+                {/* Secondary Actions (Bidfood Direct-style "Become a Customer" + "Browse Catalog") */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setIsCustomerModalOpen(true)}
+                    className="py-2.5 px-3 rounded-xl bg-[#FAF4ED] hover:bg-[#F3ECE0] text-[#4E0D17] border border-[#E8DEC8] text-xs font-semibold font-sans transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#BA8E4E]" />
+                    <span>Become a Customer</span>
+                  </button>
+
+                  <Link
+                    href="/products"
+                    className="py-2.5 px-3 rounded-xl bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 text-xs font-semibold font-sans transition-all flex items-center justify-center gap-1.5 text-center"
+                  >
+                    <span>Browse Catalog</span>
+                    <ArrowRight className="w-3 h-3 text-stone-400" />
+                  </Link>
                 </div>
               </form>
             )}
           </div>
         </div>
-      </section>
+
+        {/* ─── 3. MOBILE APP DOWNLOAD BADGES (Bidfood Direct Style) ─── */}
+        <div className="mt-8 flex flex-col items-center space-y-3">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold flex items-center gap-1.5">
+            <Smartphone className="w-3.5 h-3.5 text-[#BA8E4E]" />
+            <span>Kitchen Display &bull; Order On The Go</span>
+          </span>
+
+          <div className="flex items-center justify-center gap-3">
+            {/* App Store Pill */}
+            <a
+              href="https://apps.apple.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-xl bg-[#131313] hover:bg-black text-white text-xs font-sans font-semibold flex items-center gap-2.5 shadow-sm transition-all active:scale-95 border border-stone-800"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.76 1.06-1.82.94-2.88-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.95 2.8.01 0 .03 0 .05 0 1.02 0 2-.53 2.63-1.29z"/>
+              </svg>
+              <div className="text-left leading-tight">
+                <div className="text-[9px] text-stone-400 uppercase leading-none">Download on the</div>
+                <div className="text-[12px] font-bold">App Store</div>
+              </div>
+            </a>
+
+            {/* Google Play Pill */}
+            <a
+              href="https://play.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-xl bg-[#131313] hover:bg-black text-white text-xs font-sans font-semibold flex items-center gap-2.5 shadow-sm transition-all active:scale-95 border border-stone-800"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a1.996 1.996 0 0 1-.22-.924V2.738c0-.34.08-.656.22-.924zm11.238 11.24l2.585 2.586-11.87 6.852 9.285-9.438zm0-2.108L5.562 1.508l11.87 6.852-2.585 2.586zm1.488 1.488l3.415 1.972c.87.502.87 1.328 0 1.83l-3.415 1.972-2.108-2.108 2.108-2.108z"/>
+              </svg>
+              <div className="text-left leading-tight">
+                <div className="text-[9px] text-stone-400 uppercase leading-none">Get it on</div>
+                <div className="text-[12px] font-bold">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      {/* ─── 4. BIDFOOD DIRECT-STYLE FOOTER ─── */}
+      <footer className="relative z-10 border-t border-stone-200/80 bg-white/70 backdrop-blur-sm py-4 px-4 text-center">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500 font-sans">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link href="/about" className="hover:text-[#4E0D17] transition-colors">
+              About Us
+            </Link>
+            <Link href="/contact" className="hover:text-[#4E0D17] transition-colors">
+              Contact Desk
+            </Link>
+            <Link href="/terms" className="hover:text-[#4E0D17] transition-colors">
+              Terms &amp; Conditions
+            </Link>
+            <Link href="/privacy" className="hover:text-[#4E0D17] transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
+
+          <div className="text-[11px] font-mono text-stone-400">
+            Copyright &copy; 2026 Rootwills Ltd. All rights reserved.
+          </div>
+        </div>
+      </footer>
+
+      {/* ─── 5. BECOME A CUSTOMER MODAL (Exact design matching your approved version) ─── */}
+      <WholesaleCheckoutModal
+        isOpen={isCustomerModalOpen}
+        onClose={() => setIsCustomerModalOpen(false)}
+      />
+
+      {/* ─── 6. FORGOTTEN PASSWORD HELP MODAL ─── */}
+      {forgotPasswordOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-sm">
+          <div className="bg-[#FFFDF9] rounded-2xl max-w-md w-full p-6 border border-stone-200 shadow-xl space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-serif font-bold text-lg text-[#2E060D]">
+                Reset Wholesale Password
+              </h3>
+              <button
+                type="button"
+                onClick={() => setForgotPasswordOpen(false)}
+                className="text-stone-400 hover:text-stone-600"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <p className="text-xs text-stone-600 font-sans leading-relaxed">
+              Wholesale accounts are managed under commercial contracts. For instant password reset or login recovery, please contact your assigned depot lead or message dispatch directly:
+            </p>
+            <div className="space-y-2 pt-2">
+              <a
+                href="https://wa.me/447984709478?text=Hello%20Rootwills%20Support%2C%20I%20need%20assistance%20logging%20into%20my%20wholesale%20trade%20account."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors"
+              >
+                <span>WhatsApp Account Desk (+44 7984 709478)</span>
+              </a>
+              <a
+                href="tel:+441616412803"
+                className="w-full py-2.5 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold text-xs flex items-center justify-center gap-2 transition-colors"
+              >
+                <span>Call Landline (+44 16164 12803)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
+export default RootwillsDirectPortalView;
