@@ -99,7 +99,7 @@ const jsonLdSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': ['Organization', 'LocalBusiness'],
+      '@type': ['Organization', 'WholesaleStore', 'LocalBusiness'],
       '@id': 'https://www.rootwills.co.uk/#organization',
       name: 'Rootwills',
       legalName: 'Rootwills Ltd',
@@ -107,9 +107,19 @@ const jsonLdSchema = {
       logo: 'https://www.rootwills.co.uk/images/logo.png',
       image: 'https://www.rootwills.co.uk/images/commercial/rootwills_hero_chef_plating.jpg',
       description:
-        'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens.',
+        'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens. Over 5,480 catalog lines delivered pre-dawn.',
       telephone: '+44-16164-12803',
       email: 'sales@rootwills.co.uk',
+      currenciesAccepted: 'GBP',
+      paymentAccepted: 'BACS, Direct Debit, Credit Card, Trade Credit Accounts',
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '02:00',
+          closes: '16:00',
+        },
+      ],
       contactPoint: [
         {
           '@type': 'ContactPoint',
@@ -146,38 +156,73 @@ const jsonLdSchema = {
         { '@type': 'Country', name: 'United Kingdom' },
         { '@type': 'City', name: 'Birmingham' },
         { '@type': 'City', name: 'London' },
+        { '@type': 'City', name: 'Manchester' },
+        { '@type': 'City', name: 'Coventry' },
         { '@type': 'AdministrativeArea', name: 'West Midlands' },
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Rootwills Commercial Food Service & Wholesale Solutions',
+        name: 'Rootwills 5,480+ Line Commercial Foodservice & Wholesale Catalog',
         itemListElement: [
           {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Food Service Supply & Class 1 Fresh Produce',
-              description:
-                'Hand-graded British farm produce, seasonal vegetables, and chef-specified ingredients delivered pre-dawn.',
-            },
+            '@type': 'OfferCatalog',
+            name: 'Fresh Farm Produce & Herbs',
+            description: 'Class 1 British seasonal vegetables, salad greens, and micro-herbs hand-graded at 2am.',
           },
           {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Hospitality Wholesale Distribution',
-              description:
-                'Artisan dairy, prime British butchery, coastal catch, and ambient larder wholesale for restaurants, hotels, and caterers.',
-            },
+            '@type': 'OfferCatalog',
+            name: 'Prime British Butchery & Poultry',
+            description: 'Dry-aged British beef, native lamb, free-range pork, and Red Tractor poultry.',
           },
           {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Service',
-              name: 'Bespoke Culinary & Multi-Site Supply Partnerships',
-              description:
-                'Dedicated account management, cold-chain logistics, and tailored delivery schedules for independent and group hospitality venues.',
-            },
+            '@type': 'OfferCatalog',
+            name: 'Artisan Chilled Dairy & Eggs',
+            description: 'Farm fresh British milk, Somerset butter, clotted creams, and farm eggs.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Coastal Seafood & Day-Boat Catch',
+            description: 'Sustainably sourced Atlantic salmon, cod, wild seabass, and prepared shellfish.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Artisan Bakery & Morning Goods',
+            description: 'Slow-fermented sourdoughs, brioche buns, and morning pastries for catering.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Ambient Grocery & Rice/Pasta',
+            description: 'De Cecco pasta, arborio rice, tinned Italian tomatoes, pulses, and dry larder essentials.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Cold-Pressed Oils & Cooking Fats',
+            description: 'Extra virgin olive oil, British rapeseed oil, and culinary frying fats.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Pure Culinary Spices & Seasonings',
+            description: 'Whole and ground spices, seasonings, stocks, and culinary sauces.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Desserts, Purees & Patisserie',
+            description: 'Frozen artisan patisserie, fruit coulis, Belgian chocolate, and dessert bases.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Beverages, Juices & Syrups',
+            description: 'Pressed juices, premium sodas, botanical syrups, and barista ingredients.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Frozen Foods & Coated Fries',
+            description: 'Stealth fries, frozen fruits, vegetables, and prep-ready kitchen staples.',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Hygiene & Commercial Kitchen Consumables',
+            description: 'Degreasers, blue rolls, food wrap, foil, and sanitising solutions.',
           },
         ],
       },

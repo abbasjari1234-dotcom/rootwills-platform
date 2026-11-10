@@ -15,7 +15,9 @@ export function middleware(request: NextRequest) {
     if (pathname === '/' || pathname === '') {
       const url = request.nextUrl.clone();
       url.pathname = '/direct';
-      return NextResponse.rewrite(url);
+      const rewriteResponse = NextResponse.rewrite(url);
+      rewriteResponse.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+      return rewriteResponse;
     }
 
     // On rootwillsdirect.co.uk, gate order pad & catalogue behind verified trade credentials
@@ -26,13 +28,19 @@ export function middleware(request: NextRequest) {
         loginUrl.pathname = '/direct';
         loginUrl.searchParams.set('redirect', pathname + (search || ''));
         loginUrl.searchParams.set('auth_required', '1');
-        return NextResponse.redirect(loginUrl);
+        const redirectResponse = NextResponse.redirect(loginUrl);
+        redirectResponse.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+        return redirectResponse;
       }
     }
   }
 
   // On main web (rootwills.co.uk), allow public browsing of products & marketing pages
-  return NextResponse.next();
+  const response = NextResponse.next();
+  if (isDirectDomain || pathname.startsWith('/ops') || pathname.startsWith('/admin') || pathname.startsWith('/direct') || pathname.startsWith('/login')) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+  }
+  return response;
 }
 
 export const config = {
