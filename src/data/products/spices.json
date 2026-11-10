@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-ss-112550",
-    "sku": "112550",
+    "sku": "RW-112550",
     "name": "Knorr 100% Red Pepper & Tomato Soup (Ready to Use)",
     "packSize": "12x250ml",
     "categorySlug": "spices-sauces",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-ss-101050",
-    "sku": "101050",
+    "sku": "RW-101050",
     "name": "Knorr 100% Red Pepper & Tomato Soup (ready to use)",
     "packSize": "4x2.4ltr",
     "categorySlug": "spices-sauces",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-ss-250490",
-    "sku": "250490",
+    "sku": "RW-250490",
     "name": "Knorr Professional Thai Red Curry Soup",
     "packSize": "6x1.19kg",
     "categorySlug": "spices-sauces",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-ss-143241",
-    "sku": "143241",
+    "sku": "RW-143241",
     "name": "Country Range Glace Cherries",
     "packSize": "1x1kg",
     "categorySlug": "spices-sauces",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-ss-143240",
-    "sku": "143240",
+    "sku": "RW-143240",
     "name": "Country Range Glace Cherries",
     "packSize": "6x1kg",
     "categorySlug": "spices-sauces",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-ss-283120",
-    "sku": "283120",
+    "sku": "RW-283120",
     "name": "DaVinci Raspberry Sauce",
     "packSize": "12x500g",
     "categorySlug": "spices-sauces",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-ss-283121",
-    "sku": "283121",
+    "sku": "RW-283121",
     "name": "DaVinci Raspberry Sauce",
     "packSize": "500g",
     "categorySlug": "spices-sauces",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-ss-283110",
-    "sku": "283110",
+    "sku": "RW-283110",
     "name": "DaVinci Strawberry Sauce",
     "packSize": "12x500g",
     "categorySlug": "spices-sauces",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-ss-283111",
-    "sku": "283111",
+    "sku": "RW-283111",
     "name": "DaVinci Strawberry Sauce",
     "packSize": "500g",
     "categorySlug": "spices-sauces",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-ss-283130",
-    "sku": "283130",
+    "sku": "RW-283130",
     "name": "DaVinci Toffee Sauce with Devon Cream",
     "packSize": "12x500g",
     "categorySlug": "spices-sauces",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-ss-283131",
-    "sku": "283131",
+    "sku": "RW-283131",
     "name": "DaVinci Toffee Sauce with Devon Cream",
     "packSize": "500g",
     "categorySlug": "spices-sauces",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-ss-286450",
-    "sku": "286450",
+    "sku": "RW-286450",
     "name": "Dawn Hot Chocolate Fudge Sauce",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-ss-266100",
-    "sku": "266100",
+    "sku": "RW-266100",
     "name": "Macphie Real Brandy Sauce 12x1ltr",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-ss-266101",
-    "sku": "266101",
+    "sku": "RW-266101",
     "name": "Macphie Real Brandy Sauce 1ltr",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-ss-286001",
-    "sku": "286001",
+    "sku": "RW-286001",
     "name": "OTT Salted Caramel Dessert Topping",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-ss-286000",
-    "sku": "286000",
+    "sku": "RW-286000",
     "name": "OTT Salted Caramel Dessert Topping",
     "packSize": "6x500g",
     "categorySlug": "spices-sauces",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-ss-247161",
-    "sku": "247161",
+    "sku": "RW-247161",
     "name": "Simply Pistachio Topping Sauce",
     "packSize": "1x1kg",
     "categorySlug": "spices-sauces",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-ss-247160",
-    "sku": "247160",
+    "sku": "RW-247160",
     "name": "Simply Pistachio Topping Sauce",
     "packSize": "6x1kg",
     "categorySlug": "spices-sauces",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-ss-176390",
-    "sku": "176390",
+    "sku": "RW-176390",
     "name": "Taylor & Colledge Organic Vanilla Bean Paste",
     "packSize": "12x65g",
     "categorySlug": "spices-sauces",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-ss-243310",
-    "sku": "243310",
+    "sku": "RW-243310",
     "name": "Fulfil Chocolate Salted Caramel Bar",
     "packSize": "15x40g",
     "categorySlug": "spices-sauces",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-ss-375250",
-    "sku": "375250",
+    "sku": "RW-375250",
     "name": "Aero Bubbly Peppermint Chocolate Bar",
     "packSize": "24x36g",
     "categorySlug": "spices-sauces",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-ss-375120",
-    "sku": "375120",
+    "sku": "RW-375120",
     "name": "Tony's Chocolonely Caramel Sea Salt Chocolate",
     "packSize": "35x47g",
     "categorySlug": "spices-sauces",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-ss-275120",
-    "sku": "275120",
+    "sku": "RW-275120",
     "name": "Tony's Chocolonely Milk Chocolate Caramel & Sea Salt Bar",
     "packSize": "35x35g",
     "categorySlug": "spices-sauces",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-ss-275130",
-    "sku": "275130",
+    "sku": "RW-275130",
     "name": "Tony's Chocolonely Milk Chocolate Dark Almond & Sea Salt",
     "packSize": "35x35g",
     "categorySlug": "spices-sauces",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-ss-190490",
-    "sku": "190490",
+    "sku": "RW-190490",
     "name": "Achiote Paste",
     "packSize": "15x1kg",
     "categorySlug": "spices-sauces",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-ss-190491",
-    "sku": "190491",
+    "sku": "RW-190491",
     "name": "Achiote Paste",
     "packSize": "1x1kg",
     "categorySlug": "spices-sauces",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-ss-178161",
-    "sku": "178161",
+    "sku": "RW-178161",
     "name": "American BBQ Style Seasoning",
     "packSize": "340g",
     "categorySlug": "spices-sauces",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-ss-201450",
-    "sku": "201450",
+    "sku": "RW-201450",
     "name": "American BBQ Style Seasoning",
     "packSize": "340g",
     "categorySlug": "spices-sauces",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-ss-234621",
-    "sku": "234621",
+    "sku": "RW-234621",
     "name": "Cornish Sea Salt",
     "packSize": "350g",
     "categorySlug": "spices-sauces",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-ss-234620",
-    "sku": "234620",
+    "sku": "RW-234620",
     "name": "Cornish Sea Salt",
     "packSize": "6x350g",
     "categorySlug": "spices-sauces",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-ss-234581",
-    "sku": "234581",
+    "sku": "RW-234581",
     "name": "Cornish Sea Salt Crystals",
     "packSize": "1.5kg",
     "categorySlug": "spices-sauces",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-ss-234580",
-    "sku": "234580",
+    "sku": "RW-234580",
     "name": "Cornish Sea Salt Crystals",
     "packSize": "4x1.5kg",
     "categorySlug": "spices-sauces",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-ss-234591",
-    "sku": "234591",
+    "sku": "RW-234591",
     "name": "Cornish Sea Salt Fine Flakes",
     "packSize": "1.25kg",
     "categorySlug": "spices-sauces",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-ss-234590",
-    "sku": "234590",
+    "sku": "RW-234590",
     "name": "Cornish Sea salt Fine Flakes",
     "packSize": "4x1.25kg",
     "categorySlug": "spices-sauces",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-ss-234571",
-    "sku": "234571",
+    "sku": "RW-234571",
     "name": "Cornish Sea Salt Flakes",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-ss-234570",
-    "sku": "234570",
+    "sku": "RW-234570",
     "name": "Cornish Sea Salt Flakes",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-ss-234610",
-    "sku": "234610",
+    "sku": "RW-234610",
     "name": "Cornish Sea Salt Flakes",
     "packSize": "8x170g",
     "categorySlug": "spices-sauces",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-ss-234601",
-    "sku": "234601",
+    "sku": "RW-234601",
     "name": "Cornish Smoked Sea Salt Flakes",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-ss-234600",
-    "sku": "234600",
+    "sku": "RW-234600",
     "name": "Cornish Smoked Sea Salt Flakes",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-ss-208060",
-    "sku": "208060",
+    "sku": "RW-208060",
     "name": "Costa Coarse Sea Salt",
     "packSize": "10x750g",
     "categorySlug": "spices-sauces",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-ss-189631",
-    "sku": "189631",
+    "sku": "RW-189631",
     "name": "Country Range Blackened Cajun Seasoning",
     "packSize": "1x530g",
     "categorySlug": "spices-sauces",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-ss-189630",
-    "sku": "189630",
+    "sku": "RW-189630",
     "name": "Country Range Blackened Cajun Seasoning",
     "packSize": "4x530g",
     "categorySlug": "spices-sauces",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-ss-189731",
-    "sku": "189731",
+    "sku": "RW-189731",
     "name": "Country Range Cayenne Pepper",
     "packSize": "1x460g",
     "categorySlug": "spices-sauces",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-ss-189730",
-    "sku": "189730",
+    "sku": "RW-189730",
     "name": "Country Range Cayenne Pepper",
     "packSize": "4x460g",
     "categorySlug": "spices-sauces",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-ss-189941",
-    "sku": "189941",
+    "sku": "RW-189941",
     "name": "Country Range Chinese Five Spices",
     "packSize": "1x440g",
     "categorySlug": "spices-sauces",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-ss-189940",
-    "sku": "189940",
+    "sku": "RW-189940",
     "name": "Country Range Chinese Five Spices",
     "packSize": "4x440g",
     "categorySlug": "spices-sauces",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-ss-189831",
-    "sku": "189831",
+    "sku": "RW-189831",
     "name": "Country Range Cinnamon Sticks",
     "packSize": "1x150g",
     "categorySlug": "spices-sauces",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-ss-189830",
-    "sku": "189830",
+    "sku": "RW-189830",
     "name": "Country Range Cinnamon Sticks",
     "packSize": "4x150g",
     "categorySlug": "spices-sauces",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-ss-189721",
-    "sku": "189721",
+    "sku": "RW-189721",
     "name": "Country Range Coarse Ground Black Pepper",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-ss-189720",
-    "sku": "189720",
+    "sku": "RW-189720",
     "name": "Country Range Coarse Ground Black Pepper",
     "packSize": "4x500g",
     "categorySlug": "spices-sauces",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-ss-189401",
-    "sku": "189401",
+    "sku": "RW-189401",
     "name": "Country Range Curry Powder",
     "packSize": "1x450g",
     "categorySlug": "spices-sauces",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-ss-189400",
-    "sku": "189400",
+    "sku": "RW-189400",
     "name": "Country Range Curry Powder",
     "packSize": "4x450g",
     "categorySlug": "spices-sauces",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-ss-189311",
-    "sku": "189311",
+    "sku": "RW-189311",
     "name": "Country Range Dried Mixed Herbs",
     "packSize": "1x190g",
     "categorySlug": "spices-sauces",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-ss-189310",
-    "sku": "189310",
+    "sku": "RW-189310",
     "name": "Country Range Dried Mixed Herbs",
     "packSize": "4x190g",
     "categorySlug": "spices-sauces",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-ss-189441",
-    "sku": "189441",
+    "sku": "RW-189441",
     "name": "Country Range Dried Oregano",
     "packSize": "1x150g",
     "categorySlug": "spices-sauces",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-ss-189440",
-    "sku": "189440",
+    "sku": "RW-189440",
     "name": "Country Range Dried Oregano",
     "packSize": "4x150g",
     "categorySlug": "spices-sauces",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-ss-189581",
-    "sku": "189581",
+    "sku": "RW-189581",
     "name": "Country Range Dried Thyme",
     "packSize": "1x220g",
     "categorySlug": "spices-sauces",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-ss-189580",
-    "sku": "189580",
+    "sku": "RW-189580",
     "name": "Country Range Dried Thyme",
     "packSize": "4x220g",
     "categorySlug": "spices-sauces",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-ss-189871",
-    "sku": "189871",
+    "sku": "RW-189871",
     "name": "Country Range Fajita Seasoning",
     "packSize": "1x520g",
     "categorySlug": "spices-sauces",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-ss-189870",
-    "sku": "189870",
+    "sku": "RW-189870",
     "name": "Country Range Fajita Seasoning",
     "packSize": "4x520g",
     "categorySlug": "spices-sauces",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-ss-172141",
-    "sku": "172141",
+    "sku": "RW-172141",
     "name": "Country Range Ground Black Pepper",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-ss-172140",
-    "sku": "172140",
+    "sku": "RW-172140",
     "name": "Country Range Ground Black Pepper",
     "packSize": "4x500g",
     "categorySlug": "spices-sauces",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-ss-189471",
-    "sku": "189471",
+    "sku": "RW-189471",
     "name": "Country Range Ground Cinnamon",
     "packSize": "1x450g",
     "categorySlug": "spices-sauces",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-ss-189470",
-    "sku": "189470",
+    "sku": "RW-189470",
     "name": "Country Range Ground Cinnamon",
     "packSize": "4x450g",
     "categorySlug": "spices-sauces",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-ss-189381",
-    "sku": "189381",
+    "sku": "RW-189381",
     "name": "Country Range Ground Cumin",
     "packSize": "1x430g",
     "categorySlug": "spices-sauces",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-ss-189380",
-    "sku": "189380",
+    "sku": "RW-189380",
     "name": "Country Range Ground Cumin",
     "packSize": "4x430g",
     "categorySlug": "spices-sauces",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-ss-189551",
-    "sku": "189551",
+    "sku": "RW-189551",
     "name": "Country Range Ground Mixed Spice",
     "packSize": "1x480g",
     "categorySlug": "spices-sauces",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-ss-189550",
-    "sku": "189550",
+    "sku": "RW-189550",
     "name": "Country Range Ground Mixed Spice",
     "packSize": "4x480g",
     "categorySlug": "spices-sauces",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-ss-189371",
-    "sku": "189371",
+    "sku": "RW-189371",
     "name": "Country Range Ground Paprika",
     "packSize": "1x550g",
     "categorySlug": "spices-sauces",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-ss-189370",
-    "sku": "189370",
+    "sku": "RW-189370",
     "name": "Country Range Ground Paprika",
     "packSize": "4x550g",
     "categorySlug": "spices-sauces",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-ss-189521",
-    "sku": "189521",
+    "sku": "RW-189521",
     "name": "Country Range Ground Turmeric",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-ss-189520",
-    "sku": "189520",
+    "sku": "RW-189520",
     "name": "Country Range Ground Turmeric",
     "packSize": "4x500g",
     "categorySlug": "spices-sauces",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-ss-171281",
-    "sku": "171281",
+    "sku": "RW-171281",
     "name": "Country Range Ground White Pepper",
     "packSize": "1x550g",
     "categorySlug": "spices-sauces",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-ss-171280",
-    "sku": "171280",
+    "sku": "RW-171280",
     "name": "Country Range Ground White Pepper",
     "packSize": "4x550g",
     "categorySlug": "spices-sauces",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-ss-189661",
-    "sku": "189661",
+    "sku": "RW-189661",
     "name": "Country Range Medium Madras Curry Powder",
     "packSize": "1x490g",
     "categorySlug": "spices-sauces",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-ss-189660",
-    "sku": "189660",
+    "sku": "RW-189660",
     "name": "Country Range Medium Madras Curry Powder",
     "packSize": "4x490g",
     "categorySlug": "spices-sauces",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-ss-189411",
-    "sku": "189411",
+    "sku": "RW-189411",
     "name": "Country Range Smoked Paprika",
     "packSize": "1x550g",
     "categorySlug": "spices-sauces",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-ss-189410",
-    "sku": "189410",
+    "sku": "RW-189410",
     "name": "Country Range Smoked Paprika",
     "packSize": "4x550g",
     "categorySlug": "spices-sauces",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-ss-189530",
-    "sku": "189530",
+    "sku": "RW-189530",
     "name": "Country Range Table Salt",
     "packSize": "6kg",
     "categorySlug": "spices-sauces",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-ss-190021",
-    "sku": "190021",
+    "sku": "RW-190021",
     "name": "Country Range Tandoori Spice Mix",
     "packSize": "1x490g",
     "categorySlug": "spices-sauces",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-ss-190020",
-    "sku": "190020",
+    "sku": "RW-190020",
     "name": "Country Range Tandoori Spice Mix",
     "packSize": "4x490g",
     "categorySlug": "spices-sauces",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-ss-189851",
-    "sku": "189851",
+    "sku": "RW-189851",
     "name": "Country Range Whole Cumin",
     "packSize": "1x400g",
     "categorySlug": "spices-sauces",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-ss-189850",
-    "sku": "189850",
+    "sku": "RW-189850",
     "name": "Country Range Whole Cumin",
     "packSize": "4x400g",
     "categorySlug": "spices-sauces",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-ss-189970",
-    "sku": "189970",
+    "sku": "RW-189970",
     "name": "Cracked Black Peppercorns",
     "packSize": "6x425g",
     "categorySlug": "spices-sauces",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-ss-189971",
-    "sku": "189971",
+    "sku": "RW-189971",
     "name": "Cracked Black Peppercorns 1x425g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-ss-178180",
-    "sku": "178180",
+    "sku": "RW-178180",
     "name": "Dark Mexican Style Seasoning",
     "packSize": "2x300g",
     "categorySlug": "spices-sauces",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-ss-178181",
-    "sku": "178181",
+    "sku": "RW-178181",
     "name": "Dark Mexican Style Seasoning",
     "packSize": "300g",
     "categorySlug": "spices-sauces",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-ss-202540",
-    "sku": "202540",
+    "sku": "RW-202540",
     "name": "Green Peppercorns in Lightly Salted Water",
     "packSize": "3x1.1kg",
     "categorySlug": "spices-sauces",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-ss-189981",
-    "sku": "189981",
+    "sku": "RW-189981",
     "name": "Ground Black Pepper",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-ss-189980",
-    "sku": "189980",
+    "sku": "RW-189980",
     "name": "Ground Black Pepper",
     "packSize": "6x500g",
     "categorySlug": "spices-sauces",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-ss-189991",
-    "sku": "189991",
+    "sku": "RW-189991",
     "name": "Ground White Pepper",
     "packSize": "1x525g",
     "categorySlug": "spices-sauces",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-ss-189990",
-    "sku": "189990",
+    "sku": "RW-189990",
     "name": "Ground White Pepper",
     "packSize": "6x525g",
     "categorySlug": "spices-sauces",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-ss-106110",
-    "sku": "106110",
+    "sku": "RW-106110",
     "name": "Hillbillies Amarillo Hot Honey Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-ss-106111",
-    "sku": "106111",
+    "sku": "RW-106111",
     "name": "Hillbillies Amarillo Hot Honey Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-ss-106130",
-    "sku": "106130",
+    "sku": "RW-106130",
     "name": "Hillbillies Doubleback Dipping Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-ss-106131",
-    "sku": "106131",
+    "sku": "RW-106131",
     "name": "Hillbillies Doubleback Dipping Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-ss-106120",
-    "sku": "106120",
+    "sku": "RW-106120",
     "name": "Hillbillies Rodeo Ranch Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-ss-106121",
-    "sku": "106121",
+    "sku": "RW-106121",
     "name": "Hillbillies Rodeo Ranch Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -1275,7 +1275,7 @@
   },
   {
     "id": "rw-ss-106140",
-    "sku": "106140",
+    "sku": "RW-106140",
     "name": "Hillbillies Southern Fries Seasoning",
     "packSize": "650g",
     "categorySlug": "spices-sauces",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "rw-ss-106141",
-    "sku": "106141",
+    "sku": "RW-106141",
     "name": "Hillbillies Southern Fries Seasoning",
     "packSize": "650g",
     "categorySlug": "spices-sauces",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "rw-ss-189460",
-    "sku": "189460",
+    "sku": "RW-189460",
     "name": "Jerk Seasoning",
     "packSize": "12x250g",
     "categorySlug": "spices-sauces",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": "rw-ss-189461",
-    "sku": "189461",
+    "sku": "RW-189461",
     "name": "Jerk Seasoning",
     "packSize": "1x250g",
     "categorySlug": "spices-sauces",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "rw-ss-190270",
-    "sku": "190270",
+    "sku": "RW-190270",
     "name": "Kerala Celery Salt",
     "packSize": "4x1100g",
     "categorySlug": "spices-sauces",
@@ -1340,7 +1340,7 @@
   },
   {
     "id": "rw-ss-190051",
-    "sku": "190051",
+    "sku": "RW-190051",
     "name": "Kerala Whole Black Mustard Seed",
     "packSize": "1x680g",
     "categorySlug": "spices-sauces",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-ss-190050",
-    "sku": "190050",
+    "sku": "RW-190050",
     "name": "Kerala Whole Black Mustard Seed",
     "packSize": "4x680g",
     "categorySlug": "spices-sauces",
@@ -1366,7 +1366,7 @@
   },
   {
     "id": "rw-ss-152641",
-    "sku": "152641",
+    "sku": "RW-152641",
     "name": "Korean Style Chili & Sesame Seasoning",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -1379,7 +1379,7 @@
   },
   {
     "id": "rw-ss-152640",
-    "sku": "152640",
+    "sku": "RW-152640",
     "name": "Korean Style Chili & Sesame Seasoning",
     "packSize": "6x500g",
     "categorySlug": "spices-sauces",
@@ -1392,7 +1392,7 @@
   },
   {
     "id": "rw-ss-990300",
-    "sku": "990300",
+    "sku": "RW-990300",
     "name": "Lemon Pepper",
     "packSize": "6x750g",
     "categorySlug": "spices-sauces",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "rw-ss-112730",
-    "sku": "112730",
+    "sku": "RW-112730",
     "name": "Maggi Truffle Seasoning",
     "packSize": "600g",
     "categorySlug": "spices-sauces",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": "rw-ss-112731",
-    "sku": "112731",
+    "sku": "RW-112731",
     "name": "Maggi Truffle Seasoning",
     "packSize": "600g",
     "categorySlug": "spices-sauces",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "rw-ss-570060",
-    "sku": "570060",
+    "sku": "RW-570060",
     "name": "Maldon Sea Salt",
     "packSize": "1.4kg",
     "categorySlug": "spices-sauces",
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "rw-ss-570010",
-    "sku": "570010",
+    "sku": "RW-570010",
     "name": "Maldon Sea Salt",
     "packSize": "12x250g",
     "categorySlug": "spices-sauces",
@@ -1457,7 +1457,7 @@
   },
   {
     "id": "rw-ss-570011",
-    "sku": "570011",
+    "sku": "RW-570011",
     "name": "Maldon Sea Salt",
     "packSize": "250g",
     "categorySlug": "spices-sauces",
@@ -1470,7 +1470,7 @@
   },
   {
     "id": "rw-ss-152660",
-    "sku": "152660",
+    "sku": "RW-152660",
     "name": "Pureety Salt & Chilli Pepper Seasoning",
     "packSize": "6x900g",
     "categorySlug": "spices-sauces",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "rw-ss-207230",
-    "sku": "207230",
+    "sku": "RW-207230",
     "name": "Sharwood’s Mild Curry Powder",
     "packSize": "1x3.18kg",
     "categorySlug": "spices-sauces",
@@ -1496,7 +1496,7 @@
   },
   {
     "id": "rw-ss-189791",
-    "sku": "189791",
+    "sku": "RW-189791",
     "name": "Whole Black Peppercorns",
     "packSize": "1x500g",
     "categorySlug": "spices-sauces",
@@ -1509,7 +1509,7 @@
   },
   {
     "id": "rw-ss-189790",
-    "sku": "189790",
+    "sku": "RW-189790",
     "name": "Whole Black Peppercorns",
     "packSize": "6x500g",
     "categorySlug": "spices-sauces",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-ss-189781",
-    "sku": "189781",
+    "sku": "RW-189781",
     "name": "Whole Pink Peppercorns",
     "packSize": "1x200g",
     "categorySlug": "spices-sauces",
@@ -1535,7 +1535,7 @@
   },
   {
     "id": "rw-ss-189780",
-    "sku": "189780",
+    "sku": "RW-189780",
     "name": "Whole Pink Peppercorns",
     "packSize": "6x200g",
     "categorySlug": "spices-sauces",
@@ -1548,7 +1548,7 @@
   },
   {
     "id": "rw-ss-154860",
-    "sku": "154860",
+    "sku": "RW-154860",
     "name": "World Of Spice Jerk Seasoning",
     "packSize": "6x650g",
     "categorySlug": "spices-sauces",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "rw-ss-178171",
-    "sku": "178171",
+    "sku": "RW-178171",
     "name": "Zesty Chermoula Seasoning",
     "packSize": "260g",
     "categorySlug": "spices-sauces",
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "rw-ss-178170",
-    "sku": "178170",
+    "sku": "RW-178170",
     "name": "Zesty Chermoula Seasoning",
     "packSize": "2x260g",
     "categorySlug": "spices-sauces",
@@ -1587,7 +1587,7 @@
   },
   {
     "id": "rw-ss-215650",
-    "sku": "215650",
+    "sku": "RW-215650",
     "name": "Chef's Pass Beef Bouillon Powder Mix",
     "packSize": "2x800g",
     "categorySlug": "spices-sauces",
@@ -1600,7 +1600,7 @@
   },
   {
     "id": "rw-ss-215660",
-    "sku": "215660",
+    "sku": "RW-215660",
     "name": "Chef's Pass Vegetable Bouillon Powder Mix",
     "packSize": "2x800g",
     "categorySlug": "spices-sauces",
@@ -1613,7 +1613,7 @@
   },
   {
     "id": "rw-ss-252230",
-    "sku": "252230",
+    "sku": "RW-252230",
     "name": "Country Range Beef Bouillon Paste",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": "rw-ss-258200",
-    "sku": "258200",
+    "sku": "RW-258200",
     "name": "Country Range Beef Bouillon Powder Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -1639,7 +1639,7 @@
   },
   {
     "id": "rw-ss-252241",
-    "sku": "252241",
+    "sku": "RW-252241",
     "name": "Country Range Chicken Bouillon Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -1652,7 +1652,7 @@
   },
   {
     "id": "rw-ss-252240",
-    "sku": "252240",
+    "sku": "RW-252240",
     "name": "Country Range Chicken Bouillon Paste",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "rw-ss-258210",
-    "sku": "258210",
+    "sku": "RW-258210",
     "name": "Country Range Chicken Bouillon Powder Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-ss-252250",
-    "sku": "252250",
+    "sku": "RW-252250",
     "name": "Country Range Vegetable Bouillon Paste",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "rw-ss-258220",
-    "sku": "258220",
+    "sku": "RW-258220",
     "name": "Country Range Vegetable Bouillon Powder Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "rw-ss-253210",
-    "sku": "253210",
+    "sku": "RW-253210",
     "name": "Essential Cuisine Beef Stock Mix -2x800g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "rw-ss-253211",
-    "sku": "253211",
+    "sku": "RW-253211",
     "name": "Essential Cuisine Beef Stock Mix -800g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "rw-ss-253220",
-    "sku": "253220",
+    "sku": "RW-253220",
     "name": "Essential Cuisine Chicken Stock Mix",
     "packSize": "2x800g",
     "categorySlug": "spices-sauces",
@@ -1743,7 +1743,7 @@
   },
   {
     "id": "rw-ss-253221",
-    "sku": "253221",
+    "sku": "RW-253221",
     "name": "Essential Cuisine Chicken Stock Mix",
     "packSize": "800g",
     "categorySlug": "spices-sauces",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "rw-ss-253251",
-    "sku": "253251",
+    "sku": "RW-253251",
     "name": "Essential Cuisine Lamb Stock Mix",
     "packSize": "700g",
     "categorySlug": "spices-sauces",
@@ -1769,7 +1769,7 @@
   },
   {
     "id": "rw-ss-177961",
-    "sku": "177961",
+    "sku": "RW-177961",
     "name": "Essential Cuisine Premier Veal Jus Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -1782,7 +1782,7 @@
   },
   {
     "id": "rw-ss-177960",
-    "sku": "177960",
+    "sku": "RW-177960",
     "name": "Essential Cuisine Premier Veal Jus Paste",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "rw-ss-253230",
-    "sku": "253230",
+    "sku": "RW-253230",
     "name": "Essential Cuisine Vegetable Stock Mix",
     "packSize": "2x800g",
     "categorySlug": "spices-sauces",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "rw-ss-253231",
-    "sku": "253231",
+    "sku": "RW-253231",
     "name": "Essential Cuisine Vegetable Stock Mix",
     "packSize": "800g",
     "categorySlug": "spices-sauces",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "rw-ss-103000",
-    "sku": "103000",
+    "sku": "RW-103000",
     "name": "Knorr Beef Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1834,7 +1834,7 @@
   },
   {
     "id": "rw-ss-103001",
-    "sku": "103001",
+    "sku": "RW-103001",
     "name": "Knorr Beef Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-ss-103030",
-    "sku": "103030",
+    "sku": "RW-103030",
     "name": "Knorr Chicken Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "rw-ss-103031",
-    "sku": "103031",
+    "sku": "RW-103031",
     "name": "Knorr Chicken Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1873,7 +1873,7 @@
   },
   {
     "id": "rw-ss-112670",
-    "sku": "112670",
+    "sku": "RW-112670",
     "name": "Knorr Clear Fish Bouillon Paste 40ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1886,7 +1886,7 @@
   },
   {
     "id": "rw-ss-185701",
-    "sku": "185701",
+    "sku": "RW-185701",
     "name": "Knorr Lamb Bouillon Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -1899,7 +1899,7 @@
   },
   {
     "id": "rw-ss-185700",
-    "sku": "185700",
+    "sku": "RW-185700",
     "name": "Knorr Lamb Bouillon Paste",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": "rw-ss-185821",
-    "sku": "185821",
+    "sku": "RW-185821",
     "name": "Knorr Rich Vegetable Bouillon Paste 40ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -1925,7 +1925,7 @@
   },
   {
     "id": "rw-ss-185820",
-    "sku": "185820",
+    "sku": "RW-185820",
     "name": "Knorr Rich Vegetable Bouillon Paste 40ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1938,7 +1938,7 @@
   },
   {
     "id": "rw-ss-103040",
-    "sku": "103040",
+    "sku": "RW-103040",
     "name": "Knorr Vegetable Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "rw-ss-103041",
-    "sku": "103041",
+    "sku": "RW-103041",
     "name": "Knorr Vegetable Bouillon Cubes",
     "packSize": "660g",
     "categorySlug": "spices-sauces",
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "rw-ss-185881",
-    "sku": "185881",
+    "sku": "RW-185881",
     "name": "Knorr Vegetable Bouillon Paste Tub",
     "packSize": "1x1kg",
     "categorySlug": "spices-sauces",
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "rw-ss-185880",
-    "sku": "185880",
+    "sku": "RW-185880",
     "name": "Knorr Vegetable Bouillon Paste Tub",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "rw-ss-178280",
-    "sku": "178280",
+    "sku": "RW-178280",
     "name": "Light Vegetable Stock Mix",
     "packSize": "2x800g",
     "categorySlug": "spices-sauces",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "rw-ss-990250",
-    "sku": "990250",
+    "sku": "RW-990250",
     "name": "Maggi Beef Bouillon Gluten Free",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-ss-286221",
-    "sku": "286221",
+    "sku": "RW-286221",
     "name": "Major Beef Stock Base Paste 50ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": "rw-ss-286220",
-    "sku": "286220",
+    "sku": "RW-286220",
     "name": "Major Beef Stock Base Paste 50ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2042,7 +2042,7 @@
   },
   {
     "id": "rw-ss-186341",
-    "sku": "186341",
+    "sku": "RW-186341",
     "name": "Major Beef Stock Base Powder Mix",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2055,7 +2055,7 @@
   },
   {
     "id": "rw-ss-186340",
-    "sku": "186340",
+    "sku": "RW-186340",
     "name": "Major Beef Stock Base Powder Mix",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2068,7 +2068,7 @@
   },
   {
     "id": "rw-ss-286211",
-    "sku": "286211",
+    "sku": "RW-286211",
     "name": "Major Chicken Stock Base Paste 50ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "rw-ss-286210",
-    "sku": "286210",
+    "sku": "RW-286210",
     "name": "Major Chicken Stock Base Paste 50ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2094,7 +2094,7 @@
   },
   {
     "id": "rw-ss-186351",
-    "sku": "186351",
+    "sku": "RW-186351",
     "name": "Major Chicken Stock Base Powder Mix",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "rw-ss-186350",
-    "sku": "186350",
+    "sku": "RW-186350",
     "name": "Major Chicken Stock Base Powder Mix",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2120,7 +2120,7 @@
   },
   {
     "id": "rw-ss-186110",
-    "sku": "186110",
+    "sku": "RW-186110",
     "name": "Major Mushroom Stock Base Paste 50ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "rw-ss-101121",
-    "sku": "101121",
+    "sku": "RW-101121",
     "name": "Major Mushroom Stock Base Paste 50ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "rw-ss-101120",
-    "sku": "101120",
+    "sku": "RW-101120",
     "name": "Major Mushroom Stock Base Paste 50ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2159,7 +2159,7 @@
   },
   {
     "id": "rw-ss-177891",
-    "sku": "177891",
+    "sku": "RW-177891",
     "name": "Major Thickened Veal Jus Powder Mix",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-ss-286201",
-    "sku": "286201",
+    "sku": "RW-286201",
     "name": "Major Vegetable Stock Base Paste 50ltr",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "rw-ss-286200",
-    "sku": "286200",
+    "sku": "RW-286200",
     "name": "Major Vegetable Stock Base Paste 50ltr",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2198,7 +2198,7 @@
   },
   {
     "id": "rw-ss-186361",
-    "sku": "186361",
+    "sku": "RW-186361",
     "name": "Major Vegetable Stock Base Powder Mix",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "rw-ss-186360",
-    "sku": "186360",
+    "sku": "RW-186360",
     "name": "Major Vegetable Stock Base Powder Mix",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -2224,7 +2224,7 @@
   },
   {
     "id": "rw-ss-253261",
-    "sku": "253261",
+    "sku": "RW-253261",
     "name": "Signature Red Wine Jus",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -2237,7 +2237,7 @@
   },
   {
     "id": "rw-ss-253271",
-    "sku": "253271",
+    "sku": "RW-253271",
     "name": "Signature Red Wine Jus",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -2250,7 +2250,7 @@
   },
   {
     "id": "rw-ss-253270",
-    "sku": "253270",
+    "sku": "RW-253270",
     "name": "Signature Red Wine Jus",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -2263,7 +2263,7 @@
   },
   {
     "id": "rw-ss-183990",
-    "sku": "183990",
+    "sku": "RW-183990",
     "name": "Batchelors Curry Sauce Mix",
     "packSize": "2.5kg",
     "categorySlug": "spices-sauces",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "rw-ss-174431",
-    "sku": "174431",
+    "sku": "RW-174431",
     "name": "Chippies Choice Gluten Free Curry Sauce Mix",
     "packSize": "2.5kg",
     "categorySlug": "spices-sauces",
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "rw-ss-174430",
-    "sku": "174430",
+    "sku": "RW-174430",
     "name": "Chippies Choice Gluten Free Curry Sauce Mix",
     "packSize": "4x2.5kg",
     "categorySlug": "spices-sauces",
@@ -2302,7 +2302,7 @@
   },
   {
     "id": "rw-ss-207341",
-    "sku": "207341",
+    "sku": "RW-207341",
     "name": "Knorr Kashmiri Rogan Josh Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2315,7 +2315,7 @@
   },
   {
     "id": "rw-ss-207340",
-    "sku": "207340",
+    "sku": "RW-207340",
     "name": "Knorr Kashmiri Rogan Josh Paste",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -2328,7 +2328,7 @@
   },
   {
     "id": "rw-ss-207541",
-    "sku": "207541",
+    "sku": "RW-207541",
     "name": "Knorr Madras Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-ss-207540",
-    "sku": "207540",
+    "sku": "RW-207540",
     "name": "Knorr Madras Paste",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -2354,7 +2354,7 @@
   },
   {
     "id": "rw-ss-207851",
-    "sku": "207851",
+    "sku": "RW-207851",
     "name": "Knorr Professional Patak's Balti Paste",
     "packSize": "1.1kg",
     "categorySlug": "spices-sauces",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": "rw-ss-207850",
-    "sku": "207850",
+    "sku": "RW-207850",
     "name": "Knorr Professional Patak's Balti Paste",
     "packSize": "4x1.1kg",
     "categorySlug": "spices-sauces",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": "rw-ss-207801",
-    "sku": "207801",
+    "sku": "RW-207801",
     "name": "Knorr Professional Patak's Korma Paste",
     "packSize": "1.1kg",
     "categorySlug": "spices-sauces",
@@ -2393,7 +2393,7 @@
   },
   {
     "id": "rw-ss-207800",
-    "sku": "207800",
+    "sku": "RW-207800",
     "name": "Knorr Professional Patak's Korma Paste",
     "packSize": "4x1.1kg",
     "categorySlug": "spices-sauces",
@@ -2406,7 +2406,7 @@
   },
   {
     "id": "rw-ss-207811",
-    "sku": "207811",
+    "sku": "RW-207811",
     "name": "Knorr Professional Patak's Tikka Masala Paste",
     "packSize": "1.1kg",
     "categorySlug": "spices-sauces",
@@ -2419,7 +2419,7 @@
   },
   {
     "id": "rw-ss-207810",
-    "sku": "207810",
+    "sku": "RW-207810",
     "name": "Knorr Professional Patak's Tikka Masala Paste",
     "packSize": "4x1.1kg",
     "categorySlug": "spices-sauces",
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "rw-ss-207481",
-    "sku": "207481",
+    "sku": "RW-207481",
     "name": "Knorr Tandoori Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2445,7 +2445,7 @@
   },
   {
     "id": "rw-ss-207480",
-    "sku": "207480",
+    "sku": "RW-207480",
     "name": "Knorr Tandoori Paste",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -2458,7 +2458,7 @@
   },
   {
     "id": "rw-ss-207461",
-    "sku": "207461",
+    "sku": "RW-207461",
     "name": "Knorr Tikka Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "rw-ss-207460",
-    "sku": "207460",
+    "sku": "RW-207460",
     "name": "Knorr Tikka Paste",
     "packSize": "4x1kg",
     "categorySlug": "spices-sauces",
@@ -2484,7 +2484,7 @@
   },
   {
     "id": "rw-ss-216640",
-    "sku": "216640",
+    "sku": "RW-216640",
     "name": "Bisto Gravy Granules for Poultry (25 litres)",
     "packSize": "1.8kg",
     "categorySlug": "spices-sauces",
@@ -2497,7 +2497,7 @@
   },
   {
     "id": "rw-ss-216650",
-    "sku": "216650",
+    "sku": "RW-216650",
     "name": "Bisto Gravy Granules Gluten Free Vegan (25 litres)",
     "packSize": "1.8kg",
     "categorySlug": "spices-sauces",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-ss-216630",
-    "sku": "216630",
+    "sku": "RW-216630",
     "name": "Bisto Gravy Granules Reduced Salt GF (25 litres)",
     "packSize": "1.8kg",
     "categorySlug": "spices-sauces",
@@ -2523,7 +2523,7 @@
   },
   {
     "id": "rw-ss-215200",
-    "sku": "215200",
+    "sku": "RW-215200",
     "name": "Bisto Gravy Mix",
     "packSize": "2.06kg",
     "categorySlug": "spices-sauces",
@@ -2536,7 +2536,7 @@
   },
   {
     "id": "rw-ss-200040",
-    "sku": "200040",
+    "sku": "RW-200040",
     "name": "Bisto Vegetarian Gravy Granules",
     "packSize": "1.8kg",
     "categorySlug": "spices-sauces",
@@ -2549,7 +2549,7 @@
   },
   {
     "id": "rw-ss-216501",
-    "sku": "216501",
+    "sku": "RW-216501",
     "name": "Country Range Fine Instant Gravy Granules",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -2562,7 +2562,7 @@
   },
   {
     "id": "rw-ss-216500",
-    "sku": "216500",
+    "sku": "RW-216500",
     "name": "Country Range Fine Instant Gravy Granules",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "rw-ss-215601",
-    "sku": "215601",
+    "sku": "RW-215601",
     "name": "Country Range Gravy Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -2588,7 +2588,7 @@
   },
   {
     "id": "rw-ss-215600",
-    "sku": "215600",
+    "sku": "RW-215600",
     "name": "Country Range Gravy Mix",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "rw-ss-253311",
-    "sku": "253311",
+    "sku": "RW-253311",
     "name": "Essential Cuisine No 1 Beef Gravy Mix Gluten Free",
     "packSize": "1.5kg",
     "categorySlug": "spices-sauces",
@@ -2614,7 +2614,7 @@
   },
   {
     "id": "rw-ss-253310",
-    "sku": "253310",
+    "sku": "RW-253310",
     "name": "Essential Cuisine No 1 Beef Gravy Mix Gluten Free",
     "packSize": "2x1.5kg",
     "categorySlug": "spices-sauces",
@@ -2627,7 +2627,7 @@
   },
   {
     "id": "rw-ss-253301",
-    "sku": "253301",
+    "sku": "RW-253301",
     "name": "Essential Cuisine No.1 Savoury Gravy Mix",
     "packSize": "1.5kg",
     "categorySlug": "spices-sauces",
@@ -2640,7 +2640,7 @@
   },
   {
     "id": "rw-ss-253300",
-    "sku": "253300",
+    "sku": "RW-253300",
     "name": "Essential Cuisine No.1 Savoury Gravy Mix",
     "packSize": "2x1.5kg",
     "categorySlug": "spices-sauces",
@@ -2653,7 +2653,7 @@
   },
   {
     "id": "rw-ss-196120",
-    "sku": "196120",
+    "sku": "RW-196120",
     "name": "Hillbillies Southern Style Gravy",
     "packSize": "1x2kg",
     "categorySlug": "spices-sauces",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-ss-215591",
-    "sku": "215591",
+    "sku": "RW-215591",
     "name": "Knorr Finest Professional Gravy 12L",
     "packSize": "1.14kg",
     "categorySlug": "spices-sauces",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-ss-215590",
-    "sku": "215590",
+    "sku": "RW-215590",
     "name": "Knorr Finest Professional Gravy 12L",
     "packSize": "3x1.14kg",
     "categorySlug": "spices-sauces",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "rw-ss-185960",
-    "sku": "185960",
+    "sku": "RW-185960",
     "name": "Knorr Gluten Free Gravy Granules For Meat Dishes 75ltr",
     "packSize": "6kg",
     "categorySlug": "spices-sauces",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": "rw-ss-215570",
-    "sku": "215570",
+    "sku": "RW-215570",
     "name": "Knorr Gluten Free Gravy Granules for Poultry",
     "packSize": "1.88kg",
     "categorySlug": "spices-sauces",
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "rw-ss-215401",
-    "sku": "215401",
+    "sku": "RW-215401",
     "name": "Maggi Original Gravy Mix",
     "packSize": "1.8kg",
     "categorySlug": "spices-sauces",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "rw-ss-215400",
-    "sku": "215400",
+    "sku": "RW-215400",
     "name": "Maggi Original Gravy Mix",
     "packSize": "2x1.8kg",
     "categorySlug": "spices-sauces",
@@ -2744,7 +2744,7 @@
   },
   {
     "id": "rw-ss-216690",
-    "sku": "216690",
+    "sku": "RW-216690",
     "name": "Major Gluten Free Gravy Granules with Vit D for Poultry",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -2757,7 +2757,7 @@
   },
   {
     "id": "rw-ss-178980",
-    "sku": "178980",
+    "sku": "RW-178980",
     "name": "Major Gluten Free Gravy Granules with Vitamin D for Meat",
     "packSize": "1.88kg",
     "categorySlug": "spices-sauces",
@@ -2770,7 +2770,7 @@
   },
   {
     "id": "rw-ss-186310",
-    "sku": "186310",
+    "sku": "RW-186310",
     "name": "Major Gluten Free Meaty Beef Gravy",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -2783,7 +2783,7 @@
   },
   {
     "id": "rw-ss-186440",
-    "sku": "186440",
+    "sku": "RW-186440",
     "name": "Major Gluten Free Vegetarian Gravy",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -2796,7 +2796,7 @@
   },
   {
     "id": "rw-ss-216271",
-    "sku": "216271",
+    "sku": "RW-216271",
     "name": "Schwartz Gravy Browning",
     "packSize": "1.2kg",
     "categorySlug": "spices-sauces",
@@ -2809,7 +2809,7 @@
   },
   {
     "id": "rw-ss-216270",
-    "sku": "216270",
+    "sku": "RW-216270",
     "name": "Schwartz Gravy Browning",
     "packSize": "6x1.2kg",
     "categorySlug": "spices-sauces",
@@ -2822,7 +2822,7 @@
   },
   {
     "id": "rw-ss-177980",
-    "sku": "177980",
+    "sku": "RW-177980",
     "name": "Signature Beef Jus",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -2835,7 +2835,7 @@
   },
   {
     "id": "rw-ss-230650",
-    "sku": "230650",
+    "sku": "RW-230650",
     "name": "Knorr Rich Demi Glace Sauce",
     "packSize": "3x1.05kg",
     "categorySlug": "spices-sauces",
@@ -2848,7 +2848,7 @@
   },
   {
     "id": "rw-ss-178270",
-    "sku": "178270",
+    "sku": "RW-178270",
     "name": "Lobster Glace",
     "packSize": "4x600g",
     "categorySlug": "spices-sauces",
@@ -2861,7 +2861,7 @@
   },
   {
     "id": "rw-ss-178271",
-    "sku": "178271",
+    "sku": "RW-178271",
     "name": "Lobster Glace",
     "packSize": "600g",
     "categorySlug": "spices-sauces",
@@ -2874,7 +2874,7 @@
   },
   {
     "id": "rw-ss-186681",
-    "sku": "186681",
+    "sku": "RW-186681",
     "name": "Maggi Demi Glace",
     "packSize": "1.52kg",
     "categorySlug": "spices-sauces",
@@ -2887,7 +2887,7 @@
   },
   {
     "id": "rw-ss-186680",
-    "sku": "186680",
+    "sku": "RW-186680",
     "name": "Maggi Demi Glace",
     "packSize": "2x1.52kg",
     "categorySlug": "spices-sauces",
@@ -2900,7 +2900,7 @@
   },
   {
     "id": "rw-ss-991280",
-    "sku": "991280",
+    "sku": "RW-991280",
     "name": "Black Garlic Paste",
     "packSize": "6x300g",
     "categorySlug": "spices-sauces",
@@ -2913,7 +2913,7 @@
   },
   {
     "id": "rw-ss-185070",
-    "sku": "185070",
+    "sku": "RW-185070",
     "name": "Casalinga Vegan Basil Pesto (tub)",
     "packSize": "6x950g",
     "categorySlug": "spices-sauces",
@@ -2926,7 +2926,7 @@
   },
   {
     "id": "rw-ss-185071",
-    "sku": "185071",
+    "sku": "RW-185071",
     "name": "Casalinga Vegan Basil Pesto (tub)",
     "packSize": "950g",
     "categorySlug": "spices-sauces",
@@ -2939,7 +2939,7 @@
   },
   {
     "id": "rw-ss-210020",
-    "sku": "210020",
+    "sku": "RW-210020",
     "name": "Chipotle Paste",
     "packSize": "6x750g",
     "categorySlug": "spices-sauces",
@@ -2952,7 +2952,7 @@
   },
   {
     "id": "rw-ss-210021",
-    "sku": "210021",
+    "sku": "RW-210021",
     "name": "Chipotle Paste",
     "packSize": "750g",
     "categorySlug": "spices-sauces",
@@ -2965,7 +2965,7 @@
   },
   {
     "id": "rw-ss-171050",
-    "sku": "171050",
+    "sku": "RW-171050",
     "name": "Cooks & Co Red Pesto",
     "packSize": "4x1.2kg",
     "categorySlug": "spices-sauces",
@@ -2978,7 +2978,7 @@
   },
   {
     "id": "rw-ss-127390",
-    "sku": "127390",
+    "sku": "RW-127390",
     "name": "Harissa Paste",
     "packSize": "6x760g",
     "categorySlug": "spices-sauces",
@@ -2991,7 +2991,7 @@
   },
   {
     "id": "rw-ss-127391",
-    "sku": "127391",
+    "sku": "RW-127391",
     "name": "Harissa Paste",
     "packSize": "760g",
     "categorySlug": "spices-sauces",
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "rw-ss-173380",
-    "sku": "173380",
+    "sku": "RW-173380",
     "name": "Knorr Chicken Bouillon Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -3017,7 +3017,7 @@
   },
   {
     "id": "rw-ss-173381",
-    "sku": "173381",
+    "sku": "RW-173381",
     "name": "Knorr Chicken Bouillon Paste",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -3030,7 +3030,7 @@
   },
   {
     "id": "rw-ss-211460",
-    "sku": "211460",
+    "sku": "RW-211460",
     "name": "Knorr Jamaican Jerk Paste Jar",
     "packSize": "2x1.15kg",
     "categorySlug": "spices-sauces",
@@ -3043,7 +3043,7 @@
   },
   {
     "id": "rw-ss-173371",
-    "sku": "173371",
+    "sku": "RW-173371",
     "name": "Knorr Professional Gluten Free Beef Paste Bouillon",
     "packSize": "1kg",
     "categorySlug": "spices-sauces",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": "rw-ss-173370",
-    "sku": "173370",
+    "sku": "RW-173370",
     "name": "Knorr Professional Gluten Free Beef Paste Bouillon",
     "packSize": "2x1kg",
     "categorySlug": "spices-sauces",
@@ -3069,7 +3069,7 @@
   },
   {
     "id": "rw-ss-152631",
-    "sku": "152631",
+    "sku": "RW-152631",
     "name": "Korean Style Kimchi Paste Chili and Garlic",
     "packSize": "1x790g",
     "categorySlug": "spices-sauces",
@@ -3082,7 +3082,7 @@
   },
   {
     "id": "rw-ss-152630",
-    "sku": "152630",
+    "sku": "RW-152630",
     "name": "Korean Style Kimchi Paste Chili and Garlic",
     "packSize": "6x790g",
     "categorySlug": "spices-sauces",
@@ -3095,7 +3095,7 @@
   },
   {
     "id": "rw-ss-176090",
-    "sku": "176090",
+    "sku": "RW-176090",
     "name": "Nduja Paste",
     "packSize": "6x800g",
     "categorySlug": "spices-sauces",
@@ -3108,7 +3108,7 @@
   },
   {
     "id": "rw-ss-176091",
-    "sku": "176091",
+    "sku": "RW-176091",
     "name": "Nduja Paste",
     "packSize": "800g",
     "categorySlug": "spices-sauces",
@@ -3121,7 +3121,7 @@
   },
   {
     "id": "rw-ss-108380",
-    "sku": "108380",
+    "sku": "RW-108380",
     "name": "Tahini Sesame Paste",
     "packSize": "907g",
     "categorySlug": "spices-sauces",
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "rw-ss-108381",
-    "sku": "108381",
+    "sku": "RW-108381",
     "name": "Tahini Sesame Paste",
     "packSize": "907g",
     "categorySlug": "spices-sauces",
@@ -3147,7 +3147,7 @@
   },
   {
     "id": "rw-ss-105891",
-    "sku": "105891",
+    "sku": "RW-105891",
     "name": "Triple Lion Red Pesto",
     "packSize": "1.12kg",
     "categorySlug": "spices-sauces",
@@ -3160,7 +3160,7 @@
   },
   {
     "id": "rw-ss-105890",
-    "sku": "105890",
+    "sku": "RW-105890",
     "name": "Triple Lion Red Pesto",
     "packSize": "6x1.12kg",
     "categorySlug": "spices-sauces",
@@ -3173,7 +3173,7 @@
   },
   {
     "id": "rw-ss-265210",
-    "sku": "265210",
+    "sku": "RW-265210",
     "name": "Arrabbiata Sauce",
     "packSize": "4x1.5kg",
     "categorySlug": "spices-sauces",
@@ -3186,7 +3186,7 @@
   },
   {
     "id": "rw-ss-184061",
-    "sku": "184061",
+    "sku": "RW-184061",
     "name": "Country Range Béchamel Sauce",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -3199,7 +3199,7 @@
   },
   {
     "id": "rw-ss-184060",
-    "sku": "184060",
+    "sku": "RW-184060",
     "name": "Country Range Béchamel Sauce",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -3212,7 +3212,7 @@
   },
   {
     "id": "rw-ss-283161",
-    "sku": "283161",
+    "sku": "RW-283161",
     "name": "Country Range Katsu Curry Sauce",
     "packSize": "1x2.3kg",
     "categorySlug": "spices-sauces",
@@ -3225,7 +3225,7 @@
   },
   {
     "id": "rw-ss-283160",
-    "sku": "283160",
+    "sku": "RW-283160",
     "name": "Country Range Katsu Curry Sauce",
     "packSize": "2x2.3kg",
     "categorySlug": "spices-sauces",
@@ -3238,7 +3238,7 @@
   },
   {
     "id": "rw-ss-169860",
-    "sku": "169860",
+    "sku": "RW-169860",
     "name": "Country Range Multi Use Tomato Sauce",
     "packSize": "6x3kg",
     "categorySlug": "spices-sauces",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": "rw-ss-169851",
-    "sku": "169851",
+    "sku": "RW-169851",
     "name": "Country Range Thai Sweet Chilli Sauce",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -3264,7 +3264,7 @@
   },
   {
     "id": "rw-ss-169850",
-    "sku": "169850",
+    "sku": "RW-169850",
     "name": "Country Range Thai Sweet Chilli Sauce",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -3277,7 +3277,7 @@
   },
   {
     "id": "rw-ss-210130",
-    "sku": "210130",
+    "sku": "RW-210130",
     "name": "Golden Palace Teriyaki Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3290,7 +3290,7 @@
   },
   {
     "id": "rw-ss-210131",
-    "sku": "210131",
+    "sku": "RW-210131",
     "name": "Golden Palace Teriyaki Sauce",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -3303,7 +3303,7 @@
   },
   {
     "id": "rw-ss-184080",
-    "sku": "184080",
+    "sku": "RW-184080",
     "name": "Kerrymaid Cheddar Cheese Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3316,7 +3316,7 @@
   },
   {
     "id": "rw-ss-111341",
-    "sku": "111341",
+    "sku": "RW-111341",
     "name": "Kitchen '72 Caribbean Jerk Sauce",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -3329,7 +3329,7 @@
   },
   {
     "id": "rw-ss-111340",
-    "sku": "111340",
+    "sku": "RW-111340",
     "name": "Kitchen '72 Caribbean Jerk Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -3342,7 +3342,7 @@
   },
   {
     "id": "rw-ss-211450",
-    "sku": "211450",
+    "sku": "RW-211450",
     "name": "Knorr BBQ Sauce (Ready to Use)",
     "packSize": "2x2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3355,7 +3355,7 @@
   },
   {
     "id": "rw-ss-112660",
-    "sku": "112660",
+    "sku": "RW-112660",
     "name": "Knorr Garde d'Or Hollandaise Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -3368,7 +3368,7 @@
   },
   {
     "id": "rw-ss-283151",
-    "sku": "283151",
+    "sku": "RW-283151",
     "name": "Knorr Professional Blue Dragon Black Bean Sauce",
     "packSize": "2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3381,7 +3381,7 @@
   },
   {
     "id": "rw-ss-283150",
-    "sku": "283150",
+    "sku": "RW-283150",
     "name": "Knorr Professional Blue Dragon Black Bean Sauce (PET bottle)",
     "packSize": "2x2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3394,7 +3394,7 @@
   },
   {
     "id": "rw-ss-285230",
-    "sku": "285230",
+    "sku": "RW-285230",
     "name": "Macphie Béchamel Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3407,7 +3407,7 @@
   },
   {
     "id": "rw-ss-285231",
-    "sku": "285231",
+    "sku": "RW-285231",
     "name": "Macphie Béchamel Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3420,7 +3420,7 @@
   },
   {
     "id": "rw-ss-183950",
-    "sku": "183950",
+    "sku": "RW-183950",
     "name": "Macphie Hollandaise Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3433,7 +3433,7 @@
   },
   {
     "id": "rw-ss-183951",
-    "sku": "183951",
+    "sku": "RW-183951",
     "name": "Macphie Hollandaise Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3446,7 +3446,7 @@
   },
   {
     "id": "rw-ss-134610",
-    "sku": "134610",
+    "sku": "RW-134610",
     "name": "Macphie Nacho Cheese Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3459,7 +3459,7 @@
   },
   {
     "id": "rw-ss-134611",
-    "sku": "134611",
+    "sku": "RW-134611",
     "name": "Macphie Nacho Cheese Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3472,7 +3472,7 @@
   },
   {
     "id": "rw-ss-265200",
-    "sku": "265200",
+    "sku": "RW-265200",
     "name": "Pomodoro Sauce",
     "packSize": "4x1.5kg",
     "categorySlug": "spices-sauces",
@@ -3485,7 +3485,7 @@
   },
   {
     "id": "rw-ss-101601",
-    "sku": "101601",
+    "sku": "RW-101601",
     "name": "Rio Buffalo Wing Sauce",
     "packSize": "2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3498,7 +3498,7 @@
   },
   {
     "id": "rw-ss-101600",
-    "sku": "101600",
+    "sku": "RW-101600",
     "name": "Rio Buffalo Wing Sauce",
     "packSize": "2x2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3511,7 +3511,7 @@
   },
   {
     "id": "rw-ss-101581",
-    "sku": "101581",
+    "sku": "RW-101581",
     "name": "Rio Louisiana Sauce",
     "packSize": "2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3524,7 +3524,7 @@
   },
   {
     "id": "rw-ss-160231",
-    "sku": "160231",
+    "sku": "RW-160231",
     "name": "Signature Hollandaise Sauce",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -3537,7 +3537,7 @@
   },
   {
     "id": "rw-ss-160230",
-    "sku": "160230",
+    "sku": "RW-160230",
     "name": "Signature Hollandaise Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -3550,7 +3550,7 @@
   },
   {
     "id": "rw-ss-265220",
-    "sku": "265220",
+    "sku": "RW-265220",
     "name": "Tomato and Mascarpone Sauce",
     "packSize": "4x1.5kg",
     "categorySlug": "spices-sauces",
@@ -3563,7 +3563,7 @@
   },
   {
     "id": "rw-ss-184071",
-    "sku": "184071",
+    "sku": "RW-184071",
     "name": "Country Range Demi Glace Sauce Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -3576,7 +3576,7 @@
   },
   {
     "id": "rw-ss-184070",
-    "sku": "184070",
+    "sku": "RW-184070",
     "name": "Country Range Demi Glace Sauce Mix",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -3589,7 +3589,7 @@
   },
   {
     "id": "rw-ss-183840",
-    "sku": "183840",
+    "sku": "RW-183840",
     "name": "Knorr Béchamel Sauce Mix",
     "packSize": "3x5ltr",
     "categorySlug": "spices-sauces",
@@ -3602,7 +3602,7 @@
   },
   {
     "id": "rw-ss-183841",
-    "sku": "183841",
+    "sku": "RW-183841",
     "name": "Knorr Béchamel Sauce Mix",
     "packSize": "5ltr",
     "categorySlug": "spices-sauces",
@@ -3615,7 +3615,7 @@
   },
   {
     "id": "rw-ss-183720",
-    "sku": "183720",
+    "sku": "RW-183720",
     "name": "Knorr Cheese Sauce Mix",
     "packSize": "3x5ltr",
     "categorySlug": "spices-sauces",
@@ -3628,7 +3628,7 @@
   },
   {
     "id": "rw-ss-183721",
-    "sku": "183721",
+    "sku": "RW-183721",
     "name": "Knorr Cheese Sauce Mix",
     "packSize": "5ltr",
     "categorySlug": "spices-sauces",
@@ -3641,7 +3641,7 @@
   },
   {
     "id": "rw-ss-183810",
-    "sku": "183810",
+    "sku": "RW-183810",
     "name": "Knorr Parsley Sauce Mix",
     "packSize": "3x5ltr",
     "categorySlug": "spices-sauces",
@@ -3654,7 +3654,7 @@
   },
   {
     "id": "rw-ss-183811",
-    "sku": "183811",
+    "sku": "RW-183811",
     "name": "Knorr Parsley Sauce Mix",
     "packSize": "5ltr",
     "categorySlug": "spices-sauces",
@@ -3667,7 +3667,7 @@
   },
   {
     "id": "rw-ss-186600",
-    "sku": "186600",
+    "sku": "RW-186600",
     "name": "Maggi Bechamel Sauce",
     "packSize": "2x2kg",
     "categorySlug": "spices-sauces",
@@ -3680,7 +3680,7 @@
   },
   {
     "id": "rw-ss-184421",
-    "sku": "184421",
+    "sku": "RW-184421",
     "name": "Maggi Bechamel Sauce Mix",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -3693,7 +3693,7 @@
   },
   {
     "id": "rw-ss-196320",
-    "sku": "196320",
+    "sku": "RW-196320",
     "name": "Country Range Seafood Sauce",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -3706,7 +3706,7 @@
   },
   {
     "id": "rw-ss-127630",
-    "sku": "127630",
+    "sku": "RW-127630",
     "name": "Golden Palace Dark Soy Sauce (PET Bottle)",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3719,7 +3719,7 @@
   },
   {
     "id": "rw-ss-127631",
-    "sku": "127631",
+    "sku": "RW-127631",
     "name": "Golden Palace Dark Soy Sauce (PET Bottle)",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3732,7 +3732,7 @@
   },
   {
     "id": "rw-ss-127640",
-    "sku": "127640",
+    "sku": "RW-127640",
     "name": "Golden Palace Light Soy Sauce (PET Bottle)",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -3745,7 +3745,7 @@
   },
   {
     "id": "rw-ss-127641",
-    "sku": "127641",
+    "sku": "RW-127641",
     "name": "Golden Palace Light Soy Sauce (PET Bottle)",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3758,7 +3758,7 @@
   },
   {
     "id": "rw-ss-175921",
-    "sku": "175921",
+    "sku": "RW-175921",
     "name": "Kikkoman Tamari Gluten Free Soy Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -3771,7 +3771,7 @@
   },
   {
     "id": "rw-ss-175920",
-    "sku": "175920",
+    "sku": "RW-175920",
     "name": "Kikkoman Tamari Gluten Free Soy Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -3784,7 +3784,7 @@
   },
   {
     "id": "rw-ss-150250",
-    "sku": "150250",
+    "sku": "RW-150250",
     "name": "Ballerina Tomato Paste",
     "packSize": "12x800g",
     "categorySlug": "spices-sauces",
@@ -3797,7 +3797,7 @@
   },
   {
     "id": "rw-ss-150251",
-    "sku": "150251",
+    "sku": "RW-150251",
     "name": "Ballerina Tomato Paste",
     "packSize": "800g",
     "categorySlug": "spices-sauces",
@@ -3810,7 +3810,7 @@
   },
   {
     "id": "rw-ss-169861",
-    "sku": "169861",
+    "sku": "RW-169861",
     "name": "Country Range Multi Use Tomato Sauce",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -3823,7 +3823,7 @@
   },
   {
     "id": "rw-ss-211480",
-    "sku": "211480",
+    "sku": "RW-211480",
     "name": "Knorr Tomato & Basil Sauce (ready to use)",
     "packSize": "2x2.2ltr",
     "categorySlug": "spices-sauces",
@@ -3836,7 +3836,7 @@
   },
   {
     "id": "rw-ss-182241",
-    "sku": "182241",
+    "sku": "RW-182241",
     "name": "Maggi Rich & Rustic Multi-Use Tomato Sauce",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -3849,7 +3849,7 @@
   },
   {
     "id": "rw-ss-182240",
-    "sku": "182240",
+    "sku": "RW-182240",
     "name": "Maggi Rich & Rustic Multi-Use Tomato Sauce",
     "packSize": "6x3kg",
     "categorySlug": "spices-sauces",
@@ -3862,7 +3862,7 @@
   },
   {
     "id": "rw-ss-202070",
-    "sku": "202070",
+    "sku": "RW-202070",
     "name": "Mutti Classic Pizza Sauce",
     "packSize": "3x4.1kg",
     "categorySlug": "spices-sauces",
@@ -3875,7 +3875,7 @@
   },
   {
     "id": "rw-ss-150241",
-    "sku": "150241",
+    "sku": "RW-150241",
     "name": "Riverdene Tomato Paste (EU)",
     "packSize": "800g",
     "categorySlug": "spices-sauces",
@@ -3888,7 +3888,7 @@
   },
   {
     "id": "rw-ss-298060",
-    "sku": "298060",
+    "sku": "RW-298060",
     "name": "Burts Potato Chips Sea Salted Crisps",
     "packSize": "10x150g",
     "categorySlug": "spices-sauces",
@@ -3901,7 +3901,7 @@
   },
   {
     "id": "rw-ss-298230",
-    "sku": "298230",
+    "sku": "RW-298230",
     "name": "Burts Sea Salted Crisps",
     "packSize": "20x40g",
     "categorySlug": "spices-sauces",
@@ -3914,7 +3914,7 @@
   },
   {
     "id": "rw-ss-185130",
-    "sku": "185130",
+    "sku": "RW-185130",
     "name": "Country Range Salted Tortilla Chips",
     "packSize": "12x500g",
     "categorySlug": "spices-sauces",
@@ -3927,7 +3927,7 @@
   },
   {
     "id": "rw-ss-231140",
-    "sku": "231140",
+    "sku": "RW-231140",
     "name": "English Heritage Dorset Sea Salt Crisps",
     "packSize": "24x40g",
     "categorySlug": "spices-sauces",
@@ -3940,7 +3940,7 @@
   },
   {
     "id": "rw-ss-290170",
-    "sku": "290170",
+    "sku": "RW-290170",
     "name": "Hula Hoops BBQ Beef Crisps",
     "packSize": "32x34g",
     "categorySlug": "spices-sauces",
@@ -3953,7 +3953,7 @@
   },
   {
     "id": "rw-ss-219000",
-    "sku": "219000",
+    "sku": "RW-219000",
     "name": "McCoy's Salted Grab Bag Crisps",
     "packSize": "45g",
     "categorySlug": "spices-sauces",
@@ -3966,7 +3966,7 @@
   },
   {
     "id": "rw-ss-302400",
-    "sku": "302400",
+    "sku": "RW-302400",
     "name": "Pipers Angelsey Sea Salt Vegan Crisps",
     "packSize": "40x40g",
     "categorySlug": "spices-sauces",
@@ -3979,7 +3979,7 @@
   },
   {
     "id": "rw-ss-302470",
-    "sku": "302470",
+    "sku": "RW-302470",
     "name": "Pipers Anglesey Sea Salt Vegan Sharing Crisps",
     "packSize": "8x150g",
     "categorySlug": "spices-sauces",
@@ -3992,7 +3992,7 @@
   },
   {
     "id": "rw-ss-300820",
-    "sku": "300820",
+    "sku": "RW-300820",
     "name": "Popchips BBQ Crisps",
     "packSize": "24x23g",
     "categorySlug": "spices-sauces",
@@ -4005,7 +4005,7 @@
   },
   {
     "id": "rw-ss-300800",
-    "sku": "300800",
+    "sku": "RW-300800",
     "name": "Popchips Sea Salt Original Crisps",
     "packSize": "24x23g",
     "categorySlug": "spices-sauces",
@@ -4018,7 +4018,7 @@
   },
   {
     "id": "rw-ss-300040",
-    "sku": "300040",
+    "sku": "RW-300040",
     "name": "Pringles Texas BBQ Crisps",
     "packSize": "12x40g",
     "categorySlug": "spices-sauces",
@@ -4031,7 +4031,7 @@
   },
   {
     "id": "rw-ss-299380",
-    "sku": "299380",
+    "sku": "RW-299380",
     "name": "Real Hand Cooked Sea Salt Crisps",
     "packSize": "10x150g",
     "categorySlug": "spices-sauces",
@@ -4044,7 +4044,7 @@
   },
   {
     "id": "rw-ss-299080",
-    "sku": "299080",
+    "sku": "RW-299080",
     "name": "Real Sea Salt & Pepper Crisps",
     "packSize": "48x35g",
     "categorySlug": "spices-sauces",
@@ -4057,7 +4057,7 @@
   },
   {
     "id": "rw-ss-299060",
-    "sku": "299060",
+    "sku": "RW-299060",
     "name": "Real Sea Salt Crisps",
     "packSize": "48x35g",
     "categorySlug": "spices-sauces",
@@ -4070,7 +4070,7 @@
   },
   {
     "id": "rw-ss-185970",
-    "sku": "185970",
+    "sku": "RW-185970",
     "name": "Santa Maria Tortilla Chips Salted",
     "packSize": "12x475g",
     "categorySlug": "spices-sauces",
@@ -4083,7 +4083,7 @@
   },
   {
     "id": "rw-ss-120470",
-    "sku": "120470",
+    "sku": "RW-120470",
     "name": "Simply Roasted Mixed Vegetable Crisps - Sea Salt",
     "packSize": "455g",
     "categorySlug": "spices-sauces",
@@ -4096,7 +4096,7 @@
   },
   {
     "id": "rw-ss-117450",
-    "sku": "117450",
+    "sku": "RW-117450",
     "name": "Tyrrells Furrows Beef Brisket & Black Peppercorn Crisps",
     "packSize": "40g",
     "categorySlug": "spices-sauces",
@@ -4109,7 +4109,7 @@
   },
   {
     "id": "rw-ss-135130",
-    "sku": "135130",
+    "sku": "RW-135130",
     "name": "Tyrrells Furrows Beef Brisket & Black Peppercorn Sharing Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4122,7 +4122,7 @@
   },
   {
     "id": "rw-ss-135100",
-    "sku": "135100",
+    "sku": "RW-135100",
     "name": "Tyrrells Furrows Sea Salted Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4135,7 +4135,7 @@
   },
   {
     "id": "rw-ss-134720",
-    "sku": "134720",
+    "sku": "RW-134720",
     "name": "Tyrrells Lightly Sea Salted Crisps -24x40g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4148,7 +4148,7 @@
   },
   {
     "id": "rw-ss-135040",
-    "sku": "135040",
+    "sku": "RW-135040",
     "name": "Tyrrells Lightly Sea Salted Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4161,7 +4161,7 @@
   },
   {
     "id": "rw-ss-134730",
-    "sku": "134730",
+    "sku": "RW-134730",
     "name": "Tyrrells Sea Salt & Black Pepper Crisps -24x40g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4174,7 +4174,7 @@
   },
   {
     "id": "rw-ss-135050",
-    "sku": "135050",
+    "sku": "RW-135050",
     "name": "Tyrrells Sea Salt & Black Pepper Sharing Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4187,7 +4187,7 @@
   },
   {
     "id": "rw-ss-135090",
-    "sku": "135090",
+    "sku": "RW-135090",
     "name": "Tyrrells Smoked Paprika Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4200,7 +4200,7 @@
   },
   {
     "id": "rw-ss-134740",
-    "sku": "134740",
+    "sku": "RW-134740",
     "name": "Tyrrells Sweet Chilli & Red Pepper Crisps -24x40g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4213,7 +4213,7 @@
   },
   {
     "id": "rw-ss-135060",
-    "sku": "135060",
+    "sku": "RW-135060",
     "name": "Tyrrells Sweet Chilli & Red Pepper Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4226,7 +4226,7 @@
   },
   {
     "id": "rw-ss-135140",
-    "sku": "135140",
+    "sku": "RW-135140",
     "name": "Tyrrells Truffle & Sea Salt Sharing Crisps -8x135g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4239,7 +4239,7 @@
   },
   {
     "id": "rw-ss-290440",
-    "sku": "290440",
+    "sku": "RW-290440",
     "name": "Walkers Baked Sea Salt Crisps",
     "packSize": "32x37.5g",
     "categorySlug": "spices-sauces",
@@ -4252,7 +4252,7 @@
   },
   {
     "id": "rw-ss-101570",
-    "sku": "101570",
+    "sku": "RW-101570",
     "name": "Walkers French Fries Ready Salted",
     "packSize": "32x21g",
     "categorySlug": "spices-sauces",
@@ -4265,7 +4265,7 @@
   },
   {
     "id": "rw-ss-100290",
-    "sku": "100290",
+    "sku": "RW-100290",
     "name": "Walkers French Fries Worcester Sauce",
     "packSize": "31x21g",
     "categorySlug": "spices-sauces",
@@ -4278,7 +4278,7 @@
   },
   {
     "id": "rw-ss-297080",
-    "sku": "297080",
+    "sku": "RW-297080",
     "name": "Walkers Ready Salted Crisps",
     "packSize": "32x32.5g",
     "categorySlug": "spices-sauces",
@@ -4291,7 +4291,7 @@
   },
   {
     "id": "rw-ss-290020",
-    "sku": "290020",
+    "sku": "RW-290020",
     "name": "Walkers Ready Salted Grab Bag Crisps",
     "packSize": "32x45g",
     "categorySlug": "spices-sauces",
@@ -4304,7 +4304,7 @@
   },
   {
     "id": "rw-ss-290420",
-    "sku": "290420",
+    "sku": "RW-290420",
     "name": "Walkers Ready Salted Sharing Crisps",
     "packSize": "6x150g",
     "categorySlug": "spices-sauces",
@@ -4317,7 +4317,7 @@
   },
   {
     "id": "rw-ss-142940",
-    "sku": "142940",
+    "sku": "RW-142940",
     "name": "Dormen Salted Peanuts",
     "packSize": "24x50g",
     "categorySlug": "spices-sauces",
@@ -4330,7 +4330,7 @@
   },
   {
     "id": "rw-ss-218960",
-    "sku": "218960",
+    "sku": "RW-218960",
     "name": "KP Original Salted Peanuts",
     "packSize": "24x50g",
     "categorySlug": "spices-sauces",
@@ -4343,7 +4343,7 @@
   },
   {
     "id": "rw-ss-112290",
-    "sku": "112290",
+    "sku": "RW-112290",
     "name": "Mr Filbert's Salt & Pepper Cashews",
     "packSize": "1x20x40g",
     "categorySlug": "spices-sauces",
@@ -4356,7 +4356,7 @@
   },
   {
     "id": "rw-ss-300150",
-    "sku": "300150",
+    "sku": "RW-300150",
     "name": "Nobby's Nuts Salty Peanuts -24x50g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -4369,7 +4369,7 @@
   },
   {
     "id": "rw-ss-299681",
-    "sku": "299681",
+    "sku": "RW-299681",
     "name": "Roasted & Salted Peanuts",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -4382,7 +4382,7 @@
   },
   {
     "id": "rw-ss-299680",
-    "sku": "299680",
+    "sku": "RW-299680",
     "name": "Roasted & Salted Peanuts",
     "packSize": "4x3kg",
     "categorySlug": "spices-sauces",
@@ -4395,7 +4395,7 @@
   },
   {
     "id": "rw-ss-117460",
-    "sku": "117460",
+    "sku": "RW-117460",
     "name": "Penn State Pretzels Salted",
     "packSize": "175g",
     "categorySlug": "spices-sauces",
@@ -4408,7 +4408,7 @@
   },
   {
     "id": "rw-ss-300580",
-    "sku": "300580",
+    "sku": "RW-300580",
     "name": "Propercorn Lightly Salted Popcorn",
     "packSize": "24x20g",
     "categorySlug": "spices-sauces",
@@ -4421,7 +4421,7 @@
   },
   {
     "id": "rw-ss-300850",
-    "sku": "300850",
+    "sku": "RW-300850",
     "name": "Propercorn Salted Caramel Popcorn",
     "packSize": "24x28g",
     "categorySlug": "spices-sauces",
@@ -4434,7 +4434,7 @@
   },
   {
     "id": "rw-ss-300610",
-    "sku": "300610",
+    "sku": "RW-300610",
     "name": "Propercorn Sweet & Salty Popcorn",
     "packSize": "24x30g",
     "categorySlug": "spices-sauces",
@@ -4447,7 +4447,7 @@
   },
   {
     "id": "rw-ss-300790",
-    "sku": "300790",
+    "sku": "RW-300790",
     "name": "Propercorn Sweet & Salty Popcorn",
     "packSize": "8x90g",
     "categorySlug": "spices-sauces",
@@ -4460,7 +4460,7 @@
   },
   {
     "id": "rw-ss-202541",
-    "sku": "202541",
+    "sku": "RW-202541",
     "name": "Green Peppercorns in Lightly Salted Water",
     "packSize": "1x1.1kg",
     "categorySlug": "spices-sauces",
@@ -4473,7 +4473,7 @@
   },
   {
     "id": "rw-ss-109170",
-    "sku": "109170",
+    "sku": "RW-109170",
     "name": "Roasted Red Peppers",
     "packSize": "2.5kg",
     "categorySlug": "spices-sauces",
@@ -4486,7 +4486,7 @@
   },
   {
     "id": "rw-ss-109171",
-    "sku": "109171",
+    "sku": "RW-109171",
     "name": "Roasted Red Peppers",
     "packSize": "2.5kg",
     "categorySlug": "spices-sauces",
@@ -4499,7 +4499,7 @@
   },
   {
     "id": "rw-ss-109161",
-    "sku": "109161",
+    "sku": "RW-109161",
     "name": "Royal Crown Sliced Jalapeno Peppers (can)",
     "packSize": "2.85kg",
     "categorySlug": "spices-sauces",
@@ -4512,7 +4512,7 @@
   },
   {
     "id": "rw-ss-109160",
-    "sku": "109160",
+    "sku": "RW-109160",
     "name": "Royal Crown Sliced Jalapeno Peppers (can)",
     "packSize": "6x2.85kg",
     "categorySlug": "spices-sauces",
@@ -4525,7 +4525,7 @@
   },
   {
     "id": "rw-ss-242721",
-    "sku": "242721",
+    "sku": "RW-242721",
     "name": "Sweetbird Pumpkin Spice Syrup",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -4538,7 +4538,7 @@
   },
   {
     "id": "rw-ss-242720",
-    "sku": "242720",
+    "sku": "RW-242720",
     "name": "Sweetbird Pumpkin Spice Syrup",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -4551,7 +4551,7 @@
   },
   {
     "id": "rw-ss-242751",
-    "sku": "242751",
+    "sku": "RW-242751",
     "name": "Sweetbird Salted Caramel Syrup",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -4564,7 +4564,7 @@
   },
   {
     "id": "rw-ss-242750",
-    "sku": "242750",
+    "sku": "RW-242750",
     "name": "Sweetbird Salted Caramel Syrup",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -4577,7 +4577,7 @@
   },
   {
     "id": "rw-ss-242611",
-    "sku": "242611",
+    "sku": "RW-242611",
     "name": "Sweetbird Spiced Chai Syrup",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -4590,7 +4590,7 @@
   },
   {
     "id": "rw-ss-242610",
-    "sku": "242610",
+    "sku": "RW-242610",
     "name": "Sweetbird Spiced Chai Syrup",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -4603,7 +4603,7 @@
   },
   {
     "id": "rw-ss-128271",
-    "sku": "128271",
+    "sku": "RW-128271",
     "name": "Teisseire Cinnamon Syrup",
     "packSize": "1x700ml",
     "categorySlug": "spices-sauces",
@@ -4616,7 +4616,7 @@
   },
   {
     "id": "rw-ss-206601",
-    "sku": "206601",
+    "sku": "RW-206601",
     "name": "Colman's English Mustard",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4629,7 +4629,7 @@
   },
   {
     "id": "rw-ss-206600",
-    "sku": "206600",
+    "sku": "RW-206600",
     "name": "Colman's English Mustard",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4642,7 +4642,7 @@
   },
   {
     "id": "rw-ss-206610",
-    "sku": "206610",
+    "sku": "RW-206610",
     "name": "Colman's English Mustard (Glass)",
     "packSize": "8x100g",
     "categorySlug": "spices-sauces",
@@ -4655,7 +4655,7 @@
   },
   {
     "id": "rw-ss-206790",
-    "sku": "206790",
+    "sku": "RW-206790",
     "name": "Colman's English Mustard Powder",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -4668,7 +4668,7 @@
   },
   {
     "id": "rw-ss-172231",
-    "sku": "172231",
+    "sku": "RW-172231",
     "name": "Colman's Horseradish Sauce",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4681,7 +4681,7 @@
   },
   {
     "id": "rw-ss-172230",
-    "sku": "172230",
+    "sku": "RW-172230",
     "name": "Colman's Horseradish Sauce",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4694,7 +4694,7 @@
   },
   {
     "id": "rw-ss-154910",
-    "sku": "154910",
+    "sku": "RW-154910",
     "name": "Country Range Cranberry Sauce",
     "packSize": "2.5kg",
     "categorySlug": "spices-sauces",
@@ -4707,7 +4707,7 @@
   },
   {
     "id": "rw-ss-172471",
-    "sku": "172471",
+    "sku": "RW-172471",
     "name": "Country Range Dijon Mustard",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4720,7 +4720,7 @@
   },
   {
     "id": "rw-ss-172470",
-    "sku": "172470",
+    "sku": "RW-172470",
     "name": "Country Range Dijon Mustard",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4733,7 +4733,7 @@
   },
   {
     "id": "rw-ss-172241",
-    "sku": "172241",
+    "sku": "RW-172241",
     "name": "Country Range English Mustard",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4746,7 +4746,7 @@
   },
   {
     "id": "rw-ss-172240",
-    "sku": "172240",
+    "sku": "RW-172240",
     "name": "Country Range English Mustard",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4759,7 +4759,7 @@
   },
   {
     "id": "rw-ss-172361",
-    "sku": "172361",
+    "sku": "RW-172361",
     "name": "Country Range Horseradish Sauce",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4772,7 +4772,7 @@
   },
   {
     "id": "rw-ss-172360",
-    "sku": "172360",
+    "sku": "RW-172360",
     "name": "Country Range Horseradish Sauce",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4785,7 +4785,7 @@
   },
   {
     "id": "rw-ss-172271",
-    "sku": "172271",
+    "sku": "RW-172271",
     "name": "Country Range Mint Sauce",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4798,7 +4798,7 @@
   },
   {
     "id": "rw-ss-172270",
-    "sku": "172270",
+    "sku": "RW-172270",
     "name": "Country Range Mint Sauce",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4811,7 +4811,7 @@
   },
   {
     "id": "rw-ss-208450",
-    "sku": "208450",
+    "sku": "RW-208450",
     "name": "Country Range Pepper Portions",
     "packSize": "2000",
     "categorySlug": "spices-sauces",
@@ -4824,7 +4824,7 @@
   },
   {
     "id": "rw-ss-176361",
-    "sku": "176361",
+    "sku": "RW-176361",
     "name": "Country Range Peri Peri Sauce",
     "packSize": "1x2.25kg",
     "categorySlug": "spices-sauces",
@@ -4837,7 +4837,7 @@
   },
   {
     "id": "rw-ss-176360",
-    "sku": "176360",
+    "sku": "RW-176360",
     "name": "Country Range Peri Peri Sauce",
     "packSize": "2x2.25kg",
     "categorySlug": "spices-sauces",
@@ -4850,7 +4850,7 @@
   },
   {
     "id": "rw-ss-207900",
-    "sku": "207900",
+    "sku": "RW-207900",
     "name": "Country Range Salt Sachet",
     "packSize": "2000",
     "categorySlug": "spices-sauces",
@@ -4863,7 +4863,7 @@
   },
   {
     "id": "rw-ss-172280",
-    "sku": "172280",
+    "sku": "RW-172280",
     "name": "Country Range Sticky BBQ Sauce",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -4876,7 +4876,7 @@
   },
   {
     "id": "rw-ss-176610",
-    "sku": "176610",
+    "sku": "RW-176610",
     "name": "Country Range Sweet Chilli Sauce",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -4889,7 +4889,7 @@
   },
   {
     "id": "rw-ss-176611",
-    "sku": "176611",
+    "sku": "RW-176611",
     "name": "Country Range Sweet Chilli Sauce",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -4902,7 +4902,7 @@
   },
   {
     "id": "rw-ss-176151",
-    "sku": "176151",
+    "sku": "RW-176151",
     "name": "Country Range Tartare Sauce",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4915,7 +4915,7 @@
   },
   {
     "id": "rw-ss-176150",
-    "sku": "176150",
+    "sku": "RW-176150",
     "name": "Country Range Tartare Sauce",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -4928,7 +4928,7 @@
   },
   {
     "id": "rw-ss-175550",
-    "sku": "175550",
+    "sku": "RW-175550",
     "name": "French's Classic Yellow Mustard",
     "packSize": "8x226g",
     "categorySlug": "spices-sauces",
@@ -4941,7 +4941,7 @@
   },
   {
     "id": "rw-ss-111571",
-    "sku": "111571",
+    "sku": "RW-111571",
     "name": "Heinz BBQ Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -4954,7 +4954,7 @@
   },
   {
     "id": "rw-ss-111541",
-    "sku": "111541",
+    "sku": "RW-111541",
     "name": "Heinz Classic Burger Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -4967,7 +4967,7 @@
   },
   {
     "id": "rw-ss-111551",
-    "sku": "111551",
+    "sku": "RW-111551",
     "name": "Heinz Firecracker Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -4980,7 +4980,7 @@
   },
   {
     "id": "rw-ss-111550",
-    "sku": "111550",
+    "sku": "RW-111550",
     "name": "Heinz Firecracker Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -4993,7 +4993,7 @@
   },
   {
     "id": "rw-ss-170570",
-    "sku": "170570",
+    "sku": "RW-170570",
     "name": "Heinz Hot English Mustard",
     "packSize": "8x220g",
     "categorySlug": "spices-sauces",
@@ -5006,7 +5006,7 @@
   },
   {
     "id": "rw-ss-177240",
-    "sku": "177240",
+    "sku": "RW-177240",
     "name": "Heinz Hot English Mustard (sachet)",
     "packSize": "250x7ml",
     "categorySlug": "spices-sauces",
@@ -5019,7 +5019,7 @@
   },
   {
     "id": "rw-ss-111581",
-    "sku": "111581",
+    "sku": "RW-111581",
     "name": "Heinz Mild Yellow Mustard",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -5032,7 +5032,7 @@
   },
   {
     "id": "rw-ss-111580",
-    "sku": "111580",
+    "sku": "RW-111580",
     "name": "Heinz Mild Yellow Mustard",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -5045,7 +5045,7 @@
   },
   {
     "id": "rw-ss-109370",
-    "sku": "109370",
+    "sku": "RW-109370",
     "name": "Heinz Sauce O Mat Mustard Pouch",
     "packSize": "3x2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5058,7 +5058,7 @@
   },
   {
     "id": "rw-ss-111350",
-    "sku": "111350",
+    "sku": "RW-111350",
     "name": "HP Sauce",
     "packSize": "2x2.15ltr",
     "categorySlug": "spices-sauces",
@@ -5071,7 +5071,7 @@
   },
   {
     "id": "rw-ss-177011",
-    "sku": "177011",
+    "sku": "RW-177011",
     "name": "Lion French Mustard",
     "packSize": "2.27l",
     "categorySlug": "spices-sauces",
@@ -5084,7 +5084,7 @@
   },
   {
     "id": "rw-ss-127670",
-    "sku": "127670",
+    "sku": "RW-127670",
     "name": "Lion Horseradish Sauce",
     "packSize": "6x165g",
     "categorySlug": "spices-sauces",
@@ -5097,7 +5097,7 @@
   },
   {
     "id": "rw-ss-127680",
-    "sku": "127680",
+    "sku": "RW-127680",
     "name": "Lion Mint Sauce",
     "packSize": "6x165g",
     "categorySlug": "spices-sauces",
@@ -5110,7 +5110,7 @@
   },
   {
     "id": "rw-ss-208100",
-    "sku": "208100",
+    "sku": "RW-208100",
     "name": "Lo Salt",
     "packSize": "3kg",
     "categorySlug": "spices-sauces",
@@ -5123,7 +5123,7 @@
   },
   {
     "id": "rw-ss-178450",
-    "sku": "178450",
+    "sku": "RW-178450",
     "name": "PSL English Mustard Sachets",
     "packSize": "300x5ml",
     "categorySlug": "spices-sauces",
@@ -5136,7 +5136,7 @@
   },
   {
     "id": "rw-ss-101640",
-    "sku": "101640",
+    "sku": "RW-101640",
     "name": "Rio Maple Pepper Glaze",
     "packSize": "2.2ltr",
     "categorySlug": "spices-sauces",
@@ -5149,7 +5149,7 @@
   },
   {
     "id": "rw-ss-101641",
-    "sku": "101641",
+    "sku": "RW-101641",
     "name": "Rio Maple Pepper Glaze",
     "packSize": "2.2ltr",
     "categorySlug": "spices-sauces",
@@ -5162,7 +5162,7 @@
   },
   {
     "id": "rw-ss-214041",
-    "sku": "214041",
+    "sku": "RW-214041",
     "name": "Shaw's Apple Sauce",
     "packSize": "1x2.35kg",
     "categorySlug": "spices-sauces",
@@ -5175,7 +5175,7 @@
   },
   {
     "id": "rw-ss-214040",
-    "sku": "214040",
+    "sku": "RW-214040",
     "name": "Shaw's Apple Sauce",
     "packSize": "2x2.35kg",
     "categorySlug": "spices-sauces",
@@ -5188,7 +5188,7 @@
   },
   {
     "id": "rw-ss-160181",
-    "sku": "160181",
+    "sku": "RW-160181",
     "name": "Signature Hollandaise Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -5201,7 +5201,7 @@
   },
   {
     "id": "rw-ss-200870",
-    "sku": "200870",
+    "sku": "RW-200870",
     "name": "Stokes Catering Habenero Hot Sauce",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -5214,7 +5214,7 @@
   },
   {
     "id": "rw-ss-178460",
-    "sku": "178460",
+    "sku": "RW-178460",
     "name": "Stokes Catering Korean BBQ Sauce",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -5227,7 +5227,7 @@
   },
   {
     "id": "rw-ss-178470",
-    "sku": "178470",
+    "sku": "RW-178470",
     "name": "Stokes Catering Maple & Horseradish BBQ Sauce",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -5240,7 +5240,7 @@
   },
   {
     "id": "rw-ss-200660",
-    "sku": "200660",
+    "sku": "RW-200660",
     "name": "Stokes Cider & Horseradish Mustard",
     "packSize": "6x185g",
     "categorySlug": "spices-sauces",
@@ -5253,7 +5253,7 @@
   },
   {
     "id": "rw-ss-178150",
-    "sku": "178150",
+    "sku": "RW-178150",
     "name": "Stokes Cranberry Sauce",
     "packSize": "2kg",
     "categorySlug": "spices-sauces",
@@ -5266,7 +5266,7 @@
   },
   {
     "id": "rw-ss-262250",
-    "sku": "262250",
+    "sku": "RW-262250",
     "name": "Stokes Cranberry Sauce",
     "packSize": "6x260g",
     "categorySlug": "spices-sauces",
@@ -5279,7 +5279,7 @@
   },
   {
     "id": "rw-ss-108701",
-    "sku": "108701",
+    "sku": "RW-108701",
     "name": "Chilli and Lime Dressing",
     "packSize": "1 x 450ml",
     "categorySlug": "spices-sauces",
@@ -5292,7 +5292,7 @@
   },
   {
     "id": "rw-ss-108700",
-    "sku": "108700",
+    "sku": "RW-108700",
     "name": "Chilli and Lime Dressing",
     "packSize": "6 x 450ml",
     "categorySlug": "spices-sauces",
@@ -5305,7 +5305,7 @@
   },
   {
     "id": "rw-ss-176350",
-    "sku": "176350",
+    "sku": "RW-176350",
     "name": "Country Range Caesar Salad Dressing",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -5318,7 +5318,7 @@
   },
   {
     "id": "rw-ss-176351",
-    "sku": "176351",
+    "sku": "RW-176351",
     "name": "Country Range Caesar Salad Dressing -2.25ltr",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -5331,7 +5331,7 @@
   },
   {
     "id": "rw-ss-176111",
-    "sku": "176111",
+    "sku": "RW-176111",
     "name": "Country Range French Dressing",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -5344,7 +5344,7 @@
   },
   {
     "id": "rw-ss-176110",
-    "sku": "176110",
+    "sku": "RW-176110",
     "name": "Country Range French Dressing",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -5357,7 +5357,7 @@
   },
   {
     "id": "rw-ss-176171",
-    "sku": "176171",
+    "sku": "RW-176171",
     "name": "Country Range Honey & Mustard Dressing",
     "packSize": "2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5370,7 +5370,7 @@
   },
   {
     "id": "rw-ss-176170",
-    "sku": "176170",
+    "sku": "RW-176170",
     "name": "Country Range Honey & Mustard Dressing",
     "packSize": "2x2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5383,7 +5383,7 @@
   },
   {
     "id": "rw-ss-176161",
-    "sku": "176161",
+    "sku": "RW-176161",
     "name": "Country Range Ranch Dressing",
     "packSize": "2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5396,7 +5396,7 @@
   },
   {
     "id": "rw-ss-176160",
-    "sku": "176160",
+    "sku": "RW-176160",
     "name": "Country Range Ranch Dressing",
     "packSize": "2x2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5409,7 +5409,7 @@
   },
   {
     "id": "rw-ss-176311",
-    "sku": "176311",
+    "sku": "RW-176311",
     "name": "Country Range Thousand Island Dressing",
     "packSize": "1x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -5422,7 +5422,7 @@
   },
   {
     "id": "rw-ss-176310",
-    "sku": "176310",
+    "sku": "RW-176310",
     "name": "Country Range Thousand Island Dressing",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -5435,7 +5435,7 @@
   },
   {
     "id": "rw-ss-178350",
-    "sku": "178350",
+    "sku": "RW-178350",
     "name": "Bloody Mary Tomato Ketchup",
     "packSize": "6x300g",
     "categorySlug": "spices-sauces",
@@ -5448,7 +5448,7 @@
   },
   {
     "id": "rw-ss-172071",
-    "sku": "172071",
+    "sku": "RW-172071",
     "name": "Catering Essentials Tomato Ketchup",
     "packSize": "1x4.5kg",
     "categorySlug": "spices-sauces",
@@ -5461,7 +5461,7 @@
   },
   {
     "id": "rw-ss-172070",
-    "sku": "172070",
+    "sku": "RW-172070",
     "name": "Catering Essentials Tomato Ketchup",
     "packSize": "2x4.5kg",
     "categorySlug": "spices-sauces",
@@ -5474,7 +5474,7 @@
   },
   {
     "id": "rw-ss-172131",
-    "sku": "172131",
+    "sku": "RW-172131",
     "name": "Country Range Tomato Ketchup",
     "packSize": "1x4.5kg",
     "categorySlug": "spices-sauces",
@@ -5487,7 +5487,7 @@
   },
   {
     "id": "rw-ss-172161",
-    "sku": "172161",
+    "sku": "RW-172161",
     "name": "Country Range Tomato Ketchup",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -5500,7 +5500,7 @@
   },
   {
     "id": "rw-ss-172160",
-    "sku": "172160",
+    "sku": "RW-172160",
     "name": "Country Range Tomato Ketchup",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -5513,7 +5513,7 @@
   },
   {
     "id": "rw-ss-172130",
-    "sku": "172130",
+    "sku": "RW-172130",
     "name": "Country Range Tomato Ketchup",
     "packSize": "2x4.5kg",
     "categorySlug": "spices-sauces",
@@ -5526,7 +5526,7 @@
   },
   {
     "id": "rw-ss-177331",
-    "sku": "177331",
+    "sku": "RW-177331",
     "name": "Country Range Tomato Ketchup",
     "packSize": "4.5kg",
     "categorySlug": "spices-sauces",
@@ -5539,7 +5539,7 @@
   },
   {
     "id": "rw-ss-177600",
-    "sku": "177600",
+    "sku": "RW-177600",
     "name": "Country Range Tomato Ketchup (Sachet Stick)",
     "packSize": "200x9g",
     "categorySlug": "spices-sauces",
@@ -5552,7 +5552,7 @@
   },
   {
     "id": "rw-ss-177070",
-    "sku": "177070",
+    "sku": "RW-177070",
     "name": "Heinz Sauce-O-Mat Ketchup (3x2.5ltr) V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -5565,7 +5565,7 @@
   },
   {
     "id": "rw-ss-177371",
-    "sku": "177371",
+    "sku": "RW-177371",
     "name": "Heinz Tomato Ketchup",
     "packSize": "2.15ltr",
     "categorySlug": "spices-sauces",
@@ -5578,7 +5578,7 @@
   },
   {
     "id": "rw-ss-177370",
-    "sku": "177370",
+    "sku": "RW-177370",
     "name": "Heinz Tomato Ketchup",
     "packSize": "2x2.15ltr",
     "categorySlug": "spices-sauces",
@@ -5591,7 +5591,7 @@
   },
   {
     "id": "rw-ss-177100",
-    "sku": "177100",
+    "sku": "RW-177100",
     "name": "Heinz Tomato Ketchup (Glass)",
     "packSize": "12x342g",
     "categorySlug": "spices-sauces",
@@ -5604,7 +5604,7 @@
   },
   {
     "id": "rw-ss-177110",
-    "sku": "177110",
+    "sku": "RW-177110",
     "name": "Heinz Tomato Ketchup (sachet)",
     "packSize": "200x10ml",
     "categorySlug": "spices-sauces",
@@ -5617,7 +5617,7 @@
   },
   {
     "id": "rw-ss-170540",
-    "sku": "170540",
+    "sku": "RW-170540",
     "name": "Heinz Tomato Ketchup Dip Pot",
     "packSize": "100x25g",
     "categorySlug": "spices-sauces",
@@ -5630,7 +5630,7 @@
   },
   {
     "id": "rw-ss-170611",
-    "sku": "170611",
+    "sku": "RW-170611",
     "name": "Heinz Tomato Ketchup Squeezy",
     "packSize": "1x1.35kg",
     "categorySlug": "spices-sauces",
@@ -5643,7 +5643,7 @@
   },
   {
     "id": "rw-ss-177060",
-    "sku": "177060",
+    "sku": "RW-177060",
     "name": "Heinz Tomato Ketchup Squeezy Sauce (PET bottle)",
     "packSize": "10x342g",
     "categorySlug": "spices-sauces",
@@ -5656,7 +5656,7 @@
   },
   {
     "id": "rw-ss-170610",
-    "sku": "170610",
+    "sku": "RW-170610",
     "name": "Heinz Tomato Ketchup Squeezy- 6x1.35kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -5669,7 +5669,7 @@
   },
   {
     "id": "rw-ss-177540",
-    "sku": "177540",
+    "sku": "RW-177540",
     "name": "Hellmann's Tomato Ketchup",
     "packSize": "8x430ml",
     "categorySlug": "spices-sauces",
@@ -5682,7 +5682,7 @@
   },
   {
     "id": "rw-ss-159631",
-    "sku": "159631",
+    "sku": "RW-159631",
     "name": "Hellmann's Tomato Ketchup Jerry Can",
     "packSize": "4.8kg",
     "categorySlug": "spices-sauces",
@@ -5695,7 +5695,7 @@
   },
   {
     "id": "rw-ss-160110",
-    "sku": "160110",
+    "sku": "RW-160110",
     "name": "Real Tomato Ketchup Squeezy",
     "packSize": "10x485g",
     "categorySlug": "spices-sauces",
@@ -5708,7 +5708,7 @@
   },
   {
     "id": "rw-ss-176581",
-    "sku": "176581",
+    "sku": "RW-176581",
     "name": "Signature by Country Range Tomato Ketchup",
     "packSize": "1x2.5kg",
     "categorySlug": "spices-sauces",
@@ -5721,7 +5721,7 @@
   },
   {
     "id": "rw-ss-176580",
-    "sku": "176580",
+    "sku": "RW-176580",
     "name": "Signature by Country Range Tomato Ketchup",
     "packSize": "2x2.5kg",
     "categorySlug": "spices-sauces",
@@ -5734,7 +5734,7 @@
   },
   {
     "id": "rw-ss-178390",
-    "sku": "178390",
+    "sku": "RW-178390",
     "name": "Stokes Bloody Mary Ketchup",
     "packSize": "1x2kg",
     "categorySlug": "spices-sauces",
@@ -5747,7 +5747,7 @@
   },
   {
     "id": "rw-ss-200800",
-    "sku": "200800",
+    "sku": "RW-200800",
     "name": "Stokes Chipotle Ketchup",
     "packSize": "6x300g",
     "categorySlug": "spices-sauces",
@@ -5760,7 +5760,7 @@
   },
   {
     "id": "rw-ss-200820",
-    "sku": "200820",
+    "sku": "RW-200820",
     "name": "Stokes Real Tomato Ketchup",
     "packSize": "6x300g",
     "categorySlug": "spices-sauces",
@@ -5773,7 +5773,7 @@
   },
   {
     "id": "rw-ss-160220",
-    "sku": "160220",
+    "sku": "RW-160220",
     "name": "Stokes Tomato Ketchup (Catering)",
     "packSize": "1x2kg",
     "categorySlug": "spices-sauces",
@@ -5786,7 +5786,7 @@
   },
   {
     "id": "rw-ss-178140",
-    "sku": "178140",
+    "sku": "RW-178140",
     "name": "Stokes Tomato Ketchup (glass)",
     "packSize": "12x300g",
     "categorySlug": "spices-sauces",
@@ -5799,7 +5799,7 @@
   },
   {
     "id": "rw-ss-178120",
-    "sku": "178120",
+    "sku": "RW-178120",
     "name": "Stokes Tomato Ketchup (sachet)",
     "packSize": "80x40g",
     "categorySlug": "spices-sauces",
@@ -5812,7 +5812,7 @@
   },
   {
     "id": "rw-ss-230130",
-    "sku": "230130",
+    "sku": "RW-230130",
     "name": "Tomato Ketchup Cryovac Bag",
     "packSize": "3x3kg",
     "categorySlug": "spices-sauces",
@@ -5825,7 +5825,7 @@
   },
   {
     "id": "rw-ss-286240",
-    "sku": "286240",
+    "sku": "RW-286240",
     "name": "Alfees Thick & Creamy Mayonnaise",
     "packSize": "5ltr",
     "categorySlug": "spices-sauces",
@@ -5838,7 +5838,7 @@
   },
   {
     "id": "rw-ss-173440",
-    "sku": "173440",
+    "sku": "RW-173440",
     "name": "Catering Essentials Mayonnaise",
     "packSize": "1x5ltr",
     "categorySlug": "spices-sauces",
@@ -5851,7 +5851,7 @@
   },
   {
     "id": "rw-ss-173200",
-    "sku": "173200",
+    "sku": "RW-173200",
     "name": "Country Range Mayonnaise (Sachet Stick)",
     "packSize": "200",
     "categorySlug": "spices-sauces",
@@ -5864,7 +5864,7 @@
   },
   {
     "id": "rw-ss-173430",
-    "sku": "173430",
+    "sku": "RW-173430",
     "name": "Country Range Real Mayonnaise",
     "packSize": "1x10ltr",
     "categorySlug": "spices-sauces",
@@ -5877,7 +5877,7 @@
   },
   {
     "id": "rw-ss-173420",
-    "sku": "173420",
+    "sku": "RW-173420",
     "name": "Country Range Real Mayonnaise",
     "packSize": "1x5ltr",
     "categorySlug": "spices-sauces",
@@ -5890,7 +5890,7 @@
   },
   {
     "id": "rw-ss-173191",
-    "sku": "173191",
+    "sku": "RW-173191",
     "name": "Country Range Vegan Mayonnaise",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -5903,7 +5903,7 @@
   },
   {
     "id": "rw-ss-173190",
-    "sku": "173190",
+    "sku": "RW-173190",
     "name": "Country Range Vegan Mayonnaise",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -5916,7 +5916,7 @@
   },
   {
     "id": "rw-ss-170970",
-    "sku": "170970",
+    "sku": "RW-170970",
     "name": "Free Range Real Mayonnaise (tub)",
     "packSize": "2.5ltr",
     "categorySlug": "spices-sauces",
@@ -5929,7 +5929,7 @@
   },
   {
     "id": "rw-ss-176881",
-    "sku": "176881",
+    "sku": "RW-176881",
     "name": "Great Taste Made Simple Mayonnaise",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -5942,7 +5942,7 @@
   },
   {
     "id": "rw-ss-176880",
-    "sku": "176880",
+    "sku": "RW-176880",
     "name": "Great Taste Made Simple Vegan Mayonnaise",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -5955,7 +5955,7 @@
   },
   {
     "id": "rw-ss-177140",
-    "sku": "177140",
+    "sku": "RW-177140",
     "name": "Heinz Free Range Mayonnaise (sachet)",
     "packSize": "200x10ml",
     "categorySlug": "spices-sauces",
@@ -5968,7 +5968,7 @@
   },
   {
     "id": "rw-ss-176500",
-    "sku": "176500",
+    "sku": "RW-176500",
     "name": "Heinz Mayonnaise",
     "packSize": "10x215g",
     "categorySlug": "spices-sauces",
@@ -5981,7 +5981,7 @@
   },
   {
     "id": "rw-ss-111521",
-    "sku": "111521",
+    "sku": "RW-111521",
     "name": "Heinz Mayonnaise",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -5994,7 +5994,7 @@
   },
   {
     "id": "rw-ss-173051",
-    "sku": "173051",
+    "sku": "RW-173051",
     "name": "Heinz Mayonnaise",
     "packSize": "2.15ltr",
     "categorySlug": "spices-sauces",
@@ -6007,7 +6007,7 @@
   },
   {
     "id": "rw-ss-173050",
-    "sku": "173050",
+    "sku": "RW-173050",
     "name": "Heinz Mayonnaise",
     "packSize": "2x2.15ltr",
     "categorySlug": "spices-sauces",
@@ -6020,7 +6020,7 @@
   },
   {
     "id": "rw-ss-111520",
-    "sku": "111520",
+    "sku": "RW-111520",
     "name": "Heinz Mayonnaise",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6033,7 +6033,7 @@
   },
   {
     "id": "rw-ss-173650",
-    "sku": "173650",
+    "sku": "RW-173650",
     "name": "Heinz Professional Mayonnaise",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -6046,7 +6046,7 @@
   },
   {
     "id": "rw-ss-173040",
-    "sku": "173040",
+    "sku": "RW-173040",
     "name": "Heinz Sauce-O-Mat Mayonnaise (3x2.5ltr)",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -6059,7 +6059,7 @@
   },
   {
     "id": "rw-ss-174460",
-    "sku": "174460",
+    "sku": "RW-174460",
     "name": "Heinz Truffle Mayonnaise",
     "packSize": "400ml",
     "categorySlug": "spices-sauces",
@@ -6072,7 +6072,7 @@
   },
   {
     "id": "rw-ss-174040",
-    "sku": "174040",
+    "sku": "RW-174040",
     "name": "Hellmann's Light Mayonnaise (tub)",
     "packSize": "2ltr",
     "categorySlug": "spices-sauces",
@@ -6085,7 +6085,7 @@
   },
   {
     "id": "rw-ss-173130",
-    "sku": "173130",
+    "sku": "RW-173130",
     "name": "Hellmann's Mayonnaise",
     "packSize": "10ltr",
     "categorySlug": "spices-sauces",
@@ -6098,7 +6098,7 @@
   },
   {
     "id": "rw-ss-173120",
-    "sku": "173120",
+    "sku": "RW-173120",
     "name": "Hellmann's Mayonnaise",
     "packSize": "5ltr",
     "categorySlug": "spices-sauces",
@@ -6111,7 +6111,7 @@
   },
   {
     "id": "rw-ss-112650",
-    "sku": "112650",
+    "sku": "RW-112650",
     "name": "Hellmann's Professional Mayonnaise",
     "packSize": "10L",
     "categorySlug": "spices-sauces",
@@ -6124,7 +6124,7 @@
   },
   {
     "id": "rw-ss-174030",
-    "sku": "174030",
+    "sku": "RW-174030",
     "name": "Hellmann's Real Mayonnaise (tub)",
     "packSize": "2ltr",
     "categorySlug": "spices-sauces",
@@ -6137,7 +6137,7 @@
   },
   {
     "id": "rw-ss-173410",
-    "sku": "173410",
+    "sku": "RW-173410",
     "name": "Hellmann's Real Squeezy Mayonnaise",
     "packSize": "8x430ml",
     "categorySlug": "spices-sauces",
@@ -6150,7 +6150,7 @@
   },
   {
     "id": "rw-ss-176400",
-    "sku": "176400",
+    "sku": "RW-176400",
     "name": "Hellmann's Vegan Mayonnaise",
     "packSize": "4.92kg",
     "categorySlug": "spices-sauces",
@@ -6163,7 +6163,7 @@
   },
   {
     "id": "rw-ss-173830",
-    "sku": "173830",
+    "sku": "RW-173830",
     "name": "Hellmann's Vegan Mayonnaise Sachets",
     "packSize": "200x10ml",
     "categorySlug": "spices-sauces",
@@ -6176,7 +6176,7 @@
   },
   {
     "id": "rw-ss-105811",
-    "sku": "105811",
+    "sku": "RW-105811",
     "name": "Kitchen '72 Vegan Garlic Mayo Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6189,7 +6189,7 @@
   },
   {
     "id": "rw-ss-105810",
-    "sku": "105810",
+    "sku": "RW-105810",
     "name": "Kitchen '72 Vegan Garlic Mayo Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6202,7 +6202,7 @@
   },
   {
     "id": "rw-ss-160100",
-    "sku": "160100",
+    "sku": "RW-160100",
     "name": "Real Mayonnaise SQUEEZY",
     "packSize": "10x420ml",
     "categorySlug": "spices-sauces",
@@ -6215,7 +6215,7 @@
   },
   {
     "id": "rw-ss-176570",
-    "sku": "176570",
+    "sku": "RW-176570",
     "name": "Rich Sauces Vegan Mayonnaise",
     "packSize": "10ltr",
     "categorySlug": "spices-sauces",
@@ -6228,7 +6228,7 @@
   },
   {
     "id": "rw-ss-200680",
-    "sku": "200680",
+    "sku": "RW-200680",
     "name": "Stokes Garlic Mayonnaise",
     "packSize": "6x345g",
     "categorySlug": "spices-sauces",
@@ -6241,7 +6241,7 @@
   },
   {
     "id": "rw-ss-260530",
-    "sku": "260530",
+    "sku": "RW-260530",
     "name": "Stokes Habanero Chilli Mayonnaise",
     "packSize": "6x205g",
     "categorySlug": "spices-sauces",
@@ -6254,7 +6254,7 @@
   },
   {
     "id": "rw-ss-200690",
-    "sku": "200690",
+    "sku": "RW-200690",
     "name": "Stokes Real Mayonnaise",
     "packSize": "6x345g",
     "categorySlug": "spices-sauces",
@@ -6267,7 +6267,7 @@
   },
   {
     "id": "rw-ss-178100",
-    "sku": "178100",
+    "sku": "RW-178100",
     "name": "Stokes Real Mayonnaise (sachet)",
     "packSize": "80x32ml",
     "categorySlug": "spices-sauces",
@@ -6280,7 +6280,7 @@
   },
   {
     "id": "rw-ss-178440",
-    "sku": "178440",
+    "sku": "RW-178440",
     "name": "Stokes Sicilian Lemon & Dill Mayonnaise",
     "packSize": "2ltr",
     "categorySlug": "spices-sauces",
@@ -6293,7 +6293,7 @@
   },
   {
     "id": "rw-ss-990290",
-    "sku": "990290",
+    "sku": "RW-990290",
     "name": "Vegan Classic Mayo Cryovac Bag",
     "packSize": "3x2.5kg",
     "categorySlug": "spices-sauces",
@@ -6306,7 +6306,7 @@
   },
   {
     "id": "rw-ss-176530",
-    "sku": "176530",
+    "sku": "RW-176530",
     "name": "Vegan Mayonnaise",
     "packSize": "4.5ltr",
     "categorySlug": "spices-sauces",
@@ -6319,7 +6319,7 @@
   },
   {
     "id": "rw-ss-175821",
-    "sku": "175821",
+    "sku": "RW-175821",
     "name": "Blue Dragon Plum Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6332,7 +6332,7 @@
   },
   {
     "id": "rw-ss-175820",
-    "sku": "175820",
+    "sku": "RW-175820",
     "name": "Blue Dragon Plum Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6345,7 +6345,7 @@
   },
   {
     "id": "rw-ss-175800",
-    "sku": "175800",
+    "sku": "RW-175800",
     "name": "Blue Dragon Sriracha Chilli Sauce",
     "packSize": "12x700ml",
     "categorySlug": "spices-sauces",
@@ -6358,7 +6358,7 @@
   },
   {
     "id": "rw-ss-175801",
-    "sku": "175801",
+    "sku": "RW-175801",
     "name": "Blue Dragon Sririacha Chilli Sauce",
     "packSize": "1x700ml",
     "categorySlug": "spices-sauces",
@@ -6371,7 +6371,7 @@
   },
   {
     "id": "rw-ss-127350",
-    "sku": "127350",
+    "sku": "RW-127350",
     "name": "Blue Dragon Sweet Chilli Dipping Sauce (PET bottle)",
     "packSize": "12x1ltr",
     "categorySlug": "spices-sauces",
@@ -6384,7 +6384,7 @@
   },
   {
     "id": "rw-ss-127351",
-    "sku": "127351",
+    "sku": "RW-127351",
     "name": "Blue Dragon Sweet Chilli Dipping Sauce (PET bottle)",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6397,7 +6397,7 @@
   },
   {
     "id": "rw-ss-176331",
-    "sku": "176331",
+    "sku": "RW-176331",
     "name": "Country Range Barbecue Sauce",
     "packSize": "2.25ltr",
     "categorySlug": "spices-sauces",
@@ -6410,7 +6410,7 @@
   },
   {
     "id": "rw-ss-176330",
-    "sku": "176330",
+    "sku": "RW-176330",
     "name": "Country Range Barbecue Sauce",
     "packSize": "2x2.25ltr",
     "categorySlug": "spices-sauces",
@@ -6423,7 +6423,7 @@
   },
   {
     "id": "rw-ss-170701",
-    "sku": "170701",
+    "sku": "RW-170701",
     "name": "Country Range Brown Sauce",
     "packSize": "4.3kg",
     "categorySlug": "spices-sauces",
@@ -6436,7 +6436,7 @@
   },
   {
     "id": "rw-ss-170700",
-    "sku": "170700",
+    "sku": "RW-170700",
     "name": "Country Range Brown Sauce",
     "packSize": "2x4.3kg",
     "categorySlug": "spices-sauces",
@@ -6449,7 +6449,7 @@
   },
   {
     "id": "rw-ss-170750",
-    "sku": "170750",
+    "sku": "RW-170750",
     "name": "Country Range Brown Sauce (Sachet Stick)",
     "packSize": "200",
     "categorySlug": "spices-sauces",
@@ -6462,7 +6462,7 @@
   },
   {
     "id": "rw-ss-174411",
-    "sku": "174411",
+    "sku": "RW-174411",
     "name": "Country Range Salad Cream",
     "packSize": "2.27ltr",
     "categorySlug": "spices-sauces",
@@ -6475,7 +6475,7 @@
   },
   {
     "id": "rw-ss-174410",
-    "sku": "174410",
+    "sku": "RW-174410",
     "name": "Country Range Salad Cream",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -6488,7 +6488,7 @@
   },
   {
     "id": "rw-ss-174530",
-    "sku": "174530",
+    "sku": "RW-174530",
     "name": "Country Range Salad Cream (Sachet Stick)",
     "packSize": "200x9g",
     "categorySlug": "spices-sauces",
@@ -6501,7 +6501,7 @@
   },
   {
     "id": "rw-ss-176450",
-    "sku": "176450",
+    "sku": "RW-176450",
     "name": "Country Range Tartare Sauce",
     "packSize": "200x9g",
     "categorySlug": "spices-sauces",
@@ -6514,7 +6514,7 @@
   },
   {
     "id": "rw-ss-171100",
-    "sku": "171100",
+    "sku": "RW-171100",
     "name": "Cranberry Sauce",
     "packSize": "6x1.38kg",
     "categorySlug": "spices-sauces",
@@ -6527,7 +6527,7 @@
   },
   {
     "id": "rw-ss-178360",
-    "sku": "178360",
+    "sku": "RW-178360",
     "name": "Creamy Caesar Dressing",
     "packSize": "6x260g",
     "categorySlug": "spices-sauces",
@@ -6540,7 +6540,7 @@
   },
   {
     "id": "rw-ss-177221",
-    "sku": "177221",
+    "sku": "RW-177221",
     "name": "Frank's Red Hot Original Cayenne Pepper Sauce",
     "packSize": "1x3.78ltr",
     "categorySlug": "spices-sauces",
@@ -6553,7 +6553,7 @@
   },
   {
     "id": "rw-ss-177220",
-    "sku": "177220",
+    "sku": "RW-177220",
     "name": "Frank's Red Hot Original Cayenne Pepper Sauce",
     "packSize": "4x3.78ltr",
     "categorySlug": "spices-sauces",
@@ -6566,7 +6566,7 @@
   },
   {
     "id": "rw-ss-176891",
-    "sku": "176891",
+    "sku": "RW-176891",
     "name": "Great Taste Made Simple Ranch Dressing",
     "packSize": "1x1ltr",
     "categorySlug": "spices-sauces",
@@ -6579,7 +6579,7 @@
   },
   {
     "id": "rw-ss-176890",
-    "sku": "176890",
+    "sku": "RW-176890",
     "name": "Great Taste Made Simple Ranch Dressing",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6592,7 +6592,7 @@
   },
   {
     "id": "rw-ss-176860",
-    "sku": "176860",
+    "sku": "RW-176860",
     "name": "Great Taste Made Simple Taco Mayonnaise",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6605,7 +6605,7 @@
   },
   {
     "id": "rw-ss-177190",
-    "sku": "177190",
+    "sku": "RW-177190",
     "name": "Heinz BBQ Classic Sauce (sachet)",
     "packSize": "250x7ml",
     "categorySlug": "spices-sauces",
@@ -6618,7 +6618,7 @@
   },
   {
     "id": "rw-ss-111570",
-    "sku": "111570",
+    "sku": "RW-111570",
     "name": "Heinz BBQ Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6631,7 +6631,7 @@
   },
   {
     "id": "rw-ss-170560",
-    "sku": "170560",
+    "sku": "RW-170560",
     "name": "Heinz BBQ Sauce Dip Pot",
     "packSize": "100x25g",
     "categorySlug": "spices-sauces",
@@ -6644,7 +6644,7 @@
   },
   {
     "id": "rw-ss-111540",
-    "sku": "111540",
+    "sku": "RW-111540",
     "name": "Heinz Classic Burger Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6657,7 +6657,7 @@
   },
   {
     "id": "rw-ss-173021",
-    "sku": "173021",
+    "sku": "RW-173021",
     "name": "Heinz HP Brown Sauce O Mat",
     "packSize": "2.5ltr",
     "categorySlug": "spices-sauces",
@@ -6670,7 +6670,7 @@
   },
   {
     "id": "rw-ss-173020",
-    "sku": "173020",
+    "sku": "RW-173020",
     "name": "Heinz HP Brown Sauce O Mat",
     "packSize": "3x2.5ltr",
     "categorySlug": "spices-sauces",
@@ -6683,7 +6683,7 @@
   },
   {
     "id": "rw-ss-174100",
-    "sku": "174100",
+    "sku": "RW-174100",
     "name": "Heinz Salad Cream",
     "packSize": "12x285g",
     "categorySlug": "spices-sauces",
@@ -6696,7 +6696,7 @@
   },
   {
     "id": "rw-ss-174120",
-    "sku": "174120",
+    "sku": "RW-174120",
     "name": "Heinz Squeezy Salad Cream",
     "packSize": "10x425g",
     "categorySlug": "spices-sauces",
@@ -6709,7 +6709,7 @@
   },
   {
     "id": "rw-ss-177120",
-    "sku": "177120",
+    "sku": "RW-177120",
     "name": "HP Brown Sauce (sachet)",
     "packSize": "200x10ml",
     "categorySlug": "spices-sauces",
@@ -6722,7 +6722,7 @@
   },
   {
     "id": "rw-ss-170450",
-    "sku": "170450",
+    "sku": "RW-170450",
     "name": "HP Brown Sauce Opaque",
     "packSize": "8x285g",
     "categorySlug": "spices-sauces",
@@ -6735,7 +6735,7 @@
   },
   {
     "id": "rw-ss-111351",
-    "sku": "111351",
+    "sku": "RW-111351",
     "name": "HP Sauce",
     "packSize": "2.15ltr",
     "categorySlug": "spices-sauces",
@@ -6748,7 +6748,7 @@
   },
   {
     "id": "rw-ss-170410",
-    "sku": "170410",
+    "sku": "RW-170410",
     "name": "HP Sauce Brown (PET)",
     "packSize": "8x600g",
     "categorySlug": "spices-sauces",
@@ -6761,7 +6761,7 @@
   },
   {
     "id": "rw-ss-105911",
-    "sku": "105911",
+    "sku": "RW-105911",
     "name": "Kitchen '72 Classic Salad Dressing",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6774,7 +6774,7 @@
   },
   {
     "id": "rw-ss-105910",
-    "sku": "105910",
+    "sku": "RW-105910",
     "name": "Kitchen '72 Classic Salad Dressing",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6787,7 +6787,7 @@
   },
   {
     "id": "rw-ss-105821",
-    "sku": "105821",
+    "sku": "RW-105821",
     "name": "Kitchen '72 Indian Sweet Chilli Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6800,7 +6800,7 @@
   },
   {
     "id": "rw-ss-105820",
-    "sku": "105820",
+    "sku": "RW-105820",
     "name": "Kitchen '72 Indian Sweet Chilli Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6813,7 +6813,7 @@
   },
   {
     "id": "rw-ss-105831",
-    "sku": "105831",
+    "sku": "RW-105831",
     "name": "Kitchen '72 Peri Peri Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6826,7 +6826,7 @@
   },
   {
     "id": "rw-ss-105830",
-    "sku": "105830",
+    "sku": "RW-105830",
     "name": "Kitchen '72 Peri Peri Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6839,7 +6839,7 @@
   },
   {
     "id": "rw-ss-106251",
-    "sku": "106251",
+    "sku": "RW-106251",
     "name": "Kitchen 72 Sticky BBQ Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -6852,7 +6852,7 @@
   },
   {
     "id": "rw-ss-106250",
-    "sku": "106250",
+    "sku": "RW-106250",
     "name": "Kitchen 72 Sticky BBQ Sauce",
     "packSize": "6x1ltr",
     "categorySlug": "spices-sauces",
@@ -6865,7 +6865,7 @@
   },
   {
     "id": "rw-ss-177620",
-    "sku": "177620",
+    "sku": "RW-177620",
     "name": "Lea & Perrins Worcestershire Sauce",
     "packSize": "2x4ltr",
     "categorySlug": "spices-sauces",
@@ -6878,7 +6878,7 @@
   },
   {
     "id": "rw-ss-177621",
-    "sku": "177621",
+    "sku": "RW-177621",
     "name": "Lea & Perrins Worcestershire Sauce",
     "packSize": "4ltr",
     "categorySlug": "spices-sauces",
@@ -6891,7 +6891,7 @@
   },
   {
     "id": "rw-ss-177520",
-    "sku": "177520",
+    "sku": "RW-177520",
     "name": "Lea and Perrins Worcestershire Sauce",
     "packSize": "12x290ml",
     "categorySlug": "spices-sauces",
@@ -6904,7 +6904,7 @@
   },
   {
     "id": "rw-ss-175991",
-    "sku": "175991",
+    "sku": "RW-175991",
     "name": "Lee Kum Kee Hoisin Sauce",
     "packSize": "2.45kg",
     "categorySlug": "spices-sauces",
@@ -6917,7 +6917,7 @@
   },
   {
     "id": "rw-ss-175990",
-    "sku": "175990",
+    "sku": "RW-175990",
     "name": "Lee Kum Kee Hoisin Sauce",
     "packSize": "2x2.45kg",
     "categorySlug": "spices-sauces",
@@ -6930,7 +6930,7 @@
   },
   {
     "id": "rw-ss-177470",
-    "sku": "177470",
+    "sku": "RW-177470",
     "name": "Lion Piri Piri Hot Sauce",
     "packSize": "2x2.27ltr",
     "categorySlug": "spices-sauces",
@@ -6943,7 +6943,7 @@
   },
   {
     "id": "rw-ss-160150",
-    "sku": "160150",
+    "sku": "RW-160150",
     "name": "Original BBQ Sauce Squeezy",
     "packSize": "10x510g",
     "categorySlug": "spices-sauces",
@@ -6956,7 +6956,7 @@
   },
   {
     "id": "rw-ss-160120",
-    "sku": "160120",
+    "sku": "RW-160120",
     "name": "Real Brown Sauce Squeezy",
     "packSize": "10x505g",
     "categorySlug": "spices-sauces",
@@ -6969,7 +6969,7 @@
   },
   {
     "id": "rw-ss-251000",
-    "sku": "251000",
+    "sku": "RW-251000",
     "name": "Rio Pacific Korean BBQ Sauce",
     "packSize": "2x2.2Ltr",
     "categorySlug": "spices-sauces",
@@ -6982,7 +6982,7 @@
   },
   {
     "id": "rw-ss-173781",
-    "sku": "173781",
+    "sku": "RW-173781",
     "name": "Santa Maria Bourbon BBQ Sauce",
     "packSize": "1.1kg",
     "categorySlug": "spices-sauces",
@@ -6995,7 +6995,7 @@
   },
   {
     "id": "rw-ss-173780",
-    "sku": "173780",
+    "sku": "RW-173780",
     "name": "Santa Maria Bourbon BBQ Sauce",
     "packSize": "6x1100g",
     "categorySlug": "spices-sauces",
@@ -7008,7 +7008,7 @@
   },
   {
     "id": "rw-ss-992360",
-    "sku": "992360",
+    "sku": "RW-992360",
     "name": "Santa Maria Chipotle Sauce",
     "packSize": "6x890g",
     "categorySlug": "spices-sauces",
@@ -7021,7 +7021,7 @@
   },
   {
     "id": "rw-ss-160130",
-    "sku": "160130",
+    "sku": "RW-160130",
     "name": "Stokes BBQ Sauce Sachets- 80x32g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",
@@ -7034,7 +7034,7 @@
   },
   {
     "id": "rw-ss-200790",
-    "sku": "200790",
+    "sku": "RW-200790",
     "name": "Stokes Brown Sauce",
     "packSize": "6x320g",
     "categorySlug": "spices-sauces",
@@ -7047,7 +7047,7 @@
   },
   {
     "id": "rw-ss-200760",
-    "sku": "200760",
+    "sku": "RW-200760",
     "name": "Stokes Original BBQ Sauce",
     "packSize": "6x315g",
     "categorySlug": "spices-sauces",
@@ -7060,7 +7060,7 @@
   },
   {
     "id": "rw-ss-178110",
-    "sku": "178110",
+    "sku": "RW-178110",
     "name": "Stokes Real Brown Sauce (sachet)",
     "packSize": "80x32g",
     "categorySlug": "spices-sauces",
@@ -7073,7 +7073,7 @@
   },
   {
     "id": "rw-ss-200810",
-    "sku": "200810",
+    "sku": "RW-200810",
     "name": "Stokes Sweet Chilli Sauce",
     "packSize": "6x320g",
     "categorySlug": "spices-sauces",
@@ -7086,7 +7086,7 @@
   },
   {
     "id": "rw-ss-178380",
-    "sku": "178380",
+    "sku": "RW-178380",
     "name": "Sweet & Sticky BBQ Sauce",
     "packSize": "6x325g",
     "categorySlug": "spices-sauces",
@@ -7099,7 +7099,7 @@
   },
   {
     "id": "rw-ss-175500",
-    "sku": "175500",
+    "sku": "RW-175500",
     "name": "Tabasco Sauce",
     "packSize": "12x57ml",
     "categorySlug": "spices-sauces",
@@ -7112,7 +7112,7 @@
   },
   {
     "id": "rw-ss-142150",
-    "sku": "142150",
+    "sku": "RW-142150",
     "name": "Vegan Worcestershire Sauce",
     "packSize": "1ltr",
     "categorySlug": "spices-sauces",
@@ -7125,7 +7125,7 @@
   },
   {
     "id": "rw-ss-279831",
-    "sku": "279831",
+    "sku": "RW-279831",
     "name": "Caterers Pride Baked Beans in Tomato Sauce",
     "packSize": "1x840g",
     "categorySlug": "spices-sauces",
@@ -7138,7 +7138,7 @@
   },
   {
     "id": "rw-ss-127951",
-    "sku": "127951",
+    "sku": "RW-127951",
     "name": "Catering Essentials Baked Beans in Tomato Sauce",
     "packSize": "2.61kg",
     "categorySlug": "spices-sauces",
@@ -7151,7 +7151,7 @@
   },
   {
     "id": "rw-ss-127950",
-    "sku": "127950",
+    "sku": "RW-127950",
     "name": "Catering Essentials Baked Beans in Tomato Sauce",
     "packSize": "6x2.61kg",
     "categorySlug": "spices-sauces",
@@ -7164,7 +7164,7 @@
   },
   {
     "id": "rw-ss-129961",
-    "sku": "129961",
+    "sku": "RW-129961",
     "name": "Catering Essentials Reduced Sugar and Salt Baked Beans",
     "packSize": "2.61kg",
     "categorySlug": "spices-sauces",
@@ -7177,7 +7177,7 @@
   },
   {
     "id": "rw-ss-129960",
-    "sku": "129960",
+    "sku": "RW-129960",
     "name": "Catering Essentials Reduced Sugar and Salt Baked Beans",
     "packSize": "6x2.61kg",
     "categorySlug": "spices-sauces",
@@ -7190,7 +7190,7 @@
   },
   {
     "id": "rw-ss-183050",
-    "sku": "183050",
+    "sku": "RW-183050",
     "name": "MAGGI Rich & Rustic Tomato Sauce",
     "packSize": "12x950g",
     "categorySlug": "spices-sauces",
@@ -7203,7 +7203,7 @@
   },
   {
     "id": "rw-ss-183051",
-    "sku": "183051",
+    "sku": "RW-183051",
     "name": "Maggi Rich & Rustic Tomato Sauce 950g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "spices-sauces",

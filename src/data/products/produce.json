@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-fp-603620",
-    "sku": "603620",
+    "sku": "RW-603620",
     "name": "Potato Baker 40",
     "packSize": "1x15kg",
     "categorySlug": "fresh-produce",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-fp-600990",
-    "sku": "600990",
+    "sku": "RW-600990",
     "name": "Sweet Potatoes",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-fp-604460",
-    "sku": "604460",
+    "sku": "RW-604460",
     "name": "Unwashed Chippies Choice Potatoes (approx. 45mm diameter)",
     "packSize": "25kg",
     "categorySlug": "fresh-produce",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-fp-601220",
-    "sku": "601220",
+    "sku": "RW-601220",
     "name": "Fresh Mooli",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-fp-604700",
-    "sku": "604700",
+    "sku": "RW-604700",
     "name": "Bramley Apples",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-fp-604690",
-    "sku": "604690",
+    "sku": "RW-604690",
     "name": "Bramley Apples (box)",
     "packSize": "13.6kg",
     "categorySlug": "fresh-produce",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-fp-602460",
-    "sku": "602460",
+    "sku": "RW-602460",
     "name": "Conference Pears",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-fp-604450",
-    "sku": "604450",
+    "sku": "RW-604450",
     "name": "Conference Pears Box",
     "packSize": "12.5kg",
     "categorySlug": "fresh-produce",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-fp-604680",
-    "sku": "604680",
+    "sku": "RW-604680",
     "name": "Golden Delicious Apples",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-fp-603970",
-    "sku": "603970",
+    "sku": "RW-603970",
     "name": "Golden Delicious Apples (box)",
     "packSize": "12kg",
     "categorySlug": "fresh-produce",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-fp-604670",
-    "sku": "604670",
+    "sku": "RW-604670",
     "name": "Granny Smith Apples",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-fp-601510",
-    "sku": "601510",
+    "sku": "RW-601510",
     "name": "Granny Smith Apples (box)",
     "packSize": "12kg",
     "categorySlug": "fresh-produce",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-fp-605690",
-    "sku": "605690",
+    "sku": "RW-605690",
     "name": "Medium Red Apples (box)",
     "packSize": "18kg",
     "categorySlug": "fresh-produce",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-fp-604660",
-    "sku": "604660",
+    "sku": "RW-604660",
     "name": "Mixed Apples",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-fp-601680",
-    "sku": "601680",
+    "sku": "RW-601680",
     "name": "Pink Lady Apples",
     "packSize": "12kg",
     "categorySlug": "fresh-produce",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-fp-604650",
-    "sku": "604650",
+    "sku": "RW-604650",
     "name": "Pink Lady Apples",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-fp-603780",
-    "sku": "603780",
+    "sku": "RW-603780",
     "name": "Red Apples - Medium",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-fp-603480",
-    "sku": "603480",
+    "sku": "RW-603480",
     "name": "Red Apples - Small",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-fp-603540",
-    "sku": "603540",
+    "sku": "RW-603540",
     "name": "Small Red Apples (box)",
     "packSize": "18kg",
     "categorySlug": "fresh-produce",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-fp-607450",
-    "sku": "607450",
+    "sku": "RW-607450",
     "name": "Green Unripened Bananas Box",
     "packSize": "10/12 each",
     "categorySlug": "fresh-produce",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-fp-607430",
-    "sku": "607430",
+    "sku": "RW-607430",
     "name": "Green Unripened Bananas Box",
     "packSize": "18kg",
     "categorySlug": "fresh-produce",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-fp-602671",
-    "sku": "602671",
+    "sku": "RW-602671",
     "name": "Blackberries",
     "packSize": "125g",
     "categorySlug": "fresh-produce",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-fp-602670",
-    "sku": "602670",
+    "sku": "RW-602670",
     "name": "Blackberries",
     "packSize": "12x125g",
     "categorySlug": "fresh-produce",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-fp-621510",
-    "sku": "621510",
+    "sku": "RW-621510",
     "name": "Blackcurrants",
     "packSize": "12x125g",
     "categorySlug": "fresh-produce",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-fp-621511",
-    "sku": "621511",
+    "sku": "RW-621511",
     "name": "Blackcurrants",
     "packSize": "1x125g",
     "categorySlug": "fresh-produce",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-fp-601740",
-    "sku": "601740",
+    "sku": "RW-601740",
     "name": "Blueberries",
     "packSize": "10x250g",
     "categorySlug": "fresh-produce",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-fp-601741",
-    "sku": "601741",
+    "sku": "RW-601741",
     "name": "Blueberries",
     "packSize": "1x250g",
     "categorySlug": "fresh-produce",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-fp-612101",
-    "sku": "612101",
+    "sku": "RW-612101",
     "name": "Blueberries (Tray)",
     "packSize": "125g",
     "categorySlug": "fresh-produce",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-fp-612100",
-    "sku": "612100",
+    "sku": "RW-612100",
     "name": "Blueberries (Tray)",
     "packSize": "12x125g",
     "categorySlug": "fresh-produce",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-fp-600581",
-    "sku": "600581",
+    "sku": "RW-600581",
     "name": "English Strawberries Punnet",
     "packSize": "1x400g",
     "categorySlug": "fresh-produce",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-fp-600580",
-    "sku": "600580",
+    "sku": "RW-600580",
     "name": "English Strawberries Tray",
     "packSize": "20x400g",
     "categorySlug": "fresh-produce",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-fp-609227",
-    "sku": "609227",
+    "sku": "RW-609227",
     "name": "Fresh Cranberries",
     "packSize": "340g",
     "categorySlug": "fresh-produce",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-fp-603300",
-    "sku": "603300",
+    "sku": "RW-603300",
     "name": "Fresh Physalis Punnet",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-fp-650670",
-    "sku": "650670",
+    "sku": "RW-650670",
     "name": "Fresh Raspberries",
     "packSize": "8x125g",
     "categorySlug": "fresh-produce",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-fp-603870",
-    "sku": "603870",
+    "sku": "RW-603870",
     "name": "Gooseberries Punnet",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-fp-600621",
-    "sku": "600621",
+    "sku": "RW-600621",
     "name": "Raspberries Punnet",
     "packSize": "125g",
     "categorySlug": "fresh-produce",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-fp-600620",
-    "sku": "600620",
+    "sku": "RW-600620",
     "name": "Raspberries Punnet",
     "packSize": "12x125g",
     "categorySlug": "fresh-produce",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-fp-608300",
-    "sku": "608300",
+    "sku": "RW-608300",
     "name": "Strawberries",
     "packSize": "10x250g",
     "categorySlug": "fresh-produce",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-fp-607200",
-    "sku": "607200",
+    "sku": "RW-607200",
     "name": "Strawberries",
     "packSize": "12x400g",
     "categorySlug": "fresh-produce",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-fp-608301",
-    "sku": "608301",
+    "sku": "RW-608301",
     "name": "Strawberries",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-fp-607201",
-    "sku": "607201",
+    "sku": "RW-607201",
     "name": "Strawberries",
     "packSize": "400g",
     "categorySlug": "fresh-produce",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-fp-608201",
-    "sku": "608201",
+    "sku": "RW-608201",
     "name": "Strawberries",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-fp-608200",
-    "sku": "608200",
+    "sku": "RW-608200",
     "name": "Strawberries",
     "packSize": "8x500g",
     "categorySlug": "fresh-produce",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-fp-604550",
-    "sku": "604550",
+    "sku": "RW-604550",
     "name": "Clementine 'Shoe Box'",
     "packSize": "2.3kg",
     "categorySlug": "fresh-produce",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-fp-650671",
-    "sku": "650671",
+    "sku": "RW-650671",
     "name": "Fresh Raspberries",
     "packSize": "125g",
     "categorySlug": "fresh-produce",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-fp-603260",
-    "sku": "603260",
+    "sku": "RW-603260",
     "name": "Juicing Oranges",
     "packSize": "box",
     "categorySlug": "fresh-produce",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-fp-601700",
-    "sku": "601700",
+    "sku": "RW-601700",
     "name": "Large Oranges",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-fp-603720",
-    "sku": "603720",
+    "sku": "RW-603720",
     "name": "Large Oranges (box)",
     "packSize": "15kg",
     "categorySlug": "fresh-produce",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-fp-607400",
-    "sku": "607400",
+    "sku": "RW-607400",
     "name": "Lemons",
     "packSize": "100 each",
     "categorySlug": "fresh-produce",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-fp-601690",
-    "sku": "601690",
+    "sku": "RW-601690",
     "name": "Lemons",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-fp-603810",
-    "sku": "603810",
+    "sku": "RW-603810",
     "name": "Lemons (box)",
     "packSize": "approx. 90",
     "categorySlug": "fresh-produce",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-fp-603800",
-    "sku": "603800",
+    "sku": "RW-603800",
     "name": "Limes",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-fp-603790",
-    "sku": "603790",
+    "sku": "RW-603790",
     "name": "Limes (box)",
     "packSize": "4.5kg",
     "categorySlug": "fresh-produce",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-fp-601710",
-    "sku": "601710",
+    "sku": "RW-601710",
     "name": "Medium Oranges",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-fp-601720",
-    "sku": "601720",
+    "sku": "RW-601720",
     "name": "Medium Oranges",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-fp-603310",
-    "sku": "603310",
+    "sku": "RW-603310",
     "name": "Nadorcotts Box",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-fp-602470",
-    "sku": "602470",
+    "sku": "RW-602470",
     "name": "Nardorcotts",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-fp-603140",
-    "sku": "603140",
+    "sku": "RW-603140",
     "name": "Pink Grapefruit",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-fp-603141",
-    "sku": "603141",
+    "sku": "RW-603141",
     "name": "Pink Grapefruit",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-fp-601670",
-    "sku": "601670",
+    "sku": "RW-601670",
     "name": "Pink Grapefruit",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-fp-600542",
-    "sku": "600542",
+    "sku": "RW-600542",
     "name": "Drinking Coconuts Case",
     "packSize": "6",
     "categorySlug": "fresh-produce",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-fp-605141",
-    "sku": "605141",
+    "sku": "RW-605141",
     "name": "Fresh Green Figs",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-fp-605140",
-    "sku": "605140",
+    "sku": "RW-605140",
     "name": "Fresh Green Figs Tray",
     "packSize": "1x24",
     "categorySlug": "fresh-produce",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-fp-603840",
-    "sku": "603840",
+    "sku": "RW-603840",
     "name": "Kiwi Fruit",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-fp-603081",
-    "sku": "603081",
+    "sku": "RW-603081",
     "name": "Large Pineapple",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-fp-603080",
-    "sku": "603080",
+    "sku": "RW-603080",
     "name": "Large Pineapples",
     "packSize": "7",
     "categorySlug": "fresh-produce",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-fp-601650",
-    "sku": "601650",
+    "sku": "RW-601650",
     "name": "Mango - Ready To Eat",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-fp-604770",
-    "sku": "604770",
+    "sku": "RW-604770",
     "name": "Papaya",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-fp-603700",
-    "sku": "603700",
+    "sku": "RW-603700",
     "name": "Passionfruit",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-fp-601540",
-    "sku": "601540",
+    "sku": "RW-601540",
     "name": "Pineapple",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-fp-603640",
-    "sku": "603640",
+    "sku": "RW-603640",
     "name": "Whole Pomegranate",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-fp-603860",
-    "sku": "603860",
+    "sku": "RW-603860",
     "name": "Red Grapes",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-fp-601550",
-    "sku": "601550",
+    "sku": "RW-601550",
     "name": "White Grapes",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-fp-603030",
-    "sku": "603030",
+    "sku": "RW-603030",
     "name": "Cantaloupe Melon",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-fp-601730",
-    "sku": "601730",
+    "sku": "RW-601730",
     "name": "Galia Melon",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-fp-603020",
-    "sku": "603020",
+    "sku": "RW-603020",
     "name": "Honeydew Melon",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-fp-602710",
-    "sku": "602710",
+    "sku": "RW-602710",
     "name": "Watermelon Large",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-fp-604470",
-    "sku": "604470",
+    "sku": "RW-604470",
     "name": "Cherries",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-fp-603250",
-    "sku": "603250",
+    "sku": "RW-603250",
     "name": "Nectarines",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-fp-601610",
-    "sku": "601610",
+    "sku": "RW-601610",
     "name": "Nectarines",
     "packSize": "Tray",
     "categorySlug": "fresh-produce",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-fp-603690",
-    "sku": "603690",
+    "sku": "RW-603690",
     "name": "Peaches",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-fp-601590",
-    "sku": "601590",
+    "sku": "RW-601590",
     "name": "Peaches (approx. 20)",
     "packSize": "Tray",
     "categorySlug": "fresh-produce",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-fp-601770",
-    "sku": "601770",
+    "sku": "RW-601770",
     "name": "Plums",
     "packSize": "10x1kg",
     "categorySlug": "fresh-produce",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-fp-603210",
-    "sku": "603210",
+    "sku": "RW-603210",
     "name": "Plums",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-fp-601771",
-    "sku": "601771",
+    "sku": "RW-601771",
     "name": "Plums",
     "packSize": "1x1kg",
     "categorySlug": "fresh-produce",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-fp-603650",
-    "sku": "603650",
+    "sku": "RW-603650",
     "name": "Plums Box",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-fp-604630",
-    "sku": "604630",
+    "sku": "RW-604630",
     "name": "Baby Salad Potato",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-fp-603610",
-    "sku": "603610",
+    "sku": "RW-603610",
     "name": "Potato Baker 50",
     "packSize": "15kg",
     "categorySlug": "fresh-produce",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-fp-603131",
-    "sku": "603131",
+    "sku": "RW-603131",
     "name": "Potatoes",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-fp-603490",
-    "sku": "603490",
+    "sku": "RW-603490",
     "name": "Red Washed Potatoes",
     "packSize": "25kg",
     "categorySlug": "fresh-produce",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-fp-600110",
-    "sku": "600110",
+    "sku": "RW-600110",
     "name": "Sweet Potatoes Box",
     "packSize": "6kg",
     "categorySlug": "fresh-produce",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-fp-603130",
-    "sku": "603130",
+    "sku": "RW-603130",
     "name": "Washed White Potato",
     "packSize": "10x2kg",
     "categorySlug": "fresh-produce",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-fp-603770",
-    "sku": "603770",
+    "sku": "RW-603770",
     "name": "White Washed Potato",
     "packSize": "25kg",
     "categorySlug": "fresh-produce",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-fp-600070",
-    "sku": "600070",
+    "sku": "RW-600070",
     "name": "Potato Bakers 60's",
     "packSize": "15kg",
     "categorySlug": "fresh-produce",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-fp-603550",
-    "sku": "603550",
+    "sku": "RW-603550",
     "name": "British Prepared Whole Potatoes",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-fp-306460",
-    "sku": "306460",
+    "sku": "RW-306460",
     "name": "Peka Potato Cubes 20mm",
     "packSize": "4kg",
     "categorySlug": "fresh-produce",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-fp-603600",
-    "sku": "603600",
+    "sku": "RW-603600",
     "name": "Prepared Baby Roast Potatoes",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-fp-604810",
-    "sku": "604810",
+    "sku": "RW-604810",
     "name": "Prepared Peeled Whole Potatoes",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -1275,7 +1275,7 @@
   },
   {
     "id": "rw-fp-602120",
-    "sku": "602120",
+    "sku": "RW-602120",
     "name": "Prepared Quartered Potatoes",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "rw-fp-602210",
-    "sku": "602210",
+    "sku": "RW-602210",
     "name": "Prepared Roast Cut Potatoes",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "rw-fp-600080",
-    "sku": "600080",
+    "sku": "RW-600080",
     "name": "Jersey Royal New Potatoes",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": "rw-fp-603200",
-    "sku": "603200",
+    "sku": "RW-603200",
     "name": "Jersey Royal New Potatoes",
     "packSize": "10x1kg",
     "categorySlug": "fresh-produce",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "rw-fp-603201",
-    "sku": "603201",
+    "sku": "RW-603201",
     "name": "Jersey Royal New Potatoes",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -1340,7 +1340,7 @@
   },
   {
     "id": "rw-fp-601781",
-    "sku": "601781",
+    "sku": "RW-601781",
     "name": "Medium Pre Packed Potatoes",
     "packSize": "1x2.5kg",
     "categorySlug": "fresh-produce",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-fp-601780",
-    "sku": "601780",
+    "sku": "RW-601780",
     "name": "Medium Pre Packed Potatoes",
     "packSize": "8x2.5kg",
     "categorySlug": "fresh-produce",
@@ -1366,7 +1366,7 @@
   },
   {
     "id": "rw-fp-612110",
-    "sku": "612110",
+    "sku": "RW-612110",
     "name": "Red Washed Potatoes",
     "packSize": "20kg",
     "categorySlug": "fresh-produce",
@@ -1379,7 +1379,7 @@
   },
   {
     "id": "rw-fp-600480",
-    "sku": "600480",
+    "sku": "RW-600480",
     "name": "Hass Avocado Ready To Eat",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -1392,7 +1392,7 @@
   },
   {
     "id": "rw-fp-600570",
-    "sku": "600570",
+    "sku": "RW-600570",
     "name": "Hass Avocado Ready To Eat",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "rw-fp-600600",
-    "sku": "600600",
+    "sku": "RW-600600",
     "name": "Alfalfa Sprouts",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": "rw-fp-604910",
-    "sku": "604910",
+    "sku": "RW-604910",
     "name": "Apple Blossom",
     "packSize": "15g",
     "categorySlug": "fresh-produce",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "rw-fp-601230",
-    "sku": "601230",
+    "sku": "RW-601230",
     "name": "Chicory Red Carmine",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "rw-fp-998100",
-    "sku": "998100",
+    "sku": "RW-998100",
     "name": "Curry Leaves",
     "packSize": "20x100g",
     "categorySlug": "fresh-produce",
@@ -1457,7 +1457,7 @@
   },
   {
     "id": "rw-fp-605120",
-    "sku": "605120",
+    "sku": "RW-605120",
     "name": "Cut Peashoots",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -1470,7 +1470,7 @@
   },
   {
     "id": "rw-fp-605060",
-    "sku": "605060",
+    "sku": "RW-605060",
     "name": "Edible Nasturtium Flowers",
     "packSize": "12g",
     "categorySlug": "fresh-produce",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "rw-fp-600520",
-    "sku": "600520",
+    "sku": "RW-600520",
     "name": "Edible Pansies",
     "packSize": "8g",
     "categorySlug": "fresh-produce",
@@ -1496,7 +1496,7 @@
   },
   {
     "id": "rw-fp-602641",
-    "sku": "602641",
+    "sku": "RW-602641",
     "name": "Fresh Basil",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1509,7 +1509,7 @@
   },
   {
     "id": "rw-fp-602640",
-    "sku": "602640",
+    "sku": "RW-602640",
     "name": "Fresh Basil",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-fp-602631",
-    "sku": "602631",
+    "sku": "RW-602631",
     "name": "Fresh Bay Leaves",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1535,7 +1535,7 @@
   },
   {
     "id": "rw-fp-602630",
-    "sku": "602630",
+    "sku": "RW-602630",
     "name": "Fresh Bay Leaves",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1548,7 +1548,7 @@
   },
   {
     "id": "rw-fp-602601",
-    "sku": "602601",
+    "sku": "RW-602601",
     "name": "Fresh Chives",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "rw-fp-602600",
-    "sku": "602600",
+    "sku": "RW-602600",
     "name": "Fresh Chives",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "rw-fp-602491",
-    "sku": "602491",
+    "sku": "RW-602491",
     "name": "Fresh Coriander",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1587,7 +1587,7 @@
   },
   {
     "id": "rw-fp-602490",
-    "sku": "602490",
+    "sku": "RW-602490",
     "name": "Fresh Coriander",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1600,7 +1600,7 @@
   },
   {
     "id": "rw-fp-602750",
-    "sku": "602750",
+    "sku": "RW-602750",
     "name": "Fresh Curly Parsley",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1613,7 +1613,7 @@
   },
   {
     "id": "rw-fp-602391",
-    "sku": "602391",
+    "sku": "RW-602391",
     "name": "Fresh Dill",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": "rw-fp-602390",
-    "sku": "602390",
+    "sku": "RW-602390",
     "name": "Fresh Dill",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1639,7 +1639,7 @@
   },
   {
     "id": "rw-fp-600630",
-    "sku": "600630",
+    "sku": "RW-600630",
     "name": "Fresh Flat Parsley",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1652,7 +1652,7 @@
   },
   {
     "id": "rw-fp-604030",
-    "sku": "604030",
+    "sku": "RW-604030",
     "name": "Fresh Lemongrass",
     "packSize": "bunch",
     "categorySlug": "fresh-produce",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "rw-fp-602331",
-    "sku": "602331",
+    "sku": "RW-602331",
     "name": "Fresh Mint",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-fp-602330",
-    "sku": "602330",
+    "sku": "RW-602330",
     "name": "Fresh Mint",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "rw-fp-602061",
-    "sku": "602061",
+    "sku": "RW-602061",
     "name": "Fresh Oregano",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "rw-fp-602060",
-    "sku": "602060",
+    "sku": "RW-602060",
     "name": "Fresh Oregano",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "rw-fp-602050",
-    "sku": "602050",
+    "sku": "RW-602050",
     "name": "Fresh Rosemary",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "rw-fp-601641",
-    "sku": "601641",
+    "sku": "RW-601641",
     "name": "Fresh Sage",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1743,7 +1743,7 @@
   },
   {
     "id": "rw-fp-601640",
-    "sku": "601640",
+    "sku": "RW-601640",
     "name": "Fresh Sage",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "rw-fp-601601",
-    "sku": "601601",
+    "sku": "RW-601601",
     "name": "Fresh Tarragon",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1769,7 +1769,7 @@
   },
   {
     "id": "rw-fp-601600",
-    "sku": "601600",
+    "sku": "RW-601600",
     "name": "Fresh Tarragon",
     "packSize": "30x100g",
     "categorySlug": "fresh-produce",
@@ -1782,7 +1782,7 @@
   },
   {
     "id": "rw-fp-600810",
-    "sku": "600810",
+    "sku": "RW-600810",
     "name": "Fresh Thyme",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "rw-fp-605660",
-    "sku": "605660",
+    "sku": "RW-605660",
     "name": "Micro Coriander",
     "packSize": "30g",
     "categorySlug": "fresh-produce",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "rw-fp-605670",
-    "sku": "605670",
+    "sku": "RW-605670",
     "name": "Micro Edible Viola Flowers (8 Flowers)",
     "packSize": "1",
     "categorySlug": "fresh-produce",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "rw-fp-996530",
-    "sku": "996530",
+    "sku": "RW-996530",
     "name": "Micro Flower Wheel",
     "packSize": "1x1",
     "categorySlug": "fresh-produce",
@@ -1834,7 +1834,7 @@
   },
   {
     "id": "rw-fp-996540",
-    "sku": "996540",
+    "sku": "RW-996540",
     "name": "Micro Herb Wheel",
     "packSize": "1x1",
     "categorySlug": "fresh-produce",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-fp-605510",
-    "sku": "605510",
+    "sku": "RW-605510",
     "name": "Micro Lemon Balm",
     "packSize": "30g",
     "categorySlug": "fresh-produce",
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "rw-fp-607370",
-    "sku": "607370",
+    "sku": "RW-607370",
     "name": "Micro Parsley",
     "packSize": "8x25g",
     "categorySlug": "fresh-produce",
@@ -1873,7 +1873,7 @@
   },
   {
     "id": "rw-fp-605630",
-    "sku": "605630",
+    "sku": "RW-605630",
     "name": "Micro Pea Shoots, Tendril",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1886,7 +1886,7 @@
   },
   {
     "id": "rw-fp-604790",
-    "sku": "604790",
+    "sku": "RW-604790",
     "name": "Micro Red Amaranth",
     "packSize": "25g",
     "categorySlug": "fresh-produce",
@@ -1899,7 +1899,7 @@
   },
   {
     "id": "rw-fp-607380",
-    "sku": "607380",
+    "sku": "RW-607380",
     "name": "Micro Red Vein Sorrel",
     "packSize": "8x20g",
     "categorySlug": "fresh-produce",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": "rw-fp-604780",
-    "sku": "604780",
+    "sku": "RW-604780",
     "name": "Micro Rocket",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -1925,7 +1925,7 @@
   },
   {
     "id": "rw-fp-604970",
-    "sku": "604970",
+    "sku": "RW-604970",
     "name": "Mustard Cress Punnet",
     "packSize": "16x80g",
     "categorySlug": "fresh-produce",
@@ -1938,7 +1938,7 @@
   },
   {
     "id": "rw-fp-604971",
-    "sku": "604971",
+    "sku": "RW-604971",
     "name": "Mustard Cress Punnet",
     "packSize": "80g",
     "categorySlug": "fresh-produce",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "rw-fp-602051",
-    "sku": "602051",
+    "sku": "RW-602051",
     "name": "Rosemary",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "rw-fp-602681",
-    "sku": "602681",
+    "sku": "RW-602681",
     "name": "Baby Spinach",
     "packSize": "Bag",
     "categorySlug": "fresh-produce",
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "rw-fp-602680",
-    "sku": "602680",
+    "sku": "RW-602680",
     "name": "Baby Spinach",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "rw-fp-602661",
-    "sku": "602661",
+    "sku": "RW-602661",
     "name": "Cos / Romaine Lettuce V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "rw-fp-602660",
-    "sku": "602660",
+    "sku": "RW-602660",
     "name": "Cos / Romaine Lettuce (box)",
     "packSize": "10",
     "categorySlug": "fresh-produce",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-fp-601340",
-    "sku": "601340",
+    "sku": "RW-601340",
     "name": "Endive Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": "rw-fp-605021",
-    "sku": "605021",
+    "sku": "RW-605021",
     "name": "Iceberg Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2042,7 +2042,7 @@
   },
   {
     "id": "rw-fp-605020",
-    "sku": "605020",
+    "sku": "RW-605020",
     "name": "Iceberg Lettuce",
     "packSize": "tray ave 10/12",
     "categorySlug": "fresh-produce",
@@ -2055,7 +2055,7 @@
   },
   {
     "id": "rw-fp-607360",
-    "sku": "607360",
+    "sku": "RW-607360",
     "name": "Little Gem Lettuce Twin Pack",
     "packSize": "16x1",
     "categorySlug": "fresh-produce",
@@ -2068,7 +2068,7 @@
   },
   {
     "id": "rw-fp-607361",
-    "sku": "607361",
+    "sku": "RW-607361",
     "name": "Little Gem Lettuce Twin Pack",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "rw-fp-602860",
-    "sku": "602860",
+    "sku": "RW-602860",
     "name": "Lollo Biondo Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2094,7 +2094,7 @@
   },
   {
     "id": "rw-fp-601090",
-    "sku": "601090",
+    "sku": "RW-601090",
     "name": "Lollo Rosso Lettuce",
     "packSize": "12x1",
     "categorySlug": "fresh-produce",
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "rw-fp-601091",
-    "sku": "601091",
+    "sku": "RW-601091",
     "name": "Lollo Rosso Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2120,7 +2120,7 @@
   },
   {
     "id": "rw-fp-601010",
-    "sku": "601010",
+    "sku": "RW-601010",
     "name": "Oakleaf Lettuce",
     "packSize": "12x1",
     "categorySlug": "fresh-produce",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "rw-fp-601011",
-    "sku": "601011",
+    "sku": "RW-601011",
     "name": "Oakleaf Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "rw-fp-600900",
-    "sku": "600900",
+    "sku": "RW-600900",
     "name": "Radicchio Lettuce",
     "packSize": "9x1ptn",
     "categorySlug": "fresh-produce",
@@ -2159,7 +2159,7 @@
   },
   {
     "id": "rw-fp-600901",
-    "sku": "600901",
+    "sku": "RW-600901",
     "name": "Radicchio Lettuce",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-fp-605131",
-    "sku": "605131",
+    "sku": "RW-605131",
     "name": "Rocket Leaves Tray Unwashed",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "rw-fp-605130",
-    "sku": "605130",
+    "sku": "RW-605130",
     "name": "Unwashed Rocket Leaves (tray)",
     "packSize": "2x500g",
     "categorySlug": "fresh-produce",
@@ -2198,7 +2198,7 @@
   },
   {
     "id": "rw-fp-605160",
-    "sku": "605160",
+    "sku": "RW-605160",
     "name": "Unwashed Watercress",
     "packSize": "100g",
     "categorySlug": "fresh-produce",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "rw-fp-602151",
-    "sku": "602151",
+    "sku": "RW-602151",
     "name": "Asian Slaw Mix",
     "packSize": "1x500g",
     "categorySlug": "fresh-produce",
@@ -2224,7 +2224,7 @@
   },
   {
     "id": "rw-fp-602150",
-    "sku": "602150",
+    "sku": "RW-602150",
     "name": "Asian Slaw Mix",
     "packSize": "8x500g",
     "categorySlug": "fresh-produce",
@@ -2237,7 +2237,7 @@
   },
   {
     "id": "rw-fp-605601",
-    "sku": "605601",
+    "sku": "RW-605601",
     "name": "Baby Leaf Premium Mix Salad Pre Packed (Washed)",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -2250,7 +2250,7 @@
   },
   {
     "id": "rw-fp-605600",
-    "sku": "605600",
+    "sku": "RW-605600",
     "name": "Baby Leaf Premium Mix Salad Pre Packed (Washed)",
     "packSize": "4x250g",
     "categorySlug": "fresh-produce",
@@ -2263,7 +2263,7 @@
   },
   {
     "id": "rw-fp-607390",
-    "sku": "607390",
+    "sku": "RW-607390",
     "name": "Gourmet Salad",
     "packSize": "6x460g",
     "categorySlug": "fresh-produce",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "rw-fp-602100",
-    "sku": "602100",
+    "sku": "RW-602100",
     "name": "Mixed Baby Leaf Salad",
     "packSize": "10x250g",
     "categorySlug": "fresh-produce",
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "rw-fp-602101",
-    "sku": "602101",
+    "sku": "RW-602101",
     "name": "Mixed Baby Leaf Salad",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -2302,7 +2302,7 @@
   },
   {
     "id": "rw-fp-355180",
-    "sku": "355180",
+    "sku": "RW-355180",
     "name": "Premium Coleslaw",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -2315,7 +2315,7 @@
   },
   {
     "id": "rw-fp-367200",
-    "sku": "367200",
+    "sku": "RW-367200",
     "name": "Premium Coleslaw",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -2328,7 +2328,7 @@
   },
   {
     "id": "rw-fp-602140",
-    "sku": "602140",
+    "sku": "RW-602140",
     "name": "Prepared Dry Coleslaw Mix",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-fp-602130",
-    "sku": "602130",
+    "sku": "RW-602130",
     "name": "Prepared Rainbow Coleslaw Mix",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -2354,7 +2354,7 @@
   },
   {
     "id": "rw-fp-614010",
-    "sku": "614010",
+    "sku": "RW-614010",
     "name": "Asparagus (box)",
     "packSize": "12x250g",
     "categorySlug": "fresh-produce",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": "rw-fp-601021",
-    "sku": "601021",
+    "sku": "RW-601021",
     "name": "Asparagus (box)",
     "packSize": "1x250g",
     "categorySlug": "fresh-produce",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": "rw-fp-601020",
-    "sku": "601020",
+    "sku": "RW-601020",
     "name": "Asparagus (box)",
     "packSize": "20x250g",
     "categorySlug": "fresh-produce",
@@ -2393,7 +2393,7 @@
   },
   {
     "id": "rw-fp-600030",
-    "sku": "600030",
+    "sku": "RW-600030",
     "name": "Asparagus (bunch)",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -2406,7 +2406,7 @@
   },
   {
     "id": "rw-fp-604640",
-    "sku": "604640",
+    "sku": "RW-604640",
     "name": "Aubergine",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2419,7 +2419,7 @@
   },
   {
     "id": "rw-fp-600300",
-    "sku": "600300",
+    "sku": "RW-600300",
     "name": "Aubergine Box",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "rw-fp-603040",
-    "sku": "603040",
+    "sku": "RW-603040",
     "name": "Aubergine Box",
     "packSize": "6x2 Pack",
     "categorySlug": "fresh-produce",
@@ -2445,7 +2445,7 @@
   },
   {
     "id": "rw-fp-604590",
-    "sku": "604590",
+    "sku": "RW-604590",
     "name": "Butternut Squash",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2458,7 +2458,7 @@
   },
   {
     "id": "rw-fp-605590",
-    "sku": "605590",
+    "sku": "RW-605590",
     "name": "Butternut Squash Box V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "rw-fp-603980",
-    "sku": "603980",
+    "sku": "RW-603980",
     "name": "French Ribbed Pumpkins",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2484,7 +2484,7 @@
   },
   {
     "id": "rw-fp-990550",
-    "sku": "990550",
+    "sku": "RW-990550",
     "name": "Jack Be Little Pumpkins",
     "packSize": "Tray",
     "categorySlug": "fresh-produce",
@@ -2497,7 +2497,7 @@
   },
   {
     "id": "rw-fp-603960",
-    "sku": "603960",
+    "sku": "RW-603960",
     "name": "Lantern Pumpkin",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-fp-603990",
-    "sku": "603990",
+    "sku": "RW-603990",
     "name": "Large Lantern Pumpkin",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2523,7 +2523,7 @@
   },
   {
     "id": "rw-fp-603350",
-    "sku": "603350",
+    "sku": "RW-603350",
     "name": "British Cauliflower",
     "packSize": "6x1",
     "categorySlug": "fresh-produce",
@@ -2536,7 +2536,7 @@
   },
   {
     "id": "rw-fp-603351",
-    "sku": "603351",
+    "sku": "RW-603351",
     "name": "British Cauliflower",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2549,7 +2549,7 @@
   },
   {
     "id": "rw-fp-604850",
-    "sku": "604850",
+    "sku": "RW-604850",
     "name": "British Cavelo Nero",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -2562,7 +2562,7 @@
   },
   {
     "id": "rw-fp-601920",
-    "sku": "601920",
+    "sku": "RW-601920",
     "name": "British Red Cabbage",
     "packSize": "1x10kg",
     "categorySlug": "fresh-produce",
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "rw-fp-603340",
-    "sku": "603340",
+    "sku": "RW-603340",
     "name": "British Savoy Cabbage",
     "packSize": "8x1",
     "categorySlug": "fresh-produce",
@@ -2588,7 +2588,7 @@
   },
   {
     "id": "rw-fp-603341",
-    "sku": "603341",
+    "sku": "RW-603341",
     "name": "British Savoy Cabbage",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "rw-fp-600150",
-    "sku": "600150",
+    "sku": "RW-600150",
     "name": "British White Cabbage",
     "packSize": "25kg",
     "categorySlug": "fresh-produce",
@@ -2614,7 +2614,7 @@
   },
   {
     "id": "rw-fp-602720",
-    "sku": "602720",
+    "sku": "RW-602720",
     "name": "Broccoli",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -2627,7 +2627,7 @@
   },
   {
     "id": "rw-fp-605180",
-    "sku": "605180",
+    "sku": "RW-605180",
     "name": "Broccoli Box",
     "packSize": "4.5kg",
     "categorySlug": "fresh-produce",
@@ -2640,7 +2640,7 @@
   },
   {
     "id": "rw-fp-604620",
-    "sku": "604620",
+    "sku": "RW-604620",
     "name": "Broccoli Box",
     "packSize": "6kg",
     "categorySlug": "fresh-produce",
@@ -2653,7 +2653,7 @@
   },
   {
     "id": "rw-fp-602780",
-    "sku": "602780",
+    "sku": "RW-602780",
     "name": "Fresh Chinese Leaf",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-fp-602910",
-    "sku": "602910",
+    "sku": "RW-602910",
     "name": "Fresh Pak Choi",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-fp-604740",
-    "sku": "604740",
+    "sku": "RW-604740",
     "name": "Purple Sprouting Broccoli Box",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "rw-fp-604540",
-    "sku": "604540",
+    "sku": "RW-604540",
     "name": "Red Cabbage",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": "rw-fp-603240",
-    "sku": "603240",
+    "sku": "RW-603240",
     "name": "Spring Greens",
     "packSize": "5x1kg",
     "categorySlug": "fresh-produce",
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "rw-fp-603241",
-    "sku": "603241",
+    "sku": "RW-603241",
     "name": "Spring Greens",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "rw-fp-601141",
-    "sku": "601141",
+    "sku": "RW-601141",
     "name": "Tenderstem Broccoli",
     "packSize": "1x500g",
     "categorySlug": "fresh-produce",
@@ -2744,7 +2744,7 @@
   },
   {
     "id": "rw-fp-601140",
-    "sku": "601140",
+    "sku": "RW-601140",
     "name": "Tenderstem Broccoli",
     "packSize": "4x500g",
     "categorySlug": "fresh-produce",
@@ -2757,7 +2757,7 @@
   },
   {
     "id": "rw-fp-600710",
-    "sku": "600710",
+    "sku": "RW-600710",
     "name": "Tenderstem Broccoli Box",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -2770,7 +2770,7 @@
   },
   {
     "id": "rw-fp-602040",
-    "sku": "602040",
+    "sku": "RW-602040",
     "name": "White Cabbage",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -2783,7 +2783,7 @@
   },
   {
     "id": "rw-fp-604530",
-    "sku": "604530",
+    "sku": "RW-604530",
     "name": "White Cabbage",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2796,7 +2796,7 @@
   },
   {
     "id": "rw-fp-331300",
-    "sku": "331300",
+    "sku": "RW-331300",
     "name": "Baby Carrots",
     "packSize": "3.5kg",
     "categorySlug": "fresh-produce",
@@ -2809,7 +2809,7 @@
   },
   {
     "id": "rw-fp-600230",
-    "sku": "600230",
+    "sku": "RW-600230",
     "name": "British Carrots",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -2822,7 +2822,7 @@
   },
   {
     "id": "rw-fp-604520",
-    "sku": "604520",
+    "sku": "RW-604520",
     "name": "British Carrots",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -2835,7 +2835,7 @@
   },
   {
     "id": "rw-fp-603231",
-    "sku": "603231",
+    "sku": "RW-603231",
     "name": "British Chantenay Carrots",
     "packSize": "1x1kg",
     "categorySlug": "fresh-produce",
@@ -2848,7 +2848,7 @@
   },
   {
     "id": "rw-fp-603230",
-    "sku": "603230",
+    "sku": "RW-603230",
     "name": "British Chantenay Carrots",
     "packSize": "5x1x1kg",
     "categorySlug": "fresh-produce",
@@ -2861,7 +2861,7 @@
   },
   {
     "id": "rw-fp-604480",
-    "sku": "604480",
+    "sku": "RW-604480",
     "name": "British Chantenay Carrots (box)",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2874,7 +2874,7 @@
   },
   {
     "id": "rw-fp-602290",
-    "sku": "602290",
+    "sku": "RW-602290",
     "name": "Carrot Batons 10x10mm",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2887,7 +2887,7 @@
   },
   {
     "id": "rw-fp-601400",
-    "sku": "601400",
+    "sku": "RW-601400",
     "name": "Courgettes",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -2900,7 +2900,7 @@
   },
   {
     "id": "rw-fp-604430",
-    "sku": "604430",
+    "sku": "RW-604430",
     "name": "Courgettes (box)",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2913,7 +2913,7 @@
   },
   {
     "id": "rw-fp-604110",
-    "sku": "604110",
+    "sku": "RW-604110",
     "name": "Fresh Fennel",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2926,7 +2926,7 @@
   },
   {
     "id": "rw-fp-600380",
-    "sku": "600380",
+    "sku": "RW-600380",
     "name": "Fresh Fennel Box",
     "packSize": "4kg",
     "categorySlug": "fresh-produce",
@@ -2939,7 +2939,7 @@
   },
   {
     "id": "rw-fp-607290",
-    "sku": "607290",
+    "sku": "RW-607290",
     "name": "Fresh Fennel Box",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2952,7 +2952,7 @@
   },
   {
     "id": "rw-fp-600720",
-    "sku": "600720",
+    "sku": "RW-600720",
     "name": "Yellow Courgette",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -2965,7 +2965,7 @@
   },
   {
     "id": "rw-fp-601210",
-    "sku": "601210",
+    "sku": "RW-601210",
     "name": "Celery (box)",
     "packSize": "approx. 15",
     "categorySlug": "fresh-produce",
@@ -2978,7 +2978,7 @@
   },
   {
     "id": "rw-fp-604490",
-    "sku": "604490",
+    "sku": "RW-604490",
     "name": "Celery Head",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -2991,7 +2991,7 @@
   },
   {
     "id": "rw-fp-605171",
-    "sku": "605171",
+    "sku": "RW-605171",
     "name": "Cherry Tomato Punnet",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "rw-fp-605170",
-    "sku": "605170",
+    "sku": "RW-605170",
     "name": "Cherry Tomato Punnet",
     "packSize": "9x250g",
     "categorySlug": "fresh-produce",
@@ -3017,7 +3017,7 @@
   },
   {
     "id": "rw-fp-604980",
-    "sku": "604980",
+    "sku": "RW-604980",
     "name": "Cucumber",
     "packSize": "Box ave 12",
     "categorySlug": "fresh-produce",
@@ -3030,7 +3030,7 @@
   },
   {
     "id": "rw-fp-604981",
-    "sku": "604981",
+    "sku": "RW-604981",
     "name": "Cucumber",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3043,7 +3043,7 @@
   },
   {
     "id": "rw-fp-605620",
-    "sku": "605620",
+    "sku": "RW-605620",
     "name": "Loose Cherry Tomato",
     "packSize": "4kg",
     "categorySlug": "fresh-produce",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": "rw-fp-603430",
-    "sku": "603430",
+    "sku": "RW-603430",
     "name": "Loose Plum Tomato",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3069,7 +3069,7 @@
   },
   {
     "id": "rw-fp-603410",
-    "sku": "603410",
+    "sku": "RW-603410",
     "name": "Loose Plum Tomato (box)",
     "packSize": "6kg",
     "categorySlug": "fresh-produce",
@@ -3082,7 +3082,7 @@
   },
   {
     "id": "rw-fp-601260",
-    "sku": "601260",
+    "sku": "RW-601260",
     "name": "Tomato Box",
     "packSize": "6kg",
     "categorySlug": "fresh-produce",
@@ -3095,7 +3095,7 @@
   },
   {
     "id": "rw-fp-602940",
-    "sku": "602940",
+    "sku": "RW-602940",
     "name": "Tomato Cherry Vine Tray",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -3108,7 +3108,7 @@
   },
   {
     "id": "rw-fp-603470",
-    "sku": "603470",
+    "sku": "RW-603470",
     "name": "Tomato Heirloom (Mixed Specialist Varieties)",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -3121,7 +3121,7 @@
   },
   {
     "id": "rw-fp-603400",
-    "sku": "603400",
+    "sku": "RW-603400",
     "name": "Tomato Vine",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "rw-fp-603390",
-    "sku": "603390",
+    "sku": "RW-603390",
     "name": "Tomatoes Pre-Packed",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3147,7 +3147,7 @@
   },
   {
     "id": "rw-fp-601160",
-    "sku": "601160",
+    "sku": "RW-601160",
     "name": "Green Curly Kale",
     "packSize": "10x250g",
     "categorySlug": "fresh-produce",
@@ -3160,7 +3160,7 @@
   },
   {
     "id": "rw-fp-601161",
-    "sku": "601161",
+    "sku": "RW-601161",
     "name": "Green Curly Kale",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3173,7 +3173,7 @@
   },
   {
     "id": "rw-fp-604750",
-    "sku": "604750",
+    "sku": "RW-604750",
     "name": "Purple Curly Kale Box",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -3186,7 +3186,7 @@
   },
   {
     "id": "rw-fp-607300",
-    "sku": "607300",
+    "sku": "RW-607300",
     "name": "Button Mushrooms (tray)",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -3199,7 +3199,7 @@
   },
   {
     "id": "rw-fp-607350",
-    "sku": "607350",
+    "sku": "RW-607350",
     "name": "Chestnut Mushrooms (box)",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -3212,7 +3212,7 @@
   },
   {
     "id": "rw-fp-607310",
-    "sku": "607310",
+    "sku": "RW-607310",
     "name": "Closed Cup Mushrooms (tray)",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -3225,7 +3225,7 @@
   },
   {
     "id": "rw-fp-607320",
-    "sku": "607320",
+    "sku": "RW-607320",
     "name": "Flat Mushrooms (box)",
     "packSize": "1.81kg",
     "categorySlug": "fresh-produce",
@@ -3238,7 +3238,7 @@
   },
   {
     "id": "rw-fp-610830",
-    "sku": "610830",
+    "sku": "RW-610830",
     "name": "Fresh Black Truffles",
     "packSize": "avg. 30g",
     "categorySlug": "fresh-produce",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": "rw-fp-605110",
-    "sku": "605110",
+    "sku": "RW-605110",
     "name": "Mushroom Wild Exotic Mix",
     "packSize": "2x500g",
     "categorySlug": "fresh-produce",
@@ -3264,7 +3264,7 @@
   },
   {
     "id": "rw-fp-605111",
-    "sku": "605111",
+    "sku": "RW-605111",
     "name": "Mushroom Wild Exotic Mix",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -3277,7 +3277,7 @@
   },
   {
     "id": "rw-fp-601030",
-    "sku": "601030",
+    "sku": "RW-601030",
     "name": "Mushroom Wild Exotic Mix",
     "packSize": "2x500g",
     "categorySlug": "fresh-produce",
@@ -3290,7 +3290,7 @@
   },
   {
     "id": "rw-fp-607340",
-    "sku": "607340",
+    "sku": "RW-607340",
     "name": "Portobello Mushroom Box",
     "packSize": "1.5kg",
     "categorySlug": "fresh-produce",
@@ -3303,7 +3303,7 @@
   },
   {
     "id": "rw-fp-607331",
-    "sku": "607331",
+    "sku": "RW-607331",
     "name": "Pre-Packed Chestnut Mushrooms -500g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -3316,7 +3316,7 @@
   },
   {
     "id": "rw-fp-607330",
-    "sku": "607330",
+    "sku": "RW-607330",
     "name": "Pre-Packed Chestnut Mushrooms -8x500g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -3329,7 +3329,7 @@
   },
   {
     "id": "rw-fp-603150",
-    "sku": "603150",
+    "sku": "RW-603150",
     "name": "Pre-Packed White Cup Mushrooms",
     "packSize": "12x250g",
     "categorySlug": "fresh-produce",
@@ -3342,7 +3342,7 @@
   },
   {
     "id": "rw-fp-602961",
-    "sku": "602961",
+    "sku": "RW-602961",
     "name": "Pre-Packed White Cup Mushrooms",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3355,7 +3355,7 @@
   },
   {
     "id": "rw-fp-603151",
-    "sku": "603151",
+    "sku": "RW-603151",
     "name": "Pre-Packed White Cup Mushrooms",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3368,7 +3368,7 @@
   },
   {
     "id": "rw-fp-602960",
-    "sku": "602960",
+    "sku": "RW-602960",
     "name": "Pre-Packed White Cup Mushrooms",
     "packSize": "8x250g",
     "categorySlug": "fresh-produce",
@@ -3381,7 +3381,7 @@
   },
   {
     "id": "rw-fp-602900",
-    "sku": "602900",
+    "sku": "RW-602900",
     "name": "Banana Shallots",
     "packSize": "4kg",
     "categorySlug": "fresh-produce",
@@ -3394,7 +3394,7 @@
   },
   {
     "id": "rw-fp-601120",
-    "sku": "601120",
+    "sku": "RW-601120",
     "name": "Banana Shallots",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -3407,7 +3407,7 @@
   },
   {
     "id": "rw-fp-601050",
-    "sku": "601050",
+    "sku": "RW-601050",
     "name": "Garlic Loose",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3420,7 +3420,7 @@
   },
   {
     "id": "rw-fp-605680",
-    "sku": "605680",
+    "sku": "RW-605680",
     "name": "Garlic String",
     "packSize": "avg. 1kg",
     "categorySlug": "fresh-produce",
@@ -3433,7 +3433,7 @@
   },
   {
     "id": "rw-fp-603830",
-    "sku": "603830",
+    "sku": "RW-603830",
     "name": "Leek",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3446,7 +3446,7 @@
   },
   {
     "id": "rw-fp-603820",
-    "sku": "603820",
+    "sku": "RW-603820",
     "name": "Leek",
     "packSize": "Box",
     "categorySlug": "fresh-produce",
@@ -3459,7 +3459,7 @@
   },
   {
     "id": "rw-fp-687831",
-    "sku": "687831",
+    "sku": "RW-687831",
     "name": "Medium Onions",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3472,7 +3472,7 @@
   },
   {
     "id": "rw-fp-687830",
-    "sku": "687830",
+    "sku": "RW-687830",
     "name": "Medium Onions",
     "packSize": "20kg",
     "categorySlug": "fresh-produce",
@@ -3485,7 +3485,7 @@
   },
   {
     "id": "rw-fp-601070",
-    "sku": "601070",
+    "sku": "RW-601070",
     "name": "Peeled Garlic Cloves",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3498,7 +3498,7 @@
   },
   {
     "id": "rw-fp-603730",
-    "sku": "603730",
+    "sku": "RW-603730",
     "name": "Red Onions",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3511,7 +3511,7 @@
   },
   {
     "id": "rw-fp-601100",
-    "sku": "601100",
+    "sku": "RW-601100",
     "name": "Red Onions",
     "packSize": "9-10kg",
     "categorySlug": "fresh-produce",
@@ -3524,7 +3524,7 @@
   },
   {
     "id": "rw-fp-604960",
-    "sku": "604960",
+    "sku": "RW-604960",
     "name": "Round Shallots",
     "packSize": "4kg",
     "categorySlug": "fresh-produce",
@@ -3537,7 +3537,7 @@
   },
   {
     "id": "rw-fp-607270",
-    "sku": "607270",
+    "sku": "RW-607270",
     "name": "Round Shallots",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -3550,7 +3550,7 @@
   },
   {
     "id": "rw-fp-601080",
-    "sku": "601080",
+    "sku": "RW-601080",
     "name": "Spanish Onions",
     "packSize": "Large",
     "categorySlug": "fresh-produce",
@@ -3563,7 +3563,7 @@
   },
   {
     "id": "rw-fp-603740",
-    "sku": "603740",
+    "sku": "RW-603740",
     "name": "Spanish Onions Large",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -3576,7 +3576,7 @@
   },
   {
     "id": "rw-fp-601110",
-    "sku": "601110",
+    "sku": "RW-601110",
     "name": "Spring Onions Bunch",
     "packSize": "approx. 140g",
     "categorySlug": "fresh-produce",
@@ -3589,7 +3589,7 @@
   },
   {
     "id": "rw-fp-604930",
-    "sku": "604930",
+    "sku": "RW-604930",
     "name": "Babycorn Punnet",
     "packSize": "12x80g",
     "categorySlug": "fresh-produce",
@@ -3602,7 +3602,7 @@
   },
   {
     "id": "rw-fp-604931",
-    "sku": "604931",
+    "sku": "RW-604931",
     "name": "Babycorn Punnet",
     "packSize": "80g",
     "categorySlug": "fresh-produce",
@@ -3615,7 +3615,7 @@
   },
   {
     "id": "rw-fp-600330",
-    "sku": "600330",
+    "sku": "RW-600330",
     "name": "British Beansprouts",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3628,7 +3628,7 @@
   },
   {
     "id": "rw-fp-604390",
-    "sku": "604390",
+    "sku": "RW-604390",
     "name": "Fine Beans Packet",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -3641,7 +3641,7 @@
   },
   {
     "id": "rw-fp-600320",
-    "sku": "600320",
+    "sku": "RW-600320",
     "name": "Fine Green Beans Box",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -3654,7 +3654,7 @@
   },
   {
     "id": "rw-fp-600360",
-    "sku": "600360",
+    "sku": "RW-600360",
     "name": "Fresh Peas",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -3667,7 +3667,7 @@
   },
   {
     "id": "rw-fp-604940",
-    "sku": "604940",
+    "sku": "RW-604940",
     "name": "Mangetout",
     "packSize": "10x150g",
     "categorySlug": "fresh-produce",
@@ -3680,7 +3680,7 @@
   },
   {
     "id": "rw-fp-604941",
-    "sku": "604941",
+    "sku": "RW-604941",
     "name": "Mangetout",
     "packSize": "150g",
     "categorySlug": "fresh-produce",
@@ -3693,7 +3693,7 @@
   },
   {
     "id": "rw-fp-605710",
-    "sku": "605710",
+    "sku": "RW-605710",
     "name": "Sugar Snap Peas",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -3706,7 +3706,7 @@
   },
   {
     "id": "rw-fp-600421",
-    "sku": "600421",
+    "sku": "RW-600421",
     "name": "Sugar Snap Peas Box",
     "packSize": "1.5kg",
     "categorySlug": "fresh-produce",
@@ -3719,7 +3719,7 @@
   },
   {
     "id": "rw-fp-601991",
-    "sku": "601991",
+    "sku": "RW-601991",
     "name": "Sugar Snap Peas Box",
     "packSize": "1x500g",
     "categorySlug": "fresh-produce",
@@ -3732,7 +3732,7 @@
   },
   {
     "id": "rw-fp-601990",
-    "sku": "601990",
+    "sku": "RW-601990",
     "name": "Sugar Snap Peas Box",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -3745,7 +3745,7 @@
   },
   {
     "id": "rw-fp-602770",
-    "sku": "602770",
+    "sku": "RW-602770",
     "name": "Fresh Green Chillies",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -3758,7 +3758,7 @@
   },
   {
     "id": "rw-fp-602430",
-    "sku": "602430",
+    "sku": "RW-602430",
     "name": "Green Peppers",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3771,7 +3771,7 @@
   },
   {
     "id": "rw-fp-603940",
-    "sku": "603940",
+    "sku": "RW-603940",
     "name": "Green Peppers Box",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -3784,7 +3784,7 @@
   },
   {
     "id": "rw-fp-605550",
-    "sku": "605550",
+    "sku": "RW-605550",
     "name": "Jalapeno Peppers",
     "packSize": "1.5kg",
     "categorySlug": "fresh-produce",
@@ -3797,7 +3797,7 @@
   },
   {
     "id": "rw-fp-603670",
-    "sku": "603670",
+    "sku": "RW-603670",
     "name": "Loose Mixed Peppers Box V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -3810,7 +3810,7 @@
   },
   {
     "id": "rw-fp-604920",
-    "sku": "604920",
+    "sku": "RW-604920",
     "name": "Mixed Chilles",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -3823,7 +3823,7 @@
   },
   {
     "id": "rw-fp-603660",
-    "sku": "603660",
+    "sku": "RW-603660",
     "name": "Orange Bell Peppers (box)",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -3836,7 +3836,7 @@
   },
   {
     "id": "rw-fp-602480",
-    "sku": "602480",
+    "sku": "RW-602480",
     "name": "Orange Peppers",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3849,7 +3849,7 @@
   },
   {
     "id": "rw-fp-600690",
-    "sku": "600690",
+    "sku": "RW-600690",
     "name": "Padron Peppers",
     "packSize": "2kg",
     "categorySlug": "fresh-produce",
@@ -3862,7 +3862,7 @@
   },
   {
     "id": "rw-fp-603680",
-    "sku": "603680",
+    "sku": "RW-603680",
     "name": "Peppers Mixed 3 Pack",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -3875,7 +3875,7 @@
   },
   {
     "id": "rw-fp-603930",
-    "sku": "603930",
+    "sku": "RW-603930",
     "name": "Red Bell Peppers (box)",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -3888,7 +3888,7 @@
   },
   {
     "id": "rw-fp-603530",
-    "sku": "603530",
+    "sku": "RW-603530",
     "name": "Red Chillies",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3901,7 +3901,7 @@
   },
   {
     "id": "rw-fp-600340",
-    "sku": "600340",
+    "sku": "RW-600340",
     "name": "Red Chillies",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -3914,7 +3914,7 @@
   },
   {
     "id": "rw-fp-602450",
-    "sku": "602450",
+    "sku": "RW-602450",
     "name": "Red Peppers",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3927,7 +3927,7 @@
   },
   {
     "id": "rw-fp-603920",
-    "sku": "603920",
+    "sku": "RW-603920",
     "name": "Yellow Bell Peppers (box)",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -3940,7 +3940,7 @@
   },
   {
     "id": "rw-fp-602440",
-    "sku": "602440",
+    "sku": "RW-602440",
     "name": "Yellow Peppers",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -3953,7 +3953,7 @@
   },
   {
     "id": "rw-fp-608281",
-    "sku": "608281",
+    "sku": "RW-608281",
     "name": "Cooked Beetroot (vacuum packed)",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -3966,7 +3966,7 @@
   },
   {
     "id": "rw-fp-607281",
-    "sku": "607281",
+    "sku": "RW-607281",
     "name": "Cooked Beetroot (vacuum packed)",
     "packSize": "500g",
     "categorySlug": "fresh-produce",
@@ -3979,7 +3979,7 @@
   },
   {
     "id": "rw-fp-607280",
-    "sku": "607280",
+    "sku": "RW-607280",
     "name": "Cooked Beetroot Case (vacuum packed)",
     "packSize": "12x500g",
     "categorySlug": "fresh-produce",
@@ -3992,7 +3992,7 @@
   },
   {
     "id": "rw-fp-608280",
-    "sku": "608280",
+    "sku": "RW-608280",
     "name": "Cooked Beetroot Case (vacuum packed)",
     "packSize": "18x250g",
     "categorySlug": "fresh-produce",
@@ -4005,7 +4005,7 @@
   },
   {
     "id": "rw-fp-614011",
-    "sku": "614011",
+    "sku": "RW-614011",
     "name": "English Asparagus",
     "packSize": "250g",
     "categorySlug": "fresh-produce",
@@ -4018,7 +4018,7 @@
   },
   {
     "id": "rw-fp-602530",
-    "sku": "602530",
+    "sku": "RW-602530",
     "name": "Prepared 5mm Sliced Red Onion",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4031,7 +4031,7 @@
   },
   {
     "id": "rw-fp-602240",
-    "sku": "602240",
+    "sku": "RW-602240",
     "name": "Prepared Broccoli Florets",
     "packSize": "3kg",
     "categorySlug": "fresh-produce",
@@ -4044,7 +4044,7 @@
   },
   {
     "id": "rw-fp-602550",
-    "sku": "602550",
+    "sku": "RW-602550",
     "name": "Prepared Brussels Sprouts",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -4057,7 +4057,7 @@
   },
   {
     "id": "rw-fp-601890",
-    "sku": "601890",
+    "sku": "RW-601890",
     "name": "Prepared Cauliflower Florets",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4070,7 +4070,7 @@
   },
   {
     "id": "rw-fp-601930",
-    "sku": "601930",
+    "sku": "RW-601930",
     "name": "Prepared Diced Onion",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4083,7 +4083,7 @@
   },
   {
     "id": "rw-fp-602160",
-    "sku": "602160",
+    "sku": "RW-602160",
     "name": "Prepared Diced Swede",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4096,7 +4096,7 @@
   },
   {
     "id": "rw-fp-602000",
-    "sku": "602000",
+    "sku": "RW-602000",
     "name": "Prepared Grated Carrots",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -4109,7 +4109,7 @@
   },
   {
     "id": "rw-fp-602010",
-    "sku": "602010",
+    "sku": "RW-602010",
     "name": "Prepared Julienne (Matchstick) Carrots",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4122,7 +4122,7 @@
   },
   {
     "id": "rw-fp-603590",
-    "sku": "603590",
+    "sku": "RW-603590",
     "name": "Prepared Parsnip Quarters",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4135,7 +4135,7 @@
   },
   {
     "id": "rw-fp-601860",
-    "sku": "601860",
+    "sku": "RW-601860",
     "name": "Prepared Peeled Carrots",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -4148,7 +4148,7 @@
   },
   {
     "id": "rw-fp-604760",
-    "sku": "604760",
+    "sku": "RW-604760",
     "name": "Prepared Peeled Maris Piper Potatoes",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -4161,7 +4161,7 @@
   },
   {
     "id": "rw-fp-602250",
-    "sku": "602250",
+    "sku": "RW-602250",
     "name": "Prepared Peeled Whole Onion",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4174,7 +4174,7 @@
   },
   {
     "id": "rw-fp-603580",
-    "sku": "603580",
+    "sku": "RW-603580",
     "name": "Prepared Shredded Red Cabbage",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4187,7 +4187,7 @@
   },
   {
     "id": "rw-fp-601870",
-    "sku": "601870",
+    "sku": "RW-601870",
     "name": "Prepared Sliced Carrots",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4200,7 +4200,7 @@
   },
   {
     "id": "rw-fp-602580",
-    "sku": "602580",
+    "sku": "RW-602580",
     "name": "Prepared Sliced Onion",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -4213,7 +4213,7 @@
   },
   {
     "id": "rw-fp-601960",
-    "sku": "601960",
+    "sku": "RW-601960",
     "name": "Prepared Stir-Fry Mix",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4226,7 +4226,7 @@
   },
   {
     "id": "rw-fp-603560",
-    "sku": "603560",
+    "sku": "RW-603560",
     "name": "Prepared Whole Carrots",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -4239,7 +4239,7 @@
   },
   {
     "id": "rw-fp-602510",
-    "sku": "602510",
+    "sku": "RW-602510",
     "name": "Prepared Whole Red Onion",
     "packSize": "2.5kg",
     "categorySlug": "fresh-produce",
@@ -4252,7 +4252,7 @@
   },
   {
     "id": "rw-fp-603570",
-    "sku": "603570",
+    "sku": "RW-603570",
     "name": "Prepared Whole Red Onion",
     "packSize": "5kg",
     "categorySlug": "fresh-produce",
@@ -4265,7 +4265,7 @@
   },
   {
     "id": "rw-fp-603380",
-    "sku": "603380",
+    "sku": "RW-603380",
     "name": "* British Turnip",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -4278,7 +4278,7 @@
   },
   {
     "id": "rw-fp-604890",
-    "sku": "604890",
+    "sku": "RW-604890",
     "name": "Baby Bunched Beetroot Mixed Types",
     "packSize": "12",
     "categorySlug": "fresh-produce",
@@ -4291,7 +4291,7 @@
   },
   {
     "id": "rw-fp-600460",
-    "sku": "600460",
+    "sku": "RW-600460",
     "name": "Baby Turnip",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -4304,7 +4304,7 @@
   },
   {
     "id": "rw-fp-602880",
-    "sku": "602880",
+    "sku": "RW-602880",
     "name": "Beetroot",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -4317,7 +4317,7 @@
   },
   {
     "id": "rw-fp-604510",
-    "sku": "604510",
+    "sku": "RW-604510",
     "name": "British Celeriac",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -4330,7 +4330,7 @@
   },
   {
     "id": "rw-fp-600250",
-    "sku": "600250",
+    "sku": "RW-600250",
     "name": "British Parsnip Box",
     "packSize": "10kg",
     "categorySlug": "fresh-produce",
@@ -4343,7 +4343,7 @@
   },
   {
     "id": "rw-fp-600270",
-    "sku": "600270",
+    "sku": "RW-600270",
     "name": "British Swede Box",
     "packSize": "ave. 10kg",
     "categorySlug": "fresh-produce",
@@ -4356,7 +4356,7 @@
   },
   {
     "id": "rw-fp-602870",
-    "sku": "602870",
+    "sku": "RW-602870",
     "name": "Chiogga Beetroot (candy stripe)",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -4369,7 +4369,7 @@
   },
   {
     "id": "rw-fp-600910",
-    "sku": "600910",
+    "sku": "RW-600910",
     "name": "Fresh Ginger",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -4382,7 +4382,7 @@
   },
   {
     "id": "rw-fp-602370",
-    "sku": "602370",
+    "sku": "RW-602370",
     "name": "Golden Beetroot",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -4395,7 +4395,7 @@
   },
   {
     "id": "rw-fp-605470",
-    "sku": "605470",
+    "sku": "RW-605470",
     "name": "Horseradish Root",
     "packSize": "Each",
     "categorySlug": "fresh-produce",
@@ -4408,7 +4408,7 @@
   },
   {
     "id": "rw-fp-603710",
-    "sku": "603710",
+    "sku": "RW-603710",
     "name": "Parsnip",
     "packSize": "1kg",
     "categorySlug": "fresh-produce",
@@ -4421,7 +4421,7 @@
   },
   {
     "id": "rw-fp-602830",
-    "sku": "602830",
+    "sku": "RW-602830",
     "name": "Radish Cone",
     "packSize": "125g",
     "categorySlug": "fresh-produce",
@@ -4434,7 +4434,7 @@
   },
   {
     "id": "rw-fp-602610",
-    "sku": "602610",
+    "sku": "RW-602610",
     "name": "Swede",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -4447,7 +4447,7 @@
   },
   {
     "id": "rw-fp-603950",
-    "sku": "603950",
+    "sku": "RW-603950",
     "name": "British Brussel Sprouts",
     "packSize": "kg",
     "categorySlug": "fresh-produce",
@@ -4460,7 +4460,7 @@
   },
   {
     "id": "rw-fp-604610",
-    "sku": "604610",
+    "sku": "RW-604610",
     "name": "Brussel Sprouts Net",
     "packSize": "9kg",
     "categorySlug": "fresh-produce",
@@ -4473,7 +4473,7 @@
   },
   {
     "id": "rw-fp-604600",
-    "sku": "604600",
+    "sku": "RW-604600",
     "name": "Brussels Sprouts on Stalk",
     "packSize": "each",
     "categorySlug": "fresh-produce",
@@ -4486,7 +4486,7 @@
   },
   {
     "id": "rw-fp-600240",
-    "sku": "600240",
+    "sku": "RW-600240",
     "name": "Piccolo Parsnips",
     "packSize": "1x4kg",
     "categorySlug": "fresh-produce",
@@ -4499,7 +4499,7 @@
   },
   {
     "id": "rw-fp-512490",
-    "sku": "512490",
+    "sku": "RW-512490",
     "name": "Clean Range Pro Dishwasher Capsules",
     "packSize": "150",
     "categorySlug": "fresh-produce",
@@ -4512,7 +4512,7 @@
   },
   {
     "id": "rw-fp-875000",
-    "sku": "875000",
+    "sku": "RW-875000",
     "name": "Handmade Cheese Scones",
     "packSize": "24x119g",
     "categorySlug": "fresh-produce",
@@ -4525,7 +4525,7 @@
   },
   {
     "id": "rw-fp-769200",
-    "sku": "769200",
+    "sku": "RW-769200",
     "name": "Country Range 5 inch Fruited Teacakes",
     "packSize": "48x94gVVG",
     "categorySlug": "fresh-produce",
@@ -4538,7 +4538,7 @@
   },
   {
     "id": "rw-fp-305010",
-    "sku": "305010",
+    "sku": "RW-305010",
     "name": "French Brie Cheese",
     "packSize": "1kgV",
     "categorySlug": "fresh-produce",
@@ -4551,7 +4551,7 @@
   },
   {
     "id": "rw-fp-215560",
-    "sku": "215560",
+    "sku": "RW-215560",
     "name": "Knorr Gluten Free Gravy Granules for Meat Dishes",
     "packSize": "1.88kgVVG",
     "categorySlug": "fresh-produce",
@@ -4564,7 +4564,7 @@
   },
   {
     "id": "rw-fp-760981",
-    "sku": "760981",
+    "sku": "RW-760981",
     "name": "Frozen Sliced Carrots",
     "packSize": "1x2.5kgVVG",
     "categorySlug": "fresh-produce",
@@ -4577,7 +4577,7 @@
   },
   {
     "id": "rw-fp-799150",
-    "sku": "799150",
+    "sku": "RW-799150",
     "name": "Aunt Bessie's 3 inch Baked Yorkshire Puddings",
     "packSize": "60x28gV",
     "categorySlug": "fresh-produce",
@@ -4590,7 +4590,7 @@
   },
   {
     "id": "rw-fp-736501",
-    "sku": "736501",
+    "sku": "RW-736501",
     "name": "Country Range Wholetail Scampi Breaded",
     "packSize": "454g",
     "categorySlug": "fresh-produce",
@@ -4603,7 +4603,7 @@
   },
   {
     "id": "rw-fp-216620",
-    "sku": "216620",
+    "sku": "RW-216620",
     "name": "Bisto Gravy Granules for Meat (25 litres)",
     "packSize": "1.8kgVVG",
     "categorySlug": "fresh-produce",
@@ -4616,7 +4616,7 @@
   },
   {
     "id": "rw-fp-203581",
-    "sku": "203581",
+    "sku": "RW-203581",
     "name": "Squeezy Mexican Salsa",
     "packSize": "950gVVG",
     "categorySlug": "fresh-produce",
@@ -4629,7 +4629,7 @@
   },
   {
     "id": "rw-fp-173820",
-    "sku": "173820",
+    "sku": "RW-173820",
     "name": "Hellmann's Real Mayonnaise Sachets",
     "packSize": "198x10mlV",
     "categorySlug": "fresh-produce",
@@ -4642,7 +4642,7 @@
   },
   {
     "id": "rw-fp-832661",
-    "sku": "832661",
+    "sku": "RW-832661",
     "name": "Judes Rum & Raisin Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "fresh-produce",
@@ -4655,7 +4655,7 @@
   },
   {
     "id": "rw-fp-203580",
-    "sku": "203580",
+    "sku": "RW-203580",
     "name": "Squeezy Mexican Salsa",
     "packSize": "6x950gVVG",
     "categorySlug": "fresh-produce",
@@ -4668,7 +4668,7 @@
   },
   {
     "id": "rw-fp-171060",
-    "sku": "171060",
+    "sku": "RW-171060",
     "name": "Ghee ButterV",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "fresh-produce",
@@ -4681,7 +4681,7 @@
   },
   {
     "id": "rw-fp-200410",
-    "sku": "200410",
+    "sku": "RW-200410",
     "name": "PORiJ Vanilla",
     "packSize": "8x60gVVG",
     "categorySlug": "fresh-produce",
@@ -4694,7 +4694,7 @@
   },
   {
     "id": "rw-fp-200400",
-    "sku": "200400",
+    "sku": "RW-200400",
     "name": "PORiJ Apple and Cinnamon",
     "packSize": "8x60gVVG",
     "categorySlug": "fresh-produce",
@@ -4707,7 +4707,7 @@
   },
   {
     "id": "rw-fp-857120",
-    "sku": "857120",
+    "sku": "RW-857120",
     "name": "Frozen Grilled Sliced Carrots Marinated",
     "packSize": "4x1kgVVG",
     "categorySlug": "fresh-produce",
@@ -4720,7 +4720,7 @@
   },
   {
     "id": "rw-fp-128450",
-    "sku": "128450",
+    "sku": "RW-128450",
     "name": "Terry's Chocolate Orange Mini Milk Pieces",
     "packSize": "10x95g",
     "categorySlug": "fresh-produce",
@@ -4733,7 +4733,7 @@
   },
   {
     "id": "rw-fp-201650",
-    "sku": "201650",
+    "sku": "RW-201650",
     "name": "Mini Mallows White",
     "packSize": "4x1kg",
     "categorySlug": "fresh-produce",
@@ -4746,7 +4746,7 @@
   },
   {
     "id": "rw-fp-278430",
-    "sku": "278430",
+    "sku": "RW-278430",
     "name": "Snack A Jacks Sweet & Salty",
     "packSize": "28gVG",
     "categorySlug": "fresh-produce",
@@ -4759,7 +4759,7 @@
   },
   {
     "id": "rw-fp-832660",
-    "sku": "832660",
+    "sku": "RW-832660",
     "name": "Judes Rum & Raisin Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "fresh-produce",
@@ -4772,7 +4772,7 @@
   },
   {
     "id": "rw-fp-705590",
-    "sku": "705590",
+    "sku": "RW-705590",
     "name": "Pork Cumberland 8's",
     "packSize": "1x1.5kg",
     "categorySlug": "fresh-produce",
@@ -4785,7 +4785,7 @@
   },
   {
     "id": "rw-fp-109400",
-    "sku": "109400",
+    "sku": "RW-109400",
     "name": "Poppi Wild Berry",
     "packSize": "1x24x330mlVVG",
     "categorySlug": "fresh-produce",
@@ -4798,7 +4798,7 @@
   },
   {
     "id": "rw-fp-109250",
-    "sku": "109250",
+    "sku": "RW-109250",
     "name": "Poppi Strawberry Lemon",
     "packSize": "330mlVVG",
     "categorySlug": "fresh-produce",
@@ -4811,7 +4811,7 @@
   },
   {
     "id": "rw-fp-109320",
-    "sku": "109320",
+    "sku": "RW-109320",
     "name": "Poppi Raspberry Rose",
     "packSize": "330ml",
     "categorySlug": "fresh-produce",
@@ -4824,7 +4824,7 @@
   },
   {
     "id": "rw-fp-109330",
-    "sku": "109330",
+    "sku": "RW-109330",
     "name": "Poppi Orange",
     "packSize": "330mlVVG",
     "categorySlug": "fresh-produce",
@@ -4837,7 +4837,7 @@
   },
   {
     "id": "rw-fp-109410",
-    "sku": "109410",
+    "sku": "RW-109410",
     "name": "Poppi Lemon & Lime",
     "packSize": "1x24x330mlVVG",
     "categorySlug": "fresh-produce",
@@ -4850,7 +4850,7 @@
   },
   {
     "id": "rw-fp-101580",
-    "sku": "101580",
+    "sku": "RW-101580",
     "name": "Rio Louisiana Sauce",
     "packSize": "2x2.2ltr",
     "categorySlug": "fresh-produce",
@@ -4863,7 +4863,7 @@
   },
   {
     "id": "rw-fp-159630",
-    "sku": "159630",
+    "sku": "RW-159630",
     "name": "Hellmann's Tomato Ketchup Jerry Can",
     "packSize": "3x4.8kgVVG",
     "categorySlug": "fresh-produce",
@@ -4876,7 +4876,7 @@
   },
   {
     "id": "rw-fp-787150",
-    "sku": "787150",
+    "sku": "RW-787150",
     "name": "Medium Cheese & Tomato Pizza 11inx15in",
     "packSize": "10V",
     "categorySlug": "fresh-produce",
@@ -4889,7 +4889,7 @@
   },
   {
     "id": "rw-fp-737490",
-    "sku": "737490",
+    "sku": "RW-737490",
     "name": "Oven Box Cheese & Onion Handy Pie",
     "packSize": "14x170gV",
     "categorySlug": "fresh-produce",
@@ -4902,7 +4902,7 @@
   },
   {
     "id": "rw-fp-821320",
-    "sku": "821320",
+    "sku": "RW-821320",
     "name": "Scrocchiarella Frozen Classica",
     "packSize": "1x10x55cmx25cmV",
     "categorySlug": "fresh-produce",
@@ -4915,7 +4915,7 @@
   },
   {
     "id": "rw-fp-843800",
-    "sku": "843800",
+    "sku": "RW-843800",
     "name": "Love Struck Pash n Shoot Smoothie Pouches",
     "packSize": "30x140gVVG",
     "categorySlug": "fresh-produce",

@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-mp-795661",
-    "sku": "795661",
+    "sku": "RW-795661",
     "name": "Diggers Chicken Satay Mini Fillet Skewers",
     "packSize": "1x2.15kg",
     "categorySlug": "meat-poultry",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-mp-795660",
-    "sku": "795660",
+    "sku": "RW-795660",
     "name": "Diggers Chicken Satay Mini Fillet Skewers",
     "packSize": "2x2.15kg",
     "categorySlug": "meat-poultry",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-mp-726590",
-    "sku": "726590",
+    "sku": "RW-726590",
     "name": "Big Al's Flame Cooked Quarter Pounder Burger 4oz",
     "packSize": "2x24",
     "categorySlug": "meat-poultry",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-mp-715490",
-    "sku": "715490",
+    "sku": "RW-715490",
     "name": "British Beef Burgers 80% 5oz",
     "packSize": "30x140g",
     "categorySlug": "meat-poultry",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-mp-715760",
-    "sku": "715760",
+    "sku": "RW-715760",
     "name": "Frozen 100% Beef Burger",
     "packSize": "170g",
     "categorySlug": "meat-poultry",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-mp-715780",
-    "sku": "715780",
+    "sku": "RW-715780",
     "name": "Frozen 80% Beef Burger",
     "packSize": "48x113g",
     "categorySlug": "meat-poultry",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-mp-782220",
-    "sku": "782220",
+    "sku": "RW-782220",
     "name": "Frozen 99.5% Beef Burger",
     "packSize": "48x113g",
     "categorySlug": "meat-poultry",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-mp-782210",
-    "sku": "782210",
+    "sku": "RW-782210",
     "name": "Frozen 99.5% Gourmet Style Beef Burger",
     "packSize": "170g",
     "categorySlug": "meat-poultry",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-mp-707010",
-    "sku": "707010",
+    "sku": "RW-707010",
     "name": "Red Tractor Assured Steak Burger",
     "packSize": "36x113g/4oz",
     "categorySlug": "meat-poultry",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-mp-707030",
-    "sku": "707030",
+    "sku": "RW-707030",
     "name": "Red Tractor Assured Steak Burger",
     "packSize": "36x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-mp-706730",
-    "sku": "706730",
+    "sku": "RW-706730",
     "name": "Red Tractor Assured Steak Burger",
     "packSize": "72x56g/2oz",
     "categorySlug": "meat-poultry",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-mp-706740",
-    "sku": "706740",
+    "sku": "RW-706740",
     "name": "Red Tractor Assured Steak Burger",
     "packSize": "72x56g/2oz Halal",
     "categorySlug": "meat-poultry",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-mp-709540",
-    "sku": "709540",
+    "sku": "RW-709540",
     "name": "Red Tractor Assured Steak Burger (frozen)",
     "packSize": "113g/4oz",
     "categorySlug": "meat-poultry",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-mp-703240",
-    "sku": "703240",
+    "sku": "RW-703240",
     "name": "Red Tractor Assured Beef Braising Steaks",
     "packSize": "113g/4oz",
     "categorySlug": "meat-poultry",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-mp-704760",
-    "sku": "704760",
+    "sku": "RW-704760",
     "name": "Red Tractor Assured Beef Braising Steaks",
     "packSize": "8x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-mp-708910",
-    "sku": "708910",
+    "sku": "RW-708910",
     "name": "Red Tractor Assured Beef Featherblade Steaks",
     "packSize": "10x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-mp-709860",
-    "sku": "709860",
+    "sku": "RW-709860",
     "name": "Red Tractor Assured Beef Featherblade Steaks",
     "packSize": "10x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-mp-707380",
-    "sku": "707380",
+    "sku": "RW-707380",
     "name": "Red Tractor Assured Beef Fillet Steaks",
     "packSize": "2x113g/4oz",
     "categorySlug": "meat-poultry",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-mp-707390",
-    "sku": "707390",
+    "sku": "RW-707390",
     "name": "Red Tractor Assured Beef Fillet Steaks",
     "packSize": "2x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-mp-707430",
-    "sku": "707430",
+    "sku": "RW-707430",
     "name": "Red Tractor Assured Beef Fillet Steaks",
     "packSize": "2x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-mp-707470",
-    "sku": "707470",
+    "sku": "RW-707470",
     "name": "Red Tractor Assured Beef Fillet Steaks",
     "packSize": "2x283g/10oz",
     "categorySlug": "meat-poultry",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-mp-708360",
-    "sku": "708360",
+    "sku": "RW-708360",
     "name": "Red Tractor Assured Beef Flat Iron Steaks",
     "packSize": "5x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-mp-708460",
-    "sku": "708460",
+    "sku": "RW-708460",
     "name": "Red Tractor Assured Beef Flat Iron Steaks",
     "packSize": "5x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-mp-703830",
-    "sku": "703830",
+    "sku": "RW-703830",
     "name": "Red Tractor Assured Beef Flat Iron Steaks",
     "packSize": "5x283g/10oz",
     "categorySlug": "meat-poultry",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-mp-707930",
-    "sku": "707930",
+    "sku": "RW-707930",
     "name": "Red Tractor Assured Beef Minute Steaks",
     "packSize": "5x113g/4oz",
     "categorySlug": "meat-poultry",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-mp-707500",
-    "sku": "707500",
+    "sku": "RW-707500",
     "name": "Red Tractor Assured Beef Ribeye Steaks",
     "packSize": "2x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-mp-707510",
-    "sku": "707510",
+    "sku": "RW-707510",
     "name": "Red Tractor Assured Beef Ribeye Steaks",
     "packSize": "2x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-mp-707520",
-    "sku": "707520",
+    "sku": "RW-707520",
     "name": "Red Tractor Assured Beef Ribeye Steaks",
     "packSize": "2x283g/10oz",
     "categorySlug": "meat-poultry",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-mp-707840",
-    "sku": "707840",
+    "sku": "RW-707840",
     "name": "Red Tractor Assured Beef Rump Steaks",
     "packSize": "2x113g/4oz",
     "categorySlug": "meat-poultry",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-mp-707850",
-    "sku": "707850",
+    "sku": "RW-707850",
     "name": "Red Tractor Assured Beef Rump Steaks",
     "packSize": "2x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-mp-707860",
-    "sku": "707860",
+    "sku": "RW-707860",
     "name": "Red Tractor Assured Beef Rump Steaks",
     "packSize": "2x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-mp-707880",
-    "sku": "707880",
+    "sku": "RW-707880",
     "name": "Red Tractor Assured Beef Rump Steaks",
     "packSize": "2x283g/10oz",
     "categorySlug": "meat-poultry",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-mp-707900",
-    "sku": "707900",
+    "sku": "RW-707900",
     "name": "Red Tractor Assured Beef Sirloin Steaks",
     "packSize": "2x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-mp-707910",
-    "sku": "707910",
+    "sku": "RW-707910",
     "name": "Red Tractor Assured Beef Sirloin Steaks",
     "packSize": "2x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-mp-707920",
-    "sku": "707920",
+    "sku": "RW-707920",
     "name": "Red Tractor Assured Beef Sirloin Steaks",
     "packSize": "2x283g/10oz",
     "categorySlug": "meat-poultry",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-mp-707490",
-    "sku": "707490",
+    "sku": "RW-707490",
     "name": "Red Tractor Assured Centre Cut Beef Fillet Steaks",
     "packSize": "2x226g/8oz",
     "categorySlug": "meat-poultry",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-mp-706960",
-    "sku": "706960",
+    "sku": "RW-706960",
     "name": "Red Tractor Assured Diced Beef",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-mp-715470",
-    "sku": "715470",
+    "sku": "RW-715470",
     "name": "British Beef Meatballs",
     "packSize": "10x18x30g",
     "categorySlug": "meat-poultry",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-mp-706950",
-    "sku": "706950",
+    "sku": "RW-706950",
     "name": "Red Tractor Assured Beef Braising Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-mp-704930",
-    "sku": "704930",
+    "sku": "RW-704930",
     "name": "Red Tractor Assured Beef Short Rib",
     "packSize": "1x2-3kg",
     "categorySlug": "meat-poultry",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-mp-706990",
-    "sku": "706990",
+    "sku": "RW-706990",
     "name": "Red Tractor Assured Diced Beef",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-mp-702730",
-    "sku": "702730",
+    "sku": "RW-702730",
     "name": "Red Tractor Assured Diced Beef Chuck",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-mp-706930",
-    "sku": "706930",
+    "sku": "RW-706930",
     "name": "Red Tractor Assured Diced Beef Shin",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-mp-706970",
-    "sku": "706970",
+    "sku": "RW-706970",
     "name": "Red Tractor Assured Diced Beef Steak & Kidney",
     "packSize": "1x3kg",
     "categorySlug": "meat-poultry",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-mp-707081",
-    "sku": "707081",
+    "sku": "RW-707081",
     "name": "Red Tractor Assured Frozen Minced Beef 85%",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-mp-707080",
-    "sku": "707080",
+    "sku": "RW-707080",
     "name": "Red Tractor Assured Frozen Minced Beef 85%",
     "packSize": "6x2.5kg",
     "categorySlug": "meat-poultry",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-mp-707001",
-    "sku": "707001",
+    "sku": "RW-707001",
     "name": "Red Tractor Assured Halal Minced Beef 85%",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-mp-707000",
-    "sku": "707000",
+    "sku": "RW-707000",
     "name": "Red Tractor Assured Halal Minced Beef 85%",
     "packSize": "6x2.5kg",
     "categorySlug": "meat-poultry",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-mp-711300",
-    "sku": "711300",
+    "sku": "RW-711300",
     "name": "Red Tractor Assured Minced Beef 85% VL",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-mp-702950",
-    "sku": "702950",
+    "sku": "RW-702950",
     "name": "Red Tractor Assured Minced Beef 85% VL",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-mp-901590",
-    "sku": "901590",
+    "sku": "RW-901590",
     "name": "Red Tractor Assured Minced Beef 85% VL",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-mp-703300",
-    "sku": "703300",
+    "sku": "RW-703300",
     "name": "Red Tractor Assured Minced Beef 85% VL",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-mp-702960",
-    "sku": "702960",
+    "sku": "RW-702960",
     "name": "Red Tractor Assured Minced Beef 90% VL",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-mp-706940",
-    "sku": "706940",
+    "sku": "RW-706940",
     "name": "Red Tractor Assured Minced Beef 90% VL",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-mp-706920",
-    "sku": "706920",
+    "sku": "RW-706920",
     "name": "Red Tractor Assured Sliced Beef Shin",
     "packSize": "1x2.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-mp-801200",
-    "sku": "801200",
+    "sku": "RW-801200",
     "name": "Spicy Beef Meatballs",
     "packSize": "10x1kg",
     "categorySlug": "meat-poultry",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-mp-801201",
-    "sku": "801201",
+    "sku": "RW-801201",
     "name": "Spicy Beef Meatballs",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-mp-708750",
-    "sku": "708750",
+    "sku": "RW-708750",
     "name": "Beef Silverside Joint",
     "packSize": "6-8kg Avg.",
     "categorySlug": "meat-poultry",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-mp-900910",
-    "sku": "900910",
+    "sku": "RW-900910",
     "name": "Red Tractor Assured Beef Chateaubriand",
     "packSize": "1x500g/16oz",
     "categorySlug": "meat-poultry",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-mp-703840",
-    "sku": "703840",
+    "sku": "RW-703840",
     "name": "Red Tractor Assured Beef Silverside",
     "packSize": "kg",
     "categorySlug": "meat-poultry",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-mp-705960",
-    "sku": "705960",
+    "sku": "RW-705960",
     "name": "Red Tractor Assured Beef Topside Joint",
     "packSize": "1x2.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-mp-704140",
-    "sku": "704140",
+    "sku": "RW-704140",
     "name": "Red Tractor Assured Beef Topside Joint",
     "packSize": "3/4/5/10kg",
     "categorySlug": "meat-poultry",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-mp-701380",
-    "sku": "701380",
+    "sku": "RW-701380",
     "name": "Red Tractor Assured Boneless Flat Beef Brisket",
     "packSize": "1x3-4kg Avg.",
     "categorySlug": "meat-poultry",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-mp-704040",
-    "sku": "704040",
+    "sku": "RW-704040",
     "name": "Red Tractor Assured Boneless Rolled Beef Brisket",
     "packSize": "1x3-4kg Avg.",
     "categorySlug": "meat-poultry",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-mp-703920",
-    "sku": "703920",
+    "sku": "RW-703920",
     "name": "Red Tractor Assured Boneless Rolled Beef Rib Joint",
     "packSize": "6-8kg Avg.",
     "categorySlug": "meat-poultry",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-mp-785860",
-    "sku": "785860",
+    "sku": "RW-785860",
     "name": "Red Tractor Assured Boneless Rolled Beef Rump Joint",
     "packSize": "4kg",
     "categorySlug": "meat-poultry",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-mp-707600",
-    "sku": "707600",
+    "sku": "RW-707600",
     "name": "Red Tractor Assured Flat Beef Sirloin Joint",
     "packSize": "3/6kg",
     "categorySlug": "meat-poultry",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-mp-704160",
-    "sku": "704160",
+    "sku": "RW-704160",
     "name": "Red Tractor Assured Rolled Beef Sirloin",
     "packSize": "1x3kg Avg.",
     "categorySlug": "meat-poultry",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-mp-709440",
-    "sku": "709440",
+    "sku": "RW-709440",
     "name": "Red Tractor Assured Whole Beef Chuck",
     "packSize": "1x2-3kg Avg.",
     "categorySlug": "meat-poultry",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-mp-900810",
-    "sku": "900810",
+    "sku": "RW-900810",
     "name": "Red Tractor Assured Whole Beef Featherblade",
     "packSize": "1x2.5-3.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-mp-702780",
-    "sku": "702780",
+    "sku": "RW-702780",
     "name": "Red Tractor Assured Whole Beef Fillet",
     "packSize": "1x1.8-2.7kg Avg.",
     "categorySlug": "meat-poultry",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-mp-708010",
-    "sku": "708010",
+    "sku": "RW-708010",
     "name": "Red Tractor Assured Whole Beef Ribeye",
     "packSize": "1x2.5-3.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-mp-704170",
-    "sku": "704170",
+    "sku": "RW-704170",
     "name": "Red Tractor Assured Whole Beef Rump",
     "packSize": "1x4.5-5.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-mp-704180",
-    "sku": "704180",
+    "sku": "RW-704180",
     "name": "Red Tractor Assured Whole Beef Shin",
     "packSize": "1x2-3kg Avg.",
     "categorySlug": "meat-poultry",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-mp-600800",
-    "sku": "600800",
+    "sku": "RW-600800",
     "name": "Red Tractor Assured Beef Cheeks",
     "packSize": "kg",
     "categorySlug": "meat-poultry",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-mp-703930",
-    "sku": "703930",
+    "sku": "RW-703930",
     "name": "Red Tractor Assured Beef Marrow Bones",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-mp-706490",
-    "sku": "706490",
+    "sku": "RW-706490",
     "name": "Diggers Crispy Shredded Chicken",
     "packSize": "5x1kg",
     "categorySlug": "meat-poultry",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-mp-785840",
-    "sku": "785840",
+    "sku": "RW-785840",
     "name": "Unbanded Turkey Butterfly",
     "packSize": "5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-mp-731300",
-    "sku": "731300",
+    "sku": "RW-731300",
     "name": "Chicken Kyiv Croquettes",
     "packSize": "1x2.2kg",
     "categorySlug": "meat-poultry",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-mp-761221",
-    "sku": "761221",
+    "sku": "RW-761221",
     "name": "Chicken Rings",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-mp-761220",
-    "sku": "761220",
+    "sku": "RW-761220",
     "name": "Chicken Rings",
     "packSize": "3x1kg",
     "categorySlug": "meat-poultry",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-mp-851150",
-    "sku": "851150",
+    "sku": "RW-851150",
     "name": "Cooked Breaded Chicken Breast Fillets",
     "packSize": "10kg",
     "categorySlug": "meat-poultry",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-mp-795631",
-    "sku": "795631",
+    "sku": "RW-795631",
     "name": "Country Range Breaded Chicken Goujons",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-mp-795640",
-    "sku": "795640",
+    "sku": "RW-795640",
     "name": "Country Range Southern Fried Chicken Goujon",
     "packSize": "5x2kg",
     "categorySlug": "meat-poultry",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-mp-882700",
-    "sku": "882700",
+    "sku": "RW-882700",
     "name": "Delightful Battered Chicken Nugget",
     "packSize": "10x1kg",
     "categorySlug": "meat-poultry",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-mp-882701",
-    "sku": "882701",
+    "sku": "RW-882701",
     "name": "Delightful Battered Chicken Nugget",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-mp-866770",
-    "sku": "866770",
+    "sku": "RW-866770",
     "name": "Delightful Battered Chicken Steaks",
     "packSize": "10x1kg",
     "categorySlug": "meat-poultry",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-mp-866771",
-    "sku": "866771",
+    "sku": "RW-866771",
     "name": "Delightful Battered Chicken Steaks",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-mp-706491",
-    "sku": "706491",
+    "sku": "RW-706491",
     "name": "Diggers Crispy Shredded Chicken",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-mp-706461",
-    "sku": "706461",
+    "sku": "RW-706461",
     "name": "Diggers Salt & Chilli Crispy Shredded Chicken",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-mp-706460",
-    "sku": "706460",
+    "sku": "RW-706460",
     "name": "Diggers Salt & Chilli Crispy Shredded Chicken",
     "packSize": "5x1kg",
     "categorySlug": "meat-poultry",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-mp-791001",
-    "sku": "791001",
+    "sku": "RW-791001",
     "name": "Fully Cooked Breaded Chicken Breast Fillets",
     "packSize": "2.16kg",
     "categorySlug": "meat-poultry",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-mp-724001",
-    "sku": "724001",
+    "sku": "RW-724001",
     "name": "Fully Cooked Ripple Coated Chicken Fillet",
     "packSize": "2kg",
     "categorySlug": "meat-poultry",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-mp-723720",
-    "sku": "723720",
+    "sku": "RW-723720",
     "name": "Homestyle Crunchy Shredded Chicken",
     "packSize": "4x1kg",
     "categorySlug": "meat-poultry",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-mp-865140",
-    "sku": "865140",
+    "sku": "RW-865140",
     "name": "Homestyle Salt & Pepper Shredded Chicken",
     "packSize": "4x1kg",
     "categorySlug": "meat-poultry",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-mp-865151",
-    "sku": "865151",
+    "sku": "RW-865151",
     "name": "Homestyle Southern Fried Chicken Strips",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-mp-865150",
-    "sku": "865150",
+    "sku": "RW-865150",
     "name": "Homestyle Southern Fried Chicken Strips",
     "packSize": "4x1kg",
     "categorySlug": "meat-poultry",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-mp-791000",
-    "sku": "791000",
+    "sku": "RW-791000",
     "name": "Katsu Breaded Chicken Breast Fillets",
     "packSize": "5x2.16kg",
     "categorySlug": "meat-poultry",
@@ -1275,7 +1275,7 @@
   },
   {
     "id": "rw-mp-721651",
-    "sku": "721651",
+    "sku": "RW-721651",
     "name": "Meadow Vale Breaded Chicken Nuggets",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "rw-mp-721650",
-    "sku": "721650",
+    "sku": "RW-721650",
     "name": "Meadow Vale Breaded Chicken Nuggets",
     "packSize": "6x1kg",
     "categorySlug": "meat-poultry",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "rw-mp-731010",
-    "sku": "731010",
+    "sku": "RW-731010",
     "name": "Meadow Vale Pickin Chicken (10-20g)",
     "packSize": "10x1kg",
     "categorySlug": "meat-poultry",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": "rw-mp-731011",
-    "sku": "731011",
+    "sku": "RW-731011",
     "name": "Meadow Vale Pickin Chicken (10-20g)",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "rw-mp-728881",
-    "sku": "728881",
+    "sku": "RW-728881",
     "name": "Meadowvale Battered Chicken Fillet Bites",
     "packSize": "2kg",
     "categorySlug": "meat-poultry",
@@ -1340,7 +1340,7 @@
   },
   {
     "id": "rw-mp-728880",
-    "sku": "728880",
+    "sku": "RW-728880",
     "name": "Meadowvale Battered Chicken Fillet Bites",
     "packSize": "5x2kg",
     "categorySlug": "meat-poultry",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-mp-711061",
-    "sku": "711061",
+    "sku": "RW-711061",
     "name": "Meadowvale Battered Chicken Nuggets",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1366,7 +1366,7 @@
   },
   {
     "id": "rw-mp-711060",
-    "sku": "711060",
+    "sku": "RW-711060",
     "name": "Meadowvale Battered Chicken Nuggets",
     "packSize": "6x1kg",
     "categorySlug": "meat-poultry",
@@ -1379,7 +1379,7 @@
   },
   {
     "id": "rw-mp-726151",
-    "sku": "726151",
+    "sku": "RW-726151",
     "name": "Southern Fried Chicken Fillet",
     "packSize": "1x2.2kg",
     "categorySlug": "meat-poultry",
@@ -1392,7 +1392,7 @@
   },
   {
     "id": "rw-mp-726150",
-    "sku": "726150",
+    "sku": "RW-726150",
     "name": "Southern Fried Chicken Fillet",
     "packSize": "4x2.2kg",
     "categorySlug": "meat-poultry",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "rw-mp-781251",
-    "sku": "781251",
+    "sku": "RW-781251",
     "name": "Chicken Breast Skewers",
     "packSize": "2kg",
     "categorySlug": "meat-poultry",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": "rw-mp-781250",
-    "sku": "781250",
+    "sku": "RW-781250",
     "name": "Chicken Breast Skewers",
     "packSize": "2x2kg",
     "categorySlug": "meat-poultry",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "rw-mp-706760",
-    "sku": "706760",
+    "sku": "RW-706760",
     "name": "Diced Chicken Breast Fillet",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "rw-mp-708610",
-    "sku": "708610",
+    "sku": "RW-708610",
     "name": "Diced Chicken Breast Fillet",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1457,7 +1457,7 @@
   },
   {
     "id": "rw-mp-704280",
-    "sku": "704280",
+    "sku": "RW-704280",
     "name": "Diced Chicken Breast Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1470,7 +1470,7 @@
   },
   {
     "id": "rw-mp-706770",
-    "sku": "706770",
+    "sku": "RW-706770",
     "name": "Diced Turkey Breast",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "rw-mp-704410",
-    "sku": "704410",
+    "sku": "RW-704410",
     "name": "Frozen Red Tractor Assured Diced 50/50 Chicken",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -1496,7 +1496,7 @@
   },
   {
     "id": "rw-mp-856671",
-    "sku": "856671",
+    "sku": "RW-856671",
     "name": "Goodness Me! 12mm Cooked Chicken Breast Strips",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1509,7 +1509,7 @@
   },
   {
     "id": "rw-mp-856681",
-    "sku": "856681",
+    "sku": "RW-856681",
     "name": "Goodness Me! 19mm Cooked Diced Chicken",
     "packSize": "1kg",
     "categorySlug": "meat-poultry",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-mp-700510",
-    "sku": "700510",
+    "sku": "RW-700510",
     "name": "Kitchen '72 BBQ Marinated Chicken Fillet Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1535,7 +1535,7 @@
   },
   {
     "id": "rw-mp-700520",
-    "sku": "700520",
+    "sku": "RW-700520",
     "name": "Kitchen '72 Fajita Marinated Chicken Fillet Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1548,7 +1548,7 @@
   },
   {
     "id": "rw-mp-700550",
-    "sku": "700550",
+    "sku": "RW-700550",
     "name": "Kitchen '72 Garlic & Herb Chicken Fillet Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "rw-mp-701130",
-    "sku": "701130",
+    "sku": "RW-701130",
     "name": "Kitchen '72 Garlic & Herb Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "rw-mp-708180",
-    "sku": "708180",
+    "sku": "RW-708180",
     "name": "Kitchen '72 Jerk Marinated Chicken Fillet Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1587,7 +1587,7 @@
   },
   {
     "id": "rw-mp-708280",
-    "sku": "708280",
+    "sku": "RW-708280",
     "name": "Kitchen '72 Jerk Marinated Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -1600,7 +1600,7 @@
   },
   {
     "id": "rw-mp-700540",
-    "sku": "700540",
+    "sku": "RW-700540",
     "name": "Kitchen '72 Peri Peri Chicken Fillet Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1613,7 +1613,7 @@
   },
   {
     "id": "rw-mp-700440",
-    "sku": "700440",
+    "sku": "RW-700440",
     "name": "Kitchen '72 PF BBQ Marinated Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": "rw-mp-701200",
-    "sku": "701200",
+    "sku": "RW-701200",
     "name": "Kitchen '72 PF BBQ Marinated Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1639,7 +1639,7 @@
   },
   {
     "id": "rw-mp-700450",
-    "sku": "700450",
+    "sku": "RW-700450",
     "name": "Kitchen '72 PF Fajita Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1652,7 +1652,7 @@
   },
   {
     "id": "rw-mp-700480",
-    "sku": "700480",
+    "sku": "RW-700480",
     "name": "Kitchen '72 PF Garlic & Herb Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "rw-mp-708190",
-    "sku": "708190",
+    "sku": "RW-708190",
     "name": "Kitchen '72 PF Jerk Marinated Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-mp-708140",
-    "sku": "708140",
+    "sku": "RW-708140",
     "name": "Kitchen '72 PF Jerk Marinated Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "rw-mp-700470",
-    "sku": "700470",
+    "sku": "RW-700470",
     "name": "Kitchen '72 PF Peri Peri Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "rw-mp-701170",
-    "sku": "701170",
+    "sku": "RW-701170",
     "name": "Kitchen '72 PF Peri Peri Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "rw-mp-700490",
-    "sku": "700490",
+    "sku": "RW-700490",
     "name": "Kitchen '72 PF Salt & Pepper Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "rw-mp-701190",
-    "sku": "701190",
+    "sku": "RW-701190",
     "name": "Kitchen '72 PF Salt & Pepper Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1743,7 +1743,7 @@
   },
   {
     "id": "rw-mp-701110",
-    "sku": "701110",
+    "sku": "RW-701110",
     "name": "Kitchen '72 PF Tikka Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "rw-mp-700460",
-    "sku": "700460",
+    "sku": "RW-700460",
     "name": "Kitchen '72 PF Tikka Diced Chicken Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1769,7 +1769,7 @@
   },
   {
     "id": "rw-mp-703550",
-    "sku": "703550",
+    "sku": "RW-703550",
     "name": "Red Tractor Assured Diced Chicken Breast Fillet",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1782,7 +1782,7 @@
   },
   {
     "id": "rw-mp-703470",
-    "sku": "703470",
+    "sku": "RW-703470",
     "name": "Red Tractor Assured Diced Chicken Breast Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "rw-mp-704230",
-    "sku": "704230",
+    "sku": "RW-704230",
     "name": "Red Tractor Assured Diced Chicken Fillet & Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "rw-mp-785620",
-    "sku": "785620",
+    "sku": "RW-785620",
     "name": "Red Tractor Assured Diced Chicken Thigh",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "rw-mp-785610",
-    "sku": "785610",
+    "sku": "RW-785610",
     "name": "Red Tractor Assured Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1834,7 +1834,7 @@
   },
   {
     "id": "rw-mp-704240",
-    "sku": "704240",
+    "sku": "RW-704240",
     "name": "Red Tractor Assured Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-mp-703620",
-    "sku": "703620",
+    "sku": "RW-703620",
     "name": "Red Tractor Assured Minced Chicken Breast Fillet",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "rw-mp-866701",
-    "sku": "866701",
+    "sku": "RW-866701",
     "name": "Steam Cooked Chicken Breast Diced 12mm",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -1873,7 +1873,7 @@
   },
   {
     "id": "rw-mp-866700",
-    "sku": "866700",
+    "sku": "RW-866700",
     "name": "Steam Cooked Chicken Breast Diced 12mm",
     "packSize": "4x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1886,7 +1886,7 @@
   },
   {
     "id": "rw-mp-866711",
-    "sku": "866711",
+    "sku": "RW-866711",
     "name": "Steam Cooked Chicken Breast Strips 12mm",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -1899,7 +1899,7 @@
   },
   {
     "id": "rw-mp-866710",
-    "sku": "866710",
+    "sku": "RW-866710",
     "name": "Steam Cooked Chicken Breast Strips 12mm",
     "packSize": "4x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": "rw-mp-706780",
-    "sku": "706780",
+    "sku": "RW-706780",
     "name": "Turkey Breast Strips",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -1925,7 +1925,7 @@
   },
   {
     "id": "rw-mp-706900",
-    "sku": "706900",
+    "sku": "RW-706900",
     "name": "Turkey Escalope",
     "packSize": "172g 1x5",
     "categorySlug": "meat-poultry",
@@ -1938,7 +1938,7 @@
   },
   {
     "id": "rw-mp-700010",
-    "sku": "700010",
+    "sku": "RW-700010",
     "name": "Kitchen '72 BBQ Marinated Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "rw-mp-700050",
-    "sku": "700050",
+    "sku": "RW-700050",
     "name": "Kitchen '72 Garlic & Herb Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "rw-mp-708160",
-    "sku": "708160",
+    "sku": "RW-708160",
     "name": "Kitchen '72 Jerk Marinated Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "rw-mp-700040",
-    "sku": "700040",
+    "sku": "RW-700040",
     "name": "Kitchen '72 Peri Peri Marinated Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "rw-mp-700060",
-    "sku": "700060",
+    "sku": "RW-700060",
     "name": "Kitchen '72 Salt & Pepper Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "rw-mp-700030",
-    "sku": "700030",
+    "sku": "RW-700030",
     "name": "Kitchen '72 Tikka Marinated Chicken Drumsticks",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-mp-703630",
-    "sku": "703630",
+    "sku": "RW-703630",
     "name": "Red Tractor Assured Bone-in Chicken Drumstick",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": "rw-mp-785630",
-    "sku": "785630",
+    "sku": "RW-785630",
     "name": "Red Tractor Assured Bone-in Chicken Drumstick",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2042,7 +2042,7 @@
   },
   {
     "id": "rw-mp-729030",
-    "sku": "729030",
+    "sku": "RW-729030",
     "name": "Fenton Gold Cooked Whole Turkey",
     "packSize": "3.63kg",
     "categorySlug": "meat-poultry",
@@ -2055,7 +2055,7 @@
   },
   {
     "id": "rw-mp-785850",
-    "sku": "785850",
+    "sku": "RW-785850",
     "name": "Frozen Turkey Lobe Joint",
     "packSize": "Avg 2.5kg",
     "categorySlug": "meat-poultry",
@@ -2068,7 +2068,7 @@
   },
   {
     "id": "rw-mp-871120",
-    "sku": "871120",
+    "sku": "RW-871120",
     "name": "Roast Turkey Breast Lobe",
     "packSize": "2.4kg",
     "categorySlug": "meat-poultry",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "rw-mp-702690",
-    "sku": "702690",
+    "sku": "RW-702690",
     "name": "Turkey Butterfly",
     "packSize": "1x5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -2094,7 +2094,7 @@
   },
   {
     "id": "rw-mp-703660",
-    "sku": "703660",
+    "sku": "RW-703660",
     "name": "Turkey Lobe",
     "packSize": "1x2.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "rw-mp-785660",
-    "sku": "785660",
+    "sku": "RW-785660",
     "name": "Turkey Lobe",
     "packSize": "2.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -2120,7 +2120,7 @@
   },
   {
     "id": "rw-mp-700080",
-    "sku": "700080",
+    "sku": "RW-700080",
     "name": "Kitchen '72 BBQ Marinated Chicken Leg",
     "packSize": "1x10",
     "categorySlug": "meat-poultry",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "rw-mp-700130",
-    "sku": "700130",
+    "sku": "RW-700130",
     "name": "Kitchen '72 Garlic & Herb Marinated Chicken Leg",
     "packSize": "1x10",
     "categorySlug": "meat-poultry",
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "rw-mp-700120",
-    "sku": "700120",
+    "sku": "RW-700120",
     "name": "Kitchen '72 Peri Peri Marinated Chicken Leg",
     "packSize": "1x10",
     "categorySlug": "meat-poultry",
@@ -2159,7 +2159,7 @@
   },
   {
     "id": "rw-mp-700140",
-    "sku": "700140",
+    "sku": "RW-700140",
     "name": "Kitchen '72 Salt & Pepper Marinated Chicken Leg",
     "packSize": "1x10",
     "categorySlug": "meat-poultry",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-mp-700110",
-    "sku": "700110",
+    "sku": "RW-700110",
     "name": "Kitchen '72 Tikka Marinated Chicken Leg",
     "packSize": "1x10",
     "categorySlug": "meat-poultry",
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "rw-mp-703570",
-    "sku": "703570",
+    "sku": "RW-703570",
     "name": "Red Tractor Assured Bone-in Chicken Leg",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2198,7 +2198,7 @@
   },
   {
     "id": "rw-mp-785590",
-    "sku": "785590",
+    "sku": "RW-785590",
     "name": "Red Tractor Assured Bone-in Chicken Leg",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "rw-mp-707690",
-    "sku": "707690",
+    "sku": "RW-707690",
     "name": "Chicken Livers",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -2224,7 +2224,7 @@
   },
   {
     "id": "rw-mp-703760",
-    "sku": "703760",
+    "sku": "RW-703760",
     "name": "Red Tractor Assured Chicken Bones",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2237,7 +2237,7 @@
   },
   {
     "id": "rw-mp-705410",
-    "sku": "705410",
+    "sku": "RW-705410",
     "name": "Boneless Skinless Chicken Thigh",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2250,7 +2250,7 @@
   },
   {
     "id": "rw-mp-785830",
-    "sku": "785830",
+    "sku": "RW-785830",
     "name": "Boneless Skinless Chicken Thigh",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2263,7 +2263,7 @@
   },
   {
     "id": "rw-mp-704420",
-    "sku": "704420",
+    "sku": "RW-704420",
     "name": "Frozen Red Tractor Assured Boneless Skinless Chicken Thigh",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "rw-mp-700280",
-    "sku": "700280",
+    "sku": "RW-700280",
     "name": "Kitchen '72 Salt & Pepper B&S Less Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "rw-mp-700230",
-    "sku": "700230",
+    "sku": "RW-700230",
     "name": "Kitchen '72 BBQ Boneless Skinless Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2302,7 +2302,7 @@
   },
   {
     "id": "rw-mp-700240",
-    "sku": "700240",
+    "sku": "RW-700240",
     "name": "Kitchen '72 Fajita Boneless Skinless Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2315,7 +2315,7 @@
   },
   {
     "id": "rw-mp-700270",
-    "sku": "700270",
+    "sku": "RW-700270",
     "name": "Kitchen '72 Garlic & Herb B&S-Less Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2328,7 +2328,7 @@
   },
   {
     "id": "rw-mp-708150",
-    "sku": "708150",
+    "sku": "RW-708150",
     "name": "Kitchen '72 Jerk Boneless Skinless Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-mp-700260",
-    "sku": "700260",
+    "sku": "RW-700260",
     "name": "Kitchen '72 Peri Peri B&S Less Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2354,7 +2354,7 @@
   },
   {
     "id": "rw-mp-380230",
-    "sku": "380230",
+    "sku": "RW-380230",
     "name": "Kitchen '72 PF Fajita Diced Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": "rw-mp-700250",
-    "sku": "700250",
+    "sku": "RW-700250",
     "name": "Kitchen '72 Tikka B&S Less Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": "rw-mp-703580",
-    "sku": "703580",
+    "sku": "RW-703580",
     "name": "Red Tractor Assured Bone-in Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2393,7 +2393,7 @@
   },
   {
     "id": "rw-mp-704200",
-    "sku": "704200",
+    "sku": "RW-704200",
     "name": "Red Tractor Assured Boneless Skinless Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2406,7 +2406,7 @@
   },
   {
     "id": "rw-mp-703590",
-    "sku": "703590",
+    "sku": "RW-703590",
     "name": "Red Tractor Assured Boneless Skinless Chicken Thigh",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2419,7 +2419,7 @@
   },
   {
     "id": "rw-mp-704000",
-    "sku": "704000",
+    "sku": "RW-704000",
     "name": "Red Tractor Assured Boneless Skinless Chicken Thigh",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "rw-mp-704250",
-    "sku": "704250",
+    "sku": "RW-704250",
     "name": "Red Tractor Assured Boneless Skinless Chicken Thigh",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2445,7 +2445,7 @@
   },
   {
     "id": "rw-mp-703610",
-    "sku": "703610",
+    "sku": "RW-703610",
     "name": "Red Tractor Assured Diced Chicken Thigh",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -2458,7 +2458,7 @@
   },
   {
     "id": "rw-mp-815010",
-    "sku": "815010",
+    "sku": "RW-815010",
     "name": "Sizzling Shawarma Chargrilled Chicken Boneless Thigh",
     "packSize": "4x960g",
     "categorySlug": "meat-poultry",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "rw-mp-700930",
-    "sku": "700930",
+    "sku": "RW-700930",
     "name": "Turkey Thigh",
     "packSize": "kg",
     "categorySlug": "meat-poultry",
@@ -2484,7 +2484,7 @@
   },
   {
     "id": "rw-mp-795680",
-    "sku": "795680",
+    "sku": "RW-795680",
     "name": "Diggers Roasted Mini Chicken Skewer",
     "packSize": "2x2.15kg",
     "categorySlug": "meat-poultry",
@@ -2497,7 +2497,7 @@
   },
   {
     "id": "rw-mp-795681",
-    "sku": "795681",
+    "sku": "RW-795681",
     "name": "Diggers Roasted Mini Chicken Skewers",
     "packSize": "2.15kg",
     "categorySlug": "meat-poultry",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-mp-701810",
-    "sku": "701810",
+    "sku": "RW-701810",
     "name": "Red Tractor Assured Half Chicken- 2x750g Avg.",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -2523,7 +2523,7 @@
   },
   {
     "id": "rw-mp-702400",
-    "sku": "702400",
+    "sku": "RW-702400",
     "name": "Red Tractor Assured Whole Chicken",
     "packSize": "1x1.5kg Avg.",
     "categorySlug": "meat-poultry",
@@ -2536,7 +2536,7 @@
   },
   {
     "id": "rw-mp-704220",
-    "sku": "704220",
+    "sku": "RW-704220",
     "name": "Red Tractor Assured Whole Chicken",
     "packSize": "1x2kg Avg.",
     "categorySlug": "meat-poultry",
@@ -2549,7 +2549,7 @@
   },
   {
     "id": "rw-mp-900820",
-    "sku": "900820",
+    "sku": "RW-900820",
     "name": "Chicken Breast Fillet 200-230g",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2562,7 +2562,7 @@
   },
   {
     "id": "rw-mp-900870",
-    "sku": "900870",
+    "sku": "RW-900870",
     "name": "Chicken Breast Fillet 200-230g",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "rw-mp-900980",
-    "sku": "900980",
+    "sku": "RW-900980",
     "name": "Chicken Breast Fillet 200-230g",
     "packSize": "2x5kg",
     "categorySlug": "meat-poultry",
@@ -2588,7 +2588,7 @@
   },
   {
     "id": "rw-mp-704350",
-    "sku": "704350",
+    "sku": "RW-704350",
     "name": "Frz Red Tractor Assured Chicken Breast Fillet 60-80g",
     "packSize": "1x25",
     "categorySlug": "meat-poultry",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "rw-mp-859730",
-    "sku": "859730",
+    "sku": "RW-859730",
     "name": "Fully Cooked Charcoaled Butterfly Chicken Breast",
     "packSize": "5x1.7kg",
     "categorySlug": "meat-poultry",
@@ -2614,7 +2614,7 @@
   },
   {
     "id": "rw-mp-700420",
-    "sku": "700420",
+    "sku": "RW-700420",
     "name": "Kitchen '72 Salt & Pepper Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2627,7 +2627,7 @@
   },
   {
     "id": "rw-mp-700300",
-    "sku": "700300",
+    "sku": "RW-700300",
     "name": "Kitchen '72 BBQ Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2640,7 +2640,7 @@
   },
   {
     "id": "rw-mp-700370",
-    "sku": "700370",
+    "sku": "RW-700370",
     "name": "Kitchen '72 BBQ Marinated Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2653,7 +2653,7 @@
   },
   {
     "id": "rw-mp-700310",
-    "sku": "700310",
+    "sku": "RW-700310",
     "name": "Kitchen '72 Fajita Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-mp-700380",
-    "sku": "700380",
+    "sku": "RW-700380",
     "name": "Kitchen '72 Fajita Marinated Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-mp-700410",
-    "sku": "700410",
+    "sku": "RW-700410",
     "name": "Kitchen '72 Garlic & Herb Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "rw-mp-700340",
-    "sku": "700340",
+    "sku": "RW-700340",
     "name": "Kitchen '72 Garlic & Herb Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": "rw-mp-708270",
-    "sku": "708270",
+    "sku": "RW-708270",
     "name": "Kitchen '72 Jerk Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "rw-mp-700400",
-    "sku": "700400",
+    "sku": "RW-700400",
     "name": "Kitchen '72 Peri Peri Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "rw-mp-700330",
-    "sku": "700330",
+    "sku": "RW-700330",
     "name": "Kitchen '72 Peri Peri Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2744,7 +2744,7 @@
   },
   {
     "id": "rw-mp-700350",
-    "sku": "700350",
+    "sku": "RW-700350",
     "name": "Kitchen '72 Salt & Pepper Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2757,7 +2757,7 @@
   },
   {
     "id": "rw-mp-700320",
-    "sku": "700320",
+    "sku": "RW-700320",
     "name": "Kitchen '72 Tikka Marinated Chicken Fillet",
     "packSize": "5x226g",
     "categorySlug": "meat-poultry",
@@ -2770,7 +2770,7 @@
   },
   {
     "id": "rw-mp-700390",
-    "sku": "700390",
+    "sku": "RW-700390",
     "name": "Kitchen '72 Tikka Marinated Chicken Half Fillet",
     "packSize": "10x113g",
     "categorySlug": "meat-poultry",
@@ -2783,7 +2783,7 @@
   },
   {
     "id": "rw-mp-704370",
-    "sku": "704370",
+    "sku": "RW-704370",
     "name": "Red Tractor Assured Boneless Chicken Supreme (200-230g)",
     "packSize": "5",
     "categorySlug": "meat-poultry",
@@ -2796,7 +2796,7 @@
   },
   {
     "id": "rw-mp-704360",
-    "sku": "704360",
+    "sku": "RW-704360",
     "name": "Red Tractor Assured Chicken Breast Fillet",
     "packSize": "125g avg",
     "categorySlug": "meat-poultry",
@@ -2809,7 +2809,7 @@
   },
   {
     "id": "rw-mp-703430",
-    "sku": "703430",
+    "sku": "RW-703430",
     "name": "Red Tractor Assured Chicken Breast Fillet 110-140g",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2822,7 +2822,7 @@
   },
   {
     "id": "rw-mp-704260",
-    "sku": "704260",
+    "sku": "RW-704260",
     "name": "Red Tractor Assured Chicken Breast Fillet 200-230g",
     "packSize": "1x5",
     "categorySlug": "meat-poultry",
@@ -2835,7 +2835,7 @@
   },
   {
     "id": "rw-mp-704270",
-    "sku": "704270",
+    "sku": "RW-704270",
     "name": "Red Tractor Assured Chicken Breast Fillet 200-230g",
     "packSize": "1x5kg",
     "categorySlug": "meat-poultry",
@@ -2848,7 +2848,7 @@
   },
   {
     "id": "rw-mp-704380",
-    "sku": "704380",
+    "sku": "RW-704380",
     "name": "Red Tractor Assured Chicken Breast Fillet 200-230g -2.5kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -2861,7 +2861,7 @@
   },
   {
     "id": "rw-mp-703540",
-    "sku": "703540",
+    "sku": "RW-703540",
     "name": "Red Tractor Assured Chicken Breast Fillet 60-80g- 1x25",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -2874,7 +2874,7 @@
   },
   {
     "id": "rw-mp-703460",
-    "sku": "703460",
+    "sku": "RW-703460",
     "name": "Red Tractor Assured Chicken Inner Fillets",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2887,7 +2887,7 @@
   },
   {
     "id": "rw-mp-703640",
-    "sku": "703640",
+    "sku": "RW-703640",
     "name": "Red Tractor Assured Chicken Supreme 200-230g",
     "packSize": "1x5",
     "categorySlug": "meat-poultry",
@@ -2900,7 +2900,7 @@
   },
   {
     "id": "rw-mp-704290",
-    "sku": "704290",
+    "sku": "RW-704290",
     "name": "Red Tractor Assured Chicken Supreme 200-230g",
     "packSize": "1x5",
     "categorySlug": "meat-poultry",
@@ -2913,7 +2913,7 @@
   },
   {
     "id": "rw-mp-866721",
-    "sku": "866721",
+    "sku": "RW-866721",
     "name": "Steam Cooked Whole Chicken Breast Fillets",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -2926,7 +2926,7 @@
   },
   {
     "id": "rw-mp-866720",
-    "sku": "866720",
+    "sku": "RW-866720",
     "name": "Steam Cooked Whole Chicken Breast Fillets",
     "packSize": "4x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2939,7 +2939,7 @@
   },
   {
     "id": "rw-mp-857690",
-    "sku": "857690",
+    "sku": "RW-857690",
     "name": "Steamed Cooked Chicken Breast",
     "packSize": "4x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2952,7 +2952,7 @@
   },
   {
     "id": "rw-mp-859720",
-    "sku": "859720",
+    "sku": "RW-859720",
     "name": "Big Al's Fully Cooked Mesquite Chicken Wings",
     "packSize": "2x2.5kg",
     "categorySlug": "meat-poultry",
@@ -2965,7 +2965,7 @@
   },
   {
     "id": "rw-mp-845790",
-    "sku": "845790",
+    "sku": "RW-845790",
     "name": "Boneless Chicken Wings",
     "packSize": "3x1kg",
     "categorySlug": "meat-poultry",
@@ -2978,7 +2978,7 @@
   },
   {
     "id": "rw-mp-728771",
-    "sku": "728771",
+    "sku": "RW-728771",
     "name": "Country Range Hot & Spicy Marinated Chicken Wings",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -2991,7 +2991,7 @@
   },
   {
     "id": "rw-mp-795651",
-    "sku": "795651",
+    "sku": "RW-795651",
     "name": "Country Range Steam Cooked Chicken Wings",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "rw-mp-795650",
-    "sku": "795650",
+    "sku": "RW-795650",
     "name": "Country Range Steam Cooked Chicken Wings",
     "packSize": "5x1kg",
     "categorySlug": "meat-poultry",
@@ -3017,7 +3017,7 @@
   },
   {
     "id": "rw-mp-729040",
-    "sku": "729040",
+    "sku": "RW-729040",
     "name": "Crispy Wingers Kentucky Style",
     "packSize": "2x2.5kg",
     "categorySlug": "meat-poultry",
@@ -3030,7 +3030,7 @@
   },
   {
     "id": "rw-mp-700580",
-    "sku": "700580",
+    "sku": "RW-700580",
     "name": "Kitchen '72 BBQ Marinated Chicken Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3043,7 +3043,7 @@
   },
   {
     "id": "rw-mp-700620",
-    "sku": "700620",
+    "sku": "RW-700620",
     "name": "Kitchen '72 Garlic & Herb Marinated Chicken Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": "rw-mp-708170",
-    "sku": "708170",
+    "sku": "RW-708170",
     "name": "Kitchen '72 Jerk Marinated Chicken Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3069,7 +3069,7 @@
   },
   {
     "id": "rw-mp-700610",
-    "sku": "700610",
+    "sku": "RW-700610",
     "name": "Kitchen '72 Peri Peri Marinated Chicken Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3082,7 +3082,7 @@
   },
   {
     "id": "rw-mp-700630",
-    "sku": "700630",
+    "sku": "RW-700630",
     "name": "Kitchen '72 Salt & Pepper Marinated Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3095,7 +3095,7 @@
   },
   {
     "id": "rw-mp-700600",
-    "sku": "700600",
+    "sku": "RW-700600",
     "name": "Kitchen '72 Tikka Marinated Chicken Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3108,7 +3108,7 @@
   },
   {
     "id": "rw-mp-728830",
-    "sku": "728830",
+    "sku": "RW-728830",
     "name": "Meadow Vale Crispy Hot Chicken Wings",
     "packSize": "5x2kg",
     "categorySlug": "meat-poultry",
@@ -3121,7 +3121,7 @@
   },
   {
     "id": "rw-mp-728831",
-    "sku": "728831",
+    "sku": "RW-728831",
     "name": "Meadow Vale Crispy Hot Wings",
     "packSize": "2kg",
     "categorySlug": "meat-poultry",
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "rw-mp-709040",
-    "sku": "709040",
+    "sku": "RW-709040",
     "name": "Red Tractor Assured Chicken Prime & Mid Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3147,7 +3147,7 @@
   },
   {
     "id": "rw-mp-704390",
-    "sku": "704390",
+    "sku": "RW-704390",
     "name": "Red Tractor Assured Chicken Prime & Mid Wings",
     "packSize": "1x2kg",
     "categorySlug": "meat-poultry",
@@ -3160,7 +3160,7 @@
   },
   {
     "id": "rw-mp-706090",
-    "sku": "706090",
+    "sku": "RW-706090",
     "name": "Duck Breasts",
     "packSize": "2x210-270g",
     "categorySlug": "meat-poultry",
@@ -3173,7 +3173,7 @@
   },
   {
     "id": "rw-mp-764570",
-    "sku": "764570",
+    "sku": "RW-764570",
     "name": "Frozen Gressingham Duck Breast 1x10x200-225g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -3186,7 +3186,7 @@
   },
   {
     "id": "rw-mp-775400",
-    "sku": "775400",
+    "sku": "RW-775400",
     "name": "Confit Duck Leg",
     "packSize": "280g",
     "categorySlug": "meat-poultry",
@@ -3199,7 +3199,7 @@
   },
   {
     "id": "rw-mp-704190",
-    "sku": "704190",
+    "sku": "RW-704190",
     "name": "Duck Legs",
     "packSize": "2x280-380g",
     "categorySlug": "meat-poultry",
@@ -3212,7 +3212,7 @@
   },
   {
     "id": "rw-mp-707730",
-    "sku": "707730",
+    "sku": "RW-707730",
     "name": "Venison Steaks",
     "packSize": "2x172g",
     "categorySlug": "meat-poultry",
@@ -3225,7 +3225,7 @@
   },
   {
     "id": "rw-mp-815040",
-    "sku": "815040",
+    "sku": "RW-815040",
     "name": "Gressingham Half Aromatic Duck",
     "packSize": "10x350g",
     "categorySlug": "meat-poultry",
@@ -3238,7 +3238,7 @@
   },
   {
     "id": "rw-mp-900922",
-    "sku": "900922",
+    "sku": "RW-900922",
     "name": "Guinea Fowl Supremes",
     "packSize": "2x172g",
     "categorySlug": "meat-poultry",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": "rw-mp-708870",
-    "sku": "708870",
+    "sku": "RW-708870",
     "name": "Lamb Loin Chop -10x113g/4oz",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -3264,7 +3264,7 @@
   },
   {
     "id": "rw-mp-708860",
-    "sku": "708860",
+    "sku": "RW-708860",
     "name": "Leg Lamb Steak",
     "packSize": "5x172g/6oz",
     "categorySlug": "meat-poultry",
@@ -3277,7 +3277,7 @@
   },
   {
     "id": "rw-mp-704540",
-    "sku": "704540",
+    "sku": "RW-704540",
     "name": "Square Cut Lamb Rump 5x200g/7oz",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -3290,7 +3290,7 @@
   },
   {
     "id": "rw-mp-785790",
-    "sku": "785790",
+    "sku": "RW-785790",
     "name": "85% Minced Lamb",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3303,7 +3303,7 @@
   },
   {
     "id": "rw-mp-704530",
-    "sku": "704530",
+    "sku": "RW-704530",
     "name": "85% Minced Lamb",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -3316,7 +3316,7 @@
   },
   {
     "id": "rw-mp-711310",
-    "sku": "711310",
+    "sku": "RW-711310",
     "name": "85% Red Tractor Assured Minced Lamb",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3329,7 +3329,7 @@
   },
   {
     "id": "rw-mp-708830",
-    "sku": "708830",
+    "sku": "RW-708830",
     "name": "Diced Leg of Lamb",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3342,7 +3342,7 @@
   },
   {
     "id": "rw-mp-704520",
-    "sku": "704520",
+    "sku": "RW-704520",
     "name": "Diced Leg of Lamb",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -3355,7 +3355,7 @@
   },
   {
     "id": "rw-mp-708850",
-    "sku": "708850",
+    "sku": "RW-708850",
     "name": "Diced Shoulder of Lamb",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3368,7 +3368,7 @@
   },
   {
     "id": "rw-mp-785780",
-    "sku": "785780",
+    "sku": "RW-785780",
     "name": "Diced Shoulder of Lamb",
     "packSize": "1x1kg",
     "categorySlug": "meat-poultry",
@@ -3381,7 +3381,7 @@
   },
   {
     "id": "rw-mp-708840",
-    "sku": "708840",
+    "sku": "RW-708840",
     "name": "Diced Shoulder of Lamb",
     "packSize": "1x2.5kg",
     "categorySlug": "meat-poultry",
@@ -3394,7 +3394,7 @@
   },
   {
     "id": "rw-mp-707071",
-    "sku": "707071",
+    "sku": "RW-707071",
     "name": "Red Tractor Assured Frozen Minced Lamb 85%",
     "packSize": "2.5kg",
     "categorySlug": "meat-poultry",
@@ -3407,7 +3407,7 @@
   },
   {
     "id": "rw-mp-707070",
-    "sku": "707070",
+    "sku": "RW-707070",
     "name": "Red Tractor Assured Frozen Minced Lamb 85%",
     "packSize": "6x2.5kg",
     "categorySlug": "meat-poultry",
@@ -3420,7 +3420,7 @@
   },
   {
     "id": "rw-mp-704730",
-    "sku": "704730",
+    "sku": "RW-704730",
     "name": "Boneless Rolled Leg of Lamb",
     "packSize": "1x2-3kg",
     "categorySlug": "meat-poultry",
@@ -3433,7 +3433,7 @@
   },
   {
     "id": "rw-mp-704700",
-    "sku": "704700",
+    "sku": "RW-704700",
     "name": "Boneless Rolled Shoulder of Lamb",
     "packSize": "1x2-3kg",
     "categorySlug": "meat-poultry",
@@ -3446,7 +3446,7 @@
   },
   {
     "id": "rw-mp-704880",
-    "sku": "704880",
+    "sku": "RW-704880",
     "name": "Lamb Shank",
     "packSize": "1x450g",
     "categorySlug": "meat-poultry",
@@ -3459,7 +3459,7 @@
   },
   {
     "id": "rw-mp-708880",
-    "sku": "708880",
+    "sku": "RW-708880",
     "name": "Lambs Liver -1x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "meat-poultry",
@@ -3472,7 +3472,7 @@
   },
   {
     "id": "rw-mp-701300",
-    "sku": "701300",
+    "sku": "RW-701300",
     "name": "Red Tractor Assured Lamb Burger",
     "packSize": "1x141g/5oz",
     "categorySlug": "meat-poultry",
@@ -3485,7 +3485,7 @@
   },
   {
     "id": "rw-mp-724050",
-    "sku": "724050",
+    "sku": "RW-724050",
     "name": "Cooked Full Rack BBQ Ribs",
     "packSize": "500g",
     "categorySlug": "meat-poultry",
@@ -3498,7 +3498,7 @@
   },
   {
     "id": "rw-mp-701070",
-    "sku": "701070",
+    "sku": "RW-701070",
     "name": "Faggots",
     "packSize": "6x125g",
     "categorySlug": "meat-poultry",
@@ -3511,7 +3511,7 @@
   },
   {
     "id": "rw-mp-713410",
-    "sku": "713410",
+    "sku": "RW-713410",
     "name": "Gluten Free Smoked Lower Salt 10inch Sausages",
     "packSize": "16x135g",
     "categorySlug": "meat-poultry",
@@ -3524,7 +3524,7 @@
   },
   {
     "id": "rw-mp-713360",
-    "sku": "713360",
+    "sku": "RW-713360",
     "name": "Premium Jumbo Smoked Natural Hot Dog Sausages 7-7.5\" (18-19cm)",
     "packSize": "6x500g",
     "categorySlug": "meat-poultry",
@@ -3537,7 +3537,7 @@
   },
   {
     "id": "rw-mp-796860",
-    "sku": "796860",
+    "sku": "RW-796860",
     "name": "Signature by Country Range Cumberland Sausages",
     "packSize": "4x1kg",
     "categorySlug": "meat-poultry",
@@ -3550,7 +3550,7 @@
   },
   {
     "id": "rw-mp-715450",
-    "sku": "715450",
+    "sku": "RW-715450",
     "name": "Swedish Meatballs Cooked",
     "packSize": "4kg",
     "categorySlug": "meat-poultry",
@@ -3563,7 +3563,7 @@
   },
   {
     "id": "rw-mp-206710",
-    "sku": "206710",
+    "sku": "RW-206710",
     "name": "Uncle John's Premium Beechwood Smoked Bockwurst Sausages",
     "packSize": "12x7",
     "categorySlug": "meat-poultry",

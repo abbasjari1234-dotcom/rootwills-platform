@@ -54,7 +54,7 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     items: [
       {
         id: 'rw-bk-796010',
-        sku: '796010',
+        sku: 'RW-796010',
         name: 'Hobbs House Bakery Everyday Sliced Harvester Loaf',
         packSize: '15x800g',
         tempZone: 'Ambient',
@@ -63,7 +63,7 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
       },
       {
         id: 'rw-bk-858770',
-        sku: '858770',
+        sku: 'RW-858770',
         name: 'Baguettes Bread Sandwich Multigrain',
         packSize: '50x140g',
         tempZone: 'Ambient',
@@ -94,7 +94,7 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     items: [
       {
         id: 'rw-bk-724530',
-        sku: '724530',
+        sku: 'RW-724530',
         name: 'Mozzarella, Pesto & Tomato Panini',
         packSize: '20x179g',
         tempZone: 'Ambient',
@@ -125,7 +125,7 @@ export const INITIAL_OPS_ORDERS: WholesaleOrder[] = [
     items: [
       {
         id: 'rw-bk-858770',
-        sku: '858770',
+        sku: 'RW-858770',
         name: 'Baguettes Bread Sandwich Multigrain',
         packSize: '50x140g',
         tempZone: 'Ambient',

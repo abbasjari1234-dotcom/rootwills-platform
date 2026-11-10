@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-bk-796010",
-    "sku": "796010",
+    "sku": "RW-796010",
     "name": "Hobbs House Bakery Everyday Sliced Harvester Loaf",
     "packSize": "15x800g",
     "categorySlug": "bakery-breakfast",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-bk-724530",
-    "sku": "724530",
+    "sku": "RW-724530",
     "name": "Mozzarella, Pesto & Tomato Panini",
     "packSize": "20x179g",
     "categorySlug": "bakery-breakfast",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-bk-858770",
-    "sku": "858770",
+    "sku": "RW-858770",
     "name": "Baguettes Bread Sandwich Multigrain",
     "packSize": "50x140g",
     "categorySlug": "bakery-breakfast",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-bk-800700",
-    "sku": "800700",
+    "sku": "RW-800700",
     "name": "Barra Gallega Media Baguette",
     "packSize": "50x125g",
     "categorySlug": "bakery-breakfast",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-bk-851920",
-    "sku": "851920",
+    "sku": "RW-851920",
     "name": "Country Range Part Baked White Baguette",
     "packSize": "135g",
     "categorySlug": "bakery-breakfast",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-bk-713390",
-    "sku": "713390",
+    "sku": "RW-713390",
     "name": "Full White Baguette Part Baked",
     "packSize": "30x280g",
     "categorySlug": "bakery-breakfast",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-bk-817080",
-    "sku": "817080",
+    "sku": "RW-817080",
     "name": "Le Bon Pain Small White Bread Baguette Thaw & Serve 11In",
     "packSize": "30x135g",
     "categorySlug": "bakery-breakfast",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-bk-818470",
-    "sku": "818470",
+    "sku": "RW-818470",
     "name": "Multi Seeded Half Baguette (part baked)",
     "packSize": "50x140g",
     "categorySlug": "bakery-breakfast",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-bk-722010",
-    "sku": "722010",
+    "sku": "RW-722010",
     "name": "Part-Baked Plain Ciabatta",
     "packSize": "50x140g",
     "categorySlug": "bakery-breakfast",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-bk-819180",
-    "sku": "819180",
+    "sku": "RW-819180",
     "name": "Planete Pain Part Baked Artisan Baguette",
     "packSize": "27x280g",
     "categorySlug": "bakery-breakfast",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-bk-712290",
-    "sku": "712290",
+    "sku": "RW-712290",
     "name": "Schar Gluten free Ciabatta Oven Ready",
     "packSize": "50g",
     "categorySlug": "bakery-breakfast",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-bk-817650",
-    "sku": "817650",
+    "sku": "RW-817650",
     "name": "White Demi Bread Baguette Part Baked",
     "packSize": "50x140g",
     "categorySlug": "bakery-breakfast",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-bk-818490",
-    "sku": "818490",
+    "sku": "RW-818490",
     "name": "Wholemeal Demi Bread Baguette Part Baked",
     "packSize": "50x125g",
     "categorySlug": "bakery-breakfast",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-bk-859770",
-    "sku": "859770",
+    "sku": "RW-859770",
     "name": "Brace's Catering Long Loaf Thick Malted Bread (16+2)",
     "packSize": "10x800g",
     "categorySlug": "bakery-breakfast",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-bk-874670",
-    "sku": "874670",
+    "sku": "RW-874670",
     "name": "Brace's Catering Thick Malted D Tin Bread (14+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-bk-869530",
-    "sku": "869530",
+    "sku": "RW-869530",
     "name": "Brace's Catering Thick Malted D Tin Bread (17+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -208,7 +208,7 @@
   },
   {
     "id": "rw-bk-874660",
-    "sku": "874660",
+    "sku": "RW-874660",
     "name": "Brace's Catering Thick White D Tin Bread (14+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -220,7 +220,7 @@
   },
   {
     "id": "rw-bk-874650",
-    "sku": "874650",
+    "sku": "RW-874650",
     "name": "Brace's Catering Thick White D Tin Bread (17+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -232,7 +232,7 @@
   },
   {
     "id": "rw-bk-816520",
-    "sku": "816520",
+    "sku": "RW-816520",
     "name": "Country Range Medium Sliced White Bread (18+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -244,7 +244,7 @@
   },
   {
     "id": "rw-bk-816530",
-    "sku": "816530",
+    "sku": "RW-816530",
     "name": "Country Range Medium Sliced Wholemeal Bread 18+2",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -256,7 +256,7 @@
   },
   {
     "id": "rw-bk-816500",
-    "sku": "816500",
+    "sku": "RW-816500",
     "name": "Country Range Thick Sliced White Bread 16+2",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -269,7 +269,7 @@
   },
   {
     "id": "rw-bk-816510",
-    "sku": "816510",
+    "sku": "RW-816510",
     "name": "Country Range Thick Sliced Wholemeal Bread 16+2",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -281,7 +281,7 @@
   },
   {
     "id": "rw-bk-740800",
-    "sku": "740800",
+    "sku": "RW-740800",
     "name": "Genius Gluten Free Multi Seeded Farmhouse Sliced Bread Loaf",
     "packSize": "6x430g",
     "categorySlug": "bakery-breakfast",
@@ -293,7 +293,7 @@
   },
   {
     "id": "rw-bk-740790",
-    "sku": "740790",
+    "sku": "RW-740790",
     "name": "Genius Gluten Free Sliced Soft Brown Farmhouse Bread Loaf",
     "packSize": "6x430g",
     "categorySlug": "bakery-breakfast",
@@ -305,7 +305,7 @@
   },
   {
     "id": "rw-bk-740780",
-    "sku": "740780",
+    "sku": "RW-740780",
     "name": "Genius Gluten Free Sliced Soft White Farmhouse Loaf Bread",
     "packSize": "6x430g",
     "categorySlug": "bakery-breakfast",
@@ -317,7 +317,7 @@
   },
   {
     "id": "rw-bk-780140",
-    "sku": "780140",
+    "sku": "RW-780140",
     "name": "Harvest Bloomer Sliced",
     "packSize": "1x8x800g",
     "categorySlug": "bakery-breakfast",
@@ -329,7 +329,7 @@
   },
   {
     "id": "rw-bk-740190",
-    "sku": "740190",
+    "sku": "RW-740190",
     "name": "Hobbs Bakery Square St. Martins Sourdough Bread",
     "packSize": "10x1.3kg",
     "categorySlug": "bakery-breakfast",
@@ -341,7 +341,7 @@
   },
   {
     "id": "rw-bk-852590",
-    "sku": "852590",
+    "sku": "RW-852590",
     "name": "Hobbs House Bakery Bloomer Bread Large White Baked (frozen)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -353,7 +353,7 @@
   },
   {
     "id": "rw-bk-848480",
-    "sku": "848480",
+    "sku": "RW-848480",
     "name": "Hobbs House Bakery Harvester Bloomer Bread",
     "packSize": "9x800g",
     "categorySlug": "bakery-breakfast",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-bk-805510",
-    "sku": "805510",
+    "sku": "RW-805510",
     "name": "Jackson's Bakery Simply White Medium Bread (16+2) 800g",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -377,7 +377,7 @@
   },
   {
     "id": "rw-bk-870470",
-    "sku": "870470",
+    "sku": "RW-870470",
     "name": "Jackson's Malt Brown Thick Bread (16+2)",
     "packSize": "10x800g",
     "categorySlug": "bakery-breakfast",
@@ -389,7 +389,7 @@
   },
   {
     "id": "rw-bk-805550",
-    "sku": "805550",
+    "sku": "RW-805550",
     "name": "Jackson's White Medium Bread (18+2)",
     "packSize": "10x800g",
     "categorySlug": "bakery-breakfast",
@@ -401,7 +401,7 @@
   },
   {
     "id": "rw-bk-870480",
-    "sku": "870480",
+    "sku": "RW-870480",
     "name": "Kingsmill Professional Medium 5050 (18+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -413,7 +413,7 @@
   },
   {
     "id": "rw-bk-801900",
-    "sku": "801900",
+    "sku": "RW-801900",
     "name": "Kingsmill Professional Soft White Medium",
     "packSize": "800g",
     "categorySlug": "bakery-breakfast",
@@ -425,7 +425,7 @@
   },
   {
     "id": "rw-bk-712551",
-    "sku": "712551",
+    "sku": "RW-712551",
     "name": "Kingsmill Professional Thick Sliced White Bread",
     "packSize": "1x800g",
     "categorySlug": "bakery-breakfast",
@@ -437,7 +437,7 @@
   },
   {
     "id": "rw-bk-712550",
-    "sku": "712550",
+    "sku": "RW-712550",
     "name": "Kingsmill Professional Thick Sliced White Bread",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -449,7 +449,7 @@
   },
   {
     "id": "rw-bk-712541",
-    "sku": "712541",
+    "sku": "RW-712541",
     "name": "Kingsmill Professional Thick Sliced Wholemeal",
     "packSize": "1x800g",
     "categorySlug": "bakery-breakfast",
@@ -461,7 +461,7 @@
   },
   {
     "id": "rw-bk-712540",
-    "sku": "712540",
+    "sku": "RW-712540",
     "name": "Kingsmill Professional Thick Sliced Wholemeal",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -473,7 +473,7 @@
   },
   {
     "id": "rw-bk-870550",
-    "sku": "870550",
+    "sku": "RW-870550",
     "name": "Kingsmill Wholemeal Medium Bread",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -485,7 +485,7 @@
   },
   {
     "id": "rw-bk-820900",
-    "sku": "820900",
+    "sku": "RW-820900",
     "name": "Large White Sourdough",
     "packSize": "4x1.8kg",
     "categorySlug": "bakery-breakfast",
@@ -497,7 +497,7 @@
   },
   {
     "id": "rw-bk-870450",
-    "sku": "870450",
+    "sku": "RW-870450",
     "name": "Malted Sandwich Medium Bread (18+2)",
     "packSize": "800g",
     "categorySlug": "bakery-breakfast",
@@ -510,7 +510,7 @@
   },
   {
     "id": "rw-bk-857010",
-    "sku": "857010",
+    "sku": "RW-857010",
     "name": "Mega Sliced Golden Grain Loaf (10+2)",
     "packSize": "8x800g",
     "categorySlug": "bakery-breakfast",
@@ -522,7 +522,7 @@
   },
   {
     "id": "rw-bk-851100",
-    "sku": "851100",
+    "sku": "RW-851100",
     "name": "Mega Sliced White Loaf (10+2)- 8x800g",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-bk-800330",
-    "sku": "800330",
+    "sku": "RW-800330",
     "name": "Olive Bloomer Bread (Part Baked)",
     "packSize": "15x460g",
     "categorySlug": "bakery-breakfast",
@@ -546,7 +546,7 @@
   },
   {
     "id": "rw-bk-745040",
-    "sku": "745040",
+    "sku": "RW-745040",
     "name": "Sherston Sliced Sandwich Loaf",
     "packSize": "1x15x800g",
     "categorySlug": "bakery-breakfast",
@@ -558,7 +558,7 @@
   },
   {
     "id": "rw-bk-820850",
-    "sku": "820850",
+    "sku": "RW-820850",
     "name": "Speciality Breads Fully-baked White Sub Loaf Bread 23\"",
     "packSize": "10x420g",
     "categorySlug": "bakery-breakfast",
@@ -570,7 +570,7 @@
   },
   {
     "id": "rw-bk-820230",
-    "sku": "820230",
+    "sku": "RW-820230",
     "name": "Speciality Breads Red Tractor Fully-baked Brown Sub Loaf 23in",
     "packSize": "10x420g",
     "categorySlug": "bakery-breakfast",
@@ -582,7 +582,7 @@
   },
   {
     "id": "rw-bk-740250",
-    "sku": "740250",
+    "sku": "RW-740250",
     "name": "St Martin Sourdough Sliced Loaf",
     "packSize": "9x1.25kg",
     "categorySlug": "bakery-breakfast",
@@ -594,7 +594,7 @@
   },
   {
     "id": "rw-bk-870460",
-    "sku": "870460",
+    "sku": "RW-870460",
     "name": "White Thick Bread (16+2)",
     "packSize": "10x800g",
     "categorySlug": "bakery-breakfast",
@@ -606,7 +606,7 @@
   },
   {
     "id": "rw-bk-836430",
-    "sku": "836430",
+    "sku": "RW-836430",
     "name": "Americana 6.5in Hot Dog Roll Top Sliced",
     "packSize": "6x12x50g",
     "categorySlug": "bakery-breakfast",
@@ -618,7 +618,7 @@
   },
   {
     "id": "rw-bk-751350",
-    "sku": "751350",
+    "sku": "RW-751350",
     "name": "Americana Gourmet Burger Buns",
     "packSize": "8x6",
     "categorySlug": "bakery-breakfast",
@@ -630,7 +630,7 @@
   },
   {
     "id": "rw-bk-816870",
-    "sku": "816870",
+    "sku": "RW-816870",
     "name": "Black Brioche Burger Bun Bread Roll With Sesame Seeds",
     "packSize": "56x90g",
     "categorySlug": "bakery-breakfast",
@@ -642,7 +642,7 @@
   },
   {
     "id": "rw-bk-817330",
-    "sku": "817330",
+    "sku": "RW-817330",
     "name": "Country Range Doughballs",
     "packSize": "60x180g",
     "categorySlug": "bakery-breakfast",
@@ -654,7 +654,7 @@
   },
   {
     "id": "rw-bk-742060",
-    "sku": "742060",
+    "sku": "RW-742060",
     "name": "Country Range Floured Bap (5 inch)",
     "packSize": "48",
     "categorySlug": "bakery-breakfast",
@@ -666,7 +666,7 @@
   },
   {
     "id": "rw-bk-769370",
-    "sku": "769370",
+    "sku": "RW-769370",
     "name": "Country Range Sliced Brioche Burger Bun",
     "packSize": "82g",
     "categorySlug": "bakery-breakfast",
@@ -678,7 +678,7 @@
   },
   {
     "id": "rw-bk-105700",
-    "sku": "105700",
+    "sku": "RW-105700",
     "name": "Country Range White Bread & Roll Mix",
     "packSize": "4x3.5 kg",
     "categorySlug": "bakery-breakfast",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-bk-105701",
-    "sku": "105701",
+    "sku": "RW-105701",
     "name": "Country Range White Bread & Roll Mix -3.5 kg",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -702,7 +702,7 @@
   },
   {
     "id": "rw-bk-895130",
-    "sku": "895130",
+    "sku": "RW-895130",
     "name": "Ditsch Fully Baked Pretzel Bites",
     "packSize": "500x14g",
     "categorySlug": "bakery-breakfast",
@@ -714,7 +714,7 @@
   },
   {
     "id": "rw-bk-740690",
-    "sku": "740690",
+    "sku": "RW-740690",
     "name": "Ditsch Pretzel Burger Bun Pre Sliced (Baked)",
     "packSize": "42x80g",
     "categorySlug": "bakery-breakfast",
@@ -726,7 +726,7 @@
   },
   {
     "id": "rw-bk-895140",
-    "sku": "895140",
+    "sku": "RW-895140",
     "name": "Ditsch Ready Sliced Pretzel Hot-dog Bun",
     "packSize": "3x20x80g",
     "categorySlug": "bakery-breakfast",
@@ -738,7 +738,7 @@
   },
   {
     "id": "rw-bk-848620",
-    "sku": "848620",
+    "sku": "RW-848620",
     "name": "English White Breakfast Muffin",
     "packSize": "48x72g",
     "categorySlug": "bakery-breakfast",
@@ -751,7 +751,7 @@
   },
   {
     "id": "rw-bk-888000",
-    "sku": "888000",
+    "sku": "RW-888000",
     "name": "Genius Gluten Free Brioche Style Bread Burger Buns",
     "packSize": "24x70g",
     "categorySlug": "bakery-breakfast",
@@ -763,7 +763,7 @@
   },
   {
     "id": "rw-bk-740650",
-    "sku": "740650",
+    "sku": "RW-740650",
     "name": "Hi-Crust Doughball",
     "packSize": "70x240g",
     "categorySlug": "bakery-breakfast",
@@ -775,7 +775,7 @@
   },
   {
     "id": "rw-bk-740660",
-    "sku": "740660",
+    "sku": "RW-740660",
     "name": "Hi-Crust Sourdough Doughball",
     "packSize": "70x240g",
     "categorySlug": "bakery-breakfast",
@@ -787,7 +787,7 @@
   },
   {
     "id": "rw-bk-849820",
-    "sku": "849820",
+    "sku": "RW-849820",
     "name": "Hobbs Ultimate Burger Bap",
     "packSize": "72x72g",
     "categorySlug": "bakery-breakfast",
@@ -799,7 +799,7 @@
   },
   {
     "id": "rw-bk-849840",
-    "sku": "849840",
+    "sku": "RW-849840",
     "name": "Hobbs Ultimate Finger Roll",
     "packSize": "72",
     "categorySlug": "bakery-breakfast",
@@ -811,7 +811,7 @@
   },
   {
     "id": "rw-bk-849830",
-    "sku": "849830",
+    "sku": "RW-849830",
     "name": "Hobbs Ultimate Seeded Jumbo Burger Bread Bap",
     "packSize": "75x95g",
     "categorySlug": "bakery-breakfast",
@@ -823,7 +823,7 @@
   },
   {
     "id": "rw-bk-819760",
-    "sku": "819760",
+    "sku": "RW-819760",
     "name": "Kara 4.5in Gourmet Brioche Burger Bread Bun",
     "packSize": "54x88g",
     "categorySlug": "bakery-breakfast",
@@ -835,7 +835,7 @@
   },
   {
     "id": "rw-bk-817430",
-    "sku": "817430",
+    "sku": "RW-817430",
     "name": "Kara 4in Floured Bread Bap",
     "packSize": "45g",
     "categorySlug": "bakery-breakfast",
@@ -847,7 +847,7 @@
   },
   {
     "id": "rw-bk-740910",
-    "sku": "740910",
+    "sku": "RW-740910",
     "name": "Kara MK4.5 Brioche Style Burger Bun",
     "packSize": "86g",
     "categorySlug": "bakery-breakfast",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-bk-844730",
-    "sku": "844730",
+    "sku": "RW-844730",
     "name": "Kara Seeded Burger Buns",
     "packSize": "6x8",
     "categorySlug": "bakery-breakfast",
@@ -871,7 +871,7 @@
   },
   {
     "id": "rw-bk-817560",
-    "sku": "817560",
+    "sku": "RW-817560",
     "name": "Kara Sliced Sourdough Bread Bun",
     "packSize": "9x6",
     "categorySlug": "bakery-breakfast",
@@ -883,7 +883,7 @@
   },
   {
     "id": "rw-bk-741080",
-    "sku": "741080",
+    "sku": "RW-741080",
     "name": "Kara White Deli Roll",
     "packSize": "36x100g",
     "categorySlug": "bakery-breakfast",
@@ -895,7 +895,7 @@
   },
   {
     "id": "rw-bk-820270",
-    "sku": "820270",
+    "sku": "RW-820270",
     "name": "Large Ciabatta Bread Roll",
     "packSize": "30x130g",
     "categorySlug": "bakery-breakfast",
@@ -907,7 +907,7 @@
   },
   {
     "id": "rw-bk-836420",
-    "sku": "836420",
+    "sku": "RW-836420",
     "name": "Mini Brioche Slider",
     "packSize": "60x30g",
     "categorySlug": "bakery-breakfast",
@@ -919,7 +919,7 @@
   },
   {
     "id": "rw-bk-858380",
-    "sku": "858380",
+    "sku": "RW-858380",
     "name": "New York Bakery Sliced Plain Bread Bagel",
     "packSize": "60x85g",
     "categorySlug": "bakery-breakfast",
@@ -931,7 +931,7 @@
   },
   {
     "id": "rw-bk-741160",
-    "sku": "741160",
+    "sku": "RW-741160",
     "name": "Sliced Hot Cross Bun",
     "packSize": "95g",
     "categorySlug": "bakery-breakfast",
@@ -943,7 +943,7 @@
   },
   {
     "id": "rw-bk-824380",
-    "sku": "824380",
+    "sku": "RW-824380",
     "name": "Sliced Vegan Bread Roll",
     "packSize": "(4x8)x88g",
     "categorySlug": "bakery-breakfast",
@@ -955,7 +955,7 @@
   },
   {
     "id": "rw-bk-850980",
-    "sku": "850980",
+    "sku": "RW-850980",
     "name": "Sweet Bread Finger Bread Roll",
     "packSize": "24x70g",
     "categorySlug": "bakery-breakfast",
@@ -967,7 +967,7 @@
   },
   {
     "id": "rw-bk-817610",
-    "sku": "817610",
+    "sku": "RW-817610",
     "name": "Unseeded Burger Bread Buns 4in",
     "packSize": "50g",
     "categorySlug": "bakery-breakfast",
@@ -979,7 +979,7 @@
   },
   {
     "id": "rw-bk-823000",
-    "sku": "823000",
+    "sku": "RW-823000",
     "name": "Vegan Seeded Brioche Style Bun",
     "packSize": "32x70g",
     "categorySlug": "bakery-breakfast",
@@ -992,7 +992,7 @@
   },
   {
     "id": "rw-bk-850730",
-    "sku": "850730",
+    "sku": "RW-850730",
     "name": "White Hot Dog Bread Roll Sliced",
     "packSize": "16x2x75g",
     "categorySlug": "bakery-breakfast",
@@ -1004,7 +1004,7 @@
   },
   {
     "id": "rw-bk-817500",
-    "sku": "817500",
+    "sku": "RW-817500",
     "name": "White Mini Petit Pain Baked Bread",
     "packSize": "90x45g",
     "categorySlug": "bakery-breakfast",
@@ -1016,7 +1016,7 @@
   },
   {
     "id": "rw-bk-818960",
-    "sku": "818960",
+    "sku": "RW-818960",
     "name": "White Sliced Bread Roll",
     "packSize": "48x90g",
     "categorySlug": "bakery-breakfast",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-bk-849340",
-    "sku": "849340",
+    "sku": "RW-849340",
     "name": "Baked Crumpet",
     "packSize": "9x8x44g",
     "categorySlug": "bakery-breakfast",
@@ -1040,7 +1040,7 @@
   },
   {
     "id": "rw-bk-821000",
-    "sku": "821000",
+    "sku": "RW-821000",
     "name": "Baked Earth Large Folded Naan Bread",
     "packSize": "24x80g",
     "categorySlug": "bakery-breakfast",
@@ -1052,7 +1052,7 @@
   },
   {
     "id": "rw-bk-712300",
-    "sku": "712300",
+    "sku": "RW-712300",
     "name": "Boulot with Sourdough White",
     "packSize": "1x11",
     "categorySlug": "bakery-breakfast",
@@ -1064,7 +1064,7 @@
   },
   {
     "id": "rw-bk-712670",
-    "sku": "712670",
+    "sku": "RW-712670",
     "name": "Bread With Sourdough & Infused Seeds",
     "packSize": "400g",
     "categorySlug": "bakery-breakfast",
@@ -1076,7 +1076,7 @@
   },
   {
     "id": "rw-bk-817110",
-    "sku": "817110",
+    "sku": "RW-817110",
     "name": "Ciabattina Rustica Part Baked Bread",
     "packSize": "90x100g",
     "categorySlug": "bakery-breakfast",
@@ -1088,7 +1088,7 @@
   },
   {
     "id": "rw-bk-775310",
-    "sku": "775310",
+    "sku": "RW-775310",
     "name": "Country Range Garlic & Parsley Slice",
     "packSize": "32g",
     "categorySlug": "bakery-breakfast",
@@ -1100,7 +1100,7 @@
   },
   {
     "id": "rw-bk-105691",
-    "sku": "105691",
+    "sku": "RW-105691",
     "name": "Country Range Pizza Base Mix",
     "packSize": "3.5 kg",
     "categorySlug": "bakery-breakfast",
@@ -1112,7 +1112,7 @@
   },
   {
     "id": "rw-bk-105690",
-    "sku": "105690",
+    "sku": "RW-105690",
     "name": "Country Range Pizza Base Mix",
     "packSize": "4x3.5 kg",
     "categorySlug": "bakery-breakfast",
@@ -1124,7 +1124,7 @@
   },
   {
     "id": "rw-bk-820460",
-    "sku": "820460",
+    "sku": "RW-820460",
     "name": "Country Range Stone Baked Ciabatta Bread",
     "packSize": "65x120g",
     "categorySlug": "bakery-breakfast",
@@ -1136,7 +1136,7 @@
   },
   {
     "id": "rw-bk-816340",
-    "sku": "816340",
+    "sku": "RW-816340",
     "name": "Focaccia Romana",
     "packSize": "24x250g",
     "categorySlug": "bakery-breakfast",
@@ -1148,7 +1148,7 @@
   },
   {
     "id": "rw-bk-765330",
-    "sku": "765330",
+    "sku": "RW-765330",
     "name": "Garlic & Parsley Coated Dough Bites",
     "packSize": "1.5kg",
     "categorySlug": "bakery-breakfast",
@@ -1160,7 +1160,7 @@
   },
   {
     "id": "rw-bk-818580",
-    "sku": "818580",
+    "sku": "RW-818580",
     "name": "Garlic Bread Slices",
     "packSize": "90x35g",
     "categorySlug": "bakery-breakfast",
@@ -1172,7 +1172,7 @@
   },
   {
     "id": "rw-bk-850550",
-    "sku": "850550",
+    "sku": "RW-850550",
     "name": "Genius Gluten Free Seeded Bread Roll",
     "packSize": "25x68g",
     "categorySlug": "bakery-breakfast",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-bk-745030",
-    "sku": "745030",
+    "sku": "RW-745030",
     "name": "Genoa Focaccia",
     "packSize": "8x1.1kg",
     "categorySlug": "bakery-breakfast",
@@ -1196,7 +1196,7 @@
   },
   {
     "id": "rw-bk-848420",
-    "sku": "848420",
+    "sku": "RW-848420",
     "name": "Hobbs House Bakery English Muffin (4 inch)",
     "packSize": "45",
     "categorySlug": "bakery-breakfast",
@@ -1208,7 +1208,7 @@
   },
   {
     "id": "rw-bk-848780",
-    "sku": "848780",
+    "sku": "RW-848780",
     "name": "Hobbs House Bakery Mixed Dinner Bread Rolls",
     "packSize": "64x40g",
     "categorySlug": "bakery-breakfast",
@@ -1220,7 +1220,7 @@
   },
   {
     "id": "rw-bk-740610",
-    "sku": "740610",
+    "sku": "RW-740610",
     "name": "Hobbs House Bakery Rosemary and Sea Salt Focaccia",
     "packSize": "8",
     "categorySlug": "bakery-breakfast",
@@ -1233,7 +1233,7 @@
   },
   {
     "id": "rw-bk-818110",
-    "sku": "818110",
+    "sku": "RW-818110",
     "name": "Large Garlic & Coriander Naan Bread",
     "packSize": "24x130g",
     "categorySlug": "bakery-breakfast",
@@ -1245,7 +1245,7 @@
   },
   {
     "id": "rw-bk-817550",
-    "sku": "817550",
+    "sku": "RW-817550",
     "name": "New York Bakery Multigrain Bread Bagel Sliced",
     "packSize": "48x115g",
     "categorySlug": "bakery-breakfast",
@@ -1257,7 +1257,7 @@
   },
   {
     "id": "rw-bk-817540",
-    "sku": "817540",
+    "sku": "RW-817540",
     "name": "New York Bakery Plain Bread Bagel Sliced",
     "packSize": "48x115g",
     "categorySlug": "bakery-breakfast",
@@ -1269,7 +1269,7 @@
   },
   {
     "id": "rw-bk-817760",
-    "sku": "817760",
+    "sku": "RW-817760",
     "name": "Paninette Original Flatbread (12 inch)",
     "packSize": "60",
     "categorySlug": "bakery-breakfast",
@@ -1281,7 +1281,7 @@
   },
   {
     "id": "rw-bk-817730",
-    "sku": "817730",
+    "sku": "RW-817730",
     "name": "Paninette Original Flatbread (8 inch)",
     "packSize": "5x20x60g",
     "categorySlug": "bakery-breakfast",
@@ -1293,7 +1293,7 @@
   },
   {
     "id": "rw-bk-876540",
-    "sku": "876540",
+    "sku": "RW-876540",
     "name": "Pizza Doughball 12oz",
     "packSize": "60x340g",
     "categorySlug": "bakery-breakfast",
@@ -1305,7 +1305,7 @@
   },
   {
     "id": "rw-bk-818340",
-    "sku": "818340",
+    "sku": "RW-818340",
     "name": "Plain Panini Part Baked Bread",
     "packSize": "60x100g",
     "categorySlug": "bakery-breakfast",
@@ -1317,7 +1317,7 @@
   },
   {
     "id": "rw-bk-820140",
-    "sku": "820140",
+    "sku": "RW-820140",
     "name": "Planete Pain Fully Baked Focaccina Bread",
     "packSize": "40x120g",
     "categorySlug": "bakery-breakfast",
@@ -1329,7 +1329,7 @@
   },
   {
     "id": "rw-bk-818940",
-    "sku": "818940",
+    "sku": "RW-818940",
     "name": "Planete Pain Hinged Bar Marked Bread Panini",
     "packSize": "60x110g",
     "categorySlug": "bakery-breakfast",
@@ -1341,7 +1341,7 @@
   },
   {
     "id": "rw-bk-820160",
-    "sku": "820160",
+    "sku": "RW-820160",
     "name": "Planete Pain Part Baked Sourdough Rolls",
     "packSize": "50x110g",
     "categorySlug": "bakery-breakfast",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-bk-710560",
-    "sku": "710560",
+    "sku": "RW-710560",
     "name": "Ready Baked Pretzel with Salt Bag",
     "packSize": "24x150g",
     "categorySlug": "bakery-breakfast",
@@ -1365,7 +1365,7 @@
   },
   {
     "id": "rw-bk-818520",
-    "sku": "818520",
+    "sku": "RW-818520",
     "name": "Red Tractor Baked Ciapanini Bread Roll",
     "packSize": "40x100g",
     "categorySlug": "bakery-breakfast",
@@ -1377,7 +1377,7 @@
   },
   {
     "id": "rw-bk-818540",
-    "sku": "818540",
+    "sku": "RW-818540",
     "name": "Red Tractor Baked Pan Rustic Bread Roll",
     "packSize": "40x100g",
     "categorySlug": "bakery-breakfast",
@@ -1389,7 +1389,7 @@
   },
   {
     "id": "rw-bk-818610",
-    "sku": "818610",
+    "sku": "RW-818610",
     "name": "Red Tractor Mini Multigrain Tin Baked Bread Loaf",
     "packSize": "48x55g",
     "categorySlug": "bakery-breakfast",
@@ -1401,7 +1401,7 @@
   },
   {
     "id": "rw-bk-818530",
-    "sku": "818530",
+    "sku": "RW-818530",
     "name": "Red Tractor Round Ciabatta Bread Roll Baked",
     "packSize": "40x100g",
     "categorySlug": "bakery-breakfast",
@@ -1413,7 +1413,7 @@
   },
   {
     "id": "rw-bk-790440",
-    "sku": "790440",
+    "sku": "RW-790440",
     "name": "Salted Butter Filled Pretzel",
     "packSize": "48x79g",
     "categorySlug": "bakery-breakfast",
@@ -1425,7 +1425,7 @@
   },
   {
     "id": "rw-bk-809030",
-    "sku": "809030",
+    "sku": "RW-809030",
     "name": "Sandwich Focaccia Pre-Sliced",
     "packSize": "90g",
     "categorySlug": "bakery-breakfast",
@@ -1437,7 +1437,7 @@
   },
   {
     "id": "rw-bk-817990",
-    "sku": "817990",
+    "sku": "RW-817990",
     "name": "Sandwich Rustique Ciabatta Bread Part Baked",
     "packSize": "40x120g",
     "categorySlug": "bakery-breakfast",
@@ -1449,7 +1449,7 @@
   },
   {
     "id": "rw-bk-801420",
-    "sku": "801420",
+    "sku": "RW-801420",
     "name": "Schiacciata Romana White Pre-Sliced",
     "packSize": "100g",
     "categorySlug": "bakery-breakfast",
@@ -1461,7 +1461,7 @@
   },
   {
     "id": "rw-bk-818090",
-    "sku": "818090",
+    "sku": "RW-818090",
     "name": "Schulstad Large White Grill Marked Panini Bread (part baked)",
     "packSize": "30x135g",
     "categorySlug": "bakery-breakfast",
@@ -1474,7 +1474,7 @@
   },
   {
     "id": "rw-bk-817190",
-    "sku": "817190",
+    "sku": "RW-817190",
     "name": "Schulstad Mini White Petit Pain Part Baked Bread (3.5 inch)",
     "packSize": "100",
     "categorySlug": "bakery-breakfast",
@@ -1486,7 +1486,7 @@
   },
   {
     "id": "rw-bk-817210",
-    "sku": "817210",
+    "sku": "RW-817210",
     "name": "Schulstad White Grill Marked Small Panini Part Baked Bread",
     "packSize": "40",
     "categorySlug": "bakery-breakfast",
@@ -1498,7 +1498,7 @@
   },
   {
     "id": "rw-bk-821320",
-    "sku": "821320",
+    "sku": "RW-821320",
     "name": "Scrocchiarella Frozen Classica",
     "packSize": "1x10x55cmx25cm",
     "categorySlug": "bakery-breakfast",
@@ -1510,7 +1510,7 @@
   },
   {
     "id": "rw-bk-870330",
-    "sku": "870330",
+    "sku": "RW-870330",
     "name": "Scrocchiarella Frozen Classica (28cm x 18cm)",
     "packSize": "24x250g",
     "categorySlug": "bakery-breakfast",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-bk-870300",
-    "sku": "870300",
+    "sku": "RW-870300",
     "name": "Scrocchiarella Frozen Sandwich (28cm x 12cm)",
     "packSize": "16x180g",
     "categorySlug": "bakery-breakfast",
@@ -1534,7 +1534,7 @@
   },
   {
     "id": "rw-bk-841000",
-    "sku": "841000",
+    "sku": "RW-841000",
     "name": "Swabian Style Pretzel",
     "packSize": "40x83g",
     "categorySlug": "bakery-breakfast",
@@ -1546,7 +1546,7 @@
   },
   {
     "id": "rw-bk-817020",
-    "sku": "817020",
+    "sku": "RW-817020",
     "name": "Vegan Large Plain Naan Bread",
     "packSize": "24x130g",
     "categorySlug": "bakery-breakfast",
@@ -1558,7 +1558,7 @@
   },
   {
     "id": "rw-bk-817010",
-    "sku": "817010",
+    "sku": "RW-817010",
     "name": "Vegan Mini Tear Drop Naan Bread",
     "packSize": "24x75g",
     "categorySlug": "bakery-breakfast",
@@ -1570,7 +1570,7 @@
   },
   {
     "id": "rw-bk-814130",
-    "sku": "814130",
+    "sku": "RW-814130",
     "name": "White Oval Pitta Bread",
     "packSize": "72x60g",
     "categorySlug": "bakery-breakfast",
@@ -1582,7 +1582,7 @@
   },
   {
     "id": "rw-bk-814140",
-    "sku": "814140",
+    "sku": "RW-814140",
     "name": "Wholemeal Oval Pitta Bread (Fully Baked)",
     "packSize": "72x60g",
     "categorySlug": "bakery-breakfast",
@@ -1594,7 +1594,7 @@
   },
   {
     "id": "rw-bk-185320",
-    "sku": "185320",
+    "sku": "RW-185320",
     "name": "10 Inch Tortilla Wrap",
     "packSize": "6x750g",
     "categorySlug": "bakery-breakfast",
@@ -1606,7 +1606,7 @@
   },
   {
     "id": "rw-bk-185330",
-    "sku": "185330",
+    "sku": "RW-185330",
     "name": "12 Inch Tortilla Wrap",
     "packSize": "10x900g",
     "categorySlug": "bakery-breakfast",
@@ -1618,7 +1618,7 @@
   },
   {
     "id": "rw-bk-787130",
-    "sku": "787130",
+    "sku": "RW-787130",
     "name": "Country Range 10 inch Tortilla Wraps",
     "packSize": "5x10",
     "categorySlug": "bakery-breakfast",
@@ -1630,7 +1630,7 @@
   },
   {
     "id": "rw-bk-787140",
-    "sku": "787140",
+    "sku": "RW-787140",
     "name": "Country Range 12 inch Tortilla Wraps",
     "packSize": "10x10",
     "categorySlug": "bakery-breakfast",
@@ -1642,7 +1642,7 @@
   },
   {
     "id": "rw-bk-798730",
-    "sku": "798730",
+    "sku": "RW-798730",
     "name": "Katerbake Gluten Free Wrap 10.5in",
     "packSize": "72x55g",
     "categorySlug": "bakery-breakfast",
@@ -1654,7 +1654,7 @@
   },
   {
     "id": "rw-bk-821040",
-    "sku": "821040",
+    "sku": "RW-821040",
     "name": "Mission 6in Plain Wheat Flour Tortilla Wraps",
     "packSize": "18x16",
     "categorySlug": "bakery-breakfast",
@@ -1666,7 +1666,7 @@
   },
   {
     "id": "rw-bk-869220",
-    "sku": "869220",
+    "sku": "RW-869220",
     "name": "Mission Foods Beetroot & Chia Tortilla (30cm)",
     "packSize": "4x18",
     "categorySlug": "bakery-breakfast",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-bk-869210",
-    "sku": "869210",
+    "sku": "RW-869210",
     "name": "Mission Foods Spinach Wheat Flour Tortilla (30cm)",
     "packSize": "4x18",
     "categorySlug": "bakery-breakfast",
@@ -1690,7 +1690,7 @@
   },
   {
     "id": "rw-bk-849150",
-    "sku": "849150",
+    "sku": "RW-849150",
     "name": "Oval Sourdough Wrap",
     "packSize": "24x120g",
     "categorySlug": "bakery-breakfast",
@@ -1702,7 +1702,7 @@
   },
   {
     "id": "rw-bk-185640",
-    "sku": "185640",
+    "sku": "RW-185640",
     "name": "Santa Maria Taco Shells",
     "packSize": "6x12",
     "categorySlug": "bakery-breakfast",
@@ -1715,7 +1715,7 @@
   },
   {
     "id": "rw-bk-845151",
-    "sku": "845151",
+    "sku": "RW-845151",
     "name": "Almondy Daim Cake (pre-cut)",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -1727,7 +1727,7 @@
   },
   {
     "id": "rw-bk-845150",
-    "sku": "845150",
+    "sku": "RW-845150",
     "name": "Almondy Daim Cake (pre-cut)",
     "packSize": "6x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -1739,7 +1739,7 @@
   },
   {
     "id": "rw-bk-781480",
-    "sku": "781480",
+    "sku": "RW-781480",
     "name": "Apricot, Honey and Pistachio Cake",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -1751,7 +1751,7 @@
   },
   {
     "id": "rw-bk-862500",
-    "sku": "862500",
+    "sku": "RW-862500",
     "name": "Baker & Baker 95% Baked Blueberry Muffin",
     "packSize": "24x125g",
     "categorySlug": "bakery-breakfast",
@@ -1763,7 +1763,7 @@
   },
   {
     "id": "rw-bk-862540",
-    "sku": "862540",
+    "sku": "RW-862540",
     "name": "Baker & Baker 95% Baked Double Chocolate Muffin",
     "packSize": "24x125g",
     "categorySlug": "bakery-breakfast",
@@ -1775,7 +1775,7 @@
   },
   {
     "id": "rw-bk-862510",
-    "sku": "862510",
+    "sku": "RW-862510",
     "name": "Baker & Baker 95% Baked Lemon and Poppy Seed Muffin",
     "packSize": "24x125g",
     "categorySlug": "bakery-breakfast",
@@ -1787,7 +1787,7 @@
   },
   {
     "id": "rw-bk-862520",
-    "sku": "862520",
+    "sku": "RW-862520",
     "name": "Baker & Baker 95% Baked Raspberry and White Chocolate Muffin",
     "packSize": "24x125g",
     "categorySlug": "bakery-breakfast",
@@ -1799,7 +1799,7 @@
   },
   {
     "id": "rw-bk-862530",
-    "sku": "862530",
+    "sku": "RW-862530",
     "name": "Baker & Baker 95% Baked Toffee & Banana Muffin",
     "packSize": "24x125g",
     "categorySlug": "bakery-breakfast",
@@ -1811,7 +1811,7 @@
   },
   {
     "id": "rw-bk-849670",
-    "sku": "849670",
+    "sku": "RW-849670",
     "name": "Baker & Baker Fruity Blueberry Muffin",
     "packSize": "36x110g",
     "categorySlug": "bakery-breakfast",
@@ -1823,7 +1823,7 @@
   },
   {
     "id": "rw-bk-849550",
-    "sku": "849550",
+    "sku": "RW-849550",
     "name": "Baker & Baker Premium Topped & Filled Red Velvet Muffin",
     "packSize": "36x110g",
     "categorySlug": "bakery-breakfast",
@@ -1835,7 +1835,7 @@
   },
   {
     "id": "rw-bk-861360",
-    "sku": "861360",
+    "sku": "RW-861360",
     "name": "Bakewell Tarts",
     "packSize": "24x110g",
     "categorySlug": "bakery-breakfast",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-bk-854640",
-    "sku": "854640",
+    "sku": "RW-854640",
     "name": "Broderick's Ina's Kitchen Blueberry Tulip Muffin",
     "packSize": "16x110g",
     "categorySlug": "bakery-breakfast",
@@ -1859,7 +1859,7 @@
   },
   {
     "id": "rw-bk-855790",
-    "sku": "855790",
+    "sku": "RW-855790",
     "name": "Broderick's Ina's Kitchen Double Chocolate Muffin",
     "packSize": "16x120g",
     "categorySlug": "bakery-breakfast",
@@ -1871,7 +1871,7 @@
   },
   {
     "id": "rw-bk-854650",
-    "sku": "854650",
+    "sku": "RW-854650",
     "name": "Broderick's Ina's Kitchen Lemon & White Chocolate Muffin",
     "packSize": "16x110g",
     "categorySlug": "bakery-breakfast",
@@ -1883,7 +1883,7 @@
   },
   {
     "id": "rw-bk-854620",
-    "sku": "854620",
+    "sku": "RW-854620",
     "name": "Broderick's Ina's Kitchen Sticky Toffee Muffin",
     "packSize": "16x110g",
     "categorySlug": "bakery-breakfast",
@@ -1895,7 +1895,7 @@
   },
   {
     "id": "rw-bk-766831",
-    "sku": "766831",
+    "sku": "RW-766831",
     "name": "Burnt Basque Cheesecake",
     "packSize": "1x16ptn",
     "categorySlug": "bakery-breakfast",
@@ -1907,7 +1907,7 @@
   },
   {
     "id": "rw-bk-766830",
-    "sku": "766830",
+    "sku": "RW-766830",
     "name": "Burnt Basque Cheesecake",
     "packSize": "8x16ptn",
     "categorySlug": "bakery-breakfast",
@@ -1919,7 +1919,7 @@
   },
   {
     "id": "rw-bk-844640",
-    "sku": "844640",
+    "sku": "RW-844640",
     "name": "Caramel Cake with Biscoff",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -1931,7 +1931,7 @@
   },
   {
     "id": "rw-bk-844400",
-    "sku": "844400",
+    "sku": "RW-844400",
     "name": "Carrot Cake Pre-Cut",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -1943,7 +1943,7 @@
   },
   {
     "id": "rw-bk-845201",
-    "sku": "845201",
+    "sku": "RW-845201",
     "name": "Chocolate Fudge Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -1956,7 +1956,7 @@
   },
   {
     "id": "rw-bk-845200",
-    "sku": "845200",
+    "sku": "RW-845200",
     "name": "Chocolate Fudge Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -1968,7 +1968,7 @@
   },
   {
     "id": "rw-bk-731610",
-    "sku": "731610",
+    "sku": "RW-731610",
     "name": "Classic Carrot Cake",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -1980,7 +1980,7 @@
   },
   {
     "id": "rw-bk-731611",
-    "sku": "731611",
+    "sku": "RW-731611",
     "name": "Classic Carrot Cake",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -1992,7 +1992,7 @@
   },
   {
     "id": "rw-bk-844630",
-    "sku": "844630",
+    "sku": "RW-844630",
     "name": "Coffee & Walnut Cake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2004,7 +2004,7 @@
   },
   {
     "id": "rw-bk-843770",
-    "sku": "843770",
+    "sku": "RW-843770",
     "name": "Cotswold Bakery Gluten Free & Vegan Fruit Flapjack",
     "packSize": "56x60g",
     "categorySlug": "bakery-breakfast",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-bk-843760",
-    "sku": "843760",
+    "sku": "RW-843760",
     "name": "Cotswold Bakery Gluten Free & Vegan Ginger Cake",
     "packSize": "28x55g",
     "categorySlug": "bakery-breakfast",
@@ -2028,7 +2028,7 @@
   },
   {
     "id": "rw-bk-843740",
-    "sku": "843740",
+    "sku": "RW-843740",
     "name": "Cotswold Bakery Gluten Free Chocolate Brownie Bar",
     "packSize": "56x55g",
     "categorySlug": "bakery-breakfast",
@@ -2040,7 +2040,7 @@
   },
   {
     "id": "rw-bk-845770",
-    "sku": "845770",
+    "sku": "RW-845770",
     "name": "Country Range Alabama Chocolate Fudge Cake Pre-Cut",
     "packSize": "16ptn",
     "categorySlug": "bakery-breakfast",
@@ -2052,7 +2052,7 @@
   },
   {
     "id": "rw-bk-846650",
-    "sku": "846650",
+    "sku": "RW-846650",
     "name": "Country Range Gluten Free Handmade Carrot Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2064,7 +2064,7 @@
   },
   {
     "id": "rw-bk-846750",
-    "sku": "846750",
+    "sku": "RW-846750",
     "name": "Country Range Handmade Victoria Sandwich Sponge Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2076,7 +2076,7 @@
   },
   {
     "id": "rw-bk-830700",
-    "sku": "830700",
+    "sku": "RW-830700",
     "name": "Country Range Lemon Drizzle Cake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2088,7 +2088,7 @@
   },
   {
     "id": "rw-bk-846250",
-    "sku": "846250",
+    "sku": "RW-846250",
     "name": "Country Range Premium Jaffa Mountain Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2100,7 +2100,7 @@
   },
   {
     "id": "rw-bk-842280",
-    "sku": "842280",
+    "sku": "RW-842280",
     "name": "Country Range Premium Mint Chocolate Shard Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2112,7 +2112,7 @@
   },
   {
     "id": "rw-bk-781530",
-    "sku": "781530",
+    "sku": "RW-781530",
     "name": "Country Range Toffee Apple Crumble Tart",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -2124,7 +2124,7 @@
   },
   {
     "id": "rw-bk-833300",
-    "sku": "833300",
+    "sku": "RW-833300",
     "name": "Country Range Tropical Cheesecake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2136,7 +2136,7 @@
   },
   {
     "id": "rw-bk-843550",
-    "sku": "843550",
+    "sku": "RW-843550",
     "name": "Country Range Vegan Black Forest Fudge Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2148,7 +2148,7 @@
   },
   {
     "id": "rw-bk-810150",
-    "sku": "810150",
+    "sku": "RW-810150",
     "name": "Courgette & Avocado Gluten & Dairy Free Cake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -2160,7 +2160,7 @@
   },
   {
     "id": "rw-bk-881930",
-    "sku": "881930",
+    "sku": "RW-881930",
     "name": "Delifrance Individually Wrapped All Butter Croissant",
     "packSize": "32x42g",
     "categorySlug": "bakery-breakfast",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-bk-844410",
-    "sku": "844410",
+    "sku": "RW-844410",
     "name": "Extra Chocolate Fudge Cake Pre-Cut",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2184,7 +2184,7 @@
   },
   {
     "id": "rw-bk-301250",
-    "sku": "301250",
+    "sku": "RW-301250",
     "name": "Four Anjels Lemon Gluten Free Mini Bites",
     "packSize": "18x60g",
     "categorySlug": "bakery-breakfast",
@@ -2197,7 +2197,7 @@
   },
   {
     "id": "rw-bk-726080",
-    "sku": "726080",
+    "sku": "RW-726080",
     "name": "Frank Dale Mini Cake Selection",
     "packSize": "48x18g",
     "categorySlug": "bakery-breakfast",
@@ -2209,7 +2209,7 @@
   },
   {
     "id": "rw-bk-844670",
-    "sku": "844670",
+    "sku": "RW-844670",
     "name": "Freckle Cake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2221,7 +2221,7 @@
   },
   {
     "id": "rw-bk-849590",
-    "sku": "849590",
+    "sku": "RW-849590",
     "name": "Fruit Cake Slice",
     "packSize": "54x75g",
     "categorySlug": "bakery-breakfast",
@@ -2233,7 +2233,7 @@
   },
   {
     "id": "rw-bk-800560",
-    "sku": "800560",
+    "sku": "RW-800560",
     "name": "Fruity Passionfruit & Lime Cake",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2245,7 +2245,7 @@
   },
   {
     "id": "rw-bk-848070",
-    "sku": "848070",
+    "sku": "RW-848070",
     "name": "Gluten Free Balboa Rocky Road Bar",
     "packSize": "27x75g",
     "categorySlug": "bakery-breakfast",
@@ -2257,7 +2257,7 @@
   },
   {
     "id": "rw-bk-848080",
-    "sku": "848080",
+    "sku": "RW-848080",
     "name": "Gluten Free Brown Owl Brownie Bar",
     "packSize": "27x70g",
     "categorySlug": "bakery-breakfast",
@@ -2269,7 +2269,7 @@
   },
   {
     "id": "rw-bk-810170",
-    "sku": "810170",
+    "sku": "RW-810170",
     "name": "Gluten Free Dairy Free Alabama Fudge Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2281,7 +2281,7 @@
   },
   {
     "id": "rw-bk-848050",
-    "sku": "848050",
+    "sku": "RW-848050",
     "name": "Gluten Free Fruity Fabjack Bar",
     "packSize": "27x75g",
     "categorySlug": "bakery-breakfast",
@@ -2293,7 +2293,7 @@
   },
   {
     "id": "rw-bk-848060",
-    "sku": "848060",
+    "sku": "RW-848060",
     "name": "Gluten Free Trillionaire Bar",
     "packSize": "27x70g",
     "categorySlug": "bakery-breakfast",
@@ -2305,7 +2305,7 @@
   },
   {
     "id": "rw-bk-853650",
-    "sku": "853650",
+    "sku": "RW-853650",
     "name": "Handmade 10In Red Velvet Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2317,7 +2317,7 @@
   },
   {
     "id": "rw-bk-843600",
-    "sku": "843600",
+    "sku": "RW-843600",
     "name": "Handmade Banana & Walnut Loaf Cake Cut",
     "packSize": "2x11ptn",
     "categorySlug": "bakery-breakfast",
@@ -2329,7 +2329,7 @@
   },
   {
     "id": "rw-bk-853600",
-    "sku": "853600",
+    "sku": "RW-853600",
     "name": "Handmade Belgian Chocolate Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-bk-875220",
-    "sku": "875220",
+    "sku": "RW-875220",
     "name": "Handmade Cake Co. Gluten Free Victoria Sponge 14 slices",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -2353,7 +2353,7 @@
   },
   {
     "id": "rw-bk-843230",
-    "sku": "843230",
+    "sku": "RW-843230",
     "name": "Handmade Carrot Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2365,7 +2365,7 @@
   },
   {
     "id": "rw-bk-842980",
-    "sku": "842980",
+    "sku": "RW-842980",
     "name": "Handmade Coffee & Walnut Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2377,7 +2377,7 @@
   },
   {
     "id": "rw-bk-853620",
-    "sku": "853620",
+    "sku": "RW-853620",
     "name": "Handmade Fruit Loaf Cake Pre-Cut",
     "packSize": "2x11ptn",
     "categorySlug": "bakery-breakfast",
@@ -2389,7 +2389,7 @@
   },
   {
     "id": "rw-bk-852600",
-    "sku": "852600",
+    "sku": "RW-852600",
     "name": "Handmade Gluten Free Cappuccino Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2401,7 +2401,7 @@
   },
   {
     "id": "rw-bk-852610",
-    "sku": "852610",
+    "sku": "RW-852610",
     "name": "Handmade Gluten Free Carrot Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2413,7 +2413,7 @@
   },
   {
     "id": "rw-bk-853270",
-    "sku": "853270",
+    "sku": "RW-853270",
     "name": "Handmade Gluten Free Chocolate Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2425,7 +2425,7 @@
   },
   {
     "id": "rw-bk-843700",
-    "sku": "843700",
+    "sku": "RW-843700",
     "name": "Handmade Gluten Free Lemon Drizzle Loaf Pre-Cut",
     "packSize": "2x10ptn",
     "categorySlug": "bakery-breakfast",
@@ -2438,7 +2438,7 @@
   },
   {
     "id": "rw-bk-842970",
-    "sku": "842970",
+    "sku": "RW-842970",
     "name": "Handmade Large Chocolate Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2450,7 +2450,7 @@
   },
   {
     "id": "rw-bk-847860",
-    "sku": "847860",
+    "sku": "RW-847860",
     "name": "Handmade Orange & Poppyseed Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2462,7 +2462,7 @@
   },
   {
     "id": "rw-bk-265700",
-    "sku": "265700",
+    "sku": "RW-265700",
     "name": "Higates Assorted Box Flapjacks",
     "packSize": "30x120g",
     "categorySlug": "bakery-breakfast",
@@ -2474,7 +2474,7 @@
   },
   {
     "id": "rw-bk-828220",
-    "sku": "828220",
+    "sku": "RW-828220",
     "name": "Individual Baked Brownie Cheesecake",
     "packSize": "12x205g",
     "categorySlug": "bakery-breakfast",
@@ -2486,7 +2486,7 @@
   },
   {
     "id": "rw-bk-857480",
-    "sku": "857480",
+    "sku": "RW-857480",
     "name": "Individually Wrapped Shortbread Santa Face Biscuit",
     "packSize": "48x57g",
     "categorySlug": "bakery-breakfast",
@@ -2498,7 +2498,7 @@
   },
   {
     "id": "rw-bk-848890",
-    "sku": "848890",
+    "sku": "RW-848890",
     "name": "Kara Blueberry Muffins",
     "packSize": "24x100g",
     "categorySlug": "bakery-breakfast",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-bk-844620",
-    "sku": "844620",
+    "sku": "RW-844620",
     "name": "Lemon & Blueberry Cake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2522,7 +2522,7 @@
   },
   {
     "id": "rw-bk-821270",
-    "sku": "821270",
+    "sku": "RW-821270",
     "name": "Lemon & White Chocolate Muffin",
     "packSize": "24x118g",
     "categorySlug": "bakery-breakfast",
@@ -2534,7 +2534,7 @@
   },
   {
     "id": "rw-bk-844420",
-    "sku": "844420",
+    "sku": "RW-844420",
     "name": "Lemon Drizzle Cake Pre-Cut",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2546,7 +2546,7 @@
   },
   {
     "id": "rw-bk-861110",
-    "sku": "861110",
+    "sku": "RW-861110",
     "name": "Lotus Biscoff® Muffin",
     "packSize": "24x110g",
     "categorySlug": "bakery-breakfast",
@@ -2558,7 +2558,7 @@
   },
   {
     "id": "rw-bk-844430",
-    "sku": "844430",
+    "sku": "RW-844430",
     "name": "Millionaire's Cake Pre-Cut",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2570,7 +2570,7 @@
   },
   {
     "id": "rw-bk-848560",
-    "sku": "848560",
+    "sku": "RW-848560",
     "name": "Mini Blueberry Muffin",
     "packSize": "72x30g",
     "categorySlug": "bakery-breakfast",
@@ -2582,7 +2582,7 @@
   },
   {
     "id": "rw-bk-848550",
-    "sku": "848550",
+    "sku": "RW-848550",
     "name": "Mini Chocolate Chip Muffin",
     "packSize": "72x30g",
     "categorySlug": "bakery-breakfast",
@@ -2594,7 +2594,7 @@
   },
   {
     "id": "rw-bk-712330",
-    "sku": "712330",
+    "sku": "RW-712330",
     "name": "Mini Iced Fruit Loaf",
     "packSize": "1x12",
     "categorySlug": "bakery-breakfast",
@@ -2606,7 +2606,7 @@
   },
   {
     "id": "rw-bk-291360",
-    "sku": "291360",
+    "sku": "RW-291360",
     "name": "Mrs Crimble's Gluten Free Giant Choc Macaroon",
     "packSize": "20x70g",
     "categorySlug": "bakery-breakfast",
@@ -2618,7 +2618,7 @@
   },
   {
     "id": "rw-bk-291390",
-    "sku": "291390",
+    "sku": "RW-291390",
     "name": "Mrs Crimble's Gluten Free Individual Bakewell Slice",
     "packSize": "24x70g",
     "categorySlug": "bakery-breakfast",
@@ -2630,7 +2630,7 @@
   },
   {
     "id": "rw-bk-291380",
-    "sku": "291380",
+    "sku": "RW-291380",
     "name": "Mrs Crimble's Gluten Free Individual Double Choc Brownie",
     "packSize": "24x58g",
     "categorySlug": "bakery-breakfast",
@@ -2642,7 +2642,7 @@
   },
   {
     "id": "rw-bk-291370",
-    "sku": "291370",
+    "sku": "RW-291370",
     "name": "Mrs Crimble's Gluten Free Individual Jam Coconut Rings",
     "packSize": "24x40g",
     "categorySlug": "bakery-breakfast",
@@ -2654,7 +2654,7 @@
   },
   {
     "id": "rw-bk-722060",
-    "sku": "722060",
+    "sku": "RW-722060",
     "name": "NEW Signature by Country Range Sicilian Lemon Tiramisu Dessert",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-bk-790070",
-    "sku": "790070",
+    "sku": "RW-790070",
     "name": "Nutella Traycake",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-bk-790071",
-    "sku": "790071",
+    "sku": "RW-790071",
     "name": "Nutella Traycake",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -2691,7 +2691,7 @@
   },
   {
     "id": "rw-bk-891240",
-    "sku": "891240",
+    "sku": "RW-891240",
     "name": "Orange, Lemon & Lime Drizzle Cake Uncut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -2703,7 +2703,7 @@
   },
   {
     "id": "rw-bk-790030",
-    "sku": "790030",
+    "sku": "RW-790030",
     "name": "Oreo® Muffin",
     "packSize": "24 x 110g",
     "categorySlug": "bakery-breakfast",
@@ -2715,7 +2715,7 @@
   },
   {
     "id": "rw-bk-857820",
-    "sku": "857820",
+    "sku": "RW-857820",
     "name": "Pullin's Bakery No.13 Shortbread Twin Pack",
     "packSize": "20x60g",
     "categorySlug": "bakery-breakfast",
@@ -2727,7 +2727,7 @@
   },
   {
     "id": "rw-bk-846440",
-    "sku": "846440",
+    "sku": "RW-846440",
     "name": "Pullin's Bakery St. Clements Cake Slice",
     "packSize": "54x60g",
     "categorySlug": "bakery-breakfast",
@@ -2739,7 +2739,7 @@
   },
   {
     "id": "rw-bk-830761",
-    "sku": "830761",
+    "sku": "RW-830761",
     "name": "Queen Vic Traycake",
     "packSize": "18 ptn",
     "categorySlug": "bakery-breakfast",
@@ -2751,7 +2751,7 @@
   },
   {
     "id": "rw-bk-830760",
-    "sku": "830760",
+    "sku": "RW-830760",
     "name": "Queen Vic Traycake",
     "packSize": "6x18 ptn",
     "categorySlug": "bakery-breakfast",
@@ -2763,7 +2763,7 @@
   },
   {
     "id": "rw-bk-790080",
-    "sku": "790080",
+    "sku": "RW-790080",
     "name": "Red Velvet Cake",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2775,7 +2775,7 @@
   },
   {
     "id": "rw-bk-762410",
-    "sku": "762410",
+    "sku": "RW-762410",
     "name": "Red Velvet Mini Cakes",
     "packSize": "1x18",
     "categorySlug": "bakery-breakfast",
@@ -2787,7 +2787,7 @@
   },
   {
     "id": "rw-bk-842070",
-    "sku": "842070",
+    "sku": "RW-842070",
     "name": "Signature by Country Range Salted Caramel & Chocolate Tart",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2799,7 +2799,7 @@
   },
   {
     "id": "rw-bk-846240",
-    "sku": "846240",
+    "sku": "RW-846240",
     "name": "Signature by Country Range Spiced Pear, Toffee & Cranberry Naked Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2811,7 +2811,7 @@
   },
   {
     "id": "rw-bk-891230",
-    "sku": "891230",
+    "sku": "RW-891230",
     "name": "Strawberry & Buttercream Victoria Sponge Uncut",
     "packSize": "16ptn",
     "categorySlug": "bakery-breakfast",
@@ -2823,7 +2823,7 @@
   },
   {
     "id": "rw-bk-852930",
-    "sku": "852930",
+    "sku": "RW-852930",
     "name": "The Handmade Cake Co. Earl Grey & Blackcurrant Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2835,7 +2835,7 @@
   },
   {
     "id": "rw-bk-850370",
-    "sku": "850370",
+    "sku": "RW-850370",
     "name": "The Handmade Cake Co. Gluten Free Ginger Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2847,7 +2847,7 @@
   },
   {
     "id": "rw-bk-843210",
-    "sku": "843210",
+    "sku": "RW-843210",
     "name": "The Handmade Cake Co. Gluten Free Mint Chocolate Chip Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2859,7 +2859,7 @@
   },
   {
     "id": "rw-bk-850340",
-    "sku": "850340",
+    "sku": "RW-850340",
     "name": "The Handmade Cake Co. Vegan Chocolate Fudge Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2871,7 +2871,7 @@
   },
   {
     "id": "rw-bk-852320",
-    "sku": "852320",
+    "sku": "RW-852320",
     "name": "The Handmade Cupcake Collection",
     "packSize": "16x60g",
     "categorySlug": "bakery-breakfast",
@@ -2883,7 +2883,7 @@
   },
   {
     "id": "rw-bk-849480",
-    "sku": "849480",
+    "sku": "RW-849480",
     "name": "Triple Chocolate Muffin",
     "packSize": "24x114g",
     "categorySlug": "bakery-breakfast",
@@ -2895,7 +2895,7 @@
   },
   {
     "id": "rw-bk-817750",
-    "sku": "817750",
+    "sku": "RW-817750",
     "name": "Vegan Devils Food Cake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2907,7 +2907,7 @@
   },
   {
     "id": "rw-bk-865130",
-    "sku": "865130",
+    "sku": "RW-865130",
     "name": "Vegan Gluten Free Chocolate Caramel Tart",
     "packSize": "12x85g",
     "categorySlug": "bakery-breakfast",
@@ -2920,7 +2920,7 @@
   },
   {
     "id": "rw-bk-865120",
-    "sku": "865120",
+    "sku": "RW-865120",
     "name": "Vegan Gluten Free Lemon Tart",
     "packSize": "12x75g",
     "categorySlug": "bakery-breakfast",
@@ -2932,7 +2932,7 @@
   },
   {
     "id": "rw-bk-844440",
-    "sku": "844440",
+    "sku": "RW-844440",
     "name": "Victoria Sponge Cake Pre-Cut",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -2944,7 +2944,7 @@
   },
   {
     "id": "rw-bk-858630",
-    "sku": "858630",
+    "sku": "RW-858630",
     "name": "We Love Cake Gluten Free Chocolate & Orange Tart",
     "packSize": "12",
     "categorySlug": "bakery-breakfast",
@@ -2956,7 +2956,7 @@
   },
   {
     "id": "rw-bk-256160",
-    "sku": "256160",
+    "sku": "RW-256160",
     "name": "Wicked Cakes Portion Control Chocolate Fudge Brownie",
     "packSize": "90x47g",
     "categorySlug": "bakery-breakfast",
@@ -2968,7 +2968,7 @@
   },
   {
     "id": "rw-bk-256170",
-    "sku": "256170",
+    "sku": "RW-256170",
     "name": "Wicked Cakes Portion Control Flapjack",
     "packSize": "90x52g",
     "categorySlug": "bakery-breakfast",
@@ -2980,7 +2980,7 @@
   },
   {
     "id": "rw-bk-256110",
-    "sku": "256110",
+    "sku": "RW-256110",
     "name": "Wicked Cakes Portion Control Lemon Drizzle Cake",
     "packSize": "90x45g",
     "categorySlug": "bakery-breakfast",
@@ -2992,7 +2992,7 @@
   },
   {
     "id": "rw-bk-849790",
-    "sku": "849790",
+    "sku": "RW-849790",
     "name": "Baker & Baker Chocolate Chip Cookie Dough",
     "packSize": "5kg",
     "categorySlug": "bakery-breakfast",
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "rw-bk-849780",
-    "sku": "849780",
+    "sku": "RW-849780",
     "name": "Baker & Baker Double Chocolate Cookie Dough",
     "packSize": "5kg",
     "categorySlug": "bakery-breakfast",
@@ -3016,7 +3016,7 @@
   },
   {
     "id": "rw-bk-849920",
-    "sku": "849920",
+    "sku": "RW-849920",
     "name": "Baker & Baker Triple Chocolate Baked Cookie",
     "packSize": "48x72g",
     "categorySlug": "bakery-breakfast",
@@ -3028,7 +3028,7 @@
   },
   {
     "id": "rw-bk-824560",
-    "sku": "824560",
+    "sku": "RW-824560",
     "name": "Billionaires Cookies",
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
@@ -3040,7 +3040,7 @@
   },
   {
     "id": "rw-bk-824540",
-    "sku": "824540",
+    "sku": "RW-824540",
     "name": "Chocolate Hazelnut Creme Cookie",
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
@@ -3052,7 +3052,7 @@
   },
   {
     "id": "rw-bk-818770",
-    "sku": "818770",
+    "sku": "RW-818770",
     "name": "Cookie Puck Belgian Triple Chocolate",
     "packSize": "100x80g",
     "categorySlug": "bakery-breakfast",
@@ -3064,7 +3064,7 @@
   },
   {
     "id": "rw-bk-761620",
-    "sku": "761620",
+    "sku": "RW-761620",
     "name": "Country Range Double Chocolate Cookie Pucks",
     "packSize": "90x50g",
     "categorySlug": "bakery-breakfast",
@@ -3076,7 +3076,7 @@
   },
   {
     "id": "rw-bk-721610",
-    "sku": "721610",
+    "sku": "RW-721610",
     "name": "Country Range Milk Chocolate Cookie Pucks",
     "packSize": "90x50g",
     "categorySlug": "bakery-breakfast",
@@ -3088,7 +3088,7 @@
   },
   {
     "id": "rw-bk-833270",
-    "sku": "833270",
+    "sku": "RW-833270",
     "name": "Country Range Oat, Lemon & Raisin Cookie Pucks",
     "packSize": "90x50g",
     "categorySlug": "bakery-breakfast",
@@ -3100,7 +3100,7 @@
   },
   {
     "id": "rw-bk-721600",
-    "sku": "721600",
+    "sku": "RW-721600",
     "name": "Country Range White Chocolate Cookie Pucks",
     "packSize": "90x50g",
     "categorySlug": "bakery-breakfast",
@@ -3112,7 +3112,7 @@
   },
   {
     "id": "rw-bk-818750",
-    "sku": "818750",
+    "sku": "RW-818750",
     "name": "Double Belgian Chocolate Chunk Cookie",
     "packSize": "48x76g",
     "categorySlug": "bakery-breakfast",
@@ -3124,7 +3124,7 @@
   },
   {
     "id": "rw-bk-848720",
-    "sku": "848720",
+    "sku": "RW-848720",
     "name": "Double Chocolate Cookie Puck (Ready To Bake)",
     "packSize": "120x55g",
     "categorySlug": "bakery-breakfast",
@@ -3136,7 +3136,7 @@
   },
   {
     "id": "rw-bk-824520",
-    "sku": "824520",
+    "sku": "RW-824520",
     "name": "Double Chocolate Cookies",
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
@@ -3148,7 +3148,7 @@
   },
   {
     "id": "rw-bk-128460",
-    "sku": "128460",
+    "sku": "RW-128460",
     "name": "Gluten Free Organic Lemon Zest Cookies",
     "packSize": "12x150g",
     "categorySlug": "bakery-breakfast",
@@ -3161,7 +3161,7 @@
   },
   {
     "id": "rw-bk-128461",
-    "sku": "128461",
+    "sku": "RW-128461",
     "name": "Gluten Free Organic Lemon Zest Cookies",
     "packSize": "1x150g",
     "categorySlug": "bakery-breakfast",
@@ -3173,7 +3173,7 @@
   },
   {
     "id": "rw-bk-128470",
-    "sku": "128470",
+    "sku": "RW-128470",
     "name": "Gluten Free Organic Stem Ginger Cookies",
     "packSize": "12x150g",
     "categorySlug": "bakery-breakfast",
@@ -3185,7 +3185,7 @@
   },
   {
     "id": "rw-bk-128471",
-    "sku": "128471",
+    "sku": "RW-128471",
     "name": "Gluten Free Organic Stem Ginger Cookies",
     "packSize": "1x150g",
     "categorySlug": "bakery-breakfast",
@@ -3197,7 +3197,7 @@
   },
   {
     "id": "rw-bk-301140",
-    "sku": "301140",
+    "sku": "RW-301140",
     "name": "Paterson's Giant Cookie Choco Fudge",
     "packSize": "18x60g",
     "categorySlug": "bakery-breakfast",
@@ -3209,7 +3209,7 @@
   },
   {
     "id": "rw-bk-301120",
-    "sku": "301120",
+    "sku": "RW-301120",
     "name": "Paterson's Giant Cookie Fruit & Oat",
     "packSize": "18x60g",
     "categorySlug": "bakery-breakfast",
@@ -3221,7 +3221,7 @@
   },
   {
     "id": "rw-bk-301130",
-    "sku": "301130",
+    "sku": "RW-301130",
     "name": "Paterson's Giant Cookie Triple Choc",
     "packSize": "18x60g",
     "categorySlug": "bakery-breakfast",
@@ -3233,7 +3233,7 @@
   },
   {
     "id": "rw-bk-711730",
-    "sku": "711730",
+    "sku": "RW-711730",
     "name": "Pink Owl Gingerbread",
     "packSize": "24x113g",
     "categorySlug": "bakery-breakfast",
@@ -3245,7 +3245,7 @@
   },
   {
     "id": "rw-bk-824530",
-    "sku": "824530",
+    "sku": "RW-824530",
     "name": "Pistachio Creme Cookies",
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
@@ -3257,7 +3257,7 @@
   },
   {
     "id": "rw-bk-818730",
-    "sku": "818730",
+    "sku": "RW-818730",
     "name": "Triple Belgian Chocolate Chunk Cookie",
     "packSize": "48x76g",
     "categorySlug": "bakery-breakfast",
@@ -3269,7 +3269,7 @@
   },
   {
     "id": "rw-bk-818740",
-    "sku": "818740",
+    "sku": "RW-818740",
     "name": "White Belgian Chocolate Chunk Cookie",
     "packSize": "48x76g",
     "categorySlug": "bakery-breakfast",
@@ -3281,7 +3281,7 @@
   },
   {
     "id": "rw-bk-848710",
-    "sku": "848710",
+    "sku": "RW-848710",
     "name": "White Chocolate Cookie Puck (Ready To Bake)",
     "packSize": "120x55g",
     "categorySlug": "bakery-breakfast",
@@ -3293,7 +3293,7 @@
   },
   {
     "id": "rw-bk-842080",
-    "sku": "842080",
+    "sku": "RW-842080",
     "name": "Chocolate Eclairs Large Baked",
     "packSize": "12x156g",
     "categorySlug": "bakery-breakfast",
@@ -3305,7 +3305,7 @@
   },
   {
     "id": "rw-bk-842130",
-    "sku": "842130",
+    "sku": "RW-842130",
     "name": "Country Range Cream Filled Chocolate Eclairs",
     "packSize": "9x5x32g",
     "categorySlug": "bakery-breakfast",
@@ -3317,7 +3317,7 @@
   },
   {
     "id": "rw-bk-781500",
-    "sku": "781500",
+    "sku": "RW-781500",
     "name": "Country Range Frozen Doughnut Selection",
     "packSize": "36x54g (3x12)",
     "categorySlug": "bakery-breakfast",
@@ -3329,7 +3329,7 @@
   },
   {
     "id": "rw-bk-842160",
-    "sku": "842160",
+    "sku": "RW-842160",
     "name": "Country Range Mini Cream Filled Chocolate Eclairs",
     "packSize": "9x12x11.7g",
     "categorySlug": "bakery-breakfast",
@@ -3341,7 +3341,7 @@
   },
   {
     "id": "rw-bk-848950",
-    "sku": "848950",
+    "sku": "RW-848950",
     "name": "Fletchers Mini Sugared Jam Doughnut Ball",
     "packSize": "8x10x50g",
     "categorySlug": "bakery-breakfast",
@@ -3353,7 +3353,7 @@
   },
   {
     "id": "rw-bk-820180",
-    "sku": "820180",
+    "sku": "RW-820180",
     "name": "Fully Baked Mini Crodot Assortment",
     "packSize": "57x40g",
     "categorySlug": "bakery-breakfast",
@@ -3365,7 +3365,7 @@
   },
   {
     "id": "rw-bk-850470",
-    "sku": "850470",
+    "sku": "RW-850470",
     "name": "Jam Ball Doughnuts",
     "packSize": "36",
     "categorySlug": "bakery-breakfast",
@@ -3377,7 +3377,7 @@
   },
   {
     "id": "rw-bk-869190",
-    "sku": "869190",
+    "sku": "RW-869190",
     "name": "Katerbake Chocolate Iced Doughnuts",
     "packSize": "3x11x60g",
     "categorySlug": "bakery-breakfast",
@@ -3389,7 +3389,7 @@
   },
   {
     "id": "rw-bk-741130",
-    "sku": "741130",
+    "sku": "RW-741130",
     "name": "Katerbake Chocolate Iced Mini Doughnuts",
     "packSize": "4x50x14.5g",
     "categorySlug": "bakery-breakfast",
@@ -3402,7 +3402,7 @@
   },
   {
     "id": "rw-bk-868920",
-    "sku": "868920",
+    "sku": "RW-868920",
     "name": "Katerbake Mini Sugared Doughnuts",
     "packSize": "4x50x13.5g",
     "categorySlug": "bakery-breakfast",
@@ -3414,7 +3414,7 @@
   },
   {
     "id": "rw-bk-790020",
-    "sku": "790020",
+    "sku": "RW-790020",
     "name": "Oreo® Doughnut (with Cups)",
     "packSize": "48x72g",
     "categorySlug": "bakery-breakfast",
@@ -3426,7 +3426,7 @@
   },
   {
     "id": "rw-bk-846510",
-    "sku": "846510",
+    "sku": "RW-846510",
     "name": "Plain Ring Doughnut",
     "packSize": "72x44g",
     "categorySlug": "bakery-breakfast",
@@ -3438,7 +3438,7 @@
   },
   {
     "id": "rw-bk-848930",
-    "sku": "848930",
+    "sku": "RW-848930",
     "name": "Sugared Chocolate Filled Doughnut",
     "packSize": "60x73g",
     "categorySlug": "bakery-breakfast",
@@ -3450,7 +3450,7 @@
   },
   {
     "id": "rw-bk-731260",
-    "sku": "731260",
+    "sku": "RW-731260",
     "name": "Triple Chocolate Doughnuts",
     "packSize": "36x69g",
     "categorySlug": "bakery-breakfast",
@@ -3462,7 +3462,7 @@
   },
   {
     "id": "rw-bk-799410",
-    "sku": "799410",
+    "sku": "RW-799410",
     "name": "Cheese Scone",
     "packSize": "120g",
     "categorySlug": "bakery-breakfast",
@@ -3474,7 +3474,7 @@
   },
   {
     "id": "rw-bk-769200",
-    "sku": "769200",
+    "sku": "RW-769200",
     "name": "Country Range 5 inch Fruited Teacakes",
     "packSize": "48x94g",
     "categorySlug": "bakery-breakfast",
@@ -3486,7 +3486,7 @@
   },
   {
     "id": "rw-bk-856460",
-    "sku": "856460",
+    "sku": "RW-856460",
     "name": "Handmade Cake Co. Gluten Free Sultana Scone",
     "packSize": "18x90g",
     "categorySlug": "bakery-breakfast",
@@ -3498,7 +3498,7 @@
   },
   {
     "id": "rw-bk-843720",
-    "sku": "843720",
+    "sku": "RW-843720",
     "name": "Handmade Cake Co. Vegan Sultana Scone",
     "packSize": "18x80g",
     "categorySlug": "bakery-breakfast",
@@ -3510,7 +3510,7 @@
   },
   {
     "id": "rw-bk-875000",
-    "sku": "875000",
+    "sku": "RW-875000",
     "name": "Handmade Cheese Scones",
     "packSize": "24x119g",
     "categorySlug": "bakery-breakfast",
@@ -3522,7 +3522,7 @@
   },
   {
     "id": "rw-bk-857200",
-    "sku": "857200",
+    "sku": "RW-857200",
     "name": "Handmade Large Plain Scones",
     "packSize": "24x120g",
     "categorySlug": "bakery-breakfast",
@@ -3534,7 +3534,7 @@
   },
   {
     "id": "rw-bk-857210",
-    "sku": "857210",
+    "sku": "RW-857210",
     "name": "Handmade Large Sultana Scones",
     "packSize": "24x120g",
     "categorySlug": "bakery-breakfast",
@@ -3546,7 +3546,7 @@
   },
   {
     "id": "rw-bk-853630",
-    "sku": "853630",
+    "sku": "RW-853630",
     "name": "Handmade Sultana Scones",
     "packSize": "18x85g",
     "categorySlug": "bakery-breakfast",
@@ -3558,7 +3558,7 @@
   },
   {
     "id": "rw-bk-857090",
-    "sku": "857090",
+    "sku": "RW-857090",
     "name": "Luxury Mince Pie",
     "packSize": "60x65g",
     "categorySlug": "bakery-breakfast",
@@ -3570,7 +3570,7 @@
   },
   {
     "id": "rw-bk-816940",
-    "sku": "816940",
+    "sku": "RW-816940",
     "name": "Montana Fruited Tea Bread",
     "packSize": "1x20x140g",
     "categorySlug": "bakery-breakfast",
@@ -3582,7 +3582,7 @@
   },
   {
     "id": "rw-bk-260581",
-    "sku": "260581",
+    "sku": "RW-260581",
     "name": "Robertson's Classic Mincemeat",
     "packSize": "1x2.27kg",
     "categorySlug": "bakery-breakfast",
@@ -3594,7 +3594,7 @@
   },
   {
     "id": "rw-bk-260580",
-    "sku": "260580",
+    "sku": "RW-260580",
     "name": "Robertson's Classic Mincemeat",
     "packSize": "4x2.27kg",
     "categorySlug": "bakery-breakfast",
@@ -3606,7 +3606,7 @@
   },
   {
     "id": "rw-bk-756800",
-    "sku": "756800",
+    "sku": "RW-756800",
     "name": "Sargents Deep Filled Mince Pies",
     "packSize": "15x6x52g",
     "categorySlug": "bakery-breakfast",
@@ -3618,7 +3618,7 @@
   },
   {
     "id": "rw-bk-861420",
-    "sku": "861420",
+    "sku": "RW-861420",
     "name": "Star Mini Mince Pies",
     "packSize": "8x9",
     "categorySlug": "bakery-breakfast",
@@ -3630,7 +3630,7 @@
   },
   {
     "id": "rw-bk-710030",
-    "sku": "710030",
+    "sku": "RW-710030",
     "name": "Sultana Scones",
     "packSize": "30",
     "categorySlug": "bakery-breakfast",
@@ -3643,7 +3643,7 @@
   },
   {
     "id": "rw-bk-709090",
-    "sku": "709090",
+    "sku": "RW-709090",
     "name": "Biscoff Rocky Road Slice",
     "packSize": "15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3655,7 +3655,7 @@
   },
   {
     "id": "rw-bk-882091",
-    "sku": "882091",
+    "sku": "RW-882091",
     "name": "Black Forest Traycake",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3667,7 +3667,7 @@
   },
   {
     "id": "rw-bk-882090",
-    "sku": "882090",
+    "sku": "RW-882090",
     "name": "Black Forest Traycake",
     "packSize": "6x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3679,7 +3679,7 @@
   },
   {
     "id": "rw-bk-882040",
-    "sku": "882040",
+    "sku": "RW-882040",
     "name": "Cakesmiths Billionaire's Shortbread Pre-Cut",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3691,7 +3691,7 @@
   },
   {
     "id": "rw-bk-882041",
-    "sku": "882041",
+    "sku": "RW-882041",
     "name": "Cakesmiths Billionaire's Shortbread Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3703,7 +3703,7 @@
   },
   {
     "id": "rw-bk-857161",
-    "sku": "857161",
+    "sku": "RW-857161",
     "name": "Cakesmiths Cherry & Almond TrayCAKE",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3715,7 +3715,7 @@
   },
   {
     "id": "rw-bk-859930",
-    "sku": "859930",
+    "sku": "RW-859930",
     "name": "Cakesmiths Raspberry Bakewell Traybake Pre-Cut",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3727,7 +3727,7 @@
   },
   {
     "id": "rw-bk-859931",
-    "sku": "859931",
+    "sku": "RW-859931",
     "name": "Cakesmiths Raspberry Bakewell Traybake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3739,7 +3739,7 @@
   },
   {
     "id": "rw-bk-861001",
-    "sku": "861001",
+    "sku": "RW-861001",
     "name": "Cakesmiths Sticky Toffee Biscoff Traycake Pre-Cut",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3751,7 +3751,7 @@
   },
   {
     "id": "rw-bk-861000",
-    "sku": "861000",
+    "sku": "RW-861000",
     "name": "Cakesmiths Sticky Toffee Biscoff Traycake Pre-Cut",
     "packSize": "6x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3763,7 +3763,7 @@
   },
   {
     "id": "rw-bk-885230",
-    "sku": "885230",
+    "sku": "RW-885230",
     "name": "Cakesmiths Toffee Crispy Traybake (pre-cut)",
     "packSize": "10x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3775,7 +3775,7 @@
   },
   {
     "id": "rw-bk-885231",
-    "sku": "885231",
+    "sku": "RW-885231",
     "name": "Cakesmiths Toffee Crispy Traybake (pre-cut)",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3787,7 +3787,7 @@
   },
   {
     "id": "rw-bk-731090",
-    "sku": "731090",
+    "sku": "RW-731090",
     "name": "Cakesmiths Vegan Blueberry Bakewell Traybake (pre-cut)",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3799,7 +3799,7 @@
   },
   {
     "id": "rw-bk-731091",
-    "sku": "731091",
+    "sku": "RW-731091",
     "name": "Cakesmiths Vegan Blueberry Bakewell Traybake (pre-cut)",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -3811,7 +3811,7 @@
   },
   {
     "id": "rw-bk-856940",
-    "sku": "856940",
+    "sku": "RW-856940",
     "name": "Carrot & Orange Traycake Pre-Cut",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3823,7 +3823,7 @@
   },
   {
     "id": "rw-bk-875100",
-    "sku": "875100",
+    "sku": "RW-875100",
     "name": "Cherry & Almond Slice",
     "packSize": "1x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -3835,7 +3835,7 @@
   },
   {
     "id": "rw-bk-709070",
-    "sku": "709070",
+    "sku": "RW-709070",
     "name": "Cherry Bakewell Pastry Slice",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -3847,7 +3847,7 @@
   },
   {
     "id": "rw-bk-844480",
-    "sku": "844480",
+    "sku": "RW-844480",
     "name": "Christmas Mince Pie Slice Traybake",
     "packSize": "10x15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3859,7 +3859,7 @@
   },
   {
     "id": "rw-bk-844481",
-    "sku": "844481",
+    "sku": "RW-844481",
     "name": "Christmas Mince Pie Slice Traybake",
     "packSize": "1x15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3871,7 +3871,7 @@
   },
   {
     "id": "rw-bk-790001",
-    "sku": "790001",
+    "sku": "RW-790001",
     "name": "Classic School Sponge Traybake",
     "packSize": "1x15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3884,7 +3884,7 @@
   },
   {
     "id": "rw-bk-790000",
-    "sku": "790000",
+    "sku": "RW-790000",
     "name": "Classic School Sponge Traybake",
     "packSize": "8x15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3896,7 +3896,7 @@
   },
   {
     "id": "rw-bk-882441",
-    "sku": "882441",
+    "sku": "RW-882441",
     "name": "Coffee Pecan & Walnut Traycake- 1x18ptn",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -3908,7 +3908,7 @@
   },
   {
     "id": "rw-bk-882440",
-    "sku": "882440",
+    "sku": "RW-882440",
     "name": "Coffee Pecan & Walnut Traycake- 6x18ptn",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -3920,7 +3920,7 @@
   },
   {
     "id": "rw-bk-801360",
-    "sku": "801360",
+    "sku": "RW-801360",
     "name": "Country Range Sticky Toffee Pudding Ginger Parkin",
     "packSize": "1x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3932,7 +3932,7 @@
   },
   {
     "id": "rw-bk-811311",
-    "sku": "811311",
+    "sku": "RW-811311",
     "name": "Double Chocolate Fudge Traycake",
     "packSize": "1x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -3944,7 +3944,7 @@
   },
   {
     "id": "rw-bk-857140",
-    "sku": "857140",
+    "sku": "RW-857140",
     "name": "Gleefully GF Ello Cherie Bar",
     "packSize": "1x27x75g",
     "categorySlug": "bakery-breakfast",
@@ -3956,7 +3956,7 @@
   },
   {
     "id": "rw-bk-850330",
-    "sku": "850330",
+    "sku": "RW-850330",
     "name": "Gluten Free Lemon Drizzle Cake Slice Pre-Cut",
     "packSize": "15ptn",
     "categorySlug": "bakery-breakfast",
@@ -3968,7 +3968,7 @@
   },
   {
     "id": "rw-bk-850320",
-    "sku": "850320",
+    "sku": "RW-850320",
     "name": "Gluten Free Vegan Blackcurrant Crumble",
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
@@ -3980,7 +3980,7 @@
   },
   {
     "id": "rw-bk-799210",
-    "sku": "799210",
+    "sku": "RW-799210",
     "name": "Gluten Free Vegan Brownie Obsession",
     "packSize": "1x20ptn",
     "categorySlug": "bakery-breakfast",
@@ -3992,7 +3992,7 @@
   },
   {
     "id": "rw-bk-843220",
-    "sku": "843220",
+    "sku": "RW-843220",
     "name": "Handmade Apple Shortcake Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4004,7 +4004,7 @@
   },
   {
     "id": "rw-bk-843240",
-    "sku": "843240",
+    "sku": "RW-843240",
     "name": "Handmade Boston Brownie Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4016,7 +4016,7 @@
   },
   {
     "id": "rw-bk-843570",
-    "sku": "843570",
+    "sku": "RW-843570",
     "name": "Handmade Butter Shortbread Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4028,7 +4028,7 @@
   },
   {
     "id": "rw-bk-856220",
-    "sku": "856220",
+    "sku": "RW-856220",
     "name": "Handmade Caramel Heaven Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4040,7 +4040,7 @@
   },
   {
     "id": "rw-bk-843460",
-    "sku": "843460",
+    "sku": "RW-843460",
     "name": "Handmade Caramel Shortcake Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4052,7 +4052,7 @@
   },
   {
     "id": "rw-bk-843480",
-    "sku": "843480",
+    "sku": "RW-843480",
     "name": "Handmade Chocolate Fruit & Nut Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4064,7 +4064,7 @@
   },
   {
     "id": "rw-bk-853660",
-    "sku": "853660",
+    "sku": "RW-853660",
     "name": "Handmade Classic Chocolate Brownie Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4076,7 +4076,7 @@
   },
   {
     "id": "rw-bk-853280",
-    "sku": "853280",
+    "sku": "RW-853280",
     "name": "Handmade Gluten Free Caramel Shortcake (pre-cut)",
     "packSize": "15ptn",
     "categorySlug": "bakery-breakfast",
@@ -4088,7 +4088,7 @@
   },
   {
     "id": "rw-bk-853290",
-    "sku": "853290",
+    "sku": "RW-853290",
     "name": "Handmade Gluten Free Chocolate Brownie",
     "packSize": "15ptn",
     "categorySlug": "bakery-breakfast",
@@ -4100,7 +4100,7 @@
   },
   {
     "id": "rw-bk-845040",
-    "sku": "845040",
+    "sku": "RW-845040",
     "name": "Handmade Gluten Free Chocolate Brownie",
     "packSize": "18x60g",
     "categorySlug": "bakery-breakfast",
@@ -4112,7 +4112,7 @@
   },
   {
     "id": "rw-bk-853610",
-    "sku": "853610",
+    "sku": "RW-853610",
     "name": "Handmade Granola Slice Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4125,7 +4125,7 @@
   },
   {
     "id": "rw-bk-856200",
-    "sku": "856200",
+    "sku": "RW-856200",
     "name": "Handmade Honeycomb Tiffin Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4137,7 +4137,7 @@
   },
   {
     "id": "rw-bk-843590",
-    "sku": "843590",
+    "sku": "RW-843590",
     "name": "Handmade Lemon Drizzle Slice Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4149,7 +4149,7 @@
   },
   {
     "id": "rw-bk-843490",
-    "sku": "843490",
+    "sku": "RW-843490",
     "name": "Handmade Maple & Pecan Slice Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4161,7 +4161,7 @@
   },
   {
     "id": "rw-bk-843260",
-    "sku": "843260",
+    "sku": "RW-843260",
     "name": "Handmade Raspberry & Coconut Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4173,7 +4173,7 @@
   },
   {
     "id": "rw-bk-845510",
-    "sku": "845510",
+    "sku": "RW-845510",
     "name": "Handmade Rocky Road Traybake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4185,7 +4185,7 @@
   },
   {
     "id": "rw-bk-850170",
-    "sku": "850170",
+    "sku": "RW-850170",
     "name": "Handmade Salted Caramel & Nut Traybake",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4197,7 +4197,7 @@
   },
   {
     "id": "rw-bk-756780",
-    "sku": "756780",
+    "sku": "RW-756780",
     "name": "Handmade Vegan Chocolate & Orange Traycake Pre-Cut",
     "packSize": "18 ptn",
     "categorySlug": "bakery-breakfast",
@@ -4209,7 +4209,7 @@
   },
   {
     "id": "rw-bk-811300",
-    "sku": "811300",
+    "sku": "RW-811300",
     "name": "Honeycomb Rocky Road",
     "packSize": "10x14ptns",
     "categorySlug": "bakery-breakfast",
@@ -4221,7 +4221,7 @@
   },
   {
     "id": "rw-bk-811301",
-    "sku": "811301",
+    "sku": "RW-811301",
     "name": "Honeycomb Rocky Road",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4233,7 +4233,7 @@
   },
   {
     "id": "rw-bk-790120",
-    "sku": "790120",
+    "sku": "RW-790120",
     "name": "Lemon & Blueberry Bakewell Traybake",
     "packSize": "10x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4245,7 +4245,7 @@
   },
   {
     "id": "rw-bk-790121",
-    "sku": "790121",
+    "sku": "RW-790121",
     "name": "Lemon & Blueberry Bakewell Traybake",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4257,7 +4257,7 @@
   },
   {
     "id": "rw-bk-882181",
-    "sku": "882181",
+    "sku": "RW-882181",
     "name": "Lemon Drizzle Traycake Pre-Cut",
     "packSize": "1x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -4269,7 +4269,7 @@
   },
   {
     "id": "rw-bk-882180",
-    "sku": "882180",
+    "sku": "RW-882180",
     "name": "Lemon Drizzle Traycake Pre-Cut",
     "packSize": "6x18ptn",
     "categorySlug": "bakery-breakfast",
@@ -4281,7 +4281,7 @@
   },
   {
     "id": "rw-bk-857150",
-    "sku": "857150",
+    "sku": "RW-857150",
     "name": "Lemon Shortbread Bar",
     "packSize": "1x36x60g",
     "categorySlug": "bakery-breakfast",
@@ -4293,7 +4293,7 @@
   },
   {
     "id": "rw-bk-844190",
-    "sku": "844190",
+    "sku": "RW-844190",
     "name": "Luxury Millionaire Triangles",
     "packSize": "1x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4305,7 +4305,7 @@
   },
   {
     "id": "rw-bk-731280",
-    "sku": "731280",
+    "sku": "RW-731280",
     "name": "Maple Flapjacks",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4317,7 +4317,7 @@
   },
   {
     "id": "rw-bk-731281",
-    "sku": "731281",
+    "sku": "RW-731281",
     "name": "Maple Flapjacks",
     "packSize": "1x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4329,7 +4329,7 @@
   },
   {
     "id": "rw-bk-824310",
-    "sku": "824310",
+    "sku": "RW-824310",
     "name": "Morello Cherry Blondie",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4341,7 +4341,7 @@
   },
   {
     "id": "rw-bk-824311",
-    "sku": "824311",
+    "sku": "RW-824311",
     "name": "Morello Cherry Blondie",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4353,7 +4353,7 @@
   },
   {
     "id": "rw-bk-846160",
-    "sku": "846160",
+    "sku": "RW-846160",
     "name": "Peck & Strong Chocolate & Coconut Flapjack Pre-Cut",
     "packSize": "16ptn",
     "categorySlug": "bakery-breakfast",
@@ -4366,7 +4366,7 @@
   },
   {
     "id": "rw-bk-846080",
-    "sku": "846080",
+    "sku": "RW-846080",
     "name": "Peck & Strong Gluten Free Chocolate Brownie & Walnuts Pre-Cut",
     "packSize": "16ptn",
     "categorySlug": "bakery-breakfast",
@@ -4378,7 +4378,7 @@
   },
   {
     "id": "rw-bk-709060",
-    "sku": "709060",
+    "sku": "RW-709060",
     "name": "Raspberry and Coconut Pastry Slice",
     "packSize": "12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4390,7 +4390,7 @@
   },
   {
     "id": "rw-bk-824391",
-    "sku": "824391",
+    "sku": "RW-824391",
     "name": "Strawberry & Rhubarb TrayCake",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -4402,7 +4402,7 @@
   },
   {
     "id": "rw-bk-824330",
-    "sku": "824330",
+    "sku": "RW-824330",
     "name": "Super Granola Pre-Cut",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4414,7 +4414,7 @@
   },
   {
     "id": "rw-bk-824331",
-    "sku": "824331",
+    "sku": "RW-824331",
     "name": "Super Granola Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4426,7 +4426,7 @@
   },
   {
     "id": "rw-bk-875900",
-    "sku": "875900",
+    "sku": "RW-875900",
     "name": "Toffee Apple Crumble Traycake",
     "packSize": "18ptn",
     "categorySlug": "bakery-breakfast",
@@ -4438,7 +4438,7 @@
   },
   {
     "id": "rw-bk-756830",
-    "sku": "756830",
+    "sku": "RW-756830",
     "name": "Traditional Flapjack",
     "packSize": "1x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4450,7 +4450,7 @@
   },
   {
     "id": "rw-bk-883350",
-    "sku": "883350",
+    "sku": "RW-883350",
     "name": "Ultimate Chocolate Brownie (Pre-Cut)",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4462,7 +4462,7 @@
   },
   {
     "id": "rw-bk-883351",
-    "sku": "883351",
+    "sku": "RW-883351",
     "name": "Ultimate Chocolate Brownie (Pre-Cut)",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4474,7 +4474,7 @@
   },
   {
     "id": "rw-bk-885100",
-    "sku": "885100",
+    "sku": "RW-885100",
     "name": "Vegan Apple & Blackcurrant Crumblejack",
     "packSize": "10x14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4486,7 +4486,7 @@
   },
   {
     "id": "rw-bk-885101",
-    "sku": "885101",
+    "sku": "RW-885101",
     "name": "Vegan Apple & Blackcurrant Crumblejack",
     "packSize": "14ptn",
     "categorySlug": "bakery-breakfast",
@@ -4498,7 +4498,7 @@
   },
   {
     "id": "rw-bk-846120",
-    "sku": "846120",
+    "sku": "RW-846120",
     "name": "Vegan Apricot Filled Flapjacks",
     "packSize": "16ptn",
     "categorySlug": "bakery-breakfast",
@@ -4510,7 +4510,7 @@
   },
   {
     "id": "rw-bk-843280",
-    "sku": "843280",
+    "sku": "RW-843280",
     "name": "Vegan Apricot, Orange & Almond Traybake",
     "packSize": "15ptn",
     "categorySlug": "bakery-breakfast",
@@ -4522,7 +4522,7 @@
   },
   {
     "id": "rw-bk-843360",
-    "sku": "843360",
+    "sku": "RW-843360",
     "name": "Yoghurt Topped Apple & Blackcurrant Filled Flapjacks",
     "packSize": "1x16ptn",
     "categorySlug": "bakery-breakfast",
@@ -4534,7 +4534,7 @@
   },
   {
     "id": "rw-bk-790130",
-    "sku": "790130",
+    "sku": "RW-790130",
     "name": "Yoghurt, Cranberry & Sultana Traybake",
     "packSize": "10x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4546,7 +4546,7 @@
   },
   {
     "id": "rw-bk-790131",
-    "sku": "790131",
+    "sku": "RW-790131",
     "name": "Yoghurt, Cranberry & Sultana Traybake",
     "packSize": "1x12ptn",
     "categorySlug": "bakery-breakfast",
@@ -4558,7 +4558,7 @@
   },
   {
     "id": "rw-bk-855550",
-    "sku": "855550",
+    "sku": "RW-855550",
     "name": "Belgian Chocolate Waffles",
     "packSize": "20x90g",
     "categorySlug": "bakery-breakfast",
@@ -4570,7 +4570,7 @@
   },
   {
     "id": "rw-bk-881910",
-    "sku": "881910",
+    "sku": "RW-881910",
     "name": "Bridor Almond Filled Croissant (Ready To Bake)",
     "packSize": "60x95g",
     "categorySlug": "bakery-breakfast",
@@ -4582,7 +4582,7 @@
   },
   {
     "id": "rw-bk-881900",
-    "sku": "881900",
+    "sku": "RW-881900",
     "name": "Bridor Chocolate Twist Pastry (ready to bake)",
     "packSize": "70x90g",
     "categorySlug": "bakery-breakfast",
@@ -4594,7 +4594,7 @@
   },
   {
     "id": "rw-bk-849380",
-    "sku": "849380",
+    "sku": "RW-849380",
     "name": "Bridor Croissants",
     "packSize": "60x80g",
     "categorySlug": "bakery-breakfast",
@@ -4607,7 +4607,7 @@
   },
   {
     "id": "rw-bk-849370",
-    "sku": "849370",
+    "sku": "RW-849370",
     "name": "Bridor Pain Aux Raisin",
     "packSize": "60x110g",
     "categorySlug": "bakery-breakfast",
@@ -4619,7 +4619,7 @@
   },
   {
     "id": "rw-bk-849500",
-    "sku": "849500",
+    "sku": "RW-849500",
     "name": "Bridor Ready To Bake Fine Butter Croissant",
     "packSize": "110x55g",
     "categorySlug": "bakery-breakfast",
@@ -4631,7 +4631,7 @@
   },
   {
     "id": "rw-bk-859740",
-    "sku": "859740",
+    "sku": "RW-859740",
     "name": "Bridor UK Ready to Bake Mini Croissants",
     "packSize": "225x25g",
     "categorySlug": "bakery-breakfast",
@@ -4643,7 +4643,7 @@
   },
   {
     "id": "rw-bk-859750",
-    "sku": "859750",
+    "sku": "RW-859750",
     "name": "Bridor UK Ready to Bake Mini Pain Au Chocolat",
     "packSize": "260x28g",
     "categorySlug": "bakery-breakfast",
@@ -4655,7 +4655,7 @@
   },
   {
     "id": "rw-bk-881920",
-    "sku": "881920",
+    "sku": "RW-881920",
     "name": "Bridor Vegan Raspberry Filled Croissant (Ready To Bake)",
     "packSize": "44x90g",
     "categorySlug": "bakery-breakfast",
@@ -4667,7 +4667,7 @@
   },
   {
     "id": "rw-bk-866170",
-    "sku": "866170",
+    "sku": "RW-866170",
     "name": "Cinnamon Bun",
     "packSize": "28ptn",
     "categorySlug": "bakery-breakfast",
@@ -4679,7 +4679,7 @@
   },
   {
     "id": "rw-bk-861120",
-    "sku": "861120",
+    "sku": "RW-861120",
     "name": "Cinnamon Bun (Ready-To-Bake)",
     "packSize": "54x110g",
     "categorySlug": "bakery-breakfast",
@@ -4691,7 +4691,7 @@
   },
   {
     "id": "rw-bk-849860",
-    "sku": "849860",
+    "sku": "RW-849860",
     "name": "Country Range Mini Cream Cake Assortment",
     "packSize": "8x5",
     "categorySlug": "bakery-breakfast",
@@ -4703,7 +4703,7 @@
   },
   {
     "id": "rw-bk-818890",
-    "sku": "818890",
+    "sku": "RW-818890",
     "name": "Country Range Pain Au Chocolat (ready to bake)",
     "packSize": "80x75g",
     "categorySlug": "bakery-breakfast",
@@ -4715,7 +4715,7 @@
   },
   {
     "id": "rw-bk-818880",
-    "sku": "818880",
+    "sku": "RW-818880",
     "name": "Country Range Straight Croissant (ready to bake)",
     "packSize": "80x65g",
     "categorySlug": "bakery-breakfast",
@@ -4727,7 +4727,7 @@
   },
   {
     "id": "rw-bk-780020",
-    "sku": "780020",
+    "sku": "RW-780020",
     "name": "Danish Pastries Fine Butter Mixed Mini Gourmandises",
     "packSize": "140 (4x35)",
     "categorySlug": "bakery-breakfast",
@@ -4739,7 +4739,7 @@
   },
   {
     "id": "rw-bk-828250",
-    "sku": "828250",
+    "sku": "RW-828250",
     "name": "Individual Chocolate & Raspberry Truffle 12x140g",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -4751,7 +4751,7 @@
   },
   {
     "id": "rw-bk-791140",
-    "sku": "791140",
+    "sku": "RW-791140",
     "name": "New York Plain Croissant Roll",
     "packSize": "36x62g",
     "categorySlug": "bakery-breakfast",
@@ -4763,7 +4763,7 @@
   },
   {
     "id": "rw-bk-851120",
-    "sku": "851120",
+    "sku": "RW-851120",
     "name": "Pain Au Chocolat (Ready to Bake)",
     "packSize": "2x35x75g",
     "categorySlug": "bakery-breakfast",
@@ -4775,7 +4775,7 @@
   },
   {
     "id": "rw-bk-849470",
-    "sku": "849470",
+    "sku": "RW-849470",
     "name": "Pastel de Nata Tart",
     "packSize": "1x60x60g",
     "categorySlug": "bakery-breakfast",
@@ -4787,7 +4787,7 @@
   },
   {
     "id": "rw-bk-864610",
-    "sku": "864610",
+    "sku": "RW-864610",
     "name": "Plain Iced Twisted Yum Yum",
     "packSize": "40x75g",
     "categorySlug": "bakery-breakfast",
@@ -4799,7 +4799,7 @@
   },
   {
     "id": "rw-bk-781320",
-    "sku": "781320",
+    "sku": "RW-781320",
     "name": "Ready To Bake Almond Croissant",
     "packSize": "48x90g",
     "categorySlug": "bakery-breakfast",
@@ -4811,7 +4811,7 @@
   },
   {
     "id": "rw-bk-830710",
-    "sku": "830710",
+    "sku": "RW-830710",
     "name": "Ready To Bake Cocoa and Hazelnut Filled Croissant",
     "packSize": "44x90g",
     "categorySlug": "bakery-breakfast",
@@ -4823,7 +4823,7 @@
   },
   {
     "id": "rw-bk-849510",
-    "sku": "849510",
+    "sku": "RW-849510",
     "name": "Ready To Bake Fine Butter Cinnamon Swirls- 60x100g",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -4835,7 +4835,7 @@
   },
   {
     "id": "rw-bk-853690",
-    "sku": "853690",
+    "sku": "RW-853690",
     "name": "Royal Danish Pastry Selection Unbaked",
     "packSize": "36",
     "categorySlug": "bakery-breakfast",
@@ -4848,7 +4848,7 @@
   },
   {
     "id": "rw-bk-820300",
-    "sku": "820300",
+    "sku": "RW-820300",
     "name": "RTB Butter Croissant",
     "packSize": "4x20x90g",
     "categorySlug": "bakery-breakfast",
@@ -4860,7 +4860,7 @@
   },
   {
     "id": "rw-bk-820330",
-    "sku": "820330",
+    "sku": "RW-820330",
     "name": "RTB Butter Pain Au Raisin Pastry",
     "packSize": "60x96g",
     "categorySlug": "bakery-breakfast",
@@ -4872,7 +4872,7 @@
   },
   {
     "id": "rw-bk-820380",
-    "sku": "820380",
+    "sku": "RW-820380",
     "name": "RTB Chocolate Chip Butter Twist Pastry",
     "packSize": "60x100g",
     "categorySlug": "bakery-breakfast",
@@ -4884,7 +4884,7 @@
   },
   {
     "id": "rw-bk-820340",
-    "sku": "820340",
+    "sku": "RW-820340",
     "name": "RTB Mixed Mini Filled Danish Assortment",
     "packSize": "120x30g",
     "categorySlug": "bakery-breakfast",
@@ -4896,7 +4896,7 @@
   },
   {
     "id": "rw-bk-820320",
-    "sku": "820320",
+    "sku": "RW-820320",
     "name": "RTB Triple Chocolate Pain Au Chocolat",
     "packSize": "60x100g",
     "categorySlug": "bakery-breakfast",
@@ -4908,7 +4908,7 @@
   },
   {
     "id": "rw-bk-849520",
-    "sku": "849520",
+    "sku": "RW-849520",
     "name": "Schulstad All Butter Croissant Unbaked",
     "packSize": "52x60g",
     "categorySlug": "bakery-breakfast",
@@ -4920,7 +4920,7 @@
   },
   {
     "id": "rw-bk-820470",
-    "sku": "820470",
+    "sku": "RW-820470",
     "name": "Vegan Blueberry Croissant- 48x100g",
     "packSize": "Catering Pack",
     "categorySlug": "bakery-breakfast",
@@ -4932,7 +4932,7 @@
   },
   {
     "id": "rw-bk-839360",
-    "sku": "839360",
+    "sku": "RW-839360",
     "name": "Vegan Sugar Belgian Waffles",
     "packSize": "20x90g",
     "categorySlug": "bakery-breakfast",
@@ -4944,7 +4944,7 @@
   },
   {
     "id": "rw-bk-839300",
-    "sku": "839300",
+    "sku": "RW-839300",
     "name": "Wafflemeister Belgian Liege Waffle",
     "packSize": "30 x 90g",
     "categorySlug": "bakery-breakfast",
@@ -4956,7 +4956,7 @@
   },
   {
     "id": "rw-bk-870540",
-    "sku": "870540",
+    "sku": "RW-870540",
     "name": "Christingle Pie",
     "packSize": "262g",
     "categorySlug": "bakery-breakfast",
@@ -4968,7 +4968,7 @@
   },
   {
     "id": "rw-bk-801400",
-    "sku": "801400",
+    "sku": "RW-801400",
     "name": "Apple Pie Borek with Cinnamon",
     "packSize": "95g",
     "categorySlug": "bakery-breakfast",
@@ -4980,7 +4980,7 @@
   },
   {
     "id": "rw-bk-724550",
-    "sku": "724550",
+    "sku": "RW-724550",
     "name": "Gluten Free Mozzarella, Tomato & Pesto Toastie",
     "packSize": "16x130g",
     "categorySlug": "bakery-breakfast",
@@ -4992,7 +4992,7 @@
   },
   {
     "id": "rw-bk-715080",
-    "sku": "715080",
+    "sku": "RW-715080",
     "name": "Celeriac, Gruyere & Garlic Tart",
     "packSize": "150g",
     "categorySlug": "bakery-breakfast",
@@ -5004,7 +5004,7 @@
   },
   {
     "id": "rw-bk-821470",
-    "sku": "821470",
+    "sku": "RW-821470",
     "name": "GF Mini Spiced Cauliflower & Lentil Pies",
     "packSize": "90g",
     "categorySlug": "bakery-breakfast",
@@ -5016,7 +5016,7 @@
   },
   {
     "id": "rw-bk-821490",
-    "sku": "821490",
+    "sku": "RW-821490",
     "name": "Signature by Country Range Vintage Cheddar Pie",
     "packSize": "255g",
     "categorySlug": "bakery-breakfast",

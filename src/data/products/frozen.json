@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-fz-801260",
-    "sku": "801260",
+    "sku": "RW-801260",
     "name": "Proper Cornish Turkey Dinner Pasty",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-fz-883000",
-    "sku": "883000",
+    "sku": "RW-883000",
     "name": "Redemption Vegan Carrot & Butternut Soup",
     "packSize": "6x2kg",
     "categorySlug": "frozen-chips",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-fz-737030",
-    "sku": "737030",
+    "sku": "RW-737030",
     "name": "Beetroot Falafel",
     "packSize": "2x1kg",
     "categorySlug": "frozen-chips",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-fz-756770",
-    "sku": "756770",
+    "sku": "RW-756770",
     "name": "Breaded Cream Cheese Filled Jalapeño Peppers- 6x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-fz-811330",
-    "sku": "811330",
+    "sku": "RW-811330",
     "name": "Camembert Round",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-fz-731310",
-    "sku": "731310",
+    "sku": "RW-731310",
     "name": "Cheese and Truffle Arancini",
     "packSize": "2.2kg",
     "categorySlug": "frozen-chips",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-fz-782830",
-    "sku": "782830",
+    "sku": "RW-782830",
     "name": "Daloon Onion Bhaji",
     "packSize": "50x35g",
     "categorySlug": "frozen-chips",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-fz-801250",
-    "sku": "801250",
+    "sku": "RW-801250",
     "name": "Duck, Chicken & Orange Terrine",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-fz-814110",
-    "sku": "814110",
+    "sku": "RW-814110",
     "name": "Falafel",
     "packSize": "3x20x25g",
     "categorySlug": "frozen-chips",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-fz-712060",
-    "sku": "712060",
+    "sku": "RW-712060",
     "name": "GF Cheesy Chutney Melts",
     "packSize": "1x56x35g",
     "categorySlug": "frozen-chips",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-fz-756700",
-    "sku": "756700",
+    "sku": "RW-756700",
     "name": "Gluten Free Indian Snack Selection V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-fz-730410",
-    "sku": "730410",
+    "sku": "RW-730410",
     "name": "Gluten Free Spicy Corn Fritters",
     "packSize": "2x1.05kg",
     "categorySlug": "frozen-chips",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-fz-711150",
-    "sku": "711150",
+    "sku": "RW-711150",
     "name": "Indian Veg Snack Selection",
     "packSize": "3x20",
     "categorySlug": "frozen-chips",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-fz-752110",
-    "sku": "752110",
+    "sku": "RW-752110",
     "name": "Lamb Weston Mozzarella Cheese Sticks",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-fz-712830",
-    "sku": "712830",
+    "sku": "RW-712830",
     "name": "Mac and Cheese Bites 50g- 6x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-fz-783360",
-    "sku": "783360",
+    "sku": "RW-783360",
     "name": "Mini Cheeseburger Crostini",
     "packSize": "45x21g",
     "categorySlug": "frozen-chips",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-fz-865100",
-    "sku": "865100",
+    "sku": "RW-865100",
     "name": "Mini Pie Selection",
     "packSize": "48x26g",
     "categorySlug": "frozen-chips",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-fz-857190",
-    "sku": "857190",
+    "sku": "RW-857190",
     "name": "Red Fox Cheesy Bites",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-fz-786360",
-    "sku": "786360",
+    "sku": "RW-786360",
     "name": "Scheff Mango & Brie Parcels",
     "packSize": "25x30g",
     "categorySlug": "frozen-chips",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-fz-820780",
-    "sku": "820780",
+    "sku": "RW-820780",
     "name": "Sweet Potato Falafel Bites",
     "packSize": "2x1kg",
     "categorySlug": "frozen-chips",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-fz-724140",
-    "sku": "724140",
+    "sku": "RW-724140",
     "name": "Taquito Chicken Fajita",
     "packSize": "48x80g",
     "categorySlug": "frozen-chips",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-fz-724150",
-    "sku": "724150",
+    "sku": "RW-724150",
     "name": "Taquito Chilli Cheese",
     "packSize": "48x80g",
     "categorySlug": "frozen-chips",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-fz-740630",
-    "sku": "740630",
+    "sku": "RW-740630",
     "name": "The Foodfellas Mini Duck Spring Rolls",
     "packSize": "2x50x20g",
     "categorySlug": "frozen-chips",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-fz-740640",
-    "sku": "740640",
+    "sku": "RW-740640",
     "name": "The Foodfellas Mini Vegetable Samosas",
     "packSize": "4x30x30g",
     "categorySlug": "frozen-chips",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-fz-740620",
-    "sku": "740620",
+    "sku": "RW-740620",
     "name": "The Foodfellas Vegetable Mini Spring Rolls",
     "packSize": "2x50x20g",
     "categorySlug": "frozen-chips",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-fz-782480",
-    "sku": "782480",
+    "sku": "RW-782480",
     "name": "The Foodfellas Vegetable Samosas",
     "packSize": "4x15x70g",
     "categorySlug": "frozen-chips",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-fz-808000",
-    "sku": "808000",
+    "sku": "RW-808000",
     "name": "Traditional Canapes",
     "packSize": "54",
     "categorySlug": "frozen-chips",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-fz-808010",
-    "sku": "808010",
+    "sku": "RW-808010",
     "name": "Potato Gratin with Truffle",
     "packSize": "100g",
     "categorySlug": "frozen-chips",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-fz-712280",
-    "sku": "712280",
+    "sku": "RW-712280",
     "name": "American-Style Pancakes",
     "packSize": "40g",
     "categorySlug": "frozen-chips",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-fz-874610",
-    "sku": "874610",
+    "sku": "RW-874610",
     "name": "Phat Steak & Cornish Ale Pie Red Tractor",
     "packSize": "12x285g",
     "categorySlug": "frozen-chips",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-fz-760880",
-    "sku": "760880",
+    "sku": "RW-760880",
     "name": "Pieminister Deer & Beer Pie",
     "packSize": "8x255g",
     "categorySlug": "frozen-chips",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-fz-859840",
-    "sku": "859840",
+    "sku": "RW-859840",
     "name": "Portobello Mushroom Pie Filling",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-fz-826060",
-    "sku": "826060",
+    "sku": "RW-826060",
     "name": "Pulled Beef, Red Wine & Mushroom Encroute",
     "packSize": "16x210g",
     "categorySlug": "frozen-chips",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-fz-859880",
-    "sku": "859880",
+    "sku": "RW-859880",
     "name": "Shepherds Pie Filling",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-fz-859870",
-    "sku": "859870",
+    "sku": "RW-859870",
     "name": "Steak & Ale Pie Filling",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-fz-826020",
-    "sku": "826020",
+    "sku": "RW-826020",
     "name": "Barber Cheddar, Chive & English Mustard Souffle",
     "packSize": "16x90g",
     "categorySlug": "frozen-chips",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-fz-737540",
-    "sku": "737540",
+    "sku": "RW-737540",
     "name": "Maroc Star Pie - Spiced Carrot, Spinach & Chickpea",
     "packSize": "230g",
     "categorySlug": "frozen-chips",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-fz-731000",
-    "sku": "731000",
+    "sku": "RW-731000",
     "name": "Scheff Individual Vegetable Roast Slice",
     "packSize": "24x140g",
     "categorySlug": "frozen-chips",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-fz-737570",
-    "sku": "737570",
+    "sku": "RW-737570",
     "name": "The Swiss Quiche",
     "packSize": "220g",
     "categorySlug": "frozen-chips",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-fz-704310",
-    "sku": "704310",
+    "sku": "RW-704310",
     "name": "Level 4 Pureed Meals Simply Puree",
     "packSize": "12pcs",
     "categorySlug": "frozen-chips",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-fz-859331",
-    "sku": "859331",
+    "sku": "RW-859331",
     "name": "Ajinomoto Chicken Gyoza",
     "packSize": "600g",
     "categorySlug": "frozen-chips",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-fz-851380",
-    "sku": "851380",
+    "sku": "RW-851380",
     "name": "Ajinomoto Vegetable Gyoza",
     "packSize": "10x600g",
     "categorySlug": "frozen-chips",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-fz-851381",
-    "sku": "851381",
+    "sku": "RW-851381",
     "name": "Ajinomoto Vegetable Gyoza",
     "packSize": "600g",
     "categorySlug": "frozen-chips",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-fz-726910",
-    "sku": "726910",
+    "sku": "RW-726910",
     "name": "Bao Hirata Buns",
     "packSize": "2x30x50g",
     "categorySlug": "frozen-chips",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-fz-752341",
-    "sku": "752341",
+    "sku": "RW-752341",
     "name": "Beer Battered Onion Rings",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-fz-752340",
-    "sku": "752340",
+    "sku": "RW-752340",
     "name": "Beer Battered Onion Rings",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-fz-756771",
-    "sku": "756771",
+    "sku": "RW-756771",
     "name": "Breaded Cream Cheese Filled Jalapeño Peppers- 6x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-fz-712140",
-    "sku": "712140",
+    "sku": "RW-712140",
     "name": "Breakfast Pasty",
     "packSize": "36x177g",
     "categorySlug": "frozen-chips",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-fz-786310",
-    "sku": "786310",
+    "sku": "RW-786310",
     "name": "Buffet Savoury Eggs",
     "packSize": "4x20x20g",
     "categorySlug": "frozen-chips",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-fz-741211",
-    "sku": "741211",
+    "sku": "RW-741211",
     "name": "Carisma Breaded Brie Triangle",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-fz-782500",
-    "sku": "782500",
+    "sku": "RW-782500",
     "name": "Country Range Beer Battered Onion Rings",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-fz-782501",
-    "sku": "782501",
+    "sku": "RW-782501",
     "name": "Country Range Beer Battered Onion Rings",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-fz-710010",
-    "sku": "710010",
+    "sku": "RW-710010",
     "name": "Crispy Vegetable Spring Roll",
     "packSize": "80x90g",
     "categorySlug": "frozen-chips",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-fz-782540",
-    "sku": "782540",
+    "sku": "RW-782540",
     "name": "Daloon Sweet Potato Falafel",
     "packSize": "90x22g",
     "categorySlug": "frozen-chips",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-fz-730460",
-    "sku": "730460",
+    "sku": "RW-730460",
     "name": "Gluten Free Chilli Mozzarella Nuggets",
     "packSize": "2x988g",
     "categorySlug": "frozen-chips",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-fz-730470",
-    "sku": "730470",
+    "sku": "RW-730470",
     "name": "Gluten Free Mozzarella Bites",
     "packSize": "2x988g",
     "categorySlug": "frozen-chips",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-fz-730450",
-    "sku": "730450",
+    "sku": "RW-730450",
     "name": "Gluten Free Southern Fried Mozzarella Popcorn",
     "packSize": "2x1kg",
     "categorySlug": "frozen-chips",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-fz-862311",
-    "sku": "862311",
+    "sku": "RW-862311",
     "name": "Greens Beer Battered Natural Whole Onion Rings",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-fz-862310",
-    "sku": "862310",
+    "sku": "RW-862310",
     "name": "Greens Beer Battered Natural Whole Onion Rings",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-fz-859330",
-    "sku": "859330",
+    "sku": "RW-859330",
     "name": "Japanese Style Chicken Gyoza",
     "packSize": "10x600g",
     "categorySlug": "frozen-chips",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-fz-752111",
-    "sku": "752111",
+    "sku": "RW-752111",
     "name": "Lamb Weston Mozzarella Sticks",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-fz-712831",
-    "sku": "712831",
+    "sku": "RW-712831",
     "name": "Mac and Cheese Bites 50g- 1x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-fz-761680",
-    "sku": "761680",
+    "sku": "RW-761680",
     "name": "Natural Whole Battered Onion Rings",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-fz-711130",
-    "sku": "711130",
+    "sku": "RW-711130",
     "name": "Onion Bhaji",
     "packSize": "50x30g",
     "categorySlug": "frozen-chips",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-fz-801800",
-    "sku": "801800",
+    "sku": "RW-801800",
     "name": "Paramount Mac n Cheese Croquettes 2x1kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-fz-785030",
-    "sku": "785030",
+    "sku": "RW-785030",
     "name": "Phat Plant Based Mexican Bean Roll",
     "packSize": "100x90g",
     "categorySlug": "frozen-chips",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-fz-857191",
-    "sku": "857191",
+    "sku": "RW-857191",
     "name": "Red Fox Cheesy Bites",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-fz-786390",
-    "sku": "786390",
+    "sku": "RW-786390",
     "name": "Scheff Mini Vegetable Samosa",
     "packSize": "50x15g",
     "categorySlug": "frozen-chips",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-fz-709260",
-    "sku": "709260",
+    "sku": "RW-709260",
     "name": "Scheff Mini Vegetable Spring Roll",
     "packSize": "50x15g",
     "categorySlug": "frozen-chips",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-fz-820781",
-    "sku": "820781",
+    "sku": "RW-820781",
     "name": "Sweet Potato Falafel Bites",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-fz-852001",
-    "sku": "852001",
+    "sku": "RW-852001",
     "name": "Vegetable Pakora",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-fz-852000",
-    "sku": "852000",
+    "sku": "RW-852000",
     "name": "Vegetable Pakora",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-fz-875940",
-    "sku": "875940",
+    "sku": "RW-875940",
     "name": "XL Vegetable Samosa",
     "packSize": "60x110g",
     "categorySlug": "frozen-chips",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-fz-782600",
-    "sku": "782600",
+    "sku": "RW-782600",
     "name": "Yamas! Halloumi Fries",
     "packSize": "12x1kg",
     "categorySlug": "frozen-chips",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-fz-782601",
-    "sku": "782601",
+    "sku": "RW-782601",
     "name": "Yamas! Halloumi Fries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-fz-751160",
-    "sku": "751160",
+    "sku": "RW-751160",
     "name": "Aviko H Super Crunch 9.5mm Skin On Fries",
     "packSize": "6x2.5kg",
     "categorySlug": "frozen-chips",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-fz-752751",
-    "sku": "752751",
+    "sku": "RW-752751",
     "name": "Aviko Pom Sautees",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-fz-752750",
-    "sku": "752750",
+    "sku": "RW-752750",
     "name": "Aviko Pom Sautees",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-fz-756240",
-    "sku": "756240",
+    "sku": "RW-756240",
     "name": "Catering Essentials Freeze Chill Fries",
     "packSize": "1x4x2.25kg",
     "categorySlug": "frozen-chips",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-fz-875120",
-    "sku": "875120",
+    "sku": "RW-875120",
     "name": "Classic Chips (9x9mm)",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-fz-753000",
-    "sku": "753000",
+    "sku": "RW-753000",
     "name": "Country Range 7/16 Freeze Chill Chips",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-fz-753010",
-    "sku": "753010",
+    "sku": "RW-753010",
     "name": "Country Range 9/16 Freeze Chill Chips",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-fz-753060",
-    "sku": "753060",
+    "sku": "RW-753060",
     "name": "Country Range Crispy Coated Fries 9/16",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-fz-753070",
-    "sku": "753070",
+    "sku": "RW-753070",
     "name": "Country Range Crispy Coated Shoestring Fries 7mm",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-fz-753030",
-    "sku": "753030",
+    "sku": "RW-753030",
     "name": "Country Range Freeze Chill Fries 10mm",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-fz-762311",
-    "sku": "762311",
+    "sku": "RW-762311",
     "name": "Country Range Potato Crunchies",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-fz-762301",
-    "sku": "762301",
+    "sku": "RW-762301",
     "name": "Country Range Potato Halos",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-fz-762300",
-    "sku": "762300",
+    "sku": "RW-762300",
     "name": "Country Range Potato Halos",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-fz-751231",
-    "sku": "751231",
+    "sku": "RW-751231",
     "name": "Country Range Seasoned Potato Wedges",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-fz-751230",
-    "sku": "751230",
+    "sku": "RW-751230",
     "name": "Country Range Seasoned Potato Wedges",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-fz-753040",
-    "sku": "753040",
+    "sku": "RW-753040",
     "name": "Country Range Shoestring Chips 7mm",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-fz-753080",
-    "sku": "753080",
+    "sku": "RW-753080",
     "name": "Country Range Skin On Crispy Coated Fries 9mm",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-fz-753020",
-    "sku": "753020",
+    "sku": "RW-753020",
     "name": "Country Range Steak Cut Freeze Chill Chips",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-fz-753091",
-    "sku": "753091",
+    "sku": "RW-753091",
     "name": "Country Range Sweet Potato Fries",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-fz-753090",
-    "sku": "753090",
+    "sku": "RW-753090",
     "name": "Country Range Sweet Potato Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-fz-712271",
-    "sku": "712271",
+    "sku": "RW-712271",
     "name": "Koffman's les Grandes Frites 19mm",
     "packSize": "2.27kg",
     "categorySlug": "frozen-chips",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-fz-712270",
-    "sku": "712270",
+    "sku": "RW-712270",
     "name": "Koffman's les Grandes Frites 19mm",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-fz-712261",
-    "sku": "712261",
+    "sku": "RW-712261",
     "name": "Koffmann's les Pommes Frites",
     "packSize": "2.27kg",
     "categorySlug": "frozen-chips",
@@ -1275,7 +1275,7 @@
   },
   {
     "id": "rw-fz-712260",
-    "sku": "712260",
+    "sku": "RW-712260",
     "name": "Koffmann's les Pommes Frites",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "rw-fz-751010",
-    "sku": "751010",
+    "sku": "RW-751010",
     "name": "Lamb Weston 9x9mm Stealth Fries Skin Off",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "rw-fz-752651",
-    "sku": "752651",
+    "sku": "RW-752651",
     "name": "Lamb Weston 9x9mm Stealth Skin On Fries",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": "rw-fz-752500",
-    "sku": "752500",
+    "sku": "RW-752500",
     "name": "Lamb Weston Connoisseur Fries Chunky 16x18mm",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "rw-fz-752520",
-    "sku": "752520",
+    "sku": "RW-752520",
     "name": "Lamb Weston Connoisseur Fries Rustic Skin On",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1340,7 +1340,7 @@
   },
   {
     "id": "rw-fz-753141",
-    "sku": "753141",
+    "sku": "RW-753141",
     "name": "Lamb Weston Original Seasoned Twisters Skin-On",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-fz-753140",
-    "sku": "753140",
+    "sku": "RW-753140",
     "name": "Lamb Weston Original Seasoned Twisters Skin-On",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1366,7 +1366,7 @@
   },
   {
     "id": "rw-fz-752061",
-    "sku": "752061",
+    "sku": "RW-752061",
     "name": "Lamb Weston Seasoned Twister",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1379,7 +1379,7 @@
   },
   {
     "id": "rw-fz-752041",
-    "sku": "752041",
+    "sku": "RW-752041",
     "name": "Lamb Weston Seasoned Wedges Skin On",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1392,7 +1392,7 @@
   },
   {
     "id": "rw-fz-752040",
-    "sku": "752040",
+    "sku": "RW-752040",
     "name": "Lamb Weston Seasoned Wedges Skin On",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "rw-fz-857241",
-    "sku": "857241",
+    "sku": "RW-857241",
     "name": "Lamb Weston Stealth 9x9 Fries",
     "packSize": "2.25kg",
     "categorySlug": "frozen-chips",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": "rw-fz-857240",
-    "sku": "857240",
+    "sku": "RW-857240",
     "name": "Lamb Weston Stealth 9x9 Fries",
     "packSize": "4x2.25kg",
     "categorySlug": "frozen-chips",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "rw-fz-752860",
-    "sku": "752860",
+    "sku": "RW-752860",
     "name": "Lamb Weston Stealth 9x9 Fries Skin On",
     "packSize": "4x2.25kg",
     "categorySlug": "frozen-chips",
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "rw-fz-884581",
-    "sku": "884581",
+    "sku": "RW-884581",
     "name": "Lamb Weston Stealth Fries 6x6",
     "packSize": "2.25kg",
     "categorySlug": "frozen-chips",
@@ -1457,7 +1457,7 @@
   },
   {
     "id": "rw-fz-884580",
-    "sku": "884580",
+    "sku": "RW-884580",
     "name": "Lamb Weston Stealth Fries 6x6",
     "packSize": "4x2.25kg",
     "categorySlug": "frozen-chips",
@@ -1470,7 +1470,7 @@
   },
   {
     "id": "rw-fz-884591",
-    "sku": "884591",
+    "sku": "RW-884591",
     "name": "Lamb Weston Stealth Skin On Fries",
     "packSize": "2.25kg",
     "categorySlug": "frozen-chips",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "rw-fz-884590",
-    "sku": "884590",
+    "sku": "RW-884590",
     "name": "Lamb Weston Stealth Skin On Fries",
     "packSize": "4x2.25kg",
     "categorySlug": "frozen-chips",
@@ -1496,7 +1496,7 @@
   },
   {
     "id": "rw-fz-752091",
-    "sku": "752091",
+    "sku": "RW-752091",
     "name": "Lamb Weston Sweet Potato Fries",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1509,7 +1509,7 @@
   },
   {
     "id": "rw-fz-751201",
-    "sku": "751201",
+    "sku": "RW-751201",
     "name": "Lamb Weston The Dukes of Chippingdom Skin-Off Fries (16x18mm)",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-fz-751200",
-    "sku": "751200",
+    "sku": "RW-751200",
     "name": "Lamb Weston The Dukes of Chippingdom Skin-Off Fries (16x18mm)",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1535,7 +1535,7 @@
   },
   {
     "id": "rw-fz-751360",
-    "sku": "751360",
+    "sku": "RW-751360",
     "name": "LW Stealth 11x11 Fries Skin On",
     "packSize": "2.25kg",
     "categorySlug": "frozen-chips",
@@ -1548,7 +1548,7 @@
   },
   {
     "id": "rw-fz-751361",
-    "sku": "751361",
+    "sku": "RW-751361",
     "name": "LW Stealth 11x11 Fries Skin On",
     "packSize": "2.25kg",
     "categorySlug": "frozen-chips",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "rw-fz-712170",
-    "sku": "712170",
+    "sku": "RW-712170",
     "name": "Marco Pierre White Retro 6mm Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "rw-fz-712180",
-    "sku": "712180",
+    "sku": "RW-712180",
     "name": "Marco Pierre White Retro Skin-On Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1587,7 +1587,7 @@
   },
   {
     "id": "rw-fz-712190",
-    "sku": "712190",
+    "sku": "RW-712190",
     "name": "Marco Pierre White Retro12mm Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1600,7 +1600,7 @@
   },
   {
     "id": "rw-fz-712201",
-    "sku": "712201",
+    "sku": "RW-712201",
     "name": "MPW 9mm Skin-Off Fries",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1613,7 +1613,7 @@
   },
   {
     "id": "rw-fz-712200",
-    "sku": "712200",
+    "sku": "RW-712200",
     "name": "MPW 9mm Skin-Off Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": "rw-fz-753200",
-    "sku": "753200",
+    "sku": "RW-753200",
     "name": "Signature By Country Range Chef Chunky Fries (19mm)",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1639,7 +1639,7 @@
   },
   {
     "id": "rw-fz-753180",
-    "sku": "753180",
+    "sku": "RW-753180",
     "name": "Signature by Country Range Double Crunch Fries 14mm",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1652,7 +1652,7 @@
   },
   {
     "id": "rw-fz-753161",
-    "sku": "753161",
+    "sku": "RW-753161",
     "name": "Signature by Country Range Double Crunch Fries Skin On 10mm",
     "packSize": "1x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "rw-fz-753160",
-    "sku": "753160",
+    "sku": "RW-753160",
     "name": "Signature by Country Range Double Crunch Fries Skin On 10mm",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-fz-753171",
-    "sku": "753171",
+    "sku": "RW-753171",
     "name": "Signature by Country Range Double Crunch Seasoned Potato Wedges",
     "packSize": "1x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "rw-fz-753170",
-    "sku": "753170",
+    "sku": "RW-753170",
     "name": "Signature by Country Range Double Crunch Seasoned Potato Wedges",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "rw-fz-864130",
-    "sku": "864130",
+    "sku": "RW-864130",
     "name": "Signature by Country Range Double Crunch Shoestring Fries 7mm",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "rw-fz-736181",
-    "sku": "736181",
+    "sku": "RW-736181",
     "name": "Signature by Country Range Double Crunch Sweet Potato Fries",
     "packSize": "1x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "rw-fz-736180",
-    "sku": "736180",
+    "sku": "RW-736180",
     "name": "Signature by Country Range Double Crunch Sweet Potato Fries",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1743,7 +1743,7 @@
   },
   {
     "id": "rw-fz-756361",
-    "sku": "756361",
+    "sku": "RW-756361",
     "name": "Signature by Country Range Potato Sidewinders®",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "rw-fz-756360",
-    "sku": "756360",
+    "sku": "RW-756360",
     "name": "Signature by Country Range Potato Sidewinders®",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1769,7 +1769,7 @@
   },
   {
     "id": "rw-fz-753190",
-    "sku": "753190",
+    "sku": "RW-753190",
     "name": "Signature by Country Range Triple Cooked Chunky Fries (19mm)",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1782,7 +1782,7 @@
   },
   {
     "id": "rw-fz-801161",
-    "sku": "801161",
+    "sku": "RW-801161",
     "name": "Surecrisp Gourmet",
     "packSize": "1x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "rw-fz-801160",
-    "sku": "801160",
+    "sku": "RW-801160",
     "name": "Surecrisp Gourmet",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "rw-fz-801151",
-    "sku": "801151",
+    "sku": "RW-801151",
     "name": "Surecrisp Skin-Off Thin Cut- 1x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "rw-fz-801150",
-    "sku": "801150",
+    "sku": "RW-801150",
     "name": "Surecrisp Skin-Off Thin Cut- 4x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1834,7 +1834,7 @@
   },
   {
     "id": "rw-fz-801141",
-    "sku": "801141",
+    "sku": "RW-801141",
     "name": "Surecrisp Skin-On Julienne- 1x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-fz-801140",
-    "sku": "801140",
+    "sku": "RW-801140",
     "name": "Surecrisp Skin-On Julienne- 4x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "rw-fz-801131",
-    "sku": "801131",
+    "sku": "RW-801131",
     "name": "Surecrisp Skin-On Medium Cut- 2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1873,7 +1873,7 @@
   },
   {
     "id": "rw-fz-801130",
-    "sku": "801130",
+    "sku": "RW-801130",
     "name": "Surecrisp Skin-On Medium Cut- 4x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1886,7 +1886,7 @@
   },
   {
     "id": "rw-fz-801121",
-    "sku": "801121",
+    "sku": "RW-801121",
     "name": "Surecrisp Skin-On Thin Cut- 2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1899,7 +1899,7 @@
   },
   {
     "id": "rw-fz-801120",
-    "sku": "801120",
+    "sku": "RW-801120",
     "name": "Surecrisp Skin-On Thin Cut- 4x2.27kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": "rw-fz-801111",
-    "sku": "801111",
+    "sku": "RW-801111",
     "name": "Surecrisp Traditional",
     "packSize": "2.27kg",
     "categorySlug": "frozen-chips",
@@ -1925,7 +1925,7 @@
   },
   {
     "id": "rw-fz-801110",
-    "sku": "801110",
+    "sku": "RW-801110",
     "name": "Surecrisp Traditional",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -1938,7 +1938,7 @@
   },
   {
     "id": "rw-fz-752711",
-    "sku": "752711",
+    "sku": "RW-752711",
     "name": "Aviko Rostiko Triangle Hash Brown",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "rw-fz-752710",
-    "sku": "752710",
+    "sku": "RW-752710",
     "name": "Aviko Rostiko Triangle Hash Brown",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "rw-fz-751221",
-    "sku": "751221",
+    "sku": "RW-751221",
     "name": "Country Range Hash Browns",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "rw-fz-751220",
-    "sku": "751220",
+    "sku": "RW-751220",
     "name": "Country Range Hash Browns",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "rw-fz-752821",
-    "sku": "752821",
+    "sku": "RW-752821",
     "name": "Lamb Weston Hash Brown Triangles",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "rw-fz-753151",
-    "sku": "753151",
+    "sku": "RW-753151",
     "name": "Lamb Weston Hash Brown Triangles",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-fz-753150",
-    "sku": "753150",
+    "sku": "RW-753150",
     "name": "Lamb Weston Hash Brown Triangles",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": "rw-fz-712240",
-    "sku": "712240",
+    "sku": "RW-712240",
     "name": "MPW 52g Breakfast Hash Brown Triangles",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2042,7 +2042,7 @@
   },
   {
     "id": "rw-fz-859850",
-    "sku": "859850",
+    "sku": "RW-859850",
     "name": "Bannisters Farm Baked Potato Skins",
     "packSize": "4x35",
     "categorySlug": "frozen-chips",
@@ -2055,7 +2055,7 @@
   },
   {
     "id": "rw-fz-777080",
-    "sku": "777080",
+    "sku": "RW-777080",
     "name": "Bannisters Yorkshire Family Farm Baby Hasselback Potatoes",
     "packSize": "2x2.1kg",
     "categorySlug": "frozen-chips",
@@ -2068,7 +2068,7 @@
   },
   {
     "id": "rw-fz-752461",
-    "sku": "752461",
+    "sku": "RW-752461",
     "name": "Country Range Mashed Potato",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "rw-fz-752460",
-    "sku": "752460",
+    "sku": "RW-752460",
     "name": "Country Range Mashed Potato",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2094,7 +2094,7 @@
   },
   {
     "id": "rw-fz-721771",
-    "sku": "721771",
+    "sku": "RW-721771",
     "name": "Country Range Roast Potatoes",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "rw-fz-721770",
-    "sku": "721770",
+    "sku": "RW-721770",
     "name": "Country Range Roast Potatoes",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2120,7 +2120,7 @@
   },
   {
     "id": "rw-fz-801190",
-    "sku": "801190",
+    "sku": "RW-801190",
     "name": "Extra Large Ready Baked Jacket Potatoes",
     "packSize": "3x10",
     "categorySlug": "frozen-chips",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "rw-fz-752281",
-    "sku": "752281",
+    "sku": "RW-752281",
     "name": "Frozen Mash Potato",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "rw-fz-752280",
-    "sku": "752280",
+    "sku": "RW-752280",
     "name": "Frozen Mash Potato",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2159,7 +2159,7 @@
   },
   {
     "id": "rw-fz-752300",
-    "sku": "752300",
+    "sku": "RW-752300",
     "name": "Jacket Potato Baked",
     "packSize": "4x10x 200-225g approx (baked)",
     "categorySlug": "frozen-chips",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-fz-752440",
-    "sku": "752440",
+    "sku": "RW-752440",
     "name": "Lamb Weston Homestyle Mash",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "rw-fz-752811",
-    "sku": "752811",
+    "sku": "RW-752811",
     "name": "Lamb Weston Seasoned Crispy Cubes",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -2198,7 +2198,7 @@
   },
   {
     "id": "rw-fz-752810",
-    "sku": "752810",
+    "sku": "RW-752810",
     "name": "Lamb Weston Seasoned Crispy Cubes",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "rw-fz-752320",
-    "sku": "752320",
+    "sku": "RW-752320",
     "name": "Large Jacket Potato",
     "packSize": "1x35x225-280g",
     "categorySlug": "frozen-chips",
@@ -2224,7 +2224,7 @@
   },
   {
     "id": "rw-fz-752201",
-    "sku": "752201",
+    "sku": "RW-752201",
     "name": "McCain Chef's Solutions Simply Diced Potato",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -2237,7 +2237,7 @@
   },
   {
     "id": "rw-fz-712851",
-    "sku": "712851",
+    "sku": "RW-712851",
     "name": "MPW Gratin Potatoes",
     "packSize": "2.27kg",
     "categorySlug": "frozen-chips",
@@ -2250,7 +2250,7 @@
   },
   {
     "id": "rw-fz-712850",
-    "sku": "712850",
+    "sku": "RW-712850",
     "name": "MPW Gratin Potatoes",
     "packSize": "4x2.27kg",
     "categorySlug": "frozen-chips",
@@ -2263,7 +2263,7 @@
   },
   {
     "id": "rw-fz-751071",
-    "sku": "751071",
+    "sku": "RW-751071",
     "name": "Mydibel Mash Potato",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "rw-fz-751070",
-    "sku": "751070",
+    "sku": "RW-751070",
     "name": "Mydibel Mash Potato",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "rw-fz-756681",
-    "sku": "756681",
+    "sku": "RW-756681",
     "name": "Signature by Country Range Mashed Potatoes with Butter- 1x2.27kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -2302,7 +2302,7 @@
   },
   {
     "id": "rw-fz-756680",
-    "sku": "756680",
+    "sku": "RW-756680",
     "name": "Signature by Country Range Mashed Potatoes with Butter- 4x2.27kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -2315,7 +2315,7 @@
   },
   {
     "id": "rw-fz-721760",
-    "sku": "721760",
+    "sku": "RW-721760",
     "name": "Signature by Country Range Potato Dauphinoise",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -2328,7 +2328,7 @@
   },
   {
     "id": "rw-fz-721761",
-    "sku": "721761",
+    "sku": "RW-721761",
     "name": "Signature by Country Range Potato Dauphinoise",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-fz-721781",
-    "sku": "721781",
+    "sku": "RW-721781",
     "name": "Signature by Country Range Roast Potatoes with Duck Fat",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -2354,7 +2354,7 @@
   },
   {
     "id": "rw-fz-721780",
-    "sku": "721780",
+    "sku": "RW-721780",
     "name": "Signature by Country Range Roast Potatoes with Duck Fat",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": "rw-fz-725011",
-    "sku": "725011",
+    "sku": "RW-725011",
     "name": "Aviko Potato Croquettes",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": "rw-fz-725010",
-    "sku": "725010",
+    "sku": "RW-725010",
     "name": "Aviko Potato Croquettes",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2393,7 +2393,7 @@
   },
   {
     "id": "rw-fz-762310",
-    "sku": "762310",
+    "sku": "RW-762310",
     "name": "Country Range Potato Crunchies",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -2406,7 +2406,7 @@
   },
   {
     "id": "rw-fz-752640",
-    "sku": "752640",
+    "sku": "RW-752640",
     "name": "Lamb Weston Potato Puffs",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -2419,7 +2419,7 @@
   },
   {
     "id": "rw-fz-752641",
-    "sku": "752641",
+    "sku": "RW-752641",
     "name": "Lamb Weston Potato Puffs",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "rw-fz-714570",
-    "sku": "714570",
+    "sku": "RW-714570",
     "name": "Jelly Beans Round Doughnut",
     "packSize": "135g",
     "categorySlug": "frozen-chips",
@@ -2445,7 +2445,7 @@
   },
   {
     "id": "rw-fz-835090",
-    "sku": "835090",
+    "sku": "RW-835090",
     "name": "Arctic Sponge Cake Roll Raspberry Ripple 13In",
     "packSize": "3x500g",
     "categorySlug": "frozen-chips",
@@ -2458,7 +2458,7 @@
   },
   {
     "id": "rw-fz-861400",
-    "sku": "861400",
+    "sku": "RW-861400",
     "name": "Assorted Mixed Cupcakes",
     "packSize": "85g",
     "categorySlug": "frozen-chips",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "rw-fz-712350",
-    "sku": "712350",
+    "sku": "RW-712350",
     "name": "Belgian Apple Ring Cake",
     "packSize": "825g",
     "categorySlug": "frozen-chips",
@@ -2484,7 +2484,7 @@
   },
   {
     "id": "rw-fz-799400",
-    "sku": "799400",
+    "sku": "RW-799400",
     "name": "Blackberry & Mascarpone Cake",
     "packSize": "14ptn",
     "categorySlug": "frozen-chips",
@@ -2497,7 +2497,7 @@
   },
   {
     "id": "rw-fz-875570",
-    "sku": "875570",
+    "sku": "RW-875570",
     "name": "Buttermilk Pancakes",
     "packSize": "120x32g",
     "categorySlug": "frozen-chips",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-fz-811340",
-    "sku": "811340",
+    "sku": "RW-811340",
     "name": "Cakesmiths Maple Pecan Pie Bar",
     "packSize": "14ptn",
     "categorySlug": "frozen-chips",
@@ -2523,7 +2523,7 @@
   },
   {
     "id": "rw-fz-842500",
-    "sku": "842500",
+    "sku": "RW-842500",
     "name": "Catering Essentials Frozen Chocolate Fudge Cake",
     "packSize": "16ptn",
     "categorySlug": "frozen-chips",
@@ -2536,7 +2536,7 @@
   },
   {
     "id": "rw-fz-793370",
-    "sku": "793370",
+    "sku": "RW-793370",
     "name": "Cheshire Creamery Choc Ice",
     "packSize": "70ml",
     "categorySlug": "frozen-chips",
@@ -2549,7 +2549,7 @@
   },
   {
     "id": "rw-fz-800690",
-    "sku": "800690",
+    "sku": "RW-800690",
     "name": "Chocolate Hazelnut Doughnut",
     "packSize": "24x135g",
     "categorySlug": "frozen-chips",
@@ -2562,7 +2562,7 @@
   },
   {
     "id": "rw-fz-712250",
-    "sku": "712250",
+    "sku": "RW-712250",
     "name": "Classic Macarons",
     "packSize": "12g",
     "categorySlug": "frozen-chips",
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "rw-fz-853500",
-    "sku": "853500",
+    "sku": "RW-853500",
     "name": "Cool Delight Vegetarian Raspberry Mousse Slices Pre-Cut",
     "packSize": "2x35ptn",
     "categorySlug": "frozen-chips",
@@ -2588,7 +2588,7 @@
   },
   {
     "id": "rw-fz-885210",
-    "sku": "885210",
+    "sku": "RW-885210",
     "name": "Country Range Cherry Pie (pre-cut)",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "rw-fz-844260",
-    "sku": "844260",
+    "sku": "RW-844260",
     "name": "Country Range Lemon Meringue Pie Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -2614,7 +2614,7 @@
   },
   {
     "id": "rw-fz-824550",
-    "sku": "824550",
+    "sku": "RW-824550",
     "name": "Country Range Raspberry & Coconut Traycake",
     "packSize": "1x18ptn",
     "categorySlug": "frozen-chips",
@@ -2627,7 +2627,7 @@
   },
   {
     "id": "rw-fz-869740",
-    "sku": "869740",
+    "sku": "RW-869740",
     "name": "Country Range Tiramisu",
     "packSize": "1x16ptn",
     "categorySlug": "frozen-chips",
@@ -2640,7 +2640,7 @@
   },
   {
     "id": "rw-fz-714580",
-    "sku": "714580",
+    "sku": "RW-714580",
     "name": "Drumstick Classic Doughnut",
     "packSize": "135g",
     "categorySlug": "frozen-chips",
@@ -2653,7 +2653,7 @@
   },
   {
     "id": "rw-fz-861380",
-    "sku": "861380",
+    "sku": "RW-861380",
     "name": "Fondant Fancy Mixed Lemon & Strawberry",
     "packSize": "80g",
     "categorySlug": "frozen-chips",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-fz-712890",
-    "sku": "712890",
+    "sku": "RW-712890",
     "name": "Franco's Lemonade Refresher Lolly",
     "packSize": "30x73g",
     "categorySlug": "frozen-chips",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-fz-731080",
-    "sku": "731080",
+    "sku": "RW-731080",
     "name": "Fully Baked Custard Slice",
     "packSize": "24x170g",
     "categorySlug": "frozen-chips",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "rw-fz-722020",
-    "sku": "722020",
+    "sku": "RW-722020",
     "name": "GF Individual Mince Pies",
     "packSize": "12x80g",
     "categorySlug": "frozen-chips",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": "rw-fz-844701",
-    "sku": "844701",
+    "sku": "RW-844701",
     "name": "Gluten Free Strawberry & Cream Cake Slice Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "rw-fz-844700",
-    "sku": "844700",
+    "sku": "RW-844700",
     "name": "Gluten Free Strawberry & Cream Cake Slice Pre-Cut",
     "packSize": "4x12ptn",
     "categorySlug": "frozen-chips",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "rw-fz-714510",
-    "sku": "714510",
+    "sku": "RW-714510",
     "name": "Jammie D Doughnut",
     "packSize": "24x135g",
     "categorySlug": "frozen-chips",
@@ -2744,7 +2744,7 @@
   },
   {
     "id": "rw-fz-790060",
-    "sku": "790060",
+    "sku": "RW-790060",
     "name": "Jammie Dodger Blondie",
     "packSize": "15ptn",
     "categorySlug": "frozen-chips",
@@ -2757,7 +2757,7 @@
   },
   {
     "id": "rw-fz-808020",
-    "sku": "808020",
+    "sku": "RW-808020",
     "name": "Le Truffon",
     "packSize": "16",
     "categorySlug": "frozen-chips",
@@ -2770,7 +2770,7 @@
   },
   {
     "id": "rw-fz-742080",
-    "sku": "742080",
+    "sku": "RW-742080",
     "name": "Little Jude's Fruit Rocket",
     "packSize": "55ml",
     "categorySlug": "frozen-chips",
@@ -2783,7 +2783,7 @@
   },
   {
     "id": "rw-fz-714560",
-    "sku": "714560",
+    "sku": "RW-714560",
     "name": "Parma Violets Ring Doughnut",
     "packSize": "135g",
     "categorySlug": "frozen-chips",
@@ -2796,7 +2796,7 @@
   },
   {
     "id": "rw-fz-801210",
-    "sku": "801210",
+    "sku": "RW-801210",
     "name": "Pip Organic Tropical Ice Lolly",
     "packSize": "40ml",
     "categorySlug": "frozen-chips",
@@ -2809,7 +2809,7 @@
   },
   {
     "id": "rw-fz-800680",
-    "sku": "800680",
+    "sku": "RW-800680",
     "name": "Salted Caramel Biscoff Doughnut",
     "packSize": "24x135g",
     "categorySlug": "frozen-chips",
@@ -2822,7 +2822,7 @@
   },
   {
     "id": "rw-fz-715180",
-    "sku": "715180",
+    "sku": "RW-715180",
     "name": "Santa Face Shortcake Biscuit",
     "packSize": "48x60g",
     "categorySlug": "frozen-chips",
@@ -2835,7 +2835,7 @@
   },
   {
     "id": "rw-fz-788300",
-    "sku": "788300",
+    "sku": "RW-788300",
     "name": "Signature by Country Range Victoria Sponge Cake",
     "packSize": "1x16 Portions",
     "categorySlug": "frozen-chips",
@@ -2848,7 +2848,7 @@
   },
   {
     "id": "rw-fz-765250",
-    "sku": "765250",
+    "sku": "RW-765250",
     "name": "Skeleton Shortcake Biscuit",
     "packSize": "50x57g",
     "categorySlug": "frozen-chips",
@@ -2861,7 +2861,7 @@
   },
   {
     "id": "rw-fz-799500",
-    "sku": "799500",
+    "sku": "RW-799500",
     "name": "Sticky Toffee Pecan Loaf",
     "packSize": "2x11ptn",
     "categorySlug": "frozen-chips",
@@ -2874,7 +2874,7 @@
   },
   {
     "id": "rw-fz-721671",
-    "sku": "721671",
+    "sku": "RW-721671",
     "name": "Strawberry Jam Roly Poly Uncut",
     "packSize": "14ptn",
     "categorySlug": "frozen-chips",
@@ -2887,7 +2887,7 @@
   },
   {
     "id": "rw-fz-721670",
-    "sku": "721670",
+    "sku": "RW-721670",
     "name": "Strawberry Jam Roly Poly Uncut",
     "packSize": "4x14ptn",
     "categorySlug": "frozen-chips",
@@ -2900,7 +2900,7 @@
   },
   {
     "id": "rw-fz-891011",
-    "sku": "891011",
+    "sku": "RW-891011",
     "name": "Unportioned Triple Chocolate Crunch Layered Cake",
     "packSize": "1x650g",
     "categorySlug": "frozen-chips",
@@ -2913,7 +2913,7 @@
   },
   {
     "id": "rw-fz-891010",
-    "sku": "891010",
+    "sku": "RW-891010",
     "name": "Unportioned Triple Chocolate Crunch Layered Cake",
     "packSize": "4x650g",
     "categorySlug": "frozen-chips",
@@ -2926,7 +2926,7 @@
   },
   {
     "id": "rw-fz-801430",
-    "sku": "801430",
+    "sku": "RW-801430",
     "name": "Apfelstrudel",
     "packSize": "125g",
     "categorySlug": "frozen-chips",
@@ -2939,7 +2939,7 @@
   },
   {
     "id": "rw-fz-811341",
-    "sku": "811341",
+    "sku": "RW-811341",
     "name": "Cakesmiths Maple Pecan Pie Bar",
     "packSize": "14ptn",
     "categorySlug": "frozen-chips",
@@ -2952,7 +2952,7 @@
   },
   {
     "id": "rw-fz-710650",
-    "sku": "710650",
+    "sku": "RW-710650",
     "name": "Caramel Apple Granny",
     "packSize": "1x4x14ptn",
     "categorySlug": "frozen-chips",
@@ -2965,7 +2965,7 @@
   },
   {
     "id": "rw-fz-844200",
-    "sku": "844200",
+    "sku": "RW-844200",
     "name": "Carrot Traycake",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -2978,7 +2978,7 @@
   },
   {
     "id": "rw-fz-844201",
-    "sku": "844201",
+    "sku": "RW-844201",
     "name": "Carrot Traycake",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -2991,7 +2991,7 @@
   },
   {
     "id": "rw-fz-712310",
-    "sku": "712310",
+    "sku": "RW-712310",
     "name": "Chocolate Fondant Lava Cake",
     "packSize": "90g",
     "categorySlug": "frozen-chips",
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "rw-fz-844490",
-    "sku": "844490",
+    "sku": "RW-844490",
     "name": "Chocolatey Fudge Traycake",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -3017,7 +3017,7 @@
   },
   {
     "id": "rw-fz-844491",
-    "sku": "844491",
+    "sku": "RW-844491",
     "name": "Chocolatey Fudge Traycake",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -3030,7 +3030,7 @@
   },
   {
     "id": "rw-fz-842491",
-    "sku": "842491",
+    "sku": "RW-842491",
     "name": "Mademoiselle Spotted Dick Whole Sponge Cake Uncut",
     "packSize": "14ptn",
     "categorySlug": "frozen-chips",
@@ -3043,7 +3043,7 @@
   },
   {
     "id": "rw-fz-842490",
-    "sku": "842490",
+    "sku": "RW-842490",
     "name": "Mademoiselle Spotted Dick Whole Sponge Cake Uncut",
     "packSize": "4x14ptn",
     "categorySlug": "frozen-chips",
@@ -3056,7 +3056,7 @@
   },
   {
     "id": "rw-fz-816110",
-    "sku": "816110",
+    "sku": "RW-816110",
     "name": "Country Range Frozen Puff Pastry Block",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -3069,7 +3069,7 @@
   },
   {
     "id": "rw-fz-816120",
-    "sku": "816120",
+    "sku": "RW-816120",
     "name": "Country Range Frozen Shortcrust Pastry Block",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -3082,7 +3082,7 @@
   },
   {
     "id": "rw-fz-816070",
-    "sku": "816070",
+    "sku": "RW-816070",
     "name": "Jus-Rol 6in Puff Pastry Rounds",
     "packSize": "96x54g",
     "categorySlug": "frozen-chips",
@@ -3095,7 +3095,7 @@
   },
   {
     "id": "rw-fz-816080",
-    "sku": "816080",
+    "sku": "RW-816080",
     "name": "Jus-Rol Filo Pastry 8x500g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -3108,7 +3108,7 @@
   },
   {
     "id": "rw-fz-816150",
-    "sku": "816150",
+    "sku": "RW-816150",
     "name": "Jus-Rol Puff Pastry 4x1.5kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -3121,7 +3121,7 @@
   },
   {
     "id": "rw-fz-816160",
-    "sku": "816160",
+    "sku": "RW-816160",
     "name": "Jus-Rol Puff Pastry Sheets",
     "packSize": "12x625g",
     "categorySlug": "frozen-chips",
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "rw-fz-816100",
-    "sku": "816100",
+    "sku": "RW-816100",
     "name": "Jus-Rol Puff Pastry Squares 5In",
     "packSize": "96x55g",
     "categorySlug": "frozen-chips",
@@ -3147,7 +3147,7 @@
   },
   {
     "id": "rw-fz-816170",
-    "sku": "816170",
+    "sku": "RW-816170",
     "name": "Jus-Rol Puff Pie Ovals 7.5x5.5In",
     "packSize": "40x86g",
     "categorySlug": "frozen-chips",
@@ -3160,7 +3160,7 @@
   },
   {
     "id": "rw-fz-816140",
-    "sku": "816140",
+    "sku": "RW-816140",
     "name": "Jus-Rol Shortcrust Pastry",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -3173,7 +3173,7 @@
   },
   {
     "id": "rw-fz-722750",
-    "sku": "722750",
+    "sku": "RW-722750",
     "name": "Mini Vegan Croissant",
     "packSize": "1x195x30g",
     "categorySlug": "frozen-chips",
@@ -3186,7 +3186,7 @@
   },
   {
     "id": "rw-fz-722040",
-    "sku": "722040",
+    "sku": "RW-722040",
     "name": "Mini Vegan Pain Au Chocolate",
     "packSize": "1x240x32g",
     "categorySlug": "frozen-chips",
@@ -3199,7 +3199,7 @@
   },
   {
     "id": "rw-fz-819980",
-    "sku": "819980",
+    "sku": "RW-819980",
     "name": "Proper Cornish 6'' Vegan Roll- 1x50x132g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -3212,7 +3212,7 @@
   },
   {
     "id": "rw-fz-808160",
-    "sku": "808160",
+    "sku": "RW-808160",
     "name": "Schar Gluten Free Croissant a la Francaise",
     "packSize": "6x220g",
     "categorySlug": "frozen-chips",
@@ -3225,7 +3225,7 @@
   },
   {
     "id": "rw-fz-785010",
-    "sku": "785010",
+    "sku": "RW-785010",
     "name": "Sweet Apple & Cinnamon Pasty -60x142g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -3238,7 +3238,7 @@
   },
   {
     "id": "rw-fz-737410",
-    "sku": "737410",
+    "sku": "RW-737410",
     "name": "Young's Flipper Dippers",
     "packSize": "10x950g",
     "categorySlug": "frozen-chips",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": "rw-fz-787920",
-    "sku": "787920",
+    "sku": "RW-787920",
     "name": "Arctic Royal IQF Boneless Skin On Plaice Fillets (140-170g)",
     "packSize": "4.54kg",
     "categorySlug": "frozen-chips",
@@ -3264,7 +3264,7 @@
   },
   {
     "id": "rw-fz-738680",
-    "sku": "738680",
+    "sku": "RW-738680",
     "name": "Arctic Royal MSC Kipper Fillets",
     "packSize": "13x200-260g net",
     "categorySlug": "frozen-chips",
@@ -3277,7 +3277,7 @@
   },
   {
     "id": "rw-fz-736270",
-    "sku": "736270",
+    "sku": "RW-736270",
     "name": "MSC Skinless and Boneless Hake Fillets",
     "packSize": "4.54kg",
     "categorySlug": "frozen-chips",
@@ -3290,7 +3290,7 @@
   },
   {
     "id": "rw-fz-807850",
-    "sku": "807850",
+    "sku": "RW-807850",
     "name": "Red Argentinian Shrimp in Panko Crumb",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3303,7 +3303,7 @@
   },
   {
     "id": "rw-fz-840431",
-    "sku": "840431",
+    "sku": "RW-840431",
     "name": "Country Range Frozen Fruit Summer Mix",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3316,7 +3316,7 @@
   },
   {
     "id": "rw-fz-840430",
-    "sku": "840430",
+    "sku": "RW-840430",
     "name": "Country Range Frozen Fruit Summer Mix",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3329,7 +3329,7 @@
   },
   {
     "id": "rw-fz-849031",
-    "sku": "849031",
+    "sku": "RW-849031",
     "name": "Country Range Frozen Raspberries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3342,7 +3342,7 @@
   },
   {
     "id": "rw-fz-849030",
-    "sku": "849030",
+    "sku": "RW-849030",
     "name": "Country Range Frozen Raspberries",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -3355,7 +3355,7 @@
   },
   {
     "id": "rw-fz-840371",
-    "sku": "840371",
+    "sku": "RW-840371",
     "name": "Country Range Frozen Whole Strawberries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3368,7 +3368,7 @@
   },
   {
     "id": "rw-fz-840370",
-    "sku": "840370",
+    "sku": "RW-840370",
     "name": "Country Range Frozen Whole Strawberries",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3381,7 +3381,7 @@
   },
   {
     "id": "rw-fz-840421",
-    "sku": "840421",
+    "sku": "RW-840421",
     "name": "Frozen Apple Slices",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3394,7 +3394,7 @@
   },
   {
     "id": "rw-fz-840420",
-    "sku": "840420",
+    "sku": "RW-840420",
     "name": "Frozen Apple Slices",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3407,7 +3407,7 @@
   },
   {
     "id": "rw-fz-840221",
-    "sku": "840221",
+    "sku": "RW-840221",
     "name": "Frozen Blackberries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3420,7 +3420,7 @@
   },
   {
     "id": "rw-fz-840220",
-    "sku": "840220",
+    "sku": "RW-840220",
     "name": "Frozen Blackberries",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3433,7 +3433,7 @@
   },
   {
     "id": "rw-fz-840181",
-    "sku": "840181",
+    "sku": "RW-840181",
     "name": "Frozen Blackcurrants",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3446,7 +3446,7 @@
   },
   {
     "id": "rw-fz-840180",
-    "sku": "840180",
+    "sku": "RW-840180",
     "name": "Frozen Blackcurrants",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3459,7 +3459,7 @@
   },
   {
     "id": "rw-fz-840231",
-    "sku": "840231",
+    "sku": "RW-840231",
     "name": "Frozen Blueberries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3472,7 +3472,7 @@
   },
   {
     "id": "rw-fz-840230",
-    "sku": "840230",
+    "sku": "RW-840230",
     "name": "Frozen Blueberries",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3485,7 +3485,7 @@
   },
   {
     "id": "rw-fz-840381",
-    "sku": "840381",
+    "sku": "RW-840381",
     "name": "Frozen Cranberries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3498,7 +3498,7 @@
   },
   {
     "id": "rw-fz-840331",
-    "sku": "840331",
+    "sku": "RW-840331",
     "name": "Frozen Mango Pieces (20x20mm Pieces)",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -3511,7 +3511,7 @@
   },
   {
     "id": "rw-fz-840330",
-    "sku": "840330",
+    "sku": "RW-840330",
     "name": "Frozen Mango Pieces (20x20mm Pieces)",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -3524,7 +3524,7 @@
   },
   {
     "id": "rw-fz-849081",
-    "sku": "849081",
+    "sku": "RW-849081",
     "name": "Fruits Of The Forest",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -3537,7 +3537,7 @@
   },
   {
     "id": "rw-fz-849080",
-    "sku": "849080",
+    "sku": "RW-849080",
     "name": "Fruits Of The Forest",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -3550,7 +3550,7 @@
   },
   {
     "id": "rw-fz-840380",
-    "sku": "840380",
+    "sku": "RW-840380",
     "name": "Greens Frozen Cranberries",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -3563,7 +3563,7 @@
   },
   {
     "id": "rw-fz-843980",
-    "sku": "843980",
+    "sku": "RW-843980",
     "name": "Love Struck Avo Go-Go Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3576,7 +3576,7 @@
   },
   {
     "id": "rw-fz-843910",
-    "sku": "843910",
+    "sku": "RW-843910",
     "name": "Love Struck Berry Go Round Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3589,7 +3589,7 @@
   },
   {
     "id": "rw-fz-843930",
-    "sku": "843930",
+    "sku": "RW-843930",
     "name": "Love Struck Big 5 Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3602,7 +3602,7 @@
   },
   {
     "id": "rw-fz-843820",
-    "sku": "843820",
+    "sku": "RW-843820",
     "name": "Love Struck Blueberry Thrill Smoothie Pouches",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3615,7 +3615,7 @@
   },
   {
     "id": "rw-fz-843940",
-    "sku": "843940",
+    "sku": "RW-843940",
     "name": "Love Struck Coco Loco Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3628,7 +3628,7 @@
   },
   {
     "id": "rw-fz-843810",
-    "sku": "843810",
+    "sku": "RW-843810",
     "name": "Love Struck Kale Kick Smoothie Pouches",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3641,7 +3641,7 @@
   },
   {
     "id": "rw-fz-838340",
-    "sku": "838340",
+    "sku": "RW-838340",
     "name": "Love Struck Livin La Vida Cocoa Milkshake (sachet)",
     "packSize": "25x160g",
     "categorySlug": "frozen-chips",
@@ -3654,7 +3654,7 @@
   },
   {
     "id": "rw-fz-843950",
-    "sku": "843950",
+    "sku": "RW-843950",
     "name": "Love Struck Spinach To Win It Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3667,7 +3667,7 @@
   },
   {
     "id": "rw-fz-838330",
-    "sku": "838330",
+    "sku": "RW-838330",
     "name": "Love Struck Strawberry Glory Milkshake (sachet)",
     "packSize": "25x160g",
     "categorySlug": "frozen-chips",
@@ -3680,7 +3680,7 @@
   },
   {
     "id": "rw-fz-843920",
-    "sku": "843920",
+    "sku": "RW-843920",
     "name": "Love Struck Strawberry Split Smoothie",
     "packSize": "30x140g",
     "categorySlug": "frozen-chips",
@@ -3693,7 +3693,7 @@
   },
   {
     "id": "rw-fz-712340",
-    "sku": "712340",
+    "sku": "RW-712340",
     "name": "Pineapple",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3706,7 +3706,7 @@
   },
   {
     "id": "rw-fz-712341",
-    "sku": "712341",
+    "sku": "RW-712341",
     "name": "Pineapple",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3719,7 +3719,7 @@
   },
   {
     "id": "rw-fz-712361",
-    "sku": "712361",
+    "sku": "RW-712361",
     "name": "Sour Cherries",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -3732,7 +3732,7 @@
   },
   {
     "id": "rw-fz-712360",
-    "sku": "712360",
+    "sku": "RW-712360",
     "name": "Sour Cherries -5x1kg V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -3745,7 +3745,7 @@
   },
   {
     "id": "rw-fz-838360",
-    "sku": "838360",
+    "sku": "RW-838360",
     "name": "Va Va Vanilla Milkshake",
     "packSize": "160g",
     "categorySlug": "frozen-chips",
@@ -3758,7 +3758,7 @@
   },
   {
     "id": "rw-fz-840411",
-    "sku": "840411",
+    "sku": "RW-840411",
     "name": "Green's Cuisin' Easy Bella Ciao Tomato, Mozzarella & Pesto Salad",
     "packSize": "1.25kg",
     "categorySlug": "frozen-chips",
@@ -3771,7 +3771,7 @@
   },
   {
     "id": "rw-fz-840410",
-    "sku": "840410",
+    "sku": "RW-840410",
     "name": "Green's Cuisin' Easy Bella Ciao Tomato, Mozzarella & Pesto Salad",
     "packSize": "4x1.25kg",
     "categorySlug": "frozen-chips",
@@ -3784,7 +3784,7 @@
   },
   {
     "id": "rw-fz-850241",
-    "sku": "850241",
+    "sku": "RW-850241",
     "name": "Green's Cuisin' Easy Green Valley",
     "packSize": "1x1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3797,7 +3797,7 @@
   },
   {
     "id": "rw-fz-850240",
-    "sku": "850240",
+    "sku": "RW-850240",
     "name": "Green's Cuisin' Easy Green Valley",
     "packSize": "4x1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3810,7 +3810,7 @@
   },
   {
     "id": "rw-fz-850091",
-    "sku": "850091",
+    "sku": "RW-850091",
     "name": "Green's Cuisin' Easy Indian Summer Salad",
     "packSize": "1x1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3823,7 +3823,7 @@
   },
   {
     "id": "rw-fz-850090",
-    "sku": "850090",
+    "sku": "RW-850090",
     "name": "Green's Cuisin' Easy Indian Summer Salad",
     "packSize": "4x1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3836,7 +3836,7 @@
   },
   {
     "id": "rw-fz-840201",
-    "sku": "840201",
+    "sku": "RW-840201",
     "name": "Green's Cuisin' Easy Mambonito",
     "packSize": "1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3849,7 +3849,7 @@
   },
   {
     "id": "rw-fz-840200",
-    "sku": "840200",
+    "sku": "RW-840200",
     "name": "Green's Cuisin' Easy Mambonito",
     "packSize": "4x1.25 kg",
     "categorySlug": "frozen-chips",
@@ -3862,7 +3862,7 @@
   },
   {
     "id": "rw-fz-760821",
-    "sku": "760821",
+    "sku": "RW-760821",
     "name": "Green's Cuisin' Easy Spartacus Greek Feta & Olive Rice Salad",
     "packSize": "1.25kg",
     "categorySlug": "frozen-chips",
@@ -3875,7 +3875,7 @@
   },
   {
     "id": "rw-fz-760820",
-    "sku": "760820",
+    "sku": "RW-760820",
     "name": "Green's Cuisin' Easy Spartacus Greek Feta & Olive Rice Salad",
     "packSize": "4x1.25kg",
     "categorySlug": "frozen-chips",
@@ -3888,7 +3888,7 @@
   },
   {
     "id": "rw-fz-760871",
-    "sku": "760871",
+    "sku": "RW-760871",
     "name": "Green's Cuisin' Easy Sultan of Swing Mixed Veg & Pearl Couscous",
     "packSize": "1.25kg",
     "categorySlug": "frozen-chips",
@@ -3901,7 +3901,7 @@
   },
   {
     "id": "rw-fz-760870",
-    "sku": "760870",
+    "sku": "RW-760870",
     "name": "Green's Cuisin' Easy Sultan of Swing Mixed Veg & Pearl Couscous",
     "packSize": "4x1.25kg",
     "categorySlug": "frozen-chips",
@@ -3914,7 +3914,7 @@
   },
   {
     "id": "rw-fz-724100",
-    "sku": "724100",
+    "sku": "RW-724100",
     "name": "Seasoned Avocado Smash",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -3927,7 +3927,7 @@
   },
   {
     "id": "rw-fz-724101",
-    "sku": "724101",
+    "sku": "RW-724101",
     "name": "Seasoned Avocado Smash",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -3940,7 +3940,7 @@
   },
   {
     "id": "rw-fz-795190",
-    "sku": "795190",
+    "sku": "RW-795190",
     "name": "Avocado Dices",
     "packSize": "20x500g",
     "categorySlug": "frozen-chips",
@@ -3953,7 +3953,7 @@
   },
   {
     "id": "rw-fz-795191",
-    "sku": "795191",
+    "sku": "RW-795191",
     "name": "Avocado Dices (frozen)",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -3966,7 +3966,7 @@
   },
   {
     "id": "rw-fz-795160",
-    "sku": "795160",
+    "sku": "RW-795160",
     "name": "Avogrande Avocado Slices",
     "packSize": "20x500g",
     "categorySlug": "frozen-chips",
@@ -3979,7 +3979,7 @@
   },
   {
     "id": "rw-fz-795161",
-    "sku": "795161",
+    "sku": "RW-795161",
     "name": "Avogrande Avocado Slices",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -3992,7 +3992,7 @@
   },
   {
     "id": "rw-fz-795140",
-    "sku": "795140",
+    "sku": "RW-795140",
     "name": "Avogrande Supreme Mexican Guacamole",
     "packSize": "12x500g",
     "categorySlug": "frozen-chips",
@@ -4005,7 +4005,7 @@
   },
   {
     "id": "rw-fz-795141",
-    "sku": "795141",
+    "sku": "RW-795141",
     "name": "Avogrande Supreme Mexican Guacamole",
     "packSize": "500g",
     "categorySlug": "frozen-chips",
@@ -4018,7 +4018,7 @@
   },
   {
     "id": "rw-fz-712841",
-    "sku": "712841",
+    "sku": "RW-712841",
     "name": "Battered Pre-Fried Frozen Cauliflower",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4031,7 +4031,7 @@
   },
   {
     "id": "rw-fz-712840",
-    "sku": "712840",
+    "sku": "RW-712840",
     "name": "Battered Pre-Fried Frozen Cauliflower",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -4044,7 +4044,7 @@
   },
   {
     "id": "rw-fz-859861",
-    "sku": "859861",
+    "sku": "RW-859861",
     "name": "Carrot & Swede Mash",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4057,7 +4057,7 @@
   },
   {
     "id": "rw-fz-859860",
-    "sku": "859860",
+    "sku": "RW-859860",
     "name": "Carrot & Swede Mash",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4070,7 +4070,7 @@
   },
   {
     "id": "rw-fz-760950",
-    "sku": "760950",
+    "sku": "RW-760950",
     "name": "Catering Essentials Frozen Mixed Vegetables",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4083,7 +4083,7 @@
   },
   {
     "id": "rw-fz-760940",
-    "sku": "760940",
+    "sku": "RW-760940",
     "name": "Catering Essentials Frozen Peas",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4096,7 +4096,7 @@
   },
   {
     "id": "rw-fz-760850",
-    "sku": "760850",
+    "sku": "RW-760850",
     "name": "Country Range Broccoli 40/60",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4109,7 +4109,7 @@
   },
   {
     "id": "rw-fz-760851",
-    "sku": "760851",
+    "sku": "RW-760851",
     "name": "Country Range Broccoli 40/60",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4122,7 +4122,7 @@
   },
   {
     "id": "rw-fz-760910",
-    "sku": "760910",
+    "sku": "RW-760910",
     "name": "Country Range Cauliflower 30/60",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4135,7 +4135,7 @@
   },
   {
     "id": "rw-fz-760911",
-    "sku": "760911",
+    "sku": "RW-760911",
     "name": "Country Range Cauliflower 30/60",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4148,7 +4148,7 @@
   },
   {
     "id": "rw-fz-760561",
-    "sku": "760561",
+    "sku": "RW-760561",
     "name": "Country Range Choice Garden Peas",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4161,7 +4161,7 @@
   },
   {
     "id": "rw-fz-760560",
-    "sku": "760560",
+    "sku": "RW-760560",
     "name": "Country Range Choice Garden Peas",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4174,7 +4174,7 @@
   },
   {
     "id": "rw-fz-760861",
-    "sku": "760861",
+    "sku": "RW-760861",
     "name": "Country Range Frozen Broccoli 40/60",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4187,7 +4187,7 @@
   },
   {
     "id": "rw-fz-760860",
-    "sku": "760860",
+    "sku": "RW-760860",
     "name": "Country Range Frozen Broccoli 40/60",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4200,7 +4200,7 @@
   },
   {
     "id": "rw-fz-760931",
-    "sku": "760931",
+    "sku": "RW-760931",
     "name": "Country Range Frozen Cauliflower 30/60",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4213,7 +4213,7 @@
   },
   {
     "id": "rw-fz-760930",
-    "sku": "760930",
+    "sku": "RW-760930",
     "name": "Country Range Frozen Cauliflower 30/60",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4226,7 +4226,7 @@
   },
   {
     "id": "rw-fz-761780",
-    "sku": "761780",
+    "sku": "RW-761780",
     "name": "Country Range Frozen Diced Swede",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4239,7 +4239,7 @@
   },
   {
     "id": "rw-fz-761781",
-    "sku": "761781",
+    "sku": "RW-761781",
     "name": "Country Range Frozen Diced Swede",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4252,7 +4252,7 @@
   },
   {
     "id": "rw-fz-761240",
-    "sku": "761240",
+    "sku": "RW-761240",
     "name": "Country Range Frozen Mixed Vegetables",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4265,7 +4265,7 @@
   },
   {
     "id": "rw-fz-761241",
-    "sku": "761241",
+    "sku": "RW-761241",
     "name": "Country Range Frozen Mixed Vegetables",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4278,7 +4278,7 @@
   },
   {
     "id": "rw-fz-760550",
-    "sku": "760550",
+    "sku": "RW-760550",
     "name": "Country Range Frozen Peas",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4291,7 +4291,7 @@
   },
   {
     "id": "rw-fz-760551",
-    "sku": "760551",
+    "sku": "RW-760551",
     "name": "Country Range Frozen Peas",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4304,7 +4304,7 @@
   },
   {
     "id": "rw-fz-760650",
-    "sku": "760650",
+    "sku": "RW-760650",
     "name": "Country Range Frozen Sliced Green Beans",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4317,7 +4317,7 @@
   },
   {
     "id": "rw-fz-760651",
-    "sku": "760651",
+    "sku": "RW-760651",
     "name": "Country Range Frozen Sliced Green Beans",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4330,7 +4330,7 @@
   },
   {
     "id": "rw-fz-760661",
-    "sku": "760661",
+    "sku": "RW-760661",
     "name": "Country Range Greens Sliced Green Beans",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4343,7 +4343,7 @@
   },
   {
     "id": "rw-fz-760660",
-    "sku": "760660",
+    "sku": "RW-760660",
     "name": "Country Range Greens Sliced Green Beans",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4356,7 +4356,7 @@
   },
   {
     "id": "rw-fz-761251",
-    "sku": "761251",
+    "sku": "RW-761251",
     "name": "Country Range Mixed Vegetables",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4369,7 +4369,7 @@
   },
   {
     "id": "rw-fz-761250",
-    "sku": "761250",
+    "sku": "RW-761250",
     "name": "Country Range Mixed Vegetables",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4382,7 +4382,7 @@
   },
   {
     "id": "rw-fz-760570",
-    "sku": "760570",
+    "sku": "RW-760570",
     "name": "Country Range Petit Pois",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4395,7 +4395,7 @@
   },
   {
     "id": "rw-fz-760571",
-    "sku": "760571",
+    "sku": "RW-760571",
     "name": "Country Range Petit Pois",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4408,7 +4408,7 @@
   },
   {
     "id": "rw-fz-761170",
-    "sku": "761170",
+    "sku": "RW-761170",
     "name": "Country Range Sweetcorn",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4421,7 +4421,7 @@
   },
   {
     "id": "rw-fz-761171",
-    "sku": "761171",
+    "sku": "RW-761171",
     "name": "Country Range Sweetcorn",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4434,7 +4434,7 @@
   },
   {
     "id": "rw-fz-761181",
-    "sku": "761181",
+    "sku": "RW-761181",
     "name": "Country Range Sweetcorn",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4447,7 +4447,7 @@
   },
   {
     "id": "rw-fz-761180",
-    "sku": "761180",
+    "sku": "RW-761180",
     "name": "Country Range Sweetcorn",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4460,7 +4460,7 @@
   },
   {
     "id": "rw-fz-760690",
-    "sku": "760690",
+    "sku": "RW-760690",
     "name": "Country Range Whole Green Beans",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4473,7 +4473,7 @@
   },
   {
     "id": "rw-fz-760691",
-    "sku": "760691",
+    "sku": "RW-760691",
     "name": "Country Range Whole Green Beans",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4486,7 +4486,7 @@
   },
   {
     "id": "rw-fz-840340",
-    "sku": "840340",
+    "sku": "RW-840340",
     "name": "Darta Honey Glazed Parsnips",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4499,7 +4499,7 @@
   },
   {
     "id": "rw-fz-840341",
-    "sku": "840341",
+    "sku": "RW-840341",
     "name": "Darta Honey Glazed Parsnips",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4512,7 +4512,7 @@
   },
   {
     "id": "rw-fz-760150",
-    "sku": "760150",
+    "sku": "RW-760150",
     "name": "Frozen Asparagus Spears",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4525,7 +4525,7 @@
   },
   {
     "id": "rw-fz-760151",
-    "sku": "760151",
+    "sku": "RW-760151",
     "name": "Frozen Asparagus Spears",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4538,7 +4538,7 @@
   },
   {
     "id": "rw-fz-760970",
-    "sku": "760970",
+    "sku": "RW-760970",
     "name": "Frozen Baby Carrots",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4551,7 +4551,7 @@
   },
   {
     "id": "rw-fz-760971",
-    "sku": "760971",
+    "sku": "RW-760971",
     "name": "Frozen Baby Carrots",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4564,7 +4564,7 @@
   },
   {
     "id": "rw-fz-760070",
-    "sku": "760070",
+    "sku": "RW-760070",
     "name": "Frozen Baby Cob Corn",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4577,7 +4577,7 @@
   },
   {
     "id": "rw-fz-760071",
-    "sku": "760071",
+    "sku": "RW-760071",
     "name": "Frozen Baby Cob Corn",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4590,7 +4590,7 @@
   },
   {
     "id": "rw-fz-761000",
-    "sku": "761000",
+    "sku": "RW-761000",
     "name": "Frozen Baton Carrots",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4603,7 +4603,7 @@
   },
   {
     "id": "rw-fz-761001",
-    "sku": "761001",
+    "sku": "RW-761001",
     "name": "Frozen Baton Carrots",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4616,7 +4616,7 @@
   },
   {
     "id": "rw-fz-760750",
-    "sku": "760750",
+    "sku": "RW-760750",
     "name": "Frozen Broad Beans",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4629,7 +4629,7 @@
   },
   {
     "id": "rw-fz-760751",
-    "sku": "760751",
+    "sku": "RW-760751",
     "name": "Frozen Broad Beans",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4642,7 +4642,7 @@
   },
   {
     "id": "rw-fz-760840",
-    "sku": "760840",
+    "sku": "RW-760840",
     "name": "Frozen Broccoli & Cauliflower Florets",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4655,7 +4655,7 @@
   },
   {
     "id": "rw-fz-760841",
-    "sku": "760841",
+    "sku": "RW-760841",
     "name": "Frozen Broccoli & Cauliflower Florets",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4668,7 +4668,7 @@
   },
   {
     "id": "rw-fz-760810",
-    "sku": "760810",
+    "sku": "RW-760810",
     "name": "Frozen Button Sprouts",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4681,7 +4681,7 @@
   },
   {
     "id": "rw-fz-760811",
-    "sku": "760811",
+    "sku": "RW-760811",
     "name": "Frozen Button Sprouts",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4694,7 +4694,7 @@
   },
   {
     "id": "rw-fz-760801",
-    "sku": "760801",
+    "sku": "RW-760801",
     "name": "Frozen Button Sprouts",
     "packSize": "2.5kg",
     "categorySlug": "frozen-chips",
@@ -4707,7 +4707,7 @@
   },
   {
     "id": "rw-fz-760061",
-    "sku": "760061",
+    "sku": "RW-760061",
     "name": "Frozen Corn On The Cob",
     "packSize": "1x2",
     "categorySlug": "frozen-chips",
@@ -4720,7 +4720,7 @@
   },
   {
     "id": "rw-fz-761010",
-    "sku": "761010",
+    "sku": "RW-761010",
     "name": "Frozen Diced Carrots",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4733,7 +4733,7 @@
   },
   {
     "id": "rw-fz-761011",
-    "sku": "761011",
+    "sku": "RW-761011",
     "name": "Frozen Diced Carrots",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4746,7 +4746,7 @@
   },
   {
     "id": "rw-fz-761530",
-    "sku": "761530",
+    "sku": "RW-761530",
     "name": "Frozen Diced Mixed Peppers",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4759,7 +4759,7 @@
   },
   {
     "id": "rw-fz-761531",
-    "sku": "761531",
+    "sku": "RW-761531",
     "name": "Frozen Diced Mixed Peppers",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4772,7 +4772,7 @@
   },
   {
     "id": "rw-fz-761320",
-    "sku": "761320",
+    "sku": "RW-761320",
     "name": "Frozen Diced Onions",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4785,7 +4785,7 @@
   },
   {
     "id": "rw-fz-761321",
-    "sku": "761321",
+    "sku": "RW-761321",
     "name": "Frozen Diced Onions",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4798,7 +4798,7 @@
   },
   {
     "id": "rw-fz-760760",
-    "sku": "760760",
+    "sku": "RW-760760",
     "name": "Frozen Edamame Soya Beans",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4811,7 +4811,7 @@
   },
   {
     "id": "rw-fz-760761",
-    "sku": "760761",
+    "sku": "RW-760761",
     "name": "Frozen Edamame Soya Beans",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4824,7 +4824,7 @@
   },
   {
     "id": "rw-fz-761710",
-    "sku": "761710",
+    "sku": "RW-761710",
     "name": "Frozen Farmhouse Vegetable Mix",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4837,7 +4837,7 @@
   },
   {
     "id": "rw-fz-761711",
-    "sku": "761711",
+    "sku": "RW-761711",
     "name": "Frozen Farmhouse Vegetable Mix",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -4850,7 +4850,7 @@
   },
   {
     "id": "rw-fz-761071",
-    "sku": "761071",
+    "sku": "RW-761071",
     "name": "Frozen Green Cabbage",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4863,7 +4863,7 @@
   },
   {
     "id": "rw-fz-761070",
-    "sku": "761070",
+    "sku": "RW-761070",
     "name": "Frozen Green Cabbage",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -4876,7 +4876,7 @@
   },
   {
     "id": "rw-fz-760080",
-    "sku": "760080",
+    "sku": "RW-760080",
     "name": "Frozen Half Corn Cobs",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4889,7 +4889,7 @@
   },
   {
     "id": "rw-fz-760081",
-    "sku": "760081",
+    "sku": "RW-760081",
     "name": "Frozen Half Corn Cobs",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4902,7 +4902,7 @@
   },
   {
     "id": "rw-fz-760790",
-    "sku": "760790",
+    "sku": "RW-760790",
     "name": "Frozen Medium Sprouts",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4915,7 +4915,7 @@
   },
   {
     "id": "rw-fz-760791",
-    "sku": "760791",
+    "sku": "RW-760791",
     "name": "Frozen Medium Sprouts",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4928,7 +4928,7 @@
   },
   {
     "id": "rw-fz-761720",
-    "sku": "761720",
+    "sku": "RW-761720",
     "name": "Frozen Oriental Stir Fry",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4941,7 +4941,7 @@
   },
   {
     "id": "rw-fz-761721",
-    "sku": "761721",
+    "sku": "RW-761721",
     "name": "Frozen Oriental Stir Fry",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4954,7 +4954,7 @@
   },
   {
     "id": "rw-fz-761020",
-    "sku": "761020",
+    "sku": "RW-761020",
     "name": "Frozen Peas & Baby Carrots",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4967,7 +4967,7 @@
   },
   {
     "id": "rw-fz-761021",
-    "sku": "761021",
+    "sku": "RW-761021",
     "name": "Frozen Peas & Baby Carrots",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -4980,7 +4980,7 @@
   },
   {
     "id": "rw-fz-761430",
-    "sku": "761430",
+    "sku": "RW-761430",
     "name": "Frozen Ratatouille Mix",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -4993,7 +4993,7 @@
   },
   {
     "id": "rw-fz-761431",
-    "sku": "761431",
+    "sku": "RW-761431",
     "name": "Frozen Ratatouille Mix",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5006,7 +5006,7 @@
   },
   {
     "id": "rw-fz-761080",
-    "sku": "761080",
+    "sku": "RW-761080",
     "name": "Frozen Savoy Cabbage",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5019,7 +5019,7 @@
   },
   {
     "id": "rw-fz-761081",
-    "sku": "761081",
+    "sku": "RW-761081",
     "name": "Frozen Savoy Cabbage",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -5032,7 +5032,7 @@
   },
   {
     "id": "rw-fz-760220",
-    "sku": "760220",
+    "sku": "RW-760220",
     "name": "Frozen Silverskin Onions",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5045,7 +5045,7 @@
   },
   {
     "id": "rw-fz-760221",
-    "sku": "760221",
+    "sku": "RW-760221",
     "name": "Frozen Silverskin Onions",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5058,7 +5058,7 @@
   },
   {
     "id": "rw-fz-760990",
-    "sku": "760990",
+    "sku": "RW-760990",
     "name": "Frozen Sliced Carrots",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5071,7 +5071,7 @@
   },
   {
     "id": "rw-fz-760991",
-    "sku": "760991",
+    "sku": "RW-760991",
     "name": "Frozen Sliced Carrots",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5084,7 +5084,7 @@
   },
   {
     "id": "rw-fz-760980",
-    "sku": "760980",
+    "sku": "RW-760980",
     "name": "Frozen Sliced Carrots",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5097,7 +5097,7 @@
   },
   {
     "id": "rw-fz-761670",
-    "sku": "761670",
+    "sku": "RW-761670",
     "name": "Frozen Sliced Leeks",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5110,7 +5110,7 @@
   },
   {
     "id": "rw-fz-761511",
-    "sku": "761511",
+    "sku": "RW-761511",
     "name": "Frozen Sliced Mushrooms",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5123,7 +5123,7 @@
   },
   {
     "id": "rw-fz-761510",
-    "sku": "761510",
+    "sku": "RW-761510",
     "name": "Frozen Sliced Mushrooms",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5136,7 +5136,7 @@
   },
   {
     "id": "rw-fz-761300",
-    "sku": "761300",
+    "sku": "RW-761300",
     "name": "Frozen Sliced Onions",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5149,7 +5149,7 @@
   },
   {
     "id": "rw-fz-761301",
-    "sku": "761301",
+    "sku": "RW-761301",
     "name": "Frozen Sliced Onions",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5162,7 +5162,7 @@
   },
   {
     "id": "rw-fz-761400",
-    "sku": "761400",
+    "sku": "RW-761400",
     "name": "Frozen Spinach",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5175,7 +5175,7 @@
   },
   {
     "id": "rw-fz-761401",
-    "sku": "761401",
+    "sku": "RW-761401",
     "name": "Frozen Spinach",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -5188,7 +5188,7 @@
   },
   {
     "id": "rw-fz-761420",
-    "sku": "761420",
+    "sku": "RW-761420",
     "name": "Frozen Stewpack Vegetable Mix",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -5201,7 +5201,7 @@
   },
   {
     "id": "rw-fz-761421",
-    "sku": "761421",
+    "sku": "RW-761421",
     "name": "Frozen Stewpack Vegetable Mix",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5214,7 +5214,7 @@
   },
   {
     "id": "rw-fz-760800",
-    "sku": "760800",
+    "sku": "RW-760800",
     "name": "Greens Frozen Button Sprouts",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5227,7 +5227,7 @@
   },
   {
     "id": "rw-fz-761671",
-    "sku": "761671",
+    "sku": "RW-761671",
     "name": "Greens Frozen Sliced Leeks",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -5240,7 +5240,7 @@
   },
   {
     "id": "rw-fz-760191",
-    "sku": "760191",
+    "sku": "RW-760191",
     "name": "Grilled Mixed Vegetables",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -5253,7 +5253,7 @@
   },
   {
     "id": "rw-fz-760190",
-    "sku": "760190",
+    "sku": "RW-760190",
     "name": "Grilled Mixed Vegetables",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -5266,7 +5266,7 @@
   },
   {
     "id": "rw-fz-821330",
-    "sku": "821330",
+    "sku": "RW-821330",
     "name": "Half Corn Ribs",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5279,7 +5279,7 @@
   },
   {
     "id": "rw-fz-870281",
-    "sku": "870281",
+    "sku": "RW-870281",
     "name": "Red Cabbage",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5292,7 +5292,7 @@
   },
   {
     "id": "rw-fz-870280",
-    "sku": "870280",
+    "sku": "RW-870280",
     "name": "Red Cabbage",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5305,7 +5305,7 @@
   },
   {
     "id": "rw-fz-870261",
-    "sku": "870261",
+    "sku": "RW-870261",
     "name": "Red Cabbage with Apple",
     "packSize": "1x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5318,7 +5318,7 @@
   },
   {
     "id": "rw-fz-870260",
-    "sku": "870260",
+    "sku": "RW-870260",
     "name": "Red Cabbage with Apple",
     "packSize": "4x2.5kg",
     "categorySlug": "frozen-chips",
@@ -5331,7 +5331,7 @@
   },
   {
     "id": "rw-fz-751260",
-    "sku": "751260",
+    "sku": "RW-751260",
     "name": "Strong Roots Cauliflower Hash Browns",
     "packSize": "3x1kg",
     "categorySlug": "frozen-chips",
@@ -5344,7 +5344,7 @@
   },
   {
     "id": "rw-fz-298480",
-    "sku": "298480",
+    "sku": "RW-298480",
     "name": "Askeys Family Pack Cornets Cone",
     "packSize": "12x21",
     "categorySlug": "frozen-chips",
@@ -5357,7 +5357,7 @@
   },
   {
     "id": "rw-fz-298830",
-    "sku": "298830",
+    "sku": "RW-298830",
     "name": "Little Bear Wafer Biscuit",
     "packSize": "2x200",
     "categorySlug": "frozen-chips",
@@ -5370,7 +5370,7 @@
   },
   {
     "id": "rw-fz-800390",
-    "sku": "800390",
+    "sku": "RW-800390",
     "name": "Magnum Almond Vegan",
     "packSize": "20x90ml",
     "categorySlug": "frozen-chips",
@@ -5383,7 +5383,7 @@
   },
   {
     "id": "rw-fz-713040",
-    "sku": "713040",
+    "sku": "RW-713040",
     "name": "Nuii Coconut & Indian Mango",
     "packSize": "20x90ml",
     "categorySlug": "frozen-chips",
@@ -5396,7 +5396,7 @@
   },
   {
     "id": "rw-fz-800490",
-    "sku": "800490",
+    "sku": "RW-800490",
     "name": "Ben & Jerry's Cookie Dough Sandwich",
     "packSize": "120ml",
     "categorySlug": "frozen-chips",
@@ -5409,7 +5409,7 @@
   },
   {
     "id": "rw-fz-847910",
-    "sku": "847910",
+    "sku": "RW-847910",
     "name": "Bensons Chilly Billy Apple & Raspberry Ice Lolly",
     "packSize": "24x110ml",
     "categorySlug": "frozen-chips",
@@ -5422,7 +5422,7 @@
   },
   {
     "id": "rw-fz-847900",
-    "sku": "847900",
+    "sku": "RW-847900",
     "name": "Bensons Chilly Billy Orange & Apple Ice Lolly",
     "packSize": "24x110ml",
     "categorySlug": "frozen-chips",
@@ -5435,7 +5435,7 @@
   },
   {
     "id": "rw-fz-842270",
-    "sku": "842270",
+    "sku": "RW-842270",
     "name": "Chocolate & Vanilla Swirl Mousse Tubs",
     "packSize": "60x90ml",
     "categorySlug": "frozen-chips",
@@ -5448,7 +5448,7 @@
   },
   {
     "id": "rw-fz-800770",
-    "sku": "800770",
+    "sku": "RW-800770",
     "name": "Cornetto Max Chocolate and Hazelnut",
     "packSize": "115ml",
     "categorySlug": "frozen-chips",
@@ -5461,7 +5461,7 @@
   },
   {
     "id": "rw-fz-871000",
-    "sku": "871000",
+    "sku": "RW-871000",
     "name": "Cornetto Soft Cookie & Chocolate",
     "packSize": "24x140ml",
     "categorySlug": "frozen-chips",
@@ -5474,7 +5474,7 @@
   },
   {
     "id": "rw-fz-800780",
-    "sku": "800780",
+    "sku": "RW-800780",
     "name": "Cornetto Strawberry",
     "packSize": "120ml",
     "categorySlug": "frozen-chips",
@@ -5487,7 +5487,7 @@
   },
   {
     "id": "rw-fz-800930",
-    "sku": "800930",
+    "sku": "RW-800930",
     "name": "Feast",
     "packSize": "90ml",
     "categorySlug": "frozen-chips",
@@ -5500,7 +5500,7 @@
   },
   {
     "id": "rw-fz-712810",
-    "sku": "712810",
+    "sku": "RW-712810",
     "name": "Franco's Cherry Brandy Lolly",
     "packSize": "73g",
     "categorySlug": "frozen-chips",
@@ -5513,7 +5513,7 @@
   },
   {
     "id": "rw-fz-710290",
-    "sku": "710290",
+    "sku": "RW-710290",
     "name": "Franco's Rocket Lollies",
     "packSize": "8x6x60ml",
     "categorySlug": "frozen-chips",
@@ -5526,7 +5526,7 @@
   },
   {
     "id": "rw-fz-712880",
-    "sku": "712880",
+    "sku": "RW-712880",
     "name": "Franco's Strawberry Split Lolly",
     "packSize": "64g",
     "categorySlug": "frozen-chips",
@@ -5539,7 +5539,7 @@
   },
   {
     "id": "rw-fz-743030",
-    "sku": "743030",
+    "sku": "RW-743030",
     "name": "Little Jude's Fruit Twist",
     "packSize": "50ml",
     "categorySlug": "frozen-chips",
@@ -5552,7 +5552,7 @@
   },
   {
     "id": "rw-fz-751640",
-    "sku": "751640",
+    "sku": "RW-751640",
     "name": "Magnum Almond",
     "packSize": "100ml",
     "categorySlug": "frozen-chips",
@@ -5565,7 +5565,7 @@
   },
   {
     "id": "rw-fz-800480",
-    "sku": "800480",
+    "sku": "RW-800480",
     "name": "Magnum Pistachio",
     "packSize": "90ml",
     "categorySlug": "frozen-chips",
@@ -5578,7 +5578,7 @@
   },
   {
     "id": "rw-fz-721800",
-    "sku": "721800",
+    "sku": "RW-721800",
     "name": "Marshfield Blackcurrant Fruit Pop",
     "packSize": "24x110ml",
     "categorySlug": "frozen-chips",
@@ -5591,7 +5591,7 @@
   },
   {
     "id": "rw-fz-765010",
-    "sku": "765010",
+    "sku": "RW-765010",
     "name": "Marshfield Farm Milkshake Vanilla Milk Pop",
     "packSize": "24x110ml",
     "categorySlug": "frozen-chips",
@@ -5604,7 +5604,7 @@
   },
   {
     "id": "rw-fz-721920",
-    "sku": "721920",
+    "sku": "RW-721920",
     "name": "Marshfield Orange Fruit Pop",
     "packSize": "24x110ml",
     "categorySlug": "frozen-chips",
@@ -5617,7 +5617,7 @@
   },
   {
     "id": "rw-fz-856030",
-    "sku": "856030",
+    "sku": "RW-856030",
     "name": "Nestle Rowntree's Watermelon Ice Lolly",
     "packSize": "36x73ml",
     "categorySlug": "frozen-chips",
@@ -5630,7 +5630,7 @@
   },
   {
     "id": "rw-fz-842140",
-    "sku": "842140",
+    "sku": "RW-842140",
     "name": "Raspberry Flavour Frozen Yoghurt Tubs",
     "packSize": "60x80ml",
     "categorySlug": "frozen-chips",
@@ -5643,7 +5643,7 @@
   },
   {
     "id": "rw-fz-830400",
-    "sku": "830400",
+    "sku": "RW-830400",
     "name": "Rowntree Fruit Pastille Ice Lolly",
     "packSize": "32x65ml",
     "categorySlug": "frozen-chips",
@@ -5656,7 +5656,7 @@
   },
   {
     "id": "rw-fz-831050",
-    "sku": "831050",
+    "sku": "RW-831050",
     "name": "Rowntrees Orange Push-up Ice Lolly- 24x100ml",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -5669,7 +5669,7 @@
   },
   {
     "id": "rw-fz-800970",
-    "sku": "800970",
+    "sku": "RW-800970",
     "name": "Solero Berry Bliss",
     "packSize": "90ml",
     "categorySlug": "frozen-chips",
@@ -5682,7 +5682,7 @@
   },
   {
     "id": "rw-fz-842260",
-    "sku": "842260",
+    "sku": "RW-842260",
     "name": "Strawberry Fruit Ice Smoothie Tubs",
     "packSize": "60x80ml",
     "categorySlug": "frozen-chips",
@@ -5695,7 +5695,7 @@
   },
   {
     "id": "rw-fz-847161",
-    "sku": "847161",
+    "sku": "RW-847161",
     "name": "Suncream Strawberry Mousse",
     "packSize": "10x105ml",
     "categorySlug": "frozen-chips",
@@ -5708,7 +5708,7 @@
   },
   {
     "id": "rw-fz-751650",
-    "sku": "751650",
+    "sku": "RW-751650",
     "name": "Twister Pineapple",
     "packSize": "80ml",
     "categorySlug": "frozen-chips",
@@ -5721,7 +5721,7 @@
   },
   {
     "id": "rw-fz-847450",
-    "sku": "847450",
+    "sku": "RW-847450",
     "name": "Wall's Calippo Orange Ice Lolly",
     "packSize": "24x105ml",
     "categorySlug": "frozen-chips",
@@ -5734,7 +5734,7 @@
   },
   {
     "id": "rw-fz-811090",
-    "sku": "811090",
+    "sku": "RW-811090",
     "name": "Northern Bloc Madagascan Vanilla",
     "packSize": "5ltr",
     "categorySlug": "frozen-chips",
@@ -5747,7 +5747,7 @@
   },
   {
     "id": "rw-fz-835030",
-    "sku": "835030",
+    "sku": "RW-835030",
     "name": "Crushed Ice",
     "packSize": "6x2kg",
     "categorySlug": "frozen-chips",
@@ -5760,7 +5760,7 @@
   },
   {
     "id": "rw-fz-835010",
-    "sku": "835010",
+    "sku": "RW-835010",
     "name": "Ice Cubes",
     "packSize": "6x2.27kg",
     "categorySlug": "frozen-chips",
@@ -5773,7 +5773,7 @@
   },
   {
     "id": "rw-fz-724520",
-    "sku": "724520",
+    "sku": "RW-724520",
     "name": "Tomato & Cheese Toastie",
     "packSize": "24x159g",
     "categorySlug": "frozen-chips",
@@ -5786,7 +5786,7 @@
   },
   {
     "id": "rw-fz-859430",
-    "sku": "859430",
+    "sku": "RW-859430",
     "name": "British Beef Chilli Con Carne",
     "packSize": "12x175g",
     "categorySlug": "frozen-chips",
@@ -5799,7 +5799,7 @@
   },
   {
     "id": "rw-fz-859490",
-    "sku": "859490",
+    "sku": "RW-859490",
     "name": "British Beef Chilli Con Carne",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -5812,7 +5812,7 @@
   },
   {
     "id": "rw-fz-859580",
-    "sku": "859580",
+    "sku": "RW-859580",
     "name": "British Beef Lasagne",
     "packSize": "12x360g",
     "categorySlug": "frozen-chips",
@@ -5825,7 +5825,7 @@
   },
   {
     "id": "rw-fz-820770",
-    "sku": "820770",
+    "sku": "RW-820770",
     "name": "Garlic & Parsley Chicken Kiev",
     "packSize": "12x170g",
     "categorySlug": "frozen-chips",
@@ -5838,7 +5838,7 @@
   },
   {
     "id": "rw-fz-738140",
-    "sku": "738140",
+    "sku": "RW-738140",
     "name": "Invisible Chef Sundried Tomato, Pesto & Mozzarella Panini",
     "packSize": "12x147g",
     "categorySlug": "frozen-chips",
@@ -5851,7 +5851,7 @@
   },
   {
     "id": "rw-fz-859340",
-    "sku": "859340",
+    "sku": "RW-859340",
     "name": "Keralan Vegan Cauliflower & Red Pepper Curry",
     "packSize": "12x340g",
     "categorySlug": "frozen-chips",
@@ -5864,7 +5864,7 @@
   },
   {
     "id": "rw-fz-796410",
-    "sku": "796410",
+    "sku": "RW-796410",
     "name": "Kids Spaghetti Bolognese",
     "packSize": "20x250g",
     "categorySlug": "frozen-chips",
@@ -5877,7 +5877,7 @@
   },
   {
     "id": "rw-fz-796450",
-    "sku": "796450",
+    "sku": "RW-796450",
     "name": "Kids Tomato Penne Pasta",
     "packSize": "20x250g",
     "categorySlug": "frozen-chips",
@@ -5890,7 +5890,7 @@
   },
   {
     "id": "rw-fz-729000",
-    "sku": "729000",
+    "sku": "RW-729000",
     "name": "La Mexicana Three Bean Vegetable Chilli",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -5903,7 +5903,7 @@
   },
   {
     "id": "rw-fz-859570",
-    "sku": "859570",
+    "sku": "RW-859570",
     "name": "Macaroni Cheese",
     "packSize": "12x250g",
     "categorySlug": "frozen-chips",
@@ -5916,7 +5916,7 @@
   },
   {
     "id": "rw-fz-796400",
-    "sku": "796400",
+    "sku": "RW-796400",
     "name": "Scheff Beef Lasagne Verdi",
     "packSize": "12x360g",
     "categorySlug": "frozen-chips",
@@ -5929,7 +5929,7 @@
   },
   {
     "id": "rw-fz-795220",
-    "sku": "795220",
+    "sku": "RW-795220",
     "name": "Scheff Chicken Tikka Masala Curry",
     "packSize": "12x350g",
     "categorySlug": "frozen-chips",
@@ -5942,7 +5942,7 @@
   },
   {
     "id": "rw-fz-796220",
-    "sku": "796220",
+    "sku": "RW-796220",
     "name": "Scheff Vegetable Lasagne Verdi",
     "packSize": "12x350g",
     "categorySlug": "frozen-chips",
@@ -5955,7 +5955,7 @@
   },
   {
     "id": "rw-fz-859440",
-    "sku": "859440",
+    "sku": "RW-859440",
     "name": "Smokey Three Bean Chilli",
     "packSize": "12x175g",
     "categorySlug": "frozen-chips",
@@ -5968,7 +5968,7 @@
   },
   {
     "id": "rw-fz-796300",
-    "sku": "796300",
+    "sku": "RW-796300",
     "name": "Spinach & Ricotta Cannelloni",
     "packSize": "8x400g",
     "categorySlug": "frozen-chips",
@@ -5981,7 +5981,7 @@
   },
   {
     "id": "rw-fz-786300",
-    "sku": "786300",
+    "sku": "RW-786300",
     "name": "12 Inch Frozen Premium Pizza Bases",
     "packSize": "1x60",
     "categorySlug": "frozen-chips",
@@ -5994,7 +5994,7 @@
   },
   {
     "id": "rw-fz-816920",
-    "sku": "816920",
+    "sku": "RW-816920",
     "name": "12In Sauced Pizza Base",
     "packSize": "18x265g",
     "categorySlug": "frozen-chips",
@@ -6007,7 +6007,7 @@
   },
   {
     "id": "rw-fz-726930",
-    "sku": "726930",
+    "sku": "RW-726930",
     "name": "14\" Thin and Crispy Pizza Base",
     "packSize": "1x20",
     "categorySlug": "frozen-chips",
@@ -6020,7 +6020,7 @@
   },
   {
     "id": "rw-fz-818080",
-    "sku": "818080",
+    "sku": "RW-818080",
     "name": "9in Thin & Crispy Gluten Free Pizza Base",
     "packSize": "24x180g",
     "categorySlug": "frozen-chips",
@@ -6033,7 +6033,7 @@
   },
   {
     "id": "rw-fz-786240",
-    "sku": "786240",
+    "sku": "RW-786240",
     "name": "Cheese & Tomato Pizza 5In",
     "packSize": "60",
     "categorySlug": "frozen-chips",
@@ -6046,7 +6046,7 @@
   },
   {
     "id": "rw-fz-769360",
-    "sku": "769360",
+    "sku": "RW-769360",
     "name": "Country Range 12\" Deep Pan Pizza Base- 1x10x430g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6059,7 +6059,7 @@
   },
   {
     "id": "rw-fz-765550",
-    "sku": "765550",
+    "sku": "RW-765550",
     "name": "Country Range 12\" Thin & Crispy Pizza Base",
     "packSize": "20x255g",
     "categorySlug": "frozen-chips",
@@ -6072,7 +6072,7 @@
   },
   {
     "id": "rw-fz-821430",
-    "sku": "821430",
+    "sku": "RW-821430",
     "name": "Country Range Doughballs -30x340g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6085,7 +6085,7 @@
   },
   {
     "id": "rw-fz-787190",
-    "sku": "787190",
+    "sku": "RW-787190",
     "name": "Crosta Mollica Pizza Fiorentina",
     "packSize": "7x453g",
     "categorySlug": "frozen-chips",
@@ -6098,7 +6098,7 @@
   },
   {
     "id": "rw-fz-857220",
-    "sku": "857220",
+    "sku": "RW-857220",
     "name": "Crosta Mollica Pizza Margherita",
     "packSize": "403g",
     "categorySlug": "frozen-chips",
@@ -6111,7 +6111,7 @@
   },
   {
     "id": "rw-fz-785920",
-    "sku": "785920",
+    "sku": "RW-785920",
     "name": "Dr Oetker Pizza Perfettissima Base Pomodoro",
     "packSize": "10x285g",
     "categorySlug": "frozen-chips",
@@ -6124,7 +6124,7 @@
   },
   {
     "id": "rw-fz-731290",
-    "sku": "731290",
+    "sku": "RW-731290",
     "name": "Dr Oetker® Professional Deep Dish Cheese Pizza",
     "packSize": "12x2",
     "categorySlug": "frozen-chips",
@@ -6137,7 +6137,7 @@
   },
   {
     "id": "rw-fz-786070",
-    "sku": "786070",
+    "sku": "RW-786070",
     "name": "Frozen Chicago Town Cheese Pizza",
     "packSize": "4x2",
     "categorySlug": "frozen-chips",
@@ -6150,7 +6150,7 @@
   },
   {
     "id": "rw-fz-786120",
-    "sku": "786120",
+    "sku": "RW-786120",
     "name": "Frozen Chicago Town Pepperoni Pizza",
     "packSize": "4x2",
     "categorySlug": "frozen-chips",
@@ -6163,7 +6163,7 @@
   },
   {
     "id": "rw-fz-810040",
-    "sku": "810040",
+    "sku": "RW-810040",
     "name": "Gluten Free Pizza Bases",
     "packSize": "10x210g",
     "categorySlug": "frozen-chips",
@@ -6176,7 +6176,7 @@
   },
   {
     "id": "rw-fz-738230",
-    "sku": "738230",
+    "sku": "RW-738230",
     "name": "Goodfellas Gluten Free Margherita Pizza",
     "packSize": "7x328g",
     "categorySlug": "frozen-chips",
@@ -6189,7 +6189,7 @@
   },
   {
     "id": "rw-fz-809050",
-    "sku": "809050",
+    "sku": "RW-809050",
     "name": "Italian Twist Margherita",
     "packSize": "28x175g",
     "categorySlug": "frozen-chips",
@@ -6202,7 +6202,7 @@
   },
   {
     "id": "rw-fz-796660",
-    "sku": "796660",
+    "sku": "RW-796660",
     "name": "Italian Twist Pepperoni",
     "packSize": "28x175g",
     "categorySlug": "frozen-chips",
@@ -6215,7 +6215,7 @@
   },
   {
     "id": "rw-fz-808060",
-    "sku": "808060",
+    "sku": "RW-808060",
     "name": "Signature by Country Range Sourdough Style Doughball",
     "packSize": "40x270g",
     "categorySlug": "frozen-chips",
@@ -6228,7 +6228,7 @@
   },
   {
     "id": "rw-fz-808070",
-    "sku": "808070",
+    "sku": "RW-808070",
     "name": "Signature by Country Range 12\" Neapolitan Sauced Base 10x330g V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6241,7 +6241,7 @@
   },
   {
     "id": "rw-fz-808050",
-    "sku": "808050",
+    "sku": "RW-808050",
     "name": "Signature by Country Range Sourdough Style Doughball",
     "packSize": "60x210g",
     "categorySlug": "frozen-chips",
@@ -6254,7 +6254,7 @@
   },
   {
     "id": "rw-fz-726960",
-    "sku": "726960",
+    "sku": "RW-726960",
     "name": "Topped Margherita Flatbread",
     "packSize": "20x160g",
     "categorySlug": "frozen-chips",
@@ -6267,7 +6267,7 @@
   },
   {
     "id": "rw-fz-726980",
-    "sku": "726980",
+    "sku": "RW-726980",
     "name": "Topped Veggie Flatbread",
     "packSize": "20x165g",
     "categorySlug": "frozen-chips",
@@ -6280,7 +6280,7 @@
   },
   {
     "id": "rw-fz-726940",
-    "sku": "726940",
+    "sku": "RW-726940",
     "name": "Wholemeal Deep Pan Pizza Bases",
     "packSize": "1x12x630g",
     "categorySlug": "frozen-chips",
@@ -6293,7 +6293,7 @@
   },
   {
     "id": "rw-fz-786260",
-    "sku": "786260",
+    "sku": "RW-786260",
     "name": "Wholemeal Rectangular Cheese & Tomato Pizza 11in x 15In",
     "packSize": "10",
     "categorySlug": "frozen-chips",
@@ -6306,7 +6306,7 @@
   },
   {
     "id": "rw-fz-710060",
-    "sku": "710060",
+    "sku": "RW-710060",
     "name": "Wood Fired 29cm Pizza Base with Tomato Sauce",
     "packSize": "300g",
     "categorySlug": "frozen-chips",
@@ -6319,7 +6319,7 @@
   },
   {
     "id": "rw-fz-815230",
-    "sku": "815230",
+    "sku": "RW-815230",
     "name": "Cheese & Onion 11\" Whole Quiche",
     "packSize": "each",
     "categorySlug": "frozen-chips",
@@ -6332,7 +6332,7 @@
   },
   {
     "id": "rw-fz-711980",
-    "sku": "711980",
+    "sku": "RW-711980",
     "name": "Cheese & Onion Slices",
     "packSize": "27x175g",
     "categorySlug": "frozen-chips",
@@ -6345,7 +6345,7 @@
   },
   {
     "id": "rw-fz-814040",
-    "sku": "814040",
+    "sku": "RW-814040",
     "name": "Cheese Twist",
     "packSize": "51x115g",
     "categorySlug": "frozen-chips",
@@ -6358,7 +6358,7 @@
   },
   {
     "id": "rw-fz-814060",
-    "sku": "814060",
+    "sku": "RW-814060",
     "name": "Chicken & Leek Basket",
     "packSize": "40x110g",
     "categorySlug": "frozen-chips",
@@ -6371,7 +6371,7 @@
   },
   {
     "id": "rw-fz-711970",
-    "sku": "711970",
+    "sku": "RW-711970",
     "name": "Chicken & Mushroom Slices",
     "packSize": "27x175g",
     "categorySlug": "frozen-chips",
@@ -6384,7 +6384,7 @@
   },
   {
     "id": "rw-fz-820840",
-    "sku": "820840",
+    "sku": "RW-820840",
     "name": "Chunky Spicy Chipotle & Honey Roll",
     "packSize": "30x185g",
     "categorySlug": "frozen-chips",
@@ -6397,7 +6397,7 @@
   },
   {
     "id": "rw-fz-800910",
-    "sku": "800910",
+    "sku": "RW-800910",
     "name": "Corn Dogs -",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6410,7 +6410,7 @@
   },
   {
     "id": "rw-fz-819110",
-    "sku": "819110",
+    "sku": "RW-819110",
     "name": "Country Range Beef & Onion Pies Unbaked",
     "packSize": "36x145g",
     "categorySlug": "frozen-chips",
@@ -6423,7 +6423,7 @@
   },
   {
     "id": "rw-fz-819020",
-    "sku": "819020",
+    "sku": "RW-819020",
     "name": "Country Range Beef & Vegetable Pasty Unbaked",
     "packSize": "36x180g",
     "categorySlug": "frozen-chips",
@@ -6436,7 +6436,7 @@
   },
   {
     "id": "rw-fz-808141",
-    "sku": "808141",
+    "sku": "RW-808141",
     "name": "Country Range Cheese & Onion Quiche",
     "packSize": "1.2kg",
     "categorySlug": "frozen-chips",
@@ -6449,7 +6449,7 @@
   },
   {
     "id": "rw-fz-781341",
-    "sku": "781341",
+    "sku": "RW-781341",
     "name": "Country Range Cheese & Onion Quiche",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6462,7 +6462,7 @@
   },
   {
     "id": "rw-fz-781340",
-    "sku": "781340",
+    "sku": "RW-781340",
     "name": "Country Range Cheese & Onion Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6475,7 +6475,7 @@
   },
   {
     "id": "rw-fz-808140",
-    "sku": "808140",
+    "sku": "RW-808140",
     "name": "Country Range Cheese & Onion Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6488,7 +6488,7 @@
   },
   {
     "id": "rw-fz-819040",
-    "sku": "819040",
+    "sku": "RW-819040",
     "name": "Country Range Cheese Potato & Onion Pasty Unbaked",
     "packSize": "48x127g",
     "categorySlug": "frozen-chips",
@@ -6501,7 +6501,7 @@
   },
   {
     "id": "rw-fz-819100",
-    "sku": "819100",
+    "sku": "RW-819100",
     "name": "Country Range Chicken & Mushroom Pies Unbaked",
     "packSize": "36x145g",
     "categorySlug": "frozen-chips",
@@ -6514,7 +6514,7 @@
   },
   {
     "id": "rw-fz-819830",
-    "sku": "819830",
+    "sku": "RW-819830",
     "name": "Country Range Chicken & Mushroom Slice Unbaked",
     "packSize": "36x176g",
     "categorySlug": "frozen-chips",
@@ -6527,7 +6527,7 @@
   },
   {
     "id": "rw-fz-823230",
-    "sku": "823230",
+    "sku": "RW-823230",
     "name": "Country Range Cornish Pasty",
     "packSize": "1x28x283g",
     "categorySlug": "frozen-chips",
@@ -6540,7 +6540,7 @@
   },
   {
     "id": "rw-fz-808131",
-    "sku": "808131",
+    "sku": "RW-808131",
     "name": "Country Range Mediterranean Vegetable Quiche",
     "packSize": "1.2kg",
     "categorySlug": "frozen-chips",
@@ -6553,7 +6553,7 @@
   },
   {
     "id": "rw-fz-781281",
-    "sku": "781281",
+    "sku": "RW-781281",
     "name": "Country Range Mediterranean Vegetable Quiche",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6566,7 +6566,7 @@
   },
   {
     "id": "rw-fz-781280",
-    "sku": "781280",
+    "sku": "RW-781280",
     "name": "Country Range Mediterranean Vegetable Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6579,7 +6579,7 @@
   },
   {
     "id": "rw-fz-808130",
-    "sku": "808130",
+    "sku": "RW-808130",
     "name": "Country Range Mediterranean Vegetable Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6592,7 +6592,7 @@
   },
   {
     "id": "rw-fz-781271",
-    "sku": "781271",
+    "sku": "RW-781271",
     "name": "Country Range Quiche Lorraine",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6605,7 +6605,7 @@
   },
   {
     "id": "rw-fz-781270",
-    "sku": "781270",
+    "sku": "RW-781270",
     "name": "Country Range Quiche Lorraine",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6618,7 +6618,7 @@
   },
   {
     "id": "rw-fz-809041",
-    "sku": "809041",
+    "sku": "RW-809041",
     "name": "Country Range Quiche Lorraine",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6631,7 +6631,7 @@
   },
   {
     "id": "rw-fz-809040",
-    "sku": "809040",
+    "sku": "RW-809040",
     "name": "Country Range Quiche Lorraine",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6644,7 +6644,7 @@
   },
   {
     "id": "rw-fz-819190",
-    "sku": "819190",
+    "sku": "RW-819190",
     "name": "Country Range Steak & Kidney Pie Unbaked",
     "packSize": "36x145g",
     "categorySlug": "frozen-chips",
@@ -6657,7 +6657,7 @@
   },
   {
     "id": "rw-fz-819270",
-    "sku": "819270",
+    "sku": "RW-819270",
     "name": "Country Range Steak Slice Unbaked",
     "packSize": "36x176g",
     "categorySlug": "frozen-chips",
@@ -6670,7 +6670,7 @@
   },
   {
     "id": "rw-fz-781261",
-    "sku": "781261",
+    "sku": "RW-781261",
     "name": "Country Range Tomato & Basil Quiche",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6683,7 +6683,7 @@
   },
   {
     "id": "rw-fz-808151",
-    "sku": "808151",
+    "sku": "RW-808151",
     "name": "Country Range Tomato & Basil Quiche",
     "packSize": "1x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6696,7 +6696,7 @@
   },
   {
     "id": "rw-fz-781260",
-    "sku": "781260",
+    "sku": "RW-781260",
     "name": "Country Range Tomato & Basil Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6709,7 +6709,7 @@
   },
   {
     "id": "rw-fz-808150",
-    "sku": "808150",
+    "sku": "RW-808150",
     "name": "Country Range Tomato & Basil Quiche",
     "packSize": "4x1.2kg",
     "categorySlug": "frozen-chips",
@@ -6722,7 +6722,7 @@
   },
   {
     "id": "rw-fz-746600",
-    "sku": "746600",
+    "sku": "RW-746600",
     "name": "Gluten Free Mooless Moo Pie",
     "packSize": "8x260g",
     "categorySlug": "frozen-chips",
@@ -6735,7 +6735,7 @@
   },
   {
     "id": "rw-fz-815220",
-    "sku": "815220",
+    "sku": "RW-815220",
     "name": "Mediterranean Style 11\" Whole Quiche",
     "packSize": "each",
     "categorySlug": "frozen-chips",
@@ -6748,7 +6748,7 @@
   },
   {
     "id": "rw-fz-821290",
-    "sku": "821290",
+    "sku": "RW-821290",
     "name": "Phat Cheese & Onion Pasty",
     "packSize": "1x26x253g",
     "categorySlug": "frozen-chips",
@@ -6761,7 +6761,7 @@
   },
   {
     "id": "rw-fz-781540",
-    "sku": "781540",
+    "sku": "RW-781540",
     "name": "Phat Gluten Free Mini Steak Pie",
     "packSize": "24x90g",
     "categorySlug": "frozen-chips",
@@ -6774,7 +6774,7 @@
   },
   {
     "id": "rw-fz-785070",
-    "sku": "785070",
+    "sku": "RW-785070",
     "name": "Phat Lamb & Mint Pasty",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6787,7 +6787,7 @@
   },
   {
     "id": "rw-fz-820670",
-    "sku": "820670",
+    "sku": "RW-820670",
     "name": "Phat Peppered Steak Slice Red Tractor (Unbaked)",
     "packSize": "30x180",
     "categorySlug": "frozen-chips",
@@ -6800,7 +6800,7 @@
   },
   {
     "id": "rw-fz-820620",
-    "sku": "820620",
+    "sku": "RW-820620",
     "name": "Phat Peri Peri Chicken Slice British (Unbaked)",
     "packSize": "30x180g",
     "categorySlug": "frozen-chips",
@@ -6813,7 +6813,7 @@
   },
   {
     "id": "rw-fz-740750",
-    "sku": "740750",
+    "sku": "RW-740750",
     "name": "Phat Seriously Cheesy Pasty (Unbaked) – 20x283g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6826,7 +6826,7 @@
   },
   {
     "id": "rw-fz-819400",
-    "sku": "819400",
+    "sku": "RW-819400",
     "name": "Phat Traditional Cornish Pasty Red Tractor (Unbaked)",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6839,7 +6839,7 @@
   },
   {
     "id": "rw-fz-821310",
-    "sku": "821310",
+    "sku": "RW-821310",
     "name": "Phat Wildfarmed Curried Cauliflower, Chickpea & Onion Bhaji Pasty",
     "packSize": "1x26x253",
     "categorySlug": "frozen-chips",
@@ -6852,7 +6852,7 @@
   },
   {
     "id": "rw-fz-740270",
-    "sku": "740270",
+    "sku": "RW-740270",
     "name": "Pieminister Chana Rama Pie",
     "packSize": "255g",
     "categorySlug": "frozen-chips",
@@ -6865,7 +6865,7 @@
   },
   {
     "id": "rw-fz-737450",
-    "sku": "737450",
+    "sku": "RW-737450",
     "name": "Pieminister Gluten Free Chicken Pie",
     "packSize": "8x275g",
     "categorySlug": "frozen-chips",
@@ -6878,7 +6878,7 @@
   },
   {
     "id": "rw-fz-783110",
-    "sku": "783110",
+    "sku": "RW-783110",
     "name": "Proper Corn Masala Slice- 1x27x175g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -6891,7 +6891,7 @@
   },
   {
     "id": "rw-fz-819570",
-    "sku": "819570",
+    "sku": "RW-819570",
     "name": "Proper Cornish Cheese & Onion Pasty Unbaked",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6904,7 +6904,7 @@
   },
   {
     "id": "rw-fz-819580",
-    "sku": "819580",
+    "sku": "RW-819580",
     "name": "Proper Cornish Steak Pasty Unbaked",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6917,7 +6917,7 @@
   },
   {
     "id": "rw-fz-769320",
-    "sku": "769320",
+    "sku": "RW-769320",
     "name": "Proper Cornish Traditional Mixed Steak Pasty",
     "packSize": "1x20x283g",
     "categorySlug": "frozen-chips",
@@ -6930,7 +6930,7 @@
   },
   {
     "id": "rw-fz-819460",
-    "sku": "819460",
+    "sku": "RW-819460",
     "name": "Proper Cornish Unbaked Vegan Vegetable Pasty",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6943,7 +6943,7 @@
   },
   {
     "id": "rw-fz-791030",
-    "sku": "791030",
+    "sku": "RW-791030",
     "name": "Pukka Baked Large All Steak Pies",
     "packSize": "12x234g",
     "categorySlug": "frozen-chips",
@@ -6956,7 +6956,7 @@
   },
   {
     "id": "rw-fz-815250",
-    "sku": "815250",
+    "sku": "RW-815250",
     "name": "Quiche Lorraine Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "frozen-chips",
@@ -6969,7 +6969,7 @@
   },
   {
     "id": "rw-fz-741060",
-    "sku": "741060",
+    "sku": "RW-741060",
     "name": "Spicy Cauliflower & Spinach Balti Pie",
     "packSize": "1x12x285g",
     "categorySlug": "frozen-chips",
@@ -6982,7 +6982,7 @@
   },
   {
     "id": "rw-fz-820830",
-    "sku": "820830",
+    "sku": "RW-820830",
     "name": "Sri Lankan Curry Pasty",
     "packSize": "20x283g",
     "categorySlug": "frozen-chips",
@@ -6995,7 +6995,7 @@
   },
   {
     "id": "rw-fz-820880",
-    "sku": "820880",
+    "sku": "RW-820880",
     "name": "Steak Slice",
     "packSize": "27x175g",
     "categorySlug": "frozen-chips",
@@ -7008,7 +7008,7 @@
   },
   {
     "id": "rw-fz-819000",
-    "sku": "819000",
+    "sku": "RW-819000",
     "name": "Wrights Beef & Vegetable Pasty Unbaked",
     "packSize": "30x220g",
     "categorySlug": "frozen-chips",
@@ -7021,7 +7021,7 @@
   },
   {
     "id": "rw-fz-819350",
-    "sku": "819350",
+    "sku": "RW-819350",
     "name": "Wrights Creamy Vegetable Lattice Slice Unbaked",
     "packSize": "36x160g",
     "categorySlug": "frozen-chips",
@@ -7034,7 +7034,7 @@
   },
   {
     "id": "rw-fz-819140",
-    "sku": "819140",
+    "sku": "RW-819140",
     "name": "Wrights Mini Cheese & Onion Slice Unbaked",
     "packSize": "48x85g",
     "categorySlug": "frozen-chips",
@@ -7047,7 +7047,7 @@
   },
   {
     "id": "rw-fz-819030",
-    "sku": "819030",
+    "sku": "RW-819030",
     "name": "Wrights Wrapped Beef & Vegetable Pasty Baked",
     "packSize": "24x210g",
     "categorySlug": "frozen-chips",
@@ -7060,7 +7060,7 @@
   },
   {
     "id": "rw-fz-737731",
-    "sku": "737731",
+    "sku": "RW-737731",
     "name": "Cream Of Tomato Soup",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7073,7 +7073,7 @@
   },
   {
     "id": "rw-fz-737730",
-    "sku": "737730",
+    "sku": "RW-737730",
     "name": "Cream Of Tomato Soup",
     "packSize": "2x2kg",
     "categorySlug": "frozen-chips",
@@ -7086,7 +7086,7 @@
   },
   {
     "id": "rw-fz-766800",
-    "sku": "766800",
+    "sku": "RW-766800",
     "name": "French Style Onion Soup",
     "packSize": "26x250g",
     "categorySlug": "frozen-chips",
@@ -7099,7 +7099,7 @@
   },
   {
     "id": "rw-fz-787040",
-    "sku": "787040",
+    "sku": "RW-787040",
     "name": "Kitchen '72 Korma Curry Sauce",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -7112,7 +7112,7 @@
   },
   {
     "id": "rw-fz-787050",
-    "sku": "787050",
+    "sku": "RW-787050",
     "name": "Kitchen '72 Madras Curry Sauce",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -7125,7 +7125,7 @@
   },
   {
     "id": "rw-fz-787060",
-    "sku": "787060",
+    "sku": "RW-787060",
     "name": "Kitchen '72 Tikka Masala Curry Sauce",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -7138,7 +7138,7 @@
   },
   {
     "id": "rw-fz-787070",
-    "sku": "787070",
+    "sku": "RW-787070",
     "name": "Kitchen '72 Vegetable Jalfrezi Curry Sauce",
     "packSize": "4x2kg",
     "categorySlug": "frozen-chips",
@@ -7151,7 +7151,7 @@
   },
   {
     "id": "rw-fz-737721",
-    "sku": "737721",
+    "sku": "RW-737721",
     "name": "Parsnip & Red Chilli Soup",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7164,7 +7164,7 @@
   },
   {
     "id": "rw-fz-737720",
-    "sku": "737720",
+    "sku": "RW-737720",
     "name": "Parsnip & Red Chilli Soup",
     "packSize": "2x2kg",
     "categorySlug": "frozen-chips",
@@ -7177,7 +7177,7 @@
   },
   {
     "id": "rw-fz-723231",
-    "sku": "723231",
+    "sku": "RW-723231",
     "name": "Redemption Chunky Vegetable & Red Lentil",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7190,7 +7190,7 @@
   },
   {
     "id": "rw-fz-723230",
-    "sku": "723230",
+    "sku": "RW-723230",
     "name": "Redemption Chunky Vegetable & Red Lentil",
     "packSize": "6x2kg",
     "categorySlug": "frozen-chips",
@@ -7203,7 +7203,7 @@
   },
   {
     "id": "rw-fz-883001",
-    "sku": "883001",
+    "sku": "RW-883001",
     "name": "Redemption Vegan Carrot & Butternut Soup",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7216,7 +7216,7 @@
   },
   {
     "id": "rw-fz-836741",
-    "sku": "836741",
+    "sku": "RW-836741",
     "name": "Symplicity Garlic and Basil Sauce",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7229,7 +7229,7 @@
   },
   {
     "id": "rw-fz-737681",
-    "sku": "737681",
+    "sku": "RW-737681",
     "name": "Vegan Carrot & Coriander Soup",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7242,7 +7242,7 @@
   },
   {
     "id": "rw-fz-737680",
-    "sku": "737680",
+    "sku": "RW-737680",
     "name": "Vegan Carrot & Coriander Soup",
     "packSize": "2x2kg",
     "categorySlug": "frozen-chips",
@@ -7255,7 +7255,7 @@
   },
   {
     "id": "rw-fz-810001",
-    "sku": "810001",
+    "sku": "RW-810001",
     "name": "Quorn Vegan Fillets 69g",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7268,7 +7268,7 @@
   },
   {
     "id": "rw-fz-810000",
-    "sku": "810000",
+    "sku": "RW-810000",
     "name": "Quorn Vegan Fillets 69g",
     "packSize": "3x2kg",
     "categorySlug": "frozen-chips",
@@ -7281,7 +7281,7 @@
   },
   {
     "id": "rw-fz-176790",
-    "sku": "176790",
+    "sku": "RW-176790",
     "name": "Al'Fez Lebanese Style Falafel",
     "packSize": "12x150g",
     "categorySlug": "frozen-chips",
@@ -7294,7 +7294,7 @@
   },
   {
     "id": "rw-fz-814120",
-    "sku": "814120",
+    "sku": "RW-814120",
     "name": "Daloon Falafel with Spinach Burger",
     "packSize": "24x113g",
     "categorySlug": "frozen-chips",
@@ -7307,7 +7307,7 @@
   },
   {
     "id": "rw-fz-712820",
-    "sku": "712820",
+    "sku": "RW-712820",
     "name": "Daloon Vegetable Sausages",
     "packSize": "30x56g",
     "categorySlug": "frozen-chips",
@@ -7320,7 +7320,7 @@
   },
   {
     "id": "rw-fz-782440",
-    "sku": "782440",
+    "sku": "RW-782440",
     "name": "Glamorgan Sausages",
     "packSize": "30x56g",
     "categorySlug": "frozen-chips",
@@ -7333,7 +7333,7 @@
   },
   {
     "id": "rw-fz-728990",
-    "sku": "728990",
+    "sku": "RW-728990",
     "name": "Gluten Free Vegan Aromatic Garden Burger",
     "packSize": "20x150g",
     "categorySlug": "frozen-chips",
@@ -7346,7 +7346,7 @@
   },
   {
     "id": "rw-fz-726690",
-    "sku": "726690",
+    "sku": "RW-726690",
     "name": "KaterVeg Vegan Meatballs",
     "packSize": "1.5kg",
     "categorySlug": "frozen-chips",
@@ -7359,7 +7359,7 @@
   },
   {
     "id": "rw-fz-848200",
-    "sku": "848200",
+    "sku": "RW-848200",
     "name": "Katerveg Vegan Mince",
     "packSize": "10x1kg",
     "categorySlug": "frozen-chips",
@@ -7372,7 +7372,7 @@
   },
   {
     "id": "rw-fz-848201",
-    "sku": "848201",
+    "sku": "RW-848201",
     "name": "Katerveg Vegan Mince",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -7385,7 +7385,7 @@
   },
   {
     "id": "rw-fz-714060",
-    "sku": "714060",
+    "sku": "RW-714060",
     "name": "Luxury Chestnut Roast",
     "packSize": "24x200g",
     "categorySlug": "frozen-chips",
@@ -7398,7 +7398,7 @@
   },
   {
     "id": "rw-fz-800170",
-    "sku": "800170",
+    "sku": "RW-800170",
     "name": "Moving Mountains Hot Dogs",
     "packSize": "1x20x155g",
     "categorySlug": "frozen-chips",
@@ -7411,7 +7411,7 @@
   },
   {
     "id": "rw-fz-804201",
-    "sku": "804201",
+    "sku": "RW-804201",
     "name": "Plant Based Meaty Pulled Mushrooms",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -7424,7 +7424,7 @@
   },
   {
     "id": "rw-fz-831191",
-    "sku": "831191",
+    "sku": "RW-831191",
     "name": "Plant Based Meaty Pulled Mushrooms",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -7437,7 +7437,7 @@
   },
   {
     "id": "rw-fz-831190",
-    "sku": "831190",
+    "sku": "RW-831190",
     "name": "Plant Based Meaty Pulled Mushrooms",
     "packSize": "6x1kg",
     "categorySlug": "frozen-chips",
@@ -7450,7 +7450,7 @@
   },
   {
     "id": "rw-fz-798931",
-    "sku": "798931",
+    "sku": "RW-798931",
     "name": "Quorn Burger",
     "packSize": "40x50g",
     "categorySlug": "frozen-chips",
@@ -7463,7 +7463,7 @@
   },
   {
     "id": "rw-fz-798930",
-    "sku": "798930",
+    "sku": "RW-798930",
     "name": "Quorn Burger",
     "packSize": "5x40x50g",
     "categorySlug": "frozen-chips",
@@ -7476,7 +7476,7 @@
   },
   {
     "id": "rw-fz-800241",
-    "sku": "800241",
+    "sku": "RW-800241",
     "name": "Quorn ChiQin Vegan Crispy Wings",
     "packSize": "1x2kg",
     "categorySlug": "frozen-chips",
@@ -7489,7 +7489,7 @@
   },
   {
     "id": "rw-fz-800211",
-    "sku": "800211",
+    "sku": "RW-800211",
     "name": "Quorn Mince + 50% Extra Free",
     "packSize": "1.5kg",
     "categorySlug": "frozen-chips",
@@ -7502,7 +7502,7 @@
   },
   {
     "id": "rw-fz-800210",
-    "sku": "800210",
+    "sku": "RW-800210",
     "name": "Quorn Mince + 50% Extra Free",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -7515,7 +7515,7 @@
   },
   {
     "id": "rw-fz-741920",
-    "sku": "741920",
+    "sku": "RW-741920",
     "name": "Quorn Roast Joint",
     "packSize": "8x454g",
     "categorySlug": "frozen-chips",
@@ -7528,7 +7528,7 @@
   },
   {
     "id": "rw-fz-800201",
-    "sku": "800201",
+    "sku": "RW-800201",
     "name": "Quorn Vegan Balls",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -7541,7 +7541,7 @@
   },
   {
     "id": "rw-fz-800200",
-    "sku": "800200",
+    "sku": "RW-800200",
     "name": "Quorn Vegan Balls",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -7554,7 +7554,7 @@
   },
   {
     "id": "rw-fz-800221",
-    "sku": "800221",
+    "sku": "RW-800221",
     "name": "Quorn Vegan Beef Pieces + 50% Extra Free",
     "packSize": "1.5kg",
     "categorySlug": "frozen-chips",
@@ -7567,7 +7567,7 @@
   },
   {
     "id": "rw-fz-800261",
-    "sku": "800261",
+    "sku": "RW-800261",
     "name": "Quorn Vegan Burger 109g",
     "packSize": "1x1.96kg",
     "categorySlug": "frozen-chips",
@@ -7580,7 +7580,7 @@
   },
   {
     "id": "rw-fz-799961",
-    "sku": "799961",
+    "sku": "RW-799961",
     "name": "Quorn Vegan Buttermilk Burger",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7593,7 +7593,7 @@
   },
   {
     "id": "rw-fz-799960",
-    "sku": "799960",
+    "sku": "RW-799960",
     "name": "Quorn Vegan Buttermilk Burger",
     "packSize": "5x2kg",
     "categorySlug": "frozen-chips",
@@ -7606,7 +7606,7 @@
   },
   {
     "id": "rw-fz-797041",
-    "sku": "797041",
+    "sku": "RW-797041",
     "name": "Quorn Vegan Dippers",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7619,7 +7619,7 @@
   },
   {
     "id": "rw-fz-797040",
-    "sku": "797040",
+    "sku": "RW-797040",
     "name": "Quorn Vegan Dippers",
     "packSize": "3x2kg",
     "categorySlug": "frozen-chips",
@@ -7632,7 +7632,7 @@
   },
   {
     "id": "rw-fz-799981",
-    "sku": "799981",
+    "sku": "RW-799981",
     "name": "Quorn Vegan Fillets",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7645,7 +7645,7 @@
   },
   {
     "id": "rw-fz-800271",
-    "sku": "800271",
+    "sku": "RW-800271",
     "name": "Quorn Vegan Mini Fillet 58g",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -7658,7 +7658,7 @@
   },
   {
     "id": "rw-fz-800270",
-    "sku": "800270",
+    "sku": "RW-800270",
     "name": "Quorn Vegan Mini Fillet 58g",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -7671,7 +7671,7 @@
   },
   {
     "id": "rw-fz-799921",
-    "sku": "799921",
+    "sku": "RW-799921",
     "name": "Quorn Vegan Nuggets",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7684,7 +7684,7 @@
   },
   {
     "id": "rw-fz-799920",
-    "sku": "799920",
+    "sku": "RW-799920",
     "name": "Quorn Vegan Nuggets",
     "packSize": "5x2kg",
     "categorySlug": "frozen-chips",
@@ -7697,7 +7697,7 @@
   },
   {
     "id": "rw-fz-799991",
-    "sku": "799991",
+    "sku": "RW-799991",
     "name": "Quorn Vegan Sausages",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7710,7 +7710,7 @@
   },
   {
     "id": "rw-fz-799990",
-    "sku": "799990",
+    "sku": "RW-799990",
     "name": "Quorn Vegan Sausages",
     "packSize": "3x2kg",
     "categorySlug": "frozen-chips",
@@ -7723,7 +7723,7 @@
   },
   {
     "id": "rw-fz-798861",
-    "sku": "798861",
+    "sku": "RW-798861",
     "name": "Quorn Vegan Southern Fried Nuggets",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -7736,7 +7736,7 @@
   },
   {
     "id": "rw-fz-798860",
-    "sku": "798860",
+    "sku": "RW-798860",
     "name": "Quorn Vegan Southern Fried Nuggets",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -7749,7 +7749,7 @@
   },
   {
     "id": "rw-fz-741991",
-    "sku": "741991",
+    "sku": "RW-741991",
     "name": "QuornPro Vegan Pieces",
     "packSize": "1x1.5kg",
     "categorySlug": "frozen-chips",
@@ -7762,7 +7762,7 @@
   },
   {
     "id": "rw-fz-741990",
-    "sku": "741990",
+    "sku": "RW-741990",
     "name": "QuornPro Vegan Pieces",
     "packSize": "4x1.5kg",
     "categorySlug": "frozen-chips",
@@ -7775,7 +7775,7 @@
   },
   {
     "id": "rw-fz-798780",
-    "sku": "798780",
+    "sku": "RW-798780",
     "name": "Simply Meat Free Vegetable 1/4lb Burger",
     "packSize": "24x113g",
     "categorySlug": "frozen-chips",
@@ -7788,7 +7788,7 @@
   },
   {
     "id": "rw-fz-798790",
-    "sku": "798790",
+    "sku": "RW-798790",
     "name": "Spicy Bean 1/4lb Burger",
     "packSize": "24x113g",
     "categorySlug": "frozen-chips",
@@ -7801,7 +7801,7 @@
   },
   {
     "id": "rw-fz-737060",
-    "sku": "737060",
+    "sku": "RW-737060",
     "name": "Spicy Coated Beanburger",
     "packSize": "24x100g",
     "categorySlug": "frozen-chips",
@@ -7814,7 +7814,7 @@
   },
   {
     "id": "rw-fz-869521",
-    "sku": "869521",
+    "sku": "RW-869521",
     "name": "Symplicity Cumin Lamb Mince- 2kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "frozen-chips",
@@ -7827,7 +7827,7 @@
   },
   {
     "id": "rw-fz-869171",
-    "sku": "869171",
+    "sku": "RW-869171",
     "name": "THIS Isn't Chicken Pieces",
     "packSize": "1x3kg",
     "categorySlug": "frozen-chips",
@@ -7840,7 +7840,7 @@
   },
   {
     "id": "rw-fz-869251",
-    "sku": "869251",
+    "sku": "RW-869251",
     "name": "THIS Isn't Chicken Plant Based Pieces",
     "packSize": "1kg",
     "categorySlug": "frozen-chips",
@@ -7853,7 +7853,7 @@
   },
   {
     "id": "rw-fz-869250",
-    "sku": "869250",
+    "sku": "RW-869250",
     "name": "THIS Isn't Chicken Plant Based Pieces",
     "packSize": "5x1kg",
     "categorySlug": "frozen-chips",
@@ -7866,7 +7866,7 @@
   },
   {
     "id": "rw-fz-726510",
-    "sku": "726510",
+    "sku": "RW-726510",
     "name": "Vegan Quarter Pounder Burger",
     "packSize": "24x113g",
     "categorySlug": "frozen-chips",
@@ -7879,7 +7879,7 @@
   },
   {
     "id": "rw-fz-726780",
-    "sku": "726780",
+    "sku": "RW-726780",
     "name": "Vegan Skinless Sausages",
     "packSize": "40x50g",
     "categorySlug": "frozen-chips",
@@ -7892,7 +7892,7 @@
   },
   {
     "id": "rw-fz-799000",
-    "sku": "799000",
+    "sku": "RW-799000",
     "name": "Vegetable Kiev",
     "packSize": "12x125g",
     "categorySlug": "frozen-chips",
@@ -7905,7 +7905,7 @@
   },
   {
     "id": "rw-fz-799180",
-    "sku": "799180",
+    "sku": "RW-799180",
     "name": "Vegetable Nuggets",
     "packSize": "2kg",
     "categorySlug": "frozen-chips",
@@ -7918,7 +7918,7 @@
   },
   {
     "id": "rw-fz-726400",
-    "sku": "726400",
+    "sku": "RW-726400",
     "name": "Vegetable Sausages",
     "packSize": "48x50g",
     "categorySlug": "frozen-chips",
@@ -7931,7 +7931,7 @@
   },
   {
     "id": "rw-fz-795630",
-    "sku": "795630",
+    "sku": "RW-795630",
     "name": "Country Range Breaded Chicken Goujons",
     "packSize": "5x2kg",
     "categorySlug": "frozen-chips",
@@ -7944,7 +7944,7 @@
   },
   {
     "id": "rw-fz-795641",
-    "sku": "795641",
+    "sku": "RW-795641",
     "name": "Country Range Southern Fried Chicken Goujon",
     "packSize": "1x2kg",
     "categorySlug": "frozen-chips",
@@ -7957,7 +7957,7 @@
   },
   {
     "id": "rw-fz-731021",
-    "sku": "731021",
+    "sku": "RW-731021",
     "name": "Homestyle Crunchy Southern Fried Chicken Fillets (120g)",
     "packSize": "1x960g",
     "categorySlug": "frozen-chips",
@@ -7970,7 +7970,7 @@
   },
   {
     "id": "rw-fz-726480",
-    "sku": "726480",
+    "sku": "RW-726480",
     "name": "Homestyle Hot & Spicy Chicken Strips",
     "packSize": "4x1kg",
     "categorySlug": "frozen-chips",
@@ -7983,7 +7983,7 @@
   },
   {
     "id": "rw-fz-816550",
-    "sku": "816550",
+    "sku": "RW-816550",
     "name": "Country Range Turkey & Stuffing Parcels",
     "packSize": "1x24x227g",
     "categorySlug": "frozen-chips",
@@ -7996,7 +7996,7 @@
   },
   {
     "id": "rw-fz-795320",
-    "sku": "795320",
+    "sku": "RW-795320",
     "name": "Gluten Free Vegan Moroccan Style Cauliflower Bites",
     "packSize": "3x1kg",
     "categorySlug": "frozen-chips",
@@ -8009,7 +8009,7 @@
   },
   {
     "id": "rw-fz-801280",
-    "sku": "801280",
+    "sku": "RW-801280",
     "name": "Proper Cornish Festive Slice",
     "packSize": "27x171g",
     "categorySlug": "frozen-chips",
@@ -8022,7 +8022,7 @@
   },
   {
     "id": "rw-fz-821500",
-    "sku": "821500",
+    "sku": "RW-821500",
     "name": "Signature by Country Range Beef Steak & Craft Ale Pie",
     "packSize": "255g",
     "categorySlug": "frozen-chips",
@@ -8035,7 +8035,7 @@
   },
   {
     "id": "rw-fz-751261",
-    "sku": "751261",
+    "sku": "RW-751261",
     "name": "Strong Roots Cauliflower Hash Browns",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -8048,7 +8048,7 @@
   },
   {
     "id": "rw-fz-751271",
-    "sku": "751271",
+    "sku": "RW-751271",
     "name": "Strong Roots Pea And Lemon Bites",
     "packSize": "1x1kg",
     "categorySlug": "frozen-chips",
@@ -8061,7 +8061,7 @@
   },
   {
     "id": "rw-fz-751270",
-    "sku": "751270",
+    "sku": "RW-751270",
     "name": "Strong Roots Pea And Lemon Bites",
     "packSize": "3x1kg",
     "categorySlug": "frozen-chips",
@@ -8074,7 +8074,7 @@
   },
   {
     "id": "rw-fz-816600",
-    "sku": "816600",
+    "sku": "RW-816600",
     "name": "Traditional Chicago Style Canapes",
     "packSize": "48",
     "categorySlug": "frozen-chips",
@@ -8087,7 +8087,7 @@
   },
   {
     "id": "rw-fz-857040",
-    "sku": "857040",
+    "sku": "RW-857040",
     "name": "Wildfarmed Granola Bar",
     "packSize": "1x36x65g",
     "categorySlug": "frozen-chips",

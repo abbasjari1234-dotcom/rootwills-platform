@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-ds-712320",
-    "sku": "712320",
+    "sku": "RW-712320",
     "name": "Mini Yule Logs",
     "packSize": "20x75g",
     "categorySlug": "desserts-icecream",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-ds-795330",
-    "sku": "795330",
+    "sku": "RW-795330",
     "name": "Gluten Free Brie & Red Onion Tart",
     "packSize": "10x180g",
     "categorySlug": "desserts-icecream",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-ds-783690",
-    "sku": "783690",
+    "sku": "RW-783690",
     "name": "Vegan Mini Tartlet Variety",
     "packSize": "48pcs",
     "categorySlug": "desserts-icecream",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-ds-721751",
-    "sku": "721751",
+    "sku": "RW-721751",
     "name": "Country Range Seasoned Waffle Fries",
     "packSize": "2.5kg",
     "categorySlug": "desserts-icecream",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-ds-721750",
-    "sku": "721750",
+    "sku": "RW-721750",
     "name": "Country Range Seasoned Waffle Fries",
     "packSize": "4x2.5kg",
     "categorySlug": "desserts-icecream",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-ds-752430",
-    "sku": "752430",
+    "sku": "RW-752430",
     "name": "Mini Potato Waffles",
     "packSize": "8x750g",
     "categorySlug": "desserts-icecream",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-ds-769090",
-    "sku": "769090",
+    "sku": "RW-769090",
     "name": "3in Yorkshire Pudding (fully baked)",
     "packSize": "60",
     "categorySlug": "desserts-icecream",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-ds-799140",
-    "sku": "799140",
+    "sku": "RW-799140",
     "name": "Aunt Bessie's 4 inch Baked Yorkshire Puddings",
     "packSize": "60x40g",
     "categorySlug": "desserts-icecream",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-ds-799170",
-    "sku": "799170",
+    "sku": "RW-799170",
     "name": "Aunt Bessie's 7 inch Baked Yorkshire Puddings",
     "packSize": "20x115g",
     "categorySlug": "desserts-icecream",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-ds-718260",
-    "sku": "718260",
+    "sku": "RW-718260",
     "name": "Aunt Bessies 2\" Baked Yorkshire Puddings",
     "packSize": "(60 Pack)",
     "categorySlug": "desserts-icecream",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-ds-712080",
-    "sku": "712080",
+    "sku": "RW-712080",
     "name": "Banoffee Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-ds-712070",
-    "sku": "712070",
+    "sku": "RW-712070",
     "name": "Black Forest Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-ds-851190",
-    "sku": "851190",
+    "sku": "RW-851190",
     "name": "Chantilly Individual Rich Vanilla Cheesecake",
     "packSize": "20",
     "categorySlug": "desserts-icecream",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-ds-845551",
-    "sku": "845551",
+    "sku": "RW-845551",
     "name": "Cherry Cheesecake Uncut",
     "packSize": "16ptn",
     "categorySlug": "desserts-icecream",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-ds-845550",
-    "sku": "845550",
+    "sku": "RW-845550",
     "name": "Cherry Cheesecake Uncut",
     "packSize": "6x16ptn",
     "categorySlug": "desserts-icecream",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-ds-801240",
-    "sku": "801240",
+    "sku": "RW-801240",
     "name": "Cool Delight Chocolate Ice Cream Sponge Roll",
     "packSize": "3x500g",
     "categorySlug": "desserts-icecream",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-ds-812110",
-    "sku": "812110",
+    "sku": "RW-812110",
     "name": "Country Range Baked Salted Chocolate Torte Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-ds-881230",
-    "sku": "881230",
+    "sku": "RW-881230",
     "name": "Country Range Bakewell Tart Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-ds-784170",
-    "sku": "784170",
+    "sku": "RW-784170",
     "name": "Country Range Chocolate Brownie Cheesecake",
     "packSize": "1x14 ptn",
     "categorySlug": "desserts-icecream",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-ds-842190",
-    "sku": "842190",
+    "sku": "RW-842190",
     "name": "Country Range Cream Filled Profiteroles in Chocolate Sauce",
     "packSize": "3x24",
     "categorySlug": "desserts-icecream",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-ds-812120",
-    "sku": "812120",
+    "sku": "RW-812120",
     "name": "Country Range Gluten Free Luscious Lemon Cheesecake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-ds-808180",
-    "sku": "808180",
+    "sku": "RW-808180",
     "name": "Country Range Italian Style Plum Tart",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-ds-812140",
-    "sku": "812140",
+    "sku": "RW-812140",
     "name": "Country Range Lemon Panna Cotta Tart Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-ds-810590",
-    "sku": "810590",
+    "sku": "RW-810590",
     "name": "Country Range Mango & Passion Fruit Torte",
     "packSize": "1x14ptn",
     "categorySlug": "desserts-icecream",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-ds-801170",
-    "sku": "801170",
+    "sku": "RW-801170",
     "name": "Country Range New York Style Cheesecake",
     "packSize": "1x14ptn",
     "categorySlug": "desserts-icecream",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-ds-843040",
-    "sku": "843040",
+    "sku": "RW-843040",
     "name": "Country Range Peaches and Cream Torte",
     "packSize": "1x14ptn",
     "categorySlug": "desserts-icecream",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-ds-842300",
-    "sku": "842300",
+    "sku": "RW-842300",
     "name": "Country Range Premium Tarte au Citron Uncut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-ds-844930",
-    "sku": "844930",
+    "sku": "RW-844930",
     "name": "Country Range Salted Caramel Cheesecake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-ds-804540",
-    "sku": "804540",
+    "sku": "RW-804540",
     "name": "Country Range Salted Caramel, Chocolate & Profiterole Dessert -1x20ptn",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-ds-781460",
-    "sku": "781460",
+    "sku": "RW-781460",
     "name": "Country Range Sticky Toffee Cheesecake",
     "packSize": "1x14 ptn",
     "categorySlug": "desserts-icecream",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-ds-844920",
-    "sku": "844920",
+    "sku": "RW-844920",
     "name": "Country Range Triple Chocolate Cheesecake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-ds-844910",
-    "sku": "844910",
+    "sku": "RW-844910",
     "name": "Country Range White Chocolate & Raspberry Cheesecake Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-ds-800100",
-    "sku": "800100",
+    "sku": "RW-800100",
     "name": "Country Range White Chocolate & Raspberry Tart",
     "packSize": "1x14ptn",
     "categorySlug": "desserts-icecream",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-ds-858111",
-    "sku": "858111",
+    "sku": "RW-858111",
     "name": "Erlenbacher Fine Apple Vegan Tart Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-ds-858110",
-    "sku": "858110",
+    "sku": "RW-858110",
     "name": "Erlenbacher Fine Apple Vegan Tart Pre-Cut",
     "packSize": "4x12ptn",
     "categorySlug": "desserts-icecream",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-ds-845571",
-    "sku": "845571",
+    "sku": "RW-845571",
     "name": "Fruits of the Forest Cheesecake (un-cut)",
     "packSize": "1x16ptn",
     "categorySlug": "desserts-icecream",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-ds-845570",
-    "sku": "845570",
+    "sku": "RW-845570",
     "name": "Fruits of the Forest Cheesecake (un-cut)",
     "packSize": "6x16ptn",
     "categorySlug": "desserts-icecream",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-ds-712110",
-    "sku": "712110",
+    "sku": "RW-712110",
     "name": "GF Cajun Spice Sweet Potato Roulade",
     "packSize": "1x16x195g",
     "categorySlug": "desserts-icecream",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-ds-712130",
-    "sku": "712130",
+    "sku": "RW-712130",
     "name": "Lemon Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-ds-875110",
-    "sku": "875110",
+    "sku": "RW-875110",
     "name": "Luscious Lemon Cheesecake Slices Pre-Cut",
     "packSize": "1x15ptn",
     "categorySlug": "desserts-icecream",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-ds-845531",
-    "sku": "845531",
+    "sku": "RW-845531",
     "name": "Mademoiselle Desserts Banoffee Gateau Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "desserts-icecream",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-ds-845530",
-    "sku": "845530",
+    "sku": "RW-845530",
     "name": "Mademoiselle Desserts Banoffee Gateau Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "desserts-icecream",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-ds-845590",
-    "sku": "845590",
+    "sku": "RW-845590",
     "name": "Mademoiselle Desserts Banoffee Pie Pre-Cut",
     "packSize": "12ptn",
     "categorySlug": "desserts-icecream",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-ds-842481",
-    "sku": "842481",
+    "sku": "RW-842481",
     "name": "Mademoiselle Desserts Black Forest Gateau Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "desserts-icecream",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-ds-842480",
-    "sku": "842480",
+    "sku": "RW-842480",
     "name": "Mademoiselle Desserts Black Forest Gateau Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "desserts-icecream",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-ds-845271",
-    "sku": "845271",
+    "sku": "RW-845271",
     "name": "Mademoiselle Desserts Coffee Mandarin Gateau Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "desserts-icecream",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-ds-845270",
-    "sku": "845270",
+    "sku": "RW-845270",
     "name": "Mademoiselle Desserts Coffee Mandarin Gateau Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "desserts-icecream",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-ds-845281",
-    "sku": "845281",
+    "sku": "RW-845281",
     "name": "Mademoiselle Desserts Double Chocolate Gateau Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "desserts-icecream",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-ds-845280",
-    "sku": "845280",
+    "sku": "RW-845280",
     "name": "Mademoiselle Desserts Double Chocolate Gateau Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "desserts-icecream",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-ds-845121",
-    "sku": "845121",
+    "sku": "RW-845121",
     "name": "Mademoiselle Desserts Strawberry Gateau Cake Uncut",
     "packSize": "18ptn",
     "categorySlug": "desserts-icecream",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-ds-845120",
-    "sku": "845120",
+    "sku": "RW-845120",
     "name": "Mademoiselle Desserts Strawberry Gateau Cake Uncut",
     "packSize": "6x18ptn",
     "categorySlug": "desserts-icecream",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-ds-845581",
-    "sku": "845581",
+    "sku": "RW-845581",
     "name": "Mandarin Cheesecake Uncut",
     "packSize": "16ptn",
     "categorySlug": "desserts-icecream",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-ds-845580",
-    "sku": "845580",
+    "sku": "RW-845580",
     "name": "Mandarin Cheesecake Uncut",
     "packSize": "6x16ptn",
     "categorySlug": "desserts-icecream",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-ds-845540",
-    "sku": "845540",
+    "sku": "RW-845540",
     "name": "New York Style Cheesecake Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-ds-854980",
-    "sku": "854980",
+    "sku": "RW-854980",
     "name": "Normandy Apple Tart Pre-Cut",
     "packSize": "3x10ptn",
     "categorySlug": "desserts-icecream",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-ds-712090",
-    "sku": "712090",
+    "sku": "RW-712090",
     "name": "Raspberry & Hazelnut Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-ds-712120",
-    "sku": "712120",
+    "sku": "RW-712120",
     "name": "Raspberry & White Chocolate Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-ds-804550",
-    "sku": "804550",
+    "sku": "RW-804550",
     "name": "Signature by Country Range Individual Banoffee Tart -1x16",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-ds-804560",
-    "sku": "804560",
+    "sku": "RW-804560",
     "name": "Signature by Country Range Individual Deep Fill Passion Fruit Tart -1x16",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-ds-712100",
-    "sku": "712100",
+    "sku": "RW-712100",
     "name": "Strawberry & Prosecco Roulade",
     "packSize": "1x2x10ptn",
     "categorySlug": "desserts-icecream",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-ds-845561",
-    "sku": "845561",
+    "sku": "RW-845561",
     "name": "Strawberry Cheesecake Uncut",
     "packSize": "16ptn",
     "categorySlug": "desserts-icecream",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-ds-845560",
-    "sku": "845560",
+    "sku": "RW-845560",
     "name": "Strawberry Cheesecake Uncut",
     "packSize": "6x16ptn",
     "categorySlug": "desserts-icecream",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-ds-891001",
-    "sku": "891001",
+    "sku": "RW-891001",
     "name": "Unportioned Tiramisu Layer Dessert",
     "packSize": "700g",
     "categorySlug": "desserts-icecream",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-ds-781310",
-    "sku": "781310",
+    "sku": "RW-781310",
     "name": "Vegan Treacle Tart Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-ds-841550",
-    "sku": "841550",
+    "sku": "RW-841550",
     "name": "Big Bramley Apple Pie Pre-Cut",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-ds-811350",
-    "sku": "811350",
+    "sku": "RW-811350",
     "name": "Chocolate Fudge Brownie",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-ds-811351",
-    "sku": "811351",
+    "sku": "RW-811351",
     "name": "Chocolate Fudge Brownie",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-ds-729050",
-    "sku": "729050",
+    "sku": "RW-729050",
     "name": "Churros Loops",
     "packSize": "2x2kg",
     "categorySlug": "desserts-icecream",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-ds-842750",
-    "sku": "842750",
+    "sku": "RW-842750",
     "name": "Country Range Chocolate Chip Sponge Pudding",
     "packSize": "12x130g",
     "categorySlug": "desserts-icecream",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-ds-756340",
-    "sku": "756340",
+    "sku": "RW-756340",
     "name": "Country Range Individual Golden Syrup Sponge Puddings",
     "packSize": "12x130g",
     "categorySlug": "desserts-icecream",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-ds-756350",
-    "sku": "756350",
+    "sku": "RW-756350",
     "name": "Country Range Individual Strawberry Jam Sponge Puddings",
     "packSize": "12x130g",
     "categorySlug": "desserts-icecream",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-ds-801290",
-    "sku": "801290",
+    "sku": "RW-801290",
     "name": "Country Range Panettone Bread & Butter Pudding",
     "packSize": "1x18ptn",
     "categorySlug": "desserts-icecream",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-ds-842720",
-    "sku": "842720",
+    "sku": "RW-842720",
     "name": "Country Range Spotted Dick Sponge Pudding",
     "packSize": "12x130g",
     "categorySlug": "desserts-icecream",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-ds-800190",
-    "sku": "800190",
+    "sku": "RW-800190",
     "name": "Country Range Sticky Toffee Sponge Pudding",
     "packSize": "12x130g",
     "categorySlug": "desserts-icecream",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-ds-857031",
-    "sku": "857031",
+    "sku": "RW-857031",
     "name": "Rich Chocolate Brownie Cake",
     "packSize": "1x1kg",
     "categorySlug": "desserts-icecream",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-ds-756790",
-    "sku": "756790",
+    "sku": "RW-756790",
     "name": "Sticky Toffee Christmas Pudding",
     "packSize": "12x153g",
     "categorySlug": "desserts-icecream",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-ds-781450",
-    "sku": "781450",
+    "sku": "RW-781450",
     "name": "Country Range Cranberry & Orange Torte",
     "packSize": "1x14 ptn",
     "categorySlug": "desserts-icecream",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-ds-742010",
-    "sku": "742010",
+    "sku": "RW-742010",
     "name": "Country Range Deep Dish Apple Pie",
     "packSize": "14ptn",
     "categorySlug": "desserts-icecream",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-ds-819750",
-    "sku": "819750",
+    "sku": "RW-819750",
     "name": "Individual Lemon Meringue Tartlet",
     "packSize": "18x130g",
     "categorySlug": "desserts-icecream",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-ds-751660",
-    "sku": "751660",
+    "sku": "RW-751660",
     "name": "Walls Magnum White Ice Cream",
     "packSize": "110ml",
     "categorySlug": "desserts-icecream",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-ds-800380",
-    "sku": "800380",
+    "sku": "RW-800380",
     "name": "Heartbrand Haribo Push-Up Ice Cream",
     "packSize": "30x85ml",
     "categorySlug": "desserts-icecream",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-ds-135720",
-    "sku": "135720",
+    "sku": "RW-135720",
     "name": "Pidy Waffle Flower Basket",
     "packSize": "96",
     "categorySlug": "desserts-icecream",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-ds-256140",
-    "sku": "256140",
+    "sku": "RW-256140",
     "name": "Smoothy Roma Double Scoop Waffle Cones",
     "packSize": "144",
     "categorySlug": "desserts-icecream",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-ds-256720",
-    "sku": "256720",
+    "sku": "RW-256720",
     "name": "Smoothy Twist Single Scoop Waffle Cones",
     "packSize": "200",
     "categorySlug": "desserts-icecream",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-ds-793330",
-    "sku": "793330",
+    "sku": "RW-793330",
     "name": "Chocolate & Vanilla Christmas Ice Cream Tub",
     "packSize": "80ml",
     "categorySlug": "desserts-icecream",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-ds-793340",
-    "sku": "793340",
+    "sku": "RW-793340",
     "name": "Chocolate Coated Ice Cream Christmas Trees",
     "packSize": "80ml",
     "categorySlug": "desserts-icecream",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-ds-835180",
-    "sku": "835180",
+    "sku": "RW-835180",
     "name": "Cool Delight Chocolate Ice Cream in Bio PBS Tub",
     "packSize": "60x80ml",
     "categorySlug": "desserts-icecream",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-ds-847670",
-    "sku": "847670",
+    "sku": "RW-847670",
     "name": "Cool Delight Fortified Vanilla Flavoured Ice Cream (eco tub)",
     "packSize": "60x120ml",
     "categorySlug": "desserts-icecream",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-ds-835190",
-    "sku": "835190",
+    "sku": "RW-835190",
     "name": "Cool Delight Strawberry Ice Cream in Bio PBS Tub",
     "packSize": "60x80ml",
     "categorySlug": "desserts-icecream",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-ds-835200",
-    "sku": "835200",
+    "sku": "RW-835200",
     "name": "Cool Delight Strawberry Yoghurt Ice Cream in Bio PBS Tub",
     "packSize": "60x80ml",
     "categorySlug": "desserts-icecream",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-ds-842120",
-    "sku": "842120",
+    "sku": "RW-842120",
     "name": "Cool Delight Vanilla Flavour Ice Cream in Bio PBS Tub- 60x80ml",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-ds-847770",
-    "sku": "847770",
+    "sku": "RW-847770",
     "name": "Cornetto Classico Ice Cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-ds-741970",
-    "sku": "741970",
+    "sku": "RW-741970",
     "name": "Jude's Plant Based Sicilian Lemon Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-ds-741980",
-    "sku": "741980",
+    "sku": "RW-741980",
     "name": "Jude's Plant Based Strawberry Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-ds-741960",
-    "sku": "741960",
+    "sku": "RW-741960",
     "name": "Jude's Vegan Chocolate Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-ds-741050",
-    "sku": "741050",
+    "sku": "RW-741050",
     "name": "Jude's Vegan Mint Chocolate Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-ds-741040",
-    "sku": "741040",
+    "sku": "RW-741040",
     "name": "Jude's Vegan Salted Caramel Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-ds-871030",
-    "sku": "871030",
+    "sku": "RW-871030",
     "name": "Jude's Vegan Vanilla Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1275,7 +1275,7 @@
   },
   {
     "id": "rw-ds-741030",
-    "sku": "741030",
+    "sku": "RW-741030",
     "name": "Jude's Very Vanilla Ice Cream",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1288,7 +1288,7 @@
   },
   {
     "id": "rw-ds-871050",
-    "sku": "871050",
+    "sku": "RW-871050",
     "name": "Judes Mango Sorbet",
     "packSize": "24x100ml",
     "categorySlug": "desserts-icecream",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "rw-ds-830520",
-    "sku": "830520",
+    "sku": "RW-830520",
     "name": "Magnum Double Gold Caramel Billionaire Ice Cream",
     "packSize": "20x85ml",
     "categorySlug": "desserts-icecream",
@@ -1314,7 +1314,7 @@
   },
   {
     "id": "rw-ds-721820",
-    "sku": "721820",
+    "sku": "RW-721820",
     "name": "Marshfield Chocoholic Heaven Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1327,7 +1327,7 @@
   },
   {
     "id": "rw-ds-765000",
-    "sku": "765000",
+    "sku": "RW-765000",
     "name": "Marshfield Farm Plant Based Vanilla Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1340,7 +1340,7 @@
   },
   {
     "id": "rw-ds-850700",
-    "sku": "850700",
+    "sku": "RW-850700",
     "name": "Marshfield Farm Scoops Vanilla Ice Cream for Dogs",
     "packSize": "24x125ml",
     "categorySlug": "desserts-icecream",
@@ -1353,7 +1353,7 @@
   },
   {
     "id": "rw-ds-721870",
-    "sku": "721870",
+    "sku": "RW-721870",
     "name": "Marshfield Heavenly Honeycomb Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1366,7 +1366,7 @@
   },
   {
     "id": "rw-ds-721880",
-    "sku": "721880",
+    "sku": "RW-721880",
     "name": "Marshfield Lemon Sorbet",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1379,7 +1379,7 @@
   },
   {
     "id": "rw-ds-721900",
-    "sku": "721900",
+    "sku": "RW-721900",
     "name": "Marshfield Mint Choc Chip Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1392,7 +1392,7 @@
   },
   {
     "id": "rw-ds-721940",
-    "sku": "721940",
+    "sku": "RW-721940",
     "name": "Marshfield Salted Caramel Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1405,7 +1405,7 @@
   },
   {
     "id": "rw-ds-721970",
-    "sku": "721970",
+    "sku": "RW-721970",
     "name": "Marshfield Vanilla Clotted Cream Ice Cream",
     "packSize": "12x125ml",
     "categorySlug": "desserts-icecream",
@@ -1418,7 +1418,7 @@
   },
   {
     "id": "rw-ds-712210",
-    "sku": "712210",
+    "sku": "RW-712210",
     "name": "Minecraft Ice Cream",
     "packSize": "75ml",
     "categorySlug": "desserts-icecream",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "rw-ds-851450",
-    "sku": "851450",
+    "sku": "RW-851450",
     "name": "Swedish Glace Dairy Free Vanilla Ice Cream",
     "packSize": "6x750ml",
     "categorySlug": "desserts-icecream",
@@ -1444,7 +1444,7 @@
   },
   {
     "id": "rw-ds-835261",
-    "sku": "835261",
+    "sku": "RW-835261",
     "name": "Vanilla Ice Cream Cups",
     "packSize": "10x105ml",
     "categorySlug": "desserts-icecream",
@@ -1457,7 +1457,7 @@
   },
   {
     "id": "rw-ds-847680",
-    "sku": "847680",
+    "sku": "RW-847680",
     "name": "Wall's Cornetto Strawberry Ice Cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -1470,7 +1470,7 @@
   },
   {
     "id": "rw-ds-863330",
-    "sku": "863330",
+    "sku": "RW-863330",
     "name": "Wall's Magnum Classic Ice Cream",
     "packSize": "20x110ml",
     "categorySlug": "desserts-icecream",
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "rw-ds-853360",
-    "sku": "853360",
+    "sku": "RW-853360",
     "name": "Wall's Magnum Mint Ice Cream",
     "packSize": "20x100ml",
     "categorySlug": "desserts-icecream",
@@ -1496,7 +1496,7 @@
   },
   {
     "id": "rw-ds-847530",
-    "sku": "847530",
+    "sku": "RW-847530",
     "name": "Wall's Mini Milk Vanilla Ice Cream",
     "packSize": "44x23g",
     "categorySlug": "desserts-icecream",
@@ -1509,7 +1509,7 @@
   },
   {
     "id": "rw-ds-853310",
-    "sku": "853310",
+    "sku": "RW-853310",
     "name": "Wall's Solero Exotic Ice Cream",
     "packSize": "25x90ml",
     "categorySlug": "desserts-icecream",
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "rw-ds-830170",
-    "sku": "830170",
+    "sku": "RW-830170",
     "name": "Cheshire Creameries Vanilla Flavoured Ice Cream Slicing Bar",
     "packSize": "12x1ltr",
     "categorySlug": "desserts-icecream",
@@ -1535,7 +1535,7 @@
   },
   {
     "id": "rw-ds-830171",
-    "sku": "830171",
+    "sku": "RW-830171",
     "name": "Cheshire Creameries Vanilla Flavoured Ice Cream Slicing Bar",
     "packSize": "1ltr",
     "categorySlug": "desserts-icecream",
@@ -1548,7 +1548,7 @@
   },
   {
     "id": "rw-ds-800640",
-    "sku": "800640",
+    "sku": "RW-800640",
     "name": "Chocolate Fudge Brownie Ice Cream",
     "packSize": "4.5ltr",
     "categorySlug": "desserts-icecream",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "rw-ds-249780",
-    "sku": "249780",
+    "sku": "RW-249780",
     "name": "Comelle Ice Cream Mix",
     "packSize": "12x1ltr",
     "categorySlug": "desserts-icecream",
@@ -1574,7 +1574,7 @@
   },
   {
     "id": "rw-ds-800740",
-    "sku": "800740",
+    "sku": "RW-800740",
     "name": "Cookies and Cream Ice Cream- 4.5kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -1587,7 +1587,7 @@
   },
   {
     "id": "rw-ds-832271",
-    "sku": "832271",
+    "sku": "RW-832271",
     "name": "Country Range Chocolate Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1600,7 +1600,7 @@
   },
   {
     "id": "rw-ds-832270",
-    "sku": "832270",
+    "sku": "RW-832270",
     "name": "Country Range Chocolate Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1613,7 +1613,7 @@
   },
   {
     "id": "rw-ds-832341",
-    "sku": "832341",
+    "sku": "RW-832341",
     "name": "Country Range Raspberry Ripple Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1626,7 +1626,7 @@
   },
   {
     "id": "rw-ds-832340",
-    "sku": "832340",
+    "sku": "RW-832340",
     "name": "Country Range Raspberry Ripple Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1639,7 +1639,7 @@
   },
   {
     "id": "rw-ds-800961",
-    "sku": "800961",
+    "sku": "RW-800961",
     "name": "Country Range Salted Caramel Soft Scoop Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1652,7 +1652,7 @@
   },
   {
     "id": "rw-ds-800960",
-    "sku": "800960",
+    "sku": "RW-800960",
     "name": "Country Range Salted Caramel Soft Scoop Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "rw-ds-832171",
-    "sku": "832171",
+    "sku": "RW-832171",
     "name": "Country Range Strawberry Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1678,7 +1678,7 @@
   },
   {
     "id": "rw-ds-832170",
-    "sku": "832170",
+    "sku": "RW-832170",
     "name": "Country Range Strawberry Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "rw-ds-832101",
-    "sku": "832101",
+    "sku": "RW-832101",
     "name": "Country Range Vanilla Soft Scoop Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "rw-ds-832100",
-    "sku": "832100",
+    "sku": "RW-832100",
     "name": "Country Range Vanilla Soft Scoop Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1717,7 +1717,7 @@
   },
   {
     "id": "rw-ds-838150",
-    "sku": "838150",
+    "sku": "RW-838150",
     "name": "Dairy Free Lemon Sorbet",
     "packSize": "12x2ltr",
     "categorySlug": "desserts-icecream",
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "rw-ds-838151",
-    "sku": "838151",
+    "sku": "RW-838151",
     "name": "Dairy Free Lemon Sorbet",
     "packSize": "2ltr",
     "categorySlug": "desserts-icecream",
@@ -1743,7 +1743,7 @@
   },
   {
     "id": "rw-ds-830180",
-    "sku": "830180",
+    "sku": "RW-830180",
     "name": "Dialuxe Vanilla Ice Cream",
     "packSize": "12x2ltr",
     "categorySlug": "desserts-icecream",
@@ -1756,7 +1756,7 @@
   },
   {
     "id": "rw-ds-830181",
-    "sku": "830181",
+    "sku": "RW-830181",
     "name": "Dialuxe Vanilla Ice Cream",
     "packSize": "2ltr",
     "categorySlug": "desserts-icecream",
@@ -1769,7 +1769,7 @@
   },
   {
     "id": "rw-ds-800590",
-    "sku": "800590",
+    "sku": "RW-800590",
     "name": "Heavenly Honeycomb Ice Cream",
     "packSize": "4.5ltr",
     "categorySlug": "desserts-icecream",
@@ -1782,7 +1782,7 @@
   },
   {
     "id": "rw-ds-281670",
-    "sku": "281670",
+    "sku": "RW-281670",
     "name": "Jersey Gold Vanilla Soft Ice Cream Mix",
     "packSize": "12x1ltr",
     "categorySlug": "desserts-icecream",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "rw-ds-832651",
-    "sku": "832651",
+    "sku": "RW-832651",
     "name": "Judes Caramel Cookie Dough Brownie Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1808,7 +1808,7 @@
   },
   {
     "id": "rw-ds-832650",
-    "sku": "832650",
+    "sku": "RW-832650",
     "name": "Judes Caramel Cookie Dough Brownie Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "rw-ds-743040",
-    "sku": "743040",
+    "sku": "RW-743040",
     "name": "Judes Chocolate Guinness Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1834,7 +1834,7 @@
   },
   {
     "id": "rw-ds-832621",
-    "sku": "832621",
+    "sku": "RW-832621",
     "name": "Judes Strawberries & Cream Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1847,7 +1847,7 @@
   },
   {
     "id": "rw-ds-832620",
-    "sku": "832620",
+    "sku": "RW-832620",
     "name": "Judes Strawberries & Cream Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1860,7 +1860,7 @@
   },
   {
     "id": "rw-ds-832611",
-    "sku": "832611",
+    "sku": "RW-832611",
     "name": "Judes Truly Chocolate Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1873,7 +1873,7 @@
   },
   {
     "id": "rw-ds-832610",
-    "sku": "832610",
+    "sku": "RW-832610",
     "name": "Judes Truly Chocolate Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1886,7 +1886,7 @@
   },
   {
     "id": "rw-ds-832601",
-    "sku": "832601",
+    "sku": "RW-832601",
     "name": "Judes Vanilla Clotted Cream Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1899,7 +1899,7 @@
   },
   {
     "id": "rw-ds-832600",
-    "sku": "832600",
+    "sku": "RW-832600",
     "name": "Judes Vanilla Clotted Cream Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1912,7 +1912,7 @@
   },
   {
     "id": "rw-ds-743050",
-    "sku": "743050",
+    "sku": "RW-743050",
     "name": "Judes Vegan Mint Choc Chip Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1925,7 +1925,7 @@
   },
   {
     "id": "rw-ds-832631",
-    "sku": "832631",
+    "sku": "RW-832631",
     "name": "Judes Vegan Salted Caramel Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -1938,7 +1938,7 @@
   },
   {
     "id": "rw-ds-832630",
-    "sku": "832630",
+    "sku": "RW-832630",
     "name": "Judes Vegan Salted Caramel Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "rw-ds-835210",
-    "sku": "835210",
+    "sku": "RW-835210",
     "name": "Kelly's of Cornwall Cornish Vanilla Ice Cream",
     "packSize": "4.5ltr",
     "categorySlug": "desserts-icecream",
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "rw-ds-800730",
-    "sku": "800730",
+    "sku": "RW-800730",
     "name": "Marshfield Double Chocolate Dairy Ice Cream- 4.5kg",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "rw-ds-721860",
-    "sku": "721860",
+    "sku": "RW-721860",
     "name": "Marshfield Funky Banana Napoli Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -1990,7 +1990,7 @@
   },
   {
     "id": "rw-ds-830650",
-    "sku": "830650",
+    "sku": "RW-830650",
     "name": "Marshfield Lemon Sorbet",
     "packSize": "2x2.4ltr",
     "categorySlug": "desserts-icecream",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "rw-ds-830531",
-    "sku": "830531",
+    "sku": "RW-830531",
     "name": "Marshfield Mango Sorbet",
     "packSize": "2.4ltr",
     "categorySlug": "desserts-icecream",
@@ -2016,7 +2016,7 @@
   },
   {
     "id": "rw-ds-830530",
-    "sku": "830530",
+    "sku": "RW-830530",
     "name": "Marshfield Mango Sorbet",
     "packSize": "2x2.4ltr",
     "categorySlug": "desserts-icecream",
@@ -2029,7 +2029,7 @@
   },
   {
     "id": "rw-ds-830540",
-    "sku": "830540",
+    "sku": "RW-830540",
     "name": "Marshfield Raspberry Sorbet",
     "packSize": "2x2.4ltr",
     "categorySlug": "desserts-icecream",
@@ -2042,7 +2042,7 @@
   },
   {
     "id": "rw-ds-830541",
-    "sku": "830541",
+    "sku": "RW-830541",
     "name": "Marshfield Raspberry Sorbet -2.4ltr V",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "desserts-icecream",
@@ -2055,7 +2055,7 @@
   },
   {
     "id": "rw-ds-800650",
-    "sku": "800650",
+    "sku": "RW-800650",
     "name": "Marshfield Vanilla Dairy Ice Cream",
     "packSize": "4.5kg",
     "categorySlug": "desserts-icecream",
@@ -2068,7 +2068,7 @@
   },
   {
     "id": "rw-ds-810970",
-    "sku": "810970",
+    "sku": "RW-810970",
     "name": "Marshfield's Plant Based Vanilla Ice Cream",
     "packSize": "2x2.24ltr",
     "categorySlug": "desserts-icecream",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "rw-ds-841040",
-    "sku": "841040",
+    "sku": "RW-841040",
     "name": "Movenpick Vanilla Dream Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2094,7 +2094,7 @@
   },
   {
     "id": "rw-ds-800991",
-    "sku": "800991",
+    "sku": "RW-800991",
     "name": "New Country Range White Vanilla Soft Scoop Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "rw-ds-800990",
-    "sku": "800990",
+    "sku": "RW-800990",
     "name": "New Country Range White Vanilla Soft Scoop Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2120,7 +2120,7 @@
   },
   {
     "id": "rw-ds-811080",
-    "sku": "811080",
+    "sku": "RW-811080",
     "name": "Northern Bloc Alphonso Mango & Passionfruit Sorbet",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2133,7 +2133,7 @@
   },
   {
     "id": "rw-ds-800600",
-    "sku": "800600",
+    "sku": "RW-800600",
     "name": "Rum & Raisin Ice Cream",
     "packSize": "4.5ltr",
     "categorySlug": "desserts-icecream",
@@ -2146,7 +2146,7 @@
   },
   {
     "id": "rw-ds-772011",
-    "sku": "772011",
+    "sku": "RW-772011",
     "name": "Signature by Country Range Chocolate Dairy Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2159,7 +2159,7 @@
   },
   {
     "id": "rw-ds-772010",
-    "sku": "772010",
+    "sku": "RW-772010",
     "name": "Signature by Country Range Chocolate Dairy Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2172,7 +2172,7 @@
   },
   {
     "id": "rw-ds-772031",
-    "sku": "772031",
+    "sku": "RW-772031",
     "name": "Signature by Country Range Salted Caramel Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2185,7 +2185,7 @@
   },
   {
     "id": "rw-ds-772030",
-    "sku": "772030",
+    "sku": "RW-772030",
     "name": "Signature by Country Range Salted Caramel Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2198,7 +2198,7 @@
   },
   {
     "id": "rw-ds-772021",
-    "sku": "772021",
+    "sku": "RW-772021",
     "name": "Signature by Country Range Strawberry Dairy Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "rw-ds-772020",
-    "sku": "772020",
+    "sku": "RW-772020",
     "name": "Signature by Country Range Strawberry Dairy Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2224,7 +2224,7 @@
   },
   {
     "id": "rw-ds-772001",
-    "sku": "772001",
+    "sku": "RW-772001",
     "name": "Signature by Country Range Vanilla Dairy Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2237,7 +2237,7 @@
   },
   {
     "id": "rw-ds-772000",
-    "sku": "772000",
+    "sku": "RW-772000",
     "name": "Signature by Country Range Vanilla Dairy Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2250,7 +2250,7 @@
   },
   {
     "id": "rw-ds-800580",
-    "sku": "800580",
+    "sku": "RW-800580",
     "name": "Succulent Strawberry Ice Cream",
     "packSize": "4.5ltr",
     "categorySlug": "desserts-icecream",
@@ -2263,7 +2263,7 @@
   },
   {
     "id": "rw-ds-869991",
-    "sku": "869991",
+    "sku": "RW-869991",
     "name": "Summertime Mint Choc Ripple Ice Cream",
     "packSize": "4ltr",
     "categorySlug": "desserts-icecream",
@@ -2276,7 +2276,7 @@
   },
   {
     "id": "rw-ds-869990",
-    "sku": "869990",
+    "sku": "RW-869990",
     "name": "Summertime Mint Choc Ripple Ice Cream",
     "packSize": "6x4ltr",
     "categorySlug": "desserts-icecream",
@@ -2289,7 +2289,7 @@
   },
   {
     "id": "rw-ds-838210",
-    "sku": "838210",
+    "sku": "RW-838210",
     "name": "Suncream Premium Orange Sorbet",
     "packSize": "12x2ltr",
     "categorySlug": "desserts-icecream",
@@ -2302,7 +2302,7 @@
   },
   {
     "id": "rw-ds-838211",
-    "sku": "838211",
+    "sku": "RW-838211",
     "name": "Suncream Premium Orange Sorbet",
     "packSize": "2ltr",
     "categorySlug": "desserts-icecream",
@@ -2315,7 +2315,7 @@
   },
   {
     "id": "rw-ds-848000",
-    "sku": "848000",
+    "sku": "RW-848000",
     "name": "Wall's Viennetta Vanilla Ice Cream",
     "packSize": "6x650ml",
     "categorySlug": "desserts-icecream",
@@ -2328,7 +2328,7 @@
   },
   {
     "id": "rw-ds-805270",
-    "sku": "805270",
+    "sku": "RW-805270",
     "name": "Yorvale Banana Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "rw-ds-805271",
-    "sku": "805271",
+    "sku": "RW-805271",
     "name": "Yorvale Banana Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2354,7 +2354,7 @@
   },
   {
     "id": "rw-ds-806640",
-    "sku": "806640",
+    "sku": "RW-806640",
     "name": "Yorvale Bourbon Vanilla with Pod Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2367,7 +2367,7 @@
   },
   {
     "id": "rw-ds-806641",
-    "sku": "806641",
+    "sku": "RW-806641",
     "name": "Yorvale Bourbon Vanilla with Pod Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2380,7 +2380,7 @@
   },
   {
     "id": "rw-ds-804390",
-    "sku": "804390",
+    "sku": "RW-804390",
     "name": "Yorvale Caramel Honeycomb Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2393,7 +2393,7 @@
   },
   {
     "id": "rw-ds-804391",
-    "sku": "804391",
+    "sku": "RW-804391",
     "name": "Yorvale Caramel Honeycomb Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2406,7 +2406,7 @@
   },
   {
     "id": "rw-ds-804070",
-    "sku": "804070",
+    "sku": "RW-804070",
     "name": "Yorvale Clotted Cream Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2419,7 +2419,7 @@
   },
   {
     "id": "rw-ds-804071",
-    "sku": "804071",
+    "sku": "RW-804071",
     "name": "Yorvale Clotted Cream Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2432,7 +2432,7 @@
   },
   {
     "id": "rw-ds-803550",
-    "sku": "803550",
+    "sku": "RW-803550",
     "name": "Yorvale Double Chocolate Chip Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2445,7 +2445,7 @@
   },
   {
     "id": "rw-ds-803551",
-    "sku": "803551",
+    "sku": "RW-803551",
     "name": "Yorvale Double Chocolate Chip Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2458,7 +2458,7 @@
   },
   {
     "id": "rw-ds-801990",
-    "sku": "801990",
+    "sku": "RW-801990",
     "name": "Yorvale Double Chocolate Ice Cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "rw-ds-802470",
-    "sku": "802470",
+    "sku": "RW-802470",
     "name": "Yorvale English Butter Toffee Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2484,7 +2484,7 @@
   },
   {
     "id": "rw-ds-802471",
-    "sku": "802471",
+    "sku": "RW-802471",
     "name": "Yorvale English Butter Toffee Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2497,7 +2497,7 @@
   },
   {
     "id": "rw-ds-805111",
-    "sku": "805111",
+    "sku": "RW-805111",
     "name": "Yorvale Mango Sorbet",
     "packSize": "2ltr",
     "categorySlug": "desserts-icecream",
@@ -2510,7 +2510,7 @@
   },
   {
     "id": "rw-ds-805110",
-    "sku": "805110",
+    "sku": "RW-805110",
     "name": "Yorvale Mango Sorbet",
     "packSize": "8x2ltr",
     "categorySlug": "desserts-icecream",
@@ -2523,7 +2523,7 @@
   },
   {
     "id": "rw-ds-805310",
-    "sku": "805310",
+    "sku": "RW-805310",
     "name": "Yorvale Mint Chocolate chip Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2536,7 +2536,7 @@
   },
   {
     "id": "rw-ds-805311",
-    "sku": "805311",
+    "sku": "RW-805311",
     "name": "Yorvale Mint Chocolate chip Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2549,7 +2549,7 @@
   },
   {
     "id": "rw-ds-802320",
-    "sku": "802320",
+    "sku": "RW-802320",
     "name": "Yorvale Pistachio Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2562,7 +2562,7 @@
   },
   {
     "id": "rw-ds-802321",
-    "sku": "802321",
+    "sku": "RW-802321",
     "name": "Yorvale Pistachio Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2575,7 +2575,7 @@
   },
   {
     "id": "rw-ds-803371",
-    "sku": "803371",
+    "sku": "RW-803371",
     "name": "Yorvale Raspberry Sorbet",
     "packSize": "2ltr",
     "categorySlug": "desserts-icecream",
@@ -2588,7 +2588,7 @@
   },
   {
     "id": "rw-ds-803370",
-    "sku": "803370",
+    "sku": "RW-803370",
     "name": "Yorvale Raspberry Sorbet",
     "packSize": "8x2ltr",
     "categorySlug": "desserts-icecream",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "rw-ds-802140",
-    "sku": "802140",
+    "sku": "RW-802140",
     "name": "Yorvale Sea Salt Caramel Ice Cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -2614,7 +2614,7 @@
   },
   {
     "id": "rw-ds-801920",
-    "sku": "801920",
+    "sku": "RW-801920",
     "name": "Yorvale Sea Salted Caramel Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2627,7 +2627,7 @@
   },
   {
     "id": "rw-ds-801921",
-    "sku": "801921",
+    "sku": "RW-801921",
     "name": "Yorvale Sea Salted Caramel Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2640,7 +2640,7 @@
   },
   {
     "id": "rw-ds-803530",
-    "sku": "803530",
+    "sku": "RW-803530",
     "name": "Yorvale Strawberry Ice cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -2653,7 +2653,7 @@
   },
   {
     "id": "rw-ds-806760",
-    "sku": "806760",
+    "sku": "RW-806760",
     "name": "Yorvale Strawberry Sensation Ice Cream",
     "packSize": "4x5ltr",
     "categorySlug": "desserts-icecream",
@@ -2666,7 +2666,7 @@
   },
   {
     "id": "rw-ds-806761",
-    "sku": "806761",
+    "sku": "RW-806761",
     "name": "Yorvale Strawberry Sensation Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2679,7 +2679,7 @@
   },
   {
     "id": "rw-ds-802511",
-    "sku": "802511",
+    "sku": "RW-802511",
     "name": "Yorvale Vanilla Ice Cream",
     "packSize": "5ltr",
     "categorySlug": "desserts-icecream",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "rw-ds-804180",
-    "sku": "804180",
+    "sku": "RW-804180",
     "name": "Yorvale Vanilla with Pod Ice Cream",
     "packSize": "24x120ml",
     "categorySlug": "desserts-icecream",
@@ -2705,7 +2705,7 @@
   },
   {
     "id": "rw-ds-737040",
-    "sku": "737040",
+    "sku": "RW-737040",
     "name": "Tomato, Goat Cheese and Basil Tarts",
     "packSize": "12x160g",
     "categorySlug": "desserts-icecream",
@@ -2718,7 +2718,7 @@
   },
   {
     "id": "rw-ds-712870",
-    "sku": "712870",
+    "sku": "RW-712870",
     "name": "Wrights Steak & Kidney Pudding",
     "packSize": "380g",
     "categorySlug": "desserts-icecream",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "rw-ds-846760",
-    "sku": "846760",
+    "sku": "RW-846760",
     "name": "Mini Savoury Tartlet Selections",
     "packSize": "75x18g",
     "categorySlug": "desserts-icecream",

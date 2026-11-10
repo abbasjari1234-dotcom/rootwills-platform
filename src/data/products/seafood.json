@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-sf-826070",
-    "sku": "826070",
+    "sku": "RW-826070",
     "name": "Salmon & Spinach Encroute",
     "packSize": "12x250g",
     "categorySlug": "seafood-fish",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-sf-801230",
-    "sku": "801230",
+    "sku": "RW-801230",
     "name": "Battered Jumbo Cod Fish Fingers",
     "packSize": "36x71g",
     "categorySlug": "seafood-fish",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-sf-760320",
-    "sku": "760320",
+    "sku": "RW-760320",
     "name": "Breaded MSC Cod Fillets",
     "packSize": "24 x140-170g",
     "categorySlug": "seafood-fish",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-sf-760310",
-    "sku": "760310",
+    "sku": "RW-760310",
     "name": "Breaded MSC Cod Fillets",
     "packSize": "24x110-140g",
     "categorySlug": "seafood-fish",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-sf-760300",
-    "sku": "760300",
+    "sku": "RW-760300",
     "name": "Breaded MSC Cod Fillets",
     "packSize": "30x80-110g",
     "categorySlug": "seafood-fish",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-sf-897840",
-    "sku": "897840",
+    "sku": "RW-897840",
     "name": "Breaded MSC Cod Stars",
     "packSize": "80x60g",
     "categorySlug": "seafood-fish",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-sf-736870",
-    "sku": "736870",
+    "sku": "RW-736870",
     "name": "Country Range Breaded Pollock",
     "packSize": "60x50-70g",
     "categorySlug": "seafood-fish",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-sf-808080",
-    "sku": "808080",
+    "sku": "RW-808080",
     "name": "Country Range Gourmet Cod Fish Fingers",
     "packSize": "1kg",
     "categorySlug": "seafood-fish",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-sf-808081",
-    "sku": "808081",
+    "sku": "RW-808081",
     "name": "Country Range Gourmet Cod Fish Fingers",
     "packSize": "1kg",
     "categorySlug": "seafood-fish",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-sf-737330",
-    "sku": "737330",
+    "sku": "RW-737330",
     "name": "Country Range Gourmet Cod Fish Fingers",
     "packSize": "2x1kg",
     "categorySlug": "seafood-fish",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-sf-723870",
-    "sku": "723870",
+    "sku": "RW-723870",
     "name": "Country Range MSC Battered Cod Fillets",
     "packSize": "18x170-200g net",
     "categorySlug": "seafood-fish",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-sf-723850",
-    "sku": "723850",
+    "sku": "RW-723850",
     "name": "Country Range MSC Battered Cod Fillets",
     "packSize": "24x110-140g net",
     "categorySlug": "seafood-fish",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-sf-723860",
-    "sku": "723860",
+    "sku": "RW-723860",
     "name": "Country Range MSC Battered Cod Fillets",
     "packSize": "24x140-170g net",
     "categorySlug": "seafood-fish",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-sf-723840",
-    "sku": "723840",
+    "sku": "RW-723840",
     "name": "Country Range MSC Battered Cod Fillets",
     "packSize": "30x80-110g net",
     "categorySlug": "seafood-fish",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-sf-723880",
-    "sku": "723880",
+    "sku": "RW-723880",
     "name": "Country Range MSC Battered Haddock Fillets",
     "packSize": "24x110-140g net",
     "categorySlug": "seafood-fish",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-sf-895150",
-    "sku": "895150",
+    "sku": "RW-895150",
     "name": "Frozen Raw Crispy Battered MSC Cod Fillets",
     "packSize": "170-200g",
     "categorySlug": "seafood-fish",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-sf-781360",
-    "sku": "781360",
+    "sku": "RW-781360",
     "name": "Gluten Free Thai Style Cod & Prawn Fishcake",
     "packSize": "24x114g",
     "categorySlug": "seafood-fish",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-sf-737661",
-    "sku": "737661",
+    "sku": "RW-737661",
     "name": "Gluten Free Wholetail Scampi",
     "packSize": "600g",
     "categorySlug": "seafood-fish",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-sf-737600",
-    "sku": "737600",
+    "sku": "RW-737600",
     "name": "King Frost Fish Cakes",
     "packSize": "36x85g",
     "categorySlug": "seafood-fish",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-sf-736830",
-    "sku": "736830",
+    "sku": "RW-736830",
     "name": "MSC Battered Pollock Fish 110g-140g",
     "packSize": "24",
     "categorySlug": "seafood-fish",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-sf-736820",
-    "sku": "736820",
+    "sku": "RW-736820",
     "name": "MSC Battered Pollock Fish 50g-70g",
     "packSize": "60",
     "categorySlug": "seafood-fish",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-sf-737420",
-    "sku": "737420",
+    "sku": "RW-737420",
     "name": "MSC Gluten Free Bubble Pollock Fillet",
     "packSize": "50x60g",
     "categorySlug": "seafood-fish",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-sf-737200",
-    "sku": "737200",
+    "sku": "RW-737200",
     "name": "MSC Young's Minced Cod Fish Fingers In Breadcrumbs",
     "packSize": "60x56g",
     "categorySlug": "seafood-fish",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-sf-760350",
-    "sku": "760350",
+    "sku": "RW-760350",
     "name": "Premier Whitefish Fishcake",
     "packSize": "30x113g",
     "categorySlug": "seafood-fish",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-sf-760340",
-    "sku": "760340",
+    "sku": "RW-760340",
     "name": "Premier Whitefish Fishcake",
     "packSize": "30x85g",
     "categorySlug": "seafood-fish",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-sf-760330",
-    "sku": "760330",
+    "sku": "RW-760330",
     "name": "Premier Whitefish Fishcake",
     "packSize": "60x50g",
     "categorySlug": "seafood-fish",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-sf-795671",
-    "sku": "795671",
+    "sku": "RW-795671",
     "name": "Seafeast Crispy Fish Goujons",
     "packSize": "1kg",
     "categorySlug": "seafood-fish",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-sf-795670",
-    "sku": "795670",
+    "sku": "RW-795670",
     "name": "Seafeast Crispy Fish Goujons",
     "packSize": "5x1kg",
     "categorySlug": "seafood-fish",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-sf-897830",
-    "sku": "897830",
+    "sku": "RW-897830",
     "name": "Smoked Haddock and Cheddar Cheese Fishcakes",
     "packSize": "135g",
     "categorySlug": "seafood-fish",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-sf-736750",
-    "sku": "736750",
+    "sku": "RW-736750",
     "name": "Whitby Cod Fillet Goujons In Batter",
     "packSize": "10x450g",
     "categorySlug": "seafood-fish",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-sf-737431",
-    "sku": "737431",
+    "sku": "RW-737431",
     "name": "Whitby Gluten Free MSC Cod Goujons",
     "packSize": "1x600g",
     "categorySlug": "seafood-fish",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-sf-737430",
-    "sku": "737430",
+    "sku": "RW-737430",
     "name": "Whitby Gluten Free MSC Cod Goujons",
     "packSize": "6x600g",
     "categorySlug": "seafood-fish",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-sf-730710",
-    "sku": "730710",
+    "sku": "RW-730710",
     "name": "Young's MSC Battered White Fish Skinned & Boned",
     "packSize": "24x125g",
     "categorySlug": "seafood-fish",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-sf-737240",
-    "sku": "737240",
+    "sku": "RW-737240",
     "name": "Young's MSC Chip Shop Jumbo Battered Cod Fish Fingers",
     "packSize": "36x70g",
     "categorySlug": "seafood-fish",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-sf-736901",
-    "sku": "736901",
+    "sku": "RW-736901",
     "name": "Young's MSC Cod Fish Fingers",
     "packSize": "60x25g",
     "categorySlug": "seafood-fish",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-sf-736900",
-    "sku": "736900",
+    "sku": "RW-736900",
     "name": "Young's MSC Cod Fish Fingers",
     "packSize": "6x60x25g",
     "categorySlug": "seafood-fish",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-sf-736911",
-    "sku": "736911",
+    "sku": "RW-736911",
     "name": "Young's MSC Pollock Fish Fingers",
     "packSize": "60x25g",
     "categorySlug": "seafood-fish",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-sf-736910",
-    "sku": "736910",
+    "sku": "RW-736910",
     "name": "Young's MSC Pollock Fish Fingers",
     "packSize": "6x60x25g",
     "categorySlug": "seafood-fish",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-sf-730680",
-    "sku": "730680",
+    "sku": "RW-730680",
     "name": "Young's MSC Small Battered Cod Fillets Skinless & Boneless",
     "packSize": "24x100g",
     "categorySlug": "seafood-fish",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-sf-731040",
-    "sku": "731040",
+    "sku": "RW-731040",
     "name": "Youngs Breaded Salmon Fishcakes",
     "packSize": "60x50g",
     "categorySlug": "seafood-fish",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-sf-731050",
-    "sku": "731050",
+    "sku": "RW-731050",
     "name": "Youngs MSC Battered Cod Portions",
     "packSize": "1x4kg",
     "categorySlug": "seafood-fish",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-sf-730880",
-    "sku": "730880",
+    "sku": "RW-730880",
     "name": "Arctic Royal MSC Skinless Boneless Alaskan Pollock",
     "packSize": "25x140-170g",
     "categorySlug": "seafood-fish",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-sf-739210",
-    "sku": "739210",
+    "sku": "RW-739210",
     "name": "Blue Horizon Cod Skin-Less Bone-Less",
     "packSize": "200-230g",
     "categorySlug": "seafood-fish",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-sf-739310",
-    "sku": "739310",
+    "sku": "RW-739310",
     "name": "Country Range Atlantic Salmon Portions",
     "packSize": "10x200-230g net",
     "categorySlug": "seafood-fish",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-sf-739300",
-    "sku": "739300",
+    "sku": "RW-739300",
     "name": "Country Range Salmon Portions",
     "packSize": "10x140-170g net",
     "categorySlug": "seafood-fish",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-sf-846500",
-    "sku": "846500",
+    "sku": "RW-846500",
     "name": "Frozen Raw Breaded Butterfly King Prawns",
     "packSize": "500g",
     "categorySlug": "seafood-fish",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-sf-846501",
-    "sku": "846501",
+    "sku": "RW-846501",
     "name": "Frozen Raw Breaded Butterfly King Prawns",
     "packSize": "500g",
     "categorySlug": "seafood-fish",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-sf-738690",
-    "sku": "738690",
+    "sku": "RW-738690",
     "name": "Hot Smoked Mackerel Fillets",
     "packSize": "16x2",
     "categorySlug": "seafood-fish",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-sf-857180",
-    "sku": "857180",
+    "sku": "RW-857180",
     "name": "IQF Pacific Cod Fillets Skinless Boneless 140g-170g",
     "packSize": "25",
     "categorySlug": "seafood-fish",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-sf-737960",
-    "sku": "737960",
+    "sku": "RW-737960",
     "name": "Lemon & Pepper Skinless Salmon Portions",
     "packSize": "10x140-160g net",
     "categorySlug": "seafood-fish",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-sf-724080",
-    "sku": "724080",
+    "sku": "RW-724080",
     "name": "MSC Cod Fillets Skinless Boneless – 112-136g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-sf-724090",
-    "sku": "724090",
+    "sku": "RW-724090",
     "name": "MSC Cod Fillets Skinless Boneless – 136-160g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-sf-724110",
-    "sku": "724110",
+    "sku": "RW-724110",
     "name": "MSC Cod Fillets Skinless Boneless – 184-232g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-sf-724060",
-    "sku": "724060",
+    "sku": "RW-724060",
     "name": "MSC Haddock Fillets Skinless Boneless – 112-136g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-sf-724070",
-    "sku": "724070",
+    "sku": "RW-724070",
     "name": "MSC Haddock Fillets Skinless Boneless – 160-184g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-sf-730941",
-    "sku": "730941",
+    "sku": "RW-730941",
     "name": "MSC Kirkella Skinless & Boneless Cod (shatter pack)",
     "packSize": "6.81kg",
     "categorySlug": "seafood-fish",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-sf-733520",
-    "sku": "733520",
+    "sku": "RW-733520",
     "name": "MSC Pollock Fillet 170-200g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-sf-733500",
-    "sku": "733500",
+    "sku": "RW-733500",
     "name": "MSC Pollock Fillets Skinless & Boneless 110-140g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "seafood-fish",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-sf-807840",
-    "sku": "807840",
+    "sku": "RW-807840",
     "name": "Pacific Skinless Boneless Cod Fillets",
     "packSize": "160-184g",
     "categorySlug": "seafood-fish",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-sf-734150",
-    "sku": "734150",
+    "sku": "RW-734150",
     "name": "Pacific West Skin On Seabass Fillets",
     "packSize": "20x110-140g net",
     "categorySlug": "seafood-fish",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-sf-735770",
-    "sku": "735770",
+    "sku": "RW-735770",
     "name": "Pacific West Sliced Smoked Salmon",
     "packSize": "10x200g net",
     "categorySlug": "seafood-fish",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-sf-735771",
-    "sku": "735771",
+    "sku": "RW-735771",
     "name": "Pacific West Sliced Smoked Salmon",
     "packSize": "1x200g net",
     "categorySlug": "seafood-fish",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-sf-736250",
-    "sku": "736250",
+    "sku": "RW-736250",
     "name": "Salmon Portions Skinless",
     "packSize": "10x110-140g",
     "categorySlug": "seafood-fish",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-sf-740680",
-    "sku": "740680",
+    "sku": "RW-740680",
     "name": "Sykes Fish Pie Mix",
     "packSize": "20x400g",
     "categorySlug": "seafood-fish",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-sf-730700",
-    "sku": "730700",
+    "sku": "RW-730700",
     "name": "Vacuum Packed Smoked Mackerel",
     "packSize": "3kg",
     "categorySlug": "seafood-fish",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-sf-730250",
-    "sku": "730250",
+    "sku": "RW-730250",
     "name": "Yellow Smoked Haddock Fillet Portions",
     "packSize": "24x80-130g",
     "categorySlug": "seafood-fish",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-sf-701710",
-    "sku": "701710",
+    "sku": "RW-701710",
     "name": "Arctic Royal Tempura Battered King Prawns",
     "packSize": "10x500g",
     "categorySlug": "seafood-fish",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-sf-701711",
-    "sku": "701711",
+    "sku": "RW-701711",
     "name": "Arctic Royal Tempura Battered King Prawns",
     "packSize": "500g",
     "categorySlug": "seafood-fish",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-sf-712650",
-    "sku": "712650",
+    "sku": "RW-712650",
     "name": "Breaded Butterfly King Prawns",
     "packSize": "10x500g",
     "categorySlug": "seafood-fish",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-sf-733510",
-    "sku": "733510",
+    "sku": "RW-733510",
     "name": "Country Range King Prawns 16/20 30% Glaze",
     "packSize": "10x700g",
     "categorySlug": "seafood-fish",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-sf-733511",
-    "sku": "733511",
+    "sku": "RW-733511",
     "name": "Country Range King Prawns 16/20 30% Glaze",
     "packSize": "700g",
     "categorySlug": "seafood-fish",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-sf-736281",
-    "sku": "736281",
+    "sku": "RW-736281",
     "name": "Country Range North Atlantic Prawns 150/250",
     "packSize": "1.5kg",
     "categorySlug": "seafood-fish",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-sf-736280",
-    "sku": "736280",
+    "sku": "RW-736280",
     "name": "Country Range North Atlantic Prawns 150/250",
     "packSize": "1x1.5kg",
     "categorySlug": "seafood-fish",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-sf-736500",
-    "sku": "736500",
+    "sku": "RW-736500",
     "name": "Country Range Wholetail Scampi Breaded",
     "packSize": "10x454g",
     "categorySlug": "seafood-fish",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-sf-712640",
-    "sku": "712640",
+    "sku": "RW-712640",
     "name": "Crumbed Noodles Prawns",
     "packSize": "10x500g",
     "categorySlug": "seafood-fish",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-sf-875610",
-    "sku": "875610",
+    "sku": "RW-875610",
     "name": "Frozen Raw Lightly Dusted Calamari with Tentacles",
     "packSize": "6x1kg",
     "categorySlug": "seafood-fish",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-sf-736641",
-    "sku": "736641",
+    "sku": "RW-736641",
     "name": "Glenmyr Coldwater Prawns Cooked & Peeled",
     "packSize": "1.2kg",
     "categorySlug": "seafood-fish",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-sf-736640",
-    "sku": "736640",
+    "sku": "RW-736640",
     "name": "Glenmyr Coldwater Prawns Cooked & Peeled",
     "packSize": "5x1.2kg",
     "categorySlug": "seafood-fish",
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "rw-sf-736221",
-    "sku": "736221",
+    "sku": "RW-736221",
     "name": "MSC Royal Greenland Cooked & Peeled Coldwater Prawns",
     "packSize": "1x2kg",
     "categorySlug": "seafood-fish",
@@ -1028,7 +1028,7 @@
   },
   {
     "id": "rw-sf-736220",
-    "sku": "736220",
+    "sku": "RW-736220",
     "name": "MSC Royal Greenland Cooked & Peeled Coldwater Prawns",
     "packSize": "5x2kg",
     "categorySlug": "seafood-fish",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "rw-sf-735921",
-    "sku": "735921",
+    "sku": "RW-735921",
     "name": "Pacific West Frozen Raw Seafood Basket",
     "packSize": "1x200g",
     "categorySlug": "seafood-fish",
@@ -1054,7 +1054,7 @@
   },
   {
     "id": "rw-sf-735111",
-    "sku": "735111",
+    "sku": "RW-735111",
     "name": "Pacific West Salt & Pepper Squid",
     "packSize": "1x1kg",
     "categorySlug": "seafood-fish",
@@ -1067,7 +1067,7 @@
   },
   {
     "id": "rw-sf-735110",
-    "sku": "735110",
+    "sku": "RW-735110",
     "name": "Pacific West Salt & Pepper Squid",
     "packSize": "6x1kg",
     "categorySlug": "seafood-fish",
@@ -1080,7 +1080,7 @@
   },
   {
     "id": "rw-sf-710660",
-    "sku": "710660",
+    "sku": "RW-710660",
     "name": "Raw Panko Squid Strips",
     "packSize": "1x5kg",
     "categorySlug": "seafood-fish",
@@ -1093,7 +1093,7 @@
   },
   {
     "id": "rw-sf-736311",
-    "sku": "736311",
+    "sku": "RW-736311",
     "name": "Signature by Country Range Premium North Atlantic Prawns",
     "packSize": "1x1.8kg",
     "categorySlug": "seafood-fish",
@@ -1106,7 +1106,7 @@
   },
   {
     "id": "rw-sf-736310",
-    "sku": "736310",
+    "sku": "RW-736310",
     "name": "Signature by Country Range Premium North Atlantic Prawns",
     "packSize": "5x1.8kg",
     "categorySlug": "seafood-fish",
@@ -1119,7 +1119,7 @@
   },
   {
     "id": "rw-sf-735661",
-    "sku": "735661",
+    "sku": "RW-735661",
     "name": "Sweet Chilli Squid Bites",
     "packSize": "1x1kg",
     "categorySlug": "seafood-fish",
@@ -1132,7 +1132,7 @@
   },
   {
     "id": "rw-sf-731360",
-    "sku": "731360",
+    "sku": "RW-731360",
     "name": "Thai Tempura Pre-Fried King Prawns",
     "packSize": "12x500g",
     "categorySlug": "seafood-fish",
@@ -1145,7 +1145,7 @@
   },
   {
     "id": "rw-sf-731361",
-    "sku": "731361",
+    "sku": "RW-731361",
     "name": "Thai Tempura Pre-Fried King Prawns",
     "packSize": "500g",
     "categorySlug": "seafood-fish",
@@ -1158,7 +1158,7 @@
   },
   {
     "id": "rw-sf-712630",
-    "sku": "712630",
+    "sku": "RW-712630",
     "name": "Truffle Flavoured Crumbed Jumbo Prawns",
     "packSize": "10x500g",
     "categorySlug": "seafood-fish",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "rw-sf-736520",
-    "sku": "736520",
+    "sku": "RW-736520",
     "name": "Whitby Hot n' Spicy Creel Prawns",
     "packSize": "5x450g",
     "categorySlug": "seafood-fish",
@@ -1184,7 +1184,7 @@
   },
   {
     "id": "rw-sf-736431",
-    "sku": "736431",
+    "sku": "RW-736431",
     "name": "Whitby Seafoods Breaded Scampi",
     "packSize": "450g",
     "categorySlug": "seafood-fish",
@@ -1197,7 +1197,7 @@
   },
   {
     "id": "rw-sf-736430",
-    "sku": "736430",
+    "sku": "RW-736430",
     "name": "Whitby Seafoods Breaded Scampi",
     "packSize": "10x450g",
     "categorySlug": "seafood-fish",
@@ -1210,7 +1210,7 @@
   },
   {
     "id": "rw-sf-736450",
-    "sku": "736450",
+    "sku": "RW-736450",
     "name": "Whitby Seafoods Breaded Scampi Extra Large",
     "packSize": "10x450g",
     "categorySlug": "seafood-fish",
@@ -1223,7 +1223,7 @@
   },
   {
     "id": "rw-sf-736451",
-    "sku": "736451",
+    "sku": "RW-736451",
     "name": "Whitby Seafoods Breaded Scampi Extra Large",
     "packSize": "1x450g",
     "categorySlug": "seafood-fish",
@@ -1236,7 +1236,7 @@
   },
   {
     "id": "rw-sf-738160",
-    "sku": "738160",
+    "sku": "RW-738160",
     "name": "Invisible Chef Tuna Melt Panini",
     "packSize": "12x124g",
     "categorySlug": "seafood-fish",
@@ -1249,7 +1249,7 @@
   },
   {
     "id": "rw-sf-724540",
-    "sku": "724540",
+    "sku": "RW-724540",
     "name": "Tuna Melt Panini",
     "packSize": "20x219g",
     "categorySlug": "seafood-fish",
@@ -1262,7 +1262,7 @@
   },
   {
     "id": "rw-sf-738240",
-    "sku": "738240",
+    "sku": "RW-738240",
     "name": "Birdseye Fishless Fingers",
     "packSize": "12x28g",
     "categorySlug": "seafood-fish",

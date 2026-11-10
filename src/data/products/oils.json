@@ -1,7 +1,7 @@
 [
   {
     "id": "rw-of-298240",
-    "sku": "298240",
+    "sku": "RW-298240",
     "name": "Burts Sea Salt & Malt Vinegar Crisps",
     "packSize": "20x40g",
     "categorySlug": "oil-fats",
@@ -14,7 +14,7 @@
   },
   {
     "id": "rw-of-231130",
-    "sku": "231130",
+    "sku": "RW-231130",
     "name": "English Heritage Malt Vinegar & Sea Salt Crisps",
     "packSize": "24x40g",
     "categorySlug": "oil-fats",
@@ -27,7 +27,7 @@
   },
   {
     "id": "rw-of-290180",
-    "sku": "290180",
+    "sku": "RW-290180",
     "name": "Hula Hoops Salt & Vinegar Crisps",
     "packSize": "32x34g",
     "categorySlug": "oil-fats",
@@ -40,7 +40,7 @@
   },
   {
     "id": "rw-of-286320",
-    "sku": "286320",
+    "sku": "RW-286320",
     "name": "McCoy's Salt & Malt Vinegar Grab Bag Crisps",
     "packSize": "26x45g",
     "categorySlug": "oil-fats",
@@ -53,7 +53,7 @@
   },
   {
     "id": "rw-of-288450",
-    "sku": "288450",
+    "sku": "RW-288450",
     "name": "McCoy's Salt & Vinegar Crisps -36x45g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "oil-fats",
@@ -66,7 +66,7 @@
   },
   {
     "id": "rw-of-302420",
-    "sku": "302420",
+    "sku": "RW-302420",
     "name": "Pipers Burrow Hill Cider Vinegar and Sea Salt Crisps",
     "packSize": "40x40g",
     "categorySlug": "oil-fats",
@@ -79,7 +79,7 @@
   },
   {
     "id": "rw-of-302480",
-    "sku": "302480",
+    "sku": "RW-302480",
     "name": "Pipers Cider Vinegar and Sea Salt Sharing Crisps",
     "packSize": "8x150g",
     "categorySlug": "oil-fats",
@@ -92,7 +92,7 @@
   },
   {
     "id": "rw-of-299790",
-    "sku": "299790",
+    "sku": "RW-299790",
     "name": "Pringles Salt & Vinegar Crisps",
     "packSize": "12x40g",
     "categorySlug": "oil-fats",
@@ -105,7 +105,7 @@
   },
   {
     "id": "rw-of-299310",
-    "sku": "299310",
+    "sku": "RW-299310",
     "name": "Real Hand Cooked Sea Salt & Cider Vinegar Crisps",
     "packSize": "48x35g",
     "categorySlug": "oil-fats",
@@ -118,7 +118,7 @@
   },
   {
     "id": "rw-of-117410",
-    "sku": "117410",
+    "sku": "RW-117410",
     "name": "Tyrrell's Sea Salt & Cider Vinegar Crisps",
     "packSize": "40g",
     "categorySlug": "oil-fats",
@@ -131,7 +131,7 @@
   },
   {
     "id": "rw-of-135110",
-    "sku": "135110",
+    "sku": "RW-135110",
     "name": "Tyrrells Furrows Sea Salt & Vinegar Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "oil-fats",
@@ -144,7 +144,7 @@
   },
   {
     "id": "rw-of-135030",
-    "sku": "135030",
+    "sku": "RW-135030",
     "name": "Tyrrells Sea Salt & Cider Vinegar Crisps -8x150g",
     "packSize": "Commercial Catering Pack",
     "categorySlug": "oil-fats",
@@ -157,7 +157,7 @@
   },
   {
     "id": "rw-of-290450",
-    "sku": "290450",
+    "sku": "RW-290450",
     "name": "Walkers Baked Salt & Vinegar Crisps",
     "packSize": "32x37.5g",
     "categorySlug": "oil-fats",
@@ -170,7 +170,7 @@
   },
   {
     "id": "rw-of-213220",
-    "sku": "213220",
+    "sku": "RW-213220",
     "name": "Walkers Salt & Vinegar Crisps",
     "packSize": "32x32.5g",
     "categorySlug": "oil-fats",
@@ -183,7 +183,7 @@
   },
   {
     "id": "rw-of-213240",
-    "sku": "213240",
+    "sku": "RW-213240",
     "name": "Walkers Salt & Vinegar Crisps",
     "packSize": "32x45g",
     "categorySlug": "oil-fats",
@@ -196,7 +196,7 @@
   },
   {
     "id": "rw-of-298740",
-    "sku": "298740",
+    "sku": "RW-298740",
     "name": "Walkers Squares Salt & Vinegar Crisps",
     "packSize": "32x27.5g",
     "categorySlug": "oil-fats",
@@ -209,7 +209,7 @@
   },
   {
     "id": "rw-of-171960",
-    "sku": "171960",
+    "sku": "RW-171960",
     "name": "Country Range Extra Virgin Olive Oil",
     "packSize": "3x5ltr",
     "categorySlug": "oil-fats",
@@ -222,7 +222,7 @@
   },
   {
     "id": "rw-of-171961",
-    "sku": "171961",
+    "sku": "RW-171961",
     "name": "Country Range Extra Virgin Olive Oil",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -235,7 +235,7 @@
   },
   {
     "id": "rw-of-171950",
-    "sku": "171950",
+    "sku": "RW-171950",
     "name": "Country Range Olive Pomace Oil",
     "packSize": "3x5ltr",
     "categorySlug": "oil-fats",
@@ -248,7 +248,7 @@
   },
   {
     "id": "rw-of-171951",
-    "sku": "171951",
+    "sku": "RW-171951",
     "name": "Country Range Olive Pomace Oil",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -261,7 +261,7 @@
   },
   {
     "id": "rw-of-166000",
-    "sku": "166000",
+    "sku": "RW-166000",
     "name": "Crete Gold Olive Oil",
     "packSize": "1x5ltr",
     "categorySlug": "oil-fats",
@@ -274,7 +274,7 @@
   },
   {
     "id": "rw-of-109210",
-    "sku": "109210",
+    "sku": "RW-109210",
     "name": "La Espanola Extra Virgin Olive Oil & Sunflower Oil Blend",
     "packSize": "3x5ltr",
     "categorySlug": "oil-fats",
@@ -287,7 +287,7 @@
   },
   {
     "id": "rw-of-109211",
-    "sku": "109211",
+    "sku": "RW-109211",
     "name": "La Espanola Extra Virgin Olive Oil & Sunflower Oil Blend",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -300,7 +300,7 @@
   },
   {
     "id": "rw-of-109200",
-    "sku": "109200",
+    "sku": "RW-109200",
     "name": "La Espanola Olive Pomace Oil & Sunflower Oil Blend",
     "packSize": "3x5ltr",
     "categorySlug": "oil-fats",
@@ -313,7 +313,7 @@
   },
   {
     "id": "rw-of-109201",
-    "sku": "109201",
+    "sku": "RW-109201",
     "name": "La Espanola Olive Pomace Oil & Sunflower Oil Blend",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -326,7 +326,7 @@
   },
   {
     "id": "rw-of-127181",
-    "sku": "127181",
+    "sku": "RW-127181",
     "name": "Chef's Brigade Basil Infused Oil",
     "packSize": "1x500g",
     "categorySlug": "oil-fats",
@@ -339,7 +339,7 @@
   },
   {
     "id": "rw-of-127180",
-    "sku": "127180",
+    "sku": "RW-127180",
     "name": "Chef's Brigade Basil Infused Oil",
     "packSize": "6x500g",
     "categorySlug": "oil-fats",
@@ -352,7 +352,7 @@
   },
   {
     "id": "rw-of-178431",
-    "sku": "178431",
+    "sku": "RW-178431",
     "name": "Chef's Brigade Garlic Infused Extra Virgin Olive Oil",
     "packSize": "500ml",
     "categorySlug": "oil-fats",
@@ -365,7 +365,7 @@
   },
   {
     "id": "rw-of-128191",
-    "sku": "128191",
+    "sku": "RW-128191",
     "name": "Chef's Brigade Garlic Infused Oil",
     "packSize": "1x500ml",
     "categorySlug": "oil-fats",
@@ -378,7 +378,7 @@
   },
   {
     "id": "rw-of-128190",
-    "sku": "128190",
+    "sku": "RW-128190",
     "name": "Chef's Brigade Garlic Infused Oil",
     "packSize": "6x500ml",
     "categorySlug": "oil-fats",
@@ -391,7 +391,7 @@
   },
   {
     "id": "rw-of-196111",
-    "sku": "196111",
+    "sku": "RW-196111",
     "name": "Hillbillies Nashville Oil",
     "packSize": "2.2ltr",
     "categorySlug": "oil-fats",
@@ -404,7 +404,7 @@
   },
   {
     "id": "rw-of-196110",
-    "sku": "196110",
+    "sku": "RW-196110",
     "name": "Hillbillies Nashville Oil",
     "packSize": "4x2.2ltr",
     "categorySlug": "oil-fats",
@@ -417,7 +417,7 @@
   },
   {
     "id": "rw-of-172980",
-    "sku": "172980",
+    "sku": "RW-172980",
     "name": "La Espanola Olive Oil flavoured with White Truffle",
     "packSize": "6x250ml",
     "categorySlug": "oil-fats",
@@ -430,7 +430,7 @@
   },
   {
     "id": "rw-of-172150",
-    "sku": "172150",
+    "sku": "RW-172150",
     "name": "Olympic Rapeseed Oil",
     "packSize": "15ltr",
     "categorySlug": "oil-fats",
@@ -443,7 +443,7 @@
   },
   {
     "id": "rw-of-173910",
-    "sku": "173910",
+    "sku": "RW-173910",
     "name": "Olympic Rapeseed Oil",
     "packSize": "20ltr",
     "categorySlug": "oil-fats",
@@ -456,7 +456,7 @@
   },
   {
     "id": "rw-of-142001",
-    "sku": "142001",
+    "sku": "RW-142001",
     "name": "Roquito Chilli Infused Oil",
     "packSize": "1x500ml",
     "categorySlug": "oil-fats",
@@ -469,7 +469,7 @@
   },
   {
     "id": "rw-of-142000",
-    "sku": "142000",
+    "sku": "RW-142000",
     "name": "Roquito Chilli Infused Oil",
     "packSize": "6x500ml",
     "categorySlug": "oil-fats",
@@ -482,7 +482,7 @@
   },
   {
     "id": "rw-of-100590",
-    "sku": "100590",
+    "sku": "RW-100590",
     "name": "White Truffle Oil",
     "packSize": "1x250ml",
     "categorySlug": "oil-fats",
@@ -495,7 +495,7 @@
   },
   {
     "id": "rw-of-171270",
-    "sku": "171270",
+    "sku": "RW-171270",
     "name": "Cotswold Gold Cold Pressed Extra Virgin Rapeseed Oil (PET)",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -508,7 +508,7 @@
   },
   {
     "id": "rw-of-119011",
-    "sku": "119011",
+    "sku": "RW-119011",
     "name": "Country Range Extended Life Rapeseed Oil",
     "packSize": "1x5ltr",
     "categorySlug": "oil-fats",
@@ -521,7 +521,7 @@
   },
   {
     "id": "rw-of-119010",
-    "sku": "119010",
+    "sku": "RW-119010",
     "name": "Country Range Extended Life Rapeseed Oil",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -534,7 +534,7 @@
   },
   {
     "id": "rw-of-172010",
-    "sku": "172010",
+    "sku": "RW-172010",
     "name": "Country Range Extended Life Rapeseed Oil (bottle in box)",
     "packSize": "15ltr",
     "categorySlug": "oil-fats",
@@ -547,7 +547,7 @@
   },
   {
     "id": "rw-of-172000",
-    "sku": "172000",
+    "sku": "RW-172000",
     "name": "Country Range Extended Life Rapeseed Oil (bottle in box)",
     "packSize": "20ltr",
     "categorySlug": "oil-fats",
@@ -560,7 +560,7 @@
   },
   {
     "id": "rw-of-172030",
-    "sku": "172030",
+    "sku": "RW-172030",
     "name": "Country Range Extended Life Rapeseed Oil (litho drum)",
     "packSize": "20ltr",
     "categorySlug": "oil-fats",
@@ -573,7 +573,7 @@
   },
   {
     "id": "rw-of-126740",
-    "sku": "126740",
+    "sku": "RW-126740",
     "name": "KTC Pure Rapeseed Oil",
     "packSize": "20ltr",
     "categorySlug": "oil-fats",
@@ -586,7 +586,7 @@
   },
   {
     "id": "rw-of-171921",
-    "sku": "171921",
+    "sku": "RW-171921",
     "name": "Premium Toasted Sesame Oil",
     "packSize": "1ltr",
     "categorySlug": "oil-fats",
@@ -599,7 +599,7 @@
   },
   {
     "id": "rw-of-171920",
-    "sku": "171920",
+    "sku": "RW-171920",
     "name": "Premium Toasted Sesame Oil",
     "packSize": "6x1ltr",
     "categorySlug": "oil-fats",
@@ -612,7 +612,7 @@
   },
   {
     "id": "rw-of-172090",
-    "sku": "172090",
+    "sku": "RW-172090",
     "name": "Rapeseed Oil (BiB)",
     "packSize": "1x20ltr",
     "categorySlug": "oil-fats",
@@ -625,7 +625,7 @@
   },
   {
     "id": "rw-of-171010",
-    "sku": "171010",
+    "sku": "RW-171010",
     "name": "Super Hi-Fry Extra Long Life Oil",
     "packSize": "15ltr",
     "categorySlug": "oil-fats",
@@ -638,7 +638,7 @@
   },
   {
     "id": "rw-of-219400",
-    "sku": "219400",
+    "sku": "RW-219400",
     "name": "Chef's Kitchen Apple Cider Vinegar",
     "packSize": "4x5ltr",
     "categorySlug": "oil-fats",
@@ -651,7 +651,7 @@
   },
   {
     "id": "rw-of-219401",
-    "sku": "219401",
+    "sku": "RW-219401",
     "name": "Chef's Kitchen Apple Cider Vinegar",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -664,7 +664,7 @@
   },
   {
     "id": "rw-of-209281",
-    "sku": "209281",
+    "sku": "RW-209281",
     "name": "Country Range Balsamic Vinegar",
     "packSize": "1x2ltr",
     "categorySlug": "oil-fats",
@@ -677,7 +677,7 @@
   },
   {
     "id": "rw-of-209280",
-    "sku": "209280",
+    "sku": "RW-209280",
     "name": "Country Range Balsamic Vinegar",
     "packSize": "6x2ltr",
     "categorySlug": "oil-fats",
@@ -690,7 +690,7 @@
   },
   {
     "id": "rw-of-209520",
-    "sku": "209520",
+    "sku": "RW-209520",
     "name": "Country Range Distilled Vinegar",
     "packSize": "2x5ltr",
     "categorySlug": "oil-fats",
@@ -703,7 +703,7 @@
   },
   {
     "id": "rw-of-209521",
-    "sku": "209521",
+    "sku": "RW-209521",
     "name": "Country Range Distilled Vinegar",
     "packSize": "5ltr",
     "categorySlug": "oil-fats",
@@ -716,7 +716,7 @@
   },
   {
     "id": "rw-of-209461",
-    "sku": "209461",
+    "sku": "RW-209461",
     "name": "Country Range Malt Vinegar",
     "packSize": "1x5ltr",
     "categorySlug": "oil-fats",
@@ -729,7 +729,7 @@
   },
   {
     "id": "rw-of-209460",
-    "sku": "209460",
+    "sku": "RW-209460",
     "name": "Country Range Malt Vinegar",
     "packSize": "2x5ltr",
     "categorySlug": "oil-fats",
@@ -742,7 +742,7 @@
   },
   {
     "id": "rw-of-188351",
-    "sku": "188351",
+    "sku": "RW-188351",
     "name": "Country Range Red Wine Vinegar",
     "packSize": "2ltr",
     "categorySlug": "oil-fats",
@@ -755,7 +755,7 @@
   },
   {
     "id": "rw-of-188350",
-    "sku": "188350",
+    "sku": "RW-188350",
     "name": "Country Range Red Wine Vinegar",
     "packSize": "6x2ltr",
     "categorySlug": "oil-fats",
@@ -768,7 +768,7 @@
   },
   {
     "id": "rw-of-209391",
-    "sku": "209391",
+    "sku": "RW-209391",
     "name": "Country Range White Wine Vinegar",
     "packSize": "1x2ltr",
     "categorySlug": "oil-fats",
@@ -781,7 +781,7 @@
   },
   {
     "id": "rw-of-209390",
-    "sku": "209390",
+    "sku": "RW-209390",
     "name": "Country Range White Wine Vinegar",
     "packSize": "6x2ltr",
     "categorySlug": "oil-fats",
@@ -794,7 +794,7 @@
   },
   {
     "id": "rw-of-209250",
-    "sku": "209250",
+    "sku": "RW-209250",
     "name": "Heinz Malt Vinegar",
     "packSize": "6x250ml",
     "categorySlug": "oil-fats",
@@ -807,7 +807,7 @@
   },
   {
     "id": "rw-of-177210",
-    "sku": "177210",
+    "sku": "RW-177210",
     "name": "Heinz Malt Vinegar Sauce (sachet)",
     "packSize": "200x7ml",
     "categorySlug": "oil-fats",
@@ -820,7 +820,7 @@
   },
   {
     "id": "rw-of-293010",
-    "sku": "293010",
+    "sku": "RW-293010",
     "name": "Sarsons Barley Malt Vinegar Bottle",
     "packSize": "12x250ml",
     "categorySlug": "oil-fats",
@@ -833,7 +833,7 @@
   },
   {
     "id": "rw-of-293020",
-    "sku": "293020",
+    "sku": "RW-293020",
     "name": "Sarsons Malt Vinegar Bottle",
     "packSize": "12x300ml",
     "categorySlug": "oil-fats",
@@ -846,7 +846,7 @@
   },
   {
     "id": "rw-of-202521",
-    "sku": "202521",
+    "sku": "RW-202521",
     "name": "Country Range Large Gherkins in Vinegar",
     "packSize": "2.3kg",
     "categorySlug": "oil-fats",
@@ -859,7 +859,7 @@
   },
   {
     "id": "rw-of-202520",
-    "sku": "202520",
+    "sku": "RW-202520",
     "name": "Country Range Large Gherkins in Vinegar",
     "packSize": "2x2.3kg",
     "categorySlug": "oil-fats",
@@ -872,7 +872,7 @@
   },
   {
     "id": "rw-of-127991",
-    "sku": "127991",
+    "sku": "RW-127991",
     "name": "Country Range Silverskin Onions in Vinegar",
     "packSize": "2.25kg",
     "categorySlug": "oil-fats",
@@ -885,7 +885,7 @@
   },
   {
     "id": "rw-of-127990",
-    "sku": "127990",
+    "sku": "RW-127990",
     "name": "Country Range Silverskin Onions in Vinegar",
     "packSize": "2x2.25kg",
     "categorySlug": "oil-fats",
@@ -898,7 +898,7 @@
   },
   {
     "id": "rw-of-570231",
-    "sku": "570231",
+    "sku": "RW-570231",
     "name": "Gomo Chargrilled Artichokes in Oil",
     "packSize": "1.5kg",
     "categorySlug": "oil-fats",
@@ -911,7 +911,7 @@
   },
   {
     "id": "rw-of-570230",
-    "sku": "570230",
+    "sku": "RW-570230",
     "name": "Gomo Chargrilled Artichokes in Oil",
     "packSize": "2x1.5kg",
     "categorySlug": "oil-fats",
@@ -924,7 +924,7 @@
   },
   {
     "id": "rw-of-570221",
-    "sku": "570221",
+    "sku": "RW-570221",
     "name": "Gomo Chargrilled Peppers in Oil",
     "packSize": "1.4kg",
     "categorySlug": "oil-fats",
@@ -937,7 +937,7 @@
   },
   {
     "id": "rw-of-570220",
-    "sku": "570220",
+    "sku": "RW-570220",
     "name": "Gomo Chargrilled Peppers in Oil",
     "packSize": "2x1.4kg",
     "categorySlug": "oil-fats",
@@ -950,7 +950,7 @@
   },
   {
     "id": "rw-of-209320",
-    "sku": "209320",
+    "sku": "RW-209320",
     "name": "Country Range Vinegar (Sachet Stick)",
     "packSize": "200",
     "categorySlug": "oil-fats",
@@ -963,7 +963,7 @@
   },
   {
     "id": "rw-of-209291",
-    "sku": "209291",
+    "sku": "RW-209291",
     "name": "Country Range Balsamic Vinegar Glaze",
     "packSize": "1x500ml",
     "categorySlug": "oil-fats",
@@ -976,7 +976,7 @@
   },
   {
     "id": "rw-of-209290",
-    "sku": "209290",
+    "sku": "RW-209290",
     "name": "Country Range Balsamic Vinegar Glaze",
     "packSize": "6x500ml",
     "categorySlug": "oil-fats",
@@ -989,7 +989,7 @@
   },
   {
     "id": "rw-of-101030",
-    "sku": "101030",
+    "sku": "RW-101030",
     "name": "Cooks & Co Anchovy Fillets in Oil",
     "packSize": "10x50g",
     "categorySlug": "oil-fats",
@@ -1002,7 +1002,7 @@
   },
   {
     "id": "rw-of-109120",
-    "sku": "109120",
+    "sku": "RW-109120",
     "name": "Princes Tuna Chunks in Sunflower Oil",
     "packSize": "12x145g (2x6x145g)",
     "categorySlug": "oil-fats",
