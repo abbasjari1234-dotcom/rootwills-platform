@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { Pause, Play } from 'lucide-react';
 
 import { PointerInk } from './PointerInk';
+import { WholesaleCheckoutModal } from './WholesaleCheckoutModal';
 
 interface AnubiCardItem {
   id: string;
@@ -159,6 +160,26 @@ export function FloatingAmbientHero() {
   const activeHoverCountRef = useRef(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+
+  // Global listener to open account modal via custom event or URL hash
+  useEffect(() => {
+    const handleOpen = () => setIsAccountModalOpen(true);
+    window.addEventListener('open-rootwills-account', handleOpen);
+    if (typeof window !== 'undefined' && window.location.hash === '#open-account') {
+      setIsAccountModalOpen(true);
+    }
+    const handleHash = () => {
+      if (window.location.hash === '#open-account') {
+        setIsAccountModalOpen(true);
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => {
+      window.removeEventListener('open-rootwills-account', handleOpen);
+      window.removeEventListener('hashchange', handleHash);
+    };
+  }, []);
 
   // References for central identity layers & tactile effects
   const doodleContainerRef = useRef<HTMLDivElement>(null);
@@ -764,12 +785,13 @@ export function FloatingAmbientHero() {
               <span className="text-[#F3D08A] group-hover:text-white transition-colors">↗</span>
             </a>
 
-            <Link
-              href="/contact"
+            <button
+              type="button"
+              onClick={() => setIsAccountModalOpen(true)}
               className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-white hover:bg-stone-50 text-[#2E060D] text-xs sm:text-sm font-sans font-semibold tracking-wide border border-stone-300 transition-all duration-200 active:scale-[0.96] touch-manipulation shadow-sm cursor-pointer"
             >
               <span>Open Account</span>
-            </Link>
+            </button>
           </div>
         </div>
       </div>
@@ -787,6 +809,12 @@ export function FloatingAmbientHero() {
           </button>
         </div>
       </div>
+
+      {/* Become a Customer / Open an Account Modal */}
+      <WholesaleCheckoutModal
+        isOpen={isAccountModalOpen}
+        onClose={() => setIsAccountModalOpen(false)}
+      />
 
     </section>
   );
