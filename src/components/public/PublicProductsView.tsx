@@ -92,6 +92,34 @@ export function PublicProductsView() {
   const featuredRowRef = useRef<HTMLDivElement>(null);
   const popularAddonRef = useRef<HTMLDivElement>(null);
 
+  // Direct customer or visitor to Rootwills Direct ordering portal
+  const directToRootwillsDirect = () => {
+    if (orderList.length === 0) return;
+    setMobileCartDrawerOpen(false);
+
+    try {
+      const payload = orderList.map((item) => ({
+        id: item.product.id,
+        sku: item.product.sku,
+        name: item.product.name,
+        packSize: item.product.packSize,
+        tempZone: item.product.tempZone,
+        image: item.product.image,
+        qty: item.qty,
+      }));
+      localStorage.setItem('rootwills_direct_draft_order', JSON.stringify(payload));
+    } catch {
+      // ignore storage errors
+    }
+
+    const isProd = typeof window !== 'undefined' && !window.location.hostname.includes('localhost');
+    if (isProd && !window.location.hostname.includes('rootwillsdirect')) {
+      window.location.href = 'https://rootwillsdirect.co.uk';
+    } else {
+      window.location.href = '/direct';
+    }
+  };
+
   // Sync draft order list to localStorage so the new tab (/direct) reads the exact items selected
   useEffect(() => {
     try {
@@ -442,15 +470,11 @@ export function PublicProductsView() {
 
         <button
           type="button"
-          onClick={() => {
-            if (orderList.length === 0) return;
-            setMobileCartDrawerOpen(false);
-            setIsCheckoutModalOpen(true);
-          }}
+          onClick={directToRootwillsDirect}
           disabled={orderList.length === 0}
           className="w-full py-3.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] disabled:opacity-50 text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
         >
-          <span>Review &amp; Place Pre-Dawn Order</span>
+          <span>Order on Rootwills Direct</span>
           <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
         </button>
       </div>
@@ -874,12 +898,12 @@ export function PublicProductsView() {
                         type="button"
                         onClick={() => {
                           setQuickViewProduct(null);
-                          setIsCheckoutModalOpen(true);
+                          directToRootwillsDirect();
                         }}
-                        className="py-3 px-4 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
+                        className="py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                       >
-                        <span>Review Order</span>
-                        <ArrowRight className="w-4 h-4 text-[#BA8E4E]" />
+                        <span>Order on Rootwills Direct</span>
+                        <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
                       </button>
                     </div>
 
