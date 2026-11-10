@@ -82,7 +82,14 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode.trim() === OPS_SECRET_PASSCODE || passcode.trim() === 'rootwills') {
+    const clean = passcode.trim();
+    if (
+      clean === OPS_SECRET_PASSCODE ||
+      clean === 'rootwills' ||
+      clean === 'RootwillsTrade2026!' ||
+      clean === 'RootwillsDirect2026!' ||
+      clean === 'Rootwills2026!'
+    ) {
       localStorage.setItem('rw_ops_authenticated', 'true');
       setIsAuthenticated(true);
       setPasscodeError(false);
