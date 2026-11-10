@@ -2,30 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ArrowLeft,
-  ShoppingBag,
   CheckCircle2,
   MessageCircle,
   Printer,
   ArrowRight,
-  Plus,
-  Minus,
-  Trash2,
-  Sparkles,
-  ChevronDown,
-  ChevronUp,
 } from 'lucide-react';
 import { OrderItem, WholesaleOrder } from '@/lib/orders';
 
 export default function CheckoutPage() {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
-  const [showManifest, setShowManifest] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<WholesaleOrder | null>(null);
 
-  // Exact Form State matching user requirements
+  // Exact Form State matching requirements
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -43,7 +34,7 @@ export default function CheckoutPage() {
     marketingSms: false,
   });
 
-  // Load items from localStorage
+  // Load items from localStorage quietly in background
   useEffect(() => {
     try {
       const saved = localStorage.getItem('rootwills_direct_draft_order');
@@ -59,25 +50,6 @@ export default function CheckoutPage() {
   }, []);
 
   const totalCases = orderItems.reduce((acc, it) => acc + (it.qty || 0), 0);
-
-  const updateQty = (id: string, delta: number) => {
-    const updated = orderItems
-      .map((it) => {
-        if (it.id === id) {
-          const newQty = it.qty + delta;
-          return newQty > 0 ? { ...it, qty: newQty } : null;
-        }
-        return it;
-      })
-      .filter(Boolean) as OrderItem[];
-
-    setOrderItems(updated);
-    try {
-      localStorage.setItem('rootwills_direct_draft_order', JSON.stringify(updated));
-    } catch {
-      // ignore
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -133,12 +105,18 @@ export default function CheckoutPage() {
   };
 
   const generateWhatsAppUrl = (order: WholesaleOrder) => {
-    const linesText = order.items
-      .map((it, idx) => `  ${idx + 1}. *${it.name}* (${it.packSize}) — *${it.qty} cases* [SKU: ${it.sku}]`)
-      .join('\n');
+    const linesText = order.items && order.items.length > 0
+      ? `\n*ATTACHED INVENTORY MANIFEST (${order.totalCases} cases):*\n` +
+        order.items
+          .map(
+            (it, idx) =>
+              `  ${idx + 1}. *${it.name}* (${it.packSize}) — *${it.qty} cases* [SKU: ${it.sku}]`
+          )
+          .join('\n')
+      : '';
 
     const message = 
-`📋 *ROOTWILLS CUSTOMER APPLICATION & ORDER: ${order.id}*
+`📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id}*
 🏢 *Company:* ${order.company}
 👤 *Name:* ${order.name} (${order.jobTitle})
 📞 *Phone:* ${order.phone}
@@ -148,10 +126,7 @@ export default function CheckoutPage() {
 🚚 *Current Supplier:* ${order.currentSupplier || 'N/A'}
 📦 *Weekly Deliveries:* ${order.approxWeeklyDeliveries || 'N/A'}
 💷 *Weekly Spend:* ${order.approxWeeklySpend || 'N/A'}
-📝 *Message:* ${order.message || 'None'}
-
-*ORDER MANIFEST (${order.totalCases} cases):*
-${linesText}`;
+📝 *Message:* ${order.message || 'None'}${linesText}`;
 
     return `https://wa.me/447984709478?text=${encodeURIComponent(message)}`;
   };
@@ -170,7 +145,7 @@ ${linesText}`;
         }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+      <div className="relative z-10 max-w-3xl mx-auto space-y-6">
         {/* Top Header */}
         <header className="flex items-center justify-between pb-4 border-b border-[#E8DEC8]">
           <Link href="/products" className="inline-flex items-center gap-2 text-xs font-semibold text-[#2E060D] hover:underline">
@@ -185,71 +160,34 @@ ${linesText}`;
 
         {confirmedOrder ? (
           /* ─── CONFIRMED SCREEN ─── */
-          <div className="bg-gradient-to-br from-[#4E0D17] via-[#380911] to-[#240307] text-white rounded-[26px] p-6 sm:p-10 border-2 border-white/25 shadow-2xl space-y-6 relative overflow-hidden">
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-400 flex items-center justify-center mx-auto shadow-lg">
-                <CheckCircle2 className="w-9 h-9" />
-              </div>
-              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#F3D08A] text-xs font-mono font-bold tracking-wider">
-                APPLICATION REF: {confirmedOrder.id}
-              </span>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-extrabold text-white tracking-tight">
-                Customer Application &amp; Order Received
-              </h1>
-              <p className="text-xs sm:text-sm text-stone-200 max-w-lg mx-auto leading-relaxed">
-                Thank you, <strong>{confirmedOrder.name}</strong>. Your customer application for <strong>{confirmedOrder.company}</strong> has been transmitted for immediate trade account approval.
-              </p>
+          <div className="bg-[#FFFDF9] rounded-[24px] sm:rounded-[28px] p-8 sm:p-12 border border-stone-200/90 shadow-[0_25px_70px_-15px_rgba(46,6,13,0.35)] space-y-6 text-center ring-1 ring-black/5">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-700 flex items-center justify-center mx-auto shadow-md">
+              <CheckCircle2 className="w-9 h-9" />
             </div>
+            <span className="inline-block px-4 py-1 rounded-full bg-[#FAF4ED] border border-[#E8DEC8] text-[#4E0D17] text-xs font-mono font-bold tracking-wider">
+              APPLICATION REF: {confirmedOrder.id}
+            </span>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-stone-950 tracking-tight">
+              Customer Application Transmitted
+            </h1>
+            <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto leading-relaxed">
+              Thank you, <strong>{confirmedOrder.name}</strong>. Your commercial wholesale account application for <strong>{confirmedOrder.company}</strong> has been received by our Birmingham trade partnerships desk.
+            </p>
 
-            {/* Manifest */}
-            {confirmedOrder.items.length > 0 && (
-              <div className="rounded-[18px] border border-white/20 bg-white/5 backdrop-blur-sm overflow-hidden max-w-xl mx-auto">
-                <div className="px-4 py-3 bg-white/10 border-b border-white/15 flex items-center justify-between">
-                  <span className="text-xs font-bold text-white">
-                    Order Summary ({confirmedOrder.totalLines} lines • {confirmedOrder.totalCases} cases)
-                  </span>
-                  <span className="text-[11px] font-mono text-[#F3D08A]">
-                    {confirmedOrder.postcode}
-                  </span>
-                </div>
-                <div className="divide-y divide-white/10 p-2 max-h-60 overflow-y-auto">
-                  {confirmedOrder.items.map((it) => (
-                    <div key={it.id} className="p-2.5 flex items-center justify-between gap-3 text-xs">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div className="relative w-11 h-11 rounded-lg bg-white shrink-0 overflow-hidden flex items-center justify-center p-1">
-                          <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-semibold text-white truncate">{it.name}</p>
-                          <p className="text-[11px] text-stone-300 font-mono">
-                            SKU: {it.sku} • {it.packSize}
-                          </p>
-                        </div>
-                      </div>
-                      <span className="text-xs font-bold font-mono text-[#F3D08A] shrink-0">
-                        {it.qty} {it.qty === 1 ? 'case' : 'cases'}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Action Buttons */}
-            <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3 pt-4">
+            <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 pt-4">
               <a
                 href={generateWhatsAppUrl(confirmedOrder)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-colors"
+                className="flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
               >
-                <MessageCircle className="w-4 h-4 text-[#F3D08A]" />
+                <MessageCircle className="w-4 h-4" />
                 <span>Notify Trade Desk via WhatsApp</span>
               </a>
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="py-3.5 px-6 rounded-xl bg-white hover:bg-stone-100 text-[#4E0D17] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
+                className="py-3.5 px-6 rounded-xl bg-[#4E0D17] hover:bg-[#34070F] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
               >
                 <Printer className="w-4 h-4" />
                 <span>Print Copy</span>
@@ -257,318 +195,257 @@ ${linesText}`;
             </div>
           </div>
         ) : (
-          /* ─── FULL RED THEME CUSTOMER APPLICATION CARD ─── */
-          <div className="bg-gradient-to-br from-[#4E0D17] via-[#380911] to-[#240307] text-white rounded-[26px] p-6 sm:p-10 border-2 border-white/25 sm:border-white/30 shadow-2xl space-y-6 relative overflow-hidden">
-            {/* Ambient luxury glows */}
-            <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#F3D08A]/10 pointer-events-none blur-3xl" />
-            <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-white/5 pointer-events-none blur-3xl" />
+          /* ─── AWWWARDS-TIER CARD (FULL-WIDTH RED BANNER + CRISP WHITE FORM) ─── */
+          <div className="bg-[#FFFDF9] rounded-[24px] sm:rounded-[28px] border border-stone-200/90 shadow-[0_25px_70px_-15px_rgba(46,6,13,0.35)] overflow-hidden ring-1 ring-black/5">
+            {/* Top Red Hero Banner with authentic watermark circles & gold eyebrow */}
+            <div className="relative bg-gradient-to-br from-[#5A101D] via-[#430A13] to-[#2B040A] text-white px-6 sm:px-10 pt-8 pb-7 overflow-hidden">
+              <div className="absolute -bottom-14 -right-14 w-60 h-60 rounded-full bg-white/[0.04] pointer-events-none" />
+              <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full border border-white/[0.07] pointer-events-none" />
+              <div className="absolute -bottom-36 -right-36 w-[420px] h-[420px] rounded-full border border-white/[0.04] pointer-events-none" />
+              <div className="absolute -top-20 -left-20 w-52 h-52 rounded-full bg-[#F3D08A]/[0.06] pointer-events-none blur-2xl" />
 
-            {/* Header */}
-            <div className="border-b border-white/15 pb-5 relative z-10">
-              <div className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-extrabold text-[#F3D08A] font-sans">
-                Serve Your Customers Only The Best
+              <div className="relative z-10 max-w-xl">
+                <div className="inline-block text-[10.5px] sm:text-[11px] uppercase tracking-[0.25em] font-mono font-bold text-[#F3D08A]">
+                  Serve Your Customers Only The Best
+                </div>
+                <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-white tracking-tight mt-1.5 leading-tight">
+                  BECOME A CUSTOMER
+                </h1>
+                <p className="mt-1.5 text-xs sm:text-[13px] text-white/75 font-sans leading-relaxed">
+                  Open a direct commercial wholesale account for contract rates, dedicated pre-dawn logistics, and 30-day payment facilities.
+                </p>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight text-white mt-1.5">
-                BECOME A CUSTOMER
-              </h1>
-              <p className="mt-1 text-xs sm:text-sm text-stone-200/90 font-sans max-w-2xl leading-relaxed">
-                Register your hospitality venue or commercial kitchen for direct wholesale terms, dedicated key account management, and pre-dawn refrigerated deliveries.
-              </p>
+            </div>
 
-              {/* Attached Basket Lines Notification */}
-              {orderItems.length > 0 && (
-                <div className="mt-3.5">
+            {/* Form Canvas */}
+            <div className="p-6 sm:p-10 space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                {/* Row 1: Name & Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Name <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="John Trangely"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Email <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="hello@venue.co.uk"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 2: Phone with UK code selector */}
+                <div className="space-y-1">
+                  <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                    Phone <span className="text-[#8B1A28] font-bold">*</span>
+                  </label>
+                  <div className="flex items-center gap-2 border-b border-stone-200 focus-within:border-[#4E0D17] pb-2 pt-1 transition-colors">
+                    <select
+                      value={form.countryCode}
+                      onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
+                      className="bg-transparent text-stone-800 text-xs font-semibold outline-none cursor-pointer pr-1"
+                    >
+                      <option value="UK +44">UK +44</option>
+                      <option value="IE +353">IE +353</option>
+                    </select>
+                    <span className="text-stone-300">|</span>
+                    <input
+                      type="tel"
+                      required
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="7123 456789"
+                      className="w-full bg-transparent text-stone-900 text-xs sm:text-[13.5px] outline-none placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 3: Job Title & Company */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Job Title <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.jobTitle}
+                      onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
+                      placeholder="Head Chef / Procurement Manager"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Company <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.company}
+                      onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      placeholder="e.g. Dishoom / Gail's"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 4: Number of Sites & Postcode */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Number of Sites <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.numberOfSites}
+                      onChange={(e) => setForm({ ...form, numberOfSites: e.target.value })}
+                      placeholder="e.g. 1, 3-5, 10+"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Postcode <span className="text-[#8B1A28] font-bold">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.postcode}
+                      onChange={(e) => setForm({ ...form, postcode: e.target.value })}
+                      placeholder="E.G. W1D 3QU"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans uppercase"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 5: Current Supplier & Approx Weekly Deliveries */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Current Supplier
+                    </label>
+                    <input
+                      type="text"
+                      value={form.currentSupplier}
+                      onChange={(e) => setForm({ ...form, currentSupplier: e.target.value })}
+                      placeholder="e.g. Brakes, Bidfood, Direct"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                      Approx Weekly Deliveries
+                    </label>
+                    <input
+                      type="text"
+                      value={form.approxWeeklyDeliveries}
+                      onChange={(e) => setForm({ ...form, approxWeeklyDeliveries: e.target.value })}
+                      placeholder="e.g. 3-4 drops"
+                      className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+                </div>
+
+                {/* Row 6: Approx Weekly Spend */}
+                <div className="space-y-1">
+                  <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                    Approx Weekly Spend
+                  </label>
+                  <input
+                    type="text"
+                    value={form.approxWeeklySpend}
+                    onChange={(e) => setForm({ ...form, approxWeeklySpend: e.target.value })}
+                    placeholder="e.g. £2,000 - £5,000"
+                    className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans"
+                  />
+                </div>
+
+                {/* Row 7: Message */}
+                <div className="space-y-1">
+                  <label className="text-[11.5px] font-sans font-semibold text-stone-600 block uppercase tracking-wider">
+                    Message
+                  </label>
+                  <textarea
+                    rows={2}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Please provide any other details that may help your application."
+                    className="w-full bg-transparent border-b border-stone-200 focus:border-[#4E0D17] pb-2 pt-1 text-stone-900 text-xs sm:text-[13.5px] outline-none transition-colors placeholder:text-stone-400 font-sans resize-none"
+                  />
+                </div>
+
+                {/* Marketing Preferences Box */}
+                <div className="rounded-xl bg-[#FAF7F2] border border-[#EAE0CE] p-3.5 space-y-2">
+                  <div className="text-[11.5px] font-semibold text-stone-700 font-sans">
+                    Marketing preferences
+                  </div>
+                  <label className="flex items-center gap-2.5 text-stone-600 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={form.marketingEmail}
+                      onChange={(e) => setForm({ ...form, marketingEmail: e.target.checked })}
+                      className="rounded border-stone-300 text-[#4E0D17] focus:ring-[#4E0D17] w-3.5 h-3.5"
+                    />
+                    <span className="text-[12px] font-sans">Yes, send me offers and news by email</span>
+                  </label>
+                  <label className="flex items-center gap-2.5 text-stone-600 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={form.marketingSms}
+                      onChange={(e) => setForm({ ...form, marketingSms: e.target.checked })}
+                      className="rounded border-stone-300 text-[#4E0D17] focus:ring-[#4E0D17] w-3.5 h-3.5"
+                    />
+                    <span className="text-[12px] font-sans">Yes, send me offers and news by SMS</span>
+                  </label>
+                </div>
+
+                {/* Submit Button & Security Note */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <button
-                    type="button"
-                    onClick={() => setShowManifest(!showManifest)}
-                    className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-xs text-white font-medium backdrop-blur-sm transition-all cursor-pointer"
+                    type="submit"
+                    disabled={submitting}
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#4E0D17] hover:bg-[#34070F] text-white text-xs sm:text-[13px] font-sans font-semibold transition-all duration-200 cursor-pointer active:scale-95 shadow-md flex items-center justify-center gap-2.5 disabled:opacity-50 group"
                   >
-                    <ShoppingBag className="w-3.5 h-3.5 text-[#F3D08A]" />
-                    <span>
-                      Attaching <strong className="text-[#F3D08A]">{orderItems.length} lines</strong> ({totalCases} cases) to your application
-                    </span>
-                    {showManifest ? (
-                      <ChevronUp className="w-3.5 h-3.5 text-stone-300" />
+                    {submitting ? (
+                      <span>Transmitting Application...</span>
                     ) : (
-                      <ChevronDown className="w-3.5 h-3.5 text-stone-300" />
+                      <>
+                        <span>Submit Application</span>
+                        <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center transition-transform group-hover:translate-x-0.5">
+                          <ArrowRight className="w-3 h-3 text-[#F3D08A]" />
+                        </span>
+                      </>
                     )}
                   </button>
 
-                  {/* Expandable Manifest Panel */}
-                  {showManifest && (
-                    <div className="mt-3 rounded-xl border border-white/20 bg-black/30 backdrop-blur-md p-3 max-h-48 overflow-y-auto space-y-2">
-                      {orderItems.map((it) => (
-                        <div
-                          key={it.id}
-                          className="flex items-center justify-between gap-3 text-xs p-2 rounded-lg bg-white/5 border border-white/10"
-                        >
-                          <div className="min-w-0">
-                            <p className="font-semibold text-white truncate text-[12px]">{it.name}</p>
-                            <p className="text-[10px] text-stone-300 font-mono">
-                              {it.sku} • {it.packSize}
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            <button
-                              type="button"
-                              onClick={() => updateQty(it.id, -1)}
-                              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
-                            >
-                              {it.qty === 1 ? <Trash2 className="w-3 h-3 text-rose-300" /> : <Minus className="w-3 h-3" />}
-                            </button>
-                            <span className="font-mono text-xs font-bold text-[#F3D08A] px-1.5">
-                              {it.qty}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() => updateQty(it.id, 1)}
-                              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
-                            >
-                              <Plus className="w-3 h-3" />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <span className="text-[10.5px] font-mono text-stone-400">
+                    Protected by Rootwills B2B Trade Terms
+                  </span>
                 </div>
-              )}
+              </form>
             </div>
-
-            {/* Form Fields: White Background / White Border for Extreme Legibility & Contrast */}
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 relative z-10">
-              {/* Row 1: Name & Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Name</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="e.g. John Trangely"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Email</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    placeholder="e.g. hello@venue.co.uk"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-              </div>
-
-              {/* Row 2: Phone with Country Code */}
-              <div className="space-y-1.5">
-                <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                  <span>Phone</span>
-                  <span className="text-[#F3D08A] font-bold">*</span>
-                </label>
-                <div className="flex rounded-xl overflow-hidden shadow-sm bg-white border border-stone-200/90 focus-within:ring-2 focus-within:ring-[#F3D08A]">
-                  <select
-                    value={form.countryCode}
-                    onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
-                    className="bg-stone-50 text-stone-800 text-xs sm:text-[13px] font-semibold px-3 py-2.5 border-r border-stone-200 outline-none cursor-pointer"
-                  >
-                    <option value="UK +44">UK +44</option>
-                    <option value="IE +353">IE +353</option>
-                  </select>
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="7123 456789"
-                    className="w-full bg-white text-stone-900 px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 outline-none"
-                  />
-                </div>
-              </div>
-
-              {/* Row 3: Job Title & Company */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Job Title</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.jobTitle}
-                    onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
-                    placeholder="e.g. Head Chef / Procurement Manager"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Company</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.company}
-                    onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    placeholder="e.g. Dishoom / Gail's"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-              </div>
-
-              {/* Row 4: Number of Sites & Postcode */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Number of Sites</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.numberOfSites}
-                    onChange={(e) => setForm({ ...form, numberOfSites: e.target.value })}
-                    placeholder="e.g. 1, 3-5, 10+"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
-                    <span>Postcode</span>
-                    <span className="text-[#F3D08A] font-bold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={form.postcode}
-                    onChange={(e) => setForm({ ...form, postcode: e.target.value })}
-                    placeholder="e.g. W1D 3QU"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all uppercase"
-                  />
-                </div>
-              </div>
-
-              {/* Row 5: Current Supplier & Approx Weekly Deliveries */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/90">
-                    Current Supplier
-                  </label>
-                  <input
-                    type="text"
-                    value={form.currentSupplier}
-                    onChange={(e) => setForm({ ...form, currentSupplier: e.target.value })}
-                    placeholder="e.g. Brakes, Bidfood, Direct"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-[12px] font-sans font-semibold text-white/90">
-                    Approx Weekly Deliveries
-                  </label>
-                  <input
-                    type="text"
-                    value={form.approxWeeklyDeliveries}
-                    onChange={(e) => setForm({ ...form, approxWeeklyDeliveries: e.target.value })}
-                    placeholder="e.g. 3-4 drops"
-                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                  />
-                </div>
-              </div>
-
-              {/* Row 6: Approx Weekly Spend */}
-              <div className="space-y-1.5">
-                <label className="text-[12px] font-sans font-semibold text-white/90">
-                  Approx Weekly Spend
-                </label>
-                <input
-                  type="text"
-                  value={form.approxWeeklySpend}
-                  onChange={(e) => setForm({ ...form, approxWeeklySpend: e.target.value })}
-                  placeholder="e.g. £2,000 - £5,000"
-                  className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
-                />
-              </div>
-
-              {/* Row 7: Message */}
-              <div className="space-y-1.5">
-                <label className="text-[12px] font-sans font-semibold text-white/90">
-                  Message
-                </label>
-                <textarea
-                  rows={2}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  placeholder="Please provide any other details that may help your application."
-                  className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all resize-none"
-                />
-              </div>
-
-              {/* Marketing Preferences Box with White Border */}
-              <div className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3.5 space-y-2">
-                <div className="text-[11.5px] font-semibold text-white font-sans">
-                  Marketing preferences
-                </div>
-                <label className="flex items-center gap-2.5 text-stone-200 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={form.marketingEmail}
-                    onChange={(e) => setForm({ ...form, marketingEmail: e.target.checked })}
-                    className="rounded border-white/40 text-[#4E0D17] focus:ring-[#F3D08A] w-4 h-4 bg-white"
-                  />
-                  <span className="text-[12px] font-sans">Yes, send me offers and news by email</span>
-                </label>
-                <label className="flex items-center gap-2.5 text-stone-200 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={form.marketingSms}
-                    onChange={(e) => setForm({ ...form, marketingSms: e.target.checked })}
-                    className="rounded border-white/40 text-[#4E0D17] focus:ring-[#F3D08A] w-4 h-4 bg-white"
-                  />
-                  <span className="text-[12px] font-sans">Yes, send me offers and news by SMS</span>
-                </label>
-              </div>
-
-              {/* Submit Row: Gold / Champagne CTA Button + Terms */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#F3D08A] to-[#E5BE72] hover:from-[#FFF1CC] hover:to-[#F3D08A] text-[#2E060D] text-xs sm:text-sm font-sans font-bold transition-all duration-200 cursor-pointer active:scale-95 shadow-xl flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {submitting ? (
-                    <span>Transmitting Application...</span>
-                  ) : (
-                    <>
-                      <span>
-                        Submit Application
-                        {orderItems.length > 0 ? ` & Place Order (${totalCases} Cases)` : ''}
-                      </span>
-                      <ArrowRight className="w-4 h-4 text-[#2E060D]" />
-                    </>
-                  )}
-                </button>
-
-                <span className="text-[11px] font-mono text-stone-300">
-                  Protected by Rootwills B2B Trade Terms
-                </span>
-              </div>
-            </form>
           </div>
         )}
       </div>
