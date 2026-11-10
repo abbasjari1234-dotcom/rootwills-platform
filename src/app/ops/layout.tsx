@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
@@ -121,8 +122,16 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen bg-[#0F172A] text-white flex items-center justify-center p-4">
         <div className="w-full max-w-md bg-[#1E293B] rounded-3xl p-8 border border-slate-700/60 shadow-2xl space-y-6 text-center">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto shadow-inner">
-            <Lock className="w-7 h-7" />
+          <div className="relative w-16 h-16 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 overflow-hidden mx-auto shadow-lg p-1">
+            <Image
+              src="/images/logo.png"
+              alt="Rootwills Master Seal"
+              fill
+              sizes="64px"
+              className="object-contain p-0.5 rounded-full"
+              priority
+              unoptimized
+            />
           </div>
 
           <div>
@@ -183,9 +192,16 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-[#F4F5F7] text-slate-800 flex flex-col lg:flex-row font-sans">
       {/* Mobile Header */}
       <div className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-slate-200">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
-            RW
+        <div className="flex items-center gap-2.5">
+          <div className="relative w-8 h-8 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 overflow-hidden shrink-0 shadow-2xs p-0.5">
+            <Image
+              src="/images/logo.png"
+              alt="Rootwills"
+              fill
+              sizes="32px"
+              className="object-contain p-0.5 rounded-full"
+              unoptimized
+            />
           </div>
           <span className="font-bold text-slate-900 tracking-tight">ROOTWILLS OPS</span>
         </div>
@@ -204,14 +220,26 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
         }`}
       >
         {/* Brand Header */}
-        <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-          <Link href="/ops" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white font-extrabold text-base shadow-md ring-2 ring-emerald-500/20">
-              RW
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+          <Link href="/ops" className="flex items-center gap-3 group">
+            <div className="relative w-11 h-11 rounded-full bg-[#FAF7F2] ring-2 ring-[#BA8E4E]/80 shadow-[0_2px_12px_rgba(186,142,78,0.22)] p-1 shrink-0 overflow-hidden transition-transform duration-200 group-hover:scale-105">
+              <Image
+                src="/images/logo.png"
+                alt="Rootwills Master Seal"
+                fill
+                sizes="44px"
+                className="object-contain p-0.5 rounded-full"
+                priority
+                unoptimized
+              />
             </div>
             <div>
-              <div className="font-extrabold text-slate-900 tracking-tight text-lg leading-tight">ROOTWILLS</div>
-              <div className="text-[11px] font-semibold text-emerald-600 tracking-wider uppercase">Internal Hub (/ops)</div>
+              <div className="font-extrabold text-slate-900 tracking-tight text-lg leading-tight group-hover:text-[#BA8E4E] transition-colors">
+                ROOTWILLS
+              </div>
+              <div className="text-[10.5px] font-semibold text-emerald-600 tracking-wider uppercase">
+                Internal Hub (/ops)
+              </div>
             </div>
           </Link>
         </div>
@@ -320,8 +348,15 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
 
             {/* User Profile */}
             <div className="flex items-center gap-2.5 pl-3 border-l border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-800 to-slate-700 text-white font-bold text-xs flex items-center justify-center shadow-sm">
-                RW
+              <div className="relative w-8 h-8 rounded-full bg-[#FAF7F2] ring-1 ring-[#BA8E4E]/80 overflow-hidden shadow-2xs shrink-0 p-0.5">
+                <Image
+                  src="/images/logo.png"
+                  alt="Rootwills Operations"
+                  fill
+                  sizes="32px"
+                  className="object-contain p-0.5 rounded-full"
+                  unoptimized
+                />
               </div>
               <div className="hidden md:block text-left">
                 <div className="text-xs font-bold text-slate-900 leading-tight">Operations Lead</div>
