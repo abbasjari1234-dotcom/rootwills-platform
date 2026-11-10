@@ -329,15 +329,15 @@ export function PublicProductsView() {
       <div
         key={product.id}
         onClick={() => setQuickViewProduct(product)}
-        className={`group relative flex flex-col justify-between bg-white rounded-2xl p-4 sm:p-4.5 border transition-all duration-200 cursor-pointer select-none ${
+        className={`group relative flex flex-col justify-between bg-white rounded-2xl p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer select-none ${
           qty > 0
             ? 'border-[#BA8E4E] ring-1 ring-[#BA8E4E]/50 shadow-[0_4px_16px_rgba(186,142,78,0.12)]'
             : 'border-[#E8DEC8]/90 hover:border-[#BA8E4E]/80 hover:shadow-[0_8px_24px_rgba(46,6,13,0.07)] shadow-[0_1px_3px_rgba(46,6,13,0.02)]'
         } ${compact ? 'w-[160px] sm:w-[175px] shrink-0' : 'w-full'}`}
       >
         <div>
-          {/* Uncluttered Product Stage: Pure White Background, Prominent Photography */}
-          <div className="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-[#F2ECE1] flex items-center justify-center p-3 mb-3">
+          {/* Balanced Image Stage: Compact, Clean & Centered */}
+          <div className="relative w-full h-[142px] sm:h-[154px] rounded-xl overflow-hidden bg-white border border-[#F2ECE1] flex items-center justify-center p-2.5 mb-2.5">
             <Image
               src={product.image}
               alt={product.name}
@@ -345,27 +345,27 @@ export function PublicProductsView() {
               unoptimized
               referrerPolicy="no-referrer"
               sizes="240px"
-              className="object-contain p-2 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+              className="object-contain p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
             />
           </div>
 
           {/* Line 1: Clear, High-Contrast Commercial Pack Size */}
-          <div className="mb-1">
-            <span className="text-[12px] font-semibold text-[#8B2635] tracking-tight">
+          <div className="mb-0.5">
+            <span className="text-[11.5px] font-bold text-[#8B2635] tracking-tight">
               {product.packSize}
             </span>
           </div>
 
-          {/* Line 2: Product Name with Generous Readability */}
+          {/* Line 2: Product Name with Clean Readability */}
           <h4
             title={product.name}
-            className="text-[13.5px] sm:text-[14px] font-medium text-stone-900 group-hover:text-[#2E060D] leading-[1.35] line-clamp-2 min-h-[38px] transition-colors"
+            className="text-[13px] sm:text-[13.5px] font-semibold text-stone-900 group-hover:text-[#2E060D] leading-[1.3] line-clamp-2 min-h-[34px] transition-colors"
           >
             {product.name}
           </h4>
 
           {/* Line 3: Subtle Secondary Metadata (Clean SKU & Zone) */}
-          <div className="text-[11px] font-mono text-stone-400 mt-1.5 flex items-center justify-between">
+          <div className="text-[10.5px] font-mono text-stone-400 mt-1 flex items-center justify-between">
             <span>{product.sku}</span>
             <span className="text-stone-500 font-sans text-[11px]">
               {product.tempZone.replace(' 1–4°C', '').replace(' 0–2°C', '').replace(' -18°C', '')}
@@ -375,7 +375,7 @@ export function PublicProductsView() {
 
         {/* Bottom Action Bar */}
         <div
-          className="mt-3.5 pt-2.5 border-t border-[#F2ECE1] flex items-center justify-between gap-2"
+          className="mt-3 pt-2.5 border-t border-[#F2ECE1] flex items-center justify-between gap-2"
           onClick={(e) => e.stopPropagation()}
         >
           {qty === 0 ? (
