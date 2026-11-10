@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const QUALITY_PILLARS = [
   {
     icon: ShieldCheck,
-    roman: 'I',
+    index: '01',
     title: 'Comprehensive Quality Control',
     subtitle: 'Daily 02:00 AM physical inspection, firmness checks, and strict size calibration take place before any vehicle departs our loading bays.',
     badge: 'QC & INTAKE GRADING',
@@ -43,7 +43,7 @@ const QUALITY_PILLARS = [
   },
   {
     icon: Truck,
-    roman: 'II',
+    index: '02',
     title: 'Dual-Evaporator Logistics Network',
     subtitle: 'Our modern Mercedes Sprinter fleet operates through dual-evaporator systems, completing kitchen drops reliably between 04:00 AM and 07:30 AM.',
     badge: 'COLD-CHAIN INTEGRITY',
@@ -55,7 +55,7 @@ const QUALITY_PILLARS = [
   },
   {
     icon: Sprout,
-    roman: 'III',
+    index: '03',
     title: '100% Traceable Supply Architecture',
     subtitle: 'Full batch traceability linking your delivery notes directly back to vetted generational British farms and coastal day-boats.',
     badge: 'TRACEABLE ORIGINS',
@@ -67,7 +67,7 @@ const QUALITY_PILLARS = [
   },
   {
     icon: Leaf,
-    roman: 'IV',
+    index: '04',
     title: 'Kent, Evesham & Regional Logistics Focus',
     subtitle: 'We actively prioritize local British farms, Kentish orchards, and low-mile distribution loops to reduce environmental impact.',
     badge: 'REGIONAL SOURCE LOOPS',
@@ -262,7 +262,7 @@ export default function ApproachPage() {
                   const Icon = pillar.icon;
                   return (
                     <div
-                      key={pillar.roman}
+                      key={pillar.index}
                       className="group p-5 sm:p-6 rounded-2xl bg-[#FFFDF9] border border-[#DCD2C0] hover:border-[#BA8E4E] shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-3"
                     >
                       <div className="space-y-2.5">
@@ -275,7 +275,7 @@ export default function ApproachPage() {
                               {pillar.badge}
                             </span>
                             <span className="text-xs font-serif font-bold text-stone-400">
-                              {pillar.roman}
+                              {pillar.index}
                             </span>
                           </div>
                         </div>
