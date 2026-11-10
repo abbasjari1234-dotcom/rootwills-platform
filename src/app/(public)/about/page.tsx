@@ -6,19 +6,17 @@ import {
   ShieldCheck, 
   Sprout, 
   Truck, 
-  Clock,
-  ArrowRight,
-  ArrowUpRight,
-  Phone,
-  Mail,
-  Sparkles
+  Clock, 
+  ArrowRight, 
+  ArrowUpRight, 
+  Sparkles 
 } from 'lucide-react';
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
   title: 'About Rootwills | British Farm Provenance & Hospitality Wholesale UK',
   description:
-    'Learn how Rootwills connects UK generational growers and coastal fisheries directly with professional hospitality kitchens. Daily 2am market grading and guaranteed pre-dawn drops across Birmingham and London.',
+    'Rootwills connects Britain’s finest generational growers, single-herd artisanal dairies, and coastal fisheries directly with professional kitchen brigades. Precision pre-dawn delivery across Birmingham, the Midlands, and London.',
   alternates: {
     canonical: '/about',
   },
@@ -29,25 +27,25 @@ const OPERATIONAL_METRICS = [
     metric: '02:00 AM',
     badge: 'STAGE 01',
     label: 'Daily Market Grading',
-    desc: 'Senior produce buyers hand-select Class 1 harvests across UK wholesale markets every morning.',
+    desc: 'Our senior produce buyers hand-select Class 1 harvests across UK wholesale markets every morning, ensuring only the highest caliber ingredients make the cut.',
   },
   {
     metric: '99.4%',
     badge: 'STAGE 02',
     label: 'On-Time Drop Rate',
-    desc: 'Pre-dawn refrigerated fleet ensuring kitchen ingredients arrive before morning prep brigades clock in.',
+    desc: 'Our pre-dawn refrigerated fleet operates around the clock to guarantee that essential kitchen ingredients arrive well before your morning prep brigades clock in.',
   },
   {
     metric: '100%',
     badge: 'STAGE 03',
     label: 'Batch Traceability',
-    desc: 'Every crate is traceable back to its originating British orchard, dairy herd, or coastal day-boat.',
+    desc: 'Every single crate we deliver is fully traceable back to its originating British orchard, dedicated dairy herd, or coastal day-boat.',
   },
   {
     metric: '6 Days',
     badge: 'STAGE 04',
     label: 'Pre-Dawn Fleet Service',
-    desc: 'Consistent morning deliveries across London and the Midlands tailored to your kitchen schedule.',
+    desc: 'Enjoy consistent, reliable morning deliveries across London and the Midlands, completely tailored to fit your specific kitchen schedule.',
   },
 ];
 
@@ -55,22 +53,22 @@ const ACCREDITATIONS = [
   {
     name: 'BRCGS Storage & Distribution',
     level: 'Grade AA Audited',
-    desc: 'Global benchmark for food safety, warehouse hygiene, and cold-chain temperature telemetry.',
+    desc: 'Complying with the global benchmark for food safety, warehouse hygiene, and continuous cold-chain temperature telemetry.',
   },
   {
     name: 'Red Tractor Farm Assured',
     level: '100% British Traceability',
-    desc: 'Ensuring poultry, meats, and produce are sourced from vetted British family farms.',
+    desc: 'Ensuring that all fresh produce, poultry, and meats are sourced exclusively from verified British family farms.',
   },
   {
     name: 'SALSA Certification',
     level: 'Approved Supplier Standard',
-    desc: 'Rigorous food safety compliance certification for professional commercial catering.',
+    desc: 'Maintaining rigorous food safety compliance certifications required by professional commercial catering groups.',
   },
   {
     name: 'Lion Quality Code of Practice',
     level: 'Class A British Eggs',
-    desc: 'Complete flock vaccination and full eggshell stamping for food safety assurance.',
+    desc: 'Guaranteed complete flock vaccination and full eggshell stamping for total food safety assurance.',
   },
 ];
 
@@ -78,29 +76,29 @@ const SUPPLY_CHAIN_STEPS = [
   {
     step: '01',
     tag: 'ORIGIN',
-    title: 'Grower Partnerships & Farm Lineage',
-    desc: 'We partner directly with generational growers across Worcestershire, Warwickshire, Kent, and Lincolnshire, securing field-fresh harvests at peak vitality.',
+    title: 'Farm-Direct Alliances',
+    desc: 'We source directly from trusted generational growers across Worcestershire, Warwickshire, Kent, and Lincolnshire, locking in field-fresh harvests at peak vitality.',
     image: '/images/commercial/british_apples_crates.jpg',
   },
   {
     step: '02',
     tag: 'GRADING',
     title: 'Daily 02:00 AM Depot Inspection',
-    desc: 'Produce arrives at our temperature-controlled Midlands and London hubs where specialists inspect every crate for calibration, firmness, and shelf life.',
+    desc: 'As soon as produce reaches our temperature-controlled Midlands and London hubs, dedicated specialists inspect every crate for size calibration, firmness, and shelf life.',
     image: '/images/commercial/chef_inspect_produce.jpg',
   },
   {
     step: '03',
     tag: 'CURATION',
     title: 'Bespoke Brigade Preparation',
-    desc: 'Consignments are assembled in multi-zone chilled environments, separating delicate living micro-herbs from dense root crops and dairy.',
+    desc: 'Consignments are carefully assembled in multi-zone chilled environments, separating delicate living micro-herbs from dense root crops, ambient dry stores, and dairy.',
     image: '/images/commercial/cold_depot_logistics.jpg',
   },
   {
     step: '04',
     tag: 'DISPATCH',
-    title: 'Pre-Dawn 05:30 AM Fleet Drops',
-    desc: 'Dual-temperature refrigerated vans complete drops between 05:30 and 07:30 AM, placing chilled crates directly into walk-in fridges.',
+    title: 'Pre-Dawn Fleet Drops',
+    desc: 'Our dual-temperature refrigerated vans complete deliveries between 05:30 AM and 07:30 AM, placing chilled crates straight into your walk-in fridges so you never have to wait.',
     image: '/images/commercial/van_dawn_delivery.jpg',
   },
 ];
@@ -129,8 +127,8 @@ export default function AboutPage() {
 
           <div className="relative">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
-              Connecting British Growers to <br className="hidden sm:inline" />
-              <span className="text-[#8B2635] italic font-normal">The UK’s Premier Kitchens</span>
+              Connecting British Growers Directly to <br className="hidden sm:inline" />
+              <span className="text-[#8B2635] italic font-normal">the UK’s Premier Kitchens</span>
             </h1>
             <div className="flex justify-center">
               <DoodleFlourish 
@@ -143,14 +141,14 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[60ch] mx-auto leading-[1.68]">
-            Founded with a singular standard: connect Britain’s finest generational growers, single-herd dairies, and coastal fisheries directly with professional kitchens—eliminating intermediary brokers and guaranteeing pre-dawn deliveries.
+          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[64ch] mx-auto leading-[1.68]">
+            Rootwills was founded on a singular standard: to connect Britain’s finest generational growers, single-herd artisanal dairies, and coastal day-boat fisheries directly with professional kitchen brigades. By entirely eliminating unnecessary intermediary brokers, we safeguard raw product freshness and guarantee precision, pre-dawn deliveries when it matters most.
           </p>
 
           <div className="pt-3 flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2.5 rounded-full bg-[#131313] hover:bg-[#260309] text-[#FCFCFA] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-[background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] shadow-[0_8px_24px_rgba(19,19,19,0.18)]"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-[background-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] shadow-[0_8px_24px_rgba(46,6,13,0.18)] cursor-pointer"
             >
               <span>Partner With Rootwills</span>
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/12 ring-1 ring-white/20 flex items-center justify-center text-[#F3D08A] group-hover:bg-[#F3D08A] group-hover:text-[#131313] transition-[transform,background-color,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -160,7 +158,7 @@ export default function AboutPage() {
 
             <Link
               href="/services"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#EFE8D8]/70 text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-[#E8DEC8] hover:border-[#BA8E4E]/60 transition-all duration-200 active:scale-[0.96] shadow-2xs"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFDF9] hover:bg-[#EFE8D8]/70 text-[#2E060D] text-xs sm:text-[13px] font-sans font-semibold tracking-wide border border-[#E8DEC8] hover:border-[#BA8E4E]/60 transition-all duration-200 active:scale-[0.96] shadow-2xs cursor-pointer"
             >
               <span>Explore Our Services</span>
             </Link>
@@ -231,11 +229,11 @@ export default function AboutPage() {
             </h2>
 
             <p className="text-xs sm:text-sm text-stone-600 font-sans leading-[1.65] sm:leading-[1.7] max-w-[54ch]">
-              Great menus begin long before the pass opens—they start in the soil of Kentish orchards, Evesham market gardens, and West Country pastures. Rootwills was established to bridge the distance between dedicated British producers and high-pressure commercial kitchens.
+              Great menus begin long before the kitchen pass opens—they start in the nutrient-rich soil of Kentish orchards, Evesham market gardens, and West Country pastures. Rootwills was established specifically to bridge the gap between dedicated British producers and high-pressure commercial kitchens that demand perfection.
             </p>
 
             <p className="hidden sm:block text-xs sm:text-sm text-stone-600 font-sans leading-[1.7] max-w-[54ch]">
-              Operating out of our central Birmingham hub and London distribution network, our buyers grade incoming harvests at 02:00 AM daily so every crate arriving at your back door meets exacting culinary specifications.
+              Operating out of our central Birmingham hub and a dedicated London distribution network, our specialist buyers grade incoming harvests at 02:00 AM daily. This rigorous process guarantees that every crate arriving at your back door meets your exact culinary specifications day in, day out.
             </p>
 
             <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-sans">
@@ -358,63 +356,63 @@ export default function AboutPage() {
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3">
-          {/* Monospace Eyebrow Capsule */}
-          <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 mb-0.5 sm:mb-1 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#2E060D] font-semibold">
-              03 // FROM HARVEST TO KITCHEN BRIGADE
-            </span>
+          <div className="text-center max-w-2xl mx-auto space-y-2 sm:space-y-3">
+            {/* Monospace Eyebrow Capsule */}
+            <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 mb-0.5 sm:mb-1 shadow-2xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#2E060D] font-semibold">
+                03 // FROM HARVEST TO KITCHEN BRIGADE
+              </span>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-[-0.022em] leading-[1.1]">
+              How Rootwills Powers <span className="text-[#8B2635] italic font-normal">Commercial Kitchens</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Our streamlined supply chain slashes transit times, preserves strict cold-chain integrity, and secures the maximum possible shelf-life for professional culinary teams.
+            </p>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-[-0.022em] leading-[1.1]">
-            How Rootwills Powers <span className="text-[#8B2635] italic font-normal">Commercial Kitchens</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
-            Our lean supply chain reduces transit times, preserves cold-chain integrity, and delivers maximum shelf-life for professional culinary teams.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
-          {SUPPLY_CHAIN_STEPS.map((s, idx) => (
-            <div
-              key={idx}
-              className="p-1 sm:p-1.5 rounded-2xl sm:rounded-[1.85rem] bg-[#EFE8D8]/80 ring-1 ring-[#BA8E4E]/30 hover:ring-[#BA8E4E]/75 shadow-[0_6px_24px_rgba(46,6,13,0.04)] hover:shadow-[0_18px_40px_rgba(46,6,13,0.10)] hover:-translate-y-1 transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group"
-            >
-              <div className="relative h-full bg-[#FFFDF9] rounded-[calc(1rem-0.25rem)] sm:rounded-[calc(1.85rem-0.375rem)] p-3 sm:p-5 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between overflow-hidden">
-                <div>
-                  {/* Photographic Stage Header */}
-                  <div className="relative w-full h-24 sm:h-36 rounded-xl sm:rounded-2xl overflow-hidden mb-2.5 sm:mb-4 bg-[#2E060D]">
-                    <Image
-                      src={s.image}
-                      alt={s.title}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#180205]/70 via-transparent to-transparent" />
-                    <div className="absolute top-1.5 inset-x-1.5 sm:top-2.5 sm:inset-x-2.5 flex items-center justify-between">
-                      <span className="px-2 py-0.5 sm:px-2.5 rounded-full bg-[#180205]/80 backdrop-blur-md border border-[#F3D08A]/45 font-mono text-[8px] sm:text-[9px] uppercase tracking-widest text-[#F3D08A] font-bold truncate">
-                        {s.tag}
-                      </span>
-                      <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FFFDF9]/95 ring-1 ring-[#BA8E4E]/40 flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold text-[#2E060D] tabular-nums shrink-0">
-                        {s.step}
-                      </span>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
+            {SUPPLY_CHAIN_STEPS.map((s, idx) => (
+              <div
+                key={idx}
+                className="p-1 sm:p-1.5 rounded-2xl sm:rounded-[1.85rem] bg-[#EFE8D8]/80 ring-1 ring-[#BA8E4E]/30 hover:ring-[#BA8E4E]/75 shadow-[0_6px_24px_rgba(46,6,13,0.04)] hover:shadow-[0_18px_40px_rgba(46,6,13,0.10)] hover:-translate-y-1 transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group"
+              >
+                <div className="relative h-full bg-[#FFFDF9] rounded-[calc(1rem-0.25rem)] sm:rounded-[calc(1.85rem-0.375rem)] p-3 sm:p-5 border border-white/80 shadow-[inset_0_1px_2px_rgba(255,255,255,0.95)] flex flex-col justify-between overflow-hidden">
+                  <div>
+                    {/* Photographic Stage Header */}
+                    <div className="relative w-full h-24 sm:h-36 rounded-xl sm:rounded-2xl overflow-hidden mb-2.5 sm:mb-4 bg-[#2E060D]">
+                      <Image
+                        src={s.image}
+                        alt={s.title}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#180205]/70 via-transparent to-transparent" />
+                      <div className="absolute top-1.5 inset-x-1.5 sm:top-2.5 sm:inset-x-2.5 flex items-center justify-between">
+                        <span className="px-2 py-0.5 sm:px-2.5 rounded-full bg-[#180205]/80 backdrop-blur-md border border-[#F3D08A]/45 font-mono text-[8px] sm:text-[9px] uppercase tracking-widest text-[#F3D08A] font-bold truncate">
+                          {s.tag}
+                        </span>
+                        <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#FFFDF9]/95 ring-1 ring-[#BA8E4E]/40 flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold text-[#2E060D] tabular-nums shrink-0">
+                          {s.step}
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  <h3 className="font-serif font-bold text-xs sm:text-[17px] text-[#2E060D] group-hover:text-[#8B2635] transition-colors leading-snug mb-1 sm:mb-2">
-                    {s.title}
-                  </h3>
+                    <h3 className="font-serif font-bold text-xs sm:text-[17px] text-[#2E060D] group-hover:text-[#8B2635] transition-colors leading-snug mb-1 sm:mb-2">
+                      {s.title}
+                    </h3>
+                  </div>
+                  <p className="hidden sm:block font-sans text-xs text-stone-600 leading-relaxed pt-3 border-t border-[#E8DEC8]/70 mt-2">
+                    {s.desc}
+                  </p>
                 </div>
-                <p className="hidden sm:block font-sans text-xs text-stone-600 leading-relaxed pt-3 border-t border-[#E8DEC8]/70 mt-2">
-                  {s.desc}
-                </p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -439,7 +437,7 @@ export default function AboutPage() {
               Rigorous Food Safety Standards
             </h2>
             <p className="text-xs sm:text-sm text-stone-600 font-sans">
-              Every facility, vehicle, and grower within our network is held to the highest audited UK food hygiene standards.
+              Every logistics facility, transport vehicle, and grower within our vetted network is held strictly accountable to the highest audited UK food hygiene standards.
             </p>
           </div>
 
@@ -478,4 +476,3 @@ function ACCREDITITATIONS_RENDER(items: typeof ACCREDITATIONS) {
     </div>
   ));
 }
-
