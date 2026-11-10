@@ -22,7 +22,7 @@ import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 export const metadata: Metadata = {
   title: 'Our Quality Standards & Cold Chain Logistics | Rootwills UK',
   description:
-    'Learn how Rootwills maintains quality standards in British foodservice wholesale. Daily 02:00 AM market intake, multi-temperature dual-evaporator delivery fleet, Red Tractor farm assurance, and transparent batch traceability.',
+    'Every single crate delivered by Rootwills is backed by strict 02:00 AM depot intake grading, continuous refrigeration telemetry, and genuine British farm provenance.',
   alternates: {
     canonical: '/approach',
   },
@@ -32,49 +32,49 @@ const QUALITY_PILLARS = [
   {
     icon: ShieldCheck,
     roman: 'I',
-    title: 'Grade-A Produce Standards',
-    subtitle: 'Daily 02:00 AM physical inspection, firmness checks, and strict calibration before dispatch.',
-    badge: '02:00 AM Walk',
+    title: 'Comprehensive Quality Control',
+    subtitle: 'Daily 02:00 AM physical inspection, firmness checks, and strict size calibration take place before any vehicle departs our loading bays.',
+    badge: 'QC & INTAKE GRADING',
     points: [
-      'Reject rate under 0.6% due to direct grower lineage',
-      'Daily Class 1 specification across all seasonal produce',
-      'Morning harvest tagging with field lot numbers',
+      'Direct Grower Lineage: Our close partnerships keep our depot rejection rate well under 0.6%.',
+      'Class 1 Specifications: Consistent sizing and premium quality guaranteed across all seasonal produce.',
+      'Field Lot Tracking: Morning harvests are tagged with exact field lot numbers at source.',
     ],
   },
   {
     icon: Truck,
     roman: 'II',
-    title: 'Pre-Dawn Refrigerated Fleet',
-    subtitle: 'Dual-evaporator Mercedes Sprinter fleet delivering between 04:00 AM and 07:30 AM.',
-    badge: '99.4% On-Time',
+    title: 'Dual-Evaporator Logistics Network',
+    subtitle: 'Our modern Mercedes Sprinter fleet operates through dual-evaporator systems, completing kitchen drops reliably between 04:00 AM and 07:30 AM.',
+    badge: 'COLD-CHAIN INTEGRITY',
     points: [
-      'Independent chill (1–4°C), butchery (0–2°C) and frozen (-18°C) compartments',
-      'Live temperature telemetry logged every 90 seconds',
-      'Secure kitchen key-drop access with photo-verified ePOD',
+      'Multi-Zone Compartments: Separate, strict climate zones for chill (1–4°C), butchery (0–2°C), and frozen (-18°C) freight.',
+      'Live Telemetry Logging: Continuous cold-chain temperature telemetry logged every 90 seconds to guarantee safety.',
+      'Key-Drop Access: Secure, trusted kitchen key-drop access complete with photo-verified ePOD tracking.',
     ],
   },
   {
     icon: Sprout,
     roman: 'III',
-    title: 'Direct Farm Provenance',
-    subtitle: 'Full batch traceability to vetted generational British farms and coastal day-boats.',
-    badge: '100% Traceable',
+    title: '100% Traceable Supply Architecture',
+    subtitle: 'Full batch traceability linking your delivery notes directly back to vetted generational British farms and coastal day-boats.',
+    badge: 'TRACEABLE ORIGINS',
     points: [
-      'Red Tractor assured British livestock and free-range poultry',
-      'Full batch provenance printable on delivery advice notes',
-      'Transparent fair grower pricing contracts',
+      'Red Tractor Assured: All livestock and free-range poultry are sourced from certified British suppliers.',
+      'Advice Note Integration: Full batch provenance details are automatically printed onto your daily delivery advice notes.',
+      'Fair-Trade Frameworks: Transparent, locked grower pricing contracts that support local farming communities.',
     ],
   },
   {
     icon: Leaf,
     roman: 'IV',
-    title: 'Sustainable British Sourcing',
-    subtitle: 'Prioritising local British farms, Kentish orchards, and reduced food-mile distribution.',
-    badge: 'Kent & Evesham',
+    title: 'Kent, Evesham & Regional Logistics Focus',
+    subtitle: 'We actively prioritize local British farms, Kentish orchards, and low-mile distribution loops to reduce environmental impact.',
+    badge: 'REGIONAL SOURCE LOOPS',
     points: [
-      'Regional farm sourcing within 80 miles of our hubs',
-      'Zero single-use plastic in transport crate systems',
-      'Seasonal crop booking to eliminate field food waste',
+      'Minimized Food Miles: Focus on regional farm sourcing located within 80 miles of our primary distribution hubs.',
+      'Circular Crating: Zero single-use plastic utilized within our transit and transport crate systems.',
+      'Crop Booking Structures: Seasonal forward-booking models engineered to minimize field food waste.',
     ],
   },
 ];
@@ -83,22 +83,22 @@ const COMPLIANCE_STANDARDS = [
   {
     name: 'BRCGS Storage & Distribution',
     standard: 'Audited Facility Standards',
-    detail: 'Our depots adhere to the global standard for food safety, warehouse sanitation, and cold-chain temperature control.',
+    detail: 'Our hubs strictly adhere to the global standard for food safety, warehouse sanitation, and structural temperature control.',
   },
   {
     name: 'Red Tractor Assured',
     standard: 'British Farm Origin',
-    detail: 'Complete certification that beef, lamb, poultry, and dairy originate from vetted British farms with animal welfare compliance.',
+    detail: 'Complete certification verifying that all beef, lamb, poultry, and dairy originate from vetted British farms with strict animal welfare compliance.',
   },
   {
     name: 'SALSA Standard',
     standard: 'Safe & Local Supplier Assurance',
-    detail: 'Comprehensive HACCP risk assessments, allergen segregation, and microbiological testing verification.',
+    detail: 'Comprehensive HACCP risk assessments, allergen segregation protocols, and routine microbiological testing verification.',
   },
   {
     name: 'Lion Quality Code',
     standard: 'Class A British Eggs',
-    detail: 'Salmonella vaccination verification, date stamping on shells, and end-to-end flock traceability.',
+    detail: 'Guaranteed salmonella vaccination verification, automated date stamping on eggshells, and end-to-end flock traceability.',
   },
 ];
 
@@ -147,7 +147,7 @@ export default function ApproachPage() {
           <div className="relative">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
               Built on Trust, <br className="hidden sm:inline" />
-              <span className="text-[#8B2635] italic font-normal">Quality &amp; Consistency.</span>
+              <span className="text-[#8B2635] italic font-normal">Quality &amp; Consistency</span>
             </h1>
             <div className="flex justify-center">
               <DoodleFlourish 
@@ -161,7 +161,7 @@ export default function ApproachPage() {
           </div>
 
           <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[62ch] mx-auto leading-[1.68]">
-            Every crate delivered to your kitchen is backed by strict 02:00 AM depot intake grading, continuous refrigeration telemetry, and genuine British farm provenance.
+            Every single crate delivered to your kitchen is backed by strict 02:00 AM depot intake grading, continuous refrigeration telemetry, and genuine British farm provenance.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
@@ -370,7 +370,7 @@ export default function ApproachPage() {
           </h2>
 
           <p className="text-xs sm:text-sm text-white/80 font-sans max-w-2xl mx-auto leading-relaxed">
-            Experience our 04:00 AM pre-dawn arrival and hand-graded produce quality firsthand with a scheduled trial crate drop for your brigade.
+            Experience our 04:00 AM pre-dawn arrival and hand-graded produce quality firsthand with a scheduled trial crate drop for your kitchen brigade.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
