@@ -37,7 +37,6 @@ export interface DraftOrderLine {
 }
 
 export function PublicProductsView() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -47,34 +46,6 @@ export function PublicProductsView() {
   const [isInquiryOpen, setIsInquiryOpen] = useState<boolean>(false);
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
-
-  // Security guard: On rootwillsdirect.co.uk require trade login; on rootwills.co.uk allow public catalog browsing
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const isDirectDomain =
-        window.location.hostname.includes('rootwillsdirect') ||
-        window.location.hostname.startsWith('direct.');
-
-      const isLogged =
-        localStorage.getItem('rootwills_user_logged_in') === 'true' ||
-        document.cookie.includes('rootwills_auth=true');
-
-      if (isDirectDomain && !isLogged) {
-        window.location.href = '/direct?redirect=/products&auth_required=1';
-      } else {
-        setIsAuthenticated(true);
-      }
-    }
-  }, []);
-
-  const handleSignOut = () => {
-    try {
-      localStorage.removeItem('rootwills_user_logged_in');
-      localStorage.removeItem('rootwills_user_account');
-      document.cookie = 'rootwills_auth=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    } catch {}
-    window.location.href = '/direct';
-  };
 
   // Initialize draft order list from localStorage if available, or pre-seed initial sample
   const [orderList, setOrderList] = useState<DraftOrderLine[]>(() => {
@@ -486,19 +457,6 @@ export function PublicProductsView() {
     </div>
   );
 
-  if (isAuthenticated === null) {
-    return (
-      <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-6 text-center">
-        <div className="space-y-3">
-          <div className="w-10 h-10 rounded-full border-2 border-[#4E0D17] border-t-transparent animate-spin mx-auto" />
-          <p className="text-xs font-mono uppercase tracking-widest text-[#706C65]">
-            Verifying Trade Access...
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[68px] sm:pt-[82px] pb-16">
       {/* Seamless Botanical Parchment Texture Overlay matching Rootwills Theme */}
@@ -533,31 +491,12 @@ export function PublicProductsView() {
               </div>
             </div>
 
-            {/* Verified Trade Account Status */}
-            <div className="py-2.5 px-3 bg-emerald-50/90 rounded-xl border border-emerald-200/90 my-3 text-left shadow-2xs">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-emerald-900 text-[11px] font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Trade Verified</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleSignOut}
-                  className="text-[10px] font-mono text-stone-500 hover:text-red-700 underline cursor-pointer"
-                >
-                  Sign out
-                </button>
-              </div>
-              <p className="text-[10px] text-stone-600 font-mono mt-1">Tier 1 Direct Wholesale</p>
-            </div>
-
             {/* Categories List */}
-            <div className="pt-2">
-              <div className="flex items-center justify-between mb-2 px-1">
+            <div className="pt-3.5">
+              <div className="mb-2.5 px-1">
                 <h2 className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-bold">
                   Departments
                 </h2>
-                <span className="text-[11px] font-mono text-stone-400">5,487 lines</span>
               </div>
 
               <nav className="space-y-0.5">
@@ -568,27 +507,17 @@ export function PublicProductsView() {
                     setSelectedSubcategory('all');
                     setSearchQuery('');
                   }}
-                  className={`w-full flex items-center justify-between py-2 px-2.5 rounded-xl text-[12.5px] transition-all cursor-pointer ${
+                  className={`w-full flex items-center py-2 px-2.5 rounded-xl text-[12.5px] transition-all cursor-pointer ${
                     selectedCategory === 'all'
                       ? 'bg-[#2E060D] text-white font-semibold shadow-xs'
                       : 'text-stone-700 hover:bg-black/[0.04]'
                   }`}
                 >
                   <span>All Products</span>
-                  <span
-                    className={`text-[11px] font-mono ${
-                      selectedCategory === 'all' ? 'text-[#F3D08A]' : 'text-stone-400'
-                    }`}
-                  >
-                    5,487
-                  </span>
                 </button>
 
                 {WHOLESALE_CATEGORIES.map((cat) => {
                   const active = selectedCategory === cat.slug;
-                  const catCount = WHOLESALE_PRODUCTS.filter(
-                    (p) => p.categorySlug === cat.slug
-                  ).length;
                   return (
                     <button
                       key={cat.slug}
@@ -598,22 +527,13 @@ export function PublicProductsView() {
                         setSelectedSubcategory('all');
                         setSearchQuery('');
                       }}
-                      className={`w-full flex items-center justify-between py-2 px-2.5 rounded-xl text-[12.5px] transition-all cursor-pointer group ${
+                      className={`w-full flex items-center py-2 px-2.5 rounded-xl text-[12.5px] transition-all cursor-pointer group ${
                         active
                           ? 'bg-[#2E060D] text-white font-semibold shadow-xs'
                           : 'text-stone-700 hover:bg-black/[0.04]'
                       }`}
                     >
                       <span className="truncate">{cat.shortName}</span>
-                      <span
-                        className={`text-[11px] font-mono ml-2 shrink-0 ${
-                          active
-                            ? 'text-[#F3D08A]'
-                            : 'text-stone-400 group-hover:text-stone-600'
-                        }`}
-                      >
-                        {catCount > 0 ? catCount : ''}
-                      </span>
                     </button>
                   );
                 })}
@@ -632,7 +552,7 @@ export function PublicProductsView() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search 5,487 wholesale lines by name, pack size, or SKU..."
+                placeholder="Search wholesale lines by name, pack size, or SKU..."
                 className="w-full pl-11 pr-10 py-3 rounded-2xl bg-white/90 focus:bg-white border border-[#E8DEC8] focus:border-[#BA8E4E] text-sm text-[#131313] placeholder:text-stone-400 outline-none shadow-2xs transition-all"
               />
               {searchQuery && (
@@ -659,20 +579,15 @@ export function PublicProductsView() {
                   return (
                     <section key={aisle.slug} className="pt-2 first:pt-0">
                       <div className="flex items-center justify-between mb-4 pb-2.5 border-b border-[#E8DEC8]">
-                        <div className="flex items-baseline gap-2.5">
-                          <h2 className="text-base sm:text-lg font-bold text-[#2E060D] tracking-tight">
-                            {aisle.name}
-                          </h2>
-                          <span className="text-xs font-mono text-stone-500">
-                            ({items.length} lines)
-                          </span>
-                        </div>
+                        <h2 className="text-base sm:text-lg font-bold text-[#2E060D] tracking-tight">
+                          {aisle.name}
+                        </h2>
                         <button
                           type="button"
                           onClick={() => setSelectedCategory(aisle.slug)}
                           className="text-xs font-semibold text-[#8B2635] hover:text-[#2E060D] flex items-center gap-1 group cursor-pointer"
                         >
-                          <span>View all {items.length}</span>
+                          <span>View all</span>
                           <ChevronRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
                         </button>
                       </div>
@@ -693,10 +608,11 @@ export function PublicProductsView() {
                       {WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory)?.name ||
                         'Search Results'}
                     </h2>
-                    <p className="text-xs font-mono text-stone-500 mt-0.5">
-                      {filteredProducts.length} commercial {filteredProducts.length === 1 ? 'line' : 'lines'}
-                      {searchQuery ? ` matching "${searchQuery}"` : ''}
-                    </p>
+                    {searchQuery && (
+                      <p className="text-xs font-mono text-stone-500 mt-0.5">
+                        Matching &ldquo;{searchQuery}&rdquo;
+                      </p>
+                    )}
                   </div>
 
                   <button
@@ -752,7 +668,7 @@ export function PublicProductsView() {
                       No commercial lines matched &ldquo;{searchQuery}&rdquo;
                     </p>
                     <p className="text-xs text-stone-500 max-w-md mx-auto leading-relaxed">
-                      Our commercial procurement team sources across 5,487 daily lines in London &amp; the South East. Contact our trade desk to request this specification.
+                      Our commercial procurement team sources daily fresh wholesale lines across the UK. Contact our trade desk to request this specification.
                     </p>
                     <button
                       type="button"
