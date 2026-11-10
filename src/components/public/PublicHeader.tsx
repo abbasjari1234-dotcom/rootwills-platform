@@ -67,29 +67,14 @@ export function PublicHeader() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
-      {/* ─── TOP BACKDROP CURTAIN ───
-          Guarantees content scrolling up dissolves and disappears cleanly
-          instead of passing under and popping out above the floating navbar */}
+      {/* ─── SEAMLESS FROSTED GLASS DISSOLVE (Replaces clunky curtain wall) ───
+          Soft, borderless gradient fade with backdrop-blur so content dissolves naturally 
+          without any hard horizontal bar or artificial curtain block */}
       <div
-        className={`absolute inset-x-0 top-0 pointer-events-none transition-opacity duration-300 ${
+        className={`absolute inset-x-0 top-0 h-[80px] sm:h-[92px] pointer-events-none transition-opacity duration-300 bg-gradient-to-b from-[#FAF7F2]/95 via-[#FAF7F2]/80 to-transparent backdrop-blur-[8px] ${
           !isHome || isScrolled ? 'opacity-100' : 'opacity-0'
         }`}
-      >
-        {/* Solid parchment barrier covering from top of window down past navbar bottom */}
-        <div className="relative h-[74px] sm:h-[90px] w-full bg-[#FAF7F2] border-b border-[#E8DEC8] shadow-[0_4px_20px_rgba(46,6,13,0.05)]">
-          {/* Subtle Botanical Parchment Texture Overlay */}
-          <div
-            className="absolute inset-0 bg-repeat opacity-[0.25] mix-blend-multiply pointer-events-none"
-            style={{
-              backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
-              backgroundSize: '1100px auto',
-            }}
-          />
-        </div>
-
-        {/* Soft feathered gradient fade right below the solid barrier so items vanish smoothly */}
-        <div className="h-6 sm:h-8 w-full bg-gradient-to-b from-[#FAF7F2] to-transparent pointer-events-none" />
-      </div>
+      />
 
       {/* ─── ANUBI-STYLE FLOATING CAPSULE NAVBAR SURFACE ─── */}
       <div className="relative z-10 flex justify-center px-2.5 xs:px-4 sm:px-5 md:px-8 pt-[calc(0.4rem+env(safe-area-inset-top,0px))] sm:pt-3.5">
