@@ -26,7 +26,7 @@ import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 export const metadata: Metadata = {
   title: 'Wholesale Foodservice Solutions & Pre-Dawn Multi-Drop | Rootwills UK',
   description:
-    'Reliable B2B wholesale food supply and pre-dawn multi-drop delivery across London, Birmingham, and the Midlands. Hand-graded fresh produce, prime butchery, dairy, and ambient catering staples delivered directly to commercial kitchens.',
+    'Tailored foodservice supply and wholesale capabilities for UK restaurants, boutique hotels, and commercial caterers. Direct grower contracts, margin-locked terms, and pre-dawn multi-drop delivery.',
   alternates: {
     canonical: '/services',
   },
@@ -38,14 +38,26 @@ const SERVICES_DATA = [
     tag: 'LOGISTICS & FRESH PRODUCE',
     badge: 'MICHELIN & BISTRO',
     title: 'Food Service Supply',
-    subtitle: 'From Field to Kitchen Before Morning Prep Begins',
+    subtitle: 'Field-to-Kitchen Deliveries Before Your Morning Prep Begins',
     description: 'Fresh, hand-graded ingredients and chef-specified kitchen essentials delivered pre-dawn across London and the Midlands.',
     image: '/images/commercial/chef_inspect_produce.jpg',
     imageAlt: 'Head chef inspecting fresh morning harvest produce crate',
     highlights: [
-      { icon: Clock, text: '04:00 AM Dawn London Drops' },
-      { icon: Sparkles, text: 'Chef-Curated Farm Produce' },
-      { icon: Snowflake, text: 'Continuous Cold-Chain Telemetry' },
+      { 
+        icon: Clock, 
+        title: '04:00 AM Dawn London Drops',
+        desc: 'Reliable transit routes hitting your loading docks before service preparation starts.' 
+      },
+      { 
+        icon: Sparkles, 
+        title: 'Chef-Curated Farm Produce',
+        desc: 'Ingredients hand-selected to meet strict culinary specifications.' 
+      },
+      { 
+        icon: Snowflake, 
+        title: 'Continuous Cold-Chain Telemetry',
+        desc: 'GPS-monitored fleet keeping produce in peak climatic condition.' 
+      },
     ],
   },
   {
@@ -53,14 +65,26 @@ const SERVICES_DATA = [
     tag: 'COMMERCIAL DISTRIBUTION',
     badge: 'VOLUME CONTRACTS',
     title: 'Wholesale Solutions',
-    subtitle: 'Margin-Locked Supply for Multi-Site Venues',
+    subtitle: 'Margin-Locked Supply Chains for Multi-Site Venues',
     description: 'Reliable, margin-locked wholesale supply for hospitality businesses of all sizes, from independent venues to multi-site groups.',
     image: '/images/commercial/cold_depot_logistics.jpg',
     imageAlt: 'Temperature-controlled wholesale distribution hub',
     highlights: [
-      { icon: Coins, text: 'Tiered Volume Rates & Locked Terms' },
-      { icon: Sprout, text: 'Direct Grower & Farm Lineage' },
-      { icon: CheckCircle2, text: 'Zero Split-Case Surcharges' },
+      { 
+        icon: Coins, 
+        title: 'Tiered Volume Rates & Locked Terms',
+        desc: 'Protecting your food margins against seasonal market fluctuations.' 
+      },
+      { 
+        icon: Sprout, 
+        title: 'Direct Grower & Farm Lineage',
+        desc: 'Sourcing straight from the farm gate to guarantee unmatched product freshness.' 
+      },
+      { 
+        icon: CheckCircle2, 
+        title: 'Zero Split-Case Surcharges',
+        desc: 'Ordering exactly what your kitchen requires without paying punishing split-case penalties.' 
+      },
     ],
   },
   {
@@ -68,14 +92,26 @@ const SERVICES_DATA = [
     tag: 'STRATEGIC ACCOUNTS',
     badge: 'DEDICATED DESK',
     title: 'Business Partnerships',
-    subtitle: 'Direct Collaboration with Culinary Directors',
+    subtitle: 'Direct Collaboration with Culinary Directors & Procurement Teams',
     description: 'We collaborate directly with head chefs and culinary directors to engineer bespoke supply schedules and seasonal menu forecasts.',
     image: '/images/commercial/rootwills_hero_chef_plating.jpg',
     imageAlt: 'Executive chef plating fine dining dish with fresh micro-herbs',
     highlights: [
-      { icon: UserCheck, text: 'Assigned Senior Depot Account Lead' },
-      { icon: CreditCard, text: '30-Day Commercial Trade Terms' },
-      { icon: Calendar, text: 'Seasonal Menu Yield Forecasts' },
+      { 
+        icon: UserCheck, 
+        title: 'Assigned Senior Depot Account Lead',
+        desc: 'A dedicated wholesale logistics manager on direct dial whenever you need them.' 
+      },
+      { 
+        icon: CreditCard, 
+        title: '30-Day Commercial Trade Terms',
+        desc: 'Seamless credit facilities structured for modern hospitality operations.' 
+      },
+      { 
+        icon: Calendar, 
+        title: 'Seasonal Menu Yield Forecasts',
+        desc: 'Data-driven crop insights helping you manage plate costs before menu shifts.' 
+      },
     ],
   },
 ];
@@ -83,28 +119,28 @@ const SERVICES_DATA = [
 const SECTORS_WE_SERVE = [
   {
     title: 'Restaurants & Fine Dining',
-    subtitle: 'Hand-graded heritage produce, coastal catch & living microgreens',
+    subtitle: 'Hand-graded heritage produce, coastal catch, and living microgreens.',
     image: '/images/commercial/10_restaurant.jpg',
     icon: UtensilsCrossed,
     tag: 'CULINARY',
   },
   {
     title: 'Hotels & Boutique Resorts',
-    subtitle: 'Multi-outlet breakfast dairy, artisan bakery & banqueting supply',
+    subtitle: 'Multi-outlet breakfast dairy, artisan bakery lines, and large-scale banqueting supply.',
     image: '/images/commercial/11_hotels.jpg',
     icon: Building2,
     tag: 'HOSPITALITY',
   },
   {
     title: 'Event & Contract Caterers',
-    subtitle: 'Precision-timed volume drops & bespoke menu spec grading',
+    subtitle: 'Precision-timed volume drops and bespoke menu spec grading for tight operational windows.',
     image: '/images/commercial/13_caterers.jpg',
     icon: ChefHat,
     tag: 'CATERING',
   },
   {
     title: 'Gastro Pubs & Institutions',
-    subtitle: 'Dependable British farm staples, prime butchery & dry larder',
+    subtitle: 'Dependable British farm staples, prime butchery cuts, and a comprehensive dry larder selection.',
     image: '/images/commercial/14_pubs_bars.jpg',
     icon: Landmark,
     tag: 'COMMERCIAL',
@@ -155,8 +191,8 @@ export default function ServicesPage() {
 
           <div className="relative">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
-              Tailored Solutions For <br className="hidden sm:inline" />
-              <span className="text-[#8B2635] italic font-normal">Every Food Business.</span>
+              Tailored Solutions for <br className="hidden sm:inline" />
+              <span className="text-[#8B2635] italic font-normal">Every Food Business</span>
             </h1>
             <div className="flex justify-center">
               <DoodleFlourish 
@@ -169,8 +205,8 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[62ch] mx-auto leading-[1.68]">
-            We provide an end-to-end range of foodservice supply and wholesale capabilities, engineered around the daily operational rhythm of independent restaurants, luxury hotels, and commercial catering groups.
+          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[66ch] mx-auto leading-[1.68]">
+            We provide a comprehensive, end-to-end suite of foodservice supply and wholesale capabilities, specifically engineered to align with the daily operational rhythm of independent restaurants, luxury hotels, and high-volume commercial catering groups.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
@@ -263,13 +299,16 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Highlights List */}
-                  <ul className="space-y-2 pt-3.5 border-t border-[#E8DEC8] text-xs text-stone-700 font-sans">
+                  <ul className="space-y-2.5 pt-3.5 border-t border-[#E8DEC8] text-xs text-stone-700 font-sans">
                     {service.highlights.map((item, hIdx) => {
                       const Icon = item.icon;
                       return (
-                        <li key={hIdx} className="flex items-center gap-2.5">
-                          <Icon className="w-3.5 h-3.5 text-[#8B2635] shrink-0" strokeWidth={2} />
-                          <span className="font-medium">{item.text}</span>
+                        <li key={hIdx} className="flex items-start gap-2.5">
+                          <Icon className="w-3.5 h-3.5 text-[#8B2635] shrink-0 mt-0.5" strokeWidth={2} />
+                          <span className="leading-snug text-[12px]">
+                            <strong className="font-semibold text-[#2E060D]">{item.title}:</strong>{' '}
+                            <span className="text-stone-600">{item.desc}</span>
+                          </span>
                         </li>
                       );
                     })}
@@ -374,7 +413,7 @@ export default function ServicesPage() {
           </h2>
 
           <p className="text-xs sm:text-sm text-white/80 font-sans max-w-2xl mx-auto leading-relaxed">
-            Open a direct commercial wholesale account today. Our Birmingham dispatch desk will configure contracted rates, standing orders, and pre-dawn delivery slots tailored to your menu.
+            Open a direct commercial trade account today. Our Birmingham dispatch desk will immediately configure your contracted rates, automate standing orders, and secure pre-dawn delivery slots tailored to your menu rhythm.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
