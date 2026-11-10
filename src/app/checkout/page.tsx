@@ -12,16 +12,20 @@ import {
   ArrowRight,
   Plus,
   Minus,
-  Trash2
+  Trash2,
+  Sparkles,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { OrderItem, WholesaleOrder } from '@/lib/orders';
 
 export default function CheckoutPage() {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
+  const [showManifest, setShowManifest] = useState(false);
   const [confirmedOrder, setConfirmedOrder] = useState<WholesaleOrder | null>(null);
 
-  // Exact Form State matching user screenshot
+  // Exact Form State matching user requirements
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -86,7 +90,7 @@ export default function CheckoutPage() {
       !form.numberOfSites.trim() ||
       !form.postcode.trim()
     ) {
-      alert('Please fill in all required fields (*)');
+      alert('Please fill in all required fields marked with *');
       return;
     }
 
@@ -153,8 +157,20 @@ ${linesText}`;
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-6 sm:pt-10 pb-20 px-3 sm:px-6">
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-6 sm:pt-10 pb-20 px-3 sm:px-6 relative">
+      {/* Upper Soft Tinted Header Backdrop */}
+      <div className="absolute top-0 inset-x-0 h-[310px] sm:h-[450px] bg-[#F3ECE0]/80 border-b border-[#E8DEC8]/60 pointer-events-none" />
+
+      {/* Seamless Botanical Parchment Texture Overlay */}
+      <div
+        className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.20] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto space-y-6">
         {/* Top Header */}
         <header className="flex items-center justify-between pb-4 border-b border-[#E8DEC8]">
           <Link href="/products" className="inline-flex items-center gap-2 text-xs font-semibold text-[#2E060D] hover:underline">
@@ -169,46 +185,48 @@ ${linesText}`;
 
         {confirmedOrder ? (
           /* ─── CONFIRMED SCREEN ─── */
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E8DEC8] shadow-lg space-y-6">
+          <div className="bg-gradient-to-br from-[#4E0D17] via-[#380911] to-[#240307] text-white rounded-[26px] p-6 sm:p-10 border-2 border-white/25 shadow-2xl space-y-6 relative overflow-hidden">
             <div className="text-center space-y-3">
-              <div className="w-16 h-16 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
-                <CheckCircle2 className="w-10 h-10" />
+              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-400 flex items-center justify-center mx-auto shadow-lg">
+                <CheckCircle2 className="w-9 h-9" />
               </div>
-              <span className="inline-block px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-bold">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#F3D08A] text-xs font-mono font-bold tracking-wider">
                 APPLICATION REF: {confirmedOrder.id}
               </span>
-              <h1 className="text-2xl sm:text-3xl font-bold text-emerald-950">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-extrabold text-white tracking-tight">
                 Customer Application &amp; Order Received
               </h1>
-              <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-200 max-w-lg mx-auto leading-relaxed">
                 Thank you, <strong>{confirmedOrder.name}</strong>. Your customer application for <strong>{confirmedOrder.company}</strong> has been transmitted for immediate trade account approval.
               </p>
             </div>
 
             {/* Manifest */}
             {confirmedOrder.items.length > 0 && (
-              <div className="rounded-2xl border border-[#E8DEC8] overflow-hidden">
-                <div className="px-4 py-3 bg-[#FAF7F2] border-b border-[#E8DEC8] flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#2E060D]">
+              <div className="rounded-[18px] border border-white/20 bg-white/5 backdrop-blur-sm overflow-hidden max-w-xl mx-auto">
+                <div className="px-4 py-3 bg-white/10 border-b border-white/15 flex items-center justify-between">
+                  <span className="text-xs font-bold text-white">
                     Order Summary ({confirmedOrder.totalLines} lines • {confirmedOrder.totalCases} cases)
                   </span>
-                  <span className="text-[11px] font-mono text-stone-500">
+                  <span className="text-[11px] font-mono text-[#F3D08A]">
                     {confirmedOrder.postcode}
                   </span>
                 </div>
-                <div className="divide-y divide-[#E8DEC8]/50 p-2 max-h-60 overflow-y-auto">
+                <div className="divide-y divide-white/10 p-2 max-h-60 overflow-y-auto">
                   {confirmedOrder.items.map((it) => (
                     <div key={it.id} className="p-2.5 flex items-center justify-between gap-3 text-xs">
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="relative w-11 h-11 rounded-lg bg-white border border-[#E8DEC8] shrink-0 overflow-hidden flex items-center justify-center p-1">
+                        <div className="relative w-11 h-11 rounded-lg bg-white shrink-0 overflow-hidden flex items-center justify-center p-1">
                           <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
                         </div>
                         <div className="min-w-0">
-                          <div className="font-semibold text-stone-800 truncate text-[13px]">{it.name}</div>
-                          <div className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</div>
+                          <p className="font-semibold text-white truncate">{it.name}</p>
+                          <p className="text-[11px] text-stone-300 font-mono">
+                            SKU: {it.sku} • {it.packSize}
+                          </p>
                         </div>
                       </div>
-                      <span className="font-bold text-[#2E060D] bg-[#FAF7F2] px-2.5 py-1 rounded-md border border-[#E8DEC8] shrink-0">
+                      <span className="text-xs font-bold font-mono text-[#F3D08A] shrink-0">
                         {it.qty} {it.qty === 1 ? 'case' : 'cases'}
                       </span>
                     </div>
@@ -217,314 +235,340 @@ ${linesText}`;
               </div>
             )}
 
-            {/* Transmit Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+            {/* Action Buttons */}
+            <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3 pt-4">
               <a
                 href={generateWhatsAppUrl(confirmedOrder)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:flex-1 py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BA5A] text-white text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95"
+                className="flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-colors"
               >
-                <MessageCircle className="w-5 h-5 fill-white" />
-                <span>Instant WhatsApp Trade Approval</span>
+                <MessageCircle className="w-4 h-4 text-[#F3D08A]" />
+                <span>Notify Trade Desk via WhatsApp</span>
               </a>
-
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="w-full sm:w-auto py-3.5 px-5 rounded-xl bg-white hover:bg-[#FAF7F2] text-[#2E060D] border border-[#E8DEC8] text-sm font-bold flex items-center justify-center gap-2 shadow-2xs"
+                className="py-3.5 px-6 rounded-xl bg-white hover:bg-stone-100 text-[#4E0D17] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
               >
-                <Printer className="w-4 h-4 text-[#BA8E4E]" />
-                <span>Print Application</span>
+                <Printer className="w-4 h-4" />
+                <span>Print Copy</span>
               </button>
-
-              <Link
-                href="/products"
-                className="w-full sm:w-auto py-3.5 px-6 rounded-xl bg-[#2E060D] hover:bg-black text-white text-sm font-bold text-center"
-              >
-                Catalog
-              </Link>
             </div>
           </div>
         ) : (
-          /* Active Form Layout */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Left Column: Form */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-4">
-              <div>
-                <span className="block text-xs sm:text-[13px] font-bold text-[#E66E19] uppercase tracking-wider mb-1">
-                  Serve Your Customers Only The Best
-                </span>
-                <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight uppercase">
-                  BECOME A CUSTOMER
-                </h1>
-              </div>
+          /* ─── FULL RED THEME CUSTOMER APPLICATION CARD ─── */
+          <div className="bg-gradient-to-br from-[#4E0D17] via-[#380911] to-[#240307] text-white rounded-[26px] p-6 sm:p-10 border-2 border-white/25 sm:border-white/30 shadow-2xl space-y-6 relative overflow-hidden">
+            {/* Ambient luxury glows */}
+            <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#F3D08A]/10 pointer-events-none blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-white/5 pointer-events-none blur-3xl" />
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Name <span className="text-red-500">*</span>
+            {/* Header */}
+            <div className="border-b border-white/15 pb-5 relative z-10">
+              <div className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-extrabold text-[#F3D08A] font-sans">
+                Serve Your Customers Only The Best
+              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black tracking-tight text-white mt-1.5">
+                BECOME A CUSTOMER
+              </h1>
+              <p className="mt-1 text-xs sm:text-sm text-stone-200/90 font-sans max-w-2xl leading-relaxed">
+                Register your hospitality venue or commercial kitchen for direct wholesale terms, dedicated key account management, and pre-dawn refrigerated deliveries.
+              </p>
+
+              {/* Attached Basket Lines Notification */}
+              {orderItems.length > 0 && (
+                <div className="mt-3.5">
+                  <button
+                    type="button"
+                    onClick={() => setShowManifest(!showManifest)}
+                    className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-xs text-white font-medium backdrop-blur-sm transition-all cursor-pointer"
+                  >
+                    <ShoppingBag className="w-3.5 h-3.5 text-[#F3D08A]" />
+                    <span>
+                      Attaching <strong className="text-[#F3D08A]">{orderItems.length} lines</strong> ({totalCases} cases) to your application
+                    </span>
+                    {showManifest ? (
+                      <ChevronUp className="w-3.5 h-3.5 text-stone-300" />
+                    ) : (
+                      <ChevronDown className="w-3.5 h-3.5 text-stone-300" />
+                    )}
+                  </button>
+
+                  {/* Expandable Manifest Panel */}
+                  {showManifest && (
+                    <div className="mt-3 rounded-xl border border-white/20 bg-black/30 backdrop-blur-md p-3 max-h-48 overflow-y-auto space-y-2">
+                      {orderItems.map((it) => (
+                        <div
+                          key={it.id}
+                          className="flex items-center justify-between gap-3 text-xs p-2 rounded-lg bg-white/5 border border-white/10"
+                        >
+                          <div className="min-w-0">
+                            <p className="font-semibold text-white truncate text-[12px]">{it.name}</p>
+                            <p className="text-[10px] text-stone-300 font-mono">
+                              {it.sku} • {it.packSize}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <button
+                              type="button"
+                              onClick={() => updateQty(it.id, -1)}
+                              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
+                            >
+                              {it.qty === 1 ? <Trash2 className="w-3 h-3 text-rose-300" /> : <Minus className="w-3 h-3" />}
+                            </button>
+                            <span className="font-mono text-xs font-bold text-[#F3D08A] px-1.5">
+                              {it.qty}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => updateQty(it.id, 1)}
+                              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
+                            >
+                              <Plus className="w-3 h-3" />
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Form Fields: White Background / White Border for Extreme Legibility & Contrast */}
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 relative z-10">
+              {/* Row 1: Name & Email */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Name</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. John Trangely"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
 
-                {/* Email * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Email <span className="text-red-500">*</span>
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Email</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="you@example.com"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. hello@venue.co.uk"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
+              </div>
 
-                {/* Phone * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Phone <span className="text-red-500">*</span>
-                  </label>
-                  <div className="flex gap-2">
-                    <select
-                      value={form.countryCode}
-                      onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
-                      className="px-2.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 text-stone-700 outline-none shrink-0"
-                    >
-                      <option value="UK +44">UK +44</option>
-                      <option value="IE +353">IE +353</option>
-                      <option value="US +1">US +1</option>
-                    </select>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="7123 456789"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
-                    />
-                  </div>
+              {/* Row 2: Phone with Country Code */}
+              <div className="space-y-1.5">
+                <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                  <span>Phone</span>
+                  <span className="text-[#F3D08A] font-bold">*</span>
+                </label>
+                <div className="flex rounded-xl overflow-hidden shadow-sm bg-white border border-stone-200/90 focus-within:ring-2 focus-within:ring-[#F3D08A]">
+                  <select
+                    value={form.countryCode}
+                    onChange={(e) => setForm({ ...form, countryCode: e.target.value })}
+                    className="bg-stone-50 text-stone-800 text-xs sm:text-[13px] font-semibold px-3 py-2.5 border-r border-stone-200 outline-none cursor-pointer"
+                  >
+                    <option value="UK +44">UK +44</option>
+                    <option value="IE +353">IE +353</option>
+                  </select>
+                  <input
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    placeholder="7123 456789"
+                    className="w-full bg-white text-stone-900 px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 outline-none"
+                  />
                 </div>
+              </div>
 
-                {/* Job Title * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Job Title <span className="text-red-500">*</span>
+              {/* Row 3: Job Title & Company */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Job Title</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={form.jobTitle}
                     onChange={(e) => setForm({ ...form, jobTitle: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. Head Chef / Procurement Manager"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
 
-                {/* Company * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Company <span className="text-red-500">*</span>
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Company</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. Dishoom / Gail's"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
+              </div>
 
-                {/* Number of Sites * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Number of Sites <span className="text-red-500">*</span>
+              {/* Row 4: Number of Sites & Postcode */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Number of Sites</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={form.numberOfSites}
                     onChange={(e) => setForm({ ...form, numberOfSites: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. 1, 3-5, 10+"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
 
-                {/* Postcode * */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Postcode <span className="text-red-500">*</span>
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/95 flex items-center gap-1">
+                    <span>Postcode</span>
+                    <span className="text-[#F3D08A] font-bold">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={form.postcode}
-                    onChange={(e) => setForm({ ...form, postcode: e.target.value.toUpperCase() })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none uppercase"
+                    onChange={(e) => setForm({ ...form, postcode: e.target.value })}
+                    placeholder="e.g. W1D 3QU"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all uppercase"
                   />
                 </div>
+              </div>
 
-                {/* Current Supplier */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+              {/* Row 5: Current Supplier & Approx Weekly Deliveries */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/90">
                     Current Supplier
                   </label>
                   <input
                     type="text"
                     value={form.currentSupplier}
                     onChange={(e) => setForm({ ...form, currentSupplier: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. Brakes, Bidfood, Direct"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
 
-                {/* Approx Weekly Deliveries */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
+                <div className="space-y-1.5">
+                  <label className="text-[12px] font-sans font-semibold text-white/90">
                     Approx Weekly Deliveries
                   </label>
                   <input
                     type="text"
                     value={form.approxWeeklyDeliveries}
                     onChange={(e) => setForm({ ...form, approxWeeklyDeliveries: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    placeholder="e.g. 3-4 drops"
+                    className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
                   />
                 </div>
+              </div>
 
-                {/* Approx Weekly Spend */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Approx Weekly Spend
-                  </label>
+              {/* Row 6: Approx Weekly Spend */}
+              <div className="space-y-1.5">
+                <label className="text-[12px] font-sans font-semibold text-white/90">
+                  Approx Weekly Spend
+                </label>
+                <input
+                  type="text"
+                  value={form.approxWeeklySpend}
+                  onChange={(e) => setForm({ ...form, approxWeeklySpend: e.target.value })}
+                  placeholder="e.g. £2,000 - £5,000"
+                  className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all"
+                />
+              </div>
+
+              {/* Row 7: Message */}
+              <div className="space-y-1.5">
+                <label className="text-[12px] font-sans font-semibold text-white/90">
+                  Message
+                </label>
+                <textarea
+                  rows={2}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="Please provide any other details that may help your application."
+                  className="w-full bg-white text-stone-900 border border-stone-200/90 rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] font-sans placeholder:text-stone-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#F3D08A] focus:border-white transition-all resize-none"
+                />
+              </div>
+
+              {/* Marketing Preferences Box with White Border */}
+              <div className="rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3.5 space-y-2">
+                <div className="text-[11.5px] font-semibold text-white font-sans">
+                  Marketing preferences
+                </div>
+                <label className="flex items-center gap-2.5 text-stone-200 cursor-pointer select-none">
                   <input
-                    type="text"
-                    value={form.approxWeeklySpend}
-                    onChange={(e) => setForm({ ...form, approxWeeklySpend: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none"
+                    type="checkbox"
+                    checked={form.marketingEmail}
+                    onChange={(e) => setForm({ ...form, marketingEmail: e.target.checked })}
+                    className="rounded border-white/40 text-[#4E0D17] focus:ring-[#F3D08A] w-4 h-4 bg-white"
                   />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-xs font-semibold text-stone-800 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Please provide any other details that may help your application."
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs sm:text-sm rounded-lg bg-white border border-stone-300 focus:border-stone-900 outline-none resize-none"
+                  <span className="text-[12px] font-sans">Yes, send me offers and news by email</span>
+                </label>
+                <label className="flex items-center gap-2.5 text-stone-200 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={form.marketingSms}
+                    onChange={(e) => setForm({ ...form, marketingSms: e.target.checked })}
+                    className="rounded border-white/40 text-[#4E0D17] focus:ring-[#F3D08A] w-4 h-4 bg-white"
                   />
-                </div>
+                  <span className="text-[12px] font-sans">Yes, send me offers and news by SMS</span>
+                </label>
+              </div>
 
-                {/* Marketing preferences */}
-                <div className="rounded-xl bg-stone-50 border border-stone-200 p-4 space-y-2">
-                  <span className="block text-xs font-semibold text-stone-800">
-                    Marketing preferences
-                  </span>
-                  <label className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={form.marketingEmail}
-                      onChange={(e) => setForm({ ...form, marketingEmail: e.target.checked })}
-                      className="rounded border-stone-300 text-stone-900 w-4 h-4"
-                    />
-                    <span>Yes, send me offers and news by email</span>
-                  </label>
-                  <label className="flex items-center gap-2 text-xs text-stone-700 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={form.marketingSms}
-                      onChange={(e) => setForm({ ...form, marketingSms: e.target.checked })}
-                      className="rounded border-stone-300 text-stone-900 w-4 h-4"
-                    />
-                    <span>Yes, send me offers and news by SMS</span>
-                  </label>
-                </div>
-
-                {/* Submit Button */}
+              {/* Submit Row: Gold / Champagne CTA Button + Terms */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 px-6 rounded-xl bg-[#2E060D] hover:bg-black text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#F3D08A] to-[#E5BE72] hover:from-[#FFF1CC] hover:to-[#F3D08A] text-[#2E060D] text-xs sm:text-sm font-sans font-bold transition-all duration-200 cursor-pointer active:scale-95 shadow-xl flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {submitting ? (
-                    <span>Submitting Application...</span>
+                    <span>Transmitting Application...</span>
                   ) : (
                     <>
-                      <span>Submit Customer Application</span>
-                      <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+                      <span>
+                        Submit Application
+                        {orderItems.length > 0 ? ` & Place Order (${totalCases} Cases)` : ''}
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-[#2E060D]" />
                     </>
                   )}
                 </button>
-              </form>
-            </div>
 
-            {/* Right Column: Order Manifest */}
-            <div className="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 border border-stone-200 shadow-sm space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-                <h3 className="text-sm font-bold text-[#2E060D]">
-                  Order Lines ({orderItems.length} lines • {totalCases} cases)
-                </h3>
-                <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                  Pre-Dawn Manifest
+                <span className="text-[11px] font-mono text-stone-300">
+                  Protected by Rootwills B2B Trade Terms
                 </span>
               </div>
-
-              {orderItems.length === 0 ? (
-                <div className="py-8 text-center text-xs text-stone-500">
-                  No items currently in your basket. You can submit your customer application directly.
-                </div>
-              ) : (
-                <div className="divide-y divide-stone-100 max-h-[380px] overflow-y-auto pr-1">
-                  {orderItems.map((it) => (
-                    <div key={it.id} className="py-3 first:pt-0 flex items-center justify-between gap-3 text-xs">
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="relative w-11 h-11 rounded-lg bg-white border border-stone-200 shrink-0 overflow-hidden flex items-center justify-center p-1">
-                          <Image src={it.image} alt={it.name} fill sizes="44px" className="object-contain" unoptimized />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-semibold text-stone-800 truncate text-[12.5px]">{it.name}</p>
-                          <p className="text-[11px] font-mono text-stone-500">{it.packSize} • SKU: {it.sku}</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 shrink-0 bg-[#FAF7F2] border border-[#E8DEC8] rounded-lg p-1">
-                        <button
-                          type="button"
-                          onClick={() => updateQty(it.id, -1)}
-                          className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
-                        >
-                          {it.qty === 1 ? <Trash2 className="w-3 h-3 text-red-600" /> : <Minus className="w-3 h-3" />}
-                        </button>
-                        <span className="font-bold text-xs min-w-[14px] text-center">{it.qty}</span>
-                        <button
-                          type="button"
-                          onClick={() => updateQty(it.id, 1)}
-                          className="w-5 h-5 rounded hover:bg-black/5 text-[#2E060D] flex items-center justify-center"
-                        >
-                          <Plus className="w-3 h-3" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="pt-3 border-t border-stone-200 text-center">
-                <Link href="/products" className="text-xs font-semibold text-[#8B2635] hover:underline">
-                  + Add more lines from catalog
-                </Link>
-              </div>
-            </div>
+            </form>
           </div>
         )}
       </div>
