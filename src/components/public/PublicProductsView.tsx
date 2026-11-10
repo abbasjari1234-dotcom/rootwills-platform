@@ -48,14 +48,18 @@ export function PublicProductsView() {
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
 
-  // Security guard: Ensure unauthenticated users cannot browse catalogue
+  // Security guard: On rootwillsdirect.co.uk require trade login; on rootwills.co.uk allow public catalog browsing
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const isDirectDomain =
+        window.location.hostname.includes('rootwillsdirect') ||
+        window.location.hostname.startsWith('direct.');
+
       const isLogged =
         localStorage.getItem('rootwills_user_logged_in') === 'true' ||
         document.cookie.includes('rootwills_auth=true');
 
-      if (!isLogged) {
+      if (isDirectDomain && !isLogged) {
         window.location.href = '/direct?redirect=/products&auth_required=1';
       } else {
         setIsAuthenticated(true);
