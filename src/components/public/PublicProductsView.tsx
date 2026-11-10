@@ -17,6 +17,7 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
+  LogOut,
 } from 'lucide-react';
 import { InquiryModal } from '@/components/public/InquiryModal';
 import { WholesaleCheckoutModal } from '@/components/public/WholesaleCheckoutModal';
@@ -46,6 +47,44 @@ export function PublicProductsView() {
   const [isInquiryOpen, setIsInquiryOpen] = useState<boolean>(false);
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string } | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hasCookie = document.cookie.split(';').some((c) => c.trim().startsWith('rootwills_auth=true'));
+      const hasLocal = localStorage.getItem('rootwills_user_logged_in') === 'true';
+      if (hasCookie || hasLocal) {
+        setIsAuthenticated(true);
+        try {
+          const stored = localStorage.getItem('rootwills_user_account');
+          if (stored) {
+            setTradeAccount(JSON.parse(stored));
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch {
+      // ignore
+    }
+    document.cookie = 'rootwills_auth=; path=/; max-age=0';
+    try {
+      localStorage.removeItem('rootwills_user_logged_in');
+      localStorage.removeItem('rootwills_user_account');
+    } catch {
+      // ignore
+    }
+    setIsAuthenticated(false);
+    setTradeAccount(null);
+    window.location.href = '/direct';
+  };
 
   // Initialize draft order list from localStorage if available, or pre-seed initial sample
   const [orderList, setOrderList] = useState<DraftOrderLine[]>(() => {
@@ -117,6 +156,18 @@ export function PublicProductsView() {
       window.location.href = 'https://rootwillsdirect.co.uk';
     } else {
       window.location.href = '/direct';
+    }
+  };
+
+  // Primary Cart CTA: If verified trade user on direct, opens order modal; otherwise redirects to direct portal
+  const handlePrimaryCartAction = () => {
+    if (orderList.length === 0) return;
+    setMobileCartDrawerOpen(false);
+
+    if (isAuthenticated) {
+      setIsCheckoutModalOpen(true);
+    } else {
+      directToRootwillsDirect();
     }
   };
 
@@ -470,12 +521,21 @@ export function PublicProductsView() {
 
         <button
           type="button"
-          onClick={directToRootwillsDirect}
+          onClick={handlePrimaryCartAction}
           disabled={orderList.length === 0}
           className="w-full py-3.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] disabled:opacity-50 text-white font-sans font-semibold text-[13px] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 shadow-sm"
         >
-          <span>Order on Rootwills Direct</span>
-          <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+          {isAuthenticated ? (
+            <>
+              <span>Review &amp; Place Pre-Dawn Order</span>
+              <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+            </>
+          ) : (
+            <>
+              <span>Order on Rootwills Direct</span>
+              <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+            </>
+          )}
         </button>
       </div>
     </div>
@@ -514,6 +574,32 @@ export function PublicProductsView() {
                 <span>04:00 – 07:30 AM</span>
               </div>
             </div>
+
+            {/* Authenticated Trade Account Status */}
+            {isAuthenticated && (
+              <div className="mt-3 p-2.5 rounded-xl bg-white/90 border border-[#BA8E4E]/30 shadow-2xs space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-700 font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Verified Partner
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className="text-[10.5px] text-stone-500 hover:text-red-700 underline font-medium cursor-pointer"
+                    title="Sign out of Direct"
+                  >
+                    Sign Out
+                  </button>
+                </div>
+                <div className="text-xs font-bold text-[#2E060D] truncate">
+                  {tradeAccount?.company || 'Commercial Partner'}
+                </div>
+                <div className="text-[10.5px] font-mono text-stone-500">
+                  {tradeAccount?.id || 'RW-TRADE'}
+                </div>
+              </div>
+            )}
 
             {/* Categories List */}
             <div className="pt-3.5">
@@ -898,12 +984,21 @@ export function PublicProductsView() {
                         type="button"
                         onClick={() => {
                           setQuickViewProduct(null);
-                          directToRootwillsDirect();
+                          handlePrimaryCartAction();
                         }}
                         className="py-3 px-4 rounded-xl bg-[#2E060D] hover:bg-[#430A14] text-white text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                       >
-                        <span>Order on Rootwills Direct</span>
-                        <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+                        {isAuthenticated ? (
+                          <>
+                            <span>Place Pre-Dawn Order</span>
+                            <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+                          </>
+                        ) : (
+                          <>
+                            <span>Order on Rootwills Direct</span>
+                            <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+                          </>
+                        )}
                       </button>
                     </div>
 

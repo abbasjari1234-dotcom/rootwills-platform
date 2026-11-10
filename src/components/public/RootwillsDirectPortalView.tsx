@@ -14,6 +14,7 @@ import {
   Phone,
   MessageCircle,
   AlertCircle,
+  AlertTriangle,
 } from 'lucide-react';
 import { WholesaleCheckoutModal } from './WholesaleCheckoutModal';
 
@@ -25,6 +26,7 @@ export function RootwillsDirectPortalView() {
   const [forgotPasswordOpen, setForgotPasswordOpen] = useState(false);
   const [isAuthRequired, setIsAuthRequired] = useState(false);
   const [redirectTarget, setRedirectTarget] = useState('/products');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Form State
   const [form, setForm] = useState({
@@ -47,31 +49,51 @@ export function RootwillsDirectPortalView() {
     }
   }, []);
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.identifier.trim() || !form.password.trim()) {
-      alert('Please enter your Account ID and Password.');
+    setErrorMessage(null);
+
+    const cleanIdentifier = form.identifier.trim();
+    const cleanPassword = form.password.trim();
+
+    if (!cleanIdentifier || !cleanPassword) {
+      setErrorMessage('Please enter both your Account ID / Email and Password.');
       return;
     }
 
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/auth/trade-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          identifier: cleanIdentifier,
+          password: cleanPassword,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setLoading(false);
+        setErrorMessage(
+          data.error ||
+            'Invalid Account ID or Password. Only verified commercial accounts can sign in.'
+        );
+        return;
+      }
+
       setLoading(false);
       setSignedInSuccess(true);
+
       try {
         // Set persistent authentication cookie so Next.js middleware grants access
         document.cookie = 'rootwills_auth=true; path=/; max-age=2592000; SameSite=Lax';
         localStorage.setItem('rootwills_user_logged_in', 'true');
-        localStorage.setItem(
-          'rootwills_user_account',
-          JSON.stringify({
-            identifier: form.identifier,
-            accountName: 'Wholesale Trade Account',
-            accountNo: 'RW-2026-89412',
-            tier: 'Tier 1 Wholesale Direct',
-          })
-        );
+        if (data.account) {
+          localStorage.setItem('rootwills_user_account', JSON.stringify(data.account));
+        }
       } catch {
         // ignore storage errors
       }
@@ -79,7 +101,10 @@ export function RootwillsDirectPortalView() {
       setTimeout(() => {
         window.location.href = redirectTarget;
       }, 700);
-    }, 600);
+    } catch (err: any) {
+      setLoading(false);
+      setErrorMessage('Network connection error. Please verify your connection and try again.');
+    }
   };
 
   return (
@@ -178,6 +203,17 @@ export function RootwillsDirectPortalView() {
                 </div>
               )}
 
+              {/* Explicit Credential Rejection Banner */}
+              {errorMessage && (
+                <div className="p-3.5 rounded-xl bg-red-50/95 border border-red-200/90 flex items-start gap-2.5 text-left animate-in fade-in slide-in-from-top-1 duration-200">
+                  <AlertTriangle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <div className="text-xs text-red-800 font-sans leading-relaxed">
+                    <strong className="font-semibold block text-red-900">Access Denied</strong>
+                    <span>{errorMessage}</span>
+                  </div>
+                </div>
+              )}
+
               {/* Account ID / Email */}
               <div className="space-y-1.5">
                 <label className="text-[11.5px] font-sans font-medium text-stone-700 block uppercase tracking-wider">
@@ -187,7 +223,10 @@ export function RootwillsDirectPortalView() {
                   type="text"
                   required
                   value={form.identifier}
-                  onChange={(e) => setForm({ ...form, identifier: e.target.value })}
+                  onChange={(e) => {
+                    setErrorMessage(null);
+                    setForm({ ...form, identifier: e.target.value });
+                  }}
                   placeholder="e.g. chef@venue.co.uk or RW-89412"
                   className="w-full bg-[#FAF9F7] text-stone-900 border border-stone-200/90 focus:border-[#4E0D17] focus:bg-white rounded-xl px-3.5 py-2.5 text-xs sm:text-[13.5px] outline-none transition-all placeholder:text-stone-400 font-sans"
                 />
@@ -212,7 +251,10 @@ export function RootwillsDirectPortalView() {
                     type={showPassword ? 'text' : 'password'}
                     required
                     value={form.password}
-                    onChange={(e) => setForm({ ...form, password: e.target.value })}
+                    onChange={(e) => {
+                      setErrorMessage(null);
+                      setForm({ ...form, password: e.target.value });
+                    }}
                     placeholder="Enter your trade password"
                     className="w-full bg-[#FAF9F7] text-stone-900 border border-stone-200/90 focus:border-[#4E0D17] focus:bg-white rounded-xl px-3.5 py-2.5 pr-10 text-xs sm:text-[13.5px] outline-none transition-all placeholder:text-stone-400 font-sans"
                   />
@@ -273,6 +315,21 @@ export function RootwillsDirectPortalView() {
               </div>
             </form>
           )}
+        </div>
+
+        {/* Subtle Assistance for Trade Buyers */}
+        <div className="mt-5 text-center">
+          <p className="text-[11px] text-stone-500 font-sans">
+            Need urgent kitchen onboarding or account credentials?{' '}
+            <a
+              href="https://wa.me/447984709478?text=Hello%20Rootwills%2C%20I%20need%20assistance%20with%20trade%20login%20for%20my%20venue."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#4E0D17] font-semibold hover:underline"
+            >
+              Contact Birmingham Trade Desk
+            </a>
+          </p>
         </div>
       </main>
 

@@ -88,6 +88,22 @@ export function WholesaleCheckoutModal({
         // ignore
       }
     }
+
+    try {
+      const storedAccount = localStorage.getItem('rootwills_user_account');
+      if (storedAccount) {
+        const acc = JSON.parse(storedAccount);
+        setForm((prev) => ({
+          ...prev,
+          name: prev.name || acc.contactName || '',
+          email: prev.email || acc.email || '',
+          company: prev.company || acc.company || '',
+          postcode: prev.postcode || acc.postcode || '',
+        }));
+      }
+    } catch {
+      // ignore
+    }
   }, [isOpen, orderItems]);
 
   if (!isOpen) return null;
