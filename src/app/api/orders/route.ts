@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
         : 'Customer registration / onboarding without pre-selected items';
 
       const emailPayload = {
-        _subject: `New Rootwills Customer Order / Application: ${newOrder.id} - ${newOrder.company}`,
+        _subject: `New Rootwills Customer Application: ${newOrder.id} - ${newOrder.company}`,
         OrderID: newOrder.id,
         Name: newOrder.name,
         Email: newOrder.email,
@@ -77,16 +77,21 @@ export async function POST(req: NextRequest) {
         _captcha: 'false',
       };
 
+      const origin = req.headers.get('origin') || 'https://www.rootwills.co.uk';
+      const referer = req.headers.get('referer') || 'https://www.rootwills.co.uk/direct';
+
       await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          Origin: origin,
+          Referer: referer,
         },
         body: JSON.stringify(emailPayload),
-      }).catch(() => null);
-    } catch {
-      // Non-blocking email dispatch failure
+      }).catch((err) => console.error('FormSubmit delivery error:', err));
+    } catch (mailErr) {
+      console.error('Mail dispatch error:', mailErr);
     }
 
     return NextResponse.json({

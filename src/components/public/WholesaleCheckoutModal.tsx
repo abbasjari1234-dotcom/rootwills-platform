@@ -212,39 +212,141 @@ export function WholesaleCheckoutModal({
         {/* Scrollable Container */}
         <div className="overflow-y-auto">
           {confirmedOrder ? (
-            /* ─── CONFIRMED SCREEN ─── */
-            <div className="p-8 sm:p-12 text-center space-y-6">
-              <div className="w-16 h-16 rounded-full bg-emerald-50 border-2 border-emerald-500 text-emerald-700 flex items-center justify-center mx-auto shadow-md">
-                <CheckCircle2 className="w-9 h-9" />
-              </div>
-              <span className="inline-block px-4 py-1 rounded-full bg-[#FAF4ED] border border-[#E8DEC8] text-[#4E0D17] text-xs font-mono font-bold tracking-wider">
-                APPLICATION REF: {confirmedOrder.id}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-stone-950 tracking-tight">
-                Customer Application Transmitted
-              </h2>
-              <p className="text-xs sm:text-sm text-stone-600 max-w-lg mx-auto leading-relaxed font-sans">
-                Thank you, <strong>{confirmedOrder.name}</strong>. Your commercial wholesale account application for{' '}
-                <strong>{confirmedOrder.company}</strong> has been received by our Birmingham trade partnerships desk.
-              </p>
+            /* ─── ENHANCED 10/10 CONFIRMED SCREEN ─── */
+            <div>
+              {/* TOP HERO BANNER (Matches Onboarding Brand Header) */}
+              <div className="relative bg-gradient-to-br from-[#5A101D] via-[#430A13] to-[#2B040A] text-white px-6 sm:px-10 pt-8 pb-7 overflow-hidden">
+                <div className="absolute -bottom-14 -right-14 w-60 h-60 rounded-full bg-white/[0.04] pointer-events-none" />
+                <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full border border-white/[0.07] pointer-events-none" />
+                <div className="absolute -top-20 -left-20 w-52 h-52 rounded-full bg-[#F3D08A]/[0.06] pointer-events-none blur-2xl" />
 
-              <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3 pt-4">
-                <a
-                  href={generateWhatsAppUrl(confirmedOrder)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors cursor-pointer"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Notify Trade Desk via WhatsApp</span>
-                </a>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="py-3.5 px-7 rounded-xl bg-[#4E0D17] hover:bg-[#34070F] text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer shadow-md"
-                >
-                  Close
-                </button>
+                <div className="relative z-10 max-w-xl">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] font-mono font-bold text-[#F3D08A]">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Application Transmitted Successfully</span>
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-white tracking-tight mt-2 leading-tight">
+                    TRADE ACCOUNT PENDING
+                  </h2>
+                  <p className="mt-1 text-xs sm:text-[13px] text-white/80 font-sans leading-relaxed">
+                    Application Reference <span className="font-mono font-bold text-[#F3D08A]">{confirmedOrder.id}</span> · Birmingham Trade Partnerships Desk
+                  </p>
+                </div>
+              </div>
+
+              {/* BODY: Luxury Receipt & Next Steps */}
+              <div className="p-6 sm:p-8 space-y-5 bg-[#FAF7F2]">
+                {/* Official Trade Lead Slip Card */}
+                <div className="bg-white rounded-2xl border border-stone-200/90 shadow-2xs p-5 sm:p-6 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-stone-100 gap-2 text-left">
+                    <div>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 font-semibold block">
+                        Commercial Venue Registered
+                      </span>
+                      <h3 className="text-lg font-serif font-bold text-[#2E060D]">
+                        {confirmedOrder.company}
+                      </h3>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-mono font-semibold self-start sm:self-auto">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Priority Processing</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-left">
+                    <div className="p-2.5 rounded-xl bg-stone-50/80 border border-stone-100">
+                      <span className="text-[10px] font-mono text-stone-500 uppercase block">Contact</span>
+                      <p className="text-xs font-semibold text-stone-900 truncate mt-0.5">{confirmedOrder.name}</p>
+                      <p className="text-[10.5px] text-stone-500 truncate">{confirmedOrder.jobTitle}</p>
+                    </div>
+
+                    <div className="p-2.5 rounded-xl bg-stone-50/80 border border-stone-100">
+                      <span className="text-[10px] font-mono text-stone-500 uppercase block">Delivery Depot</span>
+                      <p className="text-xs font-semibold text-stone-900 truncate mt-0.5">{confirmedOrder.postcode}</p>
+                      <p className="text-[10.5px] text-stone-500 truncate">{confirmedOrder.numberOfSites} site(s)</p>
+                    </div>
+
+                    <div className="p-2.5 rounded-xl bg-stone-50/80 border border-stone-100">
+                      <span className="text-[10px] font-mono text-stone-500 uppercase block">Direct Phone</span>
+                      <p className="text-xs font-semibold text-stone-900 truncate mt-0.5">{confirmedOrder.phone}</p>
+                      <p className="text-[10.5px] text-stone-500 truncate">{confirmedOrder.email}</p>
+                    </div>
+
+                    <div className="p-2.5 rounded-xl bg-stone-50/80 border border-stone-100">
+                      <span className="text-[10px] font-mono text-stone-500 uppercase block">Requested Drops</span>
+                      <p className="text-xs font-semibold text-[#2E060D] truncate mt-0.5">{confirmedOrder.approxWeeklyDeliveries || '3-4 drops'}</p>
+                      <p className="text-[10.5px] text-stone-500 truncate">{confirmedOrder.approxWeeklySpend || '£2k - £5k'}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3-Step Milestone */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white/90 border border-stone-200/80">
+                  <h4 className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-bold mb-3 text-left">
+                    Next Onboarding Milestones:
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 text-left">
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                        1
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-stone-900">Desk Review</p>
+                        <p className="text-[11px] text-stone-500 mt-0.5">Trade desk verifies postcodes and credit terms.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-stone-200 text-stone-700 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                        2
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-stone-900">Contract Rates</p>
+                        <p className="text-[11px] text-stone-500 mt-0.5">Bespoke wholesale net pricing activated for your menu.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <div className="w-5 h-5 rounded-full bg-stone-200 text-stone-700 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                        3
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-stone-900">Portal Login</p>
+                        <p className="text-[11px] text-stone-500 mt-0.5">Wholesale ID issued to order 24/7 on rootwillsdirect.co.uk.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                  <a
+                    href={generateWhatsAppUrl(confirmedOrder)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-2xs transition-all duration-200 cursor-pointer active:scale-[0.98]"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Fast-Track via WhatsApp Trade Desk</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="py-3 px-7 rounded-xl bg-[#2E060D] hover:bg-[#150205] text-white font-semibold text-xs sm:text-sm transition-all duration-200 cursor-pointer active:scale-[0.98] shadow-2xs"
+                  >
+                    Done
+                  </button>
+                </div>
+
+                {/* Footer Help Line */}
+                <div className="pt-2 text-center text-[11.5px] text-stone-500 font-sans border-t border-stone-200/60">
+                  <span>Direct Birmingham Depot Line: </span>
+                  <a href="tel:+441616412803" className="font-semibold text-[#2E060D] hover:underline">
+                    +44 16164 12803
+                  </a>
+                  <span> · </span>
+                  <a href="mailto:sales@rootwills.co.uk" className="font-semibold text-[#2E060D] hover:underline">
+                    sales@rootwills.co.uk
+                  </a>
+                </div>
               </div>
             </div>
           ) : (
