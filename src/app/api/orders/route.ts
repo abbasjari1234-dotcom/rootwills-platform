@@ -41,6 +41,10 @@ export async function POST(req: NextRequest) {
       items: Array.isArray(body.items) ? body.items : [],
       totalCases: body.totalCases || (Array.isArray(body.items) ? body.items.reduce((acc: number, it: any) => acc + (it.qty || 0), 0) : 0),
       totalLines: Array.isArray(body.items) ? body.items.length : 0,
+      subtotalNet: typeof body.subtotalNet === 'number' ? body.subtotalNet : undefined,
+      vatTotal: typeof body.vatTotal === 'number' ? body.vatTotal : undefined,
+      grandTotal: typeof body.grandTotal === 'number' ? body.grandTotal : undefined,
+      accountTier: body.accountTier ? String(body.accountTier) : undefined,
     };
 
     // Prepend to runtime store
@@ -50,7 +54,10 @@ export async function POST(req: NextRequest) {
     try {
       const itemsListFormatted = newOrder.items.length > 0
         ? newOrder.items
-            .map((it, idx) => `${idx + 1}. [${it.sku}] ${it.name} (${it.packSize}) — ${it.qty} case(s)`)
+            .map((it: any, idx: number) => {
+              const priceText = it.unitPrice ? ` @ £${it.unitPrice.toFixed(2)} = £${(it.linePrice || it.unitPrice * it.qty).toFixed(2)}` : '';
+              return `${idx + 1}. [${it.sku}] ${it.name} (${it.packSize}) — ${it.qty} case(s)${priceText}`;
+            })
             .join('\n')
         : 'Customer registration / onboarding without pre-selected items';
 
@@ -64,10 +71,14 @@ export async function POST(req: NextRequest) {
         'Email Address': newOrder.email,
         'Number of Sites': newOrder.numberOfSites,
         'Delivery Postcode': newOrder.postcode,
+        'Account Tier': newOrder.accountTier || 'Trade Standard',
         'Current Supplier': newOrder.currentSupplier || 'Not specified',
         'Approx Weekly Deliveries': newOrder.approxWeeklyDeliveries || 'Not specified',
         'Approx Weekly Budget / Spend': newOrder.approxWeeklySpend || 'Not specified',
         'Applicant Message': newOrder.message || 'None provided',
+        'Goods Net Total': newOrder.subtotalNet ? `£${newOrder.subtotalNet.toFixed(2)}` : 'Trade Contract Quote',
+        'Estimated VAT (0% Food / 20% Non-food)': newOrder.vatTotal ? `£${newOrder.vatTotal.toFixed(2)}` : '£0.00 (Zero-Rated Food)',
+        'Grand Invoice Total': newOrder.grandTotal ? `£${newOrder.grandTotal.toFixed(2)}` : 'Pending Dispatch Terms',
         'Marketing Consent (Email)': newOrder.marketingEmail ? 'Yes, consented' : 'No',
         'Marketing Consent (SMS)': newOrder.marketingSms ? 'Yes, consented' : 'No',
         'Total Order Items': `${newOrder.totalCases} case(s) across ${newOrder.totalLines} line(s)`,

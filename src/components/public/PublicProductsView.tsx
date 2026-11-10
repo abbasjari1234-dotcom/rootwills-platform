@@ -30,6 +30,12 @@ import {
   type WholesaleCategorySlug,
   type WholesaleProduct,
 } from '@/data/wholesaleProducts';
+import {
+  getProductPricing,
+  calculateOrderSummary,
+  type ProductPricing,
+  type OrderPricingSummary,
+} from '@/lib/pricing';
 
 export type { WholesaleCategory, WholesaleCategorySlug, WholesaleProduct };
 export { WHOLESALE_CATEGORIES, WHOLESALE_PRODUCTS };
@@ -50,7 +56,7 @@ export function PublicProductsView() {
   const [customInquiryNotes, setCustomInquiryNotes] = useState<string>('');
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string } | null>(null);
+  const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string; tier?: string } | null>(null);
 
   // Check trade auth state on mount
   useEffect(() => {
@@ -236,6 +242,11 @@ export function PublicProductsView() {
     [orderList]
   );
 
+  const orderSummary = useMemo<OrderPricingSummary>(
+    () => calculateOrderSummary(orderList, tradeAccount?.tier),
+    [orderList, tradeAccount?.tier]
+  );
+
   // Exact SKU counts per category slug
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = { all: WHOLESALE_PRODUCTS.length };
@@ -324,6 +335,7 @@ export function PublicProductsView() {
   // ════════════════════════════════════════════════════════════════
   const renderProductCard = (product: WholesaleProduct, compact = false) => {
     const qty = getQty(product.id);
+    const pricing = getProductPricing(product, tradeAccount?.tier);
 
     return (
       <div
@@ -364,8 +376,35 @@ export function PublicProductsView() {
             {product.name}
           </h4>
 
-          {/* Line 3: Subtle Secondary Metadata (Clean SKU & Zone) */}
-          <div className="text-[10.5px] font-mono text-stone-400 mt-1 flex items-center justify-between">
+          {/* Line 3: B2B Wholesale Pricing Bar (Bidfood / Brakes benchmark) */}
+          <div className="mt-1.5 pt-1 border-t border-[#F2ECE1]/70 flex items-baseline justify-between">
+            {isAuthenticated ? (
+              <div className="flex items-baseline gap-1">
+                <span className="text-[13px] font-bold font-mono text-[#2E060D] tracking-tight">
+                  {pricing.formattedPrice}
+                </span>
+                <span className="text-[10px] text-stone-500 font-sans">
+                  /cs
+                </span>
+                {pricing.unitPrice && (
+                  <span className="text-[9.5px] text-stone-400 font-mono hidden sm:inline ml-0.5">
+                    ({pricing.unitPrice})
+                  </span>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center gap-1.5 text-[11px] font-medium text-stone-600">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
+                <span>Trade Quote</span>
+              </div>
+            )}
+            <span className="text-[9.5px] font-mono text-stone-400">
+              {pricing.vatRate === 0 ? '0% VAT' : '+20% VAT'}
+            </span>
+          </div>
+
+          {/* Line 4: Subtle Secondary Metadata (Clean SKU & Zone) */}
+          <div className="text-[10.5px] font-mono text-stone-400 mt-0.5 flex items-center justify-between">
             <span>{product.sku}</span>
             <span className="text-stone-500 font-sans text-[11px]">
               {product.tempZone.replace(' 1–4°C', '').replace(' 0–2°C', '').replace(' -18°C', '')}
@@ -459,66 +498,79 @@ export function PublicProductsView() {
             </p>
           </div>
         ) : (
-          orderList.map(({ product, qty }) => (
-            <div key={product.id} className="py-2.5 flex items-center justify-between gap-2.5 group">
-              {/* Product Thumbnail */}
-              <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-white border border-[#E8DEC8] shrink-0 p-1">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  unoptimized
-                  referrerPolicy="no-referrer"
-                  sizes="44px"
-                  className="object-contain p-0.5"
-                />
-              </div>
-
-              {/* Title & Pack Size */}
-              <div className="flex-1 min-w-0">
-                <p className="text-[12.5px] font-medium text-stone-900 leading-snug line-clamp-1 group-hover:text-[#2E060D] transition-colors">
-                  {product.name}
-                </p>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-[11px] font-semibold text-[#8B2635]">
-                    {product.packSize}
-                  </span>
-                  <span className="text-[10px] font-mono text-stone-400 truncate">
-                    {product.sku}
-                  </span>
+          orderList.map(({ product, qty }) => {
+            const pricing = getProductPricing(product, tradeAccount?.tier);
+            const lineTotal = pricing.contractPrice * qty;
+            return (
+              <div key={product.id} className="py-2.5 flex items-center justify-between gap-2.5 group">
+                {/* Product Thumbnail */}
+                <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-white border border-[#E8DEC8] shrink-0 p-1">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    unoptimized
+                    referrerPolicy="no-referrer"
+                    sizes="44px"
+                    className="object-contain p-0.5"
+                  />
                 </div>
-              </div>
 
-              {/* Compact Stepper */}
-              <div className="shrink-0">
-                <div className="flex items-center gap-1.5 bg-[#FAF8F5] border border-[#E8DEC8] rounded-lg px-1.5 py-0.5 shadow-2xs">
-                  <button
-                    type="button"
-                    onClick={() => updateOrderQty(product, -1)}
-                    aria-label="Decrease item"
-                    className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
-                  >
-                    {qty === 1 ? (
-                      <Trash2 className="w-3.5 h-3.5 text-rose-700" />
+                {/* Title & Pack Size & Financials */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-[12.5px] font-medium text-stone-900 leading-snug line-clamp-1 group-hover:text-[#2E060D] transition-colors">
+                    {product.name}
+                  </p>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-[11px] font-semibold text-[#8B2635]">
+                      {product.packSize}
+                    </span>
+                    {isAuthenticated ? (
+                      <span className="text-[11px] font-mono font-bold text-[#2E060D]">
+                        £{lineTotal.toFixed(2)}
+                      </span>
                     ) : (
-                      <Minus className="w-3.5 h-3.5 stroke-[2.25]" />
+                      <span className="text-[10px] text-stone-400 font-medium">
+                        Quote Line
+                      </span>
                     )}
-                  </button>
-                  <span className="text-xs font-mono font-bold text-[#2E060D] tabular-nums min-w-[14px] text-center">
-                    {qty}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => updateOrderQty(product, 1)}
-                    aria-label="Increase item"
-                    className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
-                  >
-                    <Plus className="w-3.5 h-3.5 stroke-[2.25]" />
-                  </button>
+                    <span className="text-[10px] font-mono text-stone-400 truncate">
+                      {product.sku}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Compact Stepper */}
+                <div className="shrink-0">
+                  <div className="flex items-center gap-1.5 bg-[#FAF8F5] border border-[#E8DEC8] rounded-lg px-1.5 py-0.5 shadow-2xs">
+                    <button
+                      type="button"
+                      onClick={() => updateOrderQty(product, -1)}
+                      aria-label="Decrease item"
+                      className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
+                    >
+                      {qty === 1 ? (
+                        <Trash2 className="w-3.5 h-3.5 text-rose-700" />
+                      ) : (
+                        <Minus className="w-3.5 h-3.5 stroke-[2.25]" />
+                      )}
+                    </button>
+                    <span className="text-xs font-mono font-bold text-[#2E060D] tabular-nums min-w-[14px] text-center">
+                      {qty}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => updateOrderQty(product, 1)}
+                      aria-label="Increase item"
+                      className="w-5 h-5 rounded hover:bg-stone-200 text-stone-700 flex items-center justify-center transition-transform active:scale-90 cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5 stroke-[2.25]" />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
         )}
       </div>
 
@@ -601,18 +653,40 @@ export function PublicProductsView() {
         </div>
       </div>
 
-      {/* Summary Breakdown & Primary CTA */}
-      <div className="pt-3 border-t border-[#E8DEC8] space-y-2.5">
-        <div className="flex items-baseline justify-between text-xs">
-          <div className="text-stone-600">
-            <span>Lines Selected:</span>
-            <span className="font-semibold text-stone-900 ml-1">
-              {orderList.length} {orderList.length === 1 ? 'SKU' : 'SKUs'}
+      {/* Summary Breakdown & Primary CTA (Bidfood wholesale invoice estimation) */}
+      <div className="pt-3 border-t border-[#E8DEC8] space-y-2">
+        <div className="space-y-1.5 text-xs">
+          <div className="flex items-baseline justify-between text-stone-600">
+            <span>Lines & Cases:</span>
+            <span className="font-semibold text-stone-900">
+              {orderList.length} {orderList.length === 1 ? 'SKU' : 'SKUs'} · {totalCases} {totalCases === 1 ? 'Case' : 'Cases'}
             </span>
           </div>
-          <span className="text-base font-bold text-[#2E060D] tabular-nums font-mono">
-            {totalCases} {totalCases === 1 ? 'Case' : 'Cases'}
-          </span>
+
+          <div className="flex items-baseline justify-between text-[11.5px] text-stone-500">
+            <span>Goods Net:</span>
+            <span className="font-mono font-medium text-stone-800">
+              {isAuthenticated ? orderSummary.formattedSubtotal : 'Trade Contract'}
+            </span>
+          </div>
+
+          <div className="flex items-baseline justify-between text-[11px] text-stone-500">
+            <span>Est. VAT (0% Food):</span>
+            <span className="font-mono text-stone-700">
+              {isAuthenticated ? (
+                orderSummary.vatTotal === 0 ? '£0.00 (Zero-Rated)' : orderSummary.formattedVat
+              ) : (
+                '0% Zero-Rated'
+              )}
+            </span>
+          </div>
+
+          <div className="flex items-baseline justify-between pt-1 border-t border-[#E8DEC8]/70">
+            <span className="font-bold text-[#2E060D]">Est. Total Value:</span>
+            <span className="text-base font-bold text-[#2E060D] tabular-nums font-mono">
+              {isAuthenticated ? orderSummary.formattedGrandTotal : 'Contract Quote'}
+            </span>
+          </div>
         </div>
 
         <button
@@ -623,7 +697,7 @@ export function PublicProductsView() {
         >
           {isAuthenticated ? (
             <>
-              <span>Place Pre-Dawn Order</span>
+              <span>Place Pre-Dawn Order · {orderSummary.formattedGrandTotal}</span>
               <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
             </>
           ) : (
@@ -1240,6 +1314,37 @@ export function PublicProductsView() {
                     </div>
                   </div>
 
+                  {/* B2B Wholesale Pricing Card (Bidfood Direct spec) */}
+                  {(() => {
+                    const pricing = getProductPricing(quickViewProduct, tradeAccount?.tier);
+                    return (
+                      <div className="p-3.5 rounded-xl bg-[#FAF5EB] border border-[#BA8E4E]/40 flex items-center justify-between">
+                        <div>
+                          <div className="text-[10px] font-mono font-bold text-[#8B2635] uppercase tracking-wider">
+                            Wholesale Contract Pricing
+                          </div>
+                          <div className="flex items-baseline gap-1.5 mt-0.5">
+                            <span className="text-xl font-bold font-mono text-[#2E060D]">
+                              {isAuthenticated ? pricing.formattedPrice : 'Trade Account Rate'}
+                            </span>
+                            <span className="text-xs text-stone-600 font-sans">/ case</span>
+                            {pricing.unitPrice && isAuthenticated && (
+                              <span className="text-xs font-mono text-stone-500">({pricing.unitPrice})</span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <span className="inline-block px-2 py-0.5 rounded bg-white border border-[#E8DEC8] text-[10px] font-mono font-bold text-stone-700">
+                            {pricing.vatRate === 0 ? '0% Zero-Rated Food' : '+20% Standard VAT'}
+                          </span>
+                          <div className="text-[10px] text-stone-500 mt-1">
+                            {isAuthenticated ? pricing.tierLabel : 'Login to view contract rate'}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   {/* Description Box */}
                   <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E8DEC8] text-xs text-stone-600 leading-relaxed space-y-2">
                     <p>{quickViewProduct.description}</p>
@@ -1337,6 +1442,7 @@ export function PublicProductsView() {
         isOpen={isCheckoutModalOpen}
         onClose={() => setIsCheckoutModalOpen(false)}
         orderItems={orderList}
+        accountTier={tradeAccount?.tier}
         onOrderSuccess={() => {
           setOrderList([]);
           try {

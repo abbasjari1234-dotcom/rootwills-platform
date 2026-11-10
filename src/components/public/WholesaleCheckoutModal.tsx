@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import {
   X,
@@ -9,7 +9,8 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { OrderItem, WholesaleOrder } from '@/lib/orders';
-import type { WholesaleProduct } from '@/data/wholesaleProducts';
+import { WHOLESALE_PRODUCTS, type WholesaleProduct } from '@/data/wholesaleProducts';
+import { calculateOrderSummary, getProductPricing, type OrderPricingSummary } from '@/lib/pricing';
 
 export interface DraftOrderLine {
   product: WholesaleProduct;
@@ -20,6 +21,7 @@ export interface WholesaleCheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   orderItems?: (DraftOrderLine | OrderItem)[];
+  accountTier?: string;
   onOrderSuccess?: () => void;
 }
 
@@ -27,6 +29,7 @@ export function WholesaleCheckoutModal({
   isOpen,
   onClose,
   orderItems = [],
+  accountTier,
   onOrderSuccess,
 }: WholesaleCheckoutModalProps) {
   const [items, setItems] = useState<OrderItem[]>([]);
@@ -110,6 +113,28 @@ export function WholesaleCheckoutModal({
 
   const totalCases = items.reduce((acc, it) => acc + (it.qty || 0), 0);
 
+  const summary: OrderPricingSummary = useMemo(() => {
+    const mapped = items.map((it) => {
+      const found = WHOLESALE_PRODUCTS.find((p) => p.sku === it.sku || p.id === it.id);
+      if (found) return { product: found, qty: it.qty };
+      return {
+        product: {
+          id: it.id,
+          sku: it.sku,
+          name: it.name,
+          packSize: it.packSize,
+          categorySlug: 'everyday-grocery',
+          image: it.image,
+          origin: 'UK',
+          tempZone: it.tempZone || 'Ambient',
+          description: it.name,
+        } as any,
+        qty: it.qty,
+      };
+    });
+    return calculateOrderSummary(mapped, accountTier);
+  }, [items, accountTier]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -132,11 +157,29 @@ export function WholesaleCheckoutModal({
       ? form.phone
       : `${form.countryCode.replace('UK ', '')} ${form.phone}`;
 
+    const enrichedItems = items.map((it) => {
+      const found = WHOLESALE_PRODUCTS.find((p) => p.sku === it.sku || p.id === it.id);
+      if (found) {
+        const pricing = getProductPricing(found, accountTier);
+        return {
+          ...it,
+          unitPrice: pricing.contractPrice,
+          linePrice: pricing.contractPrice * it.qty,
+          vatRate: pricing.vatRate,
+        };
+      }
+      return it;
+    });
+
     const payload = {
       ...form,
       phone: fullPhone,
-      items,
+      items: enrichedItems,
       totalCases,
+      subtotalNet: summary.subtotalNet,
+      vatTotal: summary.vatTotal,
+      grandTotal: summary.grandTotal,
+      accountTier: accountTier || 'Trade Standard',
     };
 
     try {
@@ -183,6 +226,10 @@ export function WholesaleCheckoutModal({
           .join('\n')
       : '';
 
+    const financialText = order.subtotalNet
+      ? `\n💰 *Goods Subtotal (Net):* £${order.subtotalNet.toFixed(2)}\n🏷️ *Est. VAT (0% Food / 20% Consumables):* £${(order.vatTotal || 0).toFixed(2)}\n💳 *Estimated Grand Total:* £${(order.grandTotal || order.subtotalNet).toFixed(2)}`
+      : '';
+
     const message = `📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id}*
 🏢 *Company:* ${order.company}
 👤 *Name:* ${order.name} (${order.jobTitle})
@@ -193,7 +240,7 @@ export function WholesaleCheckoutModal({
 🚚 *Current Supplier:* ${order.currentSupplier || 'N/A'}
 📦 *Weekly Deliveries:* ${order.approxWeeklyDeliveries || 'N/A'}
 💷 *Weekly Spend:* ${order.approxWeeklySpend || 'N/A'}
-📝 *Message:* ${order.message || 'None'}${linesText}`;
+📝 *Message:* ${order.message || 'None'}${financialText}${linesText}`;
 
     return `https://wa.me/447984709478?text=${encodeURIComponent(message)}`;
   };
@@ -395,6 +442,35 @@ export function WholesaleCheckoutModal({
               */}
               <div className="p-6 sm:p-10 space-y-6">
                 <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                  {/* Attached Manifest Valuation Bar (Bidfood wholesale invoice estimation) */}
+                  {items.length > 0 && (
+                    <div className="rounded-xl bg-[#FAF7F2] border border-[#EAE0CE] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                      <div>
+                        <div className="text-[10px] font-mono uppercase tracking-wider text-stone-500 font-semibold flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
+                          <span>Attached Commercial Manifest</span>
+                        </div>
+                        <div className="text-xs font-semibold text-[#2E060D] mt-0.5">
+                          {items.length} line(s) · {totalCases} case(s)
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 text-xs font-mono">
+                        <div>
+                          <span className="text-[9.5px] text-stone-400 block uppercase font-sans">Goods Net</span>
+                          <span className="font-bold text-stone-800">{summary.formattedSubtotal}</span>
+                        </div>
+                        <div>
+                          <span className="text-[9.5px] text-stone-400 block uppercase font-sans">Est. VAT</span>
+                          <span className="font-bold text-stone-800">{summary.formattedVat}</span>
+                        </div>
+                        <div className="pl-2 border-l border-stone-200">
+                          <span className="text-[9.5px] text-stone-400 block uppercase font-sans">Est. Invoice</span>
+                          <span className="font-bold text-[#2E060D]">{summary.formattedGrandTotal}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Row 1: Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                     <div className="space-y-1">

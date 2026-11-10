@@ -6,6 +6,9 @@ export interface OrderItem {
   tempZone?: string;
   image: string;
   qty: number;
+  unitPrice?: number;
+  linePrice?: number;
+  vatRate?: number;
 }
 
 export interface WholesaleOrder {
@@ -26,10 +29,14 @@ export interface WholesaleOrder {
   message?: string;
   marketingEmail?: boolean;
   marketingSms?: boolean;
-  // Order items
+  // Order items & financials
   items: OrderItem[];
   totalCases: number;
   totalLines: number;
+  subtotalNet?: number;
+  vatTotal?: number;
+  grandTotal?: number;
+  accountTier?: string;
 }
 
 // Initial seed orders for the Ops Order Desk
