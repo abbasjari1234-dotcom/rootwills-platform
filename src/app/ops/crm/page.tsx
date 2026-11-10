@@ -21,7 +21,12 @@ import {
   ChevronRight,
   UserCheck,
   Shield,
-  Briefcase
+  Briefcase,
+  Key,
+  Copy,
+  Check,
+  MessageCircle,
+  ExternalLink,
 } from 'lucide-react';
 
 interface CustomerAccount {
@@ -39,6 +44,9 @@ interface CustomerAccount {
   creditUtilized: number; // percentage
   spendMonth: string;
   paymentTerms: string;
+  isApproved?: boolean;
+  approvedId?: string;
+  approvedPassword?: string;
 }
 
 const INITIAL_ACCOUNTS: CustomerAccount[] = [
@@ -157,6 +165,69 @@ export default function CustomerCRMHub() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPriority, setFilterPriority] = useState<string>('All');
   const [selectedAccount, setSelectedAccount] = useState<CustomerAccount | null>(null);
+  const [approvedCredentialsModal, setApprovedCredentialsModal] = useState<any | null>(null);
+  const [copied, setCopied] = useState<boolean>(false);
+  const [approvingId, setApprovingId] = useState<string | null>(null);
+
+  const handleApproveAccount = async (account: CustomerAccount) => {
+    setApprovingId(account.id);
+    try {
+      const res = await fetch('/api/admin/crm/approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          company: account.name,
+          contactName: account.headChef,
+          email: account.email,
+          phone: account.phone,
+          postcode: 'UK',
+          tier: account.segment,
+        }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setAccounts((prev) =>
+          prev.map((a) =>
+            a.id === account.id
+              ? {
+                  ...a,
+                  isApproved: true,
+                  approvedId: data.credentials.id,
+                  approvedPassword: data.credentials.password,
+                  priority: 'Normal',
+                }
+              : a
+          )
+        );
+        setApprovedCredentialsModal(data.credentials);
+        if (selectedAccount && selectedAccount.id === account.id) {
+          setSelectedAccount({
+            ...selectedAccount,
+            isApproved: true,
+            approvedId: data.credentials.id,
+            approvedPassword: data.credentials.password,
+          });
+        }
+      } else {
+        alert(data.error || 'Failed to approve account');
+      }
+    } catch (e: any) {
+      alert(e.message || 'Network error');
+    } finally {
+      setApprovingId(null);
+    }
+  };
+
+  const copyToClipboard = (text: string) => {
+    try {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // ignore
+    }
+  };
 
   const filteredAccounts = accounts.filter((acc) => {
     const matchesSearch =
@@ -378,15 +449,33 @@ export default function CustomerCRMHub() {
                       </div>
                     </td>
 
-                    {/* Action Plus Button */}
+                    {/* Action Column */}
                     <td className="py-4 pr-1 text-right">
-                      <button
-                        onClick={() => setSelectedAccount(item)}
-                        className="w-7 h-7 rounded-lg border border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 text-slate-500 hover:text-emerald-700 flex items-center justify-center transition-colors"
-                        title="View Account Details"
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center justify-end gap-1.5">
+                        {item.isApproved ? (
+                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-[10.5px] font-bold border border-emerald-200">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                            <span>Trade Active</span>
+                          </span>
+                        ) : (
+                          <button
+                            onClick={() => handleApproveAccount(item)}
+                            disabled={approvingId === item.id}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-[10.5px] font-bold shadow-xs transition-colors cursor-pointer disabled:opacity-50"
+                            title="Issue Trade Login Credentials"
+                          >
+                            <Key className="w-3 h-3 text-[#F3D08A]" />
+                            <span>{approvingId === item.id ? 'Issuing...' : 'Approve Login'}</span>
+                          </button>
+                        )}
+                        <button
+                          onClick={() => setSelectedAccount(item)}
+                          className="w-7 h-7 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors cursor-pointer"
+                          title="View Account Details"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -574,12 +663,111 @@ export default function CustomerCRMHub() {
             <div className="flex gap-2 pt-4 border-t border-slate-100">
               <button
                 onClick={() => setSelectedAccount(null)}
-                className="flex-1 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                className="flex-1 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer"
               >
                 Close
               </button>
-              <button className="flex-1 py-2 rounded-xl bg-emerald-500 text-white font-bold text-xs hover:bg-emerald-600">
-                Create Chef Order
+              {selectedAccount.isApproved ? (
+                <button
+                  onClick={() => {
+                    setApprovedCredentialsModal({
+                      id: selectedAccount.approvedId || selectedAccount.id,
+                      password: selectedAccount.approvedPassword || 'Rootwills2026!',
+                      portalUrl: 'https://rootwillsdirect.co.uk',
+                      welcomeText: `Hello ${selectedAccount.headChef},\n\nYour Rootwills Direct commercial trade account has been activated.\n\nPortal: https://rootwillsdirect.co.uk\nAccount ID: ${selectedAccount.approvedId || selectedAccount.id}\nPassword: ${selectedAccount.approvedPassword || 'Rootwills2026!'}\n\nPre-dawn delivery window: 04:00 - 07:30 AM.`,
+                    });
+                  }}
+                  className="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors cursor-pointer"
+                >
+                  <Key className="w-3.5 h-3.5 text-[#F3D08A]" />
+                  <span>View Credentials</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleApproveAccount(selectedAccount)}
+                  disabled={approvingId === selectedAccount.id}
+                  className="flex-1 py-2.5 rounded-xl bg-[#2E060D] hover:bg-[#1a0206] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-colors cursor-pointer disabled:opacity-50"
+                >
+                  <Key className="w-3.5 h-3.5 text-[#F3D08A]" />
+                  <span>{approvingId === selectedAccount.id ? 'Activating...' : 'Approve & Issue Login'}</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════
+          APPROVED CREDENTIALS & WHATSAPP FAST-INVITE MODAL
+          ══════════════════════════════════════════════════════════════ */}
+      {approvedCredentialsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 border border-slate-200 shadow-2xl space-y-5 text-left">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-base text-slate-900 leading-tight">Trade Account Activated</h3>
+                  <p className="text-[11px] text-emerald-600 font-semibold">Ready for rootwillsdirect.co.uk</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setApprovedCredentialsModal(null)}
+                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs">
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 font-mono">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-sans font-bold block">Account ID / Username</span>
+                  <div className="font-bold text-slate-900 text-sm select-all">{approvedCredentialsModal.id}</div>
+                </div>
+                <div className="pt-2 border-t border-slate-200/60">
+                  <span className="text-[10px] text-slate-400 uppercase font-sans font-bold block">Temporary Password</span>
+                  <div className="font-bold text-slate-900 text-sm select-all">{approvedCredentialsModal.password}</div>
+                </div>
+                <div className="pt-2 border-t border-slate-200/60">
+                  <span className="text-[10px] text-slate-400 uppercase font-sans font-bold block">Ordering Portal</span>
+                  <a
+                    href={approvedCredentialsModal.portalUrl || 'https://rootwillsdirect.co.uk'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-700 hover:underline font-semibold flex items-center gap-1 font-sans text-xs"
+                  >
+                    <span>{approvedCredentialsModal.portalUrl || 'https://rootwillsdirect.co.uk'}</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+
+              <p className="text-[11.5px] text-slate-500 font-sans leading-relaxed">
+                Credentials have been saved to the active auth store. Send the welcome notification directly to the chef via WhatsApp or copy the message.
+              </p>
+            </div>
+
+            <div className="space-y-2 pt-2">
+              <a
+                href={approvedCredentialsModal.whatsappUrl || `https://wa.me/?text=${encodeURIComponent(approvedCredentialsModal.welcomeText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Send via WhatsApp</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={() => copyToClipboard(approvedCredentialsModal.welcomeText)}
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-600" />}
+                <span>{copied ? 'Copied to Clipboard!' : 'Copy Invitation Message'}</span>
               </button>
             </div>
           </div>

@@ -18,6 +18,7 @@ import {
   ShieldCheck,
   CheckCircle2,
   LogOut,
+  Clock,
 } from 'lucide-react';
 import { InquiryModal } from '@/components/public/InquiryModal';
 import { WholesaleCheckoutModal } from '@/components/public/WholesaleCheckoutModal';
@@ -240,6 +241,23 @@ export function PublicProductsView() {
     return WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory);
   }, [selectedCategory]);
 
+  // Core items for standing repeat reorders
+  const standingSKUs = useMemo(
+    () => ['RW-796010', 'RW-858770', 'RW-724530', 'RW-350500', 'RW-603620', 'RW-795661', 'RW-240250', 'RW-826070'],
+    []
+  );
+
+  const handleLoadStandingOrder = () => {
+    const defaultDrop = ['RW-796010', 'RW-858770', 'RW-724530', 'RW-350500'];
+    const items = defaultDrop
+      .map((sku) => WHOLESALE_PRODUCTS.find((p) => p.sku === sku))
+      .filter(Boolean)
+      .map((p) => ({ product: p!, qty: 2 }));
+    if (items.length > 0) {
+      setOrderList(items);
+    }
+  };
+
   const filteredProducts = useMemo(() => {
     return WHOLESALE_PRODUCTS.filter((p) => {
       if (searchQuery.trim() !== '') {
@@ -254,6 +272,11 @@ export function PublicProductsView() {
         if (!match) return false;
       }
 
+      if (selectedCategory === 'repeat-pad') {
+        const isStanding = standingSKUs.includes(p.sku) || Boolean(p.featuredCore || p.popularAddon);
+        return isStanding;
+      }
+
       if (selectedCategory !== 'all') {
         if (p.categorySlug !== selectedCategory) return false;
         if (selectedSubcategory !== 'all' && p.subcategory !== selectedSubcategory) {
@@ -263,7 +286,7 @@ export function PublicProductsView() {
 
       return true;
     });
-  }, [selectedCategory, selectedSubcategory, searchQuery]);
+  }, [selectedCategory, selectedSubcategory, searchQuery, standingSKUs]);
 
   const isBrowsingAll = selectedCategory === 'all' && searchQuery.trim() === '';
 
@@ -601,6 +624,33 @@ export function PublicProductsView() {
               </div>
             )}
 
+            {/* Standing Repeat Order Pad */}
+            {isAuthenticated && (
+              <div className="mt-2.5 pb-2.5 border-b border-[#E8DEC8]">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCategory('repeat-pad');
+                    setSelectedSubcategory('all');
+                    setSearchQuery('');
+                  }}
+                  className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs transition-all cursor-pointer ${
+                    selectedCategory === 'repeat-pad'
+                      ? 'bg-[#2E060D] text-white font-bold shadow-xs'
+                      : 'bg-[#FAF3EA] text-[#2E060D] border border-[#E8DEC8] hover:bg-[#F3E8D3]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
+                    <span className="font-semibold">Standing Order Pad</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-[#BA8E4E]/20 text-[#8C6E12] font-bold">
+                    Fast
+                  </span>
+                </button>
+              </div>
+            )}
+
             {/* Categories List */}
             <div className="pt-3.5">
               <div className="mb-2.5 px-1">
@@ -676,6 +726,32 @@ export function PublicProductsView() {
                 </button>
               )}
             </div>
+
+            {/* Standing Repeat Order Pad Banner */}
+            {selectedCategory === 'repeat-pad' && (
+              <div className="mb-6 p-4 rounded-2xl bg-white/95 border border-[#BA8E4E]/40 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#FAF3EA] border border-[#E8DEC8] text-[10.5px] font-mono text-[#8C6E12] font-bold uppercase tracking-wider mb-1">
+                    <Clock className="w-3 h-3 text-[#BA8E4E]" />
+                    <span>Standing Order Pad Active</span>
+                  </div>
+                  <h2 className="text-lg font-serif font-bold text-stone-900 leading-snug">
+                    Kitchen Standing Order Lines
+                  </h2>
+                  <p className="text-xs text-stone-600 font-sans mt-0.5">
+                    Pre-set essentials for daily pre-dawn drop (04:00 – 07:30 AM).
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleLoadStandingOrder}
+                  className="py-2.5 px-4 rounded-xl bg-[#2E060D] hover:bg-[#150205] text-white font-bold text-xs flex items-center gap-2 shadow-xs transition-all cursor-pointer shrink-0"
+                >
+                  <span>Re-order Standard Drop (8 Cases)</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#F3D08A]" />
+                </button>
+              </div>
+            )}
 
             {/* ─── PRODUCT SECTIONS ─── */}
             {isBrowsingAll ? (

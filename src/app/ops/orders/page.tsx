@@ -395,13 +395,151 @@ export default function OpsOrdersPage() {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="w-full sm:w-auto py-2.5 px-4 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
                 >
-                  <Printer className="w-4 h-4 text-slate-500" />
-                  <span>Print Slip</span>
+                  <Printer className="w-4 h-4 text-[#F3D08A]" />
+                  <span>Print Delivery Manifest (PDF)</span>
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ─── PRINT-ONLY B2B DELIVERY NOTE & MANIFEST ─── */}
+      {selectedOrder && (
+        <div id="printable-delivery-manifest" className="hidden print:block fixed inset-0 bg-white text-black p-8 font-sans z-[99999]">
+          <style dangerouslySetInnerHTML={{ __html: `
+            @media print {
+              body * { visibility: hidden !important; }
+              #printable-delivery-manifest, #printable-delivery-manifest * { visibility: visible !important; }
+              #printable-delivery-manifest { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; background: white !important; color: black !important; padding: 24px !important; }
+            }
+          `}} />
+
+          {/* Header */}
+          <div className="flex items-center justify-between pb-4 border-b-2 border-black">
+            <div className="flex items-center gap-3">
+              <div className="relative w-14 h-14 rounded-full border border-black/30 overflow-hidden shrink-0 p-1">
+                <Image
+                  src="/images/logo.png"
+                  alt="Rootwills Master Seal"
+                  fill
+                  sizes="56px"
+                  className="object-contain p-0.5 rounded-full"
+                  unoptimized
+                />
+              </div>
+              <div>
+                <h1 className="text-xl font-extrabold tracking-tight text-black">ROOTWILLS LTD</h1>
+                <p className="text-[11px] font-semibold text-stone-700 uppercase tracking-wider">
+                  Commercial Food Services &amp; Pre-Dawn Hospitality Logistics
+                </p>
+                <p className="text-[10px] text-stone-600 font-mono">
+                  Central Depot • Birmingham B5 4RB • sales@rootwills.co.uk • 016164 12803
+                </p>
+              </div>
+            </div>
+
+            <div className="text-right">
+              <div className="text-xs font-mono font-bold uppercase tracking-widest text-stone-500">
+                Official Manifest
+              </div>
+              <div className="text-xl font-mono font-black text-black">{selectedOrder.id}</div>
+              <div className="text-xs font-bold text-stone-700">Pre-Dawn Drop (04:00 – 07:30 AM)</div>
+            </div>
+          </div>
+
+          {/* Delivery Venue & Route Details */}
+          <div className="grid grid-cols-2 gap-4 py-4 border-b border-black/20 text-xs">
+            <div className="space-y-1">
+              <span className="text-[10px] uppercase font-bold text-stone-500 block">Deliver To Venue</span>
+              <div className="text-sm font-bold text-black">{selectedOrder.company}</div>
+              <div>Contact: <strong>{selectedOrder.name}</strong> ({selectedOrder.jobTitle})</div>
+              <div>Direct Phone: <span className="font-mono">{selectedOrder.phone}</span></div>
+              <div>Account Email: <span className="font-mono">{selectedOrder.email}</span></div>
+            </div>
+
+            <div className="space-y-1 text-right">
+              <span className="text-[10px] uppercase font-bold text-stone-500 block">Logistics &amp; Key Drop</span>
+              <div className="font-mono font-bold text-sm">Postcode: {selectedOrder.postcode}</div>
+              <div>Total Scheduled: <strong>{selectedOrder.totalCases} Cases</strong> ({selectedOrder.totalLines} Lines)</div>
+              {selectedOrder.message && (
+                <div className="text-[11px] text-stone-700 italic border border-black/20 p-2 rounded mt-1 bg-stone-50 text-left">
+                  <strong>Access Notes:</strong> {selectedOrder.message}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Itemized Lines Manifest Table */}
+          <div className="py-4">
+            <h2 className="text-xs font-bold uppercase tracking-wider mb-2 text-black">
+              Itemized Wholesale Lines &amp; Picking Verification
+            </h2>
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b-2 border-black text-[10.5px] uppercase font-bold text-stone-600">
+                  <th className="py-1.5 w-10">#</th>
+                  <th className="py-1.5 w-28">SKU</th>
+                  <th className="py-1.5">Product Description</th>
+                  <th className="py-1.5 w-24">Pack Size</th>
+                  <th className="py-1.5 w-24">Temp Zone</th>
+                  <th className="py-1.5 w-20 text-center">Cases</th>
+                  <th className="py-1.5 w-20 text-center">Picked [✓]</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-200">
+                {selectedOrder.items && selectedOrder.items.length > 0 ? (
+                  selectedOrder.items.map((it, idx) => (
+                    <tr key={it.id || idx}>
+                      <td className="py-2 text-stone-500 font-mono text-[11px]">{idx + 1}</td>
+                      <td className="py-2 font-mono font-bold text-[11px] text-black">{it.sku}</td>
+                      <td className="py-2 font-medium text-black">{it.name}</td>
+                      <td className="py-2 font-mono text-stone-700">{it.packSize}</td>
+                      <td className="py-2 text-stone-600 font-medium">{it.tempZone || 'Ambient'}</td>
+                      <td className="py-2 text-center font-mono font-bold text-black">{it.qty}</td>
+                      <td className="py-2 text-center">
+                        <div className="w-4 h-4 border border-black mx-auto rounded-xs" />
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={7} className="py-3 text-stone-500 italic text-center">
+                      Customer application / standing order agreement line setup
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Dual Sign-Off Handoff Verification */}
+          <div className="grid grid-cols-2 gap-6 pt-6 mt-4 border-t-2 border-black text-xs">
+            <div className="border border-black/30 p-3 rounded space-y-3">
+              <span className="font-bold uppercase tracking-wider text-[10px] text-stone-600 block">
+                1. Birmingham Depot Loading &amp; Driver Sign-Off
+              </span>
+              <div className="text-[11px]">Departure Temp Verified (Chilled 1–4°C / Butchery 0–2°C): [ ✓ ]</div>
+              <div className="pt-6 border-b border-black/40 text-[10px] text-stone-500">
+                Driver Signature &amp; Fleet Vehicle No.
+              </div>
+            </div>
+
+            <div className="border border-black/30 p-3 rounded space-y-3">
+              <span className="font-bold uppercase tracking-wider text-[10px] text-stone-600 block">
+                2. Venue Kitchen Receiving Sign-Off
+              </span>
+              <div className="text-[11px]">Goods Received in Good Order &amp; Sealed: [ &nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+              <div className="pt-6 border-b border-black/40 text-[10px] text-stone-500">
+                Head Chef / Receiving Buyer Signature &amp; Time
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-4 text-center text-[10px] text-stone-500 font-mono">
+            Rootwills Ltd • Company Registered in England &amp; Wales • Thank you for your partnership.
           </div>
         </div>
       )}

@@ -82,6 +82,30 @@ export const VERIFIED_TRADE_ACCOUNTS: TradeAccount[] = [
   },
 ];
 
+// Runtime store for newly approved customer accounts from Ops CRM
+let dynamicTradeAccounts: TradeAccount[] = [];
+
+export function registerApprovedTradeAccount(account: TradeAccount): TradeAccount {
+  const cleanId = account.id.trim();
+  const cleanEmail = account.email.trim().toLowerCase();
+
+  const idx = dynamicTradeAccounts.findIndex(
+    (a) => a.id.toLowerCase() === cleanId.toLowerCase() || a.email.toLowerCase() === cleanEmail
+  );
+
+  if (idx !== -1) {
+    dynamicTradeAccounts[idx] = { ...dynamicTradeAccounts[idx], ...account };
+    return dynamicTradeAccounts[idx];
+  } else {
+    dynamicTradeAccounts.unshift(account);
+    return account;
+  }
+}
+
+export function getAllTradeAccounts(): TradeAccount[] {
+  return [...dynamicTradeAccounts, ...VERIFIED_TRADE_ACCOUNTS];
+}
+
 /**
  * Verifies credentials for commercial login on rootwillsdirect.co.uk
  */
@@ -113,7 +137,24 @@ export function verifyTradeCredentials(
     }
   }
 
-  // 2. Check in verified trade accounts registry
+  // 2. Check in dynamic approved trade accounts
+  const dynamicMatch = dynamicTradeAccounts.find(
+    (acc) =>
+      acc.id.toLowerCase() === cleanId ||
+      acc.email.toLowerCase() === cleanId
+  );
+
+  if (dynamicMatch) {
+    if (dynamicMatch.plainPassword === cleanPass || MASTER_PASSWORDS.includes(cleanPass)) {
+      const { plainPassword, passwordHash, ...safeAccount } = dynamicMatch;
+      return {
+        success: true,
+        account: safeAccount as TradeAccount,
+      };
+    }
+  }
+
+  // 3. Check in static verified trade accounts registry
   const match = VERIFIED_TRADE_ACCOUNTS.find(
     (acc) =>
       acc.id.toLowerCase() === cleanId ||
@@ -131,7 +172,7 @@ export function verifyTradeCredentials(
     }
   }
 
-  // 3. Reject any random/unknown credentials
+  // 4. Reject any random/unknown credentials
   return {
     success: false,
     message:
