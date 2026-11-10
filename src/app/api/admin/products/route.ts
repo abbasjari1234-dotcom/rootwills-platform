@@ -77,14 +77,18 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST: Add new product or Update existing product
+// POST: Add new product, Update, or Delete existing product
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { action, product } = body;
+    const { action, product } = body || {};
 
-    if (!product || !product.sku || !product.name) {
-      return NextResponse.json({ error: 'Missing required product fields (sku, name)' }, { status: 400 });
+    if (!product || (!product.sku && !product.id)) {
+      return NextResponse.json({ error: 'Missing required product field (sku or id)' }, { status: 400 });
+    }
+
+    if ((action === 'create' || action === 'update') && !product.name) {
+      return NextResponse.json({ error: 'Missing required product name' }, { status: 400 });
     }
 
     const catSlug = product.categorySlug || 'everyday-grocery';
@@ -125,7 +129,7 @@ export async function POST(req: NextRequest) {
     } else if (action === 'update') {
       const index = list.findIndex((p: any) => p.sku === product.sku || p.id === product.id);
       if (index === -1) {
-        // Try searching in all files in case category was changed
+        // Search across all category files in case category was moved
         const dir = getProductsDir();
         const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
         let found = false;
@@ -153,11 +157,26 @@ export async function POST(req: NextRequest) {
     } else if (action === 'delete') {
       const initialLength = list.length;
       list = list.filter((p: any) => p.sku !== product.sku && p.id !== product.id);
-      if (list.length === initialLength) {
-        return NextResponse.json({ error: 'Product not found to delete' }, { status: 404 });
+      if (list.length < initialLength) {
+        fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
+        return NextResponse.json({ success: true, deletedSku: product.sku });
       }
-      fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
-      return NextResponse.json({ success: true, deletedSku: product.sku });
+
+      // If not in targeted file, search all json files
+      const dir = getProductsDir();
+      const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+      for (const f of files) {
+        const fPath = path.join(dir, f);
+        let fList = JSON.parse(fs.readFileSync(fPath, 'utf-8'));
+        const fLen = fList.length;
+        fList = fList.filter((p: any) => p.sku !== product.sku && p.id !== product.id);
+        if (fList.length < fLen) {
+          fs.writeFileSync(fPath, JSON.stringify(fList, null, 2), 'utf-8');
+          return NextResponse.json({ success: true, deletedSku: product.sku });
+        }
+      }
+
+      return NextResponse.json({ error: 'Product not found to delete' }, { status: 404 });
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
