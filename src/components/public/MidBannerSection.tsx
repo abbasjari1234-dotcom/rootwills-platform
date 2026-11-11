@@ -79,8 +79,8 @@ export function MidBannerSection() {
     },
     {
       metric: '100%',
-      title: 'SALSA Assured',
-      subtitle: 'Full Batch Traceability',
+      title: 'Batch Traceable',
+      subtitle: 'Field-to-Pass Provenance',
       icon: ShieldCheck,
       badge: 'KPI 04',
     },

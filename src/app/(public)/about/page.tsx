@@ -61,9 +61,9 @@ const ACCREDITATIONS = [
     desc: 'Ensuring that all fresh produce, poultry, and meats are sourced exclusively from verified British family farms.',
   },
   {
-    name: 'SALSA Certification',
-    level: 'Approved Supplier Standard',
-    desc: 'Maintaining rigorous food safety compliance certifications required by professional commercial catering groups.',
+    name: 'HACCP Food Safety System',
+    level: 'Hazard Control Standards',
+    desc: 'Maintaining rigorous food safety compliance certifications and strict cold-chain due diligence across all depots.',
   },
   {
     name: 'Lion Quality Code of Practice',

@@ -261,7 +261,7 @@ export function AboutRootwillsSection() {
               <div className="hidden sm:flex items-center justify-between pt-3 text-[10px] font-mono uppercase tracking-[0.14em] text-stone-500">
                 <span>Direct Farm Lineage</span>
                 <span className="text-[#BA8E4E]">•</span>
-                <span>SALSA &amp; BRCGS</span>
+                <span>BRCGS &amp; HACCP</span>
               </div>
             </div>
 

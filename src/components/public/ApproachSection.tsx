@@ -81,7 +81,7 @@ export function ApproachSection() {
       roman: 'I',
       title: 'Class 1 Quality Grading',
       subtitle: 'Inspected daily at 02:00 AM by senior produce specialists. Zero compromise on freshness.',
-      badge: 'SALSA Assured',
+      badge: 'HACCP Assured',
     },
     {
       icon: Truck,

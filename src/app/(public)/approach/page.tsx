@@ -91,8 +91,8 @@ const COMPLIANCE_STANDARDS = [
     detail: 'Complete certification verifying that all beef, lamb, poultry, and dairy originate from vetted British farms with strict animal welfare compliance.',
   },
   {
-    name: 'SALSA Standard',
-    standard: 'Safe & Local Supplier Assurance',
+    name: 'HACCP Standard',
+    standard: 'Hazard Analysis & Control',
     detail: 'Comprehensive HACCP risk assessments, allergen segregation protocols, and routine microbiological testing verification.',
   },
   {

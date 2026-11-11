@@ -26,3 +26,4 @@ Disallow: /api/
 
 # Canonical Sitemap Index
 Sitemap: https://www.rootwills.co.uk/sitemap.xml
+

@@ -66,7 +66,7 @@ export function CommercialB2BHero() {
               <div className="pt-1 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-[#FAF7F0]">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-xl border border-white/20 hover:border-[#BA8E4E]/50 transition-all duration-150 shadow-[0_4px_16px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.2)]">
                   <span className="text-[#E8C28A] text-xs font-serif">✦</span>
-                  <span className="font-medium tracking-wide">SALSA Accredited</span>
+                  <span className="font-medium tracking-wide">BRCGS &amp; HACCP</span>
                 </div>
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-xl border border-white/20 hover:border-[#BA8E4E]/50 transition-all duration-150 shadow-[0_4px_16px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.2)]">
                   <span className="text-[#E8C28A] text-xs font-serif">✦</span>
