@@ -1,7 +1,6 @@
 import React from 'react';
 import { PublicHeader } from '@/components/public/PublicHeader';
 import { PublicFooter } from '@/components/public/PublicFooter';
-import { FloatingBrandWidget } from '@/components/public/FloatingBrandWidget';
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider';
 import { OrganicIrisTransition } from '@/components/public/OrganicIrisTransition';
 
@@ -21,7 +20,6 @@ export default function PublicLayout({
           {children}
         </main>
         <PublicFooter />
-        <FloatingBrandWidget />
       </div>
     </SmoothScrollProvider>
   );

@@ -97,7 +97,7 @@ export function PartnerBrandsSlider() {
   return (
     <section
       aria-label="Partner Foodservice Brands"
-      className="relative z-10 w-full py-7 sm:py-9 bg-[#FAF7F2] border-t border-b border-[#E8DEC8]/80 select-none overflow-hidden"
+      className="relative z-10 w-full pt-8 pb-6 sm:pt-10 sm:pb-7 bg-[#FAF7F2] border-t border-b border-[#E8DEC8]/80 select-none overflow-hidden"
     >
       {/* Subtle Botanical Parchment Texture Overlay */}
       <div
@@ -108,7 +108,17 @@ export function PartnerBrandsSlider() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Subtle Trust & Supply Kicker */}
+        <div className="text-center mb-5 sm:mb-6 space-y-1">
+          <span className="font-mono text-[9.5px] sm:text-[10px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold block">
+            ESTABLISHED WHOLESALE LINES
+          </span>
+          <h3 className="font-serif font-bold text-sm sm:text-base text-[#2E060D] tracking-tight">
+            Trusted British &amp; International Foodservice Brands We Source &amp; Supply
+          </h3>
+        </div>
+
         <div className="relative flex items-center justify-between">
           {/* Left Arrow Button */}
           <button
@@ -180,6 +190,13 @@ export function PartnerBrandsSlider() {
           >
             <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
+        </div>
+
+        {/* Legal Disclaimer Pill for Trademark Compliance */}
+        <div className="mt-4 pt-3 border-t border-[#E8DEC8]/60 text-center">
+          <p className="font-sans text-[10px] sm:text-[10.5px] text-stone-600 leading-normal max-w-3xl mx-auto">
+            All registered trademarks, brand names, and logos remain the sole intellectual property of their respective manufacturers, referenced herein strictly for wholesale supply and commercial product identification.
+          </p>
         </div>
       </div>
     </section>

@@ -78,28 +78,28 @@ const SUPPLY_CHAIN_STEPS = [
     tag: 'ORIGIN',
     title: 'Farm-Direct Alliances',
     desc: 'We source directly from trusted generational growers across Worcestershire, Warwickshire, Kent, and Lincolnshire, locking in field-fresh harvests at peak vitality.',
-    image: '/images/commercial/british_apples_crates.jpg',
+    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80',
   },
   {
     step: '02',
     tag: 'GRADING',
     title: 'Daily 02:00 AM Depot Inspection',
     desc: 'As soon as produce reaches our temperature-controlled Midlands and London hubs, dedicated specialists inspect every crate for size calibration, firmness, and shelf life.',
-    image: '/images/commercial/chef_inspect_produce.jpg',
+    image: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=800&auto=format&fit=crop&q=80',
   },
   {
     step: '03',
     tag: 'CURATION',
     title: 'Bespoke Brigade Preparation',
     desc: 'Consignments are carefully assembled in multi-zone chilled environments, separating delicate living micro-herbs from dense root crops, ambient dry stores, and dairy.',
-    image: '/images/commercial/cold_depot_logistics.jpg',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80',
   },
   {
     step: '04',
     tag: 'DISPATCH',
     title: 'Pre-Dawn Fleet Drops',
     desc: 'Our dual-temperature refrigerated vans complete deliveries between 05:30 AM and 07:30 AM, placing chilled crates straight into your walk-in fridges so you never have to wait.',
-    image: '/images/commercial/van_dawn_delivery.jpg',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&auto=format&fit=crop&q=80',
   },
 ];
 
