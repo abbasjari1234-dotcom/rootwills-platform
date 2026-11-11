@@ -79,10 +79,24 @@ export default function ErrorBoundary({
               </div>
             )}
 
+            {error?.message && process.env.NODE_ENV !== 'production' && (
+              <div className="p-2.5 rounded-lg bg-rose-50/80 border border-rose-200 text-[11px] font-mono text-rose-800 break-words text-left max-h-24 overflow-y-auto">
+                <span className="font-bold block uppercase text-[9px] tracking-wider text-rose-600 mb-0.5">Error:</span>
+                {error.message}
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 type="button"
-                onClick={() => reset()}
+                onClick={() => {
+                  try {
+                    localStorage.removeItem('rootwills_direct_draft_order');
+                  } catch {
+                    // ignore
+                  }
+                  reset();
+                }}
                 className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#131313] hover:bg-[#2A2A2A] text-[#FCFCFA] font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-all cursor-pointer active:scale-95"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -90,6 +104,13 @@ export default function ErrorBoundary({
               </button>
               <Link
                 href="/"
+                onClick={() => {
+                  try {
+                    localStorage.removeItem('rootwills_direct_draft_order');
+                  } catch {
+                    // ignore
+                  }
+                }}
                 className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#131313] border border-stone-300 font-sans font-semibold text-xs sm:text-[13px] shadow-sm transition-colors active:scale-95"
               >
                 <span>Go to Homepage</span>

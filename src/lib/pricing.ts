@@ -70,10 +70,23 @@ export function getProductPricing(
   product: WholesaleProduct,
   accountTier?: string
 ): ProductPricing {
-  const range = CATEGORY_BASE_PRICE_RANGES[product.categorySlug] || { min: 14.0, max: 32.0, vat: 0 };
+  if (!product) {
+    return {
+      basePrice: 15.0,
+      contractPrice: 15.0,
+      formattedPrice: '£15.00',
+      vatRate: 0,
+      vatAmount: 0,
+      tierLabel: 'Trade Standard Rate',
+    };
+  }
+
+  const categorySlug = product.categorySlug || 'everyday-grocery';
+  const range = CATEGORY_BASE_PRICE_RANGES[categorySlug] || { min: 14.0, max: 32.0, vat: 0 };
   
-  // Extract number from SKU (e.g. RW-796010 -> 796010)
-  const skuNum = parseInt(product.sku.replace(/\D/g, '') || '500000', 10);
+  // Extract number from SKU safely (e.g. RW-796010 -> 796010)
+  const skuStr = typeof product.sku === 'string' ? product.sku : String(product.id || '500000');
+  const skuNum = parseInt(skuStr.replace(/\D/g, '') || '500000', 10);
   
   // Deterministic float within [min, max]
   const pseudoSeed = (skuNum % 1000) / 1000;
@@ -85,7 +98,8 @@ export function getProductPricing(
 
   // Calculate unit price if pack size is format "NxY" (e.g. 15x800g, 50x140g, 20x179g)
   let unitPrice: string | undefined;
-  const match = product.packSize.match(/^(\d+)\s*x/i);
+  const packSizeStr = typeof product.packSize === 'string' ? product.packSize : '';
+  const match = packSizeStr.match(/^(\d+)\s*x/i);
   if (match && match[1]) {
     const units = parseInt(match[1], 10);
     if (units > 1) {
@@ -94,7 +108,7 @@ export function getProductPricing(
     }
   }
 
-  const vatRate = range.vat;
+  const vatRate = typeof range.vat === 'number' ? range.vat : 0;
   const vatAmount = Math.round(((contractPrice * vatRate) / 100) * 100) / 100;
 
   return {
@@ -119,15 +133,21 @@ export function calculateOrderSummary(
   let vatTotal = 0;
   let totalCases = 0;
 
-  for (const line of lines) {
-    if (!line.product || line.qty <= 0) continue;
-    const pricing = getProductPricing(line.product, accountTier);
-    const lineNet = pricing.contractPrice * line.qty;
-    const lineVat = (lineNet * pricing.vatRate) / 100;
+  if (Array.isArray(lines)) {
+    for (const line of lines) {
+      if (!line || !line.product || !line.qty || line.qty <= 0) continue;
+      try {
+        const pricing = getProductPricing(line.product, accountTier);
+        const lineNet = (pricing.contractPrice || 0) * line.qty;
+        const lineVat = (lineNet * (pricing.vatRate || 0)) / 100;
 
-    subtotalNet += lineNet;
-    vatTotal += lineVat;
-    totalCases += line.qty;
+        subtotalNet += lineNet;
+        vatTotal += lineVat;
+        totalCases += line.qty;
+      } catch {
+        // Safe skip on corrupt line
+      }
+    }
   }
 
   subtotalNet = Math.round(subtotalNet * 100) / 100;
@@ -141,7 +161,7 @@ export function calculateOrderSummary(
     formattedSubtotal: `£${subtotalNet.toFixed(2)}`,
     formattedVat: `£${vatTotal.toFixed(2)}`,
     formattedGrandTotal: `£${grandTotal.toFixed(2)}`,
-    totalLines: lines.length,
+    totalLines: Array.isArray(lines) ? lines.length : 0,
     totalCases,
   };
 }

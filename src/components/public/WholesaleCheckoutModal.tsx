@@ -63,19 +63,28 @@ export function WholesaleCheckoutModal({
 
     if (orderItems && orderItems.length > 0) {
       const normalized: OrderItem[] = orderItems.map((it, idx) => {
-        if ('product' in it) {
+        if (it && typeof it === 'object' && 'product' in it) {
           const line = it as DraftOrderLine;
           return {
-            id: line.product.id || `line-${idx}`,
-            sku: line.product.sku,
-            name: line.product.name,
-            packSize: line.product.packSize,
-            tempZone: line.product.tempZone,
-            image: line.product.image || '/images/products/bread-roll.png',
-            qty: line.qty,
+            id: line.product?.id || `line-${idx}`,
+            sku: line.product?.sku || `RW-${idx}`,
+            name: line.product?.name || 'Produce Item',
+            packSize: line.product?.packSize || '1 case',
+            tempZone: line.product?.tempZone || 'Ambient',
+            image: line.product?.image || '/images/products/bread-roll.png',
+            qty: line.qty || 1,
           };
         }
-        return it as OrderItem;
+        const orderItem = it as OrderItem;
+        return {
+          id: orderItem?.id || `line-${idx}`,
+          sku: orderItem?.sku || `RW-${idx}`,
+          name: orderItem?.name || 'Produce Item',
+          packSize: orderItem?.packSize || '1 case',
+          tempZone: orderItem?.tempZone || 'Ambient',
+          image: orderItem?.image || '/images/products/bread-roll.png',
+          qty: orderItem?.qty || 1,
+        };
       });
       setItems(normalized);
     } else {
@@ -114,22 +123,22 @@ export function WholesaleCheckoutModal({
   const totalCases = items.reduce((acc, it) => acc + (it.qty || 0), 0);
 
   const summary: OrderPricingSummary = useMemo(() => {
-    const mapped = items.map((it) => {
-      const found = WHOLESALE_PRODUCTS.find((p) => p.sku === it.sku || p.id === it.id);
-      if (found) return { product: found, qty: it.qty };
+    const mapped = (items || []).filter(Boolean).map((it, idx) => {
+      const found = WHOLESALE_PRODUCTS.find((p) => (it?.sku && p.sku === it.sku) || (it?.id && p.id === it.id));
+      if (found) return { product: found, qty: it?.qty || 1 };
       return {
         product: {
-          id: it.id,
-          sku: it.sku,
-          name: it.name,
-          packSize: it.packSize,
+          id: it?.id || `item-${idx}`,
+          sku: it?.sku || `RW-${idx}`,
+          name: it?.name || 'Produce Item',
+          packSize: it?.packSize || '1 case',
           categorySlug: 'everyday-grocery',
-          image: it.image,
+          image: it?.image || '/images/products/bread-roll.png',
           origin: 'UK',
-          tempZone: it.tempZone || 'Ambient',
-          description: it.name,
+          tempZone: it?.tempZone || 'Ambient',
+          description: it?.name || 'Produce Line',
         } as any,
-        qty: it.qty,
+        qty: it?.qty || 1,
       };
     });
     return calculateOrderSummary(mapped, accountTier);
@@ -216,27 +225,34 @@ export function WholesaleCheckoutModal({
   };
 
   const generateWhatsAppUrl = (order: WholesaleOrder) => {
-    const linesText = order.items && order.items.length > 0
-      ? `\n*ATTACHED INVENTORY MANIFEST (${order.totalCases} cases):*\n` +
-        order.items
+    if (!order) return 'https://wa.me/447984709478';
+
+    const safeItems = Array.isArray(order.items) ? order.items.filter(Boolean) : [];
+    const linesText = safeItems.length > 0
+      ? `\n*ATTACHED INVENTORY MANIFEST (${order.totalCases || 0} cases):*\n` +
+        safeItems
           .map(
             (it, idx) =>
-              `  ${idx + 1}. *${it.name}* (${it.packSize}) — *${it.qty} cases* [SKU: ${it.sku}]`
+              `  ${idx + 1}. *${it.name || 'Produce Item'}* (${it.packSize || '1 case'}) — *${it.qty || 1} cases* [SKU: ${it.sku || 'N/A'}]`
           )
           .join('\n')
       : '';
 
-    const financialText = order.subtotalNet
-      ? `\n💰 *Goods Subtotal (Net):* £${order.subtotalNet.toFixed(2)}\n🏷️ *Est. VAT (0% Food / 20% Consumables):* £${(order.vatTotal || 0).toFixed(2)}\n💳 *Estimated Grand Total:* £${(order.grandTotal || order.subtotalNet).toFixed(2)}`
+    const subtotal = typeof order.subtotalNet === 'number' ? order.subtotalNet : 0;
+    const vat = typeof order.vatTotal === 'number' ? order.vatTotal : 0;
+    const grand = typeof order.grandTotal === 'number' ? order.grandTotal : subtotal + vat;
+
+    const financialText = subtotal > 0
+      ? `\n💰 *Goods Subtotal (Net):* £${subtotal.toFixed(2)}\n🏷️ *Est. VAT (0% Food / 20% Consumables):* £${vat.toFixed(2)}\n💳 *Estimated Grand Total:* £${grand.toFixed(2)}`
       : '';
 
-    const message = `📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id}*
-🏢 *Company:* ${order.company}
-👤 *Name:* ${order.name} (${order.jobTitle})
-📞 *Phone:* ${order.phone}
-✉️ *Email:* ${order.email}
-📍 *Postcode:* ${order.postcode}
-🏬 *Sites:* ${order.numberOfSites}
+    const message = `📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id || 'NEW'}*
+🏢 *Company:* ${order.company || 'N/A'}
+👤 *Name:* ${order.name || 'N/A'} (${order.jobTitle || 'Buyer'})
+📞 *Phone:* ${order.phone || 'N/A'}
+✉️ *Email:* ${order.email || 'N/A'}
+📍 *Postcode:* ${order.postcode || 'N/A'}
+🏬 *Sites:* ${order.numberOfSites || '1'}
 🚚 *Current Supplier:* ${order.currentSupplier || 'N/A'}
 📦 *Weekly Deliveries:* ${order.approxWeeklyDeliveries || 'N/A'}
 💷 *Weekly Spend:* ${order.approxWeeklySpend || 'N/A'}

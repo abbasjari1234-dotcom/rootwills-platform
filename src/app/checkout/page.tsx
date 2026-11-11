@@ -105,24 +105,27 @@ export default function CheckoutPage() {
   };
 
   const generateWhatsAppUrl = (order: WholesaleOrder) => {
-    const linesText = order.items && order.items.length > 0
-      ? `\n*ATTACHED INVENTORY MANIFEST (${order.totalCases} cases):*\n` +
-        order.items
+    if (!order) return 'https://wa.me/447984709478';
+
+    const safeItems = Array.isArray(order.items) ? order.items.filter(Boolean) : [];
+    const linesText = safeItems.length > 0
+      ? `\n*ATTACHED INVENTORY MANIFEST (${order.totalCases || 0} cases):*\n` +
+        safeItems
           .map(
             (it, idx) =>
-              `  ${idx + 1}. *${it.name}* (${it.packSize}) — *${it.qty} cases* [SKU: ${it.sku}]`
+              `  ${idx + 1}. *${it.name || 'Produce Item'}* (${it.packSize || '1 case'}) — *${it.qty || 1} cases* [SKU: ${it.sku || 'N/A'}]`
           )
           .join('\n')
       : '';
 
     const message = 
-`📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id}*
-🏢 *Company:* ${order.company}
-👤 *Name:* ${order.name} (${order.jobTitle})
-📞 *Phone:* ${order.phone}
-✉️ *Email:* ${order.email}
-📍 *Postcode:* ${order.postcode}
-🏬 *Sites:* ${order.numberOfSites}
+`📋 *ROOTWILLS CUSTOMER APPLICATION: ${order.id || 'NEW'}*
+🏢 *Company:* ${order.company || 'N/A'}
+👤 *Name:* ${order.name || 'N/A'} (${order.jobTitle || 'Buyer'})
+📞 *Phone:* ${order.phone || 'N/A'}
+✉️ *Email:* ${order.email || 'N/A'}
+📍 *Postcode:* ${order.postcode || 'N/A'}
+🏬 *Sites:* ${order.numberOfSites || '1'}
 🚚 *Current Supplier:* ${order.currentSupplier || 'N/A'}
 📦 *Weekly Deliveries:* ${order.approxWeeklyDeliveries || 'N/A'}
 💷 *Weekly Spend:* ${order.approxWeeklySpend || 'N/A'}
