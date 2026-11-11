@@ -112,8 +112,11 @@ export function PublicProductsView() {
         setIsAuthenticated(true);
         try {
           const stored = localStorage.getItem('rootwills_user_account');
-          if (stored) {
-            setTradeAccount(JSON.parse(stored));
+          if (stored && stored !== 'null' && stored !== 'undefined') {
+            const parsed = JSON.parse(stored);
+            if (parsed && typeof parsed === 'object') {
+              setTradeAccount(parsed);
+            }
           }
         } catch {
           // ignore

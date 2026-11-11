@@ -38,10 +38,21 @@ export default function CheckoutPage() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('rootwills_direct_draft_order');
-      if (saved) {
+      if (saved && saved !== 'null' && saved !== 'undefined') {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
-          setOrderItems(parsed);
+          const clean = parsed
+            .filter((x): x is OrderItem => Boolean(x && typeof x === 'object'))
+            .map((it, idx) => ({
+              id: String(it.id || `line-${idx}`),
+              sku: String(it.sku || `RW-${idx}`),
+              name: String(it.name || 'Produce Item'),
+              packSize: String(it.packSize || '1 case'),
+              tempZone: String(it.tempZone || 'Ambient'),
+              image: String(it.image || '/images/products/bread-roll.png'),
+              qty: typeof it.qty === 'number' && it.qty > 0 ? it.qty : 1,
+            }));
+          setOrderItems(clean);
         }
       }
     } catch {
