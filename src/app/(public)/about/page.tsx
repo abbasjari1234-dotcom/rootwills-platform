@@ -134,8 +134,8 @@ export default function AboutPage() {
               <DoodleFlourish 
                 variant="underline-loop" 
                 color="#BA8E4E" 
-                strokeWidth={3} 
-                className="w-52 sm:w-72 -mt-1 sm:-mt-1.5 mb-2 text-[#BA8E4E]" 
+                strokeWidth={2.5} 
+                className="w-48 sm:w-64 mt-1 sm:mt-1.5 mb-2 text-[#BA8E4E]" 
                 delay={150}
               />
             </div>

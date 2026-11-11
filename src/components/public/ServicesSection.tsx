@@ -217,9 +217,10 @@ export function ServicesSection() {
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
-    const cardWidth = el.scrollWidth / SERVICES_DATA.length;
-    if (cardWidth > 0) {
-      const newIdx = Math.min(SERVICES_DATA.length - 1, Math.max(0, Math.round(el.scrollLeft / cardWidth)));
+    const firstChild = el.firstElementChild as HTMLElement | null;
+    const itemWidth = firstChild ? firstChild.offsetWidth + 14 : el.clientWidth * 0.8;
+    if (itemWidth > 0) {
+      const newIdx = Math.min(SERVICES_DATA.length - 1, Math.max(0, Math.round(el.scrollLeft / itemWidth)));
       if (newIdx !== activeIdx) {
         setActiveIdx(newIdx);
       }
@@ -229,8 +230,9 @@ export function ServicesSection() {
   const scrollToCard = (index: number) => {
     if (scrollContainerRef.current) {
       const el = scrollContainerRef.current;
-      const cardWidth = el.scrollWidth / SERVICES_DATA.length;
-      el.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+      const firstChild = el.firstElementChild as HTMLElement | null;
+      const itemWidth = firstChild ? firstChild.offsetWidth + 14 : el.clientWidth * 0.8;
+      el.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
       setActiveIdx(index);
     }
   };
@@ -291,7 +293,7 @@ export function ServicesSection() {
             <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-3.5 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-1.5 md:pb-0 scroll-smooth touch-pan-y [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-3.5 md:gap-5 -mx-4 px-4 md:mx-0 md:px-0 pb-1.5 md:pb-0 scroll-smooth touch-pan-x touch-pan-y overscroll-x-contain [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {SERVICES_DATA.map((service) => (
                 <div

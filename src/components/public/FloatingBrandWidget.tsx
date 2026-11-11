@@ -73,7 +73,7 @@ export function FloatingBrandWidget() {
   return (
     <div
       ref={widgetRef}
-      className="fixed bottom-3.5 left-3.5 sm:bottom-5 sm:left-5 z-50 flex flex-col items-start select-none pointer-events-none"
+      className="hidden md:flex fixed bottom-5 left-5 z-50 flex-col items-start select-none pointer-events-none"
     >
       {/* ─── FLOATING POPOVER CARD (OPEN STATE) ─── */}
       <div
