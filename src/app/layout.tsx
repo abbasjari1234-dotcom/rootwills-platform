@@ -232,8 +232,17 @@ const jsonLdSchema = {
       '@id': 'https://www.rootwills.co.uk/#website',
       url: 'https://www.rootwills.co.uk',
       name: 'Rootwills',
+      alternateName: 'Rootwills Ltd',
       publisher: { '@id': 'https://www.rootwills.co.uk/#organization' },
       inLanguage: 'en-GB',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://www.rootwills.co.uk/products?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
     },
     {
       '@type': 'BreadcrumbList',

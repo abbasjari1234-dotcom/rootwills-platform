@@ -73,11 +73,15 @@ export function PublicProductsView() {
     }
   };
 
-  // Sync selectedCategory from URL search parameter (?dept=...) on mount & popstate
+  // Sync selectedCategory and search query from URL search parameters on mount & popstate
   useEffect(() => {
     const syncFromURL = () => {
       if (typeof window === 'undefined') return;
       const params = new URLSearchParams(window.location.search);
+      const queryParam = params.get('q') || params.get('search');
+      if (queryParam) {
+        setSearchQuery(queryParam);
+      }
       const dept = params.get('dept') || params.get('category');
       if (dept) {
         if (dept === 'repeat-pad') {
@@ -93,7 +97,7 @@ export function PublicProductsView() {
             setSelectedCategory(matched.slug);
           }
         }
-      } else {
+      } else if (!queryParam) {
         setSelectedCategory('all');
       }
     };
