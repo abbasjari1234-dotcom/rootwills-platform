@@ -25,7 +25,77 @@ export interface WholesaleCheckoutModalProps {
   onOrderSuccess?: () => void;
 }
 
-export function WholesaleCheckoutModal({
+interface ModalErrorBoundaryProps {
+  children: React.ReactNode;
+  onClose: () => void;
+}
+
+interface ModalErrorBoundaryState {
+  hasError: boolean;
+  errorMessage?: string;
+}
+
+class ModalErrorBoundary extends React.Component<ModalErrorBoundaryProps, ModalErrorBoundaryState> {
+  constructor(props: ModalErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error): ModalErrorBoundaryState {
+    return { hasError: true, errorMessage: error?.message || 'Component render error' };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('[WholesaleCheckoutModal Render Error]', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-md">
+          <div className="p-8 text-center space-y-4 bg-white rounded-2xl max-w-lg mx-auto shadow-2xl border border-stone-200">
+            <div className="w-12 h-12 rounded-full bg-[#FAF7F0] ring-1 ring-[#BA8E4E]/35 text-[#BA8E4E] flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-6 h-6 text-[#4E0D17]" />
+            </div>
+            <h3 className="font-serif font-bold text-xl text-[#2E060D]">
+              Commercial Account Onboarding
+            </h3>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Open your direct commercial wholesale account to unlock contracted menu pricing and pre-dawn delivery slots.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+              <a
+                href="/checkout"
+                className="px-6 py-2.5 rounded-full bg-[#2E060D] text-white text-xs font-semibold shadow-sm hover:bg-[#131313] transition-colors"
+              >
+                Proceed to Trade Application &rarr;
+              </a>
+              <button
+                type="button"
+                onClick={this.props.onClose}
+                className="px-5 py-2.5 rounded-full bg-stone-100 text-stone-700 text-xs font-semibold hover:bg-stone-200"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export function WholesaleCheckoutModal(props: WholesaleCheckoutModalProps) {
+  if (!props.isOpen) return null;
+  return (
+    <ModalErrorBoundary onClose={props.onClose}>
+      <WholesaleCheckoutModalInner {...props} />
+    </ModalErrorBoundary>
+  );
+}
+
+function WholesaleCheckoutModalInner({
   isOpen,
   onClose,
   orderItems = [],
@@ -90,10 +160,21 @@ export function WholesaleCheckoutModal({
     } else {
       try {
         const saved = localStorage.getItem('rootwills_direct_draft_order');
-        if (saved) {
+        if (saved && saved !== 'null' && saved !== 'undefined') {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed)) {
-            setItems(parsed);
+            const clean = parsed
+              .filter(Boolean)
+              .map((it: any, idx: number) => ({
+                id: String(it.id || `line-${idx}`),
+                sku: String(it.sku || `RW-${idx}`),
+                name: String(it.name || 'Produce Item'),
+                packSize: String(it.packSize || '1 case'),
+                tempZone: String(it.tempZone || 'Ambient'),
+                image: String(it.image || '/images/products/bread-roll.png'),
+                qty: typeof it.qty === 'number' && it.qty > 0 ? it.qty : 1,
+              }));
+            setItems(clean);
           }
         }
       } catch {
@@ -103,15 +184,21 @@ export function WholesaleCheckoutModal({
 
     try {
       const storedAccount = localStorage.getItem('rootwills_user_account');
-      if (storedAccount) {
+      if (storedAccount && storedAccount !== 'null' && storedAccount !== 'undefined') {
         const acc = JSON.parse(storedAccount);
-        setForm((prev) => ({
-          ...prev,
-          name: prev.name || acc.contactName || '',
-          email: prev.email || acc.email || '',
-          company: prev.company || acc.company || '',
-          postcode: prev.postcode || acc.postcode || '',
-        }));
+        if (acc && typeof acc === 'object' && !Array.isArray(acc)) {
+          const safeName = typeof acc.contactName === 'string' ? acc.contactName : '';
+          const safeEmail = typeof acc.email === 'string' ? acc.email : '';
+          const safeCompany = typeof acc.company === 'string' ? acc.company : '';
+          const safePostcode = typeof acc.postcode === 'string' ? acc.postcode : '';
+          setForm((prev) => ({
+            ...prev,
+            name: prev.name || safeName,
+            email: prev.email || safeEmail,
+            company: prev.company || safeCompany,
+            postcode: prev.postcode || safePostcode,
+          }));
+        }
       }
     } catch {
       // ignore

@@ -79,9 +79,9 @@ export default function ErrorBoundary({
               </div>
             )}
 
-            {error?.message && process.env.NODE_ENV !== 'production' && (
-              <div className="p-2.5 rounded-lg bg-rose-50/80 border border-rose-200 text-[11px] font-mono text-rose-800 break-words text-left max-h-24 overflow-y-auto">
-                <span className="font-bold block uppercase text-[9px] tracking-wider text-rose-600 mb-0.5">Error:</span>
+            {error?.message && (
+              <div className="p-3 rounded-lg bg-rose-50 border border-rose-200 text-xs font-mono text-rose-900 break-words text-left max-h-36 overflow-y-auto shadow-inner">
+                <span className="font-bold block uppercase text-[10px] tracking-wider text-rose-700 mb-1">Diagnostic Error:</span>
                 {error.message}
               </div>
             )}
