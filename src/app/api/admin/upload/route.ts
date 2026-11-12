@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import { createClient } from '@supabase/supabase-js';
+import { put } from '@vercel/blob';
 import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
 import { handleApiError } from '@/lib/security/error-handler';
 
@@ -9,6 +10,7 @@ export const runtime = 'nodejs';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const HAS_VERCEL_BLOB = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 
 const ALLOWED_MIME_TYPES = new Set([
   'image/jpeg',
@@ -64,6 +66,26 @@ export async function POST(req: NextRequest) {
 
     const fileName = `${cleanSku}_${Date.now()}.webp`;
 
+    // Strategy A: If Vercel Blob Storage is connected, upload to Vercel Blob CDN
+    if (HAS_VERCEL_BLOB) {
+      try {
+        const blob = await put(`products/${fileName}`, webpBuffer, {
+          access: 'public',
+          contentType: 'image/webp',
+        });
+        return NextResponse.json({
+          success: true,
+          url: blob.url,
+          fileName,
+          provider: 'vercel_blob',
+        });
+      } catch (blobErr: any) {
+        console.error('[Vercel Blob Upload Fallback]', blobErr);
+        // continue to Supabase fallback
+      }
+    }
+
+    // Strategy B: Supabase Storage Bucket ('products')
     if (!SUPABASE_URL || !SERVICE_KEY) {
       return NextResponse.json(
         { error: 'Cloud media storage credentials unconfigured on this environment.' },
@@ -72,12 +94,12 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = createClient(SUPABASE_URL, SERVICE_KEY, {
-      auth: { persistSession: false }
+      auth: { persistSession: false },
     });
 
     const { error } = await supabase.storage.from('products').upload(fileName, webpBuffer, {
       contentType: 'image/webp',
-      upsert: true
+      upsert: true,
     });
 
     if (error) {
@@ -85,7 +107,12 @@ export async function POST(req: NextRequest) {
     }
 
     const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/products/${fileName}`;
-    return NextResponse.json({ success: true, url: publicUrl, fileName });
+    return NextResponse.json({
+      success: true,
+      url: publicUrl,
+      fileName,
+      provider: 'supabase_storage',
+    });
   } catch (err: any) {
     return handleApiError(err, 'Product image upload failed.');
   }
