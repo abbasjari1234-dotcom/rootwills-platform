@@ -160,8 +160,17 @@ export async function POST(req: NextRequest) {
       phone: newOrder.phone,
       postcode: newOrder.postcode,
       orderRef: newOrder.id,
-      accountTier: newOrder.accountTier,
+      jobTitle: newOrder.jobTitle,
+      numberOfSites: newOrder.numberOfSites,
+      currentSupplier: newOrder.currentSupplier,
+      approxWeeklyDeliveries: newOrder.approxWeeklyDeliveries,
       approxWeeklySpend: newOrder.approxWeeklySpend,
+      message: newOrder.message,
+      accountTier: newOrder.accountTier,
+      items: newOrder.items,
+      totalCases: newOrder.totalCases,
+      subtotalNet: newOrder.subtotalNet,
+      grandTotal: newOrder.grandTotal,
       itemsCount: newOrder.totalCases,
     }).catch((err) => console.error('[Email Dispatch Notice]', err));
 
