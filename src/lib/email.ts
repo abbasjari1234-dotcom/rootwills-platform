@@ -152,10 +152,41 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
                   <td style="padding: 11px 14px; font-size: 13px; font-weight: 800; color: #047857; border-bottom: 1px solid #EBE5DB;">${params.approxWeeklySpend ? `£${params.approxWeeklySpend}` : 'Trade Quote'}</td>
                 </tr>
                 <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Account Tier</td>
+                  <td style="padding: 11px 14px; font-size: 13px; font-weight: 700; color: #8C6E12; border-bottom: 1px solid #EBE5DB;">${params.accountTier || 'Wholesale Trade Direct'}</td>
+                </tr>
+                <tr>
                   <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65;">Kitchen Notes / Special Request</td>
                   <td style="padding: 11px 14px; font-size: 13px; color: #4A4A4A; font-style: italic;">${params.message || 'No additional notes provided'}</td>
                 </tr>
               </table>
+
+              ${Array.isArray(params.items) && params.items.length > 0 ? `
+              <div style="margin-bottom: 24px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #2E060D;">Requested Order Pad Items (${params.items.length}):</h3>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border: 1px solid #EBE5DB; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                  <tr style="background-color: #FAF9F7; font-weight: 700; color: #8C6E12; font-size: 10px; text-transform: uppercase;">
+                    <th align="left" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Product</th>
+                    <th align="center" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Pack</th>
+                    <th align="center" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Qty</th>
+                    <th align="right" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Price</th>
+                  </tr>
+                  ${params.items.map((it: any) => `
+                    <tr>
+                      <td style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #1A1A18;"><strong>${it.name || it.sku}</strong></td>
+                      <td align="center" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #666;">${it.packSize || '-'}</td>
+                      <td align="center" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #2E060D; font-weight: 700;">${it.qty || 1}</td>
+                      <td align="right" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #2E060D; font-weight: 700;">${it.unitPrice ? `£${(it.linePrice || it.unitPrice * it.qty).toFixed(2)}` : 'Trade Quote'}</td>
+                    </tr>
+                  `).join('')}
+                </table>
+                ${params.grandTotal ? `
+                  <div style="text-align: right; padding-top: 8px; font-size: 13px; font-weight: 800; color: #2E060D;">
+                    Estimated Order Value: £${params.grandTotal.toFixed(2)}
+                  </div>
+                ` : ''}
+              </div>
+              ` : ''}
 
               <!-- ACTION BUTTONS -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 12px;">
@@ -312,31 +343,24 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
   `;
 
   try {
-    // A) Send Internal Manifest to Rootwills verified account owner (abbasjari1234@gmail.com)
+    // A) Send Internal Manifest to Rootwills official inbox & account owner
+    const adminRecipients = Array.from(
+      new Set(
+        [
+          'sales@rootwills.co.uk',
+          'abbasjari1234@gmail.com',
+          process.env.CONCIERGE_NOTIFICATION_EMAIL,
+        ].filter(Boolean) as string[]
+      )
+    );
+
     await resend.emails.send({
       from: FROM_EMAIL,
       reply_to: params.applicantEmail,
-      to: 'abbasjari1234@gmail.com',
+      to: adminRecipients,
       subject: `📋 New Trade Application: ${params.company} (${params.applicantName}) — Ref: ${params.orderRef}`,
       html: adminHtml,
-    }).catch((e) => console.error('[Resend Admin Owner Notice]', e));
-
-    // B) Also send to custom notification email if specified and different
-    if (
-      process.env.CONCIERGE_NOTIFICATION_EMAIL &&
-      process.env.CONCIERGE_NOTIFICATION_EMAIL !== 'abbasjari1234@gmail.com'
-    ) {
-      await resend.emails.send({
-        from: FROM_EMAIL,
-        reply_to: params.applicantEmail,
-        to: process.env.CONCIERGE_NOTIFICATION_EMAIL,
-        subject: `📋 New Trade Application: ${params.company} (${params.applicantName}) — Ref: ${params.orderRef}`,
-        html: adminHtml,
-      }).catch((e) => {
-        // Will activate automatically once rootwills.co.uk domain is verified on Resend
-        console.log('[Resend Concierge Notice]', e.message);
-      });
-    }
+    }).catch((e) => console.error('[Resend Admin Notice Error]', e));
 
     // C) Send Receipt to the Applicant
     const applicantRes = await resend.emails.send({
