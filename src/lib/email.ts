@@ -254,11 +254,16 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
           <!-- SLIP CARD -->
           <tr>
             <td style="padding: 28px 28px 20px 28px;">
-              <div style="background-color: #FAF3EA; border-radius: 12px; padding: 18px 22px; border: 1px solid #E8DEC8; margin-bottom: 22px;">
-                <span style="display: inline-block; padding: 3px 10px; border-radius: 20px; background-color: #8C6E12; color: #FFFFFF; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Application Transmitted</span>
+              <div style="background-color: #FAF3EA; border-radius: 12px; padding: 20px 22px; border: 1px solid #E8DEC8; margin-bottom: 22px;">
+                <span style="display: inline-block; padding: 3px 10px; border-radius: 20px; background-color: #047857; color: #FFFFFF; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Application Received &bull; Under Fast-Track Review</span>
                 <h2 style="margin: 0 0 6px 0; font-size: 19px; color: #2E060D; font-weight: 800;">Trade Account Request Received</h2>
                 <p style="margin: 0; font-size: 13.5px; color: #5C4524; line-height: 1.5;">Dear <strong>${params.applicantName}</strong>,</p>
-                <p style="margin: 6px 0 0 0; font-size: 13.5px; color: #5C4524; line-height: 1.5;">Thank you for registering <strong>${params.company}</strong> for commercial wholesale food services with Rootwills.</p>
+                <p style="margin: 6px 0 0 0; font-size: 13.5px; color: #5C4524; line-height: 1.5;">
+                  Thank you for submitting your commercial wholesale trade application for <strong>${params.company}</strong>.
+                </p>
+                <p style="margin: 8px 0 0 0; font-size: 13.5px; color: #2E060D; font-weight: 700; line-height: 1.5; background-color: #FFFFFF; padding: 10px 14px; border-radius: 8px; border: 1px solid #E5DCCF;">
+                  ⚡ Your request has been logged and will be approved shortly by our Birmingham trade desk. Once approved, you will receive a follow-up email containing your dedicated Account ID and temporary password to access your online kitchen order pad.
+                </p>
               </div>
 
               <!-- RECEIPT SUMMARY TABLE -->
@@ -304,6 +309,33 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
                   <td style="padding: 10px 14px; font-size: 13px; color: #4A4A4A; font-style: italic;">${params.message || 'No additional notes provided'}</td>
                 </tr>
               </table>
+
+              ${Array.isArray(params.items) && params.items.length > 0 ? `
+              <div style="margin-bottom: 22px;">
+                <h3 style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #2E060D;">Requested Starter / Sample Order Items (${params.items.length}):</h3>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border: 1px solid #EBE5DB; border-radius: 8px; overflow: hidden; font-size: 12px;">
+                  <tr style="background-color: #FAF9F7; font-weight: 700; color: #8C6E12; font-size: 10px; text-transform: uppercase;">
+                    <th align="left" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Product</th>
+                    <th align="center" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Pack</th>
+                    <th align="center" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Qty</th>
+                    <th align="right" style="padding: 8px 12px; border-bottom: 1px solid #EBE5DB;">Price</th>
+                  </tr>
+                  ${params.items.map((it: any) => `
+                    <tr>
+                      <td style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #1A1A18;"><strong>${it.name || it.sku}</strong></td>
+                      <td align="center" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #666;">${it.packSize || '-'}</td>
+                      <td align="center" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #2E060D; font-weight: 700;">${it.qty || 1}</td>
+                      <td align="right" style="padding: 8px 12px; border-bottom: 1px solid #F0ECE4; color: #2E060D; font-weight: 700;">${it.unitPrice ? `£${(it.linePrice || it.unitPrice * it.qty).toFixed(2)}` : 'Trade Quote'}</td>
+                    </tr>
+                  `).join('')}
+                </table>
+                ${params.grandTotal ? `
+                  <div style="text-align: right; padding-top: 8px; font-size: 13px; font-weight: 800; color: #2E060D;">
+                    Estimated Order Value: £${params.grandTotal.toFixed(2)}
+                  </div>
+                ` : ''}
+              </div>
+              ` : ''}
 
               <!-- WHAT HAPPENS NEXT -->
               <div style="background-color: #FAF9F7; border-radius: 12px; padding: 18px 20px; border: 1px solid #EBE5DB; margin-bottom: 22px;">
