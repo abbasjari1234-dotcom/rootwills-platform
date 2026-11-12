@@ -233,20 +233,44 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
               <!-- RECEIPT SUMMARY TABLE -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border: 1px solid #EBE5DB; border-radius: 12px; overflow: hidden; margin-bottom: 22px;">
                 <tr style="background-color: #FAF9F7;">
-                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB; width: 42%;">Application Reference</td>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #8C6E12; border-bottom: 1px solid #EBE5DB; width: 42%;">Application Reference</td>
                   <td style="padding: 10px 14px; font-size: 13px; font-weight: 800; color: #2E060D; border-bottom: 1px solid #EBE5DB;">${params.orderRef}</td>
                 </tr>
                 <tr>
                   <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Registered Venue</td>
-                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 700; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.company}</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 800; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.company}</td>
                 </tr>
                 <tr style="background-color: #FAF9F7;">
-                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Delivery Postcode</td>
-                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.postcode}</td>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Primary Contact &amp; Role</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.applicantName} (${params.jobTitle || 'Chef / Buyer'})</td>
                 </tr>
                 <tr>
-                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65;">Pricing Tier Requested</td>
-                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 700; color: #8C6E12;">${params.accountTier || 'Wholesale Trade Direct'}</td>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Direct Phone &amp; Email</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.phone} &bull; ${params.applicantEmail}</td>
+                </tr>
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Delivery Postcode &amp; Sites</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 700; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.postcode} (${params.numberOfSites || '1'} site location)</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Current Foodservice Supplier</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.currentSupplier || 'Not specified'}</td>
+                </tr>
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Requested Weekly Deliveries</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.approxWeeklyDeliveries || 'Daily morning delivery'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Approx Weekly Spend / Budget</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 800; color: #047857; border-bottom: 1px solid #EBE5DB;">${params.approxWeeklySpend ? `£${params.approxWeeklySpend}` : 'Trade Quote Terms'}</td>
+                </tr>
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Pricing Tier</td>
+                  <td style="padding: 10px 14px; font-size: 13px; font-weight: 700; color: #8C6E12; border-bottom: 1px solid #EBE5DB;">${params.accountTier || 'Wholesale Trade Direct'}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65;">Kitchen Notes / Special Request</td>
+                  <td style="padding: 10px 14px; font-size: 13px; color: #4A4A4A; font-style: italic;">${params.message || 'No additional notes provided'}</td>
                 </tr>
               </table>
 
@@ -288,30 +312,45 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
   `;
 
   try {
-    // A) Send Internal Manifest to Rootwills admin
-    const adminRecipients = ['abbasjari1234@gmail.com'];
-    if (process.env.CONCIERGE_NOTIFICATION_EMAIL && !adminRecipients.includes(process.env.CONCIERGE_NOTIFICATION_EMAIL)) {
-      adminRecipients.push(process.env.CONCIERGE_NOTIFICATION_EMAIL);
-    }
-
+    // A) Send Internal Manifest to Rootwills verified account owner (abbasjari1234@gmail.com)
     await resend.emails.send({
       from: FROM_EMAIL,
       reply_to: params.applicantEmail,
-      to: adminRecipients,
+      to: 'abbasjari1234@gmail.com',
       subject: `📋 New Trade Application: ${params.company} (${params.applicantName}) — Ref: ${params.orderRef}`,
       html: adminHtml,
-    }).catch((e) => console.error('[Resend Admin Email Notice]', e));
+    }).catch((e) => console.error('[Resend Admin Owner Notice]', e));
 
-    // B) Send Receipt to the Applicant
+    // B) Also send to custom notification email if specified and different
+    if (
+      process.env.CONCIERGE_NOTIFICATION_EMAIL &&
+      process.env.CONCIERGE_NOTIFICATION_EMAIL !== 'abbasjari1234@gmail.com'
+    ) {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        reply_to: params.applicantEmail,
+        to: process.env.CONCIERGE_NOTIFICATION_EMAIL,
+        subject: `📋 New Trade Application: ${params.company} (${params.applicantName}) — Ref: ${params.orderRef}`,
+        html: adminHtml,
+      }).catch((e) => {
+        // Will activate automatically once rootwills.co.uk domain is verified on Resend
+        console.log('[Resend Concierge Notice]', e.message);
+      });
+    }
+
+    // C) Send Receipt to the Applicant
     const applicantRes = await resend.emails.send({
       from: FROM_EMAIL,
       reply_to: REPLY_TO_EMAIL,
       to: params.applicantEmail,
       subject: `Rootwills Wholesale Trade Application Received — Ref: ${params.orderRef}`,
       html: applicantHtml,
+    }).catch((e) => {
+      console.log('[Resend Applicant Notice]', e.message);
+      return { data: null };
     });
 
-    return { success: true, applicantMessageId: applicantRes.data?.id };
+    return { success: true, applicantMessageId: applicantRes?.data?.id };
   } catch (err: any) {
     console.error('[Resend Email Send Error]', err);
     return { success: false, error: err.message };
