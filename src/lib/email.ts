@@ -343,12 +343,11 @@ export async function sendApplicationEmails(params: SendApplicationEmailParams) 
   `;
 
   try {
-    // A) Send Internal Manifest to Rootwills official inbox & account owner
+    // A) Send Internal Manifest strictly to Rootwills official inbox (sales@rootwills.co.uk)
     const adminRecipients = Array.from(
       new Set(
         [
-          'sales@rootwills.co.uk',
-          'abbasjari1234@gmail.com',
+          process.env.INTERNAL_SALES_EMAIL || 'sales@rootwills.co.uk',
           process.env.CONCIERGE_NOTIFICATION_EMAIL,
         ].filter(Boolean) as string[]
       )
