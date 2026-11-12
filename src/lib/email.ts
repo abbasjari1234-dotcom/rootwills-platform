@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
 const FROM_EMAIL =
-  process.env.RESEND_FROM_EMAIL || 'Rootwills Trade Desk <onboarding@resend.dev>';
+  process.env.RESEND_FROM_EMAIL || 'Rootwills Trade Desk <orders@rootwills.co.uk>';
 
 const REPLY_TO_EMAIL = 'sales@rootwills.co.uk';
 
