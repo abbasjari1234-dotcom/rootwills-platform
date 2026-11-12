@@ -13,7 +13,7 @@ export interface OrderItem {
 
 export interface WholesaleOrder {
   id: string; // e.g. RW-2026-89412
-  status: 'Received' | 'Picking' | 'Loaded' | 'Out for Delivery' | 'Delivered';
+  status: 'Received' | 'Picking' | 'Loaded' | 'Out for Delivery' | 'Delivered' | 'Approved';
   createdAt: string;
   // Exact form fields requested by user
   name: string;
