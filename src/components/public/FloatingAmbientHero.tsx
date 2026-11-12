@@ -6,7 +6,6 @@ import Link from 'next/link';
 import gsap from 'gsap';
 import { Pause, Play } from 'lucide-react';
 
-import { PointerInk } from './PointerInk';
 import { WholesaleCheckoutModal } from './WholesaleCheckoutModal';
 
 interface AnubiCardItem {
@@ -548,9 +547,6 @@ export function FloatingAmbientHero() {
         }}
         aria-hidden="true"
       />
-
-      {/* ─── DYNAMIC CURSOR DOODLE TRAIL (Anubi pointerInk) ─── */}
-      <PointerInk containerRef={heroSectionRef} enabled={!isPaused} />
 
       {/* ─── DOODLE ARTWORK BACKDROP (Z-Index 2: strictly behind orbital photo cards) ─── */}
       <div 

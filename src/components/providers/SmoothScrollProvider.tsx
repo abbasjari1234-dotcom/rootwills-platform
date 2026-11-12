@@ -31,12 +31,12 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
         const { gsap, ScrollTrigger } = GsapCore;
 
         lenisInstance = new LenisConstructor({
-          duration: 1.15,
+          duration: 0.85,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           orientation: 'vertical',
           gestureOrientation: 'vertical',
           smoothWheel: true,
-          wheelMultiplier: 0.9,
+          wheelMultiplier: 1.0,
         });
 
         lenisInstance.on('scroll', ScrollTrigger.update);

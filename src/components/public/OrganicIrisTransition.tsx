@@ -120,6 +120,8 @@ export function OrganicIrisTransition({
     };
   }, []);
 
+  if (phase === 'idle') return null;
+
   return (
     <div
       ref={containerRef}
@@ -128,8 +130,6 @@ export function OrganicIrisTransition({
       className="hidden md:block fixed inset-0 z-[9999999] overflow-hidden pointer-events-none select-none [contain:strict] [isolation:isolate]"
       style={{
         backgroundColor: 'transparent',
-        display: phase === 'idle' ? 'none' : undefined,
-        visibility: phase === 'idle' ? 'hidden' : 'visible',
       }}
     >
       <svg
