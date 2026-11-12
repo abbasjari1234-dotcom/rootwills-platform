@@ -1,10 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { WholesaleOrder } from '@/lib/orders';
+import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
+import { handleApiError } from '@/lib/security/error-handler';
 
 // In-memory runtime cache for recently placed orders so Ops desk can see them immediately
 let recentOrdersStore: WholesaleOrder[] = [];
 
-export async function GET() {
+// GET: Operational order inspection (Strictly locked to authorized staff)
+export async function GET(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
   return NextResponse.json({ orders: recentOrdersStore });
 }
 

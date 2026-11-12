@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
+import { handleApiError } from '@/lib/security/error-handler';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -25,8 +27,13 @@ function getProductsDir() {
   return path.join(process.cwd(), 'src', 'data', 'products');
 }
 
-// GET: Search or list products with pagination
+// GET: Search or list products with pagination (Administrative only)
 export async function GET(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
   try {
     const { searchParams } = new URL(req.url);
     const search = (searchParams.get('search') || '').toLowerCase().trim();
@@ -77,8 +84,13 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// POST: Add new product, Update, or Delete existing product
+// POST: Add new product, Update, or Delete existing product (Administrative only)
 export async function POST(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
   try {
     const body = await req.json();
     const { action, product } = body || {};

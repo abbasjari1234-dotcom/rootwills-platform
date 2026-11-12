@@ -78,7 +78,8 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const auth = localStorage.getItem('rw_ops_authenticated');
-    setIsAuthenticated(auth === 'true');
+    const hasCookie = document.cookie.split(';').some((c) => c.trim().startsWith('rw_ops_session=authorized'));
+    setIsAuthenticated(auth === 'true' || hasCookie);
   }, []);
 
   const handleUnlock = (e: React.FormEvent) => {
@@ -92,6 +93,7 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
       clean === 'Rootwills2026!'
     ) {
       localStorage.setItem('rw_ops_authenticated', 'true');
+      document.cookie = 'rw_ops_session=authorized; path=/; max-age=86400; SameSite=Lax; Secure';
       setIsAuthenticated(true);
       setPasscodeError(false);
     } else {
@@ -101,6 +103,7 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
 
   const handleLockDesk = () => {
     localStorage.removeItem('rw_ops_authenticated');
+    document.cookie = 'rw_ops_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
     setIsAuthenticated(false);
     setPasscode('');
   };

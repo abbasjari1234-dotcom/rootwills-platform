@@ -1,14 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { registerApprovedTradeAccount, getAllTradeAccounts, TradeAccount } from '@/lib/tradeAuth';
+import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
+import { handleApiError } from '@/lib/security/error-handler';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
-  const accounts = getAllTradeAccounts();
+export async function GET(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
+  // Strip sensitive passwords before returning account lists
+  const accounts = getAllTradeAccounts().map(({ plainPassword, passwordHash, ...safe }) => safe);
   return NextResponse.json({ success: true, accounts });
 }
 
 export async function POST(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
   try {
     const body = await req.json();
     const { id, company, contactName, email, phone, postcode, plainPassword, tier } = body || {};

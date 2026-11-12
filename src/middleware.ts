@@ -37,7 +37,21 @@ export function middleware(request: NextRequest) {
 
   // On main web (rootwills.co.uk), allow public browsing of products & marketing pages
   const response = NextResponse.next();
-  if (isDirectDomain || pathname.startsWith('/ops') || pathname.startsWith('/admin') || pathname.startsWith('/direct') || pathname.startsWith('/login')) {
+
+  // Strict Enterprise Security Headers across all platform endpoints
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('X-Frame-Options', 'SAMEORIGIN');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+  if (
+    isDirectDomain ||
+    pathname.startsWith('/ops') ||
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/direct') ||
+    pathname.startsWith('/login')
+  ) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
   }
   return response;
