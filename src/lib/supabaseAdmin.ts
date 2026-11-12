@@ -122,3 +122,4 @@ export async function saveLeadToSupabase(payload: LeadSubmissionPayload) {
     return { success: false, error: err.message };
   }
 }
+
