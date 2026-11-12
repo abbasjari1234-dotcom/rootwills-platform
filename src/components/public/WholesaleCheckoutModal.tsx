@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   ArrowRight,
   MessageCircle,
+  ShieldCheck,
 } from 'lucide-react';
 import { OrderItem, WholesaleOrder } from '@/lib/orders';
 import { WHOLESALE_PRODUCTS, type WholesaleProduct } from '@/data/wholesaleProducts';
@@ -545,6 +546,21 @@ function WholesaleCheckoutModalInner({
               */}
               <div className="p-6 sm:p-10 space-y-6">
                 <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                  {/* B2B Commercial Verification Notice Banner */}
+                  <div className="rounded-xl bg-[#FAF7F2] border border-[#BA8E4E]/35 p-3.5 sm:p-4 flex items-start gap-3 text-left shadow-2xs">
+                    <div className="w-8 h-8 rounded-full bg-[#2E060D]/10 text-[#8B2635] flex items-center justify-center shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4 text-[#8B2635]" />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-[11.5px] font-sans font-bold text-[#2E060D] tracking-wide uppercase flex items-center gap-2">
+                        <span>Commercial Trade Account Notice</span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold normal-case">Fast Review</span>
+                      </div>
+                      <p className="text-[11px] sm:text-[11.5px] text-stone-600 font-sans leading-relaxed">
+                        In accordance with UK wholesale standards, all trade accounts undergo business verification. Our Birmingham dispatch desk reviews applications within <strong>2–4 business hours</strong>. Once approved, your <strong>Account ID and temporary password</strong> will be issued via email and WhatsApp to access locked wholesale pricing.
+                      </p>
+                    </div>
+                  </div>
                   {/* Attached Manifest Valuation Bar (Bidfood wholesale invoice estimation) */}
                   {items.length > 0 && (
                     <div className="rounded-xl bg-[#FAF7F2] border border-[#EAE0CE] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
