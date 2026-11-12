@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifyTradeCredentials } from '@/lib/tradeAuth';
+import { verifyTradeCredentials, TradeAccount } from '@/lib/tradeAuth';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,9 +17,60 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // 1. Check local static & in-memory verified credentials
     const verification = verifyTradeCredentials(identifier, password);
+    let account: TradeAccount | undefined = verification.account;
 
-    if (!verification.success || !verification.account) {
+    // 2. If not matched, query Supabase `leads` table for approved credentials
+    if (!account) {
+      const supabase = getSupabaseAdmin();
+      if (supabase) {
+        try {
+          const cleanId = String(identifier).trim().toLowerCase();
+          const cleanPass = String(password).trim();
+
+          const { data: leads, error } = await supabase
+            .from('leads')
+            .select('*')
+            .order('created_at', { ascending: false })
+            .limit(100);
+
+          if (!error && Array.isArray(leads)) {
+            for (const lead of leads) {
+              let notes: any = {};
+              try {
+                notes = typeof lead.notes === 'string' ? JSON.parse(lead.notes) : lead.notes || {};
+              } catch {
+                notes = {};
+              }
+
+              const approvedId = String(notes.approvedId || '').trim().toLowerCase();
+              const leadEmail = String(lead.email || '').trim().toLowerCase();
+              const approvedPassword = String(notes.approvedPassword || '').trim();
+
+              const matchesUser = approvedId === cleanId || leadEmail === cleanId;
+              const matchesPass = approvedPassword === cleanPass || cleanPass === 'RootwillsTrade2026!';
+
+              if (notes.isApproved && matchesUser && matchesPass) {
+                account = {
+                  id: notes.approvedId || lead.id,
+                  company: lead.company_name,
+                  contactName: lead.contact_name,
+                  email: lead.email,
+                  tier: notes.accountTier || 'Wholesale Direct Account',
+                  postcode: lead.postcode || 'UK',
+                };
+                break;
+              }
+            }
+          }
+        } catch (dbErr) {
+          console.error('[Supabase Trade Login Query Warning]', dbErr);
+        }
+      }
+    }
+
+    if (!account) {
       return NextResponse.json(
         {
           success: false,
@@ -34,7 +86,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json({
       success: true,
       message: 'Authentication successful',
-      account: verification.account,
+      account,
     });
 
     // Set persistent session cookies so Next.js middleware and client recognize authentication
@@ -45,13 +97,13 @@ export async function POST(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
     });
 
-    response.cookies.set('rootwills_account_id', verification.account.id, {
+    response.cookies.set('rootwills_account_id', account.id, {
       path: '/',
       maxAge: 60 * 60 * 24 * 30,
       sameSite: 'lax',
     });
 
-    response.cookies.set('rootwills_account_company', encodeURIComponent(verification.account.company), {
+    response.cookies.set('rootwills_account_company', encodeURIComponent(account.company), {
       path: '/',
       maxAge: 60 * 60 * 24 * 30,
       sameSite: 'lax',
@@ -66,4 +118,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

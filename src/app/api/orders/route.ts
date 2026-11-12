@@ -2,8 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 import { WholesaleOrder } from '@/lib/orders';
 import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
 import { handleApiError } from '@/lib/security/error-handler';
+import { saveLeadToSupabase, getSupabaseAdmin } from '@/lib/supabaseAdmin';
+import { sendApplicationEmails } from '@/lib/email';
 
-// In-memory runtime cache for recently placed orders so Ops desk can see them immediately
+// In-memory runtime cache for recently placed orders
 let recentOrdersStore: WholesaleOrder[] = [];
 
 // GET: Operational order inspection (Strictly locked to authorized staff)
@@ -13,7 +15,71 @@ export async function GET(req: NextRequest) {
     return unauthorizedResponse(authCheck.reason);
   }
 
-  return NextResponse.json({ orders: recentOrdersStore });
+  // Fetch persisted leads from Supabase to merge with recentOrdersStore
+  const supabase = getSupabaseAdmin();
+  let dbOrders: WholesaleOrder[] = [];
+
+  if (supabase) {
+    try {
+      const { data: leads, error } = await supabase
+        .from('leads')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(50);
+
+      if (!error && Array.isArray(leads)) {
+        dbOrders = leads.map((lead: any) => {
+          let parsedNotes: any = {};
+          try {
+            parsedNotes = typeof lead.notes === 'string' ? JSON.parse(lead.notes) : lead.notes || {};
+          } catch {
+            parsedNotes = {};
+          }
+
+          return {
+            id: parsedNotes.orderId || `RW-LEAD-${lead.id.slice(0, 8).toUpperCase()}`,
+            status: lead.status === 'contacted' ? 'Approved' : 'Received',
+            createdAt: lead.created_at || new Date().toISOString(),
+            name: lead.contact_name || 'Chef / Buyer',
+            email: lead.email || '',
+            phone: lead.phone || '',
+            jobTitle: parsedNotes.jobTitle || 'Chef / Buyer',
+            company: lead.company_name || 'Hospitality Venue',
+            numberOfSites: parsedNotes.numberOfSites || '1',
+            postcode: lead.postcode || 'B5 6EU',
+            currentSupplier: parsedNotes.currentSupplier,
+            approxWeeklyDeliveries: parsedNotes.approxWeeklyDeliveries,
+            approxWeeklySpend: parsedNotes.approxWeeklySpend || (lead.estimated_spend ? `£${lead.estimated_spend}` : undefined),
+            message: parsedNotes.message,
+            marketingEmail: Boolean(parsedNotes.marketingEmail),
+            marketingSms: Boolean(parsedNotes.marketingSms),
+            items: Array.isArray(parsedNotes.items) ? parsedNotes.items : [],
+            totalCases: parsedNotes.totalCases || 0,
+            totalLines: Array.isArray(parsedNotes.items) ? parsedNotes.items.length : 0,
+            subtotalNet: parsedNotes.subtotalNet || (typeof lead.estimated_spend === 'number' ? lead.estimated_spend : undefined),
+            vatTotal: parsedNotes.vatTotal,
+            grandTotal: parsedNotes.grandTotal,
+            accountTier: parsedNotes.accountTier || 'Trade Standard',
+          };
+        });
+      }
+    } catch (err) {
+      console.error('[Supabase GET Orders Error]', err);
+    }
+  }
+
+  // Merge unique orders
+  const seenIds = new Set<string>();
+  const combined: WholesaleOrder[] = [];
+
+  for (const ord of [...recentOrdersStore, ...dbOrders]) {
+    if (ord && ord.id && !seenIds.has(ord.id)) {
+      seenIds.add(ord.id);
+      combined.push(ord);
+    }
+  }
+
+  return NextResponse.json({ orders: combined });
 }
 
 export async function POST(req: NextRequest) {
@@ -34,7 +100,7 @@ export async function POST(req: NextRequest) {
       status: 'Received',
       createdAt: new Date().toISOString(),
       name: String(body.name).trim(),
-      email: String(body.email).trim(),
+      email: String(body.email).trim().toLowerCase(),
       phone: String(body.phone).trim(),
       jobTitle: String(body.jobTitle || 'Chef / Buyer').trim(),
       company: String(body.company).trim(),
@@ -55,10 +121,51 @@ export async function POST(req: NextRequest) {
       accountTier: body.accountTier ? String(body.accountTier) : undefined,
     };
 
-    // Prepend to runtime store
+    // 1. Immediately persist to Supabase `leads` table so it NEVER gets lost
+    try {
+      await saveLeadToSupabase({
+        company: newOrder.company,
+        name: newOrder.name,
+        email: newOrder.email,
+        phone: newOrder.phone,
+        postcode: newOrder.postcode,
+        jobTitle: newOrder.jobTitle,
+        numberOfSites: newOrder.numberOfSites,
+        currentSupplier: newOrder.currentSupplier,
+        approxWeeklyDeliveries: newOrder.approxWeeklyDeliveries,
+        approxWeeklySpend: newOrder.approxWeeklySpend,
+        message: newOrder.message,
+        marketingEmail: newOrder.marketingEmail,
+        marketingSms: newOrder.marketingSms,
+        items: newOrder.items,
+        totalCases: newOrder.totalCases,
+        subtotalNet: newOrder.subtotalNet,
+        vatTotal: newOrder.vatTotal,
+        grandTotal: newOrder.grandTotal,
+        accountTier: newOrder.accountTier,
+        orderId: newOrder.id,
+      });
+    } catch (dbErr) {
+      console.error('[Supabase Persistence Warning]', dbErr);
+    }
+
+    // 2. Prepend to runtime store for fast local responses
     recentOrdersStore = [newOrder, ...recentOrdersStore.slice(0, 49)];
 
-    // Send dispatch notification email to Rootwills night logistics desk
+    // 3. Send automated transactional confirmation emails (via Resend if configured)
+    sendApplicationEmails({
+      applicantName: newOrder.name,
+      applicantEmail: newOrder.email,
+      company: newOrder.company,
+      phone: newOrder.phone,
+      postcode: newOrder.postcode,
+      orderRef: newOrder.id,
+      accountTier: newOrder.accountTier,
+      approxWeeklySpend: newOrder.approxWeeklySpend,
+      itemsCount: newOrder.totalCases,
+    }).catch((err) => console.error('[Email Dispatch Notice]', err));
+
+    // 4. Secondary webhook fallback to FormSubmit
     try {
       const itemsListFormatted = newOrder.items.length > 0
         ? newOrder.items
@@ -98,7 +205,7 @@ export async function POST(req: NextRequest) {
       const origin = req.headers.get('origin') || 'https://www.rootwills.co.uk';
       const referer = req.headers.get('referer') || 'https://www.rootwills.co.uk/direct';
 
-      await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+      fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

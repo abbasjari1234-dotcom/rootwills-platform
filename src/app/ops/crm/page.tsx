@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Users,
   Search,
@@ -27,6 +27,7 @@ import {
   Check,
   MessageCircle,
   ExternalLink,
+  Sparkles,
 } from 'lucide-react';
 
 interface CustomerAccount {
@@ -47,6 +48,7 @@ interface CustomerAccount {
   isApproved?: boolean;
   approvedId?: string;
   approvedPassword?: string;
+  isWebLead?: boolean;
 }
 
 const INITIAL_ACCOUNTS: CustomerAccount[] = [
@@ -64,10 +66,12 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
       { name: 'Sarah J.', avatar: 'SJ' },
     ],
     dueDate: 'Dec 25, 2026',
-    priority: 'Urgent',
+    priority: 'Normal',
     creditUtilized: 38,
     spendMonth: '£18,450',
     paymentTerms: '30 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-89412',
   },
   {
     id: 'cust-2',
@@ -87,6 +91,8 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     creditUtilized: 54,
     spendMonth: '£12,320',
     paymentTerms: '14 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-44210',
   },
   {
     id: 'cust-3',
@@ -103,6 +109,8 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     creditUtilized: 28,
     spendMonth: '£24,800',
     paymentTerms: '30 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-31908',
   },
   {
     id: 'cust-4',
@@ -118,10 +126,12 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
       { name: 'Elena Rostova', avatar: 'ER' },
     ],
     dueDate: 'Dec 25, 2026',
-    priority: 'Urgent',
+    priority: 'Normal',
     creditUtilized: 72,
     spendMonth: '£16,190',
     paymentTerms: '30 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-66741',
   },
   {
     id: 'cust-5',
@@ -138,6 +148,7 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     creditUtilized: 19,
     spendMonth: '£9,850',
     paymentTerms: '7 Days Net',
+    isApproved: true,
   },
   {
     id: 'cust-6',
@@ -157,6 +168,7 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     creditUtilized: 46,
     spendMonth: '£21,400',
     paymentTerms: '30 Days Net',
+    isApproved: true,
   },
 ];
 
@@ -168,6 +180,30 @@ export default function CustomerCRMHub() {
   const [approvedCredentialsModal, setApprovedCredentialsModal] = useState<any | null>(null);
   const [copied, setCopied] = useState<boolean>(false);
   const [approvingId, setApprovingId] = useState<string | null>(null);
+  const [isLoadingLeads, setIsLoadingLeads] = useState<boolean>(true);
+
+  // Fetch live applications & leads from Supabase on mount
+  useEffect(() => {
+    const fetchLiveLeads = async () => {
+      try {
+        const res = await fetch('/api/admin/crm/approve');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && Array.isArray(data.leads) && data.leads.length > 0) {
+            // Place incoming web applications at the top
+            const merged = [...data.leads, ...INITIAL_ACCOUNTS];
+            setAccounts(merged);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load CRM leads from database:', err);
+      } finally {
+        setIsLoadingLeads(false);
+      }
+    };
+
+    fetchLiveLeads();
+  }, []);
 
   const handleApproveAccount = async (account: CustomerAccount) => {
     setApprovingId(account.id);
@@ -176,11 +212,12 @@ export default function CustomerCRMHub() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          leadId: account.isWebLead ? account.id : undefined,
           company: account.name,
           contactName: account.headChef,
           email: account.email,
           phone: account.phone,
-          postcode: 'UK',
+          postcode: (account as any).postcode || 'UK',
           tier: account.segment,
         }),
       });
@@ -229,11 +266,14 @@ export default function CustomerCRMHub() {
     }
   };
 
+  const pendingApprovalsCount = accounts.filter((acc) => !acc.isApproved).length;
+
   const filteredAccounts = accounts.filter((acc) => {
     const matchesSearch =
       acc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       acc.headChef.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      acc.segment.toLowerCase().includes(searchTerm.toLowerCase());
+      acc.segment.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      acc.email.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesPriority = filterPriority === 'All' || acc.priority === filterPriority;
     return matchesSearch && matchesPriority;
   });
@@ -283,12 +323,18 @@ export default function CustomerCRMHub() {
             <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
               <Clock className="w-5 h-5" />
             </div>
-            <div className="text-3xl font-black text-slate-900 tracking-tight">14</div>
-            <div className="text-xs text-slate-500 font-medium mt-0.5">Pending Credit Verifications</div>
+            <div className="text-3xl font-black text-slate-900 tracking-tight">{pendingApprovalsCount}</div>
+            <div className="text-xs text-slate-500 font-medium mt-0.5">Pending Account Approvals</div>
           </div>
-          <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-rose-50 text-rose-600">
-            Requires Review
-          </span>
+          {pendingApprovalsCount > 0 ? (
+            <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-rose-50 text-rose-600 animate-pulse">
+              Requires Review
+            </span>
+          ) : (
+            <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-emerald-50 text-emerald-600">
+              All Verified
+            </span>
+          )}
         </div>
 
         {/* Card 4: Health Donut Ring Gauge (from Image 2) */}
@@ -374,8 +420,17 @@ export default function CustomerCRMHub() {
 
                     {/* Account Name */}
                     <td className="py-4 font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-                      <div>{item.name}</div>
-                      <div className="text-[10px] text-slate-400 font-normal">{item.headChef}</div>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span>{item.name}</span>
+                        {item.isWebLead && !item.isApproved && (
+                          <span className="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-bold tracking-tight uppercase">
+                            New Lead
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-normal">
+                        {item.headChef} {item.phone ? `(${item.phone})` : item.email ? `(${item.email})` : ''}
+                      </div>
                     </td>
 
                     {/* Description / Sector */}
@@ -760,6 +815,16 @@ export default function CustomerCRMHub() {
                 <MessageCircle className="w-4 h-4" />
                 <span>Send via WhatsApp</span>
               </a>
+
+              {approvedCredentialsModal.mailtoUrl && (
+                <a
+                  href={approvedCredentialsModal.mailtoUrl}
+                  className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-black text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+                >
+                  <Mail className="w-4 h-4 text-[#F3D08A]" />
+                  <span>Send via Email Client</span>
+                </a>
+              )}
 
               <button
                 type="button"
