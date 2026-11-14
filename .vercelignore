@@ -1,9 +1,0 @@
-.agents
-.gemini
-scratch/
-test*
-*.log
-public/page_*.png
-.git
-.github
-
