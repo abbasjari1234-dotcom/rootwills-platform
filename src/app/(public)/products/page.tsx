@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { PublicProductsView } from '@/components/public/PublicProductsView';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Foodservice Catalog | 5,480+ Lines Across 12 Commercial Departments',
+  title: 'Wholesale Foodservice Catalog | 5,480+ Lines | Rootwills',
   description:
-    'Explore the Rootwills multi-temperature B2B wholesale foodservice catalog: 5,480+ chef-graded lines across Fresh Produce, Prime British Butchery, Poultry, Artisan Dairy, Day-Boat Seafood, Bakery, Ambient Dry Store, Cold-Pressed Oils, Spices, Drinks, Desserts, and Kitchen Consumables.',
+    'Browse 5,480+ chef-graded wholesale foodservice lines across Fresh Produce, Butchery, Artisan Dairy, Seafood, Bakery, and Ambient Store for UK kitchens.',
   keywords: [
     'wholesale food catalog',
     'hospitality food suppliers UK',
@@ -24,8 +24,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rootwills Wholesale Product Catalog | 5,480+ Hospitality Lines',
     description:
-      'Multi-temperature wholesale foodservice catalog: 5,480+ lines across Fresh Produce, Prime Butchery, Artisan Dairy, Seafood, Bakery, Frozen, and Ambient Grocery for UK chefs and caterers.',
+      'Multi-temperature wholesale foodservice catalog: 5,480+ lines across Fresh Produce, Prime Butchery, Artisan Dairy, Seafood, Bakery, and Ambient Grocery for UK chefs.',
     url: 'https://www.rootwills.co.uk/products',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wholesale Foodservice Catalog | 5,480+ Lines | Rootwills',
+    description:
+      'Browse 5,480+ chef-graded wholesale foodservice lines across Fresh Produce, Butchery, Artisan Dairy, Seafood, and Bakery.',
   },
 };
 

@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: 'Privacy Policy & UK GDPR Compliance | Rootwills',
   description:
     'Review the Rootwills privacy policy and UK GDPR data protection standards protecting commercial trade partners and clients across the UK.',
+  alternates: {
+    canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy & UK GDPR Compliance | Rootwills',
+    description:
+      'Review the Rootwills privacy policy and UK GDPR compliance standards protecting commercial trade partners.',
+    url: 'https://www.rootwills.co.uk/privacy',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy & UK GDPR Compliance | Rootwills',
+    description:
+      'Rootwills privacy policy and UK GDPR data protection standards for commercial clients.',
+  },
 };
 
 export default function PrivacyPolicyPage() {

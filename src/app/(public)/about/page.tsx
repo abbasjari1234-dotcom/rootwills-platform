@@ -14,11 +14,23 @@ import {
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
-  title: 'About Rootwills | British Farm Provenance & Hospitality Wholesale UK',
+  title: 'About Rootwills | British Farm Produce & Wholesale UK',
   description:
-    'Rootwills connects Britain’s finest generational growers, single-herd artisanal dairies, and coastal fisheries directly with professional kitchen brigades. Precision pre-dawn delivery across Birmingham, the Midlands, and London.',
+    'Rootwills connects British growers, artisanal dairies, and day-boats directly with chefs. Pre-dawn refrigerated delivery across Birmingham and London.',
   alternates: {
     canonical: '/about',
+  },
+  openGraph: {
+    title: 'About Rootwills | British Farm Produce & Hospitality Wholesale',
+    description:
+      'Direct farm partnerships and multi-temperature cold chain logistics supplying executive hospitality brigades across the UK.',
+    url: 'https://www.rootwills.co.uk/about',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Rootwills | British Farm Produce & Wholesale UK',
+    description:
+      'Generational grower partnerships and pre-dawn fresh food distribution across Birmingham, Midlands, and London.',
   },
 };
 

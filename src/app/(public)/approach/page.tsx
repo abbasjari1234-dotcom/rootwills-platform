@@ -20,11 +20,23 @@ import {
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
-  title: 'Our Quality Standards & Cold Chain Logistics | Rootwills UK',
+  title: 'Quality Standards & Cold Chain Logistics | Rootwills UK',
   description:
-    'Every single crate delivered by Rootwills is backed by strict 02:00 AM depot intake grading, continuous refrigeration telemetry, and genuine British farm provenance.',
+    'Every crate from Rootwills features 02:00 AM depot intake grading, continuous refrigeration telemetry, and 100% British farm provenance traceability.',
   alternates: {
     canonical: '/approach',
+  },
+  openGraph: {
+    title: 'Quality Standards & Cold Chain Logistics | Rootwills UK',
+    description:
+      'Rigorous 02:00 AM wholesale grading, temperature-controlled transit, and direct grower traceability for UK commercial kitchens.',
+    url: 'https://www.rootwills.co.uk/approach',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Quality Standards & Cold Chain Logistics | Rootwills UK',
+    description:
+      'Every crate from Rootwills features 02:00 AM depot intake grading and refrigerated delivery.',
   },
 };
 

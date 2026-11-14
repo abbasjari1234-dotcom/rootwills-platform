@@ -24,9 +24,9 @@ import {
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Produce Supplier & Food Service Delivery Birmingham & UK | Rootwills',
+  title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
   description:
-    'Commercial food services and wholesale fresh produce supplier for restaurants, hotels, and caterers across Birmingham, Midlands, and London. Direct farm sourcing, wholesale trade terms, and guaranteed pre-dawn kitchen delivery.',
+    'Commercial food service and fresh produce wholesaler for restaurants and hotels across Birmingham and UK. Pre-dawn delivery and wholesale trade terms.',
   keywords: [
     'wholesale produce supplier Birmingham',
     'commercial food service supplier UK',
@@ -38,6 +38,18 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/services',
+  },
+  openGraph: {
+    title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
+    description:
+      'Commercial foodservice and fresh produce wholesale supplying hospitality kitchens across Birmingham and London pre-dawn.',
+    url: 'https://www.rootwills.co.uk/services',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
+    description:
+      'Commercial food service and fresh produce wholesaler with pre-dawn delivery across Birmingham and UK.',
   },
 };
 

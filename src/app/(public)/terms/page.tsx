@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
   description:
     'Read the official B2B wholesale supply terms, delivery cut-offs, payment conditions, and service standards for Rootwills commercial trade partners.',
+  alternates: {
+    canonical: '/terms',
+  },
+  openGraph: {
+    title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
+    description:
+      'Official B2B wholesale supply terms, ordering cut-offs, and payment conditions for Rootwills commercial trade partners.',
+    url: 'https://www.rootwills.co.uk/terms',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Wholesale B2B Supply Terms & Conditions | Rootwills',
+    description:
+      'Official B2B wholesale supply terms and service standards for Rootwills commercial trade partners.',
+  },
 };
 
 export default function TermsPage() {

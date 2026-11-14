@@ -11,8 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/ops/',
           '/ops',
-          '/direct',
-          '/login',
           '/admin/',
           '/driver/',
           '/dashboard/',
@@ -22,6 +20,8 @@ export default function robots(): MetadataRoute.Robots {
           '/standing-orders/',
           '/account/',
           '/api/',
+          '/*?search=*',
+          '/*?*=',
         ],
       },
     ],

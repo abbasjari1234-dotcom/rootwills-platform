@@ -158,7 +158,8 @@ export function PartnerBrandsSlider() {
                 {marqueeBrands.map((brand, idx) => (
                   <Link
                     key={`${brand.name}-${idx}`}
-                    href={`/products?search=${encodeURIComponent(brand.searchQuery)}`}
+                    href={`/products?search=${encodeURIComponent(brand.searchQuery.toLowerCase())}`}
+                    rel="nofollow"
                     className="shrink-0 group flex items-center justify-center focus:outline-none"
                     title={`Browse ${brand.name} Catering Lines`}
                   >
