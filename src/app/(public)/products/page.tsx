@@ -26,12 +26,17 @@ export const metadata: Metadata = {
     description:
       'Multi-temperature wholesale foodservice catalog: 5,480+ lines across Fresh Produce, Prime Butchery, Artisan Dairy, Seafood, Bakery, and Ambient Grocery for UK chefs.',
     url: 'https://www.rootwills.co.uk/products',
+    siteName: 'Rootwills',
+    locale: 'en_GB',
+    type: 'website',
+    images: [{ url: '/images/commercial/rootwills_hero_chef_plating.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Wholesale Foodservice Catalog | 5,480+ Lines | Rootwills',
     description:
       'Browse 5,480+ chef-graded wholesale foodservice lines across Fresh Produce, Butchery, Artisan Dairy, Seafood, and Bakery.',
+    images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
 };
 

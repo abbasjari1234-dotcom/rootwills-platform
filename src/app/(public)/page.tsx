@@ -9,11 +9,11 @@ import { MidBannerSection } from '@/components/public/MidBannerSection';
 import { TestimonialsSection } from '@/components/public/TestimonialsSection';
 
 export const metadata = {
-  title: 'Rootwills | UK Food Services, Fresh Produce & Hospitality Wholesale Supplier',
+  title: 'Rootwills | UK Food Services & Hospitality Wholesale',
   description:
-    'Rootwills supplies restaurants, hotels, caterers, and hospitality kitchens across Birmingham, the Midlands, and London with hand-graded British farm produce, artisan dairy, prime butchery, and pre-dawn wholesale delivery.',
+    'Rootwills supplies UK restaurants, hotels, and caterers across Birmingham and London with hand-graded British farm produce and pre-dawn wholesale delivery.',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.rootwills.co.uk/',
   },
 };
 

@@ -31,12 +31,17 @@ export const metadata: Metadata = {
     description:
       'Rigorous 02:00 AM wholesale grading, temperature-controlled transit, and direct grower traceability for UK commercial kitchens.',
     url: 'https://www.rootwills.co.uk/approach',
+    siteName: 'Rootwills',
+    locale: 'en_GB',
+    type: 'website',
+    images: [{ url: '/images/commercial/rootwills_hero_chef_plating.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Quality Standards & Cold Chain Logistics | Rootwills UK',
     description:
       'Every crate from Rootwills features 02:00 AM depot intake grading and refrigerated delivery.',
+    images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
 };
 

@@ -852,6 +852,7 @@ export function PublicProductsView() {
                 <span>Guest Catalog View</span>
                 <a
                   href="/direct"
+                  rel="nofollow"
                   className="text-[10.5px] font-semibold text-[#8B2635] hover:underline flex items-center gap-0.5"
                 >
                   Trade Login <ArrowUpRight className="w-3 h-3" />

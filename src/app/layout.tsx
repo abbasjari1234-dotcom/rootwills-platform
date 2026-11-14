@@ -14,11 +14,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.rootwills.co.uk'),
   title: {
-    default: 'Rootwills | UK Food Services, Fresh Produce & Hospitality Wholesale Supplier',
-    template: '%s | Rootwills UK Wholesale',
+    default: 'Rootwills | UK Food Services & Hospitality Wholesale',
+    template: '%s',
   },
   description:
-    'Rootwills is a premier UK commercial foodservice and wholesale supplier. Hand-graded British farm produce, artisan dairy, prime butchery, and pre-dawn kitchen delivery across Birmingham, the Midlands, and London.',
+    'Rootwills is a premier UK commercial foodservice and wholesale supplier. Hand-graded British farm produce, artisan dairy, and pre-dawn kitchen delivery.',
   keywords: [
     'Rootwills',
     'Rootwills Ltd',

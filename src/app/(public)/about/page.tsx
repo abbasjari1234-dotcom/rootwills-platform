@@ -21,16 +21,21 @@ export const metadata: Metadata = {
     canonical: '/about',
   },
   openGraph: {
-    title: 'About Rootwills | British Farm Produce & Hospitality Wholesale',
+    title: 'About Rootwills | British Farm Produce & Wholesale UK',
     description:
       'Direct farm partnerships and multi-temperature cold chain logistics supplying executive hospitality brigades across the UK.',
     url: 'https://www.rootwills.co.uk/about',
+    siteName: 'Rootwills',
+    locale: 'en_GB',
+    type: 'website',
+    images: [{ url: '/images/commercial/rootwills_hero_chef_plating.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About Rootwills | British Farm Produce & Wholesale UK',
     description:
       'Generational grower partnerships and pre-dawn fresh food distribution across Birmingham, Midlands, and London.',
+    images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
 };
 
