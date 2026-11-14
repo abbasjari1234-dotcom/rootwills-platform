@@ -48,8 +48,7 @@ export function middleware(request: NextRequest) {
   if (
     isDirectDomain ||
     pathname.startsWith('/ops') ||
-    pathname.startsWith('/admin') ||
-    pathname.startsWith('/login')
+    pathname.startsWith('/admin')
   ) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
   }

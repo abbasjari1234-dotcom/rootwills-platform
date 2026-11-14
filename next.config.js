@@ -155,22 +155,22 @@ const nextConfig = {
       {
         source: '/login',
         destination: '/direct',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/apply',
         destination: '/contact',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/sectors',
-        destination: '/#services',
-        permanent: false,
+        destination: '/services',
+        permanent: true,
       },
       {
         source: '/delivery',
-        destination: '/#approach',
-        permanent: false,
+        destination: '/approach',
+        permanent: true,
       },
     ];
   },
