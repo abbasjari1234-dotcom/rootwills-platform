@@ -166,7 +166,7 @@ export function ContactFormView() {
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
                 <span className="text-xs sm:text-[13.5px] font-sans text-white/95 leading-snug">
-                  The Hub, Nobel Wy, Birmingham, UK
+                  The Hub, Nobel Way, Birmingham, B6 7EU, UK
                 </span>
               </div>
             </div>
@@ -316,6 +316,52 @@ export function ContactFormView() {
             )}
           </div>
 
+        </div>
+      </section>
+
+      {/* ─── REGIONAL HUBS, PRE-DAWN DELIVERY SLAs & TRADE ONBOARDING FAQ ─── */}
+      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
+        <div className="rounded-[20px] bg-white/90 border border-[#EAE0CE] p-6 sm:p-10 shadow-[0_12px_40px_rgba(46,6,13,0.04)] space-y-8">
+          <div className="max-w-2xl space-y-2">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#8B2635] font-semibold block">
+              BIRMINGHAM &amp; UK HOSPITALITY LOGISTICS
+            </span>
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] tracking-tight">
+              Regional Wholesale Coverage &amp; Trade Account Onboarding
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Rootwills Ltd operates multi-temperature wholesale distribution from our primary Midlands hub at The Hub, Nobel Way, Birmingham (B6 7EU), serving independent restaurants, hotel groups, contract caterers, and gastro pubs across Birmingham, the West Midlands, Manchester, and Greater London.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8DEC8]/80 space-y-2">
+              <h3 className="text-sm sm:text-base font-serif font-bold text-[#2E060D]">
+                What areas of Birmingham and the UK does Rootwills supply?
+              </h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                Our dual-evaporator refrigerated fleet dispatches daily from Birmingham (B6 7EU) across Birmingham City Centre, Edgbaston, Solihull, Sutton Coldfield, Wolverhampton, Coventry, the wider West Midlands, Manchester, and Greater London hospitality postcodes.
+              </p>
+            </div>
+
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8DEC8]/80 space-y-2">
+              <h3 className="text-sm sm:text-base font-serif font-bold text-[#2E060D]">
+                What are your order cut-off times and pre-dawn delivery windows?
+              </h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                Hospitality trade partners can submit standing or bespoke orders up to 23:00 PM Monday through Saturday. Consignments are graded at 02:00 AM and delivered directly into kitchen walk-in cold rooms between 04:00 AM and 07:30 AM before morning prep begins.
+              </p>
+            </div>
+
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8DEC8]/80 space-y-2">
+              <h3 className="text-sm sm:text-base font-serif font-bold text-[#2E060D]">
+                How quickly can a restaurant or hotel open a Rootwills trade account?
+              </h3>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                New wholesale accounts are verified within 24 hours. Submit your kitchen requirements via the enquiry form above, email sales@rootwills.co.uk, or message our WhatsApp trade desk on +44 7984 709478 to receive your trade portal credentials and volume pricing matrix.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface BrandItem {
@@ -82,6 +82,7 @@ const BRANDS: BrandItem[] = [
 ];
 
 export function PartnerBrandsSlider() {
+  const router = useRouter();
   const [isPaused, setIsPaused] = useState(false);
   const [manualOffset, setManualOffset] = useState(0);
 
@@ -114,9 +115,9 @@ export function PartnerBrandsSlider() {
           <span className="font-mono text-[9.5px] sm:text-[10px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold block">
             ESTABLISHED WHOLESALE LINES
           </span>
-          <h3 className="font-serif font-bold text-sm sm:text-base text-[#2E060D] tracking-tight">
+          <h2 className="font-serif font-bold text-sm sm:text-base text-[#2E060D] tracking-tight">
             Trusted British &amp; International Foodservice Brands We Source &amp; Supply
-          </h3>
+          </h2>
         </div>
 
         <div className="relative flex items-center justify-between">
@@ -156,11 +157,13 @@ export function PartnerBrandsSlider() {
                 onTouchEnd={() => setIsPaused(false)}
               >
                 {marqueeBrands.map((brand, idx) => (
-                  <Link
+                  <button
                     key={`${brand.name}-${idx}`}
-                    href={`/products?search=${encodeURIComponent(brand.searchQuery.toLowerCase())}`}
-                    rel="nofollow"
-                    className="shrink-0 group flex items-center justify-center focus:outline-none"
+                    type="button"
+                    onClick={() =>
+                      router.push(`/products?search=${encodeURIComponent(brand.searchQuery.toLowerCase())}`)
+                    }
+                    className="shrink-0 group flex items-center justify-center focus:outline-none cursor-pointer"
                     title={`Browse ${brand.name} Catering Lines`}
                   >
                     <div className="relative flex items-center justify-center p-1 transition-transform duration-200 group-hover:scale-105">
@@ -176,7 +179,7 @@ export function PartnerBrandsSlider() {
                         priority={idx < 8}
                       />
                     </div>
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>

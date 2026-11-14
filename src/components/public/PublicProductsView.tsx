@@ -421,12 +421,12 @@ export function PublicProductsView() {
           </div>
 
           {/* Line 2: Product Name with Clean Readability */}
-          <h4
+          <h3
             title={product.name}
             className="text-[13px] sm:text-[13.5px] font-semibold text-stone-900 group-hover:text-[#2E060D] leading-[1.3] line-clamp-2 min-h-[34px] transition-colors"
           >
             {product.name}
-          </h4>
+          </h3>
 
           {/* Line 3: B2B Wholesale Pricing Bar (Bidfood / Brakes benchmark) */}
           <div className="mt-1.5 pt-1 border-t border-[#F2ECE1]/70 flex items-baseline justify-between">
@@ -786,6 +786,7 @@ export function PublicProductsView() {
 
       {/* ─── 3-COLUMN WHOLESALE PLATFORM ARCHITECTURE ─── */}
       <div className="relative z-10 max-w-[1520px] mx-auto px-3 sm:px-5 lg:px-6">
+        <h1 className="sr-only">Rootwills Wholesale Foodservice &amp; Fresh Produce Catalog</h1>
         <div className="flex items-start gap-5 lg:gap-6">
           {/* ════════════════════════════════════════════════════════════════
               1. LEFT SIDEBAR: Executive B2B Department Navigation
@@ -852,7 +853,6 @@ export function PublicProductsView() {
                 <span>Guest Catalog View</span>
                 <a
                   href="/direct"
-                  rel="nofollow"
                   className="text-[10.5px] font-semibold text-[#8B2635] hover:underline flex items-center gap-0.5"
                 >
                   Trade Login <ArrowUpRight className="w-3 h-3" />
@@ -961,7 +961,6 @@ export function PublicProductsView() {
               2. CENTER COLUMN: Search Command Strip + Catalog Aisles
              ════════════════════════════════════════════════════════════════ */}
           <main className="flex-1 min-w-0 py-0.5">
-            <h1 className="sr-only">Rootwills Wholesale Foodservice &amp; Fresh Produce Catalog</h1>
             {/* MOBILE ONLY: Horizontal Department Rail (< lg) */}
             <div className="lg:hidden mb-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex items-center gap-1.5 pb-1">
               <button

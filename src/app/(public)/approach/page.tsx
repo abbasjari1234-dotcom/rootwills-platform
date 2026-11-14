@@ -297,9 +297,9 @@ export default function ApproachPage() {
                           </div>
                         </div>
 
-                        <h3 className="text-base sm:text-lg font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
+                        <h2 className="text-base sm:text-lg font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors">
                           {pillar.title}
-                        </h3>
+                        </h2>
 
                         <p className="text-xs text-stone-600 font-sans leading-relaxed">
                           {pillar.subtitle}

@@ -139,6 +139,20 @@ const jsonLdSchema = {
         },
       ],
       priceRange: '££',
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'UK Companies House Registration Number',
+        value: '17398744',
+      },
+      knowsAbout: [
+        'Commercial Food Services UK',
+        'Wholesale Fresh Produce Supplier Birmingham',
+        'Hospitality Food Distribution West Midlands',
+        'Pre-Dawn Restaurant Delivery London and Birmingham',
+        'Class 1 British Farm Produce Wholesale',
+        'Catering Butchery and Artisan Dairy Supply',
+      ],
+      hasMap: 'https://www.google.com/maps/search/?api=1&query=The+Hub+Nobel+Way+Birmingham+B6+7EU',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'The Hub, Nobel Way',
@@ -243,78 +257,6 @@ const jsonLdSchema = {
         },
         'query-input': 'required name=search_term_string',
       },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': 'https://www.rootwills.co.uk/#breadcrumbs',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://www.rootwills.co.uk/',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Wholesale Product Catalog',
-          item: 'https://www.rootwills.co.uk/products',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'About Rootwills',
-          item: 'https://www.rootwills.co.uk/about',
-        },
-        {
-          '@type': 'ListItem',
-          position: 4,
-          name: 'Hospitality Solutions & Services',
-          item: 'https://www.rootwills.co.uk/services',
-        },
-        {
-          '@type': 'ListItem',
-          position: 5,
-          name: 'Operational Approach & Standards',
-          item: 'https://www.rootwills.co.uk/approach',
-        },
-        {
-          '@type': 'ListItem',
-          position: 6,
-          name: 'Wholesale Enquiries & Contact',
-          item: 'https://www.rootwills.co.uk/contact',
-        },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://www.rootwills.co.uk/#faq',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What areas of the UK does Rootwills supply?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Rootwills operates from our central Birmingham hub (The Hub, Nobel Way, B6 7EU) and London distribution network, delivering pre-dawn across Birmingham, the West Midlands, Greater London, Manchester, and surrounding UK hospitality corridors.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'What hospitality sectors does Rootwills work with?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We partner with independent and multi-site restaurants, luxury hotels, gastro pubs, contract and event caterers, and institutional kitchens requiring Class 1 British farm produce, artisan dairy, prime butchery, and dry larder wholesale.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How can a restaurant or hotel open a trade partnership with Rootwills?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Kitchens and procurement buyers can contact our wholesale partnerships desk at sales@rootwills.co.uk, call our landline on +44 16164 12803, or message our WhatsApp trade desk on +44 7984 709478.',
-          },
-        },
-      ],
     },
   ],
 };

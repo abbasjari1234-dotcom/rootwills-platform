@@ -313,9 +313,9 @@ export default function ServicesPage() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1 leading-snug">
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] group-hover:text-[#8B2635] transition-colors duration-150 mb-1 leading-snug">
                       {service.title}
-                    </h3>
+                    </h2>
                     <p className="text-xs font-semibold text-stone-700 mb-2 font-sans">
                       {service.subtitle}
                     </p>

@@ -44,10 +44,14 @@ yarn-error.log*
 next-env.d.ts
 
 # agents & ide cache
+.agent
 .agents
 .gemini
 scratch/
 public/page_*.png
+FULL-AUDIT-REPORT.md
+ACTION-PLAN.md
+SEO-REPORT.html
 
 .vercel
 .env*

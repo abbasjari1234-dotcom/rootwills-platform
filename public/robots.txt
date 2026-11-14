@@ -8,11 +8,10 @@ Allow: /approach
 Allow: /contact
 Allow: /terms
 Allow: /privacy
+Allow: /llms.txt
 Allow: /_next/
 Allow: /_next/image*
 Allow: /images/
-
-# Disallow internal operational corridors and parameter searches
 Disallow: /ops/
 Disallow: /ops
 Disallow: /admin/
@@ -25,6 +24,56 @@ Disallow: /standing-orders/
 Disallow: /account/
 Disallow: /api/
 Disallow: /*?search=*
+
+# AI Search & Answer Engine Crawlers (Explicitly Allowed for Public Discovery)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Disallow: /ops/
+Disallow: /admin/
+Disallow: /api/
 
 # Canonical Sitemap Index
 Sitemap: https://www.rootwills.co.uk/sitemap.xml

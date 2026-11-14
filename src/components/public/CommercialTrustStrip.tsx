@@ -136,9 +136,9 @@ export function CommercialTrustStrip() {
                           {pillar.tag}
                         </span>
                       </div>
-                      <h4 className="font-serif font-bold text-xs sm:text-[13.5px] text-[#2E060D] leading-tight whitespace-nowrap mt-0.5 group-hover:text-[#7A202E] transition-colors tabular-nums">
+                      <p className="font-serif font-bold text-xs sm:text-[13.5px] text-[#2E060D] leading-tight whitespace-nowrap mt-0.5 group-hover:text-[#7A202E] transition-colors tabular-nums">
                         {pillar.title}
-                      </h4>
+                      </p>
                       <p className="font-sans text-[11px] text-stone-600 leading-tight whitespace-nowrap mt-0.5">
                         {pillar.subtitle}
                       </p>
