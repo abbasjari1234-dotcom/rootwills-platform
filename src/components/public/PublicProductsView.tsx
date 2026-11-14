@@ -804,9 +804,9 @@ export function PublicProductsView() {
                   />
                 </div>
                 <div>
-                  <h1 className="text-[14.5px] font-bold text-[#2E060D] leading-none">
+                  <span className="text-[14.5px] font-bold text-[#2E060D] leading-none block">
                     Rootwills Larder
-                  </h1>
+                  </span>
                   <span className="text-[11px] text-stone-500 block mt-0.5">
                     UK Hospitality Purveyor
                   </span>
@@ -961,6 +961,7 @@ export function PublicProductsView() {
               2. CENTER COLUMN: Search Command Strip + Catalog Aisles
              ════════════════════════════════════════════════════════════════ */}
           <main className="flex-1 min-w-0 py-0.5">
+            <h1 className="sr-only">Rootwills Wholesale Foodservice &amp; Fresh Produce Catalog</h1>
             {/* MOBILE ONLY: Horizontal Department Rail (< lg) */}
             <div className="lg:hidden mb-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex items-center gap-1.5 pb-1">
               <button

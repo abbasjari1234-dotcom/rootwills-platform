@@ -738,11 +738,11 @@ export function FloatingAmbientHero() {
         <div className="absolute top-1/2 -translate-y-1/2 w-full text-center z-30 pointer-events-none">
           <h1 
             ref={wordmarkRef}
-            aria-label="Rootwills — UK Commercial Food Services, Fresh Produce & Hospitality Wholesale Supplier"
+            aria-label="Rootwills — UK Food Services & Wholesale Produce Supplier"
             className="font-epilogue font-black text-[clamp(2rem,11.2vw,9.25rem)] tracking-[-0.045em] text-[#2E060D] leading-[0.86] select-none whitespace-nowrap transition-all duration-300 drop-shadow-[0_8px_30px_rgba(46,6,13,0.10)] cursor-default pointer-events-none sm:pointer-events-auto"
           >
             <span className="sr-only">
-              Rootwills — Commercial Food Services, Hand-Graded British Farm Produce &amp; Hospitality Wholesale Supplier UK
+              Rootwills | Food Services &amp; Produce Wholesale UK
             </span>
             {WORDMARK_LETTERS.map((char, idx) => (
               <span
