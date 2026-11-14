@@ -49,7 +49,6 @@ export function middleware(request: NextRequest) {
     isDirectDomain ||
     pathname.startsWith('/ops') ||
     pathname.startsWith('/admin') ||
-    pathname.startsWith('/direct') ||
     pathname.startsWith('/login')
   ) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
@@ -66,6 +65,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - images, favicon, textures, and static files
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|images|textures|manifest.webmanifest|robots.txt|sitemap.xml).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|images|textures|manifest.webmanifest|robots.txt|sitemap.xml|llms.txt).*)',
   ],
 };
