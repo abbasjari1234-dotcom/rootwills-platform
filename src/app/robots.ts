@@ -9,6 +9,7 @@ const PUBLIC_ALLOW = [
   '/services',
   '/approach',
   '/contact',
+  '/direct',
   '/terms',
   '/privacy',
   '/llms.txt',
