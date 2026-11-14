@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/approach',
     '/about',
     '/contact',
+    '/direct',
     '/terms',
     '/privacy',
   ];

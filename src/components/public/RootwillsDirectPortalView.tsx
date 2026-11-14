@@ -333,6 +333,49 @@ export function RootwillsDirectPortalView() {
         </div>
       </main>
 
+      {/* ─── B2B TRADE PORTAL CAPABILITIES & PRE-DAWN ORDERING INFO ─── */}
+      <section className="relative z-10 max-w-4xl mx-auto w-full px-4 sm:px-6 pb-8">
+        <div className="rounded-2xl bg-white/80 border border-stone-200/80 p-5 sm:p-7 space-y-5">
+          <div className="text-center max-w-xl mx-auto space-y-1">
+            <h2 className="text-base sm:text-lg font-serif font-bold text-[#2E060D]">
+              Wholesale Account Management &amp; Pre-Dawn Kitchen Supply
+            </h2>
+            <p className="text-xs text-stone-600 font-sans leading-relaxed">
+              Rootwills Direct gives executive chefs, hotel procurement buyers, and multi-site hospitality groups real-time control over daily kitchen provisioning across Birmingham, the West Midlands, and Greater London.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]/70 space-y-1">
+              <h3 className="text-xs sm:text-[13px] font-serif font-bold text-[#2E060D]">
+                Contracted Tier Pricing
+              </h3>
+              <p className="text-[11.5px] text-stone-600 font-sans leading-relaxed">
+                View locked B2B wholesale rates across 5,480+ fresh produce, prime British butchery, artisan dairy, seafood, and dry store lines tailored to your venue volume.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]/70 space-y-1">
+              <h3 className="text-xs sm:text-[13px] font-serif font-bold text-[#2E060D]">
+                Standing Repeat Order Pads
+              </h3>
+              <p className="text-[11.5px] text-stone-600 font-sans leading-relaxed">
+                Build custom par-level order templates for your brigade and submit next-morning drops in seconds before our 23:00 PM daily cut-off.
+              </p>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DEC8]/70 space-y-1">
+              <h3 className="text-xs sm:text-[13px] font-serif font-bold text-[#2E060D]">
+                04:00–07:30 AM Cold-Chain Drops
+              </h3>
+              <p className="text-[11.5px] text-stone-600 font-sans leading-relaxed">
+                Track scheduled dual-evaporator refrigerated deliveries from our Birmingham (B6 7EU) and London hubs directly into your walk-in cold rooms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── MINIMALIST QUIET FOOTER ─── */}
       <footer className="relative z-10 max-w-5xl mx-auto w-full px-6 py-6 border-t border-stone-200/60">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-500 font-sans">
