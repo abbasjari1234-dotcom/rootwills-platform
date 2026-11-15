@@ -39,9 +39,6 @@ export const metadata: Metadata = {
   creator: 'Rootwills Ltd',
   publisher: 'Rootwills Ltd',
   category: 'Food Services & Wholesale Distribution',
-  alternates: {
-    canonical: '/',
-  },
   robots: {
     index: true,
     follow: true,
