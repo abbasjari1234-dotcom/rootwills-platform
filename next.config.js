@@ -172,6 +172,11 @@ const nextConfig = {
         destination: '/approach',
         permanent: true,
       },
+      {
+        source: '/why-choose-us',
+        destination: '/about',
+        permanent: true,
+      },
     ];
   },
 };
