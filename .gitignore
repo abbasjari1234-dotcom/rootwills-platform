@@ -46,6 +46,7 @@ next-env.d.ts
 # agents & ide cache
 .agent
 .agents
+.claude
 .gemini
 scratch/
 public/page_*.png
