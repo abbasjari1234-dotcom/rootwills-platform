@@ -233,6 +233,18 @@ export function PublicHeader() {
             </Link>
 
             <Link
+              href="/wholesale-produce-supplier-birmingham"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-[#2E060D] hover:bg-[#FAF5EB] transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
+                <span>Birmingham Wholesale Hub</span>
+              </div>
+              <span className="font-mono text-[10px] uppercase font-bold text-[#BA8E4E] bg-[#FAF5EB] px-2 py-0.5 rounded border border-[#BA8E4E]/30">B6 7EU</span>
+            </Link>
+
+            <Link
               href="/approach"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-colors ${

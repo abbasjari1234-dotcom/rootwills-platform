@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/products',
+    '/wholesale-produce-supplier-birmingham',
     '/services',
     '/approach',
     '/about',
@@ -23,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: route === '' || route === '/products' ? 'weekly' : 'monthly',
     priority: 
       route === '' ? 1.0 : 
-      route === '/products' ? 0.95 : 
+      route === '/products' || route === '/wholesale-produce-supplier-birmingham' ? 0.95 : 
       route === '/services' || route === '/approach' || route === '/about' ? 0.9 : 
       0.7,
   }));

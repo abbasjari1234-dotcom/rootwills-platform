@@ -13,9 +13,11 @@ node_modules
 # production
 /build
 
-# misc
-.DS_Store
-*.pem
+# credentials & keys
+*gsc*.json
+credentials*.json
+*.key.json
+service-account*.json
 
 # debug
 npm-debug.log*
