@@ -152,7 +152,103 @@ async function main() {
     return;
   }
 
-  console.log(`Unknown command: ${cmd}. Available: sites, inspect [url] [siteUrl], sitemaps [siteUrl], analytics [siteUrl]`);
+  if (cmd === 'track') {
+    const siteUrl = 'https://www.rootwills.co.uk/';
+    console.log(`\n=============================================================`);
+    console.log(`📊 LIVE GOOGLE SEARCH CONSOLE TRACKING REPORT FOR ROOTWILLS`);
+    console.log(`=============================================================\n`);
+
+    // 1. Sitemaps
+    console.log(`1️⃣ SITEMAP HEALTH & STATUS:`);
+    const smRes = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/sitemaps`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const smData = await smRes.json();
+    if (smData.sitemap) {
+      smData.sitemap.forEach((sm) => {
+        console.log(`   - Sitemap: ${sm.path}`);
+        console.log(`     Last Downloaded: ${sm.lastDownloaded}`);
+        console.log(`     Errors: ${sm.errors || 0} | Warnings: ${sm.warnings || 0}`);
+        if (sm.contents) {
+          sm.contents.forEach(c => console.log(`     Submitted URLs: ${c.submitted} | Indexed: ${c.indexed}`));
+        }
+      });
+    }
+
+    // 2. Search Analytics
+    console.log(`\n2️⃣ SEARCH PERFORMANCE & RANKINGS (Last 30 Days):`);
+    const today = new Date();
+    const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const formatDate = (d) => d.toISOString().split('T')[0];
+
+    const anaRes = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(siteUrl)}/searchAnalytics/query`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        startDate: formatDate(thirtyDaysAgo),
+        endDate: formatDate(today),
+        dimensions: ['query'],
+        rowLimit: 50,
+      }),
+    });
+    const anaData = await anaRes.json();
+    if (anaData.rows && anaData.rows.length > 0) {
+      console.log(`   | Query | Position | Impressions | Clicks |`);
+      console.log(`   | :--- | :---: | :---: | :---: |`);
+      anaData.rows.sort((a, b) => a.position - b.position).forEach((row) => {
+        console.log(`   | ${row.keys[0]} | #${row.position.toFixed(1)} | ${row.impressions} | ${row.clicks} |`);
+      });
+    } else {
+      console.log(`   (No queries recorded yet)`);
+    }
+
+    // 3. Inspect URLs
+    console.log(`\n3️⃣ LIVE INDEX INSPECTION ACROSS CORE ROUTES:`);
+    const coreUrls = [
+      'https://www.rootwills.co.uk/',
+      'https://www.rootwills.co.uk/about',
+      'https://www.rootwills.co.uk/services',
+      'https://www.rootwills.co.uk/products',
+      'https://www.rootwills.co.uk/approach',
+      'https://www.rootwills.co.uk/contact',
+      'https://www.rootwills.co.uk/wholesale-produce-supplier-birmingham'
+    ];
+
+    for (const u of coreUrls) {
+      try {
+        const inspRes = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            inspectionUrl: u,
+            siteUrl,
+            languageCode: 'en',
+          }),
+        });
+        const inspData = await inspRes.json();
+        const stat = inspData.inspectionResult?.indexStatusResult;
+        const pageName = u.replace('https://www.rootwills.co.uk', '') || '/';
+        if (stat) {
+          console.log(`   * [${pageName.padEnd(42, ' ')}] Verdict: ${stat.verdict.padEnd(7, ' ')} | State: ${stat.coverageState} | Last Crawl: ${stat.lastCrawlTime || 'Queued / In Process'}`);
+        } else {
+          console.log(`   * [${pageName.padEnd(42, ' ')}] Status: Unknown / Pending first crawl`);
+        }
+      } catch (err) {
+        console.log(`   * [${u}] Error querying: ${err.message}`);
+      }
+    }
+
+    console.log(`\n=============================================================\n`);
+    return;
+  }
+
+  console.log(`Unknown command: ${cmd}. Available: track, sites, inspect [url] [siteUrl], sitemaps [siteUrl], analytics [siteUrl]`);
 }
 
 main().catch((err) => {

@@ -188,95 +188,127 @@ export default function BirminghamWholesaleProducePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(birminghamJsonLd) }}
       />
 
-      <article className="min-h-screen bg-[#FAF7F2] text-[#131313] pt-28 pb-20">
+      {/* ─── GLOBAL BOTANICAL PARCHMENT TEXTURE ─── */}
+      <div
+        className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
+        style={{
+          backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+          backgroundSize: '1100px auto',
+        }}
+      />
+
+      <article className="relative z-10 min-h-screen text-[#131313] pt-28 sm:pt-32 pb-24 overflow-x-hidden">
         
-        {/* HERO SECTION */}
+        {/* HERO SECTION WITH LUXURY DOUBLE-BEZEL GOLD RIM */}
         <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24">
-          <div className="relative rounded-3xl overflow-hidden bg-[#260309] border border-[#BA8E4E]/30 p-8 sm:p-14 lg:p-20 text-white shadow-[0_25px_60px_-15px_rgba(38,3,9,0.35)]">
-            
-            {/* Background Texture & Photo */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity pointer-events-none"
-              style={{ backgroundImage: "url('/images/commercial/rootwills_fresh_crates.jpg')" }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#260309] via-[#260309]/90 to-transparent pointer-events-none" />
-
-            <div className="relative z-10 max-w-3xl">
+          <div className="p-1.5 sm:p-2 rounded-[1.75rem] sm:rounded-[2.25rem] bg-gradient-to-b from-[#BA8E4E]/45 via-[#EFE8D8]/85 to-[#BA8E4E]/35 ring-1 ring-[#BA8E4E]/45 shadow-[0_28px_70px_-12px_rgba(38,3,9,0.34)]">
+            <div className="relative rounded-[calc(1.75rem-0.375rem)] sm:rounded-[calc(2.25rem-0.5rem)] overflow-hidden bg-[#260309] border border-[#F3D08A]/40 p-6 sm:p-14 lg:p-20 text-white shadow-[inset_0_1px_2px_rgba(255,255,255,0.2)]">
               
-              {/* Eyebrow Badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180205] border border-[#BA8E4E]/45 mb-4 shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#BA8E4E] animate-pulse" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#F3D08A] font-bold">
-                  BIRMINGHAM WHOLESALE CORRIDOR // B6 7EU
-                </span>
-              </div>
+              {/* Top glowing gold hairline */}
+              <div className="absolute inset-x-8 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#F3D08A]/80 to-transparent pointer-events-none" />
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.08] mb-4 [text-wrap:balance]">
-                Wholesale Produce &amp; Foodservice Supplier in <span className="text-[#F3D08A] italic">Birmingham</span>
-              </h1>
+              {/* Bespoke Oxblood Linen & Canvas Texture */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-85 bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/textures/rootwills_luxury_footer_canvas.jpg')" }}
+              />
 
-              <div className="flex">
-                <DoodleFlourish 
-                  variant="underline-loop" 
-                  color="#F3D08A" 
-                  strokeWidth={3} 
-                  className="w-48 sm:w-72 -mt-1 mb-6 text-[#F3D08A]" 
-                  delay={150}
+              {/* Greek Harvest Engraving Watermark on Right */}
+              <div className="absolute inset-y-0 right-0 w-2/3 sm:w-1/2 opacity-15 pointer-events-none mix-blend-screen overflow-hidden">
+                <Image
+                  src="/images/commercial/greek_harvest_engraving.jpg"
+                  alt="Greek Engraving Motif"
+                  fill
+                  sizes="600px"
+                  className="object-cover object-right"
+                  priority
                 />
               </div>
 
-              <p className="text-base sm:text-xl text-white/90 font-sans leading-relaxed mb-8 max-w-2xl font-light">
-                Direct grower partnerships, 02:00 AM daily depot intake, and guaranteed pre-dawn refrigerated delivery across Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and Greater West Midlands.
-              </p>
+              {/* Produce crates ambient glow */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity pointer-events-none"
+                style={{ backgroundImage: "url('/images/commercial/rootwills_fresh_crates.jpg')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#260309] via-[#260309]/90 to-transparent pointer-events-none" />
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 font-sans text-sm">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#BA8E4E] hover:bg-[#A37B3E] text-[#131313] font-semibold tracking-wide transition-all duration-200 shadow-lg active:scale-95"
-                >
-                  <span>Open Birmingham Trade Account</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+              <div className="relative z-10 max-w-3xl">
+                
+                {/* Eyebrow Badge */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180205]/90 border border-[#F3D08A]/50 mb-4 shadow-sm backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-[#F3D08A] animate-pulse" />
+                  <span className="font-mono text-[10.5px] sm:text-[11px] uppercase tracking-[0.2em] text-[#F3D08A] font-bold">
+                    BIRMINGHAM WHOLESALE CORRIDOR // B6 7EU
+                  </span>
+                </div>
 
-                <Link
-                  href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/25 text-white font-medium transition-all duration-200 backdrop-blur-xs"
-                >
-                  <span>Browse 5,480+ Lines</span>
-                </Link>
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.08] mb-3 [text-wrap:balance]">
+                  Wholesale Produce &amp; Foodservice Supplier in <span className="text-[#F3D08A] italic">Birmingham</span>
+                </h1>
 
-                <a
-                  href="tel:+441616412803"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#180205] border border-[#BA8E4E]/40 text-[#F3D08A] font-mono text-xs font-semibold hover:border-[#BA8E4E]"
-                >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>0161 641 2803</span>
-                </a>
-              </div>
+                <div className="flex">
+                  <DoodleFlourish 
+                    variant="underline-loop" 
+                    color="#F3D08A" 
+                    strokeWidth={3} 
+                    className="w-48 sm:w-72 -mt-1 mb-5 text-[#F3D08A]" 
+                    delay={150}
+                  />
+                </div>
 
-              {/* Trust Badges */}
-              <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono text-white/80">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#F3D08A]" />
-                  <span>23:00 Cut-off</span>
+                <p className="text-sm sm:text-lg text-white/95 font-sans leading-relaxed mb-8 max-w-2xl font-light drop-shadow-sm">
+                  Direct grower partnerships, 02:00 AM daily depot intake, and guaranteed pre-dawn refrigerated delivery across Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and Greater West Midlands.
+                </p>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 font-sans text-sm">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#BA8E4E] hover:bg-[#A37B3E] text-[#131313] font-bold tracking-wide transition-all duration-200 shadow-[0_4px_16px_rgba(186,142,78,0.35)] active:scale-95"
+                  >
+                    <span>Open Birmingham Trade Account</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#F3D08A]/35 text-white font-medium transition-all duration-200 backdrop-blur-xs"
+                  >
+                    <span>Browse 5,480+ Lines</span>
+                  </Link>
+
+                  <a
+                    href="tel:+441616412803"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[#180205]/90 border border-[#F3D08A]/40 text-[#F3D08A] font-mono text-xs font-semibold hover:border-[#F3D08A] transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-[#F3D08A]" />
+                    <span>+44 16164 12803</span>
+                  </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#F3D08A]" />
-                  <span>04:00 - 07:30 Drops</span>
+
+                {/* Trust Badges */}
+                <div className="mt-8 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono text-white/90">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-[#F3D08A]" />
+                    <span>23:00 Cut-off</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Truck className="w-4 h-4 text-[#F3D08A]" />
+                    <span>04:00 - 07:30 Drops</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Snowflake className="w-4 h-4 text-[#F3D08A]" />
+                    <span>Dual-Zone Chill</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#F3D08A]" />
+                    <span>Co. House: 17398744</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Snowflake className="w-4 h-4 text-[#F3D08A]" />
-                  <span>Dual-Zone Chill</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#F3D08A]" />
-                  <span>Co. House: 17398744</span>
-                </div>
+
               </div>
 
             </div>
-
           </div>
         </header>
 
@@ -289,15 +321,15 @@ export default function BirminghamWholesaleProducePage() {
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
               Built for Birmingham’s Demanding Kitchens
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-stone-600 font-sans">
+            <p className="mt-3 text-sm sm:text-base text-stone-700 font-sans">
               Unlike broadline FMCG wholesalers who treat fresh produce as an afterthought, our entire Birmingham operation revolves around pre-dawn culinary integrity.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             
-            <div className="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6">
+            <div className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#E8DEC8] shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6 shadow-sm">
                 <Clock className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[#131313] mb-2">
@@ -308,8 +340,8 @@ export default function BirminghamWholesaleProducePage() {
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6">
+            <div className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#E8DEC8] shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6 shadow-sm">
                 <Truck className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[#131313] mb-2">
@@ -320,8 +352,8 @@ export default function BirminghamWholesaleProducePage() {
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6">
+            <div className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#E8DEC8] shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6 shadow-sm">
                 <Scale className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[#131313] mb-2">
@@ -335,63 +367,71 @@ export default function BirminghamWholesaleProducePage() {
           </div>
         </section>
 
-        {/* BIRMINGHAM POSTCODE DELIVERY ZONES */}
+        {/* BIRMINGHAM POSTCODE DELIVERY ZONES (Double-Bezel Design) */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-28">
-          <div className="bg-[#260309] rounded-3xl p-8 sm:p-12 text-white border border-[#BA8E4E]/30 relative overflow-hidden">
-            
-            <div className="relative z-10 max-w-3xl mb-10">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F3D08A] font-bold block mb-2">
-                DAILY FLEET ROUTING
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight">
-                Birmingham Postcode Coverage &amp; Delivery Windows
-              </h2>
-              <p className="mt-3 text-sm sm:text-base text-white/80 font-sans">
-                Operating 6 days a week with guaranteed pre-service delivery slots tailored to your head chef’s schedule.
-              </p>
-            </div>
+          <div className="p-1 sm:p-1.5 rounded-[2rem] bg-gradient-to-b from-[#BA8E4E]/35 via-[#EFE8D8]/70 to-[#BA8E4E]/25 ring-1 ring-[#BA8E4E]/40 shadow-xl">
+            <div className="bg-[#260309] rounded-[calc(2rem-0.375rem)] p-8 sm:p-12 text-white border border-[#F3D08A]/30 relative overflow-hidden">
+              
+              {/* Background Canvas */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-80 bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/textures/rootwills_luxury_footer_canvas.jpg')" }}
+              />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
-              {BIRMINGHAM_ZONES.map((zone, idx) => (
-                <div 
-                  key={idx}
-                  className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#BA8E4E]/50 transition-colors flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="inline-block px-2.5 py-1 rounded-md bg-[#BA8E4E]/20 text-[#F3D08A] font-mono text-[11px] font-bold mb-3">
-                      {zone.postcodes}
-                    </span>
-                    <h3 className="text-base font-serif font-bold text-white mb-1">
-                      {zone.zone}
-                    </h3>
-                    <p className="text-xs text-white/70 mb-3 font-mono font-medium">
-                      Window: <strong className="text-[#F3D08A]">{zone.window}</strong>
-                    </p>
-                    <p className="text-xs text-white/85 font-sans leading-relaxed">
-                      {zone.desc}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-white/10 text-[11px] text-white/60 font-sans italic">
-                    Serving: {zone.venues}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/80">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#F3D08A]" />
-                <span>Central Depot: The Hub, Nobel Way, Birmingham B6 7EU</span>
+              <div className="relative z-10 max-w-3xl mb-10">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F3D08A] font-bold block mb-2">
+                  DAILY FLEET ROUTING
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+                  Birmingham Postcode Coverage &amp; Delivery Windows
+                </h2>
+                <p className="mt-3 text-sm sm:text-base text-white/85 font-sans font-light">
+                  Operating 6 days a week with guaranteed pre-service delivery slots tailored to your head chef’s schedule.
+                </p>
               </div>
-              <Link 
-                href="/contact"
-                className="text-[#F3D08A] hover:underline flex items-center gap-1 font-sans font-semibold text-sm"
-              >
-                <span>Check your postcode with our logistics desk</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
 
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
+                {BIRMINGHAM_ZONES.map((zone, idx) => (
+                  <div 
+                    key={idx}
+                    className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#F3D08A]/50 transition-colors flex flex-col justify-between backdrop-blur-xs"
+                  >
+                    <div>
+                      <span className="inline-block px-2.5 py-1 rounded-md bg-[#BA8E4E]/20 text-[#F3D08A] font-mono text-[11px] font-bold mb-3 border border-[#F3D08A]/25">
+                        {zone.postcodes}
+                      </span>
+                      <h3 className="text-base font-serif font-bold text-white mb-1">
+                        {zone.zone}
+                      </h3>
+                      <p className="text-xs text-white/70 mb-3 font-mono font-medium">
+                        Window: <strong className="text-[#F3D08A]">{zone.window}</strong>
+                      </p>
+                      <p className="text-xs text-white/85 font-sans leading-relaxed">
+                        {zone.desc}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-white/10 text-[11px] text-white/60 font-sans italic">
+                      Serving: {zone.venues}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/80 relative z-10">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#F3D08A]" />
+                  <span>Central Depot: The Hub, Nobel Way, Birmingham B6 7EU</span>
+                </div>
+                <Link 
+                  href="/contact"
+                  className="text-[#F3D08A] hover:underline flex items-center gap-1 font-sans font-semibold text-sm"
+                >
+                  <span>Check your postcode with our logistics desk</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+            </div>
           </div>
         </section>
 
@@ -404,14 +444,14 @@ export default function BirminghamWholesaleProducePage() {
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
               5,480+ Wholesale Foodservice Lines
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-stone-600 font-sans">
+            <p className="mt-3 text-sm sm:text-base text-stone-700 font-sans">
               Consolidate your invoices: from Michelin-grade seasonal brassicas and foraged mushrooms to everyday kitchen dry goods, dairy, and hygiene supplies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
                   src="/images/commercial/02_fresh_produce.jpg"
@@ -440,7 +480,7 @@ export default function BirminghamWholesaleProducePage() {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
                   src="/images/commercial/03_dairy_eggs.jpg"
@@ -469,7 +509,7 @@ export default function BirminghamWholesaleProducePage() {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
                   src="/images/commercial/dry_pantry_wholesale.jpg"
@@ -498,7 +538,7 @@ export default function BirminghamWholesaleProducePage() {
               </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden bg-white border border-stone-200 shadow-sm flex flex-col">
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
                   src="/images/commercial/living_microgreens_chef.jpg"
@@ -530,7 +570,7 @@ export default function BirminghamWholesaleProducePage() {
           </div>
         </section>
 
-        {/* BIRMINGHAM WHOLESALE FAQS (TARGETING GOOGLE SNIPPETS) */}
+        {/* BIRMINGHAM WHOLESALE FAQS */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-28">
           <div className="text-center mb-12">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#BA8E4E] font-bold block mb-2">
@@ -545,7 +585,7 @@ export default function BirminghamWholesaleProducePage() {
             {BIRMINGHAM_FAQS.map((faq, idx) => (
               <details
                 key={idx}
-                className="group p-6 rounded-2xl bg-white border border-stone-200 shadow-xs open:ring-1 open:ring-[#BA8E4E]/40 transition-all"
+                className="group p-6 rounded-2xl bg-white/80 backdrop-blur-xs border border-[#E8DEC8] shadow-xs open:ring-1 open:ring-[#BA8E4E]/40 transition-all"
               >
                 <summary className="font-serif font-bold text-base sm:text-lg text-[#131313] cursor-pointer list-none flex items-center justify-between gap-4">
                   <span>{faq.q}</span>
@@ -561,35 +601,41 @@ export default function BirminghamWholesaleProducePage() {
           </div>
         </section>
 
-        {/* BOTTOM ACTION CARD */}
+        {/* BOTTOM ACTION CARD (Matching Luxury Footer Bezel) */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-br from-[#260309] to-[#120104] p-8 sm:p-14 text-center text-white border border-[#BA8E4E]/40 relative overflow-hidden shadow-xl">
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F3D08A] font-bold block mb-3">
-                JOIN OVER 140+ BIRMINGHAM HOSPITALITY VENUES
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
-                Ready to Upgrade Your Birmingham Kitchen Supply?
-              </h2>
-              <p className="text-xs sm:text-base text-white/90 font-sans leading-relaxed mb-8 font-light">
-                Request a sample crate, schedule a site visit with our Birmingham depot manager, or open a 30-day trade credit account today.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/contact"
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#BA8E4E] hover:bg-[#A37B3E] text-[#131313] font-bold text-sm tracking-wide transition-all shadow-md active:scale-95"
-                >
-                  Apply for Trade Account
-                </Link>
-                <a
-                  href="https://wa.me/447984709478"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-medium text-sm flex items-center justify-center gap-2"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#F3D08A]" />
-                  <span>Chat on WhatsApp (+44 7984 709478)</span>
-                </a>
+          <div className="p-1 sm:p-1.5 rounded-[2rem] bg-gradient-to-b from-[#BA8E4E]/35 via-[#EFE8D8]/70 to-[#BA8E4E]/25 ring-1 ring-[#BA8E4E]/40 shadow-xl">
+            <div className="rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-[#260309] to-[#120104] p-8 sm:p-14 text-center text-white border border-[#F3D08A]/30 relative overflow-hidden">
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-80 bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/textures/rootwills_luxury_footer_canvas.jpg')" }}
+              />
+              <div className="relative z-10 max-w-2xl mx-auto">
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#F3D08A] font-bold block mb-3">
+                  JOIN OVER 140+ BIRMINGHAM HOSPITALITY VENUES
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
+                  Ready to Upgrade Your Birmingham Kitchen Supply?
+                </h2>
+                <p className="text-xs sm:text-base text-white/90 font-sans leading-relaxed mb-8 font-light">
+                  Request a sample crate, schedule a site visit with our Birmingham depot manager, or open a 30-day trade credit account today.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Link
+                    href="/contact"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#BA8E4E] hover:bg-[#A37B3E] text-[#131313] font-bold text-sm tracking-wide transition-all shadow-md active:scale-95"
+                  >
+                    Apply for Trade Account
+                  </Link>
+                  <a
+                    href="https://wa.me/447984709478"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#F3D08A]/30 text-white font-medium text-sm flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle className="w-4 h-4 text-[#F3D08A]" />
+                    <span>Chat on WhatsApp (+44 7984 709478)</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
