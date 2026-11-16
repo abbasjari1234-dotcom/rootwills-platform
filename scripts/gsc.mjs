@@ -99,6 +99,23 @@ async function main() {
     return;
   }
 
+  if (cmd === 'submit-sitemap') {
+    const siteUrl = encodeURIComponent(arg1 || 'https://www.rootwills.co.uk/');
+    const sitemapUrl = encodeURIComponent(arg2 || 'https://www.rootwills.co.uk/sitemap.xml');
+    console.log(`\n--- Submitting sitemap ${sitemapUrl} for ${siteUrl} ---`);
+    const res = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/sitemaps/${sitemapUrl}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (res.status === 204 || res.ok) {
+      console.log('Sitemap submitted successfully to Google Search Console! (Status: ' + res.status + ')');
+    } else {
+      const err = await res.text();
+      console.log('Sitemap submission response (' + res.status + '):', err);
+    }
+    return;
+  }
+
   if (cmd === 'sitemaps') {
     const siteUrl = encodeURIComponent(arg1 || 'sc-domain:rootwills.co.uk');
     console.log(`\n--- Fetching sitemaps for ${siteUrl} ---`);
