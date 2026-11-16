@@ -240,7 +240,7 @@ export default function ServicesPage() {
               href="/products"
               className="group inline-flex items-center gap-3 pl-6 pr-2 py-2.5 rounded-full bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs sm:text-[13px] font-sans font-semibold tracking-wider uppercase transition-all duration-200 active:scale-[0.96] shadow-[0_8px_24px_rgba(46,6,13,0.18)] cursor-pointer"
             >
-              <span>Explore 5,480+ Products</span>
+              <span>Explore Wholesale Catalog</span>
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/12 ring-1 ring-white/20 flex items-center justify-center text-[#F3D08A] group-hover:bg-[#F3D08A] group-hover:text-[#131313] transition-all duration-200 group-hover:translate-x-0.5">
                 <ArrowRight className="w-3.5 h-3.5" />
               </span>

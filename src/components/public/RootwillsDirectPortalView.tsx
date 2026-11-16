@@ -351,7 +351,7 @@ export function RootwillsDirectPortalView() {
                 Contracted Tier Pricing
               </h3>
               <p className="text-[11.5px] text-stone-600 font-sans leading-relaxed">
-                View locked B2B wholesale rates across 5,480+ fresh produce, prime British butchery, artisan dairy, seafood, and dry store lines tailored to your venue volume.
+                View locked B2B wholesale rates across fresh produce, prime British butchery, artisan dairy, seafood, and dry store lines tailored to your venue volume.
               </p>
             </div>
 

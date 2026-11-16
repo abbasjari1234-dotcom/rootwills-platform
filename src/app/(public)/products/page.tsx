@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { PublicProductsView } from '@/components/public/PublicProductsView';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Foodservice Catalog | 5,480+ Lines | Rootwills',
+  title: 'Wholesale Foodservice & Fresh Produce Catalog | Rootwills',
   description:
-    'Browse 5,480+ chef-graded wholesale foodservice lines across Fresh Produce, Butchery, Artisan Dairy, Seafood, Bakery, and Ambient Store for UK kitchens.',
+    'Browse our chef-graded wholesale catalog across Fresh Produce, Prime Butchery, Artisan Dairy, Day-Boat Seafood, Bakery, and Ambient Grocery for UK kitchens.',
   keywords: [
     'wholesale food catalog',
     'hospitality food suppliers UK',
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     canonical: '/products',
   },
   openGraph: {
-    title: 'Rootwills Wholesale Product Catalog | 5,480+ Hospitality Lines',
+    title: 'Rootwills Wholesale Product Catalog | Hospitality Foodservice',
     description:
-      'Multi-temperature wholesale foodservice catalog: 5,480+ lines across Fresh Produce, Prime Butchery, Artisan Dairy, Seafood, Bakery, and Ambient Grocery for UK chefs.',
+      'Multi-temperature wholesale foodservice catalog: fresh British farm produce, prime butchery, artisan dairy, seafood, and ambient dry larder for UK chefs.',
     url: 'https://www.rootwills.co.uk/products',
     siteName: 'Rootwills',
     locale: 'en_GB',
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wholesale Foodservice Catalog | 5,480+ Lines | Rootwills',
+    title: 'Wholesale Foodservice & Fresh Produce Catalog | Rootwills',
     description:
-      'Browse 5,480+ chef-graded wholesale foodservice lines across Fresh Produce, Butchery, Artisan Dairy, Seafood, and Bakery.',
+      'Browse chef-graded wholesale foodservice catalog across Fresh Produce, Butchery, Artisan Dairy, Seafood, and Bakery.',
     images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
 };

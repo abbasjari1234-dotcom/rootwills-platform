@@ -402,7 +402,7 @@ export default function ApproachPage() {
               href="/products"
               className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/20 text-xs sm:text-[13px] font-sans font-semibold transition-all flex items-center gap-2 cursor-pointer"
             >
-              <span>Explore 5,480+ Products</span>
+              <span>Explore Wholesale Catalog</span>
               <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
             </Link>
           </div>

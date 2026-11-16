@@ -206,7 +206,7 @@ export function PublicHeader() {
                 activeItem === 'products' ? 'bg-[#2E060D] text-white font-semibold' : 'text-[#2E060D] hover:bg-[#FAF5EB]'
               }`}
             >
-              <span>Wholesale Products (5,480+ Lines)</span>
+              <span>Wholesale Produce &amp; Larder Catalog</span>
               <ChevronRight className="w-4 h-4 opacity-50" />
             </Link>
 

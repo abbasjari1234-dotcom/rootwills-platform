@@ -26,7 +26,7 @@ import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 export const metadata: Metadata = {
   title: 'Wholesale Produce Supplier Birmingham | Rootwills Foodservice',
   description:
-    'Leading Birmingham wholesale produce & foodservice distributor. Daily pre-dawn deliveries to Digbeth, Jewellery Quarter, Edgbaston & Solihull. 5,480+ fresh catalog lines.',
+    'Leading Birmingham wholesale produce & foodservice distributor. Daily pre-dawn deliveries to Digbeth, Jewellery Quarter, Edgbaston & Solihull. Fresh farm produce & pantry catalog.',
   keywords: [
     'wholesale produce supplier birmingham',
     'birmingham foodservice supplier',
@@ -274,7 +274,7 @@ export default function BirminghamWholesaleProducePage() {
                     href="/products"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#F3D08A]/35 text-white font-medium transition-all duration-200 backdrop-blur-xs"
                   >
-                    <span>Browse 5,480+ Lines</span>
+                    <span>Explore Wholesale Catalog</span>
                   </Link>
 
                   <a
@@ -442,7 +442,7 @@ export default function BirminghamWholesaleProducePage() {
               COMPREHENSIVE BIRMINGHAM INVENTORY
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
-              5,480+ Wholesale Foodservice Lines
+              Curated Produce &amp; Commercial Larder
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-700 font-sans">
               Consolidate your invoices: from Michelin-grade seasonal brassicas and foraged mushrooms to everyday kitchen dry goods, dairy, and hygiene supplies.

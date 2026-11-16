@@ -104,7 +104,7 @@ const jsonLdSchema = {
       logo: 'https://www.rootwills.co.uk/images/logo.png',
       image: 'https://www.rootwills.co.uk/images/commercial/rootwills_hero_chef_plating.jpg',
       description:
-        'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens. Over 5,480 catalog lines delivered pre-dawn.',
+        'Commercial food services, hand-graded British farm produce, artisan dairy, prime butchery, and wholesale distribution for UK restaurants, hotels, and hospitality kitchens delivered pre-dawn.',
       telephone: '+44-16164-12803',
       email: 'sales@rootwills.co.uk',
       currenciesAccepted: 'GBP',
@@ -173,7 +173,7 @@ const jsonLdSchema = {
       ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Rootwills 5,480+ Line Commercial Foodservice & Wholesale Catalog',
+        name: 'Rootwills Commercial Foodservice & Wholesale Catalog',
         itemListElement: [
           {
             '@type': 'OfferCatalog',

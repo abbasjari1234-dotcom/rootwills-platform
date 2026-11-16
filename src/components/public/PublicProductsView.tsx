@@ -1008,7 +1008,7 @@ export function PublicProductsView() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search 5,480+ lines by name, pack size, cut, or SKU (e.g. RW-796010)..."
+                  placeholder="Search catalog by product name, cut, variety, or SKU..."
                   className="w-full pl-11 pr-24 py-3.5 rounded-2xl bg-white focus:bg-white border border-[#E8DEC8] focus:border-[#BA8E4E] focus:ring-2 focus:ring-[#BA8E4E]/20 text-sm text-stone-900 placeholder:text-stone-400 outline-none shadow-[0_2px_12px_rgba(46,6,13,0.03)] transition-all font-sans"
                 />
                 <div className="absolute right-3 flex items-center gap-1.5">
@@ -1023,7 +1023,7 @@ export function PublicProductsView() {
                     </button>
                   )}
                   <span className="hidden sm:inline-block px-2 py-0.5 rounded-md bg-[#FAF5EB] border border-[#E8DEC8] text-[10px] font-mono text-stone-500">
-                    5,480+ Lines
+                    Full Catalog
                   </span>
                 </div>
               </div>
@@ -1146,7 +1146,7 @@ export function PublicProductsView() {
                     </div>
                     {searchQuery && (
                       <p className="text-xs font-mono text-stone-500 mt-1">
-                        Searching across 5,480+ lines for &ldquo;{searchQuery}&rdquo;
+                        Searching catalog for &ldquo;{searchQuery}&rdquo;
                       </p>
                     )}
                   </div>
