@@ -166,7 +166,7 @@ export function ContactFormView() {
               <div className="flex items-center gap-3.5 sm:gap-4">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#F3D08A] shrink-0" />
                 <span className="text-xs sm:text-[13.5px] font-sans text-white/95 leading-snug">
-                  The Hub, Nobel Way, Birmingham, B6 7EU, UK
+                  7d Yates Street, Middleton, Manchester, M24 4GA, England
                 </span>
               </div>
             </div>
@@ -330,17 +330,17 @@ export function ContactFormView() {
               Regional Wholesale Coverage &amp; Trade Account Onboarding
             </h2>
             <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
-              Rootwills Ltd operates multi-temperature wholesale distribution from our primary Midlands hub at The Hub, Nobel Way, Birmingham (B6 7EU), serving independent restaurants, hotel groups, contract caterers, and gastro pubs across Birmingham, the West Midlands, Manchester, and Greater London.
+              Rootwills Ltd operates multi-temperature wholesale distribution headquartered at 7d Yates Street, Middleton, Manchester (M24 4GA), serving independent restaurants, hotel groups, contract caterers, and gastro pubs across Manchester, Birmingham, the West Midlands, and Greater London.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
             <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F2] border border-[#E8DEC8]/80 space-y-2">
               <h3 className="text-sm sm:text-base font-serif font-bold text-[#2E060D]">
-                What areas of Birmingham and the UK does Rootwills supply?
+                What areas does Rootwills supply?
               </h3>
               <p className="text-xs text-stone-600 font-sans leading-relaxed">
-                Our dual-evaporator refrigerated fleet dispatches daily from Birmingham (B6 7EU) across Birmingham City Centre, Edgbaston, Solihull, Sutton Coldfield, Wolverhampton, Coventry, the wider West Midlands, Manchester, and Greater London hospitality postcodes.
+                Our dual-evaporator refrigerated fleet dispatches daily across Manchester, Birmingham City Centre, Edgbaston, Solihull, Sutton Coldfield, Wolverhampton, Coventry, the wider Midlands, and Greater London hospitality postcodes.
               </p>
             </div>
 

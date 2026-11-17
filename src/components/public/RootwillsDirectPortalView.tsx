@@ -369,7 +369,7 @@ export function RootwillsDirectPortalView() {
                 04:00–07:30 AM Cold-Chain Drops
               </h3>
               <p className="text-[11.5px] text-stone-600 font-sans leading-relaxed">
-                Track scheduled dual-evaporator refrigerated deliveries from our Birmingham (B6 7EU) and London hubs directly into your walk-in cold rooms.
+                Track scheduled dual-evaporator refrigerated deliveries from our Manchester (M24 4GA), Birmingham, and London hubs directly into your walk-in cold rooms.
               </p>
             </div>
           </div>

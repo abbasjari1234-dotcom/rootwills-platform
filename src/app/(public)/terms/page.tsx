@@ -203,7 +203,7 @@ export default function TermsPage() {
                 <div className="text-[#EDE4D8]/90">Landline No: <span className="text-white font-medium tabular-nums">+44 16164 12803</span></div>
                 <div className="text-[#EDE4D8]/90">WhatsApp No: <span className="text-white font-medium tabular-nums">+44 7984 709478</span></div>
                 <div className="text-[#EDE4D8]/90">Commercial Enquiries: <span className="text-[#F3D08A] font-medium">sales@rootwills.co.uk</span></div>
-                <div className="text-[#EDE4D8]/70">Registered Office: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom • England &amp; Wales</div>
+                <div className="text-[#EDE4D8]/70">Registered Office: 7d Yates Street, Middleton, Manchester M24 4GA, England • England &amp; Wales</div>
               </div>
             </section>
 

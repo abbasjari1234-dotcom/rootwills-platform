@@ -241,7 +241,7 @@ export function PublicHeader() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
                 <span>Birmingham Wholesale Hub</span>
               </div>
-              <span className="font-mono text-[10px] uppercase font-bold text-[#BA8E4E] bg-[#FAF5EB] px-2 py-0.5 rounded border border-[#BA8E4E]/30">B6 7EU</span>
+              <span className="font-mono text-[10px] uppercase font-bold text-[#BA8E4E] bg-[#FAF5EB] px-2 py-0.5 rounded border border-[#BA8E4E]/30">Midlands</span>
             </Link>
 
             <Link

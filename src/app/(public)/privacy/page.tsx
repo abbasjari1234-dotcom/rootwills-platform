@@ -88,7 +88,7 @@ export default function PrivacyPolicyPage() {
                 Rootwills Ltd acts as the Data Controller in respect of personal and commercial trade data collected through our wholesale communications, client consultations, trade enquiries, and delivery logistics operations across the United Kingdom.
               </p>
               <p className="text-xs text-stone-500 font-sans">
-                Headquarters: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom. Registered in England and Wales.
+                Headquarters: 7d Yates Street, Middleton, Manchester M24 4GA, England. Registered in England and Wales.
               </p>
             </section>
 
@@ -189,7 +189,7 @@ export default function PrivacyPolicyPage() {
                 <div className="text-[#EDE4D8]/90">Landline No: <span className="text-white font-medium tabular-nums">+44 16164 12803</span></div>
                 <div className="text-[#EDE4D8]/90">WhatsApp No: <span className="text-white font-medium tabular-nums">+44 7984 709478</span></div>
                 <div className="text-[#EDE4D8]/90">Email: <span className="text-[#F3D08A] font-medium">sales@rootwills.co.uk</span></div>
-                <div className="text-[#EDE4D8]/70">Location: The Hub, Nobel Wy, Birmingham B6 7EU, United Kingdom</div>
+                <div className="text-[#EDE4D8]/70">Location: 7d Yates Street, Middleton, Manchester M24 4GA, England</div>
               </div>
             </section>
 

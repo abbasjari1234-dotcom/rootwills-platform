@@ -107,8 +107,8 @@ const BIRMINGHAM_FAQS = [
     a: 'Yes. Our pre-dawn multi-temperature delivery fleet operates between 04:00 AM and 06:30 AM specifically to beat Birmingham Clean Air Zone congestion and pedestrianised delivery window curfews in areas such as Colmore Row, New Street, and the Jewellery Quarter.'
   },
   {
-    q: 'Where is the Rootwills Birmingham distribution hub located?',
-    a: 'Our central Midlands operations and cold storage depot is situated at The Hub, Nobel Way, Birmingham B6 7EU (Companies House No. 17398744), giving our refrigerated delivery fleet immediate arterial access to the A38(M), M6, and Birmingham city centre.'
+    q: 'Where is the Rootwills distribution and registered hub located?',
+    a: 'Rootwills Ltd (Companies House No. 17398744) is headquartered at 7d Yates Street, Middleton, Manchester M24 4GA, England, operating dedicated daily pre-dawn refrigerated fleet trunks across Birmingham, Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and the Greater West Midlands.'
   },
   {
     q: 'Can Birmingham kitchens order broken cases or split produce?',
@@ -137,16 +137,16 @@ const birminghamJsonLd = {
       paymentAccepted: 'BACS, Direct Debit, Trade Credit Account, Credit Card',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'The Hub, Nobel Way',
-        addressLocality: 'Birmingham',
-        addressRegion: 'West Midlands',
-        postalCode: 'B6 7EU',
+        streetAddress: '7d Yates Street',
+        addressLocality: 'Middleton',
+        addressRegion: 'Manchester',
+        postalCode: 'M24 4GA',
         addressCountry: 'GB'
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: 52.5086,
-        longitude: -1.8842
+        latitude: 53.5447,
+        longitude: -2.2240
       },
       areaServed: [
         { '@type': 'AdministrativeArea', name: 'Birmingham' },
@@ -238,7 +238,7 @@ export default function BirminghamWholesaleProducePage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180205]/90 border border-[#F3D08A]/50 mb-4 shadow-sm backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#F3D08A] animate-pulse" />
                   <span className="font-mono text-[10.5px] sm:text-[11px] uppercase tracking-[0.2em] text-[#F3D08A] font-bold">
-                    BIRMINGHAM WHOLESALE CORRIDOR // B6 7EU
+                    BIRMINGHAM WHOLESALE CORRIDOR // DIRECT SUPPLY
                   </span>
                 </div>
 
@@ -336,7 +336,7 @@ export default function BirminghamWholesaleProducePage() {
                 02:00 AM Depot Crate Grading
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Every crate entering our Aston depot (Nobel Way, B6 7EU) is hand-inspected for core temperature, firmness, and cosmetic grade before being loaded onto our dual-zone refrigerated vans.
+                Every crate entering our daily pre-dawn dispatch is hand-inspected for core temperature, firmness, and cosmetic grade before being loaded onto our dual-zone refrigerated vans.
               </p>
             </div>
 
@@ -420,7 +420,7 @@ export default function BirminghamWholesaleProducePage() {
               <div className="mt-10 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/80 relative z-10">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#F3D08A]" />
-                  <span>Central Depot: The Hub, Nobel Way, Birmingham B6 7EU</span>
+                  <span>Headquarters &amp; Hub: 7d Yates Street, Middleton, Manchester M24 4GA</span>
                 </div>
                 <Link 
                   href="/contact"

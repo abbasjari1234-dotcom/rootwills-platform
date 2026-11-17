@@ -134,7 +134,7 @@ export function GetInTouchBanner() {
                       <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
                     </div>
                   </div>
-                  <span className="text-xs group-hover:underline">The Hub, Nobel Wy, Birmingham B6 7EU</span>
+                  <span className="text-xs group-hover:underline">7d Yates Street, Middleton, Manchester M24 4GA</span>
                 </Link>
               </div>
 
