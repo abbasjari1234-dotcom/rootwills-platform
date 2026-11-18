@@ -1213,6 +1213,30 @@ export function PublicProductsView() {
                   </div>
                 )}
 
+                {/* Dedicated Commodity Guide Banner for Prime Butchery & Poultry */}
+                {selectedCategory === 'meat-poultry' && (
+                  <div className="mb-4 p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-[#FAF5EB] via-white to-[#FAF5EB] border border-[#BA8E4E]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-[#BA8E4E] animate-pulse shrink-0" />
+                      <div>
+                        <p className="text-xs sm:text-[13px] font-semibold text-[#260309]">
+                          Looking for dry-aged British steaks, Red Tractor poultry, custom smash patties &amp; 0–2°C butchery SLAs?
+                        </p>
+                        <p className="text-[11px] text-stone-500">
+                          Daily pre-dawn delivery across Birmingham, Manchester &amp; UK commercial kitchens.
+                        </p>
+                      </div>
+                    </div>
+                    <Link
+                      href="/products/meat-poultry"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#260309] hover:bg-[#BA8E4E] text-[#F3D08A] hover:text-[#131313] text-xs font-semibold font-mono tracking-wide transition-all shrink-0 cursor-pointer"
+                    >
+                      <span>Explore Butchery Guide</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                )}
+
                 {/* Subcategory Pills when browsing inside a category */}
                 {activeCategoryObject && activeCategoryObject.subcategories.length > 0 && (
                   <div className="flex items-center gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pb-2.5 mb-5 border-b border-[#E8DEC8]/60">
