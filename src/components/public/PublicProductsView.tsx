@@ -891,9 +891,6 @@ export function PublicProductsView() {
                 <h2 className="text-[11px] font-mono text-stone-500 font-semibold uppercase tracking-wider">
                   Departments
                 </h2>
-                <span className="text-[10.5px] font-mono text-stone-400">
-                  {WHOLESALE_PRODUCTS.length} Lines
-                </span>
               </div>
 
               <nav className="space-y-1">
@@ -911,21 +908,11 @@ export function PublicProductsView() {
                   }`}
                 >
                   <span>All Departments</span>
-                  <span
-                    className={`text-[10.5px] font-mono px-1.5 py-0.2 rounded-md ${
-                      selectedCategory === 'all'
-                        ? 'bg-white/20 text-white font-semibold'
-                        : 'text-stone-500'
-                    }`}
-                  >
-                    {WHOLESALE_PRODUCTS.length}
-                  </span>
                 </button>
 
-                {/* Category Slugs with Dynamic SKU Counts */}
+                {/* Category Slugs without SKU Counts */}
                 {WHOLESALE_CATEGORIES.map((cat) => {
                   const active = selectedCategory === cat.slug;
-                  const count = categoryCounts[cat.slug] || 0;
 
                   return (
                     <button
@@ -942,15 +929,6 @@ export function PublicProductsView() {
                       }`}
                     >
                       <span className="truncate">{cat.shortName}</span>
-                      <span
-                        className={`text-[10.5px] font-mono px-1.5 py-0.2 rounded-md shrink-0 ml-1.5 ${
-                          active
-                            ? 'bg-white/20 text-[#F3D08A] font-bold'
-                            : 'text-stone-500'
-                        }`}
-                      >
-                        {count}
-                      </span>
                     </button>
                   );
                 })}
@@ -976,7 +954,7 @@ export function PublicProductsView() {
                     : 'bg-white/90 border border-[#E8DEC8] text-stone-700'
                 }`}
               >
-                All ({WHOLESALE_PRODUCTS.length})
+                All
               </button>
               {WHOLESALE_CATEGORIES.map((cat) => {
                 const active = selectedCategory === cat.slug;
@@ -1099,16 +1077,11 @@ export function PublicProductsView() {
 
                   return (
                     <section key={aisle.slug} className="pt-2 first:pt-0">
-                      {/* Department Heading with SKU count & View All */}
+                      {/* Department Heading with View All */}
                       <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-[#E8DEC8]">
-                        <div className="flex items-center gap-2">
-                          <h2 className="text-base sm:text-lg font-bold text-[#2E060D] tracking-tight">
-                            {aisle.name}
-                          </h2>
-                          <span className="text-[11px] font-mono px-2 py-0.2 rounded-md bg-[#FAF5EB] text-stone-600 border border-[#E8DEC8]">
-                            {items.length} Lines
-                          </span>
-                        </div>
+                        <h2 className="text-base sm:text-lg font-bold text-[#2E060D] tracking-tight">
+                          {aisle.name}
+                        </h2>
                         <button
                           type="button"
                           onClick={() => {
@@ -1117,7 +1090,7 @@ export function PublicProductsView() {
                           }}
                           className="text-xs font-semibold text-[#8B2635] hover:text-[#2E060D] flex items-center gap-1 group cursor-pointer"
                         >
-                          <span>View all {items.length} lines</span>
+                          <span>View all</span>
                           <ChevronRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5" />
                         </button>
                       </div>
@@ -1136,15 +1109,10 @@ export function PublicProductsView() {
                 {/* Active View Header */}
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E8DEC8]">
                   <div>
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-base sm:text-lg font-bold text-[#2E060D]">
-                        {WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory)?.name ||
-                          (selectedCategory === 'repeat-pad' ? 'Standing Order Pad' : 'Product Search')}
-                      </h2>
-                      <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-md bg-[#FAF5EB] border border-[#E8DEC8] text-stone-700">
-                        {filteredProducts.length} Matching
-                      </span>
-                    </div>
+                    <h2 className="text-base sm:text-lg font-bold text-[#2E060D]">
+                      {WHOLESALE_CATEGORIES.find((c) => c.slug === selectedCategory)?.name ||
+                        (selectedCategory === 'repeat-pad' ? 'Standing Order Pad' : 'Product Search')}
+                    </h2>
                     {searchQuery && (
                       <p className="text-xs font-mono text-stone-500 mt-1">
                         Searching catalog for &ldquo;{searchQuery}&rdquo;
