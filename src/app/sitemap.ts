@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/wholesale-produce-supplier-manchester',
     '/services',
     '/services/restaurant-food-supply',
+    '/services/hotel-banqueting-supply',
     '/approach',
     '/about',
     '/contact',

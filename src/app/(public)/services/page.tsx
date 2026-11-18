@@ -158,8 +158,8 @@ const SECTORS_WE_SERVE = [
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format&fit=crop&q=80',
     icon: Building2,
     tag: 'HOSPITALITY',
-    href: '/contact',
-    cta: 'Discuss Hotel Supply',
+    href: '/services/hotel-banqueting-supply',
+    cta: 'Explore Hotel Solutions',
   },
   {
     title: 'Event & Contract Caterers',
