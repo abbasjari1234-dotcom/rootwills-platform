@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/products',
     '/products/fresh-produce',
+    '/products/chilled-dairy',
     '/wholesale-produce-supplier-birmingham',
     '/wholesale-produce-supplier-manchester',
     '/services',
