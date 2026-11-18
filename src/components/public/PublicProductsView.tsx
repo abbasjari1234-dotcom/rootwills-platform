@@ -394,17 +394,15 @@ export function PublicProductsView() {
       <div
         key={product.id}
         onClick={() => setQuickViewProduct(product)}
-        className={`group relative flex flex-col justify-between bg-gradient-to-b from-white to-[#FAF8F5] rounded-2xl p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer select-none ${
+        className={`group relative flex flex-col justify-between bg-white rounded-2xl p-3.5 sm:p-4 border transition-all duration-200 cursor-pointer select-none ${
           qty > 0
-            ? 'border-[#BA8E4E] ring-1 ring-[#BA8E4E]/50 shadow-[0_4px_16px_rgba(186,142,78,0.14)]'
-            : 'border-[#E8DEC8]/90 hover:border-[#BA8E4E]/80 hover:shadow-[0_10px_28px_rgba(46,6,13,0.08)] shadow-[0_1px_3px_rgba(46,6,13,0.02)]'
+            ? 'border-[#BA8E4E] ring-1 ring-[#BA8E4E]/50 shadow-[0_4px_16px_rgba(186,142,78,0.12)]'
+            : 'border-[#E8DEC8]/90 hover:border-[#BA8E4E]/80 hover:shadow-[0_8px_24px_rgba(46,6,13,0.07)] shadow-[0_1px_3px_rgba(46,6,13,0.02)]'
         } ${compact ? 'w-[160px] sm:w-[175px] shrink-0' : 'w-full'}`}
       >
         <div>
-          {/* Balanced Image Stage: Warm Culinary Studio Background */}
-          <div className="relative w-full h-[142px] sm:h-[154px] rounded-xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_#FCFAF7_0%,_#F7F0E6_65%,_#EBE0CF_100%)] border border-[#EADBCA] flex items-center justify-center p-2.5 mb-2.5 shadow-[inset_0_1px_4px_rgba(46,6,13,0.03)]">
-            {/* Grounding soft shadow under product */}
-            <div className="absolute bottom-2.5 inset-x-6 h-2.5 bg-[#2E060D]/10 blur-xs rounded-full pointer-events-none" />
+          {/* Balanced Image Stage: Crisp Clean White */}
+          <div className="relative w-full h-[142px] sm:h-[154px] rounded-xl overflow-hidden bg-white border border-[#F2ECE1] flex items-center justify-center p-2.5 mb-2.5">
             <Image
               src={product.image}
               alt={product.name}
@@ -412,7 +410,7 @@ export function PublicProductsView() {
               unoptimized
               referrerPolicy="no-referrer"
               sizes="240px"
-              className="object-contain p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] drop-shadow-[0_6px_14px_rgba(46,6,13,0.12)]"
+              className="object-contain p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
             />
           </div>
 
@@ -559,7 +557,7 @@ export function PublicProductsView() {
             return (
               <div key={product.id} className="py-2.5 flex items-center justify-between gap-2.5 group">
                 {/* Product Thumbnail */}
-                <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-gradient-to-b from-[#FCFAF7] to-[#F1E8DC] border border-[#E5DAC6] shrink-0 p-1 shadow-2xs">
+                <div className="relative w-11 h-11 rounded-lg overflow-hidden bg-white border border-[#E8DEC8] shrink-0 p-1">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -567,7 +565,7 @@ export function PublicProductsView() {
                     unoptimized
                     referrerPolicy="no-referrer"
                     sizes="44px"
-                    className="object-contain p-0.5 drop-shadow-[0_2px_4px_rgba(46,6,13,0.12)]"
+                    className="object-contain p-0.5"
                   />
                 </div>
 
@@ -1389,46 +1387,34 @@ export function PublicProductsView() {
         return (
           <div
             onClick={() => setQuickViewProduct(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/70 backdrop-blur-xs"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/65 backdrop-blur-xs"
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-b from-[#FFFDFB] via-[#FAF7F2] to-[#F5EFE6] rounded-3xl max-w-2xl w-full p-5 sm:p-7 border border-[#E2D5BE] shadow-[0_28px_80px_rgba(46,6,13,0.22)] relative space-y-5 font-sans overflow-hidden"
+              className="bg-white rounded-3xl max-w-2xl w-full p-5 sm:p-7 border border-[#E8DEC8] shadow-[0_25px_70px_rgba(46,6,13,0.25)] relative space-y-5 font-sans overflow-hidden"
             >
-              {/* Luxury gold top hairline accent */}
-              <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#BA8E4E] to-transparent pointer-events-none" />
-
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setQuickViewProduct(null)}
                 aria-label="Close product details"
-                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 hover:bg-[#2E060D] text-stone-600 hover:text-white border border-[#E8DEC8] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-90"
+                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#FAF7F2] hover:bg-[#2E060D] text-stone-600 hover:text-white border border-[#E8DEC8] flex items-center justify-center transition-all cursor-pointer shadow-xs active:scale-90"
               >
                 <X className="w-4 h-4" />
               </button>
 
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-start">
-                {/* Left: Product Image Stage (Warm Culinary Studio Background) */}
+                {/* Left: Product Image Stage (Clean White) */}
                 <div className="sm:col-span-5 flex flex-col items-center">
-                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-[radial-gradient(ellipse_at_center,_#FCFAF7_0%,_#F5ECE0_55%,_#EAE0CE_100%)] border border-[#E2D5BE] shadow-[inset_0_2px_8px_rgba(46,6,13,0.04),0_8px_24px_rgba(46,6,13,0.06)] flex items-center justify-center p-5 group/modal-img">
-                    {/* Subtle luxury brass corner brackets */}
-                    <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#BA8E4E]/40 rounded-tl-xs pointer-events-none" />
-                    <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#BA8E4E]/40 rounded-tr-xs pointer-events-none" />
-                    <div className="absolute bottom-2.5 left-2.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#BA8E4E]/40 rounded-bl-xs pointer-events-none" />
-                    <div className="absolute bottom-2.5 right-2.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#BA8E4E]/40 rounded-br-xs pointer-events-none" />
-
-                    {/* Grounding drop-shadow pedestal under the product */}
-                    <div className="absolute bottom-5 inset-x-8 h-4 bg-[#2E060D]/10 blur-md rounded-full pointer-events-none" />
-
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-white border border-[#EFE8D8] flex items-center justify-center p-4">
                     <Image
                       src={quickViewProduct.image}
                       alt={quickViewProduct.name}
                       fill
                       unoptimized
                       referrerPolicy="no-referrer"
-                      sizes="320px"
-                      className="object-contain p-4 drop-shadow-[0_12px_22px_rgba(46,6,13,0.15)] transition-transform duration-300 group-hover/modal-img:scale-[1.04]"
+                      sizes="280px"
+                      className="object-contain p-3"
                     />
                   </div>
 
@@ -1438,7 +1424,7 @@ export function PublicProductsView() {
                       <ShieldCheck className="w-3.5 h-3.5 text-[#BA8E4E]" />
                       Trade Assured
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/90 border border-[#E8DEC8] text-[10.5px] font-mono font-medium text-stone-700 shadow-2xs">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E8DEC8] text-[10.5px] font-mono font-medium text-stone-700 shadow-2xs">
                       <Truck className="w-3.5 h-3.5 text-[#8B2635]" />
                       Pre-Dawn Dispatch
                     </span>
