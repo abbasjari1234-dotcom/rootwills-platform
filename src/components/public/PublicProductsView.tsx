@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import {
   Search,
@@ -1163,6 +1164,30 @@ export function PublicProductsView() {
                     ← All Departments
                   </button>
                 </div>
+
+                {/* Dedicated Commodity Guide Banner for Fresh Produce */}
+                {selectedCategory === 'fresh-produce' && (
+                  <div className="mb-4 p-3.5 sm:p-4 rounded-xl bg-gradient-to-r from-[#FAF5EB] via-white to-[#FAF5EB] border border-[#BA8E4E]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                    <div className="flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-[#BA8E4E] animate-pulse shrink-0" />
+                      <div>
+                        <p className="text-xs sm:text-[13px] font-semibold text-[#260309]">
+                          Looking for seasonal British harvest calendars, Grade 1 farm specifications &amp; bulk sack logistics?
+                        </p>
+                        <p className="text-[11px] text-stone-500">
+                          Daily pre-dawn deliveries across Birmingham, Manchester &amp; UK commercial kitchens.
+                        </p>
+                      </div>
+                    </div>
+                    <Link
+                      href="/products/fresh-produce"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#260309] hover:bg-[#BA8E4E] text-[#F3D08A] hover:text-[#131313] text-xs font-semibold font-mono tracking-wide transition-all shrink-0 cursor-pointer"
+                    >
+                      <span>Explore Produce Guide</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                )}
 
                 {/* Subcategory Pills when browsing inside a category */}
                 {activeCategoryObject && activeCategoryObject.subcategories.length > 0 && (
