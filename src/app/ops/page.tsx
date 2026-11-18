@@ -125,7 +125,7 @@ export default function OpsOverviewDashboard() {
               Live Customer Storefront
             </h3>
             <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-              Preview how chefs, restaurant buyers, and caterers browse your 100% pork-free wholesale catalog on the customer-facing site.
+              Preview how chefs, restaurant buyers, and caterers browse your wholesale catalog on the customer-facing site.
             </p>
           </div>
           <div className="mt-4 pt-4 border-t border-slate-100">
