@@ -775,7 +775,7 @@ export function PublicProductsView() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[72px] sm:pt-[86px] pb-20">
+    <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[88px] sm:pt-[104px] pb-20">
       {/* Seamless Botanical Parchment Texture Overlay matching Rootwills Theme */}
       <div
         className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
@@ -792,7 +792,7 @@ export function PublicProductsView() {
           {/* ════════════════════════════════════════════════════════════════
               1. LEFT SIDEBAR: Executive B2B Department Navigation
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block w-[235px] xl:w-[255px] shrink-0 sticky top-[92px] max-h-[calc(100vh-104px)] overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin]">
+          <aside className="hidden lg:block w-[235px] xl:w-[255px] shrink-0 sticky top-[98px] max-h-[calc(100vh-116px)] overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin]">
             {/* Store Identity & Dispatch Information */}
             <div className="pb-3.5 border-b border-[#E8DEC8] space-y-1.5">
               <div className="flex items-center gap-2.5">
@@ -1298,8 +1298,8 @@ export function PublicProductsView() {
           {/* ════════════════════════════════════════════════════════════════
               3. RIGHT SIDEBAR: Live Order Manifest + Direct Portal Action
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden xl:block w-[310px] 2xl:w-[335px] shrink-0 sticky top-[92px]">
-            <div className="rounded-2xl bg-white border border-[#E8DEC8] p-4 shadow-[0_4px_24px_rgba(46,6,13,0.05)] max-h-[calc(100vh-108px)] flex flex-col">
+          <aside className="hidden xl:block w-[310px] 2xl:w-[335px] shrink-0 sticky top-[98px]">
+            <div className="rounded-2xl bg-white border border-[#E8DEC8] p-4 shadow-[0_4px_24px_rgba(46,6,13,0.05)] max-h-[calc(100vh-116px)] flex flex-col">
               {renderRightOrderPanel()}
             </div>
           </aside>

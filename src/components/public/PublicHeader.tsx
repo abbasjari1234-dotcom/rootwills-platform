@@ -43,12 +43,20 @@ export function PublicHeader() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 pointer-events-none transition-all duration-300">
-      {/* ─── SEAMLESS BORDERLESS DISSOLVE ─── */}
+      {/* ─── SEAMLESS PARCHMENT SHIELD & HEADER BACKDROP ─── */}
       <div
-        className={`absolute inset-x-0 top-0 h-[84px] sm:h-[96px] pointer-events-none transition-opacity duration-300 bg-gradient-to-b from-[#FAF7F2] via-[#FAF7F2]/80 to-transparent backdrop-blur-[6px] ${
+        className={`absolute inset-x-0 top-0 h-[76px] sm:h-[88px] pointer-events-none transition-all duration-300 bg-[#FAF7F2] border-b border-[#E8DEC8]/60 shadow-[0_2px_14px_rgba(46,6,13,0.04)] overflow-hidden ${
           !isHome || isScrolled ? 'opacity-100' : 'opacity-0'
         }`}
-      />
+      >
+        <div
+          className="absolute inset-0 bg-repeat opacity-[0.22] mix-blend-multiply pointer-events-none"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+      </div>
 
       {/* ─── FLOATING CAPSULE NAVBAR ─── */}
       <div className="relative z-10 flex justify-center px-2.5 sm:px-5 md:px-8 pt-[calc(0.4rem+env(safe-area-inset-top,0px))] sm:pt-3.5">
