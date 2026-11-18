@@ -602,7 +602,24 @@ export default function BirminghamWholesaleProducePage() {
         </section>
 
         {/* BOTTOM ACTION CARD (Matching Luxury Footer Bezel) */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          {/* Sister Regional Corridor Callout */}
+          <div className="flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white/70 backdrop-blur-xs border border-[#BA8E4E]/30 text-xs sm:text-sm">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#BA8E4E] animate-pulse" />
+              <span className="text-[#260309] font-medium">
+                Operating kitchens in Greater Manchester or Cheshire?
+              </span>
+            </div>
+            <Link
+              href="/wholesale-produce-supplier-manchester"
+              className="inline-flex items-center gap-1.5 font-bold text-[#BA8E4E] hover:text-[#260309] transition-colors group underline"
+            >
+              <span>Explore Manchester Headquarters Hub</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+
           <div className="p-1 sm:p-1.5 rounded-[2rem] bg-gradient-to-b from-[#BA8E4E]/35 via-[#EFE8D8]/70 to-[#BA8E4E]/25 ring-1 ring-[#BA8E4E]/40 shadow-xl">
             <div className="rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-[#260309] to-[#120104] p-8 sm:p-14 text-center text-white border border-[#F3D08A]/30 relative overflow-hidden">
               <div 

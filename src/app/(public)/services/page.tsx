@@ -439,7 +439,7 @@ export default function ServicesPage() {
           </h2>
 
           <p className="text-xs sm:text-sm text-white/80 font-sans max-w-2xl mx-auto leading-relaxed">
-            Open a direct commercial trade account today. Our <Link href="/wholesale-produce-supplier-birmingham" className="text-[#F3D08A] underline hover:text-white transition-colors">Birmingham wholesale dispatch desk</Link> will immediately configure your contracted rates, automate standing orders, and secure pre-dawn delivery slots tailored to your menu rhythm.
+            Open a direct commercial trade account today. Our <Link href="/wholesale-produce-supplier-manchester" className="text-[#F3D08A] underline hover:text-white transition-colors">Manchester headquarters hub</Link> and <Link href="/wholesale-produce-supplier-birmingham" className="text-[#F3D08A] underline hover:text-white transition-colors">Birmingham dispatch desk</Link> will immediately configure your contracted rates, automate standing orders, and secure pre-dawn delivery slots tailored to your menu rhythm.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">

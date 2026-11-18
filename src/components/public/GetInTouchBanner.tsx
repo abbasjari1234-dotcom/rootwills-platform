@@ -124,18 +124,39 @@ export function GetInTouchBanner() {
                   </div>
                 </a>
 
-                <Link
-                  href="/wholesale-produce-supplier-birmingham"
-                  className="flex items-center gap-2.5 text-white/95 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95 group"
-                  title="Rootwills Birmingham Wholesale Distribution Corridor"
-                >
-                  <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
-                    <div className="w-8 h-8 rounded-full bg-[#180205]/85 backdrop-blur-md ring-1 ring-[#F3D08A]/40 flex items-center justify-center text-[#F3D08A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                      <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+                  <Link
+                    href="/wholesale-produce-supplier-manchester"
+                    className="flex items-center gap-2 text-white/95 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95 group"
+                    title="Rootwills Manchester Headquarters Hub"
+                  >
+                    <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
+                      <div className="w-8 h-8 rounded-full bg-[#180205]/85 backdrop-blur-md ring-1 ring-[#F3D08A]/40 flex items-center justify-center text-[#F3D08A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                        <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
+                      </div>
                     </div>
-                  </div>
-                  <span className="text-xs group-hover:underline">7d Yates Street, Middleton, Manchester M24 4GA</span>
-                </Link>
+                    <div className="text-left">
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[#F3D08A]/80 leading-none mb-0.5">Headquarters Hub</span>
+                      <span className="text-xs group-hover:underline">7d Yates St, Middleton, Manchester M24 4GA</span>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/wholesale-produce-supplier-birmingham"
+                    className="flex items-center gap-2 text-white/95 hover:text-[#F3D08A] transition-colors apple-tactile active:scale-95 group"
+                    title="Rootwills Birmingham Wholesale Distribution Corridor"
+                  >
+                    <div className="relative p-0.5 rounded-full bg-gradient-to-br from-[#F3D08A]/50 via-white/15 to-transparent shadow-[0_2px_8px_rgba(0,0,0,0.4)] group-hover:scale-105 transition-transform duration-200">
+                      <div className="w-8 h-8 rounded-full bg-[#180205]/85 backdrop-blur-md ring-1 ring-[#F3D08A]/40 flex items-center justify-center text-[#F3D08A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                        <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
+                      </div>
+                    </div>
+                    <div className="text-left">
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.16em] text-[#F3D08A]/80 leading-none mb-0.5">Midlands Corridor</span>
+                      <span className="text-xs group-hover:underline">Birmingham Pre-Dawn Distribution Trunk</span>
+                    </div>
+                  </Link>
+                </div>
               </div>
 
             </div>

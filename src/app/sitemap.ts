@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/products',
     '/wholesale-produce-supplier-birmingham',
+    '/wholesale-produce-supplier-manchester',
     '/services',
     '/approach',
     '/about',
@@ -21,10 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${BASE_URL}${route}`,
     lastModified: now,
-    changeFrequency: route === '' || route === '/products' ? 'weekly' : 'monthly',
+    changeFrequency: route === '' || route === '/products' || route.startsWith('/wholesale-produce-supplier') ? 'weekly' : 'monthly',
     priority: 
       route === '' ? 1.0 : 
-      route === '/products' || route === '/wholesale-produce-supplier-birmingham' ? 0.95 : 
+      route === '/products' || route.startsWith('/wholesale-produce-supplier') ? 0.95 : 
       route === '/services' || route === '/approach' || route === '/about' ? 0.9 : 
       0.7,
   }));
