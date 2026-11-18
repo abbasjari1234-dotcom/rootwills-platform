@@ -149,6 +149,8 @@ const SECTORS_WE_SERVE = [
     image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&auto=format&fit=crop&q=80',
     icon: UtensilsCrossed,
     tag: 'CULINARY',
+    href: '/services/restaurant-food-supply',
+    cta: 'Explore Restaurant Solutions',
   },
   {
     title: 'Hotels & Boutique Resorts',
@@ -156,6 +158,8 @@ const SECTORS_WE_SERVE = [
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format&fit=crop&q=80',
     icon: Building2,
     tag: 'HOSPITALITY',
+    href: '/contact',
+    cta: 'Discuss Hotel Supply',
   },
   {
     title: 'Event & Contract Caterers',
@@ -163,6 +167,8 @@ const SECTORS_WE_SERVE = [
     image: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=800&auto=format&fit=crop&q=80',
     icon: ChefHat,
     tag: 'CATERING',
+    href: '/contact',
+    cta: 'Discuss Catering Supply',
   },
   {
     title: 'Gastro Pubs & Institutions',
@@ -170,6 +176,8 @@ const SECTORS_WE_SERVE = [
     image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&auto=format&fit=crop&q=80',
     icon: Landmark,
     tag: 'COMMERCIAL',
+    href: '/services/restaurant-food-supply',
+    cta: 'Explore Pub & Dining Supply',
   },
 ];
 
@@ -408,10 +416,10 @@ export default function ServicesPage() {
 
                     <div className="pt-3 border-t border-[#E8DEC8]/60">
                       <Link
-                        href="/contact"
+                        href={sector.href}
                         className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#8B2635] hover:text-[#2E060D] transition-colors"
                       >
-                        <span>Discuss Venue Supply</span>
+                        <span>{sector.cta}</span>
                         <ArrowRight className="w-3 h-3" />
                       </Link>
                     </div>

@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/wholesale-produce-supplier-birmingham',
     '/wholesale-produce-supplier-manchester',
     '/services',
+    '/services/restaurant-food-supply',
     '/approach',
     '/about',
     '/contact',
