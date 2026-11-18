@@ -68,7 +68,8 @@ export function InquiryModal({ isOpen, onClose, initialNotes }: InquiryModalProp
     };
 
     try {
-      let response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
+      // 1. Primary: Resend API delivery via internal endpoint
+      let response = await fetch('/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,8 +78,9 @@ export function InquiryModal({ isOpen, onClose, initialNotes }: InquiryModalProp
         body: JSON.stringify(payload),
       }).catch(() => null);
 
+      // 2. Client-side fallback to FormSubmit if server is unreachable
       if (!response || !response.ok) {
-        response = await fetch('/api/enquiry', {
+        response = await fetch('https://formsubmit.co/ajax/sales@rootwills.co.uk', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

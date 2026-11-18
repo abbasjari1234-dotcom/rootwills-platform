@@ -531,3 +531,252 @@ export async function sendApprovedAccountEmail(params: SendApprovedAccountEmailP
     return { success: false, error: err.message };
   }
 }
+
+export interface SendGeneralEnquiryParams {
+  name: string;
+  email: string;
+  phone?: string;
+  business?: string;
+  sector?: string;
+  subject?: string;
+  message?: string;
+  source?: string;
+}
+
+/**
+ * Sends a general trade/service enquiry notification to Rootwills desk and auto-acknowledges client via Resend
+ */
+export async function sendGeneralEnquiryEmail(params: SendGeneralEnquiryParams) {
+  const resend = getResendClient();
+  if (!resend) {
+    return {
+      success: false,
+      reason: 'RESEND_API_KEY not configured.',
+    };
+  }
+
+  const cleanPhone = (params.phone || '').replace(/[^0-9]/g, '');
+  const whatsappUrl = cleanPhone
+    ? `https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(params.name)}%2C%20thank%20you%20for%20contacting%20Rootwills%20Foodservice.`
+    : null;
+
+  const adminTarget = process.env.CONCIERGE_NOTIFICATION_EMAIL || 'sales@rootwills.co.uk';
+
+  // 1. ADMIN NOTIFICATION FOR ROOTWILLS DESK
+  const adminHtml = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>New Trade Enquiry</title></head>
+<body style="margin: 0; padding: 0; background-color: #F5F1EB; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F5F1EB; padding: 32px 12px;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 620px; background-color: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #BA8E4E; box-shadow: 0 12px 36px rgba(46,6,13,0.08);">
+          
+          <!-- BRAND HEADER -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #4E0D17 0%, #2E060D 100%); padding: 32px 28px; text-align: center; color: #FFFFFF;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center">
+                    <img src="${LOGO_URL}" alt="Rootwills Logo" width="76" height="76" style="display: block; border-radius: 50%; border: 2px solid #BA8E4E; background-color: #FAF7F2; padding: 4px; margin-bottom: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.35);" />
+                    <h1 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF; text-transform: uppercase;">ROOTWILLS</h1>
+                    <p style="margin: 4px 0 0 0; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #F3D08A;">TRADE DESK &bull; CLIENT ENQUIRY</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- PRIORITY BANNER -->
+          <tr>
+            <td style="background-color: #FAF3EA; padding: 12px 28px; border-bottom: 1px solid #E8DEC8;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+                    <span style="display: inline-block; padding: 4px 10px; border-radius: 20px; background-color: #8C6E12; color: #FFFFFF; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">NEW ENQUIRY</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #2E060D; margin-left: 8px;">${params.business || params.name}</span>
+                  </td>
+                  <td align="right" style="font-size: 11px; color: #8C6E12; font-weight: 700;">Action Required</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ENQUIRY DETAILS TABLE -->
+          <tr>
+            <td style="padding: 28px 28px 20px 28px;">
+              <p style="margin: 0 0 16px 0; font-size: 13.5px; color: #4A4A4A; line-height: 1.5;">
+                A new inbound trade inquiry has been submitted via <strong>${params.source || 'Rootwills Web Portal'}</strong>:
+              </p>
+
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border: 1px solid #EBE5DB; border-radius: 12px; overflow: hidden; margin-bottom: 24px;">
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #8C6E12; border-bottom: 1px solid #EBE5DB; width: 35%;">Contact Name</td>
+                  <td style="padding: 11px 14px; font-size: 14px; font-weight: 800; color: #2E060D; border-bottom: 1px solid #EBE5DB;">${params.name}</td>
+                </tr>
+                ${params.business ? `
+                <tr>
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Company / Venue</td>
+                  <td style="padding: 11px 14px; font-size: 13.5px; font-weight: 700; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.business}</td>
+                </tr>` : ''}
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Email Address</td>
+                  <td style="padding: 11px 14px; font-size: 13px; font-weight: 600; color: #4E0D17; border-bottom: 1px solid #EBE5DB;">
+                    <a href="mailto:${params.email}" style="color: #4E0D17; text-decoration: none; font-weight: 700;">${params.email}</a>
+                  </td>
+                </tr>
+                ${params.phone ? `
+                <tr>
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Telephone</td>
+                  <td style="padding: 11px 14px; font-size: 13px; font-weight: 700; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">
+                    <a href="tel:${params.phone}" style="color: #1A1A18; text-decoration: none;">${params.phone}</a>
+                  </td>
+                </tr>` : ''}
+                ${params.sector ? `
+                <tr style="background-color: #FAF9F7;">
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Sector</td>
+                  <td style="padding: 11px 14px; font-size: 13px; font-weight: 600; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.sector}</td>
+                </tr>` : ''}
+                ${params.subject ? `
+                <tr>
+                  <td style="padding: 11px 14px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #706C65; border-bottom: 1px solid #EBE5DB;">Subject</td>
+                  <td style="padding: 11px 14px; font-size: 13px; font-weight: 700; color: #1A1A18; border-bottom: 1px solid #EBE5DB;">${params.subject}</td>
+                </tr>` : ''}
+              </table>
+
+              <!-- MESSAGE / NOTES BOX -->
+              <div style="background-color: #FFFDF9; border: 1px solid #EADDC8; border-left: 4px solid #8C6E12; border-radius: 8px; padding: 16px 18px; margin-bottom: 24px;">
+                <p style="margin: 0 0 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #8C6E12;">Client Message / Specifications:</p>
+                <p style="margin: 0; font-size: 13.5px; color: #2E060D; line-height: 1.6; white-space: pre-wrap;">${params.message || 'No additional message text provided.'}</p>
+              </div>
+
+              <!-- ACTION BUTTONS -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
+                <tr>
+                  <td align="center">
+                    <a href="mailto:${params.email}?subject=Rootwills%20Foodservice%20Enquiry%20Response&body=Dear%20${encodeURIComponent(params.name)}%2C%0A%0AThank%20you%20for%20contacting%20Rootwills.%20" style="display: inline-block; background-color: #2E060D; color: #FFFFFF; font-size: 12.5px; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 8px;">
+                      Reply to ${params.name} &rarr;
+                    </a>
+                    ${whatsappUrl ? `
+                    <a href="${whatsappUrl}" style="display: inline-block; background-color: #25D366; color: #FFFFFF; font-size: 12.5px; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.06em;">
+                      WhatsApp Client &rarr;
+                    </a>` : ''}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color: #FAF7F2; padding: 18px 28px; text-align: center; border-top: 1px solid #E8DEC8; font-size: 11px; color: #888888;">
+              <p style="margin: 0;">Rootwills Ltd &bull; 7d Yates Street, Middleton, Manchester M24 4GA &bull; +44 16164 12803</p>
+              <p style="margin: 4px 0 0 0;">Dedicated B2B Food Supply &bull; <a href="https://www.rootwills.co.uk" style="color: #BA8E4E; text-decoration: none;">www.rootwills.co.uk</a></p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `;
+
+  // 2. CLIENT AUTO-RECEIPT
+  const clientHtml = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Enquiry Received — Rootwills</title></head>
+<body style="margin: 0; padding: 0; background-color: #F5F1EB; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F5F1EB; padding: 32px 12px;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #BA8E4E; box-shadow: 0 12px 36px rgba(46,6,13,0.08);">
+          
+          <!-- BRAND HEADER -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #4E0D17 0%, #2E060D 100%); padding: 32px 28px; text-align: center; color: #FFFFFF;">
+              <img src="${LOGO_URL}" alt="Rootwills Logo" width="72" height="72" style="display: block; margin: 0 auto 12px auto; border-radius: 50%; border: 2px solid #BA8E4E; background-color: #FAF7F2; padding: 4px;" />
+              <h1 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: #FFFFFF; text-transform: uppercase;">ROOTWILLS</h1>
+              <p style="margin: 4px 0 0 0; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #F3D08A;">B2B COMMERCIAL FOODSERVICE</p>
+            </td>
+          </tr>
+
+          <!-- BODY CONTENT -->
+          <tr>
+            <td style="padding: 28px 28px 24px 28px;">
+              <h2 style="margin: 0 0 10px 0; font-size: 20px; color: #2E060D; font-weight: 800;">Thank you for getting in touch, ${params.name}.</h2>
+              <p style="margin: 0 0 16px 0; font-size: 14px; color: #4A4A4A; line-height: 1.6;">
+                We have received your commercial enquiry. A dedicated account manager from our regional trade desk will review your requirements and follow up promptly.
+              </p>
+
+              <div style="background-color: #FAF7F2; border-radius: 10px; padding: 16px 20px; border: 1px solid #EBE5DB; margin-bottom: 24px;">
+                <p style="margin: 0 0 6px 0; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #8C6E12; letter-spacing: 0.06em;">Enquiry Summary</p>
+                <p style="margin: 0 0 4px 0; font-size: 13px; color: #2E060D;"><strong>Subject:</strong> ${params.subject || 'Wholesale Supply Enquiry'}</p>
+                ${params.business ? `<p style="margin: 0 0 4px 0; font-size: 13px; color: #2E060D;"><strong>Venue:</strong> ${params.business}</p>` : ''}
+                <p style="margin: 0; font-size: 13px; color: #555555; line-height: 1.5; font-style: italic;">&ldquo;${params.message || 'No additional message text'}&rdquo;</p>
+              </div>
+
+              <p style="margin: 0 0 16px 0; font-size: 13.5px; color: #4A4A4A; line-height: 1.6;">
+                Need immediate kitchen assistance or urgent pre-dawn delivery allocation? Contact our operations desk directly:
+              </p>
+
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 8px;">
+                <tr>
+                  <td>
+                    <p style="margin: 0; font-size: 13px; color: #2E060D;">
+                      📞 <strong>Phone:</strong> <a href="tel:+441616412803" style="color: #4E0D17; text-decoration: none; font-weight: 700;">+44 16164 12803</a><br />
+                      💬 <strong>WhatsApp:</strong> <a href="https://wa.me/447984709478" style="color: #25D366; text-decoration: none; font-weight: 700;">+44 7984 709478</a><br />
+                      ✉️ <strong>Email:</strong> <a href="mailto:sales@rootwills.co.uk" style="color: #4E0D17; text-decoration: none; font-weight: 700;">sales@rootwills.co.uk</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color: #FAF7F2; padding: 18px 28px; text-align: center; border-top: 1px solid #E8DEC8; font-size: 11px; color: #888888;">
+              <p style="margin: 0;">Rootwills Ltd &bull; 7d Yates Street, Middleton, Manchester M24 4GA</p>
+              <p style="margin: 4px 0 0 0;"><a href="https://www.rootwills.co.uk" style="color: #BA8E4E; text-decoration: none;">www.rootwills.co.uk</a></p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `;
+
+  try {
+    // 1. Send internal alert to Rootwills admin
+    const adminRes = await resend.emails.send({
+      from: FROM_EMAIL,
+      reply_to: params.email,
+      to: adminTarget,
+      subject: `🔔 New Trade Enquiry: ${params.business || params.name} [${params.subject || 'Wholesale Supply'}]`,
+      html: adminHtml,
+    });
+
+    // 2. Send courtesy auto-receipt to the customer (silent catch if customer email invalid)
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      reply_to: 'sales@rootwills.co.uk',
+      to: params.email,
+      subject: `Thank you for contacting Rootwills — Enquiry Received`,
+      html: clientHtml,
+    }).catch((e) => {
+      console.log('[Resend Enquiry Client Notice]', e.message);
+    });
+
+    return { success: true, messageId: adminRes.data?.id };
+  } catch (err: any) {
+    console.error('[Resend General Enquiry Error]', err);
+    return { success: false, error: err.message };
+  }
+}
