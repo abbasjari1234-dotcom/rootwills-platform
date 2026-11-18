@@ -78,7 +78,7 @@ async function main() {
 
   if (cmd === 'inspect') {
     const inspectionUrl = arg1 || 'https://www.rootwills.co.uk/about';
-    const siteUrl = arg2 || 'sc-domain:rootwills.co.uk';
+    const siteUrl = arg2 || 'https://www.rootwills.co.uk/';
     console.log(`\n--- Inspecting URL: ${inspectionUrl} (siteUrl: ${siteUrl}) ---`);
 
     const res = await fetch('https://searchconsole.googleapis.com/v1/urlInspection/index:inspect', {
@@ -117,7 +117,7 @@ async function main() {
   }
 
   if (cmd === 'sitemaps') {
-    const siteUrl = encodeURIComponent(arg1 || 'sc-domain:rootwills.co.uk');
+    const siteUrl = encodeURIComponent(arg1 || 'https://www.rootwills.co.uk/');
     console.log(`\n--- Fetching sitemaps for ${siteUrl} ---`);
     const res = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${siteUrl}/sitemaps`, {
       headers: { Authorization: `Bearer ${token}` },
@@ -128,7 +128,7 @@ async function main() {
   }
 
   if (cmd === 'analytics') {
-    const siteUrl = encodeURIComponent(arg1 || 'sc-domain:rootwills.co.uk');
+    const siteUrl = encodeURIComponent(arg1 || 'https://www.rootwills.co.uk/');
     console.log(`\n--- Fetching search analytics for ${siteUrl} ---`);
     const today = new Date();
     const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
