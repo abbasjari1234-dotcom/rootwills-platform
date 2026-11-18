@@ -238,6 +238,15 @@ export function PublicHeader() {
             </Link>
 
             <Link
+              href="/products/bakery-breakfast"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between pl-7 pr-3.5 py-1.5 rounded-lg text-xs font-medium text-[#2E060D]/80 hover:text-[#2E060D] hover:bg-[#FAF5EB] transition-colors"
+            >
+              <span>↳ Artisan Bakery &amp; Bread</span>
+              <span className="font-mono text-[9px] uppercase font-bold text-[#BA8E4E]">Fresh</span>
+            </Link>
+
+            <Link
               href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-colors ${
