@@ -141,11 +141,23 @@ const jsonLdSchema = {
         name: 'UK Companies House Registration Number',
         value: '17398744',
       },
+      sameAs: [
+        'https://find-and-update.company-information.service.gov.uk/company/17398744',
+        'https://open.endole.co.uk/company/17398744/rootwills-ltd',
+        'https://www.yell.com/biz/rootwills-ltd-manchester-10884949/',
+        'https://www.freeindex.co.uk/profile(rootwills-ltd)_916891.htm',
+        'https://www.linkedin.com/company/rootwills'
+      ],
       knowsAbout: [
         'Commercial Food Services UK',
         'Wholesale Fresh Produce Supplier Birmingham',
+        'Birmingham Wholesale Catering Supplies',
+        'Chilled Food Wholesaler Birmingham',
+        'Food Wholesalers Birmingham and West Midlands',
         'Hospitality Food Distribution West Midlands',
         'Pre-Dawn Restaurant Delivery London and Birmingham',
+        'Multi-Temperature Refrigerated Food Logistics',
+        'Commercial Kitchen Cash and Carry Alternative',
         'Class 1 British Farm Produce Wholesale',
         'Catering Butchery and Artisan Dairy Supply',
       ],
