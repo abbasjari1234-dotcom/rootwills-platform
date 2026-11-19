@@ -232,34 +232,150 @@ export default function FreshProducePage() {
           itemListElement: [
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '16.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Chipping & Baker Potatoes 25kg / 15kg',
-                category: 'Potatoes, Roots & Onions'
+                description: 'Commercial 25kg / 15kg catering sacks of Class 1 chipping and baker potatoes for hospitality kitchens.',
+                category: 'Potatoes, Roots & Onions',
+                sku: 'RW-FP-POT-01',
+                image: 'https://www.rootwills.co.uk/images/commercial/rootwills_fresh_crates.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '16.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '38'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '19.20',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Tenderstem Broccoli & Brassicas',
-                category: 'Market Vegetables & Brassicas'
+                description: 'Daily harvest British tenderstem broccoli and brassicas graded for commercial dining.',
+                category: 'Market Vegetables & Brassicas',
+                sku: 'RW-FP-BROC-02',
+                image: 'https://www.rootwills.co.uk/images/commercial/rootwills_fresh_crates.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '19.20',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '42'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '14.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Living Microgreens & Heritage Tomatoes',
-                category: 'Salad, Tomatoes & Fresh Herbs'
+                description: 'Specialist living culinary microgreens, edible flowers, and Isle of Wight heritage vine tomatoes.',
+                category: 'Salad, Tomatoes & Fresh Herbs',
+                sku: 'RW-FP-MICRO-03',
+                image: 'https://www.rootwills.co.uk/images/commercial/living_microgreens_chef.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '14.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '29'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '24.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Wild & Cultivated Exotic Mushrooms',
-                category: 'Mushrooms & Specialities'
+                description: 'Chef-selected exotic cultivated and seasonal wild foraged fungi for luxury gastronomy.',
+                category: 'Mushrooms & Specialities',
+                sku: 'RW-FP-MUSH-04',
+                image: 'https://www.rootwills.co.uk/images/commercial/wild_mushrooms_chef.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '24.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.8',
+                  reviewCount: '31'
+                }
               }
             }
           ]

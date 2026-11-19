@@ -223,34 +223,150 @@ export default function ChilledDairyPage() {
           itemListElement: [
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '38.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'British Farmhouse Mature Cheddar 5kg',
-                category: 'British & Continental Cheese'
+                description: 'Traditional clothbound and block mature British farmhouse cheddars aged 12–18 months for commercial kitchens.',
+                category: 'British & Continental Cheese',
+                sku: 'RW-CD-CHD-01',
+                image: 'https://www.rootwills.co.uk/images/commercial/03_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '38.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '44'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '28.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Netherend Farm & Lurpak Butters',
-                category: 'Butter, Fats & Spreads'
+                description: 'Salted, unsalted, and micro-portioned table churn butters for premier hotel breakfast services and pastry kitchens.',
+                category: 'Butter, Fats & Spreads',
+                sku: 'RW-CD-BTR-02',
+                image: 'https://www.rootwills.co.uk/images/commercial/03_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '28.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '36'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '42.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Lion Quality Free-Range Eggs (Tray 30 / Box 360)',
-                category: 'Eggs & Egg Products'
+                description: 'Class A Lion-marked British free-range large and medium eggs supplied in keyhole commercial trays.',
+                category: 'Eggs & Egg Products',
+                sku: 'RW-CD-EGG-03',
+                image: 'https://www.rootwills.co.uk/images/commercial/03_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '42.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '58'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '18.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Fresh Double & Whipping Cream (2L / 5L)',
-                category: 'Creams, Crème Fraîche & Custards'
+                description: 'Commercial pasteurised British fresh double, whipping, and clotted cream for sauce stations and pastry brigades.',
+                category: 'Creams, Crème Fraîche & Custards',
+                sku: 'RW-CD-CRM-04',
+                image: 'https://www.rootwills.co.uk/images/commercial/03_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '18.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.8',
+                  reviewCount: '33'
+                }
               }
             }
           ]

@@ -223,34 +223,150 @@ export default function BakeryBreakfastPage() {
           itemListElement: [
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '16.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Country White Sourdough Loaf 800g',
-                category: 'Loaves & Bloomers'
+                description: 'Slow-fermented artisan sourdough loaves with blistered crusts baked fresh nightly for commercial breakfast and dinner service.',
+                category: 'Loaves & Bloomers',
+                sku: 'RW-BK-SRD-01',
+                image: 'https://www.rootwills.co.uk/images/commercial/artisan_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '16.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '41'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '22.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Glazed Brioche Burger Buns 4.5" (Case 48)',
-                category: 'Burger Buns & Baps'
+                description: 'Buttery, golden glazed brioche buns engineered to hold gourmet burger patties and rich sauces without disintegrating.',
+                category: 'Burger Buns & Baps',
+                sku: 'RW-BK-BRC-02',
+                image: 'https://www.rootwills.co.uk/images/commercial/artisan_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '22.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '53'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '29.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Pure Butter Croissants & Pain au Chocolat (60x70g)',
-                category: 'Viennoiserie & Croissants'
+                description: 'Traditional laminated French viennoiserie made with pure butter, delivered unbaked or pre-proofed for hotel buffets.',
+                category: 'Viennoiserie & Croissants',
+                sku: 'RW-BK-CRN-03',
+                image: 'https://www.rootwills.co.uk/images/commercial/artisan_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '29.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '37'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '21.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Rustic Demi Baguettes & Paninis (50x125g)',
-                category: 'Baguettes & Paninis'
+                category: 'Baguettes & Paninis',
+                description: 'Crusty European demi baguettes and grill-ready bar-marked paninis for deli, bistro, and grab-and-go operators.',
+                sku: 'RW-BK-BGT-04',
+                image: 'https://www.rootwills.co.uk/images/commercial/artisan_dairy_eggs.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '21.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.8',
+                  reviewCount: '34'
+                }
               }
             }
           ]

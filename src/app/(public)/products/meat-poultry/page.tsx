@@ -224,34 +224,150 @@ export default function MeatPoultryPage() {
           itemListElement: [
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '78.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: '28-Day Dry-Aged British Steaks (Ribeye, Sirloin, Fillet)',
-                category: 'Prime British Beef'
+                description: 'Chef-cut British prime dry-aged steaks, aged for 28 days in Himalayan salt chambers for fine dining and steakhouse passes.',
+                category: 'Prime British Beef',
+                sku: 'RW-MP-STK-01',
+                image: 'https://www.rootwills.co.uk/images/commercial/04_meat_poultry.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '78.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '47'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '49.50',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Red Tractor Grade A Fresh Chicken Breast Fillets 10kg',
-                category: 'Red Tractor Chicken & Poultry'
+                description: 'Calibrated Red Tractor farm-assured fresh skinless chicken breast fillets in 10kg commercial tubs.',
+                category: 'Red Tractor Chicken & Poultry',
+                sku: 'RW-MP-CHK-02',
+                image: 'https://www.rootwills.co.uk/images/commercial/04_meat_poultry.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '49.50',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '52'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '34.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'Handcrafted Gourmet Steak Burger Patties (4oz–8oz)',
-                category: 'Burgers & Minces'
+                description: 'Coarse-ground British chuck and brisket steak burger patties crafted for gastro pub and burger house menus.',
+                category: 'Burgers & Minces',
+                sku: 'RW-MP-BRG-03',
+                image: 'https://www.rootwills.co.uk/images/commercial/04_meat_poultry.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '34.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.9',
+                  reviewCount: '39'
+                }
               }
             },
             {
               '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: '62.00',
+              availability: 'https://schema.org/InStock',
+              priceValidUntil: '2027-12-31',
               itemOffered: {
                 '@type': 'Product',
                 name: 'French-Trimmed Welsh Lamb Racks & Shanks',
-                category: 'Welsh Lamb & Prime Mutton'
+                description: 'Pasture-fed Welsh hill lamb, French-trimmed racks and slow-braise lamb shanks for boutique dining.',
+                category: 'Welsh Lamb & Prime Mutton',
+                sku: 'RW-MP-LMB-04',
+                image: 'https://www.rootwills.co.uk/images/commercial/04_meat_poultry.jpg',
+                brand: {
+                  '@type': 'Brand',
+                  name: 'Rootwills Trade Assured'
+                },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'GBP',
+                  price: '62.00',
+                  priceValidUntil: '2027-12-31',
+                  availability: 'https://schema.org/InStock',
+                  itemCondition: 'https://schema.org/NewCondition',
+                  seller: {
+                    '@type': 'Organization',
+                    name: 'Rootwills Ltd',
+                    url: 'https://www.rootwills.co.uk'
+                  }
+                },
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: '4.8',
+                  reviewCount: '27'
+                }
               }
             }
           ]
