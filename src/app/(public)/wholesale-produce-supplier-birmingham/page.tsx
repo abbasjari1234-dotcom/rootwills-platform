@@ -24,26 +24,29 @@ import {
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Produce Supplier Birmingham | Rootwills Foodservice',
+  title: 'Wholesale Food & Catering Supplies Birmingham | Commercial Foodservice | Rootwills',
   description:
-    'Leading Birmingham wholesale produce & foodservice distributor. Daily pre-dawn deliveries to Digbeth, Jewellery Quarter, Edgbaston & Solihull. Fresh farm produce & pantry catalog.',
+    'Leading Birmingham wholesale food & catering supplies distributor. Daily pre-dawn multi-drop delivery of fresh farm produce, chilled dairy, prime butchery & artisan bakery to Digbeth, Jewellery Quarter, Edgbaston & Solihull.',
   keywords: [
+    'wholesale food supplier birmingham',
+    'birmingham wholesale catering',
+    'chilled food wholesaler birmingham',
     'wholesale produce supplier birmingham',
     'birmingham foodservice supplier',
     'fresh produce suppliers birmingham',
     'restaurant food suppliers birmingham',
-    'wholesale fruit and veg birmingham',
     'commercial catering suppliers birmingham',
+    'catering supplies cash and carry birmingham',
     'hospitality food wholesaler west midlands',
-    'birmingham wholesale market food distributors'
+    'birmingham wholesale food market'
   ],
   alternates: {
     canonical: '/wholesale-produce-supplier-birmingham',
   },
   openGraph: {
-    title: 'Wholesale Produce Supplier Birmingham | Rootwills Foodservice',
+    title: 'Wholesale Food & Catering Supplies Birmingham | Commercial Foodservice | Rootwills',
     description:
-      'Daily 02:00 AM market intake & pre-dawn chilled distribution supplying Birmingham’s restaurants, gastro pubs, and commercial caterers.',
+      'Daily pre-dawn temperature-controlled multi-drop deliveries supplying Birmingham’s restaurants, gastro pubs, luxury hotels, and commercial caterers.',
     url: 'https://www.rootwills.co.uk/wholesale-produce-supplier-birmingham',
     siteName: 'Rootwills',
     locale: 'en_GB',
@@ -52,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wholesale Produce Supplier Birmingham | Rootwills Foodservice',
+    title: 'Wholesale Food & Catering Supplies Birmingham | Rootwills Foodservice',
     description:
-      'Leading Birmingham wholesale produce and commercial foodservice supplier. Pre-dawn deliveries across Digbeth, Jewellery Quarter, Solihull & West Midlands.',
+      'Leading Birmingham wholesale food, chilled produce, and commercial catering supplier. Pre-dawn deliveries across Digbeth, Jewellery Quarter, Solihull & West Midlands.',
     images: ['/images/commercial/rootwills_fresh_crates.jpg'],
   },
 };
@@ -63,60 +66,64 @@ const BIRMINGHAM_ZONES = [
   {
     zone: 'Zone 01: City Centre & Jewellery Quarter',
     postcodes: 'B1, B2, B3, B4, B18',
-    venues: 'Fine dining, Michelin-calibre restaurants, boutique hotels, bistro kitchens',
+    venues: 'Fine dining, Michelin-calibre restaurants, boutique hotels, Colmore Row bistro kitchens',
     window: '04:00 AM – 06:30 AM',
-    desc: 'Keyhole kitchen deliveries before city morning loading restrictions and bus lane closures take effect.'
+    desc: 'Keyhole kitchen deliveries before Birmingham morning loading curfews and Clean Air Zone (CAZ) traffic restrictions take effect.'
   },
   {
     zone: 'Zone 02: Digbeth & Creative Quarter',
     postcodes: 'B5, B9, B12',
-    venues: 'Independent venues, street-food kitchens, artisan bakeries, events spaces',
+    venues: 'Independent venues, street-food kitchens, artisan bakeries, high-volume event spaces',
     window: '04:30 AM – 07:00 AM',
-    desc: 'High-frequency delivery directly into prep stations with zero disruption to daily services.'
+    desc: 'Consolidated single-van drops directly into walk-in prep chillers with zero daytime disruption to kitchen brigades.'
   },
   {
     zone: 'Zone 03: Edgbaston & Harborne',
     postcodes: 'B15, B16, B17',
-    venues: 'Gastro pubs, private dining clubs, luxury healthcare & educational brigades',
+    venues: 'Gastro pubs, private dining clubs, luxury healthcare & university catering brigades',
     window: '05:00 AM – 07:30 AM',
-    desc: 'Daily chilled routes delivering Class 1 British seasonal brassicas, exotics, and morning dairy.'
+    desc: 'Daily multi-temperature delivery of Class 1 British seasonal brassicas, chilled dairy blocks, and fresh catering lines.'
   },
   {
     zone: 'Zone 04: Solihull & Sutton Coldfield',
     postcodes: 'B72, B73, B74, B90, B91, B92, B93',
-    venues: 'Country house hotels, conference centres, regional gastro dining',
+    venues: 'Country house hotels, conference centres, regional gastro dining, NEC exhibition banqueting',
     window: '05:30 AM – 08:00 AM',
-    desc: 'Bulk produce, daily dairy trunks, and ambient dry larder pallets dispatched from our Birmingham hub.'
+    desc: 'Bulk produce, daily chilled dairy trunks, and ambient dry larder pallets dispatched on dedicated regional delivery routes.'
   },
   {
     zone: 'Zone 05: Greater West Midlands Corridor',
     postcodes: 'Coventry (CV), Wolverhampton (WV), Dudley (DY), Walsall (WS)',
-    venues: 'Multi-site restaurant operators, contract caterers, production kitchens',
+    venues: 'Multi-site restaurant operators, contract caterers, production kitchens, banqueting halls',
     window: 'Daily Scheduled Trunking',
-    desc: 'Consolidated commercial distribution across the Midlands manufacturing and hospitality spine.'
+    desc: 'Consolidated commercial distribution across the Midlands industrial, healthcare, and hospitality spine.'
   }
 ];
 
 const BIRMINGHAM_FAQS = [
   {
-    q: 'What is the order cut-off for next-morning delivery across Birmingham?',
-    a: 'Orders placed up to 23:00 (11:00 PM) Sunday through Friday via WhatsApp, phone, or our Rootwills Direct online portal are delivered next morning between 04:00 AM and 07:30 AM before your kitchen prep shift begins.'
+    q: 'Are you a chilled food wholesaler delivering across Birmingham?',
+    a: 'Yes. Rootwills operates temperature-controlled dual-zone refrigerated vehicles maintaining strict 0°C to 4°C cold-chain standards across Birmingham. We supply commercial kitchens with farmhouse cheeses, salted and unsalted butter blocks, creams, Lion-certified eggs, and vacuum-packed prime British butchery cuts.'
   },
   {
-    q: 'Do you deliver to Birmingham city centre locations with restricted morning access?',
-    a: 'Yes. Our pre-dawn multi-temperature delivery fleet operates between 04:00 AM and 06:30 AM specifically to beat Birmingham Clean Air Zone congestion and pedestrianised delivery window curfews in areas such as Colmore Row, New Street, and the Jewellery Quarter.'
+    q: 'How does Rootwills support commercial catering and high-volume banqueting in Birmingham?',
+    a: 'We provide dedicated commercial catering account management with bulk case pricing, multi-pallet conference staging, and automated standing order drops. Catering teams can order full pallet allocations for weekend weddings and corporate banquets alongside broken-case top-ups without penalty.'
+  },
+  {
+    q: 'What is the order cut-off for next-morning delivery across Birmingham?',
+    a: 'Orders placed up to 23:00 (11:00 PM) Sunday through Friday via WhatsApp, phone (+44 16164 12803), or our Rootwills Direct online trade portal are delivered next morning between 04:00 AM and 07:30 AM before your head chef’s service prep begins.'
+  },
+  {
+    q: 'Do you deliver to Birmingham city centre locations with Clean Air Zone curfews?',
+    a: 'Yes. Our pre-dawn delivery fleet operates between 04:00 AM and 06:30 AM specifically to beat Birmingham Clean Air Zone congestion and pedestrianised delivery window curfews in areas such as Colmore Row, New Street, Broad Street, and the Jewellery Quarter.'
   },
   {
     q: 'Where is the Rootwills distribution and registered hub located?',
     a: 'Rootwills Ltd (Companies House No. 17398744) is headquartered at 7d Yates Street, Middleton, Manchester M24 4GA, England, operating dedicated daily pre-dawn refrigerated fleet trunks across Birmingham, Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and the Greater West Midlands.'
   },
   {
-    q: 'Can Birmingham kitchens order broken cases or split produce?',
-    a: 'Yes. We cater to fine-dining bistros and independent restaurants that require single-kilo, punnet, or broken-case quantities alongside high-volume catering institutions ordering multi-pallet weekly drops.'
-  },
-  {
     q: 'How do Birmingham hospitality businesses open a 30-day trade account?',
-    a: 'You can apply online via our Contact page or call our trade desk at +44 16164 12803. We verify VAT and Companies House credentials within 2 business hours, assigning you a dedicated Birmingham account manager and tailored contract pricing.'
+    a: 'You can apply online via our trade application portal or call our desk at +44 16164 12803. We verify VAT and Companies House credentials within 2 business hours, assigning you a dedicated account manager and tailored wholesale contract pricing.'
   }
 ];
 
@@ -126,7 +133,7 @@ const birminghamJsonLd = {
     {
       '@type': ['WholesaleStore', 'LocalBusiness'],
       '@id': 'https://www.rootwills.co.uk/wholesale-produce-supplier-birmingham#localbusiness',
-      name: 'Rootwills Birmingham - Wholesale Produce & Foodservice Supplier',
+      name: 'Rootwills Birmingham - Wholesale Food, Catering & Produce Supplier',
       url: 'https://www.rootwills.co.uk/wholesale-produce-supplier-birmingham',
       logo: 'https://www.rootwills.co.uk/images/logo.png',
       image: 'https://www.rootwills.co.uk/images/commercial/rootwills_fresh_crates.jpg',
@@ -154,7 +161,8 @@ const birminghamJsonLd = {
         { '@type': 'AdministrativeArea', name: 'Solihull' },
         { '@type': 'AdministrativeArea', name: 'Sutton Coldfield' },
         { '@type': 'AdministrativeArea', name: 'Coventry' },
-        { '@type': 'AdministrativeArea', name: 'Wolverhampton' }
+        { '@type': 'AdministrativeArea', name: 'Wolverhampton' },
+        { '@type': 'AdministrativeArea', name: 'Dudley' }
       ],
       openingHoursSpecification: [
         {
@@ -238,12 +246,12 @@ export default function BirminghamWholesaleProducePage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#180205]/90 border border-[#F3D08A]/50 mb-4 shadow-sm backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#F3D08A] animate-pulse" />
                   <span className="font-mono text-[10.5px] sm:text-[11px] uppercase tracking-[0.2em] text-[#F3D08A] font-bold">
-                    BIRMINGHAM WHOLESALE CORRIDOR // DIRECT SUPPLY
+                    BIRMINGHAM WHOLESALE FOOD &amp; CATERING // DIRECT SUPPLY
                   </span>
                 </div>
 
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.08] mb-3 [text-wrap:balance]">
-                  Wholesale Produce &amp; Foodservice Supplier in <span className="text-[#F3D08A] italic">Birmingham</span>
+                  Wholesale Food, Produce &amp; Catering Supplies in <span className="text-[#F3D08A] italic">Birmingham</span>
                 </h1>
 
                 <div className="flex">
@@ -257,7 +265,7 @@ export default function BirminghamWholesaleProducePage() {
                 </div>
 
                 <p className="text-sm sm:text-lg text-white/95 font-sans leading-relaxed mb-8 max-w-2xl font-light drop-shadow-sm">
-                  Direct grower partnerships, 02:00 AM daily depot intake, and guaranteed pre-dawn refrigerated delivery across Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and Greater West Midlands.
+                  Direct farm partnerships, 02:00 AM depot intake, and guaranteed pre-dawn temperature-controlled delivery across Digbeth, the Jewellery Quarter, Edgbaston, Solihull, and Greater West Midlands. Supplying commercial kitchens with Class 1 produce, chilled dairy, prime butchery, and catering essentials.
                 </p>
 
                 {/* CTAs */}
@@ -298,7 +306,7 @@ export default function BirminghamWholesaleProducePage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Snowflake className="w-4 h-4 text-[#F3D08A]" />
-                    <span>Dual-Zone Chill</span>
+                    <span>0–4°C Chilled Dual-Zone</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-[#F3D08A]" />
@@ -319,10 +327,10 @@ export default function BirminghamWholesaleProducePage() {
               WHY BIRMINGHAM HOSPITALITY CHOOSES ROOTWILLS
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
-              Built for Birmingham’s Demanding Kitchens
+              Built for Birmingham’s Commercial Foodservice &amp; Catering Brigades
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-700 font-sans">
-              Unlike broadline FMCG wholesalers who treat fresh produce as an afterthought, our entire Birmingham operation revolves around pre-dawn culinary integrity.
+              Unlike broadline FMCG suppliers who deliver ambient parcels during lunchtime service, our entire Birmingham operation is engineered for pre-dawn culinary excellence and single-van consolidation.
             </p>
           </div>
 
@@ -330,13 +338,13 @@ export default function BirminghamWholesaleProducePage() {
             
             <div className="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-[#E8DEC8] shadow-sm hover:border-[#BA8E4E]/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-[#260309] text-[#F3D08A] flex items-center justify-center mb-6 shadow-sm">
-                <Clock className="w-6 h-6" />
+                <Snowflake className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[#131313] mb-2">
-                02:00 AM Depot Crate Grading
+                0–4°C Chilled Food &amp; Dairy Cold-Chain
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Every crate entering our daily pre-dawn dispatch is hand-inspected for core temperature, firmness, and cosmetic grade before being loaded onto our dual-zone refrigerated vans.
+                Dual-temperature refrigerated vans ensure that fragile artisan cheeses, clotted creams, fresh milks, butter blocks, and butchery primals arrive with verified temperature compliance at 04:00 AM.
               </p>
             </div>
 
@@ -357,10 +365,10 @@ export default function BirminghamWholesaleProducePage() {
                 <Scale className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-serif font-bold text-[#131313] mb-2">
-                Broken Cases &amp; No Minimum Penalties
+                Commercial Catering Splits &amp; Bulk Staging
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed font-sans">
-                Order exactly what your service covers: single bundles of heritage carrots, punnets of living micro herbs, or full pallets of Idaho russets and dry pantry staples without inflated broken-case surcharges.
+                Order multi-pallet staging for high-volume corporate conferences and banquets, or single broken cases of heritage brassicas and micro herbs without penalty surcharges.
               </p>
             </div>
 
@@ -435,134 +443,222 @@ export default function BirminghamWholesaleProducePage() {
           </div>
         </section>
 
-        {/* FRESH PRODUCE & COMMERCIAL CATALOG CATEGORIES */}
+        {/* 6 CORE COMMODITY DIVISIONS (Fresh Produce, Chilled Dairy, Butchery, Bakery, Restaurant, Hotel) */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 sm:mb-28">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#BA8E4E] font-bold block mb-2">
               COMPREHENSIVE BIRMINGHAM INVENTORY
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#131313] tracking-tight">
-              Curated Produce &amp; Commercial Larder
+              Consolidated Wholesale Larder &amp; Chilled Supplies
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-700 font-sans">
-              Consolidate your invoices: from Michelin-grade seasonal brassicas and foraged mushrooms to everyday kitchen dry goods, dairy, and hygiene supplies.
+              Consolidate your invoices into a single morning delivery: from Class 1 farm produce and chilled dairy to dry-aged British butchery and daily morning bake drops.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
+            {/* Division 1: Fresh Produce */}
             <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
-                  src="/images/commercial/02_fresh_produce.jpg"
-                  alt="Fresh wholesale produce Birmingham"
+                  src="/images/commercial/rootwills_fresh_crates.jpg"
+                  alt="Fresh farm produce wholesale Birmingham"
                   fill
-                  sizes="320px"
+                  sizes="380px"
                   className="object-cover"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Division 01</span>
+                    <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Class 1 Spec</span>
+                  </div>
                   <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
                     Fresh Farm Vegetables &amp; Salads
                   </h3>
                   <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
-                    Class 1 British brassicas, heritage carrots, vine tomatoes, wild mushrooms, micro herbs, and daily prepared veg.
+                    Class 1 British brassicas, heirloom carrots, vine tomatoes, wild mushrooms, living micro herbs, and prepared kitchen vegetables.
                   </p>
                 </div>
                 <Link
-                  href="/products?category=produce"
-                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1"
+                  href="/products/fresh-produce"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
                 >
-                  <span>Explore Produce</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>Explore Fresh Produce Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
+            {/* Division 2: Chilled Dairy & Cheeses */}
             <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
-                  src="/images/commercial/03_dairy_eggs.jpg"
-                  alt="Artisan dairy and eggs wholesale Birmingham"
+                  src="/images/commercial/rootwills_dairy_cheese.jpg"
+                  alt="Chilled food wholesaler dairy and cheeses Birmingham"
                   fill
-                  sizes="320px"
+                  sizes="380px"
                   className="object-cover"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Division 02</span>
+                    <span className="text-[10px] font-mono text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">0–4°C Chilled</span>
+                  </div>
                   <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
-                    Dairy, British Cheeses &amp; Eggs
+                    Chilled Dairy, Cheeses &amp; Lion Eggs
                   </h3>
                   <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
-                    Farmhouse butters, clotted cream, double cream, graded Lion Quality eggs, and regional British farmhouse cheeses.
+                    Farmhouse British cheeses, salted &amp; unsalted butter blocks, double cream, graded Lion Quality eggs, and organic milks.
                   </p>
                 </div>
                 <Link
-                  href="/products?category=dairy"
-                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1"
+                  href="/products/chilled-dairy"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
                 >
-                  <span>Explore Dairy</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>Explore Dairy Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
+            {/* Division 3: Prime Butchery & Poultry */}
             <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
-                  src="/images/commercial/dry_pantry_wholesale.jpg"
-                  alt="Commercial dry pantry wholesale Birmingham"
+                  src="/images/commercial/rootwills_meat_poultry.jpg"
+                  alt="Wholesale meat suppliers and catering butchery Birmingham"
                   fill
-                  sizes="320px"
+                  sizes="380px"
                   className="object-cover"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Division 03</span>
+                    <span className="text-[10px] font-mono text-rose-800 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Red Tractor</span>
+                  </div>
                   <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
-                    Dry Store Pantry &amp; Pastas
+                    Prime British Butchery &amp; Poultry
                   </h3>
                   <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
-                    Cold-pressed extra virgin oils, San Marzano tomatoes, premium Italian bronze-die pastas, jasmine rice, and flours.
+                    Dry-aged British beef cuts, Red Tractor assured poultry, Welsh pasture lamb, and bespoke portioning tailored to culinary specs.
                   </p>
                 </div>
                 <Link
-                  href="/products?category=pantry"
-                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1"
+                  href="/products/meat-poultry"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
                 >
-                  <span>Explore Dry Goods</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>Explore Butchery Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
+            {/* Division 4: Artisan Morning Bakery */}
             <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
               <div className="relative h-44 w-full bg-stone-100">
                 <Image
-                  src="/images/commercial/living_microgreens_chef.jpg"
-                  alt="Living microgreens and culinary herbs Birmingham"
+                  src="/images/commercial/rootwills_artisan_bakery.jpg"
+                  alt="Wholesale artisan bakery and morning goods Birmingham"
                   fill
-                  sizes="320px"
+                  sizes="380px"
                   className="object-cover"
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Division 04</span>
+                    <span className="text-[10px] font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Daily Bake</span>
+                  </div>
                   <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
-                    Specialist &amp; Living Microgreens
+                    Artisan Sourdoughs &amp; Morning Goods
                   </h3>
                   <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
-                    Cut-to-order culinary microgreens, edible flowers, Asian exotics, and bespoke garnishes for high-end plating.
+                    Slow-fermented sourdough boules, glazed brioche burger buns, sandwich loaves, and handcrafted butter viennoiserie.
                   </p>
                 </div>
                 <Link
-                  href="/products?category=speciality"
-                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1"
+                  href="/products/bakery-breakfast"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
                 >
-                  <span>Explore Specialist</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>Explore Bakery Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Division 5: Restaurant Food Supply */}
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
+              <div className="relative h-44 w-full bg-stone-100">
+                <Image
+                  src="/images/commercial/rootwills_delivery_van.jpg"
+                  alt="Restaurant food suppliers commercial wholesale Birmingham"
+                  fill
+                  sizes="380px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Service Solution</span>
+                    <span className="text-[10px] font-mono text-purple-800 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">Single-Van</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
+                    Restaurant Food Supply &amp; Keyhole Drops
+                  </h3>
+                  <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
+                    Eliminate multiple noisy morning deliveries. Consolidate produce, dairy, bakery, and dry store into one reliable pre-dawn delivery.
+                  </p>
+                </div>
+                <Link
+                  href="/services/restaurant-food-supply"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
+                >
+                  <span>Restaurant Solutions</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Division 6: Hotel & Catering Banqueting */}
+            <div className="rounded-2xl overflow-hidden bg-white/90 backdrop-blur-xs border border-[#E8DEC8] shadow-sm flex flex-col hover:border-[#BA8E4E]/50 transition-colors">
+              <div className="relative h-44 w-full bg-stone-100">
+                <Image
+                  src="/images/commercial/01_hero_culinary.jpg"
+                  alt="Birmingham wholesale catering supplies and banquet foodservice"
+                  fill
+                  sizes="380px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10.5px] font-mono uppercase tracking-wider text-[#BA8E4E] font-bold">Service Solution</span>
+                    <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">30-Day Terms</span>
+                  </div>
+                  <h3 className="font-serif font-bold text-lg text-[#131313] mb-1">
+                    Hotel &amp; Banqueting Catering Supplies
+                  </h3>
+                  <p className="text-xs text-stone-600 font-sans leading-relaxed mb-4">
+                    High-capacity staging for multi-outlet hotels, conference banqueting, and major West Midlands event venues with SLA guarantees.
+                  </p>
+                </div>
+                <Link
+                  href="/services/hotel-banqueting-supply"
+                  className="text-xs font-semibold text-[#BA8E4E] hover:underline flex items-center gap-1 font-mono uppercase tracking-wider"
+                >
+                  <span>Hotel &amp; Catering Solutions</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
@@ -577,7 +673,7 @@ export default function BirminghamWholesaleProducePage() {
               FREQUENTLY ASKED QUESTIONS
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#131313]">
-              Birmingham Wholesale Produce &amp; Ordering FAQs
+              Birmingham Food &amp; Catering Wholesale FAQs
             </h2>
           </div>
 
