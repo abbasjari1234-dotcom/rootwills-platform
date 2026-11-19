@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   keywords: [
     'food suppliers for restaurants',
     'restaurant food supplier birmingham',
+    'birmingham wholesale catering',
+    'chilled food wholesaler birmingham',
+    'food wholesalers birmingham',
+    'commercial catering suppliers birmingham',
     'manchester restaurant food suppliers',
     'commercial restaurant suppliers uk',
     'wholesale food for restaurants',

@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     'Premier UK hotel food supplier for luxury resorts, boutique hotels & conference centres. Multi-outlet breakfast logistics, bulk banqueting butchery, artisan dairy & daily bakery with 6-day pre-dawn multi-pallet drops across Birmingham, Manchester & the UK.',
   keywords: [
     'hotel food suppliers uk',
+    'birmingham wholesale catering',
+    'hotel catering trade wholesaler birmingham',
+    'commercial catering suppliers birmingham',
+    'chilled food wholesaler birmingham',
+    'food wholesalers birmingham',
     'commercial hotel breakfast suppliers',
     'hotel foodservice distributors birmingham',
     'wholesale food for hotels manchester',

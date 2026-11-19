@@ -24,25 +24,30 @@ import {
 import { DoodleFlourish } from '@/components/public/DoodleFlourish';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
+  title: 'Wholesale Food Supplier Birmingham & Commercial Catering | Rootwills Foodservice',
   description:
-    'Commercial food service and fresh produce wholesaler for restaurants and hotels across Birmingham and UK. Pre-dawn delivery and wholesale trade terms.',
+    'Leading Birmingham wholesale food & commercial catering supplier. Pre-dawn multi-temperature delivery of fresh produce, chilled dairy, prime butchery & bakery across Birmingham, Manchester & the UK.',
   keywords: [
-    'wholesale produce supplier Birmingham',
-    'commercial food service supplier UK',
-    'restaurant food suppliers Birmingham',
-    'wholesale fruit and veg supplier West Midlands',
-    'fresh produce suppliers for restaurants London',
-    'wholesale catering supplier Midlands',
-    'hospitality food distributors UK',
+    'birmingham foodservice supplier',
+    'wholesale food supplier birmingham',
+    'birmingham wholesale catering',
+    'chilled food wholesaler birmingham',
+    'food wholesalers birmingham',
+    'commercial catering suppliers birmingham',
+    'multi-temperature food supplier birmingham',
+    'restaurant food suppliers birmingham',
+    'food wholesale birmingham',
+    'catering supplies cash and carry birmingham',
+    'hospitality food distributors west midlands',
+    'wholesale food distributor uk'
   ],
   alternates: {
     canonical: '/services',
   },
   openGraph: {
-    title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
+    title: 'Wholesale Food Supplier Birmingham & Commercial Catering | Rootwills Foodservice',
     description:
-      'Commercial foodservice and fresh produce wholesale supplying hospitality kitchens across Birmingham and London pre-dawn.',
+      'Commercial foodservice, chilled food distribution, and catering wholesale supplying hospitality kitchens across Birmingham, Manchester, and the UK pre-dawn.',
     url: 'https://www.rootwills.co.uk/services',
     siteName: 'Rootwills',
     locale: 'en_GB',
@@ -51,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Wholesale Produce Supplier Birmingham & UK | Rootwills',
+    title: 'Wholesale Food Supplier Birmingham & Commercial Catering | Rootwills',
     description:
-      'Commercial food service and fresh produce wholesaler with pre-dawn delivery across Birmingham and UK.',
+      'Commercial food service, chilled food wholesale, and multi-drop delivery across Birmingham, Manchester & UK.',
     images: ['/images/commercial/rootwills_hero_chef_plating.jpg'],
   },
 };
@@ -184,15 +189,72 @@ const SECTORS_WE_SERVE = [
 export default function ServicesPage() {
   const serviceJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    serviceType: 'Wholesale Food Service and Commercial Catering Supply',
-    provider: {
-      '@type': 'WholesaleStore',
-      name: 'Rootwills Food Services & Wholesale',
-      url: 'https://www.rootwills.co.uk',
-      telephone: '+44 16164 12803',
-    },
-    areaServed: ['Birmingham', 'London', 'West Midlands', 'Warwickshire'],
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.rootwills.co.uk' },
+          { '@type': 'ListItem', position: 2, name: 'Commercial Services', item: 'https://www.rootwills.co.uk/services' }
+        ]
+      },
+      {
+        '@type': 'Service',
+        '@id': 'https://www.rootwills.co.uk/services#service',
+        serviceType: 'Commercial Wholesale Food Service & Catering Supplies',
+        name: 'Rootwills Commercial Foodservice Distribution',
+        provider: {
+          '@type': 'WholesaleStore',
+          name: 'Rootwills Ltd',
+          url: 'https://www.rootwills.co.uk',
+          telephone: '+44 16164 12803',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '7d Yates Street, Middleton',
+            addressLocality: 'Manchester',
+            postalCode: 'M24 4GA',
+            addressCountry: 'GB'
+          }
+        },
+        areaServed: [
+          { '@type': 'City', name: 'Birmingham' },
+          { '@type': 'City', name: 'Manchester' },
+          { '@type': 'AdministrativeArea', name: 'West Midlands' },
+          { '@type': 'Country', name: 'United Kingdom' }
+        ],
+        description:
+          'Leading commercial food service wholesaler supplying restaurants, hotels, gastro pubs, and commercial caterers across Birmingham, Manchester, and the UK with dual-temperature pre-dawn distribution.',
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Commercial Wholesale Food Services',
+          itemListElement: [
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Birmingham Wholesale Food & Catering Supplies',
+                description: 'Consolidated multi-drop food wholesale delivering fresh produce, chilled dairy, butchery, and catering lines to Birmingham venues.'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Chilled Food & Multi-Temperature Distribution',
+                description: '0–4°C dual-temperature refrigerated van fleet supplying kitchens before morning prep.'
+              }
+            },
+            {
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: 'Commercial Restaurant & Hotel Food Supply',
+                description: '30-day trade account terms, contracted volume pricing, and keyhole kitchen drops.'
+              }
+            }
+          ]
+        }
+      }
+    ]
   };
 
   return (
@@ -219,14 +281,14 @@ export default function ServicesPage() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BA8E4E]/10 border border-[#BA8E4E]/30 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E] animate-pulse" />
             <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#2E060D] font-semibold">
-              02 // HOSPITALITY SOLUTIONS &amp; WHOLESALE
+              02 // COMMERCIAL FOODSERVICE &amp; CATERING WHOLESALE
             </span>
           </div>
 
           <div className="relative">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
-              Tailored Solutions for <br className="hidden sm:inline" />
-              <span className="text-[#8B2635] italic font-normal">Every Food Business</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-[58px] font-serif font-bold tracking-[-0.025em] text-[#2E060D] leading-[1.08] [text-wrap:balance]">
+              Wholesale Food Supplier &amp; <br className="hidden sm:inline" />
+              <span className="text-[#8B2635] italic font-normal">Commercial Catering Wholesaler</span>
             </h1>
             <div className="flex justify-center">
               <DoodleFlourish 
@@ -239,8 +301,8 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[66ch] mx-auto leading-[1.68]">
-            We provide a comprehensive, end-to-end suite of foodservice supply and wholesale capabilities, specifically engineered to align with the daily operational rhythm of independent restaurants, luxury hotels, and high-volume commercial catering groups.
+          <p className="text-xs sm:text-sm lg:text-[15.5px] text-stone-600 font-sans max-w-[68ch] mx-auto leading-[1.68]">
+            Pre-dawn multi-temperature commercial food service and catering wholesale. Supplying Birmingham, Manchester, and the UK with consolidated daily delivery of fresh farm produce, chilled dairy, prime butchery, artisan bakery, and dry larder essentials.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
@@ -427,6 +489,115 @@ export default function ServicesPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ACT III.5: REGIONAL HUBS & CASH-AND-CARRY ALTERNATIVE ─── */}
+      <section className="relative z-10 py-14 sm:py-20 border-b border-[#E8DEC8]/70 bg-[#FFFDF9]/60 overflow-hidden">
+        <div
+          className="absolute inset-0 z-0 bg-repeat pointer-events-none opacity-[0.16] mix-blend-multiply"
+          style={{
+            backgroundImage: `url('/images/textures/rootwills_unified_parchment.jpg')`,
+            backgroundSize: '1100px auto',
+          }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#8B2635] font-semibold">
+              <span>REGIONAL FOODSERVICE HUBS &amp; FLEET</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#2E060D] tracking-tight">
+              Why Kitchens Choose Rootwills Over Cash &amp; Carry
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
+              Eliminate early morning market runs and chaotic multi-van deliveries. Rootwills provides dedicated multi-temperature refrigerated delivery directly into your walk-in chillers before morning prep begins.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {/* Hub 1: Birmingham & West Midlands Corridor */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#DCD2C0] shadow-sm hover:border-[#BA8E4E] transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-3 py-1 rounded-full bg-[#BA8E4E]/15 text-[#2E060D] font-mono text-[10px] uppercase font-bold tracking-wider">
+                    Midlands Distribution Hub
+                  </span>
+                  <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                    Daily 04:00–07:30
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] mb-2">
+                  Birmingham Wholesale Food &amp; Catering Supply
+                </h3>
+                <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed mb-4">
+                  Full multi-temperature wholesale serving Digbeth, Jewellery Quarter, Colmore Row, Edgbaston, Solihull, and Sutton Coldfield. Class 1 fresh produce, chilled dairy blocks, prime butchery cuts, artisan bakery, and catering dry store.
+                </p>
+                <ul className="space-y-2 text-xs text-stone-700 mb-6 font-sans">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>Keyhole kitchen drops before Birmingham Clean Air Zone traffic</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>0–4°C chilled food logistics certified for commercial hospitality</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>Consolidated single-van invoicing with 30-day trade account terms</span>
+                  </li>
+                </ul>
+              </div>
+              <Link
+                href="/wholesale-produce-supplier-birmingham"
+                className="inline-flex items-center justify-between px-5 py-3 rounded-xl bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs font-sans font-semibold tracking-wider uppercase transition-colors"
+              >
+                <span>Explore Birmingham Foodservice</span>
+                <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+              </Link>
+            </div>
+
+            {/* Hub 2: Manchester & North West Corridor */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#DCD2C0] shadow-sm hover:border-[#BA8E4E] transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="px-3 py-1 rounded-full bg-[#BA8E4E]/15 text-[#2E060D] font-mono text-[10px] uppercase font-bold tracking-wider">
+                    Headquarters &amp; Central Depot
+                  </span>
+                  <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                    6-Day Multi-Drop Fleet
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2E060D] mb-2">
+                  Manchester Wholesale Foodservice &amp; HQ
+                </h3>
+                <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed mb-4">
+                  Staging from 7d Yates Street, Middleton, supplying Manchester City Centre, Northern Quarter, Ancoats, MediaCity, Stockport, and Cheshire with chef-graded wholesale food supplies.
+                </p>
+                <ul className="space-y-2 text-xs text-stone-700 mb-6 font-sans">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>Nightly market intake with dispatch across Greater Manchester</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>Direct trade counter &amp; commercial contract pricing desk</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                    <span>5,400+ SKU inventory across chilled, frozen, and dry larder</span>
+                  </li>
+                </ul>
+              </div>
+              <Link
+                href="/wholesale-produce-supplier-manchester"
+                className="inline-flex items-center justify-between px-5 py-3 rounded-xl bg-[#2E060D] hover:bg-[#131313] text-[#FAF7F2] text-xs font-sans font-semibold tracking-wider uppercase transition-colors"
+              >
+                <span>Explore Manchester Foodservice</span>
+                <ArrowRight className="w-4 h-4 text-[#F3D08A]" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

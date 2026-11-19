@@ -159,6 +159,126 @@ export function GetInTouchBanner() {
                 </div>
               </div>
 
+              {/* ─── MASTER SITUATION DIRECTORY & SEO MESH ─── */}
+              <div className="w-full mt-10 sm:mt-14 pt-8 sm:pt-10 border-t border-[#F3D08A]/25 text-left">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+                  {/* Col 1: Regional Hubs */}
+                  <div>
+                    <h4 className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#F3D08A] font-bold mb-3">
+                      Distribution Corridors
+                    </h4>
+                    <ul className="space-y-2 text-xs text-white/80 font-sans">
+                      <li>
+                        <Link href="/wholesale-produce-supplier-birmingham" className="hover:text-[#F3D08A] transition-colors">
+                          Birmingham Foodservice Hub
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/wholesale-produce-supplier-manchester" className="hover:text-[#F3D08A] transition-colors">
+                          Manchester HQ &amp; Central Depot
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/services" className="hover:text-[#F3D08A] transition-colors">
+                          Midlands Pre-Dawn Delivery
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/services" className="hover:text-[#F3D08A] transition-colors">
+                          Multi-Temperature Cold Chain
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Col 2: Product Divisions */}
+                  <div>
+                    <h4 className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#F3D08A] font-bold mb-3">
+                      Product Divisions
+                    </h4>
+                    <ul className="space-y-2 text-xs text-white/80 font-sans">
+                      <li>
+                        <Link href="/products/fresh-produce" className="hover:text-[#F3D08A] transition-colors">
+                          Fresh Farm Produce &amp; Salads
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/products/meat-poultry" className="hover:text-[#F3D08A] transition-colors">
+                          Prime British Butchery &amp; Poultry
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/products/chilled-dairy" className="hover:text-[#F3D08A] transition-colors">
+                          Chilled Dairy, Cheese &amp; Eggs
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/products/bakery-breakfast" className="hover:text-[#F3D08A] transition-colors">
+                          Artisan Bakery &amp; Morning Goods
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/products" className="hover:text-[#F3D08A] transition-colors">
+                          5,400+ SKU Trade Larder
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Col 3: Hospitality Solutions */}
+                  <div>
+                    <h4 className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#F3D08A] font-bold mb-3">
+                      Hospitality Solutions
+                    </h4>
+                    <ul className="space-y-2 text-xs text-white/80 font-sans">
+                      <li>
+                        <Link href="/services/restaurant-food-supply" className="hover:text-[#F3D08A] transition-colors">
+                          Restaurant Food Supply &amp; Keyhole
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/services/hotel-banqueting-supply" className="hover:text-[#F3D08A] transition-colors">
+                          Hotel &amp; Banqueting Foodservice
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/services" className="hover:text-[#F3D08A] transition-colors">
+                          Commercial Catering Wholesaler
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/approach" className="hover:text-[#F3D08A] transition-colors">
+                          Pre-Dawn Dispatch Model
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Col 4: Corporate Governance */}
+                  <div>
+                    <h4 className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#F3D08A] font-bold mb-3">
+                      Corporate Trust
+                    </h4>
+                    <p className="text-[11px] text-white/70 font-sans leading-relaxed mb-2">
+                      Rootwills Ltd · Registered in England &amp; Wales (No. 17398744).
+                    </p>
+                    <p className="text-[11px] text-white/70 font-sans leading-relaxed mb-3">
+                      7d Yates Street, Middleton, Manchester, M24 4GA.
+                    </p>
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-white/60">
+                      <Link href="/privacy" className="hover:text-[#F3D08A] transition-colors underline">Privacy</Link>
+                      <Link href="/terms" className="hover:text-[#F3D08A] transition-colors underline">Trade Terms</Link>
+                      <Link href="/contact" className="hover:text-[#F3D08A] transition-colors underline">Trade Desk</Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/60 font-sans">
+                  <span>© {new Date().getFullYear()} Rootwills Ltd. All rights reserved. Commercial Foodservice &amp; Wholesale Purveyor.</span>
+                  <span className="font-mono text-[10px] text-[#F3D08A]/80 mt-1 sm:mt-0">Dual-Temperature Cold Chain · Pre-Dawn Multi-Drop</span>
+                </div>
+              </div>
+
             </div>
 
           </div>

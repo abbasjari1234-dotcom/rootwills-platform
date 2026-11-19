@@ -144,6 +144,16 @@ export function PublicHeader() {
             Services
           </Link>
 
+          {/* Birmingham Hub Corridor */}
+          <Link
+            href="/wholesale-produce-supplier-birmingham"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-full text-xs sm:text-[13.5px] font-medium tracking-tight transition-all duration-200 text-[#131313] hover:bg-[#F2F2F0]"
+            title="Birmingham Wholesale Foodservice Hub"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BA8E4E]" />
+            <span>Birmingham</span>
+          </Link>
+
           {/* Approach */}
           <Link
             href="/approach"
