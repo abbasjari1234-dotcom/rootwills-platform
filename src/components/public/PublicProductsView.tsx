@@ -775,7 +775,11 @@ export function PublicProductsView() {
   );
 
   return (
-    <div className="relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pt-[88px] sm:pt-[104px] pb-20">
+    <div
+      className={`relative min-h-screen bg-[#FAF7F2] text-[#131313] font-sans pb-20 transition-all duration-300 ${
+        isAuthenticated ? 'pt-4 sm:pt-6' : 'pt-[88px] sm:pt-[104px]'
+      }`}
+    >
       {/* Seamless Botanical Parchment Texture Overlay matching Rootwills Theme */}
       <div
         className="fixed inset-0 z-0 bg-repeat pointer-events-none opacity-[0.22] mix-blend-multiply"
@@ -792,7 +796,13 @@ export function PublicProductsView() {
           {/* ════════════════════════════════════════════════════════════════
               1. LEFT SIDEBAR: Executive B2B Department Navigation
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block w-[235px] xl:w-[255px] shrink-0 sticky top-[98px] max-h-[calc(100vh-116px)] overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin]">
+          <aside
+            className={`hidden lg:block w-[235px] xl:w-[255px] shrink-0 sticky overflow-y-auto pr-3.5 border-r border-[#E8DEC8]/80 [scrollbar-width:thin] ${
+              isAuthenticated
+                ? 'top-4 sm:top-6 max-h-[calc(100vh-32px)]'
+                : 'top-[98px] max-h-[calc(100vh-116px)]'
+            }`}
+          >
             {/* Store Identity & Dispatch Information */}
             <div className="pb-3.5 border-b border-[#E8DEC8] space-y-1.5">
               <div className="flex items-center gap-2.5">
@@ -940,6 +950,33 @@ export function PublicProductsView() {
               2. CENTER COLUMN: Search Command Strip + Catalog Aisles
              ════════════════════════════════════════════════════════════════ */}
           <main className="flex-1 min-w-0 py-0.5">
+            {/* MOBILE ONLY: Authenticated Partner Top Banner (< lg) */}
+            {isAuthenticated && (
+              <div className="lg:hidden mb-3 p-2.5 rounded-xl bg-white border border-[#BA8E4E]/40 shadow-2xs flex items-center justify-between">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="relative w-6 h-6 rounded-full overflow-hidden ring-1 ring-[#BA8E4E] shrink-0">
+                    <Image src="/images/logo.png" alt="Rootwills" fill unoptimized className="object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-bold text-[#2E060D] truncate">
+                      {tradeAccount?.company || 'Commercial Partner'}
+                    </div>
+                    <div className="text-[10px] font-mono text-emerald-800 font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      Direct Trade Portal · {tradeAccount?.id || 'RW-TRADE'}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleSignOut}
+                  className="text-[11px] text-stone-500 hover:text-rose-700 underline font-medium cursor-pointer shrink-0 ml-2"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
+
             {/* MOBILE ONLY: Horizontal Department Rail (< lg) */}
             <div className="lg:hidden mb-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden flex items-center gap-1.5 pb-1">
               <button
@@ -1298,8 +1335,18 @@ export function PublicProductsView() {
           {/* ════════════════════════════════════════════════════════════════
               3. RIGHT SIDEBAR: Live Order Manifest + Direct Portal Action
              ════════════════════════════════════════════════════════════════ */}
-          <aside className="hidden xl:block w-[310px] 2xl:w-[335px] shrink-0 sticky top-[98px]">
-            <div className="rounded-2xl bg-white border border-[#E8DEC8] p-4 shadow-[0_4px_24px_rgba(46,6,13,0.05)] max-h-[calc(100vh-116px)] flex flex-col">
+          <aside
+            className={`hidden xl:block w-[310px] 2xl:w-[335px] shrink-0 sticky ${
+              isAuthenticated ? 'top-4 sm:top-6' : 'top-[98px]'
+            }`}
+          >
+            <div
+              className={`rounded-2xl bg-white border border-[#E8DEC8] p-4 shadow-[0_4px_24px_rgba(46,6,13,0.05)] flex flex-col ${
+                isAuthenticated
+                  ? 'max-h-[calc(100vh-32px)]'
+                  : 'max-h-[calc(100vh-116px)]'
+              }`}
+            >
               {renderRightOrderPanel()}
             </div>
           </aside>

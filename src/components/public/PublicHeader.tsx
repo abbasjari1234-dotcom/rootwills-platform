@@ -12,6 +12,20 @@ export function PublicHeader() {
   const [activeItem, setActiveItem] = useState<'home' | 'products' | 'about' | 'services' | 'approach' | 'contact'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTradeMode, setIsTradeMode] = useState(false);
+
+  // Check if we are inside a trade ordering portal session (Rootwills Direct / Authenticated B2B Order Desk)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const isDirectDomain = window.location.hostname.includes('rootwillsdirect') || window.location.hostname.includes('direct.');
+    const isDirectRoute = pathname.startsWith('/direct') || pathname.startsWith('/docs');
+    const hasAuthCookie = document.cookie.split(';').some((c) => c.trim().startsWith('rootwills_auth=true'));
+    const hasAuthLocal = localStorage.getItem('rootwills_user_logged_in') === 'true';
+    const isTradeAuthOnProducts = pathname.startsWith('/products') && (hasAuthCookie || hasAuthLocal);
+
+    setIsTradeMode(Boolean(isDirectDomain || isDirectRoute || isTradeAuthOnProducts));
+  }, [pathname]);
 
   // Track active canonical route for SEO & browser navigation
   useEffect(() => {
@@ -33,6 +47,11 @@ export function PublicHeader() {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
+
+  // Suppress public marketing capsule navbar during dedicated trade ordering flows
+  if (isTradeMode) {
+    return null;
+  }
 
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/' || pathname === '') {
