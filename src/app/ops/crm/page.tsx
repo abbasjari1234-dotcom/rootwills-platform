@@ -170,6 +170,27 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     paymentTerms: '30 Days Net',
     isApproved: true,
   },
+  {
+    id: 'cust-lds',
+    slNo: 7,
+    name: 'Little Dessert Shop (Franchise Network)',
+    segment: 'National Dessert & Gelato Franchise',
+    description: 'Fresh double creams, barista milk, butter blocks, soft berries, waffle mixes & frozen cookie dough.',
+    headChef: 'Store Operations Director',
+    phone: '+44 1902 904944',
+    email: 'orders@littledessertshop.co.uk',
+    assignedReps: [
+      { name: 'Rootwills Trade Desk', avatar: 'RW' },
+    ],
+    dueDate: 'Active Account',
+    priority: 'Urgent',
+    creditUtilized: 12,
+    spendMonth: '£8,500',
+    paymentTerms: '14 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-LDS',
+    approvedPassword: 'DessertShop2026!',
+  },
 ];
 
 export default function CustomerCRMHub() {

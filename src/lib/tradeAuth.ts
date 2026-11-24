@@ -72,6 +72,15 @@ export const VERIFIED_TRADE_ACCOUNTS: TradeAccount[] = [
     plainPassword: 'TheIvy2026!',
   },
   {
+    id: 'RW-2026-LDS',
+    company: 'Little Dessert Shop (Franchise Network)',
+    contactName: 'Store Operations / Purchasing',
+    email: 'orders@littledessertshop.co.uk',
+    tier: 'Franchise Commercial Direct (Tier 1)',
+    postcode: 'WV10 6JD',
+    plainPassword: 'DessertShop2026!',
+  },
+  {
     id: 'RW-DEMO',
     company: 'B2B Wholesale Demo Account',
     contactName: 'Executive Trade Guest',
