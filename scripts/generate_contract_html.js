@@ -455,7 +455,7 @@ const htmlContent = `<!DOCTYPE html>
 
     .sig-line {
       height: 32px;
-      border-bottom: 1.5px dashed #A89D8B;
+      border-bottom: 1.5px solid #BA8E4E;
       margin-bottom: 3px;
       position: relative;
     }
@@ -546,7 +546,7 @@ const htmlContent = `<!DOCTYPE html>
         <div class="form-grid-2">
           <div class="field-group">
             <label class="field-label">Trading Name / Brand Store</label>
-            <div class="field-input prefilled">Little Dessert Shop – (Branch: _____________________________)</div>
+            <div class="field-input prefilled">Little Dessert Shop (Store Branch / Location)</div>
           </div>
           <div class="field-group">
             <label class="field-label">Parent Brand / Franchise Network</label>
@@ -557,26 +557,26 @@ const htmlContent = `<!DOCTYPE html>
         <div class="form-grid-3" style="margin-top: 5px;">
           <div class="field-group">
             <label class="field-label">Operating Entity Legal Name (Ltd / LLP)</label>
-            <div class="field-input">_______________________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Companies House Reg Number</label>
-            <div class="field-input">_________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">UK VAT Registration Number</label>
-            <div class="field-input">GB ______________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
 
         <div class="form-grid-2" style="margin-top: 5px;">
           <div class="field-group">
             <label class="field-label">Registered Corporate Office Address</label>
-            <div class="field-input">________________________________________________________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Registered Office Postcode</label>
-            <div class="field-input">_________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
       </div>
@@ -591,26 +591,26 @@ const htmlContent = `<!DOCTYPE html>
         <div class="form-grid-2">
           <div class="field-group">
             <label class="field-label">Store Delivery Address (Physical Location)</label>
-            <div class="field-input">________________________________________________________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Store Postcode</label>
-            <div class="field-input">_________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
 
         <div class="form-grid-3" style="margin-top: 5px;">
           <div class="field-group">
             <label class="field-label">Store General Manager</label>
-            <div class="field-input">_________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Direct Mobile / WhatsApp</label>
-            <div class="field-input">+44 _________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Store Order Contact Email</label>
-            <div class="field-input">_________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
 
@@ -632,7 +632,7 @@ const htmlContent = `<!DOCTYPE html>
           </div>
           <div class="field-group">
             <label class="field-label">Access Details / Key-Safe Code / Alarm Procedure</label>
-            <div class="field-input">Key-Safe Code: ___________ | Alarm Disarm/Chiller Access: ________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
       </div>
@@ -717,22 +717,22 @@ const htmlContent = `<!DOCTYPE html>
         <div class="form-grid-3">
           <div class="field-group">
             <label class="field-label">Accounts Payable Contact</label>
-            <div class="field-input">_________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Accounts Direct Phone</label>
-            <div class="field-input">+44 _________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">PDF Invoicing Email Address</label>
-            <div class="field-input">_________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
 
         <div class="form-grid-3" style="margin-top: 5px;">
           <div class="field-group">
             <label class="field-label">Requested Weekly Credit Limit</label>
-            <div class="field-input prefilled">£ __________________ (e.g. £2,500 – £5,000)</div>
+            <div class="field-input prefilled">£&nbsp;</div>
           </div>
           <div class="field-group">
             <label class="field-label">Minimum Order Value (MOV)</label>
@@ -766,16 +766,16 @@ const htmlContent = `<!DOCTYPE html>
             <strong style="color: var(--oxblood); font-size: 8px; font-family: 'JetBrains Mono', monospace;">TRADE REFERENCE 01</strong>
             <div class="field-group" style="margin-top: 2px;">
               <label class="field-label">Supplier Company Name</label>
-              <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________________________________</div>
+              <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
             </div>
             <div class="form-grid-2" style="margin-top: 2px;">
               <div class="field-group">
                 <label class="field-label">Contact Person</label>
-                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________</div>
+                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
               </div>
               <div class="field-group">
                 <label class="field-label">Telephone / Email</label>
-                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________</div>
+                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
               </div>
             </div>
           </div>
@@ -784,16 +784,16 @@ const htmlContent = `<!DOCTYPE html>
             <strong style="color: var(--oxblood); font-size: 8px; font-family: 'JetBrains Mono', monospace;">TRADE REFERENCE 02</strong>
             <div class="field-group" style="margin-top: 2px;">
               <label class="field-label">Supplier Company Name</label>
-              <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________________________________</div>
+              <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
             </div>
             <div class="form-grid-2" style="margin-top: 2px;">
               <div class="field-group">
                 <label class="field-label">Contact Person</label>
-                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________</div>
+                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
               </div>
               <div class="field-group">
                 <label class="field-label">Telephone / Email</label>
-                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">_________________________</div>
+                <div class="field-input" style="min-height: 20px; padding: 2px 5px;">&nbsp;</div>
               </div>
             </div>
           </div>
@@ -836,20 +836,20 @@ const htmlContent = `<!DOCTYPE html>
           <div class="form-grid-3">
             <div class="field-group">
               <label class="field-label">Director Full Legal Name</label>
-              <div class="field-input">_________________________________</div>
+              <div class="field-input">&nbsp;</div>
             </div>
             <div class="field-group">
               <label class="field-label">Date of Birth</label>
-              <div class="field-input">DD / MM / YYYY</div>
+              <div class="field-input">&nbsp;</div>
             </div>
             <div class="field-group">
               <label class="field-label">Director Mobile Phone</label>
-              <div class="field-input">+44 _________________________</div>
+              <div class="field-input">&nbsp;</div>
             </div>
           </div>
           <div class="field-group" style="margin-top: 4px;">
             <label class="field-label">Director Residential Address (Required for Personal Guarantee)</label>
-            <div class="field-input">____________________________________________________________________________________________________</div>
+            <div class="field-input">&nbsp;</div>
           </div>
         </div>
 
@@ -862,11 +862,11 @@ const htmlContent = `<!DOCTYPE html>
             <div class="form-grid-2" style="margin-top: 10px;">
               <div class="field-group">
                 <label class="field-label">Print Name</label>
-                <div class="field-input" style="min-height: 18px; padding: 2px 4px;">_________________________</div>
+                <div class="field-input" style="min-height: 18px; padding: 2px 4px;">&nbsp;</div>
               </div>
               <div class="field-group">
                 <label class="field-label">Date</label>
-                <div class="field-input" style="min-height: 18px; padding: 2px 4px;">____ / ____ / 2026</div>
+                <div class="field-input" style="min-height: 18px; padding: 2px 4px;">&nbsp;</div>
               </div>
             </div>
           </div>
@@ -882,7 +882,7 @@ const htmlContent = `<!DOCTYPE html>
               </div>
               <div class="field-group">
                 <label class="field-label">Date</label>
-                <div class="field-input prefilled" style="min-height: 18px; padding: 2px 4px;">____ / ____ / 2026</div>
+                <div class="field-input prefilled" style="min-height: 18px; padding: 2px 4px;">&nbsp;</div>
               </div>
             </div>
           </div>
