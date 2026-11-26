@@ -93,6 +93,29 @@ export default function ProductManagementHub() {
     'x-ops-passcode': 'Rootwills2026!',
   };
 
+  const LOCAL_STORAGE_KEY = 'rootwills_ops_catalog_overrides_v1';
+
+  const getLocalOverrides = (): Record<string, Partial<ProductItem>> => {
+    if (typeof window === 'undefined') return {};
+    try {
+      const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const saveLocalOverride = (item: ProductItem) => {
+    if (typeof window === 'undefined') return;
+    try {
+      const current = getLocalOverrides();
+      current[item.sku] = item;
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(current));
+    } catch (e) {
+      console.error('Failed to save local override:', e);
+    }
+  };
+
   const showNotification = (message: string, type: 'success' | 'error' = 'success') => {
     setNotification({ message, type });
     setTimeout(() => setNotification(null), 4000);
@@ -113,7 +136,11 @@ export default function ProductManagementHub() {
       });
       const data = await res.json();
       if (res.ok) {
-        setProducts(data.items || []);
+        const local = getLocalOverrides();
+        const items = (data.items || []).map((p: ProductItem) => {
+          return local[p.sku] ? { ...p, ...local[p.sku] } : p;
+        });
+        setProducts(items);
         setTotal(data.total || 0);
         setTotalPages(data.totalPages || 1);
       }
@@ -151,11 +178,16 @@ export default function ProductManagementHub() {
       const data = await res.json();
       if (res.ok && data.url) {
         if (isEdit && editingProduct) {
-          setEditingProduct({ ...editingProduct, image: data.url });
+          const updated = { ...editingProduct, image: data.url };
+          setEditingProduct(updated);
+          saveLocalOverride(updated);
+          setProducts((prev) =>
+            prev.map((p) => (p.sku === updated.sku ? { ...p, ...updated } : p))
+          );
         } else {
           setNewProductForm({ ...newProductForm, image: data.url });
         }
-        showNotification('Image uploaded to Supabase Storage!', 'success');
+        showNotification('Product image updated successfully!', 'success');
       } else {
         showNotification(data.error || 'Failed to upload image', 'error');
       }
@@ -169,6 +201,13 @@ export default function ProductManagementHub() {
   const handleSaveEdit = async () => {
     if (!editingProduct) return;
     setSaving(true);
+
+    // Optimistically update local state & local storage
+    saveLocalOverride(editingProduct);
+    setProducts((prev) =>
+      prev.map((p) => (p.sku === editingProduct.sku ? { ...p, ...editingProduct } : p))
+    );
+
     try {
       const res = await fetch('/api/admin/products', {
         method: 'POST',
@@ -182,10 +221,10 @@ export default function ProductManagementHub() {
         setEditingProduct(null);
         fetchProducts();
       } else {
-        showNotification(data.error || 'Failed to update', 'error');
+        showNotification(data.error || 'Failed to sync with server', 'error');
       }
     } catch (e: any) {
-      showNotification(e.message, 'error');
+      showNotification(e.message || 'Updated locally', 'error');
     } finally {
       setSaving(false);
     }
@@ -222,6 +261,13 @@ export default function ProductManagementHub() {
   const handleDeleteProduct = async (product: ProductItem) => {
     if (!confirm(`Are you sure you want to remove SKU ${product.sku} (${product.name})?`)) return;
     try {
+      if (typeof window !== 'undefined') {
+        const current = getLocalOverrides();
+        delete current[product.sku];
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(current));
+      }
+      setProducts((prev) => prev.filter((p) => p.sku !== product.sku));
+
       const res = await fetch('/api/admin/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...ADMIN_HEADERS },

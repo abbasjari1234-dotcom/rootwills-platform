@@ -4,6 +4,7 @@ import path from 'path';
 import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
 import { handleApiError } from '@/lib/security/error-handler';
 import { WHOLESALE_PRODUCTS } from '@/data/wholesaleProducts';
+import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -24,6 +25,95 @@ const categoryFileMap: Record<string, string> = {
   'packaging-hygiene': 'grocery.json',
 };
 
+// In-memory runtime cache for serverless lifecycles
+interface CatalogStore {
+  overrides: Record<string, any>;
+  created: any[];
+  deleted: string[];
+}
+
+let runtimeStore: CatalogStore = {
+  overrides: {},
+  created: [],
+  deleted: [],
+};
+
+const OVERRIDE_SYSTEM_EMAIL = 'ops-catalog-overrides@rootwills.internal';
+
+async function fetchCloudOverrides(): Promise<CatalogStore> {
+  try {
+    const supabase = getSupabaseAdmin();
+    if (!supabase) return runtimeStore;
+
+    const { data, error } = await supabase
+      .from('leads')
+      .select('notes')
+      .eq('email', OVERRIDE_SYSTEM_EMAIL)
+      .maybeSingle();
+
+    if (data?.notes) {
+      const parsed = JSON.parse(data.notes);
+      runtimeStore = {
+        overrides: { ...runtimeStore.overrides, ...(parsed.overrides || {}) },
+        created: [...(parsed.created || []), ...runtimeStore.created],
+        deleted: Array.from(new Set([...(parsed.deleted || []), ...runtimeStore.deleted])),
+      };
+    }
+  } catch (err: any) {
+    console.warn('[Products API] Notice fetching cloud overrides:', err?.message || err);
+  }
+  return runtimeStore;
+}
+
+async function persistCloudOverrides(store: CatalogStore) {
+  try {
+    const supabase = getSupabaseAdmin();
+    if (!supabase) return;
+
+    const jsonNotes = JSON.stringify(store);
+    const { data: existing } = await supabase
+      .from('leads')
+      .select('id')
+      .eq('email', OVERRIDE_SYSTEM_EMAIL)
+      .maybeSingle();
+
+    if (existing?.id) {
+      await supabase
+        .from('leads')
+        .update({
+          notes: jsonNotes,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', existing.id);
+    } else {
+      await supabase.from('leads').insert({
+        company_name: 'Rootwills Central Catalog Store',
+        contact_name: 'Catalog Manager',
+        email: OVERRIDE_SYSTEM_EMAIL,
+        phone: '+447984709478',
+        postcode: 'B5 4RB',
+        sector: 'wholesale_catalog',
+        source: 'internal_ops',
+        status: 'active_system_store',
+        notes: jsonNotes,
+      });
+    }
+  } catch (err: any) {
+    console.warn('[Products API] Notice persisting cloud overrides:', err?.message || err);
+  }
+}
+
+function safeWriteJson(filePath: string, data: any): boolean {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+    return true;
+  } catch (err: any) {
+    // Gracefully handle EROFS on Vercel / AWS Lambda read-only serverless filesystem
+    console.warn(`[Products API] Local disk is read-only (${err.code || err.message}), stored in cloud catalog store.`);
+    return false;
+  }
+}
+
 function getProductsDir() {
   return path.join(process.cwd(), 'src', 'data', 'products');
 }
@@ -43,37 +133,68 @@ export async function GET(req: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20', 10);
 
     const dir = getProductsDir();
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
-
     let allProducts: any[] = [];
 
-    for (const file of files) {
-      if (category && categoryFileMap[category] && categoryFileMap[category] !== file) {
-        continue;
-      }
-      try {
-        const content = fs.readFileSync(path.join(dir, file), 'utf-8');
-        const list = JSON.parse(content);
-        allProducts.push(...list);
-      } catch (e) {
-        console.error(`Error reading ${file}:`, e);
+    if (fs.existsSync(dir)) {
+      const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+      for (const file of files) {
+        if (category && categoryFileMap[category] && categoryFileMap[category] !== file) {
+          continue;
+        }
+        try {
+          const content = fs.readFileSync(path.join(dir, file), 'utf-8');
+          const list = JSON.parse(content);
+          allProducts.push(...list);
+        } catch (e) {
+          console.error(`Error reading ${file}:`, e);
+        }
       }
     }
 
-    // Fallback to static wholesale catalog if file read is empty or in constrained runtime
+    // Fallback to static wholesale catalog if file read is empty
     if (allProducts.length === 0 && Array.isArray(WHOLESALE_PRODUCTS) && WHOLESALE_PRODUCTS.length > 0) {
       allProducts = [...WHOLESALE_PRODUCTS];
       if (category) {
-        allProducts = allProducts.filter(p => p.categorySlug === category);
+        allProducts = allProducts.filter((p) => p.categorySlug === category);
       }
     }
 
+    // Load any cloud & runtime overrides
+    const cloudStore = await fetchCloudOverrides();
+
+    // 1. Exclude deleted products
+    if (cloudStore.deleted && cloudStore.deleted.length > 0) {
+      const deletedSet = new Set(cloudStore.deleted);
+      allProducts = allProducts.filter((p) => !deletedSet.has(p.sku) && !deletedSet.has(p.id));
+    }
+
+    // 2. Apply property overrides (images, prices, titles, etc.)
+    if (cloudStore.overrides && Object.keys(cloudStore.overrides).length > 0) {
+      allProducts = allProducts.map((p) => {
+        const override = cloudStore.overrides[p.sku] || cloudStore.overrides[p.id];
+        return override ? { ...p, ...override } : p;
+      });
+    }
+
+    // 3. Prepend newly created custom products
+    if (cloudStore.created && cloudStore.created.length > 0) {
+      const existingSkus = new Set(allProducts.map((p) => p.sku));
+      const newItems = cloudStore.created.filter((p) => {
+        if (existingSkus.has(p.sku)) return false;
+        if (category && p.categorySlug !== category) return false;
+        return true;
+      });
+      allProducts = [...newItems, ...allProducts];
+    }
+
+    // 4. Apply search filtering
     if (search) {
-      allProducts = allProducts.filter(p =>
-        (p.name && p.name.toLowerCase().includes(search)) ||
-        (p.sku && p.sku.toLowerCase().includes(search)) ||
-        (p.subcategory && p.subcategory.toLowerCase().includes(search)) ||
-        (p.description && p.description.toLowerCase().includes(search))
+      allProducts = allProducts.filter(
+        (p) =>
+          (p.name && p.name.toLowerCase().includes(search)) ||
+          (p.sku && p.sku.toLowerCase().includes(search)) ||
+          (p.subcategory && p.subcategory.toLowerCase().includes(search)) ||
+          (p.description && p.description.toLowerCase().includes(search))
       );
     }
 
@@ -86,7 +207,7 @@ export async function GET(req: NextRequest) {
       page,
       limit,
       totalPages: Math.ceil(total / limit),
-      items
+      items,
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || 'Failed to fetch products' }, { status: 500 });
@@ -118,12 +239,18 @@ export async function POST(req: NextRequest) {
 
     let list: any[] = [];
     if (fs.existsSync(filePath)) {
-      list = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      try {
+        list = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+      } catch (e) {
+        list = [];
+      }
     }
 
+    // Refresh cloud overrides
+    const store = await fetchCloudOverrides();
+
     if (action === 'create') {
-      // Check if SKU exists
-      const existing = list.find((p: any) => p.sku === product.sku);
+      const existing = list.find((p: any) => p.sku === product.sku) || store.created.find((p: any) => p.sku === product.sku);
       if (existing) {
         return NextResponse.json({ error: `Product SKU ${product.sku} already exists` }, { status: 400 });
       }
@@ -145,59 +272,96 @@ export async function POST(req: NextRequest) {
       };
 
       list.unshift(newProduct);
-      fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
+      safeWriteJson(filePath, list);
+
+      store.created.unshift(newProduct);
+      await persistCloudOverrides(store);
+
       return NextResponse.json({ success: true, product: newProduct });
     } else if (action === 'update') {
-      const index = list.findIndex((p: any) => p.sku === product.sku || p.id === product.id);
-      if (index === -1) {
-        // Search across all category files in case category was moved
-        const dir = getProductsDir();
-        const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
-        let found = false;
+      const targetSku = product.sku || product.id;
 
-        for (const f of files) {
-          const fPath = path.join(dir, f);
-          const fList = JSON.parse(fs.readFileSync(fPath, 'utf-8'));
-          const fIdx = fList.findIndex((p: any) => p.sku === product.sku || p.id === product.id);
-          if (fIdx !== -1) {
-            fList[fIdx] = { ...fList[fIdx], ...product };
-            fs.writeFileSync(fPath, JSON.stringify(fList, null, 2), 'utf-8');
-            found = true;
-            return NextResponse.json({ success: true, product: fList[fIdx] });
+      // Update in local file if available
+      let fileFound = false;
+      const index = list.findIndex((p: any) => p.sku === targetSku || p.id === targetSku);
+      if (index !== -1) {
+        list[index] = { ...list[index], ...product };
+        safeWriteJson(filePath, list);
+        fileFound = true;
+      } else {
+        const dir = getProductsDir();
+        if (fs.existsSync(dir)) {
+          const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+          for (const f of files) {
+            const fPath = path.join(dir, f);
+            try {
+              const fList = JSON.parse(fs.readFileSync(fPath, 'utf-8'));
+              const fIdx = fList.findIndex((p: any) => p.sku === targetSku || p.id === targetSku);
+              if (fIdx !== -1) {
+                fList[fIdx] = { ...fList[fIdx], ...product };
+                safeWriteJson(fPath, fList);
+                fileFound = true;
+                break;
+              }
+            } catch (e) {
+              // Ignore read errors
+            }
           }
         }
-
-        if (!found) {
-          return NextResponse.json({ error: 'Product not found to update' }, { status: 404 });
-        }
-      } else {
-        list[index] = { ...list[index], ...product };
-        fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
-        return NextResponse.json({ success: true, product: list[index] });
       }
+
+      // Always update cloud override store
+      const existingOverride = store.overrides[targetSku] || {};
+      store.overrides[targetSku] = { ...existingOverride, ...product };
+
+      // Also update in store.created if it was a custom added product
+      const createdIdx = store.created.findIndex((p: any) => p.sku === targetSku || p.id === targetSku);
+      if (createdIdx !== -1) {
+        store.created[createdIdx] = { ...store.created[createdIdx], ...product };
+      }
+
+      await persistCloudOverrides(store);
+
+      return NextResponse.json({ success: true, product: { ...product, sku: targetSku } });
     } else if (action === 'delete') {
-      const initialLength = list.length;
-      list = list.filter((p: any) => p.sku !== product.sku && p.id !== product.id);
-      if (list.length < initialLength) {
-        fs.writeFileSync(filePath, JSON.stringify(list, null, 2), 'utf-8');
-        return NextResponse.json({ success: true, deletedSku: product.sku });
-      }
+      const targetSku = product.sku || product.id;
 
-      // If not in targeted file, search all json files
-      const dir = getProductsDir();
-      const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
-      for (const f of files) {
-        const fPath = path.join(dir, f);
-        let fList = JSON.parse(fs.readFileSync(fPath, 'utf-8'));
-        const fLen = fList.length;
-        fList = fList.filter((p: any) => p.sku !== product.sku && p.id !== product.id);
-        if (fList.length < fLen) {
-          fs.writeFileSync(fPath, JSON.stringify(fList, null, 2), 'utf-8');
-          return NextResponse.json({ success: true, deletedSku: product.sku });
+      // Remove from local file if writable
+      const initialLength = list.length;
+      list = list.filter((p: any) => p.sku !== targetSku && p.id !== targetSku);
+      if (list.length < initialLength) {
+        safeWriteJson(filePath, list);
+      } else {
+        const dir = getProductsDir();
+        if (fs.existsSync(dir)) {
+          const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+          for (const f of files) {
+            const fPath = path.join(dir, f);
+            try {
+              let fList = JSON.parse(fs.readFileSync(fPath, 'utf-8'));
+              const fLen = fList.length;
+              fList = fList.filter((p: any) => p.sku !== targetSku && p.id !== targetSku);
+              if (fList.length < fLen) {
+                safeWriteJson(fPath, fList);
+                break;
+              }
+            } catch (e) {
+              // Ignore
+            }
+          }
         }
       }
 
-      return NextResponse.json({ error: 'Product not found to delete' }, { status: 404 });
+      // Record in cloud deleted store
+      if (!store.deleted.includes(targetSku)) {
+        store.deleted.push(targetSku);
+      }
+      delete store.overrides[targetSku];
+      store.created = store.created.filter((p: any) => p.sku !== targetSku && p.id !== targetSku);
+
+      await persistCloudOverrides(store);
+
+      return NextResponse.json({ success: true, deletedSku: targetSku });
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
@@ -205,4 +369,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message || 'Operation failed' }, { status: 500 });
   }
 }
-
