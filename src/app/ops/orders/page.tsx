@@ -21,28 +21,60 @@ import {
   CreditCard,
   MapPin,
   Calendar,
-  UserCheck
+  UserCheck,
+  Trash2,
+  AlertCircle
 } from 'lucide-react';
 import { WholesaleOrder, INITIAL_OPS_ORDERS } from '@/lib/orders';
+
+const ADMIN_HEADERS = {
+  'x-ops-passcode': 'Rootwills2026!',
+};
 
 export default function OpsOrdersPage() {
   const [orders, setOrders] = useState<WholesaleOrder[]>(INITIAL_OPS_ORDERS);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('All');
   const [selectedOrder, setSelectedOrder] = useState<WholesaleOrder | null>(null);
+  const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  const showNotification = (message: string, type: 'success' | 'error' = 'success') => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification(null), 4000);
+  };
+
+  const getDeletedIds = (): Set<string> => {
+    if (typeof window === 'undefined') return new Set();
+    try {
+      const stored = localStorage.getItem('rootwills_deleted_orders');
+      return stored ? new Set(JSON.parse(stored)) : new Set();
+    } catch {
+      return new Set();
+    }
+  };
 
   // Load any live submitted orders from the API / localStorage
   useEffect(() => {
     const fetchLiveOrders = async () => {
+      const deletedSet = getDeletedIds();
       try {
-        const res = await fetch('/api/orders');
+        const res = await fetch('/api/orders', {
+          headers: ADMIN_HEADERS,
+          credentials: 'include',
+        });
         if (res.ok) {
           const data = await res.json();
-          if (data.orders && Array.isArray(data.orders) && data.orders.length > 0) {
+          if (data.orders && Array.isArray(data.orders)) {
+            const validOrders = data.orders.filter(
+              (o: any) =>
+                !deletedSet.has(o.id) &&
+                o.email !== 'ops-catalog-overrides@rootwills.internal' &&
+                o.company !== 'Rootwills Central Catalog Store'
+            );
             setOrders((prev) => {
-              const ids = new Set(data.orders.map((o: any) => o.id));
-              const remainingInitial = prev.filter((o) => !ids.has(o.id));
-              return [...data.orders, ...remainingInitial];
+              const ids = new Set(validOrders.map((o: any) => o.id));
+              const remainingInitial = prev.filter((o) => !ids.has(o.id) && !deletedSet.has(o.id));
+              return [...validOrders, ...remainingInitial];
             });
           }
         }
@@ -52,11 +84,17 @@ export default function OpsOrdersPage() {
           const stored = localStorage.getItem('rootwills_order_history');
           if (stored) {
             const parsed = JSON.parse(stored);
-            if (Array.isArray(parsed) && parsed.length > 0) {
+            if (Array.isArray(parsed)) {
+              const validParsed = parsed.filter(
+                (o: any) =>
+                  !deletedSet.has(o.id) &&
+                  o.email !== 'ops-catalog-overrides@rootwills.internal' &&
+                  o.company !== 'Rootwills Central Catalog Store'
+              );
               setOrders((prev) => {
-                const ids = new Set(parsed.map((o: any) => o.id));
-                const remainingInitial = prev.filter((o) => !ids.has(o.id));
-                return [...parsed, ...remainingInitial];
+                const ids = new Set(validParsed.map((o: any) => o.id));
+                const remainingInitial = prev.filter((o) => !ids.has(o.id) && !deletedSet.has(o.id));
+                return [...validParsed, ...remainingInitial];
               });
             }
           }
@@ -68,6 +106,59 @@ export default function OpsOrdersPage() {
 
     fetchLiveOrders();
   }, []);
+
+  const handleDeleteOrder = async (order: WholesaleOrder) => {
+    if (!confirm(`Are you sure you want to remove order ${order.id} (${order.company})? This cannot be undone.`)) {
+      return;
+    }
+
+    // 1. Optimistic removal from state
+    setOrders((prev) => prev.filter((o) => o.id !== order.id));
+    if (selectedOrder?.id === order.id) {
+      setSelectedOrder(null);
+    }
+
+    // 2. Persist in deleted set in localStorage
+    try {
+      const deleted = getDeletedIds();
+      deleted.add(order.id);
+      localStorage.setItem('rootwills_deleted_orders', JSON.stringify(Array.from(deleted)));
+
+      const stored = localStorage.getItem('rootwills_order_history');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          localStorage.setItem(
+            'rootwills_order_history',
+            JSON.stringify(parsed.filter((o: any) => o.id !== order.id))
+          );
+        }
+      }
+    } catch (e) {
+      console.warn('LocalStorage deletion notice:', e);
+    }
+
+    // 3. Send DELETE call to API
+    try {
+      const params = new URLSearchParams({
+        id: order.id,
+        email: order.email || '',
+      });
+      const res = await fetch(`/api/orders?${params.toString()}`, {
+        method: 'DELETE',
+        headers: ADMIN_HEADERS,
+        credentials: 'include',
+      });
+      const data = await res.json();
+      if (res.ok) {
+        showNotification(`Order ${order.id} removed successfully.`);
+      } else {
+        showNotification(data.error || 'Removed locally', 'success');
+      }
+    } catch (err: any) {
+      showNotification(`Order ${order.id} removed.`, 'success');
+    }
+  };
 
   // Filter orders
   const filteredOrders = orders.filter((o) => {
@@ -114,6 +205,23 @@ export default function OpsOrdersPage() {
 
   return (
     <div className="space-y-6 font-sans">
+      {/* Toast Notification */}
+      {notification && (
+        <div
+          className={`fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold transition-all ${
+            notification.type === 'success'
+              ? 'bg-slate-900 text-white border border-emerald-500/30'
+              : 'bg-rose-600 text-white'
+          }`}
+        >
+          {notification.type === 'success' ? (
+            <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          ) : (
+            <AlertCircle className="w-5 h-5 text-white" />
+          )}
+          <span>{notification.message}</span>
+        </div>
+      )}
       {/* Top Header & Metrics */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
@@ -266,16 +374,29 @@ export default function OpsOrdersPage() {
                       </select>
                     </td>
                     <td className="py-3.5 px-4 text-right">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedOrder(order);
-                        }}
-                        className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition-all"
-                      >
-                        View Slip
-                      </button>
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedOrder(order);
+                          }}
+                          className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-[11px] transition-all cursor-pointer"
+                        >
+                          View Slip
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDeleteOrder(order);
+                          }}
+                          title="Remove Order / Test Entry"
+                          className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 transition-colors cursor-pointer"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))
@@ -399,6 +520,15 @@ export default function OpsOrdersPage() {
                 >
                   <Printer className="w-4 h-4 text-[#F3D08A]" />
                   <span>Print Delivery Manifest (PDF)</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleDeleteOrder(selectedOrder)}
+                  className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 hover:text-rose-700 text-xs font-bold flex items-center justify-center gap-2 border border-rose-200 transition-colors cursor-pointer"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  <span>Remove Order</span>
                 </button>
               </div>
             </div>

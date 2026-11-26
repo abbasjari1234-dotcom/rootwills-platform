@@ -28,7 +28,12 @@ export async function GET(req: NextRequest) {
         .limit(50);
 
       if (!error && Array.isArray(leads)) {
-        dbOrders = leads.map((lead: any) => {
+        const customerLeads = leads.filter(
+          (lead: any) =>
+            lead.email !== 'ops-catalog-overrides@rootwills.internal' &&
+            lead.company_name !== 'Rootwills Central Catalog Store'
+        );
+        dbOrders = customerLeads.map((lead: any) => {
           let parsedNotes: any = {};
           try {
             parsedNotes = typeof lead.notes === 'string' ? JSON.parse(lead.notes) : lead.notes || {};
@@ -239,5 +244,61 @@ export async function POST(req: NextRequest) {
       { error: 'Failed to process application. Please try again.' },
       { status: 500 }
     );
+  }
+}
+
+// DELETE: Remove/purge order or test application from Order Desk
+export async function DELETE(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
+  try {
+    const { searchParams } = new URL(req.url);
+    const orderId = (searchParams.get('id') || '').trim();
+    const email = (searchParams.get('email') || '').trim().toLowerCase();
+
+    if (!orderId && !email) {
+      return NextResponse.json(
+        { error: 'Order ID or applicant email required to remove.' },
+        { status: 400 }
+      );
+    }
+
+    // 1. Remove from in-memory cache
+    recentOrdersStore = recentOrdersStore.filter(
+      (o) => (orderId ? o.id !== orderId : true) && (email ? o.email.toLowerCase() !== email : true)
+    );
+
+    // 2. Remove from Supabase leads table
+    const supabase = getSupabaseAdmin();
+    if (supabase) {
+      if (email) {
+        await supabase.from('leads').delete().eq('email', email);
+      }
+      if (orderId) {
+        const { data: leads } = await supabase.from('leads').select('id, notes');
+        if (Array.isArray(leads)) {
+          for (const l of leads) {
+            try {
+              const parsed = typeof l.notes === 'string' ? JSON.parse(l.notes) : l.notes;
+              if (parsed?.orderId === orderId || l.id === orderId) {
+                await supabase.from('leads').delete().eq('id', l.id);
+              }
+            } catch {
+              // ignore parse errors
+            }
+          }
+        }
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: `Order ${orderId || email} removed successfully.`,
+    });
+  } catch (err: any) {
+    return handleApiError(err, 'Failed to remove order.');
   }
 }
