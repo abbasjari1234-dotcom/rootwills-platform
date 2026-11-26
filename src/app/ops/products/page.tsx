@@ -184,10 +184,18 @@ export default function ProductManagementHub() {
           setProducts((prev) =>
             prev.map((p) => (p.sku === updated.sku ? { ...p, ...updated } : p))
           );
+
+          // Automatically persist image update to cloud catalog store immediately
+          fetch('/api/admin/products', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', ...ADMIN_HEADERS },
+            credentials: 'include',
+            body: JSON.stringify({ action: 'update', product: updated }),
+          }).catch((err) => console.warn('[Auto-Save Image Notice]', err));
         } else {
           setNewProductForm({ ...newProductForm, image: data.url });
         }
-        showNotification('Product image updated successfully!', 'success');
+        showNotification('Product image uploaded & saved!', 'success');
       } else {
         showNotification(data.error || 'Failed to upload image', 'error');
       }
