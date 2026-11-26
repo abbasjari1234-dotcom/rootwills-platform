@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { registerApprovedTradeAccount, getAllTradeAccounts, TradeAccount } from '@/lib/tradeAuth';
+import {
+  registerApprovedTradeAccount,
+  getAllTradeAccounts,
+  updateTradeAccount,
+  removeTradeAccount,
+  TradeAccount,
+} from '@/lib/tradeAuth';
 import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
 import { getSupabaseAdmin } from '@/lib/supabaseAdmin';
 import { sendApprovedAccountEmail } from '@/lib/email';
@@ -216,5 +222,96 @@ export async function POST(req: NextRequest) {
       { error: error.message || 'Failed to approve customer account' },
       { status: 500 }
     );
+  }
+}
+
+export async function PATCH(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
+  try {
+    const body = await req.json();
+    const { id, name, company, headChef, contactName, email, phone, postcode, segment, tier, spendMonth, paymentTerms, priority, plainPassword, password } = body || {};
+
+    if (!id && !email) {
+      return NextResponse.json({ error: 'Account ID or Email is required for update.' }, { status: 400 });
+    }
+
+    const targetId = id || email;
+    const resolvedCompany = company || name;
+    const resolvedContact = contactName || headChef;
+    const resolvedPass = plainPassword || password;
+
+    const tradeUpdates: Partial<TradeAccount> = {};
+    if (resolvedCompany) tradeUpdates.company = resolvedCompany;
+    if (resolvedContact) tradeUpdates.contactName = resolvedContact;
+    if (email) tradeUpdates.email = String(email).trim().toLowerCase();
+    if (tier || segment) tradeUpdates.tier = tier || segment;
+    if (postcode) tradeUpdates.postcode = String(postcode).trim().toUpperCase();
+    if (resolvedPass) tradeUpdates.plainPassword = resolvedPass;
+
+    updateTradeAccount(targetId, tradeUpdates);
+
+    // Persist to Supabase if available
+    const supabase = getSupabaseAdmin();
+    if (supabase) {
+      try {
+        const updateData: any = {};
+        if (resolvedCompany) updateData.company_name = resolvedCompany;
+        if (resolvedContact) updateData.contact_name = resolvedContact;
+        if (email) updateData.email = String(email).trim().toLowerCase();
+        if (phone) updateData.phone = phone;
+        if (postcode) updateData.postcode = postcode;
+
+        await supabase.from('leads').update(updateData).or(`id.eq.${id},email.eq.${email}`);
+      } catch (err) {
+        console.error('[Supabase CRM PATCH error]', err);
+      }
+    }
+
+    return NextResponse.json({ success: true, message: 'Account updated successfully.' });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to update account' }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  const authCheck = verifyAdminAuth(req);
+  if (!authCheck.authorized) {
+    return unauthorizedResponse(authCheck.reason);
+  }
+
+  try {
+    const body = await req.json().catch(() => ({}));
+    const { searchParams } = new URL(req.url);
+    const id = body.id || searchParams.get('id');
+    const email = body.email || searchParams.get('email');
+
+    if (!id && !email) {
+      return NextResponse.json({ error: 'Account ID or Email is required for deletion.' }, { status: 400 });
+    }
+
+    const target = id || email;
+    removeTradeAccount(target);
+
+    // Delete or archive in Supabase if available
+    const supabase = getSupabaseAdmin();
+    if (supabase) {
+      try {
+        if (id) {
+          await supabase.from('leads').delete().eq('id', id);
+        } else if (email) {
+          await supabase.from('leads').delete().eq('email', email);
+        }
+      } catch (err) {
+        console.error('[Supabase CRM DELETE error]', err);
+      }
+    }
+
+    return NextResponse.json({ success: true, message: 'Account deleted successfully.' });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message || 'Failed to delete account' }, { status: 500 });
   }
 }

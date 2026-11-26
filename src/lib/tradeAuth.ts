@@ -124,6 +124,51 @@ export function getAllTradeAccounts(): TradeAccount[] {
   return [...dynamicTradeAccounts, ...VERIFIED_TRADE_ACCOUNTS];
 }
 
+export function removeTradeAccount(idOrEmail: string): boolean {
+  const clean = idOrEmail.trim().toLowerCase();
+  let found = false;
+
+  const dynIdx = dynamicTradeAccounts.findIndex(
+    (a) => a.id.toLowerCase() === clean || a.email.toLowerCase() === clean
+  );
+  if (dynIdx !== -1) {
+    dynamicTradeAccounts.splice(dynIdx, 1);
+    found = true;
+  }
+
+  const statIdx = VERIFIED_TRADE_ACCOUNTS.findIndex(
+    (a) => a.id.toLowerCase() === clean || a.email.toLowerCase() === clean
+  );
+  if (statIdx !== -1) {
+    VERIFIED_TRADE_ACCOUNTS.splice(statIdx, 1);
+    found = true;
+  }
+
+  return found;
+}
+
+export function updateTradeAccount(idOrEmail: string, updates: Partial<TradeAccount>): TradeAccount | null {
+  const clean = idOrEmail.trim().toLowerCase();
+
+  const dyn = dynamicTradeAccounts.find(
+    (a) => a.id.toLowerCase() === clean || a.email.toLowerCase() === clean
+  );
+  if (dyn) {
+    Object.assign(dyn, updates);
+    return dyn;
+  }
+
+  const stat = VERIFIED_TRADE_ACCOUNTS.find(
+    (a) => a.id.toLowerCase() === clean || a.email.toLowerCase() === clean
+  );
+  if (stat) {
+    Object.assign(stat, updates);
+    return stat;
+  }
+
+  return null;
+}
+
 /**
  * Verifies credentials for commercial login on rootwillsdirect.co.uk
  */
