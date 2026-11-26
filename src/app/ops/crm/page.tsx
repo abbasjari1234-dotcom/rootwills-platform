@@ -219,6 +219,27 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     approvedId: 'RW-2026-PYAALI',
     approvedPassword: 'Pyaali2026!',
   },
+  {
+    id: 'cust-jj',
+    slNo: 9,
+    name: 'Jumpin Jackets',
+    segment: 'Jacket Potato, Hot Carvery & QSR Purveyor',
+    description: 'Baking potatoes 40s/50s, mature cheddars, baked beans, coleslaw, tuna mayo, crispy bacon, oils & kraft packaging.',
+    headChef: 'Store Manager / Procurement',
+    phone: '+44 7310 101035',
+    email: 'orders@jumpinjackets.co.uk',
+    assignedReps: [
+      { name: 'Rootwills Trade Desk', avatar: 'RW' },
+    ],
+    dueDate: 'Active Account',
+    priority: 'Normal',
+    creditUtilized: 18,
+    spendMonth: '£5,200',
+    paymentTerms: '14 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-JJ',
+    approvedPassword: 'JumpinJackets2026!',
+  },
 ];
 
 export default function CustomerCRMHub() {

@@ -90,6 +90,15 @@ export const VERIFIED_TRADE_ACCOUNTS: TradeAccount[] = [
     plainPassword: 'Pyaali2026!',
   },
   {
+    id: 'RW-2026-JJ',
+    company: 'Jumpin Jackets',
+    contactName: 'Store Manager / Procurement',
+    email: 'orders@jumpinjackets.co.uk',
+    tier: 'Fast-Casual & QSR Direct (Tier 1)',
+    postcode: 'B29 6AE',
+    plainPassword: 'JumpinJackets2026!',
+  },
+  {
     id: 'RW-DEMO',
     company: 'B2B Wholesale Demo Account',
     contactName: 'Executive Trade Guest',
