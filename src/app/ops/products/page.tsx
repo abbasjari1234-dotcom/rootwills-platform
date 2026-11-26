@@ -136,11 +136,7 @@ export default function ProductManagementHub() {
       });
       const data = await res.json();
       if (res.ok) {
-        const local = getLocalOverrides();
-        const items = (data.items || []).map((p: ProductItem) => {
-          return local[p.sku] ? { ...p, ...local[p.sku] } : p;
-        });
-        setProducts(items);
+        setProducts(data.items || []);
         setTotal(data.total || 0);
         setTotalPages(data.totalPages || 1);
       }
