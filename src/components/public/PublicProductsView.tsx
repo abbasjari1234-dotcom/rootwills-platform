@@ -58,6 +58,61 @@ export function PublicProductsView() {
   const [mobileCartDrawerOpen, setMobileCartDrawerOpen] = useState<boolean>(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [tradeAccount, setTradeAccount] = useState<{ id?: string; company?: string; email?: string; tier?: string } | null>(null);
+  const [catalogProducts, setCatalogProducts] = useState<WholesaleProduct[]>(WHOLESALE_PRODUCTS);
+
+  // Sync cloud & local product overrides so changes in /ops/products reflect immediately
+  useEffect(() => {
+    const applyOverrides = (overridesData: Record<string, any>, created: any[] = [], deleted: string[] = []) => {
+      setCatalogProducts((prev) => {
+        let updated = [...WHOLESALE_PRODUCTS];
+
+        if (deleted && deleted.length > 0) {
+          const delSet = new Set(deleted);
+          updated = updated.filter((p) => !delSet.has(p.sku) && !delSet.has(p.id));
+        }
+
+        if (overridesData && Object.keys(overridesData).length > 0) {
+          updated = updated.map((p) => {
+            const ov = overridesData[p.sku] || overridesData[p.id];
+            return ov ? { ...p, ...ov } : p;
+          });
+        }
+
+        if (created && created.length > 0) {
+          const existingSkus = new Set(updated.map((p) => p.sku));
+          const newItems = created.filter((p) => !existingSkus.has(p.sku));
+          updated = [...newItems, ...updated];
+        }
+
+        return updated;
+      });
+    };
+
+    // 1. Instant local sync on the same browser device
+    if (typeof window !== 'undefined') {
+      try {
+        const local = localStorage.getItem('rootwills_ops_catalog_overrides_v1');
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (parsed && typeof parsed === 'object') {
+            applyOverrides(parsed);
+          }
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    // 2. Network sync from cloud overrides endpoint
+    fetch('/api/catalog/overrides')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && (data.overrides || data.created || data.deleted)) {
+          applyOverrides(data.overrides || {}, data.created || [], data.deleted || []);
+        }
+      })
+      .catch((err) => console.warn('[Catalog Overrides Sync]', err));
+  }, []);
 
   // Dynamic category URL router helper
   const handleSelectCategory = (slug: string) => {
@@ -302,21 +357,21 @@ export function PublicProductsView() {
 
   // Exact SKU counts per category slug
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: WHOLESALE_PRODUCTS.length };
+    const counts: Record<string, number> = { all: catalogProducts.length };
     WHOLESALE_CATEGORIES.forEach((cat) => {
       counts[cat.slug] = 0;
     });
-    WHOLESALE_PRODUCTS.forEach((prod) => {
+    catalogProducts.forEach((prod) => {
       if (counts[prod.categorySlug] !== undefined) {
         counts[prod.categorySlug]++;
       }
     });
     return counts;
-  }, []);
+  }, [catalogProducts]);
 
   const popularAddons = useMemo(
-    () => WHOLESALE_PRODUCTS.filter((p) => p.popularAddon),
-    []
+    () => catalogProducts.filter((p) => p.popularAddon),
+    [catalogProducts]
   );
 
   const activeCategoryObject = useMemo(() => {
@@ -332,7 +387,7 @@ export function PublicProductsView() {
   const handleLoadStandingOrder = () => {
     const defaultDrop = ['RW-796010', 'RW-858770', 'RW-724530', 'RW-350500'];
     const items = defaultDrop
-      .map((sku) => WHOLESALE_PRODUCTS.find((p) => p.sku === sku))
+      .map((sku) => catalogProducts.find((p) => p.sku === sku))
       .filter(Boolean)
       .map((p) => ({ product: p!, qty: 2 }));
     if (items.length > 0) {
@@ -342,7 +397,7 @@ export function PublicProductsView() {
 
   // Filter products based on search, category, subcategory, and temperature zone
   const filteredProducts = useMemo(() => {
-    return WHOLESALE_PRODUCTS.filter((p) => {
+    return catalogProducts.filter((p) => {
       if (searchQuery.trim() !== '') {
         const q = searchQuery.toLowerCase().trim();
         const match =
@@ -376,7 +431,7 @@ export function PublicProductsView() {
 
       return true;
     });
-  }, [selectedCategory, selectedSubcategory, searchQuery, selectedTempFilter, standingSKUs]);
+  }, [catalogProducts, selectedCategory, selectedSubcategory, searchQuery, selectedTempFilter, standingSKUs]);
 
   const isBrowsingAll =
     selectedCategory === 'all' &&
@@ -1107,7 +1162,7 @@ export function PublicProductsView() {
             {isBrowsingAll ? (
               <div className="space-y-10">
                 {WHOLESALE_CATEGORIES.map((aisle) => {
-                  const items = WHOLESALE_PRODUCTS.filter(
+                  const items = catalogProducts.filter(
                     (p) => p.categorySlug === aisle.slug
                   );
                   if (items.length === 0) return null;

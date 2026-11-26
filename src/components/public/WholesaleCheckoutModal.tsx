@@ -213,7 +213,17 @@ function WholesaleCheckoutModalInner({
   const summary: OrderPricingSummary = useMemo(() => {
     const mapped = (items || []).filter(Boolean).map((it, idx) => {
       const found = WHOLESALE_PRODUCTS.find((p) => (it?.sku && p.sku === it.sku) || (it?.id && p.id === it.id));
-      if (found) return { product: found, qty: it?.qty || 1 };
+      if (found) {
+        return {
+          product: {
+            ...found,
+            image: it?.image || found.image,
+            name: it?.name || found.name,
+            packSize: it?.packSize || found.packSize,
+          },
+          qty: it?.qty || 1,
+        };
+      }
       return {
         product: {
           id: it?.id || `item-${idx}`,
