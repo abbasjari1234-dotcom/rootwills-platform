@@ -92,9 +92,9 @@ async function persistCloudOverrides(store: CatalogStore) {
         email: OVERRIDE_SYSTEM_EMAIL,
         phone: '+447984709478',
         postcode: 'B5 4RB',
-        sector: 'wholesale_catalog',
-        source: 'internal_ops',
-        status: 'active_system_store',
+        sector: 'fine_dining',
+        source: 'website',
+        status: 'new_lead',
         notes: jsonNotes,
       });
     }
