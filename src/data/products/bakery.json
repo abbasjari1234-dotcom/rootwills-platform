@@ -3045,7 +3045,7 @@
     "packSize": "15",
     "categorySlug": "bakery-breakfast",
     "subcategory": "Muffins, Cookies & Donuts",
-    "image": "/images/products/placeholder.webp",
+    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&auto=format&fit=crop&q=80",
     "origin": "Rootwills Trade Assured",
     "tempZone": "Ambient",
     "description": "Chocolate Hazelnut Creme Cookie supplied in commercial catering pack (15). Fresh daily artisan bakery line for commercial catering."
