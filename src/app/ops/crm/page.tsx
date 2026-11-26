@@ -191,6 +191,27 @@ const INITIAL_ACCOUNTS: CustomerAccount[] = [
     approvedId: 'RW-2026-LDS',
     approvedPassword: 'DessertShop2026!',
   },
+  {
+    id: 'cust-pyaali',
+    slNo: 8,
+    name: 'Pyaali By Jaan (Pyaali Limited)',
+    segment: 'Artisan Chai, Brunch & Specialty Café',
+    description: 'Daily barista whole milk, chai spices, desi breakfast bakery, brioche, cooking oils, poultry & pre-dawn chilled drops.',
+    headChef: 'General Manager / Procurement',
+    phone: '+44 121 820 3610',
+    email: 'orders@pyaali.co.uk',
+    assignedReps: [
+      { name: 'Rootwills Trade Desk', avatar: 'RW' },
+    ],
+    dueDate: 'Active Account',
+    priority: 'Urgent',
+    creditUtilized: 14,
+    spendMonth: '£4,250',
+    paymentTerms: '14 Days Net',
+    isApproved: true,
+    approvedId: 'RW-2026-PYAALI',
+    approvedPassword: 'Pyaali2026!',
+  },
 ];
 
 export default function CustomerCRMHub() {

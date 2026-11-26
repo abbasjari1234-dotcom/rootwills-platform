@@ -81,6 +81,15 @@ export const VERIFIED_TRADE_ACCOUNTS: TradeAccount[] = [
     plainPassword: 'DessertShop2026!',
   },
   {
+    id: 'RW-2026-PYAALI',
+    company: 'Pyaali By Jaan (Pyaali Limited)',
+    contactName: 'Store General Manager / Purchasing',
+    email: 'orders@pyaali.co.uk',
+    tier: 'Artisan Café & Brunch Purveyor (Tier 1 Midlands)',
+    postcode: 'B6 6JR',
+    plainPassword: 'Pyaali2026!',
+  },
+  {
     id: 'RW-DEMO',
     company: 'B2B Wholesale Demo Account',
     contactName: 'Executive Trade Guest',
