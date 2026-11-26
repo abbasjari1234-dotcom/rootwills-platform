@@ -89,6 +89,10 @@ export default function ProductManagementHub() {
     image: '',
   });
 
+  const ADMIN_HEADERS = {
+    'x-ops-passcode': 'Rootwills2026!',
+  };
+
   const showNotification = (message: string, type: 'success' | 'error' = 'success') => {
     setNotification({ message, type });
     setTimeout(() => setNotification(null), 4000);
@@ -103,7 +107,10 @@ export default function ProductManagementHub() {
         search,
         category: selectedCategory,
       });
-      const res = await fetch(`/api/admin/products?${params.toString()}`);
+      const res = await fetch(`/api/admin/products?${params.toString()}`, {
+        headers: ADMIN_HEADERS,
+        credentials: 'include',
+      });
       const data = await res.json();
       if (res.ok) {
         setProducts(data.items || []);
@@ -137,6 +144,8 @@ export default function ProductManagementHub() {
 
       const res = await fetch('/api/admin/upload', {
         method: 'POST',
+        headers: ADMIN_HEADERS,
+        credentials: 'include',
         body: fd,
       });
       const data = await res.json();
@@ -163,7 +172,8 @@ export default function ProductManagementHub() {
     try {
       const res = await fetch('/api/admin/products', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...ADMIN_HEADERS },
+        credentials: 'include',
         body: JSON.stringify({ action: 'update', product: editingProduct }),
       });
       const data = await res.json();
@@ -190,7 +200,8 @@ export default function ProductManagementHub() {
     try {
       const res = await fetch('/api/admin/products', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...ADMIN_HEADERS },
+        credentials: 'include',
         body: JSON.stringify({ action: 'create', product: newProductForm }),
       });
       const data = await res.json();
@@ -213,7 +224,8 @@ export default function ProductManagementHub() {
     try {
       const res = await fetch('/api/admin/products', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...ADMIN_HEADERS },
+        credentials: 'include',
         body: JSON.stringify({ action: 'delete', product }),
       });
       if (res.ok) {

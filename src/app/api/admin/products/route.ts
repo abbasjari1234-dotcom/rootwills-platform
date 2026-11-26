@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { verifyAdminAuth, unauthorizedResponse } from '@/lib/security/auth-guard';
 import { handleApiError } from '@/lib/security/error-handler';
+import { WHOLESALE_PRODUCTS } from '@/data/wholesaleProducts';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -56,6 +57,14 @@ export async function GET(req: NextRequest) {
         allProducts.push(...list);
       } catch (e) {
         console.error(`Error reading ${file}:`, e);
+      }
+    }
+
+    // Fallback to static wholesale catalog if file read is empty or in constrained runtime
+    if (allProducts.length === 0 && Array.isArray(WHOLESALE_PRODUCTS) && WHOLESALE_PRODUCTS.length > 0) {
+      allProducts = [...WHOLESALE_PRODUCTS];
+      if (category) {
+        allProducts = allProducts.filter(p => p.categorySlug === category);
       }
     }
 

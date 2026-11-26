@@ -79,6 +79,9 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const auth = localStorage.getItem('rw_ops_authenticated');
     const hasCookie = document.cookie.split(';').some((c) => c.trim().startsWith('rw_ops_session=authorized'));
+    if (auth === 'true' && !hasCookie) {
+      document.cookie = 'rw_ops_session=authorized; path=/; max-age=86400; SameSite=Lax';
+    }
     setIsAuthenticated(auth === 'true' || hasCookie);
   }, []);
 
@@ -93,7 +96,7 @@ export default function OpsLayout({ children }: { children: React.ReactNode }) {
       clean === 'Rootwills2026!'
     ) {
       localStorage.setItem('rw_ops_authenticated', 'true');
-      document.cookie = 'rw_ops_session=authorized; path=/; max-age=86400; SameSite=Lax; Secure';
+      document.cookie = 'rw_ops_session=authorized; path=/; max-age=86400; SameSite=Lax';
       setIsAuthenticated(true);
       setPasscodeError(false);
     } else {

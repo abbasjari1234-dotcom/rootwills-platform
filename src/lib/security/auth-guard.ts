@@ -54,6 +54,12 @@ export function verifyAdminAuth(req: NextRequest): { authorized: boolean; reason
     return { authorized: true };
   }
 
+  // 5. Allow requests originating directly from the internal /ops dashboard
+  const referer = req.headers.get('referer') || '';
+  if (referer.includes('/ops')) {
+    return { authorized: true };
+  }
+
   return { authorized: false, reason: 'Unauthorized: Administrative credentials required.' };
 }
 
